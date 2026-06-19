@@ -12,7 +12,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 
 const SRC = process.argv[2];
 const OUT = 'index.html';
-const APP_VERSION = 'v2.7.1';
+const APP_VERSION = 'v2.7.2';
 let html = readFileSync(SRC, 'utf8');
 
 const HEAD = `
@@ -234,6 +234,10 @@ html[data-theme="dark"] .opt.wrong{background:#3a1c1c!important;border-color:#7a
 html[data-theme="dark"] .btn.gray{background:#3a2e25;color:var(--ink)}
 html[data-theme="dark"] .tabs{background:rgba(36,27,21,.85)}
 html[data-theme="dark"] .expl,html[data-theme="dark"] [style*="#f4f7ff"]{background:#2b2118!important;border-color:#3a2e25!important;color:var(--ink)!important}
+html[data-theme="dark"] select,html[data-theme="dark"] input,html[data-theme="dark"] textarea{background:#2b211a!important;color:var(--ink)!important;border:1px solid #3a2e25!important}
+html[data-theme="dark"] select option{background:#241b15;color:#f4ece2}
+html[data-theme="dark"] ::placeholder{color:#8f8170}
+html[data-theme="dark"] .tag{background:#3a2e25;color:#e8d8c6}
 
 /* Tabs — premium segmented bar on desktop */
 .tabs{gap:6px;margin:10px 0 18px;padding:8px;background:rgba(255,255,255,.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);justify-content:center}
