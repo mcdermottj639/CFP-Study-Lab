@@ -1,5 +1,5 @@
 /* FP Study Lab — service worker (offline support) */
-const VERSION = 'v2.7.5';
+const VERSION = 'v2.7.6';
 const CORE_CACHE = `fpsl-core-${VERSION}`;
 const RUNTIME_CACHE = `fpsl-runtime-${VERSION}`;
 
@@ -12,6 +12,7 @@ const CORE_ASSETS = [
   './flashcards.js',
   './reader-theme.css',
   './reader-theme.js',
+  './vendor/mathjax/tex-mml-svg.js',
   './apps/fp511-reading.html',
   './apps/fp512-reading.html',
   './icons/icon-192.png',
