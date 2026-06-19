@@ -205,7 +205,7 @@ section:not(.hidden){animation:rise .42s cubic-bezier(.2,.7,.3,1)}
   <section id="modules" class="hidden">
     <div class="card" style="margin-bottom:14px">
       <div class="flex">
-        <div><h2>Module map</h2><div class="sub">Open a module&rsquo;s study lab or interactive reader.</div></div>
+        <div><h2>Module map</h2><div class="sub">Open a module&rsquo;s interactive reader.</div></div>
         
       </div>
     </div>
@@ -505,10 +505,10 @@ function renderModules(){
   }).join('');
 }
 function moduleLinks(id){
-  var A={FP511:{lab:'apps/fp511-study.html',read:'apps/fp511-reading.html'},FP512:{lab:'apps/fp512-study.html',read:'apps/fp512-reading.html'}};
-  var a=A[id];
-  if(!a)return '<span class="muted">Study lab &amp; reader arrive with this course.</span>';
-  return '<a class="link" href="'+a.lab+'">🧪 Study lab</a> &nbsp;·&nbsp; <a class="link" href="'+a.read+'">📖 Interactive reader</a>';
+  var R={FP511:'apps/fp511-reading.html',FP512:'apps/fp512-reading.html'};
+  var r=R[id];
+  if(!r)return '<span class="muted">Interactive reader arrives with this course.</span>';
+  return '<a class="link" href="'+r+'">📖 Open interactive reader</a>';
 }
 function loadDrive(){renderModules();}
 

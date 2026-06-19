@@ -94,10 +94,10 @@ const FIXES = [
   [
     /function moduleLinks\(id\)\{[\s\S]*?\}\n(?=async function loadDrive)/,
     `function moduleLinks(id){
-  var A={FP511:{lab:'apps/fp511-study.html',read:'apps/fp511-reading.html'},FP512:{lab:'apps/fp512-study.html',read:'apps/fp512-reading.html'}};
-  var a=A[id];
-  if(!a)return '<span class="muted">Study lab &amp; reader arrive with this course.</span>';
-  return '<a class="link" href="'+a.lab+'">🧪 Study lab</a> &nbsp;·&nbsp; <a class="link" href="'+a.read+'">📖 Interactive reader</a>';
+  var R={FP511:'apps/fp511-reading.html',FP512:'apps/fp512-reading.html'};
+  var r=R[id];
+  if(!r)return '<span class="muted">Interactive reader arrives with this course.</span>';
+  return '<a class="link" href="'+r+'">📖 Open interactive reader</a>';
 }
 `,
   ],
@@ -109,7 +109,7 @@ const FIXES = [
   // Module map subtitle + remove the "Refresh from Drive" button
   [
     'Links read live from your CFP Drive folder. <span id="driveStatus" class="small muted"></span>',
-    'Open a module&rsquo;s study lab or interactive reader.',
+    'Open a module&rsquo;s interactive reader.',
   ],
   [/<button class="btn ghost sm" onclick="loadDrive\(\)">↻ Refresh from Drive<\/button>/, ''],
   // Remove the Kyle "push to Kyle" card, keep the Settings card
