@@ -12,7 +12,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 
 const SRC = process.argv[2];
 const OUT = 'index.html';
-const APP_VERSION = 'v2.7.10';
+const APP_VERSION = 'v2.7.11';
 let html = readFileSync(SRC, 'utf8');
 
 const HEAD = `
@@ -23,8 +23,8 @@ const HEAD = `
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="CFP Study">
-<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png?v=3">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png?v=3">
 <script>try{var _t=localStorage.getItem('cfpTheme');if(_t)document.documentElement.setAttribute('data-theme',_t);}catch(e){}</script>
 `;
 
