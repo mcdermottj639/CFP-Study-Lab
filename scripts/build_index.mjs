@@ -12,7 +12,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 
 const SRC = process.argv[2];
 const OUT = 'index.html';
-const APP_VERSION = 'v2.7.8';
+const APP_VERSION = 'v2.7.9';
 let html = readFileSync(SRC, 'utf8');
 
 const HEAD = `
@@ -154,6 +154,8 @@ for (const [pat, rep] of FIXES) {
 // accents, bigger type, motion, and a mobile bottom tab bar.
 const FRESH_UI = `
 <style id="freshUI">
+@font-face{font-family:'Dancing Script';font-style:normal;font-weight:700;font-display:swap;src:url('vendor/fonts/dancing-script-latin-700-normal.woff2') format('woff2')}
+@font-face{font-family:'Dancing Script';font-style:normal;font-weight:400;font-display:swap;src:url('vendor/fonts/dancing-script-latin-400-normal.woff2') format('woff2')}
 :root{
   --bg:#f4ecdf; --card:#fffdf8; --ink:#2a211a; --muted:#8a7c6b; --line:#ece0cd;
   --brand:#d0613a; --brand2:#e3973c; --good:#3f9d6b; --warn:#d8902f; --bad:#d2553f;
@@ -170,7 +172,7 @@ body{
   background-attachment:fixed;-webkit-font-smoothing:antialiased;
 }
 .wrap{max-width:1060px;padding:6px 16px 48px}
-h1{font-family:"Snell Roundhand","Apple Chancery","Savoye LET","Brush Script MT",cursive;font-weight:600;letter-spacing:0;font-size:30px;line-height:1.15}
+h1{font-family:"Dancing Script","Snell Roundhand","Brush Script MT",cursive;font-weight:700;letter-spacing:0;font-size:34px;line-height:1.12}
 h2{font-family:ui-serif,"New York","Iowan Old Style",Georgia,serif;font-weight:650;letter-spacing:-.2px;font-size:19px}
 .sub{font-size:13px;color:var(--muted)}
 
