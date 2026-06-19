@@ -12,7 +12,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 
 const SRC = process.argv[2];
 const OUT = 'index.html';
-const APP_VERSION = 'v2.7.3';
+const APP_VERSION = 'v2.7.4';
 let html = readFileSync(SRC, 'utf8');
 
 const HEAD = `
@@ -203,7 +203,9 @@ a.link:hover{text-decoration:underline}
 /* Quiz options + flashcards */
 .opt{border-radius:14px;padding:13px 15px;border:1px solid var(--line);transition:.15s;font-weight:500}
 .opt:hover{border-color:var(--brand);background:#fdf3ea}
-.flash{min-height:230px;border-radius:18px;font-size:19px;font-weight:600;background:linear-gradient(160deg,#fffdf8,#f7ecda);border:1px solid var(--line)}
+.flash{min-height:200px;height:auto;border-radius:18px;font-size:17px;font-weight:600;line-height:1.5;flex-direction:column;text-align:center;padding:24px 22px;background:linear-gradient(160deg,#fffdf8,#f7ecda);border:1px solid var(--line)}
+.flash>div{max-width:100%}
+.flash b{font-weight:800}
 .flashseg{display:flex;gap:6px;margin:12px 0 2px;background:#f1e7d6;padding:4px;border-radius:12px}
 .flashseg button{flex:1;border:none;background:none;padding:9px;border-radius:9px;font:700 13px system-ui,-apple-system,sans-serif;color:var(--muted);cursor:pointer;transition:.15s}
 .flashseg button.on{background:var(--card);color:var(--ink);box-shadow:var(--shadow)}
