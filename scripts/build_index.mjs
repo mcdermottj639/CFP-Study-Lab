@@ -12,7 +12,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 
 const SRC = process.argv[2];
 const OUT = 'index.html';
-const APP_VERSION = 'v2.7.0';
+const APP_VERSION = 'v2.7.1';
 let html = readFileSync(SRC, 'utf8');
 
 const HEAD = `
@@ -34,7 +34,7 @@ const HEAD = `
 const TOOLKIT = `
 <!-- pwa:toolkit -->
 <button id="cfpTkBtn" aria-label="Backup & tools" title="Backup & tools"
-  style="position:fixed;top:max(10px,env(safe-area-inset-top));right:max(10px,env(safe-area-inset-right));z-index:99999;width:34px;height:34px;border:none;border-radius:50%;background:rgba(27,63,168,.9);color:#fff;font-size:17px;line-height:34px;text-align:center;cursor:pointer;box-shadow:0 4px 14px -4px rgba(0,0,0,.5)">&#8943;</button>
+  style="position:fixed;top:max(10px,env(safe-area-inset-top));right:max(10px,env(safe-area-inset-right));z-index:99999;width:34px;height:34px;border:none;border-radius:50%;background:rgba(208,97,58,.92);color:#fff;font-size:17px;line-height:34px;text-align:center;cursor:pointer;box-shadow:0 4px 14px -4px rgba(74,48,28,.5)">&#8943;</button>
 <div id="cfpTkModal" style="display:none;position:fixed;inset:0;z-index:100000;background:rgba(13,18,38,.55);align-items:center;justify-content:center;padding:20px">
   <div style="background:#fff;color:#1d2433;max-width:380px;width:100%;border-radius:18px;padding:20px;box-shadow:0 24px 60px -20px rgba(0,0,0,.5);font:15px/1.5 system-ui,-apple-system,sans-serif">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
@@ -42,7 +42,7 @@ const TOOLKIT = `
       <button id="cfpTkClose" style="border:none;background:none;font-size:22px;cursor:pointer;color:#6b7385;line-height:1">&times;</button>
     </div>
     <p style="font-size:13px;color:#6b7385;margin:0 0 14px">Your progress is saved on this device only. Export a backup to move it to another device or keep it safe.</p>
-    <button id="cfpTkExport" style="width:100%;padding:13px;border:none;border-radius:12px;background:#2f5fe0;color:#fff;font:600 15px system-ui;cursor:pointer;margin-bottom:9px">⤓ Export progress</button>
+    <button id="cfpTkExport" style="width:100%;padding:13px;border:none;border-radius:12px;background:linear-gradient(135deg,#dc6b3a,#e6a23c);color:#fff;font:600 15px system-ui;cursor:pointer;margin-bottom:9px">⤓ Export progress</button>
     <label style="display:block;width:100%;padding:13px;border:1px solid #dfe3ee;border-radius:12px;background:#fff;color:#1d2433;font:600 15px system-ui;cursor:pointer;text-align:center;margin-bottom:9px">⤒ Import progress<input id="cfpTkImport" type="file" accept="application/json,.json" style="display:none"></label>
     <button id="cfpTkTheme" style="width:100%;padding:12px;border:1px solid #dfe3ee;border-radius:12px;background:#fff;color:#1d2433;font:600 15px system-ui;cursor:pointer;margin-bottom:9px">🌙 Dark mode</button>
     <button id="cfpTkReset" style="width:100%;padding:11px;border:none;border-radius:12px;background:#fdecea;color:#d6453d;font:600 14px system-ui;cursor:pointer">Reset all progress</button>
