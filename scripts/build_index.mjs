@@ -12,6 +12,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 
 const SRC = process.argv[2];
 const OUT = 'index.html';
+const APP_VERSION = 'v2.7.0';
 let html = readFileSync(SRC, 'utf8');
 
 const HEAD = `
@@ -24,6 +25,7 @@ const HEAD = `
 <meta name="apple-mobile-web-app-title" content="CFP Study">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<script>try{var _t=localStorage.getItem('cfpTheme');if(_t)document.documentElement.setAttribute('data-theme',_t);}catch(e){}</script>
 `;
 
 // Backup / Restore toolkit — isolated, namespaced, operates on the app's
@@ -42,8 +44,10 @@ const TOOLKIT = `
     <p style="font-size:13px;color:#6b7385;margin:0 0 14px">Your progress is saved on this device only. Export a backup to move it to another device or keep it safe.</p>
     <button id="cfpTkExport" style="width:100%;padding:13px;border:none;border-radius:12px;background:#2f5fe0;color:#fff;font:600 15px system-ui;cursor:pointer;margin-bottom:9px">⤓ Export progress</button>
     <label style="display:block;width:100%;padding:13px;border:1px solid #dfe3ee;border-radius:12px;background:#fff;color:#1d2433;font:600 15px system-ui;cursor:pointer;text-align:center;margin-bottom:9px">⤒ Import progress<input id="cfpTkImport" type="file" accept="application/json,.json" style="display:none"></label>
+    <button id="cfpTkTheme" style="width:100%;padding:12px;border:1px solid #dfe3ee;border-radius:12px;background:#fff;color:#1d2433;font:600 15px system-ui;cursor:pointer;margin-bottom:9px">🌙 Dark mode</button>
     <button id="cfpTkReset" style="width:100%;padding:11px;border:none;border-radius:12px;background:#fdecea;color:#d6453d;font:600 14px system-ui;cursor:pointer">Reset all progress</button>
     <div id="cfpTkMsg" style="font-size:12.5px;color:#1f9d6b;text-align:center;min-height:16px;margin-top:10px"></div>
+    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · __APP_VERSION__</div>
   </div>
 </div>
 <script>
@@ -79,11 +83,26 @@ const TOOLKIT = `
       setTimeout(function(){location.reload();},700);
     }
   };
+  var themeBtn=$("cfpTkTheme");
+  function syncTheme(){var d=document.documentElement.getAttribute("data-theme")==="dark";themeBtn.textContent=d?"☀️ Light mode":"🌙 Dark mode";}
+  themeBtn.onclick=function(){
+    var d=document.documentElement.getAttribute("data-theme")==="dark";
+    if(d){document.documentElement.removeAttribute("data-theme");localStorage.setItem("cfpTheme","light");}
+    else{document.documentElement.setAttribute("data-theme","dark");localStorage.setItem("cfpTheme","dark");}
+    syncTheme();
+  };
+  syncTheme();
 })();
 </script>
 <script src="flashcards.js"></script>
 <script>
-if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js').catch(function(){});
+  var _cfpReloaded=false;
+  navigator.serviceWorker.addEventListener('controllerchange',function(){
+    if(_cfpReloaded)return;_cfpReloaded=true;location.reload();
+  });
+}
 </script>
 `;
 
@@ -188,6 +207,33 @@ a.link:hover{text-decoration:underline}
 .flashseg{display:flex;gap:6px;margin:12px 0 2px;background:#f1e7d6;padding:4px;border-radius:12px}
 .flashseg button{flex:1;border:none;background:none;padding:9px;border-radius:9px;font:700 13px system-ui,-apple-system,sans-serif;color:var(--muted);cursor:pointer;transition:.15s}
 .flashseg button.on{background:var(--card);color:var(--ink);box-shadow:var(--shadow)}
+.flashopts{display:flex;gap:8px;margin:8px 0 2px}
+.flashopts button{flex:1;border:1px solid var(--line);background:var(--card);padding:9px;border-radius:11px;font:700 12.5px system-ui,-apple-system,sans-serif;color:var(--muted);cursor:pointer;transition:.15s}
+.flashopts button.on{background:var(--grad);color:#fff;border-color:transparent}
+
+/* ---- Warm dark mode (opt-in via Settings/toolkit) ---- */
+html[data-theme="dark"]{
+  --bg:#191310; --card:#241b15; --ink:#f4ece2; --muted:#b4a594; --line:#3a2e25;
+  --brand:#ec8a5b; --brand2:#eeae5c; --good:#4cae7a; --warn:#e0a23a; --bad:#e86a59;
+  --grad:linear-gradient(135deg,#ec8a5b 0%,#eeae5c 100%);
+  --shadow:0 1px 2px rgba(0,0,0,.45),0 14px 32px -14px rgba(0,0,0,.65);
+  --shadow-lg:0 2px 8px rgba(0,0,0,.5),0 34px 64px -24px rgba(0,0,0,.72);
+  color-scheme:dark;
+}
+html[data-theme="dark"] body{background:
+  radial-gradient(1100px 560px at 100% -12%,rgba(238,174,92,.10),transparent 60%),
+  radial-gradient(900px 480px at -10% 112%,rgba(236,138,91,.10),transparent 55%),
+  var(--bg);}
+html[data-theme="dark"] .flash{background:linear-gradient(160deg,#2b211a,#241b15)}
+html[data-theme="dark"] .flashseg{background:#2b211a}
+html[data-theme="dark"] .bar{background:#3a2e25}
+html[data-theme="dark"] .opt{background:#241b15}
+html[data-theme="dark"] .opt:hover{background:#2f251d}
+html[data-theme="dark"] .opt.correct{background:#163420!important;border-color:#2f6b40!important}
+html[data-theme="dark"] .opt.wrong{background:#3a1c1c!important;border-color:#7a3232!important}
+html[data-theme="dark"] .btn.gray{background:#3a2e25;color:var(--ink)}
+html[data-theme="dark"] .tabs{background:rgba(36,27,21,.85)}
+html[data-theme="dark"] .expl,html[data-theme="dark"] [style*="#f4f7ff"]{background:#2b2118!important;border-color:#3a2e25!important;color:var(--ink)!important}
 
 /* Tabs — premium segmented bar on desktop */
 .tabs{gap:6px;margin:10px 0 18px;padding:8px;background:rgba(255,255,255,.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);justify-content:center}
@@ -235,5 +281,6 @@ html = html.replace(
 const idx = html.lastIndexOf('</body>');
 html = idx !== -1 ? html.slice(0, idx) + TOOLKIT + html.slice(idx) : html + TOOLKIT;
 
+html = html.replaceAll('__APP_VERSION__', APP_VERSION);
 writeFileSync(OUT, html);
 console.log(`wrote ${OUT} (${html.length} bytes)`);
