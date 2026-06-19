@@ -68,8 +68,8 @@
         (idx + 1) + ' of ' + deck.length +
         '</span><span><span class="tag">' + c.m + '</span><span class="tag">' + c.t + '</span></span></div>' +
         controls() +
-        '<div class="flash" id="flashface">' + front +
-        '<br><span class="small muted" style="margin-top:10px">' + (auto ? '(auto-flip on)' : '(tap to flip)') + '</span></div>' +
+        '<div class="flash" id="flashface"><div>' + front +
+        '<br><span class="small muted" style="margin-top:10px;display:inline-block">' + (auto ? '(auto-flip on)' : '(tap to flip)') + '</span></div></div>' +
         '<div id="flashctrl" class="center"></div></div>';
       document.getElementById('flashface').onclick = flip;
       if (auto) timer = setTimeout(flip, AUTO_MS);
