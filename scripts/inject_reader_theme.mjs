@@ -20,9 +20,10 @@ for (const f of files) {
   let html = readFileSync(f, 'utf8');
   let changed = false;
 
-  // Point any jsdelivr Chart.js at the local vendored copy
+  // Point any jsdelivr Chart.js / MathJax at local vendored copies (offline)
   const before = html;
   html = html.replace(/https:\/\/cdn\.jsdelivr\.net\/npm\/chart\.js[^"']*/g, '../vendor/chart.umd.js');
+  html = html.replace(/https:\/\/cdn\.jsdelivr\.net\/npm\/mathjax@[0-9.]*\/es5\/tex-mml-[a-z]+\.js/g, '../vendor/mathjax/tex-mml-svg.js');
   if (html !== before) changed = true;
 
   if (!html.includes(MARK)) {
