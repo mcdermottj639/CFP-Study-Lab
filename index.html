@@ -125,6 +125,9 @@ a.link:hover{text-decoration:underline}
 .opt{border-radius:14px;padding:13px 15px;border:1px solid var(--line);transition:.15s;font-weight:500}
 .opt:hover{border-color:var(--brand);background:#fdf3ea}
 .flash{min-height:230px;border-radius:18px;font-size:19px;font-weight:600;background:linear-gradient(160deg,#fffdf8,#f7ecda);border:1px solid var(--line)}
+.flashseg{display:flex;gap:6px;margin:12px 0 2px;background:#f1e7d6;padding:4px;border-radius:12px}
+.flashseg button{flex:1;border:none;background:none;padding:9px;border-radius:9px;font:700 13px system-ui,-apple-system,sans-serif;color:var(--muted);cursor:pointer;transition:.15s}
+.flashseg button.on{background:var(--card);color:var(--ink);box-shadow:var(--shadow)}
 
 /* Tabs — premium segmented bar on desktop */
 .tabs{gap:6px;margin:10px 0 18px;padding:8px;background:rgba(255,255,255,.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);justify-content:center}
@@ -970,6 +973,7 @@ autoBackup();
   };
 })();
 </script>
+<script src="flashcards.js"></script>
 <script>
 if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}
 </script>
