@@ -110,6 +110,30 @@ let addedC = 0, addedM = 0, skipC = 0, skipM = 0;
 for (const c of newCards) { const k = norm(c.f); if (haveCard.has(k)) { skipC++; continue; } haveCard.add(k); cards.push(c); addedC++; }
 for (const q of newMcqs) { const k = norm(q.q); if (haveMcq.has(k)) { skipM++; continue; } haveMcq.add(k); mcqs.push(q); addedM++; }
 
+// Apply fixups: corrections to existing cards, matched by front text.
+// content/fixups.json = [{ "f": "<front to match>", "b": "<new back>", "f2": "<new front?>" }]
+let fixed = 0;
+if (existsSync(join(CONTENT_DIR, 'fixups.json'))) {
+  const fixes = JSON.parse(readFileSync(join(CONTENT_DIR, 'fixups.json'), 'utf8'));
+  for (const fx of fixes) {
+    const target = norm(fx.f);
+    const card = cards.find((c) => norm(c.f) === target);
+    if (!card) { console.log('fixup: no match for', JSON.stringify(fx.f)); continue; }
+    if (fx.b !== undefined) card.b = fx.b;
+    if (fx.f2 !== undefined) card.f = fx.f2;
+    fixed++;
+  }
+}
+
+// Literal replacements across all content fields (content/replace.json = [{from,to}])
+let repl = 0;
+if (existsSync(join(CONTENT_DIR, 'replace.json'))) {
+  const rules = JSON.parse(readFileSync(join(CONTENT_DIR, 'replace.json'), 'utf8'));
+  const fix = (s) => { let v = String(s); for (const r of rules) v = v.split(r.from).join(r.to); if (v !== String(s)) repl++; return v; };
+  cards.forEach((c) => { c.f = fix(c.f); c.b = fix(c.b); });
+  mcqs.forEach((q) => { q.q = fix(q.q); q.e = fix(q.e); if (Array.isArray(q.o)) q.o = q.o.map(fix); });
+}
+
 html = setArray(html, 'CARDS', cards);
 html = setArray(html, 'MCQ', mcqs);
 
@@ -120,3 +144,4 @@ getArray(html, 'MCQ');
 writeFileSync(FILE, html);
 console.log(`cards: +${addedC} (skipped ${skipC} dupes) -> ${cards.length} total`);
 console.log(`mcqs:  +${addedM} (skipped ${skipM} dupes) -> ${mcqs.length} total`);
+console.log(`fixups applied: ${fixed}`);

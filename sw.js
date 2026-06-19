@@ -1,5 +1,5 @@
 /* FP Study Lab — service worker (offline support) */
-const VERSION = 'v2.7.4';
+const VERSION = 'v2.7.5';
 const CORE_CACHE = `fpsl-core-${VERSION}`;
 const RUNTIME_CACHE = `fpsl-runtime-${VERSION}`;
 
@@ -10,6 +10,8 @@ const CORE_ASSETS = [
   './manifest.webmanifest',
   './vendor/chart.umd.js',
   './flashcards.js',
+  './reader-theme.css',
+  './reader-theme.js',
   './apps/fp511-reading.html',
   './apps/fp512-reading.html',
   './icons/icon-192.png',
@@ -22,7 +24,11 @@ const CORE_ASSETS = [
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CORE_CACHE)
-      .then((cache) => cache.addAll(CORE_ASSETS))
+      .then((cache) => Promise.all(CORE_ASSETS.map((u) =>
+        fetch(new Request(u, { cache: "reload" }))
+          .then((r) => { if (r && (r.ok || r.type === "opaque")) return cache.put(u, r); })
+          .catch(function(){})
+      )))
       .then(() => self.skipWaiting())
   );
 });

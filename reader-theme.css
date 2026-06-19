@@ -1,0 +1,36 @@
+/* Shared theme for the Interactive Readers — warm light canvas + a synced
+ * dark mode. Dark mode filters a content wrapper (#rdrWrap) rather than <body>,
+ * so the fixed Home/Theme buttons stay pinned and uninverted. Charts/images/
+ * MathJax inside the content are re-inverted so they render correctly. */
+
+/* Warm canvas to match the main app (light mode) */
+body { background: #f4ecdf !important; }
+
+/* Dark mode (data-theme="dark" on <html>, synced from the app via localStorage) */
+html[data-theme="dark"] { background: #17120e; }
+html[data-theme="dark"] body { background: #17120e !important; }
+html[data-theme="dark"] #rdrWrap { filter: invert(0.92) hue-rotate(180deg); }
+html[data-theme="dark"] #rdrWrap img,
+html[data-theme="dark"] #rdrWrap canvas,
+html[data-theme="dark"] #rdrWrap svg,
+html[data-theme="dark"] #rdrWrap video,
+html[data-theme="dark"] #rdrWrap iframe,
+html[data-theme="dark"] #rdrWrap .MathJax,
+html[data-theme="dark"] #rdrWrap mjx-container {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* Floating theme toggle (sits above the Home button) */
+#rdrTheme {
+  position: fixed;
+  left: max(14px, env(safe-area-inset-left));
+  bottom: calc(60px + env(safe-area-inset-bottom));
+  z-index: 99999;
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 9px 13px; border-radius: 999px;
+  background: #d0613a; color: #fff;
+  font: 600 13px/1 system-ui, -apple-system, sans-serif;
+  border: 1px solid rgba(255,255,255,.2);
+  box-shadow: 0 6px 20px -6px rgba(0,0,0,.5);
+  cursor: pointer;
+}
