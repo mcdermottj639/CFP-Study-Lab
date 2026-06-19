@@ -1,85 +1,65 @@
-# FP Study Lab — CFP® Exam Prep (iPhone & iPad app)
+# CFP Study Home — CFP® Exam Prep (iPhone & iPad app)
 
-An installable, **offline-capable** study app that combines all of your CFP® prep
-material into one home screen:
+One complete, installable, **fully offline** study app for the CFP® exam.
 
-- **FP511 Study Lab** — flashcards, quizzes, match, exam simulator, progress tracking
-- **FP511 Interactive Reading** — guided chapters with charts
-- **FP512 Study Lab** — flashcards, quizzes, match, exam simulator, progress tracking
-- **FP512 Interactive Reading** — guided chapters with worked formulas
-- **Reference Library** — cheat sheet, provided-formulas sheet, and CFP Board
-  key-element summaries (SECURE Act 2019, SECURE 2.0 2023, TCJA 2017, OBBBA 2025),
-  ethics & process, and retirement planning — all available offline
+Open it once in Safari, **Add to Home Screen**, and it runs full-screen like a
+native app — no App Store, no Apple Developer account, no Mac required.
 
-It's a **Progressive Web App (PWA)**: no App Store, no Apple Developer account,
-no Mac/Xcode. You add it to your home screen from Safari and it runs full-screen
-like a native app, even with no internet.
+### What's inside
+A single all-in-one app (FP511 + FP512) with:
+
+- **Dashboard** — exam countdown, study streak, "study this today," weak-topic targeting
+- **9 study modes** — flashcards, quiz, exam simulator, mock exam, scenario item-sets,
+  calculator drills, ethics, key numbers, and exam tips
+- **336 flashcards + 288 practice questions** across FP511 & FP512
+- **Analytics** — mastery by module, confidence vs. accuracy, domain readiness by
+  official exam weights, and a mistake journal
+- **Progress saved** on your device (`localStorage`)
+- **100% offline** — no external dependencies (Chart.js is bundled locally)
+
+FP513–FP518 are scaffolded in the module map as "coming soon."
 
 ---
 
 ## Install on your iPhone / iPad
 
-1. Open the live site URL in **Safari** (see *Deploy* below for the URL).
-2. Tap the **Share** button (the square with an up-arrow).
-3. Scroll down and tap **Add to Home Screen**, then **Add**.
-4. Launch **FP Study Lab** from the new icon — it opens full-screen and works offline.
+1. Open the live URL in **Safari**: `https://mcdermottj639.github.io/CFP-Study-Lab/`
+2. Tap **Share** (the square with an ↑) → **Add to Home Screen** → **Add**.
+3. Launch **CFP Study** from the new icon — full-screen and works offline.
 
-> The first launch needs internet so it can cache everything. After that it works
-> with no connection. Your flashcard/quiz/exam progress is saved on the device.
-
-Repeat on each device (iPhone and iPad) to install it in both places.
+Repeat on each device. Progress is stored per-device.
 
 ---
 
-## Deploy (GitHub Pages — free)
+## Deploy (GitHub Pages — already set up)
 
-This repo deploys itself with GitHub Actions. One-time setup:
-
-1. Push this branch (already done if you're reading this on GitHub).
-2. In the repo: **Settings → Pages → Build and deployment → Source → "GitHub Actions"**.
-3. The **Deploy to GitHub Pages** workflow runs automatically on every push to
-   `main` (and to the working branch). When it finishes, your live URL appears in
-   the workflow run and under **Settings → Pages**, typically:
-
-   `https://<your-username>.github.io/cfp-study-lab/`
-
-4. Open that URL on your devices and follow *Install* above.
-
-To make it live for everyone, merge this branch into `main`.
-
----
+The repo is public and auto-deploys via GitHub Actions on every push to `main`
+(see `.github/workflows/deploy-pages.yml`). The live URL is shown under
+**Settings → Pages** and in each workflow run.
 
 ## Project structure
 
 ```
-index.html                 Launcher home (tiles, exam countdown, install hint)
-reference.html             Reference Library (links to the PDFs)
-manifest.webmanifest       PWA manifest (name, icons, standalone display)
-sw.js                      Service worker (offline caching)
-apps/                      The 4 self-contained study apps
-  fp511-study.html
-  fp511-reading.html
-  fp512-study.html
-  fp512-reading.html
-reference/                 Bundled reference PDFs (offline)
-icons/                     App icons (generated; see scripts/)
+index.html              The complete CFP Study Home app (PWA hooks injected)
+manifest.webmanifest    PWA manifest (name, icons, standalone display)
+sw.js                   Service worker (offline caching)
+vendor/chart.umd.js     Chart.js 4.5.0, bundled locally (no CDN)
+icons/                  App icons (generated; see scripts/)
 scripts/
-  generate_icons.py        Regenerate icons (pure Python, no deps)
-  inject_pwa.mjs           Re-inject PWA hooks into apps/ (idempotent)
-.github/workflows/         GitHub Pages deploy workflow
+  generate_icons.py     Regenerate icons (pure Python, no deps)
+  build_index.mjs       Rebuild index.html from a source artifact + PWA hooks
+.github/workflows/      GitHub Pages deploy workflow
 ```
 
-## Updating content
+### Updating
 
-- **Replace a study app:** drop the new HTML into `apps/` (same filename), then
-  run `node scripts/inject_pwa.mjs` to re-add the Home button + offline hooks.
-- **Add/replace a reference PDF:** put the file in `reference/` and add a link in
-  `reference.html`.
-- **Bump the cache:** increment `VERSION` in `sw.js` so devices fetch fresh files.
+- **New app version:** `node scripts/build_index.mjs <source.html>` regenerates
+  `index.html` with the PWA hooks re-applied.
+- **Bump the offline cache:** increment `VERSION` in `sw.js` so devices fetch fresh files.
 - **Regenerate icons:** `python3 scripts/generate_icons.py`.
 
 ---
 
-*This is a personal study aid, not official CFP Board material. Always verify
-against current CFP Board publications. CFP® is a trademark of the Certified
-Financial Planner Board of Standards, Inc.*
+*Personal study aid, not official CFP Board material. Always verify against current
+CFP Board publications. CFP® is a trademark of the Certified Financial Planner Board
+of Standards, Inc.*
