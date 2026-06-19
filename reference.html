@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Reference Library — FP Study Lab</title>
+<meta name="theme-color" content="#1f4d3a">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="FP Study Lab">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4efe4; --card:#fbf8f0; --ink:#231f1a; --ink-soft:#5a5145; --ink-faint:#8a7f6e;
+  --line:#ddd2bd; --line-strong:#c9bca2; --green:#1f4d3a; --green-2:#2e6b50; --green-soft:#e3ede5;
+  --gold:#bd8b2c; --gold-soft:#f3e6c6; --blue:#33566e; --rust:#a8462a;
+  --shadow:0 1px 2px rgba(35,31,26,.06),0 8px 28px -12px rgba(35,31,26,.22);
+  --shadow-lg:0 2px 6px rgba(35,31,26,.08),0 24px 60px -22px rgba(35,31,26,.4);
+  --r:14px; --r-lg:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:'Hanken Grotesk',system-ui,sans-serif;background:var(--paper);
+  background-image:radial-gradient(circle at 15% 0%,rgba(47,107,80,.05),transparent 40%),radial-gradient(circle at 85% 100%,rgba(189,139,44,.06),transparent 45%);
+  background-attachment:fixed;color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh;
+  padding-bottom:env(safe-area-inset-bottom);
+}
+.serif{font-family:'Fraunces',Georgia,serif}
+.shell{max-width:880px;margin:0 auto;padding:0 20px 60px}
+header.top{
+  position:sticky;top:0;z-index:50;background:rgba(244,239,228,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);margin:0 -20px 0;padding:0 20px;padding-top:env(safe-area-inset-top);
+}
+.top-inner{max-width:880px;margin:0 auto;display:flex;align-items:center;gap:12px;height:64px}
+.home{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink-soft);font-weight:600;font-size:14px;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);transition:.16s}
+.home:hover{border-color:var(--line-strong);color:var(--ink)}
+.ttl{font-family:'Fraunces',serif;font-weight:600;font-size:17px;margin-left:4px}
+.eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.page-h{margin:30px 0 6px}
+.page-h h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(26px,5vw,38px);letter-spacing:-.02em;line-height:1.05}
+.page-h p{color:var(--ink-soft);font-size:14.5px;max-width:62ch;margin-top:8px}
+.group-h{font-family:'Fraunces',serif;font-weight:600;font-size:18px;margin:30px 0 12px}
+.list{display:flex;flex-direction:column;gap:12px}
+.doc{
+  display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit;
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;
+  box-shadow:var(--shadow);transition:.16s;
+}
+.doc:hover,.doc:active{transform:translateY(-2px);box-shadow:var(--shadow-lg);border-color:var(--line-strong)}
+.doc .ic{flex:none;width:44px;height:44px;border-radius:11px;display:grid;place-items:center;font-size:13px;font-weight:800;color:#fff;font-family:'Hanken Grotesk';letter-spacing:.02em}
+.doc.t-key .ic{background:var(--green)}
+.doc.t-sheet .ic{background:var(--gold)}
+.doc.t-core .ic{background:var(--blue)}
+.doc .body{flex:1;min-width:0}
+.doc .body h3{font-size:15.5px;font-weight:700;letter-spacing:-.01em}
+.doc .body p{font-size:12.5px;color:var(--ink-faint);margin-top:3px}
+.doc .meta{flex:none;font-size:11.5px;color:var(--ink-faint);font-weight:600;text-align:right}
+.doc .arrow{flex:none;color:var(--ink-faint);font-size:18px}
+.footnote{margin-top:38px;font-size:12px;color:var(--ink-faint);line-height:1.7;border-top:1px solid var(--line);padding-top:18px}
+@media(max-width:560px){.doc .meta{display:none}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <a class="home" href="index.html">← Home</a>
+    <span class="ttl">Reference Library</span>
+  </div>
+</header>
+
+<div class="shell">
+  <div class="page-h">
+    <div class="eyebrow">Offline reference</div>
+    <h1 class="serif">Reference Library</h1>
+    <p>Your cheat sheets, the exam-provided formula sheet, and the CFP Board key-element summaries. Tap any document to open it. Everything here is cached on your device and available offline.</p>
+  </div>
+
+  <div class="group-h serif">Cheat sheets &amp; formulas</div>
+  <div class="list">
+    <a class="doc t-sheet" href="reference/fp511-cheatsheet.pdf" target="_blank" rel="noopener">
+      <div class="ic">PDF</div>
+      <div class="body"><h3>FP511 Complete Cheat Sheet</h3><p>General financial planning, professional conduct &amp; client psychology — full master summary.</p></div>
+      <div class="meta">242 KB</div><div class="arrow">→</div>
+    </a>
+    <a class="doc t-sheet" href="reference/provided-formulas.pdf" target="_blank" rel="noopener">
+      <div class="ic">PDF</div>
+      <div class="body"><h3>Provided Formulas Sheet</h3><p>The formula appendix you’re given on exam day — know what’s provided vs. what to memorize.</p></div>
+      <div class="meta">88 KB</div><div class="arrow">→</div>
+    </a>
+  </div>
+
+  <div class="group-h serif">Core topics</div>
+  <div class="list">
+    <a class="doc t-core" href="reference/cfp-ethics-foundational-principles.pdf" target="_blank" rel="noopener">
+      <div class="ic">PDF</div>
+      <div class="body"><h3>Ethics &amp; Process: Foundational Principles</h3><p>CFP Board Code of Ethics and the financial planning process.</p></div>
+      <div class="meta">5 pp</div><div class="arrow">→</div>
+    </a>
+    <a class="doc t-core" href="reference/retirement-planning.pdf" target="_blank" rel="noopener">
+      <div class="ic">PDF</div>
+      <div class="body"><h3>Retirement Planning</h3><p>Retirement planning summary notes.</p></div>
+      <div class="meta">7 pp</div><div class="arrow">→</div>
+    </a>
+  </div>
+
+  <div class="group-h serif">CFP Board key-element summaries</div>
+  <div class="list">
+    <a class="doc t-key" href="reference/key-elements-obbba-2025.pdf" target="_blank" rel="noopener">
+      <div class="ic">PDF</div>
+      <div class="body"><h3>OBBBA — Key Elements (2025)</h3><p>One Big Beautiful Bill Act: the latest tax-law changes affecting the exam.</p></div>
+      <div class="meta">44 pp</div><div class="arrow">→</div>
+    </a>
+    <a class="doc t-key" href="reference/key-elements-secure-act-2023.pdf" target="_blank" rel="noopener">
+      <div class="ic">PDF</div>
+      <div class="body"><h3>SECURE Act 2.0 — Key Elements (2023)</h3><p>Retirement-savings provisions and RMD changes.</p></div>
+      <div class="meta">13 pp</div><div class="arrow">→</div>
+    </a>
+    <a class="doc t-key" href="reference/key-elements-secure-act-2019.pdf" target="_blank" rel="noopener">
+      <div class="ic">PDF</div>
+      <div class="body"><h3>SECURE Act — Key Elements (2019)</h3><p>Original SECURE Act provisions.</p></div>
+      <div class="meta">PDF</div><div class="arrow">→</div>
+    </a>
+    <a class="doc t-key" href="reference/key-elements-tcja-2017.pdf" target="_blank" rel="noopener">
+      <div class="ic">PDF</div>
+      <div class="body"><h3>Tax Cuts &amp; Jobs Act — Key Elements (2017)</h3><p>TCJA summary of key tax provisions.</p></div>
+      <div class="meta">PDF</div><div class="arrow">→</div>
+    </a>
+  </div>
+
+  <div class="footnote">
+    <b>Reference Library.</b> Documents sourced from your CFP study materials and CFP Board publications. These are reproduced here for personal study use. Always verify against the current official CFP Board publications, which supersede any summary.
+  </div>
+</div>
+
+<script>
+if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}
+</script>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>FP Study Lab — CFP® Exam Prep</title>
+<meta name="description" content="FP511 & FP512 CFP exam prep — flashcards, quizzes, exam sims, interactive readings and a reference library. Works offline.">
+<meta name="theme-color" content="#1f4d3a">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="FP Study Lab">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4efe4; --paper-2:#efe8d8; --card:#fbf8f0;
+  --ink:#231f1a; --ink-soft:#5a5145; --ink-faint:#8a7f6e;
+  --line:#ddd2bd; --line-strong:#c9bca2;
+  --green:#1f4d3a; --green-2:#2e6b50; --green-soft:#e3ede5;
+  --gold:#bd8b2c; --gold-soft:#f3e6c6; --rust:#a8462a; --blue:#33566e;
+  --shadow:0 1px 2px rgba(35,31,26,.06),0 8px 28px -12px rgba(35,31,26,.22);
+  --shadow-lg:0 2px 6px rgba(35,31,26,.08),0 24px 60px -22px rgba(35,31,26,.4);
+  --r:14px; --r-lg:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:'Hanken Grotesk',system-ui,sans-serif;
+  background:var(--paper);
+  background-image:
+    radial-gradient(circle at 15% 0%,rgba(47,107,80,.05),transparent 40%),
+    radial-gradient(circle at 85% 100%,rgba(189,139,44,.06),transparent 45%);
+  background-attachment:fixed; color:var(--ink); line-height:1.5;
+  -webkit-font-smoothing:antialiased; min-height:100vh;
+  padding-bottom:env(safe-area-inset-bottom);
+}
+.serif{font-family:'Fraunces',Georgia,serif}
+.mono{font-family:'Spline Sans Mono',monospace}
+.shell{max-width:1040px;margin:0 auto;padding:0 20px 60px}
+header.top{
+  position:sticky;top:0;z-index:50;background:rgba(244,239,228,.86);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);margin:0 -20px 0;padding:0 20px;
+  padding-top:env(safe-area-inset-top);
+}
+.top-inner{max-width:1040px;margin:0 auto;display:flex;align-items:center;gap:14px;height:64px}
+.brand{display:flex;align-items:center;gap:11px;user-select:none}
+.brand .seal{
+  width:38px;height:38px;border-radius:10px;flex:none;
+  background:linear-gradient(145deg,var(--green),var(--green-2));
+  color:#f4efe4;display:grid;place-items:center;
+  font-family:'Fraunces',serif;font-weight:600;font-size:18px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18),var(--shadow);
+}
+.brand b{font-family:'Fraunces',serif;font-weight:600;font-size:19px;letter-spacing:-.01em}
+.brand b span{color:var(--gold)}
+.brand small{display:block;font-size:11px;color:var(--ink-faint);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-top:1px}
+.net{margin-left:auto;display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--ink-faint)}
+.net .dot{width:8px;height:8px;border-radius:50%;background:var(--green-2);box-shadow:0 0 0 3px var(--green-soft)}
+.net.off .dot{background:var(--gold)}
+
+.eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.page-h{margin:30px 0 4px}
+.page-h h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(28px,5vw,42px);letter-spacing:-.02em;line-height:1.04}
+.page-h p{color:var(--ink-soft);font-size:15px;max-width:60ch;margin-top:8px}
+
+/* Countdown panel */
+.hero{
+  margin-top:22px;background:linear-gradient(150deg,var(--green),#16382a);
+  color:#eef3ee;border-radius:var(--r-lg);padding:24px;position:relative;overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.hero::after{content:"";position:absolute;right:-50px;top:-50px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(189,139,44,.32),transparent 70%)}
+.hero .lab{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.8}
+.countdown{display:flex;align-items:flex-end;gap:14px;margin:8px 0 2px;position:relative;z-index:1}
+.countdown .num{font-family:'Fraunces',serif;font-weight:600;font-size:64px;line-height:.85;letter-spacing:-.03em}
+.countdown .unit{font-size:14px;opacity:.85;padding-bottom:9px;font-weight:600}
+.hero .sub{font-size:13.5px;opacity:.85;margin-top:10px;position:relative;z-index:1}
+.date-row{display:flex;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap;position:relative;z-index:1}
+.date-row label{font-size:12.5px;opacity:.85;font-weight:600}
+.date-row input[type=date]{
+  font-family:inherit;font-size:13px;padding:8px 10px;border-radius:9px;
+  border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);color:#fff;color-scheme:dark;
+}
+
+/* Tiles */
+.sec-h{display:flex;align-items:baseline;gap:10px;margin:34px 0 14px}
+.sec-h h2{font-family:'Fraunces',serif;font-weight:600;font-size:20px}
+.sec-h span{font-size:12.5px;color:var(--ink-faint);font-weight:600}
+.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.tile{
+  display:flex;flex-direction:column;text-decoration:none;color:inherit;
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:22px;box-shadow:var(--shadow);transition:.18s;position:relative;overflow:hidden;
+  min-height:158px;
+}
+.tile:hover,.tile:active{transform:translateY(-2px);box-shadow:var(--shadow-lg);border-color:var(--line-strong)}
+.tile .badge{
+  align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  padding:4px 10px;border-radius:99px;margin-bottom:auto;
+}
+.tile.s1 .badge{background:var(--green-soft);color:var(--green)}
+.tile.s2 .badge{background:var(--gold-soft);color:#8a6517}
+.tile h3{font-family:'Fraunces',serif;font-weight:600;font-size:21px;margin-top:14px;letter-spacing:-.01em}
+.tile p{font-size:13px;color:var(--ink-soft);margin-top:5px}
+.tile .feat{font-size:11.5px;color:var(--ink-faint);font-weight:600;margin-top:12px;display:flex;align-items:center;gap:7px}
+.tile .arrow{position:absolute;right:18px;top:20px;color:var(--ink-faint);font-size:18px;transition:.18s}
+.tile:hover .arrow{transform:translateX(3px);color:var(--green)}
+.tile.ref{grid-column:1/-1;flex-direction:row;align-items:center;gap:18px;min-height:0}
+.tile.ref .ic{width:46px;height:46px;border-radius:12px;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:22px;flex:none}
+.tile.ref .body h3{margin-top:0}
+
+/* Install hint */
+.install{
+  margin-top:26px;background:var(--card);border:1px dashed var(--line-strong);border-radius:var(--r);
+  padding:16px 18px;display:flex;gap:14px;align-items:flex-start;font-size:13.5px;color:var(--ink-soft);
+}
+.install .ic{flex:none;width:30px;height:30px;border-radius:9px;background:var(--gold-soft);color:#8a6517;display:grid;place-items:center;font-size:16px}
+.install b{color:var(--ink)}
+.install .close{margin-left:auto;background:none;border:none;color:var(--ink-faint);font-size:18px;cursor:pointer;line-height:1}
+#installBtn{margin-top:8px;font-family:inherit;font-weight:600;font-size:13px;cursor:pointer;border:1px solid var(--green);background:var(--green);color:#f4efe4;padding:8px 14px;border-radius:9px;display:none}
+
+.footnote{margin-top:40px;font-size:12px;color:var(--ink-faint);line-height:1.7;border-top:1px solid var(--line);padding-top:18px}
+.footnote b{color:var(--ink-soft)}
+
+@media(max-width:640px){
+  .tiles{grid-template-columns:1fr}
+  .countdown .num{font-size:54px}
+  .tile.ref{flex-direction:row}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <div class="brand">
+      <div class="seal serif">F</div>
+      <div>
+        <b>FP <span>Study Lab</span></b>
+        <small>CFP® Exam Prep</small>
+      </div>
+    </div>
+    <div class="net" id="net" title="Connection status"><span class="dot"></span><span id="netTxt">Online</span></div>
+  </div>
+</header>
+
+<div class="shell">
+  <div class="page-h">
+    <div class="eyebrow">Your study home</div>
+    <h1 class="serif">Welcome back.<br>Let's keep the streak going.</h1>
+    <p>Everything for FP511 and FP512 in one place — flashcards, quizzes, exam simulations, interactive readings, and your reference library. Installed on your device and ready offline.</p>
+  </div>
+
+  <div class="hero">
+    <div class="lab">Exam countdown</div>
+    <div class="countdown"><span class="num serif" id="cdNum">—</span><span class="unit" id="cdUnit">days to go</span></div>
+    <div class="sub" id="cdMsg">Set your exam date to start the countdown.</div>
+    <div class="date-row">
+      <label for="examDate">Exam date</label>
+      <input type="date" id="examDate">
+    </div>
+  </div>
+
+  <div class="sec-h"><h2 class="serif">FP511</h2><span>General Financial Planning · Professional Conduct · Psychology</span></div>
+  <div class="tiles">
+    <a class="tile s1" href="apps/fp511-study.html">
+      <span class="arrow">→</span>
+      <span class="badge">Study Lab</span>
+      <h3>FP511 Study Lab</h3>
+      <p>Active recall: flashcards, quizzes, match, and a full exam simulator.</p>
+      <div class="feat">◆ Flashcards · Quiz · Match · Exam Sim · Progress</div>
+    </a>
+    <a class="tile s2" href="apps/fp511-reading.html">
+      <span class="arrow">→</span>
+      <span class="badge">Interactive Reading</span>
+      <h3>FP511 Reading</h3>
+      <p>Deep-dive the principles, ethics, and client psychology with charts.</p>
+      <div class="feat">◆ Guided chapters · Visuals · Concept checks</div>
+    </a>
+  </div>
+
+  <div class="sec-h"><h2 class="serif">FP512</h2><span>Risk Management · Insurance · Employee Benefits</span></div>
+  <div class="tiles">
+    <a class="tile s1" href="apps/fp512-study.html">
+      <span class="arrow">→</span>
+      <span class="badge">Study Lab</span>
+      <h3>FP512 Study Lab</h3>
+      <p>Active recall: flashcards, quizzes, match, and a full exam simulator.</p>
+      <div class="feat">◆ Flashcards · Quiz · Match · Exam Sim · Progress</div>
+    </a>
+    <a class="tile s2" href="apps/fp512-reading.html">
+      <span class="arrow">→</span>
+      <span class="badge">Interactive Reading</span>
+      <h3>FP512 Reading</h3>
+      <p>Work through risk, insurance, and benefits with worked formulas.</p>
+      <div class="feat">◆ Guided chapters · Visuals · Math walk-throughs</div>
+    </a>
+  </div>
+
+  <div class="sec-h"><h2 class="serif">Reference</h2><span>Cheat sheets · Formulas · CFP Board key elements</span></div>
+  <div class="tiles">
+    <a class="tile ref" href="reference.html">
+      <span class="arrow">→</span>
+      <div class="ic">📚</div>
+      <div class="body">
+        <h3>Reference Library</h3>
+        <p>Complete cheat sheet, provided formulas sheet, and the CFP Board key-element summaries (SECURE Act, TCJA, OBBBA) — all available offline.</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="install" id="installHint">
+    <div class="ic">📲</div>
+    <div>
+      <b>Install this as an app.</b><br>
+      <span id="iosHint">On iPhone/iPad: tap the <b>Share</b> button in Safari, then <b>Add to Home Screen</b>. It opens full-screen and works offline.</span>
+      <button id="installBtn">Install app</button>
+    </div>
+    <button class="close" id="installClose" aria-label="Dismiss">×</button>
+  </div>
+
+  <div class="footnote">
+    <b>FP Study Lab.</b> A personal study aid for the CFP® exam — content transcribed from FP511/FP512 course materials (College for Financial Planning 2026 Editions). Progress for each module is saved locally on this device. This is a study aid, not official CFP Board material; always verify against current CFP Board publications. CFP® is a trademark of the Certified Financial Planner Board of Standards, Inc.
+  </div>
+</div>
+
+<script>
+/* ---- Exam countdown (shared, stored locally) ---- */
+var DKEY='fpsl.examDate';
+var input=document.getElementById('examDate');
+var saved=localStorage.getItem(DKEY);
+if(saved){input.value=saved;}
+function renderCountdown(){
+  var v=input.value;
+  var num=document.getElementById('cdNum'),unit=document.getElementById('cdUnit'),msg=document.getElementById('cdMsg');
+  if(!v){num.textContent='—';unit.textContent='days to go';msg.textContent='Set your exam date to start the countdown.';return;}
+  var today=new Date();today.setHours(0,0,0,0);
+  var exam=new Date(v+'T00:00:00');
+  var days=Math.round((exam-today)/86400000);
+  if(days>1){num.textContent=days;unit.textContent='days to go';}
+  else if(days===1){num.textContent='1';unit.textContent='day to go';}
+  else if(days===0){num.textContent='0';unit.textContent='it’s exam day';}
+  else {num.textContent=Math.abs(days);unit.textContent='days ago';}
+  if(days>30)msg.textContent='Plenty of runway — build the habit. A little every day compounds.';
+  else if(days>7)msg.textContent='Crunch is coming. Lean on the quizzes and exam sims now.';
+  else if(days>1)msg.textContent='Final week. Drill weak domains and review the formula sheet.';
+  else if(days===1)msg.textContent='Tomorrow. Light review only — rest beats cramming.';
+  else if(days===0)msg.textContent='Today is the day. Trust your prep. You’ve got this.';
+  else msg.textContent='Hope it went well. Update the date if you’re retaking or moving on.';
+}
+input.addEventListener('change',function(){localStorage.setItem(DKEY,input.value);renderCountdown();});
+renderCountdown();
+
+/* ---- Online/offline indicator ---- */
+function netStatus(){
+  var n=document.getElementById('net'),t=document.getElementById('netTxt');
+  if(navigator.onLine){n.classList.remove('off');t.textContent='Online';}
+  else{n.classList.add('off');t.textContent='Offline · saved';}
+}
+window.addEventListener('online',netStatus);window.addEventListener('offline',netStatus);netStatus();
+
+/* ---- Install handling ---- */
+var deferred=null,btn=document.getElementById('installBtn');
+window.addEventListener('beforeinstallprompt',function(e){
+  e.preventDefault();deferred=e;btn.style.display='inline-block';
+  document.getElementById('iosHint').textContent='Tap below to install FP Study Lab on this device.';
+});
+btn.addEventListener('click',async function(){if(!deferred)return;deferred.prompt();await deferred.userChoice;deferred=null;btn.style.display='none';});
+var isStandalone=window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone;
+if(localStorage.getItem('fpsl.hideInstall')==='1'||isStandalone){document.getElementById('installHint').style.display='none';}
+document.getElementById('installClose').addEventListener('click',function(){document.getElementById('installHint').style.display='none';localStorage.setItem('fpsl.hideInstall','1');});
+
+/* ---- Service worker ---- */
+if('serviceWorker' in navigator){
+  window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});
+}
+</script>
+</body>
+</html>
