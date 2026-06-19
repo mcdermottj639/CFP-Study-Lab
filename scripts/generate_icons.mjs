@@ -7,7 +7,7 @@ const require = createRequire('/tmp/');
 const { Resvg } = require('/tmp/node_modules/@resvg/resvg-js');
 
 const TTF = '/tmp/ds700.ttf';
-const BG = '#d0613a', FG = '#f6f7fb';
+const BG = '#1f4d3a', FG = '#f6f7fb';
 const sizes = { 'icon-192.png':192, 'icon-512.png':512, 'apple-touch-icon.png':180, 'icon-maskable-512.png':512, 'favicon-32.png':32 };
 
 for (const [name, n] of Object.entries(sizes)) {
