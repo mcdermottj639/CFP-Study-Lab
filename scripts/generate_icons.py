@@ -7,9 +7,9 @@ Outputs PNGs at the sizes iOS + Android PWAs need.
 """
 import struct, zlib, os
 
-GREEN = (31, 77, 58)      # #1f4d3a
-GOLD  = (189, 139, 44)    # #bd8b2c
-CREAM = (244, 239, 228)   # #f4efe4
+GREEN = (47, 95, 224)     # #2f5fe0  (CFP Study Home brand blue)
+GOLD  = (217, 138, 31)    # #d98a1f
+CREAM = (244, 246, 251)   # #f6f7fb
 
 OUT = os.path.join(os.path.dirname(__file__), "..", "icons")
 os.makedirs(OUT, exist_ok=True)

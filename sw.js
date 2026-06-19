@@ -1,5 +1,5 @@
 /* FP Study Lab — service worker (offline support) */
-const VERSION = 'v1.0.0';
+const VERSION = 'v2.0.0';
 const CORE_CACHE = `fpsl-core-${VERSION}`;
 const RUNTIME_CACHE = `fpsl-runtime-${VERSION}`;
 
@@ -7,12 +7,8 @@ const RUNTIME_CACHE = `fpsl-runtime-${VERSION}`;
 const CORE_ASSETS = [
   './',
   './index.html',
-  './reference.html',
   './manifest.webmanifest',
-  './apps/fp511-study.html',
-  './apps/fp511-reading.html',
-  './apps/fp512-study.html',
-  './apps/fp512-reading.html',
+  './vendor/chart.umd.js',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable-512.png',
