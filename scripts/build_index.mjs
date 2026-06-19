@@ -12,13 +12,13 @@ import { readFileSync, writeFileSync } from 'node:fs';
 
 const SRC = process.argv[2];
 const OUT = 'index.html';
-const APP_VERSION = 'v2.7.7';
+const APP_VERSION = 'v2.7.8';
 let html = readFileSync(SRC, 'utf8');
 
 const HEAD = `
 <!-- pwa:head -->
 <link rel="manifest" href="manifest.webmanifest">
-<meta name="theme-color" content="#2f5fe0">
+<meta name="theme-color" content="#d0613a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -170,9 +170,8 @@ body{
   background-attachment:fixed;-webkit-font-smoothing:antialiased;
 }
 .wrap{max-width:1060px;padding:6px 16px 48px}
-h1,h2{font-family:ui-serif,"New York","Iowan Old Style",Georgia,serif}
-h1{font-weight:700;letter-spacing:-.4px}
-h2{font-weight:650;letter-spacing:-.2px;font-size:19px}
+h1{font-family:"Snell Roundhand","Apple Chancery","Savoye LET","Brush Script MT",cursive;font-weight:600;letter-spacing:0;font-size:30px;line-height:1.15}
+h2{font-family:ui-serif,"New York","Iowan Old Style",Georgia,serif;font-weight:650;letter-spacing:-.2px;font-size:19px}
 .sub{font-size:13px;color:var(--muted)}
 
 /* Cards */
