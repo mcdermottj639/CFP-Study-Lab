@@ -1,12 +1,12 @@
 /* Generate app icons: script "CFP" wordmark (Dancing Script) on the warm brand,
  * rendered via @resvg/resvg-js. Build-time only.
- * Run: node scripts/generate_icons.mjs   (needs /tmp/node_modules/@resvg/resvg-js + /tmp/ds700.ttf) */
+ * Run: node scripts/generate_icons.mjs   (needs: npm i @resvg/resvg-js; font at vendor/fonts/DancingScript-700.ttf) */
 import { createRequire } from 'node:module';
 import { writeFileSync } from 'node:fs';
-const require = createRequire('/tmp/');
-const { Resvg } = require('/tmp/node_modules/@resvg/resvg-js');
+const require = createRequire(import.meta.url);
+const { Resvg } = require('@resvg/resvg-js');
 
-const TTF = '/tmp/ds700.ttf';
+const TTF = 'vendor/fonts/DancingScript-700.ttf';
 const BG = '#1f4d3a', FG = '#f6f7fb';
 const sizes = { 'icon-192.png':192, 'icon-512.png':512, 'apple-touch-icon.png':180, 'icon-maskable-512.png':512, 'favicon-32.png':32 };
 
