@@ -22,7 +22,11 @@
     function clearTimer() { if (timer) { clearTimeout(timer); timer = null; } }
 
     function buildDeck() {
-      var d = dueCards().filter(function (x) { return mod === 'ALL' || x.c.m === mod; });
+      var mf = window.MODF;
+      var modOk = function (c) {
+        return !mf || mf === 'ALL' || typeof moduleOf !== 'function' || moduleOf(c) === +mf;
+      };
+      var d = dueCards().filter(function (x) { return (mod === 'ALL' || x.c.m === mod) && modOk(x.c); });
       if (!d.length) d = filt(CARDS, mod).map(function (c) { return { c: c, i: CARDS.indexOf(c) }; });
       deck = order === 'shuffle' ? shuffle(d) : d;
       idx = 0;
