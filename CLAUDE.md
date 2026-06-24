@@ -2,6 +2,11 @@
 
 Context for future sessions. Read this before changing anything.
 
+> **Keep this file current.** Whenever you change the architecture, build pipeline,
+> data model, content taxonomy, or add a feature/course, update the relevant
+> section here in the SAME change (and bump the version example below if you
+> shipped). Future sessions rely on this file being accurate — don't wait to be asked.
+
 ## What this is
 An installable, **fully offline** Progressive Web App (PWA) to study for the
 CFP® exam, deployed on GitHub Pages. One single app — no separate sub-apps in
@@ -73,6 +78,24 @@ and audited. **FP513–518 are "coming soon"** placeholders — the user has NO
 textbooks for them yet and will drop each into the Google Drive `CFP` folder when
 available. `MODULES`/`DOMAINS` in the source already scaffold all 8.
 
+### Per-module filtering (sub-modules within a course)
+The Study tab can filter flashcards & quizzes down to a single **module within a
+course** (e.g. "FP512 → Module 4 — Annuities"), in addition to the whole-course
+filter. How it works (all in `src/study-home.src.html`, defined next to `MODULES`):
+- `MODMETA` — `{ course: { moduleNumber: "Module name" } }`, mirroring the 8-module
+  maps in the Interactive Readers' "Course Scope & Module Map" tables.
+- `TOPIC_MOD` — `{ course: { "<topic t>": moduleNumber } }`. A card/MCQ's module is
+  derived from its `t` (topic) via `moduleOf(x)` (0 = unmapped). **The data has no
+  module field** — this topic→module lookup is the only thing that assigns modules,
+  so it must cover BOTH the fine-grained `content/*.json` topics AND the coarse
+  module-level topics shipped by the original app cards (e.g. "Life Insurance").
+- `window.MODF` holds the active sub-module ("ALL" or a number); `filt()` and
+  `runFlash()` (and `flashcards.js`'s deck builder) honor it. The `#studyModuleNum`
+  `<select>` is populated by `fillModuleNumSelect()` and only lists modules that
+  actually have content; it resets to "All modules" when the course changes.
+- Validate coverage after editing: every card/MCQ topic should map (generic
+  "FP511 textbook" MCQs are intentionally left unmapped → "All modules" only).
+
 ### Adding a new course (the standard request)
 1. User puts the new course's textbook in their Drive `CFP` folder.
 2. Generate `content/fp51X.cards.json` + `fp51X.mcqs.json` grounded ONLY in that
@@ -82,7 +105,11 @@ available. `MODULES`/`DOMAINS` in the source already scaffold all 8.
 3. **Create a matching Interactive Reader** for the course (the user wants one per
    course) and run `node scripts/inject_reader_theme.mjs apps/fp51X-reading.html`.
    Link it from `moduleLinks()` in `build_index.mjs`.
-4. `node scripts/add_content.mjs add`, bump versions, deploy.
+4. **Add the course to the per-module filter:** in `src/study-home.src.html` add a
+   `MODMETA.FP51X` entry (module names = the reader's module map) and `TOPIC_MOD.FP51X`
+   mapping every topic you used to its module number. Without this the new course's
+   flashcards/quizzes won't be filterable by module (they'd all be "unmapped").
+5. `node scripts/add_content.mjs add`, bump versions, deploy.
 
 ## Interactive Readers
 `apps/fp511-reading.html`, `apps/fp512-reading.html` — standalone long-form reading
@@ -113,7 +140,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (e.g. `v2.7.12`) on every shippable change so installed apps auto-update
+  (current: `v2.8.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
@@ -126,7 +153,8 @@ Everything is local — repo scan for `https://` in served files must stay empty
 - **Never hand-edit `index.html`** — change `src/`, `content/`, or `scripts/` and rebuild.
 - The flashcard runner is overridden by `flashcards.js` (Term/Definition first,
   Shuffle/In-order, Auto-flip). It replaces `window.runFlash` and relies on the
-  app globals `dueCards, filt, CARDS, shuffle, gradeCard, go`.
+  app globals `dueCards, filt, CARDS, shuffle, gradeCard, go` plus `window.MODF`
+  and `moduleOf` for per-module filtering (see "Per-module filtering" above).
 - The source has an inert `MOBILE_TPL` string (old Kyle payload) containing a
   second `<style>`/`<title>` — it's not live DOM; ignore it.
 - `build_index.mjs` FIXES use regex against the (minified) source — if the source
