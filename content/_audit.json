@@ -1,0 +1,19 @@
+[
+  {
+    "i": 321,
+    "type": "mismatch",
+    "note": "Outdated FSA carryover figure. States '$640 carryover' (the 2024 amount); the 2025 carryover is $660, as correctly shown in card 513. The deck otherwise uses 2025 figures, so this is inconsistent/factually outdated.",
+    "b": "<b>HSA</b>: requires HDHP; employee + employer funded; funds roll over; portable; triple tax benefit. <b>FSA</b>: employer plan; use-it-or-lose-it (grace period or $660 carryover option); not portable. <b>HRA</b>: employer-funded only; not portable but rollover allowed by employer."
+  },
+  {
+    "i": 322,
+    "type": "mismatch",
+    "note": "Outdated FSA carryover figure. States 'up to $640 carryover'; the 2025 carryover limit is $660 (consistent with card 513). 2024 vs 2025 amount.",
+    "b": "Funded pre-tax. <b>Use-it-or-lose-it rule</b>: must use funds or forfeit. Employers may offer a grace period (2.5 months) OR allow up to <b>$660 carryover</b> (2025) (not both). Eligible for medical AND dependent care expenses."
+  },
+  {
+    "i": 49,
+    "type": "mismatch",
+    "note": "Possible term/definition mismatch. The back ('Fear that the supply of money will stop') describes 'financial dependence,' but the term 'Affluenza' is more commonly defined as dysfunction stemming from excessive/over-affluence (e.g., guilt, lack of motivation, boredom from too much money). The front conflates the two. Recommend verifying against the source curriculum's definition; no confident rewrite provided since the deck appears to treat them as synonyms intentionally."
+  }
+]
