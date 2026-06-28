@@ -204,4 +204,374 @@
       }
     }
   };
+
+  // Exam cheat-sheet content (printable) — key numbers, must-know rules, traps, tips.
+  // keyNumbers = [["label","detail"], ...]. Case Study is intentionally lighter.
+  window.MODCHEAT = {
+    FP511: {
+      1: {
+        keyNumbers: [
+          ["7 steps","Understand → Identify goals → Analyze → Recommend → Present → Implement → Monitor"],
+          ["Fiduciary","Duty of Loyalty + Care + Follow client instructions — at all times when advising"],
+          ["Written disclosures","Material conflicts, compensation, and the scope of engagement"],
+          ["Life-cycle","Accumulation → Conservation → Distribution"]
+        ],
+        mustKnow: [
+          "Know the <b>7-step process in order</b> — it frames nearly every scenario question.",
+          "A CFP® professional is a <b>fiduciary at all times</b> when providing financial advice.",
+          "Define the <b>scope of engagement</b> and disclose conflicts before proceeding.",
+          "If information is <b>incomplete</b>, you may continue with the client's permission, noting the limitation."
+        ],
+        traps: [
+          "Re-ordering the steps — <b>Analyze</b> comes before <b>developing recommendations</b>.",
+          "Thinking fiduciary duty applies only to investments — it covers <b>all</b> financial advice.",
+          "Skipping <b>monitoring</b> (Step 7) — the process is ongoing, not one-and-done."
+        ],
+        tips: [
+          "'What is the planner's NEXT step?' → locate where you are in the 7-step process.",
+          "Conflict-of-interest language → disclosure + fiduciary duty is the answer."
+        ]
+      },
+      2: {
+        keyNumbers: [
+          ["Biases","Anchoring, overconfidence, recency, loss aversion, framing, herding"],
+          ["Money scripts","Avoidance, worship, status, vigilance (Klontz)"],
+          ["Loss aversion","Losses feel ~2× as painful as equivalent gains"],
+          ["Tolerance vs capacity","Willingness to take risk vs ability to absorb loss"]
+        ],
+        mustKnow: [
+          "<b>Behavioral biases</b> explain why clients act against their own plan.",
+          "<b>Money scripts</b> are money beliefs formed early in life.",
+          "Use <b>active listening</b>, open-ended questions, and empathy in counseling.",
+          "<b>Loss aversion</b> makes clients hold losers and sell winners."
+        ],
+        traps: [
+          "Confusing <b>risk tolerance</b> (willingness) with <b>risk capacity</b> (ability).",
+          "Mislabeling a bias — <b>anchoring</b> (fixating on a reference) vs <b>recency</b> (overweighting recent events)."
+        ],
+        tips: [
+          "Emotional/irrational money decision in the stem → name the <b>bias</b>.",
+          "'Won't sell a losing stock' → <b>loss aversion</b> / anchoring."
+        ]
+      },
+      3: {
+        keyNumbers: [
+          ["Emergency fund","3–6 months of nondiscretionary (fixed) expenses"],
+          ["Housing ratio","≤ 28% of gross income (PITI)"],
+          ["Total debt ratio","≤ 36% of gross income (PITI + other debt)"],
+          ["Savings rate","Target ~10–20% of gross income"],
+          ["Net worth","Assets − Liabilities (statement of financial position)"]
+        ],
+        mustKnow: [
+          "<b>Statement of financial position</b> = assets vs liabilities at a point in time.",
+          "<b>Cash-flow statement</b> = inflows vs outflows over a period; split fixed vs discretionary.",
+          "Emergency fund uses <b>fixed</b> expenses; debt ratios use <b>gross</b> income.",
+          "Assets are shown at <b>fair market value</b>, liabilities at outstanding balance."
+        ],
+        traps: [
+          "Emergency fund off <b>total</b> expenses instead of <b>fixed/nondiscretionary</b>.",
+          "Using <b>net</b> income for the 28/36 ratios — they use <b>gross</b>.",
+          "Listing an asset's <b>original cost</b> instead of current FMV."
+        ],
+        tips: [
+          "Ratio question → check the <b>denominator</b> (gross income vs fixed expenses)."
+        ]
+      },
+      4: {
+        keyNumbers: [
+          ["Real rate","[(1+nominal) ÷ (1+inflation) − 1] — don't just subtract"],
+          ["BEG vs END","Annuity due (BEG) = payments at start; ordinary (END) = at end"],
+          ["Rule of 72","Years to double ≈ 72 ÷ rate"],
+          ["NPV rule","Accept if NPV ≥ 0 (IRR ≥ required return)"],
+          ["Serial payment","Grows with inflation; first payment = PMT × (1+inflation)"]
+        ],
+        mustKnow: [
+          "Education & retirement 'need' problems use the <b>real (inflation-adjusted) rate</b>.",
+          "Set <b>BEG mode</b> when the first cash flow is today (annuity due).",
+          "<b>NPV</b> discounts at the required return; <b>IRR</b> solves the rate where NPV = 0.",
+          "More frequent compounding → higher <b>effective</b> rate."
+        ],
+        traps: [
+          "Subtracting inflation from return instead of the <b>real-rate formula</b>.",
+          "Leaving the calculator in <b>END</b> mode for an annuity-due problem.",
+          "Confusing <b>nominal</b> vs <b>effective</b> rate with non-annual compounding."
+        ],
+        tips: [
+          "'In today's dollars' / 'inflation-adjusted' → use the <b>real rate</b>.",
+          "First payment due immediately → <b>BEG</b> mode."
+        ]
+      },
+      5: {
+        keyNumbers: [
+          ["Duties owed","Client, Firm, Public, and CFP Board"],
+          ["Fiduciary","Loyalty + Care + Follow Client Instructions"],
+          ["Material conflict","Disclose AND manage; obtain client consent (often written)"],
+          ["Discipline","Private censure → public letter → suspension → revocation"]
+        ],
+        mustKnow: [
+          "A CFP® professional is a <b>fiduciary at all times</b> when giving financial advice.",
+          "<b>Duty of Loyalty</b>: client first, avoid/disclose/manage conflicts, no misuse of info.",
+          "Know the <b>Standards of Conduct</b> and the duties owed to each party.",
+          "Sanctions escalate from <b>private censure</b> to <b>revocation</b> of the marks."
+        ],
+        traps: [
+          "Thinking disclosure <b>alone</b> cures a conflict — it must also be <b>managed</b> + consented.",
+          "Applying fiduciary duty only to investment advice — it's <b>all</b> financial advice.",
+          "Confusing the three fiduciary duties (loyalty / care / instructions)."
+        ],
+        tips: [
+          "Conflict scenario → usually <b>disclose, obtain consent, manage</b>.",
+          "When unsure, the <b>most client-protective</b> answer is typically correct."
+        ]
+      },
+      6: {
+        keyNumbers: [
+          ["Business cycle","Expansion → Peak → Contraction → Trough"],
+          ["Monetary policy","The Fed: open-market ops, discount rate, reserve requirements"],
+          ["Fiscal policy","Congress: taxing & spending"],
+          ["Yield curve","Normal = upward; inverted often precedes recession"],
+          ["Key laws","TILA, FCRA, ECOA, Fair Debt Collection"]
+        ],
+        mustKnow: [
+          "<b>Monetary</b> policy = the Fed (rates/money supply); <b>fiscal</b> = Congress (tax/spend).",
+          "The Fed <b>raises</b> rates to fight inflation, <b>lowers</b> to stimulate.",
+          "An <b>inverted yield curve</b> is a classic recession signal.",
+          "Consumer laws: <b>FCRA</b> (credit reports), <b>ECOA</b> (no discrimination), <b>TILA</b> (disclosure)."
+        ],
+        traps: [
+          "Attributing <b>open-market operations</b> to Congress (it's the Fed).",
+          "Mixing up which <b>consumer-protection law</b> covers what."
+        ],
+        tips: [
+          "'Fed' in the stem → <b>monetary</b> policy; 'Congress/tax' → <b>fiscal</b>."
+        ]
+      },
+      7: {
+        keyNumbers: [
+          ["Two-step","Step 1: PV of need (BEG, real rate) · Step 2: solve required savings (PMT)"],
+          ["529 plan","Tax-free growth for qualified education; owner-controlled; high limits"],
+          ["Coverdell ESA","$2,000/yr; K-12 + college; income phaseouts"],
+          ["AOTC","Up to $2,500/yr, first 4 years, 40% refundable; phaseouts"],
+          ["LLC","Up to $2,000/yr; unlimited years; nonrefundable"],
+          ["Aid impact","Parent-owned assets assessed lighter than student-owned"]
+        ],
+        mustKnow: [
+          "<b>Step 1 solves a PRESENT VALUE</b> (lump sum at matriculation), not a future value.",
+          "Use <b>BEG mode</b> + the <b>inflation-adjusted rate</b> for the funding annuity.",
+          "<b>529</b>: owner keeps control; <b>UTMA/UGMA</b>: irrevocable gift to the child.",
+          "<b>AOTC</b> (4 yrs, partly refundable) vs <b>LLC</b> (unlimited yrs, nonrefundable) — no double-dipping."
+        ],
+        traps: [
+          "Solving Step 1 as a <b>future value</b> — it's a <b>PV</b> (one of the most-missed items).",
+          "Claiming AOTC and LLC for the <b>same student</b> in the same year.",
+          "Forgetting <b>student-owned</b> assets hurt financial aid more than parent-owned."
+        ],
+        tips: [
+          "Education funding → <b>PV in BEG mode at the real rate</b>, then solve the savings PMT."
+        ]
+      },
+      8: {
+        mustKnow: [
+          "Read the <b>full fact pattern</b> first and note which <b>domains</b> it touches.",
+          "Identify <b>cross-domain overlaps</b>: estate+tax, insurance+retirement, investment+tax.",
+          "Prioritize by the client's stated <b>goals</b> and biggest <b>risk exposures</b>.",
+          "Translate concepts into <b>actions</b> — the exam asks 'what should the planner DO?'"
+        ],
+        tips: [
+          "List the <b>domains in play</b> before answering — it narrows the options fast.",
+          "Form your <b>own answer</b> before reading the choices; distractors are designed to mislead.",
+          "No guessing penalty — <b>flag, guess, move on</b>, and manage your time.",
+          "Ethics and the 7-step process show up inside cases — apply them explicitly."
+        ]
+      }
+    },
+    FP512: {
+      1: {
+        keyNumbers: [
+          ["Risk / peril / hazard","Risk = uncertainty · peril = cause of loss · hazard = increases chance/severity"],
+          ["Hazard types","Physical · Moral (dishonesty) · Morale (carelessness)"],
+          ["Insurable risk","Large pool, definite/measurable, accidental, non-catastrophic, calculable, affordable"],
+          ["Insurable interest","Life: at INCEPTION · Property: at TIME OF LOSS"],
+          ["Adverse selection","Controlled via underwriting, exclusions, riders, pricing"]
+        ],
+        mustKnow: [
+          "<b>Indemnity</b>: restore the insured to pre-loss condition — no profit from a loss.",
+          "Contract traits: <b>adhesion</b>, <b>utmost good faith</b>, <b>aleatory</b>, <b>unilateral</b>, conditional.",
+          "<b>Law of large numbers</b>: bigger pools make losses more predictable.",
+          "Insurable-interest timing differs: <b>life at inception, property at loss</b>."
+        ],
+        traps: [
+          "Mixing up <b>moral</b> (dishonesty) vs <b>morale</b> (carelessness) hazard.",
+          "Saying property insurable interest must exist at <b>inception</b> — it's at <b>time of loss</b>.",
+          "Treating insurance as a way to <b>profit</b> — indemnity prevents that."
+        ],
+        tips: [
+          "'Cause of loss' → <b>peril</b>; 'condition that increases loss' → <b>hazard</b>.",
+          "Policy ambiguity is construed <b>against the insurer</b> (adhesion)."
+        ]
+      },
+      2: {
+        keyNumbers: [
+          ["Coinsurance","Payment = (Carried ÷ Required[usually 80% of RC]) × Loss − deductible"],
+          ["HO-3","Open perils dwelling / named perils contents (most common)"],
+          ["HO-4 / HO-6","Renters / condo unit-owners"],
+          ["PAP","Liability, Med Pay, UM/UIM, Collision, Comprehensive"],
+          ["Umbrella","Excess liability above auto/home; requires underlying limits"]
+        ],
+        mustKnow: [
+          "<b>Coinsurance</b> penalizes insuring below the required % (usually 80% of replacement cost).",
+          "<b>HO-3</b> = open perils on the dwelling, named perils on contents.",
+          "Auto <b>collision</b> = your car in a crash; <b>comprehensive</b> = theft, fire, weather, animals.",
+          "An <b>umbrella</b> needs minimum underlying limits before it responds."
+        ],
+        traps: [
+          "Forgetting to <b>subtract the deductible</b> after the coinsurance calc.",
+          "Calling theft/weather damage 'collision' — that's <b>comprehensive</b>.",
+          "Assuming flood/earthquake is covered by a standard HO policy — it's <b>excluded</b>."
+        ],
+        tips: [
+          "Coinsurance: <b>(did ÷ should) × loss − deductible</b>; cap the payout at the loss amount."
+        ]
+      },
+      3: {
+        keyNumbers: [
+          ["Human life value","PV of future earnings devoted to the family"],
+          ["Needs approach","Capital + final expenses + debts − existing resources (exam-preferred)"],
+          ["Death benefit","Income-tax-FREE to the beneficiary"],
+          ["Cash value","Grows tax-deferred; loans tax-free (basis first) unless lapse/MEC"],
+          ["MEC","Fails 7-pay test → withdrawals/loans taxed LIFO + 10% penalty"]
+        ],
+        mustKnow: [
+          "Term = pure protection; <b>whole</b> = guaranteed; <b>universal</b> = flexible; <b>variable</b> = subaccounts (a security).",
+          "Death benefit is <b>income-tax-free</b>; cash value grows <b>tax-deferred</b>.",
+          "<b>Needs approach</b> is usually exam-preferred; HLV sets an upper bound.",
+          "A <b>MEC</b> loses favorable loan/withdrawal tax treatment."
+        ],
+        traps: [
+          "Saying cash-value <b>growth</b> or policy <b>loans</b> are taxable (they aren't, absent lapse/MEC).",
+          "Confusing <b>HLV</b> (income replacement) with the <b>needs</b> approach.",
+          "Forgetting <b>variable</b> life = a security needing a prospectus."
+        ],
+        tips: [
+          "'How much insurance?' → usually the <b>needs approach</b>.",
+          "Variable/registered product cue → suitability + prospectus."
+        ]
+      },
+      4: {
+        keyNumbers: [
+          ["10% penalty","Early withdrawal before age 59½ (nonqualified gains)"],
+          ["Exclusion ratio","Investment (basis) ÷ Expected total return"],
+          ["LIFO","Nonqualified withdrawals taxed gains-first (ordinary income)"],
+          ["1035 exchange","Annuity→Annuity ✔ · Life→Annuity ✔ · Annuity→Life ✘"],
+          ["RMDs","Qualified annuities only; none for nonqualified in accumulation"],
+          ["~70%","of buyers choose the GLWB living-benefit rider"]
+        ],
+        mustKnow: [
+          "Annuity = protection against <b>living too long</b> (longevity) — the mirror of life insurance.",
+          "Tax-<b>deferred</b> growth; premiums <b>not deductible</b> (after-tax basis if nonqualified).",
+          "Payouts: <b>life-only</b> = highest, nothing to heirs → period-certain → <b>joint &amp; survivor</b> = lowest.",
+          "<b>Variable</b> = a security (prospectus + FINRA); <b>fixed</b> = insurance; <b>indexed/EIA</b> = NOT a security."
+        ],
+        traps: [
+          "1035 from an annuity <b>into life insurance</b> — <b>not allowed</b> (one-way toward annuities).",
+          "Mixing the <b>exclusion ratio</b> (annuitized) with <b>LIFO</b> (pre-annuitization withdrawals).",
+          "Annuity <b>death benefit is NOT income-tax-free</b> like life insurance — the gain is taxable.",
+          "Applying <b>RMDs</b> to a nonqualified annuity during accumulation."
+        ],
+        tips: [
+          "Client fears <b>outliving money</b> → annuity (longevity), never life insurance.",
+          "'Max monthly income, no heirs' → <b>straight life</b> annuity.",
+          "Spot the <b>tax wrapper first</b> (qualified vs nonqualified) — it drives RMD &amp; basis."
+        ]
+      },
+      5: {
+        keyNumbers: [
+          ["HSA","Requires an HDHP; triple-tax-advantaged"],
+          ["COBRA","~18 months; employers with ≥ 20 employees; you pay full premium + 2%"],
+          ["Medicare A / B","A = hospital (premium-free at 40 quarters) · B = outpatient (premium, IRMAA)"],
+          ["Medicare C / D","C = Advantage · D = prescription drugs"],
+          ["Medicaid","Means-tested; main payer of long-term care after spend-down"]
+        ],
+        mustKnow: [
+          "<b>HSA</b> needs an HDHP and is the only <b>triple-tax-advantaged</b> account.",
+          "<b>COBRA</b> continues group coverage ~18 months at full cost + 2%.",
+          "Medicare: <b>A</b> hospital · <b>B</b> outpatient · <b>C</b> Advantage · <b>D</b> drugs.",
+          "<b>Medicaid</b> (not Medicare) pays for <b>long-term custodial care</b> after spend-down."
+        ],
+        traps: [
+          "Saying <b>Medicare</b> covers long-term custodial care — that's <b>Medicaid</b>.",
+          "Funding an HSA without an <b>HDHP</b>.",
+          "Confusing Medicare <b>Part C</b> (Advantage) with <b>Part D</b> (drugs)."
+        ],
+        tips: [
+          "Long-term custodial care + low assets → <b>Medicaid</b>.",
+          "'Triple tax advantage' → <b>HSA</b>."
+        ]
+      },
+      6: {
+        keyNumbers: [
+          ["DI definitions","Own-occ (broadest) → modified own-occ → any-occ → Social Security (narrowest)"],
+          ["Elimination period","Waiting period before benefits begin (e.g., 90 days)"],
+          ["Benefit period","How long benefits last (e.g., to age 65)"],
+          ["DI taxation","Employer-paid premium → benefits TAXABLE · employee after-tax → TAX-FREE"],
+          ["LTC trigger","2 of 6 ADLs or cognitive impairment"]
+        ],
+        mustKnow: [
+          "Rank DI definitions: <b>own-occ</b> is broadest/most expensive; <b>any-occ</b> narrowest.",
+          "DI benefit taxation depends on <b>who paid the premium</b> (with what dollars).",
+          "<b>LTC</b> triggers: unable to perform <b>2 of 6 ADLs</b> or cognitive impairment."
+        ],
+        traps: [
+          "Reversing DI taxation — <b>employer-paid = taxable</b>; employee after-tax = tax-free.",
+          "Confusing the <b>elimination period</b> (start delay) with the <b>benefit period</b> (duration).",
+          "Mixing up <b>own-occ</b> vs <b>any-occ</b> definitions."
+        ],
+        tips: [
+          "'Who paid the premium?' decides DI benefit taxation.",
+          "Broadest / most-expensive disability definition = <b>own-occ</b>."
+        ]
+      },
+      7: {
+        keyNumbers: [
+          ["Group term life","First $50,000 tax-free; excess → Section 79 imputed income (Table I)"],
+          ["Section 125","Cafeteria plan: choose pre-tax benefits"],
+          ["FSA","Use-it-or-lose-it (limited carryover/grace); not portable"],
+          ["Nondiscrimination","Favoring HCEs can void the tax break for them"]
+        ],
+        mustKnow: [
+          "First <b>$50,000</b> of employer group term life is tax-free; the excess is <b>imputed income</b> (Table I).",
+          "<b>Cafeteria (Section 125)</b> plans let employees choose pre-tax benefits.",
+          "<b>FSAs</b> are use-it-or-lose-it with limited carryover/grace.",
+          "<b>Nondiscrimination</b> rules protect rank-and-file; violations cost HCEs the tax break."
+        ],
+        traps: [
+          "Imputing income on the <b>first $50k</b> — only coverage <b>over $50k</b> is taxable.",
+          "Treating an FSA like an HSA (FSAs aren't investable or portable)."
+        ],
+        tips: [
+          "Group term life > $50k → compute <b>Section 79</b> imputed income on the excess only."
+        ]
+      },
+      8: {
+        keyNumbers: [
+          ["Cross-purchase","Owners buy each other's interest; buyers get a BASIS STEP-UP; n(n−1) policies"],
+          ["Entity-purchase","Business buys the interest; fewer policies (n); NO basis step-up"],
+          ["Key person","Business owns/pays/benefits; premiums NOT deductible, proceeds generally tax-free"],
+          ["Split-dollar","Employer & employee share premium and benefit"]
+        ],
+        mustKnow: [
+          "<b>Cross-purchase</b>: surviving owners get a <b>basis step-up</b>; needs many policies.",
+          "<b>Entity (stock-redemption)</b>: company buys; fewer policies but <b>no</b> basis step-up.",
+          "<b>Key-person</b>: business is owner & beneficiary; premiums <b>not deductible</b>."
+        ],
+        traps: [
+          "Saying entity-purchase gives survivors a <b>basis step-up</b> — only <b>cross-purchase</b> does.",
+          "Deducting <b>key-person</b> or buy-sell premiums (they're <b>not</b> deductible)."
+        ],
+        tips: [
+          "Few owners + want basis step-up → <b>cross-purchase</b>; many owners → <b>entity</b>."
+        ]
+      }
+    }
+  };
 })();
