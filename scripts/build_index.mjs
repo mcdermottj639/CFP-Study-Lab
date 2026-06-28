@@ -12,7 +12,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 
 const SRC = process.argv[2] || 'src/study-home.src.html';
 const OUT = 'index.html';
-const APP_VERSION = 'v2.11.0';
+const APP_VERSION = 'v2.11.1';
 let html = readFileSync(SRC, 'utf8');
 
 const HEAD = `
@@ -215,6 +215,24 @@ a.link:hover{text-decoration:underline}
 .flashopts button{flex:1;border:1px solid var(--line);background:var(--card);padding:9px;border-radius:11px;font:700 12.5px system-ui,-apple-system,sans-serif;color:var(--muted);cursor:pointer;transition:.15s}
 .flashopts button.on{background:var(--grad);color:#fff;border-color:transparent}
 
+/* Module deep-dive list — large, finger-friendly tap targets */
+.modlist{margin-top:12px}
+.modlist>summary{cursor:pointer;font-weight:700;font-size:14px;padding:10px 6px;list-style:none;border-top:1px solid var(--line)}
+.modlist>summary::-webkit-details-marker{display:none}
+.modlist>summary:hover{color:var(--brand)}
+.modrows{margin-top:4px}
+.modrow{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;
+  min-height:50px;padding:11px 14px;margin:7px 0;border:1px solid var(--line);border-radius:13px;
+  background:var(--card);color:var(--ink);font:inherit;cursor:pointer;transition:.13s;box-shadow:var(--shadow)}
+.modrow:hover{border-color:var(--brand);background:#fdf3ea}
+.modrow:active{transform:scale(.99)}
+.modrow[disabled]{cursor:default;opacity:.5;box-shadow:none}
+.modrow-l{display:flex;align-items:center;gap:11px;min-width:0}
+.modnum{flex:0 0 auto;font-weight:800;font-size:12.5px;padding:4px 9px;border-radius:9px;letter-spacing:.02em}
+.modname{font-size:14.5px;font-weight:600;line-height:1.25}
+.modrow-r{display:flex;align-items:center;gap:9px;flex:0 0 auto}
+.modchev{font-size:22px;color:var(--muted);line-height:1;font-weight:700}
+
 /* ---- Warm dark mode (opt-in via Settings/toolkit) ---- */
 html[data-theme="dark"]{
   --bg:#191310; --card:#241b15; --ink:#f4ece2; --muted:#b4a594; --line:#3a2e25;
@@ -233,6 +251,7 @@ html[data-theme="dark"] .flashseg{background:#2b211a}
 html[data-theme="dark"] .bar{background:#3a2e25}
 html[data-theme="dark"] .opt{background:#241b15}
 html[data-theme="dark"] .opt:hover{background:#2f251d}
+html[data-theme="dark"] .modrow:hover{background:#2f251d}
 html[data-theme="dark"] .opt.correct{background:#163420!important;border-color:#2f6b40!important}
 html[data-theme="dark"] .opt.wrong{background:#3a1c1c!important;border-color:#7a3232!important}
 html[data-theme="dark"] .btn.gray{background:#3a2e25;color:var(--ink)}
