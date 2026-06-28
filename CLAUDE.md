@@ -25,10 +25,15 @@ simplified **SM-2** algorithm (not the old Leitner boxes):
   lapses, due, last, leech, flag}`. `gradeCard(i, grade)` takes `grade` 0=Again
   1=Hard 2=Good 3=Easy (still accepts the legacy boolean). `srsMigrate()` upgrades
   old `{box}` saves in place.
-- **Daily new-card cap** `S.newPerDay` (default 20, editable in Settings): only
-  that many never-seen cards enter the deck per day. `S.newSeen[ymd]` counts new
-  cards introduced today; `newRemainingToday()`/`dueReviews()`/`newCards()` drive
-  the deck and the dashboard "due" count. `dueCards()` = reviews + remaining new.
+- **OPTIONAL daily new-card cap** `S.newPerDay` (default **0 = OFF / show all**;
+  editable in Settings, blank/0 = all). When set >0 it paces how many never-seen
+  cards enter the deck per day; it NEVER removes cards. `newRemainingToday()`
+  returns `Infinity` when off. `S.newSeen[ymd]` counts new cards introduced today.
+  `dueCards()` = reviews + remaining new. The **session-length** select (`#studySession`,
+  default **Full deck**) is the primary control: "Full deck" studies EVERY card in
+  scope; a number runs a focused due-reviews+new session capped to that count.
+  (History: v2.10.0 shipped with the cap defaulting to 20, which looked like cards
+  were deleted — v2.10.1 made it off-by-default and auto-reverts saved `20`s to 0.)
 - **Leeches**: `lapses>=8` flags `leech`. **Flag/star** via `toggleFlag(i)`.
   `hardCards()` (flagged ∪ leech ∪ `ease<=2.0`) powers the **Hard cards** mode.
 - **MCQ misses** schedule into `S.mcqDue[questionText]` (Leitner ladder) via
@@ -191,7 +196,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.10.0`) on every shippable change so installed apps auto-update
+  (current: `v2.10.1`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
