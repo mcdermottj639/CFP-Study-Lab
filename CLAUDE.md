@@ -177,6 +177,12 @@ Print" outputs only the sheet, full-width, color-exact). Case-study modules auth
 `mustKnow`+`tips` (no key-numbers/traps) so they render lighter. The hub shows the button
 when a module has cards OR `MODCHEAT` content.
 
+**Global quick references** (the `KEYS` and `TIPS` data): `runKeys()` / `runTips()` render
+into the SAME printable overlay via `openRefOverlay(html)` (reuses `#cheatWrap`/`ensureCheatCSS`).
+They are NOT module-scoped study modes — they live as **"Quick references"** buttons on the
+Dashboard and atop the Modules tab (📊 Key numbers · 🎯 Exam tips & traps), and were removed
+from the Study `#studyMode` dropdown in v2.13.1.
+
 ## Interactive Readers
 > **STANDING RULE — readers are the COMPLETE visualized source of truth.** Each course's
 > reader must contain EVERYTHING in that course's textbook — every concept the flashcards,

@@ -241,6 +241,14 @@ section:not(.hidden){animation:rise .42s cubic-bezier(.2,.7,.3,1)}
       <div class="card"><div class="sub">Hours logged</div><div class="kpi" id="kHours">—</div><div class="small muted">total study time</div></div>
     </div>
 
+    <div class="card" style="margin-top:14px">
+      <div class="flex"><h2>Quick references</h2><span class="small muted">always handy · printable</span></div>
+      <div class="row" style="flex-wrap:wrap;gap:8px;margin-top:8px">
+        <button class="btn gray" onclick="runKeys()">📊 Key numbers</button>
+        <button class="btn gray" onclick="runTips()">🎯 Exam tips &amp; traps</button>
+      </div>
+    </div>
+
     <div class="grid g2" style="margin-top:14px">
       <div class="card">
         <div class="flex"><h2>Study this today</h2><span class="pill" style="background:#eef0f6;color:var(--muted)" id="paceTag">pacing</span></div>
@@ -266,6 +274,10 @@ section:not(.hidden){animation:rise .42s cubic-bezier(.2,.7,.3,1)}
         <div><h2>Module map</h2><div class="sub">Open a module&rsquo;s interactive reader.</div></div>
         
       </div>
+      <div class="row" style="flex-wrap:wrap;gap:8px;margin-top:10px">
+        <button class="btn gray sm" onclick="runKeys()">📊 Key numbers</button>
+        <button class="btn gray sm" onclick="runTips()">🎯 Exam tips &amp; traps</button>
+      </div>
     </div>
     <div class="grid g2" id="moduleGrid"></div>
   </section>
@@ -281,7 +293,7 @@ section:not(.hidden){animation:rise .42s cubic-bezier(.2,.7,.3,1)}
           <select id="studyModule"></select>
           <select id="studyModuleNum"></select>
           <select id="studyMode">
-            <option value="flash">Flashcards (spaced repetition)</option>
+            <option value="flash">Flashcards</option>
             <option value="hard">Hard cards (flagged &amp; leeches)</option>
             <option value="quiz">Quiz</option>
             <option value="exam">Practice exam (module)</option>
@@ -290,8 +302,6 @@ section:not(.hidden){animation:rise .42s cubic-bezier(.2,.7,.3,1)}
             <option value="scenario">Scenario item-sets</option>
             <option value="calc">Calculator drills</option>
             <option value="ethics">Ethics &amp; Standards drill</option>
-            <option value="keys">Key numbers sheet</option>
-            <option value="tips">Exam strategies &amp; traps</option>
           </select>
           <select id="studySession" title="Which cards to study">
             <option value="all" selected>All cards</option>
@@ -936,7 +946,7 @@ document.getElementById('startBtn').onclick=()=>{
   const sEl=document.getElementById('studySession');
   window.CARDFILTER=sEl?sEl.value:"all";
   const mode=document.getElementById('studyMode').value;
-  ({flash:runFlash,hard:runHard,quiz:runQuiz,exam:runExam,mcqreview:runMcqReview,mock:runMock,scenario:runScenario,calc:runCalc,ethics:runEthics,keys:runKeys,tips:runTips})[mode](mod);
+  ({flash:runFlash,hard:runHard,quiz:runQuiz,exam:runExam,mcqreview:runMcqReview,mock:runMock,scenario:runScenario,calc:runCalc,ethics:runEthics})[mode](mod);
 };
 // Hard-cards mode reuses the flashcard runner over the struggling-cards pool
 function runHard(mod){window._hardOnly=true;runFlash(mod);}
@@ -1116,15 +1126,30 @@ const TIPS=[
  {t:'Disability definitions',s:'Own-occ (broadest/most expensive) → modified own-occ → any-occ → Social Security (narrowest). Match the definition to the fact pattern.'}
 ];
 function runTips(){
-  var html='<div class="card"><div class="flex"><h2>Exam strategies & traps</h2><span class="small muted">Researched from CFP Board + prep providers</span></div>';
-  TIPS.forEach(function(x){html+='<div class="k" style="margin-top:8px"><b>'+x.t+'</b><span>'+x.s+'</span></div>';});
-  html+='</div>';
-  document.getElementById('studyArea').innerHTML=html;
+  var items=TIPS.map(function(x){return '<li style="margin:7px 0"><b>'+x.t+':</b> '+x.s+'</li>';}).join('');
+  openRefOverlay('<div class="ck-sheet" style="--ck-accent:#1f7a4d">'+
+    '<div class="ck-top"><div class="ck-crumb">CFP® Study Lab · Quick Reference</div><h1>Exam strategies &amp; traps</h1>'+
+      '<div class="ck-meta">How to attack the exam · '+TIPS.length+' tips</div></div>'+
+    '<div class="ck-body"><ul style="margin:0;padding-left:18px;line-height:1.5">'+items+'</ul></div></div>');
 }
 
-function runKeys(mod){
-  const rows=KEYS.map(k=>`<tr><td><b>${k.cat}</b></td><td>${k.item}</td></tr>`).join('');
-  document.getElementById('studyArea').innerHTML=`<div class="card"><div class="flex"><h2>Key numbers quick-reference</h2><span class="small muted">2025 figures · verify against current tax tables</span></div><table><thead><tr><th>Topic</th><th>Figure</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+// Open arbitrary reference content in the shared full-screen overlay (printable).
+function openRefOverlay(innerHTML){
+  ensureCheatCSS();
+  let wrap=document.getElementById('cheatWrap');
+  if(!wrap){wrap=document.createElement('div');wrap.id='cheatWrap';document.body.appendChild(wrap);}
+  wrap.innerHTML='<div class="cheatTools">'+
+      '<button class="btn" onclick="window.print()">📄 Save as PDF / Print</button> '+
+      '<button class="btn gray" onclick="closeCheatSheet()">✕ Close</button>'+
+    '</div><div id="cheatPrint">'+innerHTML+'</div>';
+  wrap.style.display='block'; document.body.classList.add('cheatOpen'); wrap.scrollTop=0;
+}
+function runKeys(){
+  const rows=KEYS.map(k=>'<div class="ck-trow"><b>'+k.cat+'</b> — '+k.item+'</div>').join('');
+  openRefOverlay('<div class="ck-sheet" style="--ck-accent:#2f5fe0">'+
+    '<div class="ck-top"><div class="ck-crumb">CFP® Study Lab · Quick Reference</div><h1>Key numbers</h1>'+
+      '<div class="ck-meta">2025 figures · verify against current tax tables · '+KEYS.length+' items</div></div>'+
+    '<div class="ck-body"><div class="ck-tlist">'+rows+'</div></div></div>');
 }
 function emptyMsg(m){document.getElementById('studyArea').innerHTML=`<div class="card center"><p class="muted">${m}</p><p class="small">Content for upcoming modules is added as you reach them.</p></div>`;}
 
@@ -1390,7 +1415,7 @@ autoBackup();
     <button id="cfpTkTheme" style="width:100%;padding:12px;border:1px solid #dfe3ee;border-radius:12px;background:#fff;color:#1d2433;font:600 15px system-ui;cursor:pointer;margin-bottom:9px">🌙 Dark mode</button>
     <button id="cfpTkReset" style="width:100%;padding:11px;border:none;border-radius:12px;background:#fdecea;color:#d6453d;font:600 14px system-ui;cursor:pointer">Reset all progress</button>
     <div id="cfpTkMsg" style="font-size:12.5px;color:#1f9d6b;text-align:center;min-height:16px;margin-top:10px"></div>
-    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.13.0</div>
+    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.13.1</div>
   </div>
 </div>
 <script>
