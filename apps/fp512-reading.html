@@ -1302,7 +1302,10 @@
 
   // INIT
   document.addEventListener('DOMContentLoaded', function() {
-    activateTab('overview');
+    // deep-link: open the tab named in the URL hash (e.g. #annuities from the Module Hub)
+    var _h=(location.hash||'').replace(/^#/,'');
+    activateTab(document.querySelector('.tab-btn[data-tab="'+_h+'"]')?_h:'overview');
+    window.addEventListener('hashchange',function(){var t=(location.hash||'').replace(/^#/,'');if(document.querySelector('.tab-btn[data-tab="'+t+'"]'))activateTab(t);});
     window.addEventListener('resize', function() {
       try { Object.values(window.chartInstances).forEach(function(c) { if (c && c.resize) c.resize(); }); } catch(e) {}
     });
