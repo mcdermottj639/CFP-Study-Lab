@@ -136,6 +136,24 @@ a.link:hover{text-decoration:underline}
 .flashopts button{flex:1;border:1px solid var(--line);background:var(--card);padding:9px;border-radius:11px;font:700 12.5px system-ui,-apple-system,sans-serif;color:var(--muted);cursor:pointer;transition:.15s}
 .flashopts button.on{background:var(--grad);color:#fff;border-color:transparent}
 
+/* Module deep-dive list — large, finger-friendly tap targets */
+.modlist{margin-top:12px}
+.modlist>summary{cursor:pointer;font-weight:700;font-size:14px;padding:10px 6px;list-style:none;border-top:1px solid var(--line)}
+.modlist>summary::-webkit-details-marker{display:none}
+.modlist>summary:hover{color:var(--brand)}
+.modrows{margin-top:4px}
+.modrow{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;
+  min-height:50px;padding:11px 14px;margin:7px 0;border:1px solid var(--line);border-radius:13px;
+  background:var(--card);color:var(--ink);font:inherit;cursor:pointer;transition:.13s;box-shadow:var(--shadow)}
+.modrow:hover{border-color:var(--brand);background:#fdf3ea}
+.modrow:active{transform:scale(.99)}
+.modrow[disabled]{cursor:default;opacity:.5;box-shadow:none}
+.modrow-l{display:flex;align-items:center;gap:11px;min-width:0}
+.modnum{flex:0 0 auto;font-weight:800;font-size:12.5px;padding:4px 9px;border-radius:9px;letter-spacing:.02em}
+.modname{font-size:14.5px;font-weight:600;line-height:1.25}
+.modrow-r{display:flex;align-items:center;gap:9px;flex:0 0 auto}
+.modchev{font-size:22px;color:var(--muted);line-height:1;font-weight:700}
+
 /* ---- Warm dark mode (opt-in via Settings/toolkit) ---- */
 html[data-theme="dark"]{
   --bg:#191310; --card:#241b15; --ink:#f4ece2; --muted:#b4a594; --line:#3a2e25;
@@ -154,6 +172,7 @@ html[data-theme="dark"] .flashseg{background:#2b211a}
 html[data-theme="dark"] .bar{background:#3a2e25}
 html[data-theme="dark"] .opt{background:#241b15}
 html[data-theme="dark"] .opt:hover{background:#2f251d}
+html[data-theme="dark"] .modrow:hover{background:#2f251d}
 html[data-theme="dark"] .opt.correct{background:#163420!important;border-color:#2f6b40!important}
 html[data-theme="dark"] .opt.wrong{background:#3a1c1c!important;border-color:#7a3232!important}
 html[data-theme="dark"] .btn.gray{background:#3a2e25;color:var(--ink)}
@@ -683,11 +702,11 @@ function courseModuleList(course,color){
     const badge=hasContent?`<span class="pill" style="background:#f0f2f8;color:var(--muted)">${mm}%</span>`
       :open?`<span class="pill" style="background:#eef4ff;color:var(--brand)">guide</span>`
       :`<span class="pill" style="background:#f0f2f8;color:var(--muted)">soon</span>`;
-    const onclick=open?` onclick="openModule('${course}',${n})" style="cursor:pointer"`:` style="opacity:.55"`;
-    return `<div class="flex hubrow"${onclick}>
-      <span class="small"><b style="color:${color}">M${n}</b> ${meta[n]}</span>${badge}</div>`;
+    return `<button type="button" class="modrow"${open?` onclick="openModule('${course}',${n})"`:' disabled'}>
+      <span class="modrow-l"><span class="modnum" style="background:${color}22;color:${color}">M${n}</span><span class="modname">${meta[n]}</span></span>
+      <span class="modrow-r">${badge}${open?'<span class="modchev">›</span>':''}</span></button>`;
   }).join('');
-  return `<details class="modlist" style="margin-top:10px"><summary class="small" style="cursor:pointer;font-weight:700">${nums.length} modules — deep dive ▾</summary>${rows}</details>`;
+  return `<details class="modlist"><summary>📂 ${nums.length} modules — tap to deep-dive</summary><div class="modrows">${rows}</div></details>`;
 }
 function moduleLinks(id){
   var R={FP511:'apps/fp511-reading.html',FP512:'apps/fp512-reading.html'};
@@ -1362,7 +1381,7 @@ autoBackup();
     <button id="cfpTkTheme" style="width:100%;padding:12px;border:1px solid #dfe3ee;border-radius:12px;background:#fff;color:#1d2433;font:600 15px system-ui;cursor:pointer;margin-bottom:9px">🌙 Dark mode</button>
     <button id="cfpTkReset" style="width:100%;padding:11px;border:none;border-radius:12px;background:#fdecea;color:#d6453d;font:600 14px system-ui;cursor:pointer">Reset all progress</button>
     <div id="cfpTkMsg" style="font-size:12.5px;color:#1f9d6b;text-align:center;min-height:16px;margin-top:10px"></div>
-    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.11.0</div>
+    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.11.1</div>
   </div>
 </div>
 <script>
