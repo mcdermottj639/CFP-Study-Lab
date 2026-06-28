@@ -678,8 +678,9 @@ function renderModuleHub(course,mod){
   const synHtml=syn?'<div class="card" style="margin-top:12px"><h3>How it connects</h3><p class="small" style="margin:6px 0 0;line-height:1.5">'+syn+'</p></div>':'';
   const ex=((window.MODEX||{})[course]||{})[mod];
   const exHtml=ex?'<div class="card" style="margin-top:12px"><h3>'+ex.title+'</h3><div class="small" style="line-height:1.5">'+ex.html+'</div></div>':'';
-  const qref=cards.length?'<details class="card" style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">📑 Quick-reference cheat sheet ('+cards.length+' cards)</summary>'+
-    '<table style="margin-top:8px"><tbody>'+cards.map(c=>'<tr><td style="vertical-align:top;width:40%"><b>'+c.f+'</b></td><td class="small">'+c.b+'</td></tr>').join('')+'</tbody></table></details>':'';
+  const hasCheat=!!(((window.MODCHEAT||{})[course]||{})[mod]);
+  const qref=(cards.length||hasCheat)?'<div class="card" style="margin-top:12px"><div class="flex"><div><h3>Exam cheat sheet</h3><div class="small muted">Key numbers, traps &amp; tips — printable / save as PDF.</div></div>'+
+    '<button class="btn" onclick="openCheatSheet(\''+course+'\','+mod+')">📄 Open</button></div></div>':'';
   const hasReader=!!((window.READER_MAP||{})[course]);
   const hasCalc=(typeof CALCGEN!=='undefined')&&CALCGEN.some(g=>g.m===course);
   sec.innerHTML=
@@ -701,6 +702,82 @@ function renderModuleHub(course,mod){
       '</div></div>'+
     objHtml+synHtml+exHtml+qref;
 }
+
+/* ====================== EXAM CHEAT SHEET (printable / save-as-PDF) ====================== */
+function ensureCheatCSS(){
+  if(document.getElementById('ckCSS'))return;
+  const s=document.createElement('style'); s.id='ckCSS';
+  s.textContent=
+  '#cheatWrap{position:fixed;inset:0;z-index:100001;background:#3a322a;overflow:auto;display:none}'+
+  'body.cheatOpen{overflow:hidden}'+
+  '.cheatTools{position:sticky;top:0;z-index:2;display:flex;gap:8px;justify-content:center;padding:12px;background:rgba(40,33,26,.97);box-shadow:0 2px 10px rgba(0,0,0,.35)}'+
+  '#cheatPrint{max-width:1000px;margin:16px auto;background:#fff;box-shadow:0 12px 34px rgba(0,0,0,.35)}'+
+  '.ck-sheet{font:13px/1.45 -apple-system,system-ui,"Segoe UI",sans-serif;color:#222a30;-webkit-print-color-adjust:exact;print-color-adjust:exact}'+
+  '.ck-top{background:linear-gradient(135deg,var(--ck-accent,#0e7490),#d0613a);color:#fff;padding:16px 22px}'+
+  '.ck-crumb{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;opacity:.85}'+
+  '.ck-top h1{font-size:21px;margin:3px 0;font-weight:800}'+
+  '.ck-meta{font-size:12px;opacity:.95}'+
+  '.ck-body{padding:14px 20px 18px}'+
+  '.ck-sec{font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;margin:0 0 7px;padding-bottom:4px;border-bottom:2px solid #efe6d7;color:#3a4148}'+
+  '.ck-body>.ck-sec{margin-top:0}'+
+  '.ck-knum{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:14px}'+
+  '.ck-pill{background:#fff7ef;border:1px solid #f0d8c2;border-radius:9px;padding:7px 10px}'+
+  '.ck-pill b{display:block;font-size:12px;color:var(--ck-accent,#0e7490);margin-bottom:1px}'+
+  '.ck-pill span{font-size:11px;color:#444;line-height:1.35}'+
+  '.ck-main{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}'+
+  '.ck-main ul{margin:0;padding-left:16px}.ck-main li{margin:3px 0}'+
+  '.ck-box{border-radius:10px;padding:9px 12px 8px 14px}'+
+  '.ck-box .ck-sec{border-bottom-width:1px}'+
+  '.ck-traps{background:#fdf0ed;border:1px solid #f3cdc4}.ck-traps .ck-sec{color:#b3402f;border-color:#f3cdc4}'+
+  '.ck-tips{background:#eef8f1;border:1px solid #c8e7d2;margin-top:11px}.ck-tips .ck-sec{color:#1f7a4d;border-color:#c8e7d2}'+
+  '.ck-terms{margin-top:16px}.ck-tlist{column-count:2;column-gap:22px}'+
+  '.ck-trow{break-inside:avoid;-webkit-column-break-inside:avoid;padding:3px 0;border-bottom:1px solid #f1ede4;font-size:11px;line-height:1.35}'+
+  '.ck-trow b{color:#2b333a}'+
+  '.ck-foot{display:flex;justify-content:space-between;color:#9a8c78;font-size:10px;padding:9px 20px;border-top:1px solid #eee5d6}'+
+  '@media print{'+
+    'body.cheatOpen *{visibility:hidden!important}'+
+    '#cheatPrint,#cheatPrint *{visibility:visible!important}'+
+    '#cheatWrap{position:static;background:#fff;overflow:visible}'+
+    '#cheatPrint{position:absolute;left:0;top:0;width:100%;max-width:none;margin:0;box-shadow:none}'+
+    '.cheatTools,#cfpTkBtn{display:none!important}'+
+    '@page{margin:10mm}'+
+  '}';
+  document.head.appendChild(s);
+}
+function buildCheatHTML(course,mod){
+  const meta=((typeof MODMETA!=='undefined'&&MODMETA[course])||{})[mod]||('Module '+mod);
+  const dms=DOMAINS.filter(d=>d.mod===course);
+  const accent=dms[0]?dms[0].c:'#0e7490';
+  const dlabel=dms.map(d=>d.name+' · '+d.w+'% of the exam').join(' · ');
+  const cards=CARDS.filter(c=>c.m===course&&moduleOf(c)===mod);
+  const C=((window.MODCHEAT||{})[course]||{})[mod]||{};
+  const li=a=>(a||[]).map(x=>'<li>'+x+'</li>').join('');
+  const keyHtml=(C.keyNumbers&&C.keyNumbers.length)?'<h2 class="ck-sec">★ Key numbers &amp; formulas</h2><div class="ck-knum">'+C.keyNumbers.map(k=>'<div class="ck-pill"><b>'+k[0]+'</b><span>'+k[1]+'</span></div>').join('')+'</div>':'';
+  const mkHtml=(C.mustKnow&&C.mustKnow.length)?'<div><h2 class="ck-sec">Must-know rules</h2><ul>'+li(C.mustKnow)+'</ul></div>':'';
+  const trapHtml=(C.traps&&C.traps.length)?'<div class="ck-box ck-traps"><h2 class="ck-sec">⚠ Common traps</h2><ul>'+li(C.traps)+'</ul></div>':'';
+  const tipHtml=(C.tips&&C.tips.length)?'<div class="ck-box ck-tips"><h2 class="ck-sec">✓ Test-taking tips</h2><ul>'+li(C.tips)+'</ul></div>':'';
+  const rightHtml=trapHtml+tipHtml;
+  const mainHtml=(mkHtml||rightHtml)?'<div class="ck-main">'+(mkHtml||'<div></div>')+'<div>'+rightHtml+'</div></div>':'';
+  const termHtml=cards.length?'<div class="ck-terms"><h2 class="ck-sec">Term reference ('+cards.length+')</h2><div class="ck-tlist">'+cards.map(c=>'<div class="ck-trow"><b>'+c.f+'</b> — '+c.b+'</div>').join('')+'</div></div>':'';
+  return '<div class="ck-sheet" style="--ck-accent:'+accent+'">'+
+    '<div class="ck-top"><div class="ck-crumb">CFP® Study Lab · Exam Cheat Sheet</div>'+
+      '<h1>Module '+mod+' — '+meta+'</h1>'+
+      '<div class="ck-meta">'+course+' · '+dlabel+(cards.length?(' · '+cards.length+' key facts'):'')+'</div></div>'+
+    '<div class="ck-body">'+keyHtml+mainHtml+termHtml+'</div>'+
+    '<div class="ck-foot"><span>'+course+' · Module '+mod+' — '+meta+' · final exam reference</span><span>mcdermottj639.github.io/CFP-Study-Lab</span></div>'+
+  '</div>';
+}
+function openCheatSheet(course,mod){
+  ensureCheatCSS();
+  let wrap=document.getElementById('cheatWrap');
+  if(!wrap){wrap=document.createElement('div');wrap.id='cheatWrap';document.body.appendChild(wrap);}
+  wrap.innerHTML='<div class="cheatTools">'+
+      '<button class="btn" onclick="window.print()">📄 Save as PDF / Print</button> '+
+      '<button class="btn gray" onclick="closeCheatSheet()">✕ Close</button>'+
+    '</div><div id="cheatPrint">'+buildCheatHTML(course,mod)+'</div>';
+  wrap.style.display='block'; document.body.classList.add('cheatOpen'); wrap.scrollTop=0;
+}
+function closeCheatSheet(){const w=document.getElementById('cheatWrap');if(w)w.style.display='none';document.body.classList.remove('cheatOpen');}
 
 /* ====================== STUDY ENGINE ====================== */
 function fillModuleSelect(){
