@@ -12,7 +12,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 
 const SRC = process.argv[2] || 'src/study-home.src.html';
 const OUT = 'index.html';
-const APP_VERSION = 'v2.10.0';
+const APP_VERSION = 'v2.10.1';
 let html = readFileSync(SRC, 'utf8');
 
 const HEAD = `
