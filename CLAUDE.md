@@ -134,6 +134,28 @@ filter. How it works (all in `src/study-home.src.html`, defined next to `MODULES
    mapping every topic you used to its module number. Without this the new course's
    flashcards/quizzes won't be filterable by module (they'd all be "unmapped").
 5. `node scripts/add_content.mjs add`, bump versions, deploy.
+6. **Add Module Hub content** for the course in `module-content.js` (`MODOBJ`,
+   `MODSYN`, optional `MODEX`, plus `TAB_MAP.FP51X` and `READER_MAP.FP51X`). See
+   the Module Hub section below.
+
+## Module Hub (per-module deep dive — Modules tab)
+Each course card on the Modules tab expands to a clickable list of its modules
+(`courseModuleList` in `src/study-home.src.html`); clicking one opens the **Module
+Hub** (`#modhub` section, rendered by `renderModuleHub`). A module is openable if it
+has tagged cards/MCQs **or** authored teaching content (then it shows a "guide" badge,
+e.g. FP511 M8 Case Study which has no cards). The hub assembles, all scoped to that one
+module: deep-dive reader link, learning-objectives self-check, "how it connects"
+synthesis, a worked example, an auto quick-reference cheat-sheet (the module's cards),
+module mastery %, item counts, and launch buttons (`studyScoped` → flashcards/quiz/calc
+honoring `window.MODF`) plus a **readiness diagnostic** (`runDiagnostic` → `mcqRunner`
+with an `onDone` hook storing `S.modReady[course_mod]`). Self-check state =
+`S.objChecked[course_mod]`. New state keys: `modReady`, `objChecked` (migrated in `load()`).
+
+- **Authored content lives in `module-content.js`** (loaded before `flashcards.js`,
+  precached in `sw.js`): `MODOBJ[course][mod]` (objective strings), `MODSYN[course][mod]`
+  (synthesis paragraph), `MODEX[course][mod]` (`{title, html}` worked example),
+  `TAB_MAP[course][mod]` (reader tab id), `READER_MAP[course]` (reader path). The engine
+  reads these with graceful fallbacks, so adding a course = add entries here, no engine change.
 
 ## Interactive Readers
 `apps/fp511-reading.html`, `apps/fp512-reading.html` — standalone long-form reading
@@ -143,6 +165,11 @@ injected by `scripts/inject_reader_theme.mjs`). Theme = warm canvas + dark mode 
 **syncs with the app** via the shared `cfpTheme` localStorage key (filter-based dark
 mode on a content wrapper so fixed buttons/charts stay correct). Their Chart.js and
 (FP512) MathJax are vendored locally (`vendor/chart.umd.js`, `vendor/mathjax/tex-mml-svg.js`).
+- **Reader deep-linking:** both readers honor a URL hash (`…#annuities`) to open a
+  specific tab — the Module Hub uses this. FP511 defers the initial hash open to the
+  `load` event (its chart fns are defined late); FP512 opens it in `DOMContentLoaded`.
+  Tab ids per module are in `TAB_MAP`. If you re-import a reader artifact, re-add the
+  hash-open snippet near `activateTab('overview')` / the tab `go()` setup.
 
 ## Icons
 - App icon = cursive **"CFP"** (Dancing Script) on **deep green `#1f4d3a`**
@@ -164,7 +191,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.9.0`) on every shippable change so installed apps auto-update
+  (current: `v2.10.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
