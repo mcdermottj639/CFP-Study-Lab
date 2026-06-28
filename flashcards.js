@@ -55,7 +55,7 @@
     function persist() {
       try {
         localStorage.setItem(SKEY, JSON.stringify({
-          mod: mod, hard: hardOnly, len: sessionLen(), day: ymdNow(),
+          mod: mod, modf: (window.MODF || 'ALL'), hard: hardOnly, len: sessionLen(), day: ymdNow(),
           ids: deck.map(function (d) { return d.i; }), idx: idx
         }));
       } catch (e) {}
@@ -65,8 +65,8 @@
     function restore() {
       try {
         var s = JSON.parse(localStorage.getItem(SKEY));
-        // only resume an identical session (same scope, mode, AND length) from the same day
-        if (!s || s.day !== ymdNow() || s.mod !== mod || !!s.hard !== hardOnly || s.len !== sessionLen()) return false;
+        // only resume an identical session (same course, SUB-MODULE, mode, AND length) from the same day
+        if (!s || s.day !== ymdNow() || s.mod !== mod || s.modf !== (window.MODF || 'ALL') || !!s.hard !== hardOnly || s.len !== sessionLen()) return false;
         if (!Array.isArray(s.ids) || s.idx >= s.ids.length) return false;
         var d = s.ids.map(function (i) { return CARDS[i] ? { c: CARDS[i], i: i } : null; }).filter(Boolean);
         if (!d.length) return false;
