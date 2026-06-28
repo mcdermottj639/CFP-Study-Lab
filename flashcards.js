@@ -2,14 +2,14 @@
  *   • Grading: Again / Hard / Good / Easy  (feeds the SM-2 engine in the app)
  *   • Keyboard: Space/Enter flip · 1-4 grade · f flag · these work while studying
  *   • Term first / Definition first · Shuffle / In order
- *   • Selectable session length (window.SESSLEN) and a daily new-card cap
+ *   • Card filter (window.CARDFILTER): all | unseen | needwork | known (via cardStatus)
  *   • Flag/star a card; "Hard cards" mode (window._hardOnly) drills flagged/leech/low-ease
  *   • Auto-flip = hands-free PREVIEW (explicitly not graded)
  *   • Session position persists for the day so a reload resumes where you left off
  *   • Each graded card also logs a calibration attempt so flashcards show up in Analytics
  * Loads after the app's inline script and replaces window.runFlash. Uses app globals:
- * dueReviews, newCards, newRemainingToday, hardCards, filt, CARDS, shuffle, gradeCard,
- * toggleFlag, go, S, save, bumpMastery, plus window.MODF / window.SESSLEN / moduleOf. */
+ * cardStatus, hardCards, filt, CARDS, shuffle, gradeCard, toggleFlag, go, S, save,
+ * bumpMastery, plus window.MODF / window.CARDFILTER / moduleOf. */
 (function () {
   if (typeof CARDS === 'undefined') return;
 
@@ -47,15 +47,12 @@
     }
     function inScope(x) { return (mod === 'ALL' || x.c.m === mod) && modOk(x.c); }
 
-    function sessionLen() {
-      var L = window.SESSLEN;
-      return (L && L !== 'ALL') ? +L : 0;
-    }
+    function cardFilter() { return window.CARDFILTER || 'all'; }  // all | unseen | needwork | known
 
     function persist() {
       try {
         localStorage.setItem(SKEY, JSON.stringify({
-          mod: mod, modf: (window.MODF || 'ALL'), hard: hardOnly, len: sessionLen(), day: ymdNow(),
+          mod: mod, modf: (window.MODF || 'ALL'), hard: hardOnly, filter: cardFilter(), day: ymdNow(),
           ids: deck.map(function (d) { return d.i; }), idx: idx
         }));
       } catch (e) {}
@@ -65,8 +62,8 @@
     function restore() {
       try {
         var s = JSON.parse(localStorage.getItem(SKEY));
-        // only resume an identical session (same course, SUB-MODULE, mode, AND length) from the same day
-        if (!s || s.day !== ymdNow() || s.mod !== mod || s.modf !== (window.MODF || 'ALL') || !!s.hard !== hardOnly || s.len !== sessionLen()) return false;
+        // only resume an identical session (same course, SUB-MODULE, mode, AND filter) from the same day
+        if (!s || s.day !== ymdNow() || s.mod !== mod || s.modf !== (window.MODF || 'ALL') || !!s.hard !== hardOnly || s.filter !== cardFilter()) return false;
         if (!Array.isArray(s.ids) || s.idx >= s.ids.length) return false;
         var d = s.ids.map(function (i) { return CARDS[i] ? { c: CARDS[i], i: i } : null; }).filter(Boolean);
         if (!d.length) return false;
@@ -79,20 +76,15 @@
       var src;
       if (hardOnly) {
         src = (typeof hardCards === 'function' ? hardCards() : []).filter(inScope);
-      } else if (sessionLen() === 0) {
-        // "Full deck" → EVERY card in scope, nothing held back
-        src = filt(CARDS, mod).map(function (c) { return { c: c, i: CARDS.indexOf(c) }; });
       } else {
-        // Focused session → due reviews + new cards, then capped to the chosen length
-        var rev = (typeof dueReviews === 'function' ? dueReviews() : []).filter(inScope);
-        var cap = (typeof newRemainingToday === 'function') ? newRemainingToday() : Infinity;
-        var fresh = (typeof newCards === 'function' ? newCards() : []).filter(inScope).slice(0, Math.max(0, cap));
-        src = rev.concat(fresh);
-        if (!src.length) src = filt(CARDS, mod).map(function (c) { return { c: c, i: CARDS.indexOf(c) }; });
+        // every card in scope (course + sub-module), then narrowed by the card filter
+        src = filt(CARDS, mod).map(function (c) { return { c: c, i: CARDS.indexOf(c) }; });
+        var f = cardFilter();
+        if (f !== 'all' && typeof cardStatus === 'function') {
+          src = src.filter(function (x) { return cardStatus(x.i) === f; });
+        }
       }
       deck = order === 'shuffle' ? shuffle(src) : src;
-      var L = sessionLen();
-      if (L && deck.length > L) deck = deck.slice(0, L);
       idx = 0;
     }
 
@@ -133,6 +125,16 @@
       flipped = false;
       if (idx >= deck.length) {
         clearSession();
+        if (deck.length === 0) {
+          var fl = cardFilter();
+          var msg = fl === 'unseen' ? 'No unseen cards here — you’ve studied them all in this scope.'
+            : fl === 'needwork' ? 'Nothing needs more work in this scope right now. 👍'
+            : fl === 'known' ? 'No cards marked "know well" yet here — study some first.'
+            : 'No cards match this filter.';
+          area.innerHTML = '<div class="card center"><h2>Nothing to study</h2><p class="muted">' + msg +
+            '</p><button class="btn" onclick="go(\'dash\')">Back to dashboard</button></div>';
+          return;
+        }
         area.innerHTML =
           '<div class="card center"><h2>Session complete 🎉</h2><p class="muted">' +
           deck.length + ' card' + (deck.length === 1 ? '' : 's') + ' reviewed.</p>' +
