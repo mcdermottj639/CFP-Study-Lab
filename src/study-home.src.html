@@ -147,9 +147,9 @@ a.link{color:var(--brand);text-decoration:none;font-weight:600}
             <option value="tips">Exam strategies &amp; traps</option>
           </select>
           <select id="studySession" title="Session length">
-            <option value="ALL">Full deck</option>
-            <option value="10">10 items</option>
-            <option value="20" selected>20 items</option>
+            <option value="ALL" selected>Full deck (everything)</option>
+            <option value="10">10 — quick</option>
+            <option value="20">20 — daily</option>
             <option value="30">30 items</option>
             <option value="50">50 items</option>
           </select>
@@ -186,7 +186,7 @@ a.link{color:var(--brand);text-decoration:none;font-weight:600}
       <div class="row" style="align-items:center">
         <label class="small">Exam date <input type="date" id="examDate"></label>
         <label class="small">Daily card goal <input type="number" id="goalCards" min="5" max="200" style="width:80px"></label>
-        <label class="small">New cards/day <input type="number" id="newPerDay" min="0" max="200" style="width:80px"></label>
+        <label class="small">New cards/day <input type="number" id="newPerDay" min="0" max="999" placeholder="all" style="width:80px"> <span class="muted" style="font-size:11px">(blank/0 = all)</span></label>
         <button class="btn sm" onclick="saveSettings()">Save</button>
         <button class="btn gray sm" onclick="resetAll()">Reset all progress</button>
       </div>
@@ -323,19 +323,19 @@ function load(){
     // migrate older saves to the SM-2 schema
     if(!x.seen)x.seen={}; if(!x.mcqDue)x.mcqDue={}; if(!x.newSeen)x.newSeen={};
     if(!x.modReady)x.modReady={}; if(!x.objChecked)x.objChecked={};
-    if(typeof x.newPerDay!=='number')x.newPerDay=20;
+    if(typeof x.newPerDay!=='number'||x.newPerDay===20)x.newPerDay=0; // 0 = show ALL new cards (undo the earlier 20/day default)
     return x;
   }}catch(e){}
-  return {cards:{}, attempts:[], misses:[], sessions:{}, mastery:{}, seen:{}, mcqDue:{}, newSeen:{}, modReady:{}, objChecked:{}, newPerDay:20, examDate:"2027-03-09", goal:30, lastStudy:null, streak:0};
+  return {cards:{}, attempts:[], misses:[], sessions:{}, mastery:{}, seen:{}, mcqDue:{}, newSeen:{}, modReady:{}, objChecked:{}, newPerDay:0, examDate:"2027-03-09", goal:30, lastStudy:null, streak:0};
 }
 function save(){localStorage.setItem(LS,JSON.stringify(S));}
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._);t._=setTimeout(()=>t.classList.remove('show'),2200);}
 
 /* ====================== SPACED REPETITION (SM-2) ======================
    Each card stores {ease, intj(interval days), reps, lapses, due, last,
-   leech, flag}. Grades: 0=Again 1=Hard 2=Good 3=Easy. A daily NEW-card cap
-   (S.newPerDay) limits how many never-seen cards enter the deck each day so
-   the "due today" count stays meaningful instead of dumping the whole deck. */
+   leech, flag}. Grades: 0=Again 1=Hard 2=Good 3=Easy. An OPTIONAL daily NEW-card
+   cap (S.newPerDay; 0 = OFF/show all) can pace how many never-seen cards enter the
+   deck per day. Default is 0 (all cards available); it never removes any cards. */
 function cardKey(i){return "c"+i;}
 const LEECH_LAPSES=8;
 // migrate a legacy Leitner card ({box,due}) to the SM-2 shape, in place
@@ -346,8 +346,9 @@ function srsMigrate(st){
   return st;
 }
 function newRemainingToday(){
+  if(!S.newPerDay)return Infinity;            // 0 / null => no cap, ALL new cards available
   const used=S.newSeen[ymd(new Date())]||0;
-  return Math.max(0,(S.newPerDay||20)-used);
+  return Math.max(0,S.newPerDay-used);
 }
 // reviews that are actually due (state exists and due<=today)
 function dueReviews(){
@@ -1113,12 +1114,12 @@ function autoBackup(){ var wk=7*86400000; if(!S.lastBackup || (Date.now()-S.last
 function saveSettings(){
   S.examDate=document.getElementById('examDate').value||S.examDate;
   S.goal=parseInt(document.getElementById('goalCards').value)||S.goal;
-  const np=parseInt(document.getElementById('newPerDay').value);
-  if(!isNaN(np)&&np>=0)S.newPerDay=np;
+  const npv=(document.getElementById('newPerDay').value||'').trim();   // blank/0 = no cap (all cards)
+  S.newPerDay = npv===''?0:Math.max(0,parseInt(npv)||0);
   save();renderDash();toast("Settings saved");
 }
 function resetAll(){if(confirm("Erase all progress on this device? (Drive backups are kept.)")){localStorage.removeItem(LS);S=load();initFields();go('dash');toast("Progress reset");}}
-function initFields(){document.getElementById('examDate').value=S.examDate;document.getElementById('goalCards').value=S.goal;const n=document.getElementById('newPerDay');if(n)n.value=(S.newPerDay==null?20:S.newPerDay);}
+function initFields(){document.getElementById('examDate').value=S.examDate;document.getElementById('goalCards').value=S.goal;const n=document.getElementById('newPerDay');if(n)n.value=(S.newPerDay?S.newPerDay:'');}
 
 
 /* ====================== IN-ARTIFACT VIEWER ====================== */
