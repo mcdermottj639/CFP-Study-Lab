@@ -1070,6 +1070,11 @@ strong { color: #1e293b; }
   btns.forEach(function(b){
     b.addEventListener('click',function(){ go(this.getAttribute('data-tab')); });
   });
+  // deep-link: open the tab named in the URL hash (e.g. #tvm from the Module Hub)
+  function _goHash(){ var h=(location.hash||'').replace(/^#/,''); if(h&&document.querySelector('.tab-btn[data-tab="'+h+'"]')) go(h); }
+  // defer initial hash open until everything (incl. chart fns) is defined
+  if(document.readyState==='complete') _goHash(); else window.addEventListener('load',_goHash);
+  window.addEventListener('hashchange',_goHash);
 
   // COLLAPSIBLES
   document.querySelectorAll('[data-t]').forEach(function(h){

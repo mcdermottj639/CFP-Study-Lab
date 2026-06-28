@@ -12,7 +12,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 
 const SRC = process.argv[2] || 'src/study-home.src.html';
 const OUT = 'index.html';
-const APP_VERSION = 'v2.9.0';
+const APP_VERSION = 'v2.10.0';
 let html = readFileSync(SRC, 'utf8');
 
 const HEAD = `
@@ -94,6 +94,7 @@ const TOOLKIT = `
   syncTheme();
 })();
 </script>
+<script src="module-content.js"></script>
 <script src="flashcards.js"></script>
 <script>
 if('serviceWorker' in navigator){
