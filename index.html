@@ -237,7 +237,7 @@ section:not(.hidden){animation:rise .42s cubic-bezier(.2,.7,.3,1)}
     <div class="grid g4">
       <div class="card"><div class="sub">Exam readiness</div><div class="kpi" id="kReady">—</div><div class="bar" style="margin-top:8px"><i id="readyBar" style="width:0%"></i></div><div class="small muted" style="margin-top:6px">Blueprint-weighted across 8 domains</div></div>
       <div class="card"><div class="sub">Study streak</div><div class="kpi" id="kStreak">—</div><div class="small muted">days in a row</div></div>
-      <div class="card"><div class="sub">Cards due today</div><div class="kpi" id="kDue">—</div><div class="small muted">spaced repetition</div></div>
+      <div class="card"><div class="sub">Unseen cards</div><div class="kpi" id="kDue">—</div><div class="small muted">not studied yet</div></div>
       <div class="card"><div class="sub">Hours logged</div><div class="kpi" id="kHours">—</div><div class="small muted">total study time</div></div>
     </div>
 
@@ -293,12 +293,11 @@ section:not(.hidden){animation:rise .42s cubic-bezier(.2,.7,.3,1)}
             <option value="keys">Key numbers sheet</option>
             <option value="tips">Exam strategies &amp; traps</option>
           </select>
-          <select id="studySession" title="Session length">
-            <option value="ALL" selected>Full deck (everything)</option>
-            <option value="10">10 — quick</option>
-            <option value="20">20 — daily</option>
-            <option value="30">30 items</option>
-            <option value="50">50 items</option>
+          <select id="studySession" title="Which cards to study">
+            <option value="all" selected>All cards</option>
+            <option value="unseen">Unseen — not studied yet</option>
+            <option value="needwork">Need more work</option>
+            <option value="known">Know well</option>
           </select>
         </div>
         <button class="btn" id="startBtn">Start</button>
@@ -544,6 +543,18 @@ function hardCards(){
   CARDS.forEach((c,i)=>{const st=S.cards[cardKey(i)];if(st&&(st.flag||st.leech||(st.ease&&st.ease<=2.0)))out.push({c,i});});
   return out;
 }
+// Knowledge state of a card → drives the study filter (unseen / needwork / known).
+// 'unseen' = never studied. 'needwork' = struggled (flag/leech/lapse, or ease dropped
+// below the 2.5 default from an Again/Hard). 'known' = studied with only Good/Easy.
+function cardStatus(i){
+  const st=S.cards[cardKey(i)];
+  if(!st)return 'unseen';
+  srsMigrate(st);
+  if(st.flag||st.leech||(st.lapses>=1)||((st.ease||2.5)<2.5))return 'needwork';
+  return 'known';
+}
+function unseenCount(){let n=0;CARDS.forEach((c,i)=>{if(!S.cards[cardKey(i)])n++;});return n;}
+function needWorkCount(){let n=0;CARDS.forEach((c,i)=>{if(cardStatus(i)==='needwork')n++;});return n;}
 
 /* ====================== MASTERY ====================== */
 function bumpMastery(mod,correct){
@@ -616,19 +627,18 @@ function renderDash(){
   document.getElementById('kReady').textContent=rd+"%";
   document.getElementById('readyBar').style.width=rd+"%";
   document.getElementById('kStreak').textContent=S.streak||0;
-  document.getElementById('kDue').textContent=dueCards().length;
+  document.getElementById('kDue').textContent=unseenCount();
   document.getElementById('kHours').textContent=totalHours();
 
   // pacing
   const remainingCards=CARDS.length; // simple v1 proxy
-  const due=dueCards().length;
   document.getElementById('paceTag').textContent = days>0 ? Math.max(S.goal, Math.ceil(remainingCards/Math.max(days,1)))+" cards/day target" : "exam time";
   const wk=weakDomains();
-  const nRev=dueReviews().length, nNew=Math.min(newCards().length,newRemainingToday());
+  const nUnseen=unseenCount(), nNeed=needWorkCount();
   const nMcq=mcqDuePool().length, nHard=hardCards().length;
   const cur=MODULES.find(m=>m.status==='current');
   let plan=`<ul style="margin:8px 0 0;padding-left:18px">`;
-  plan+=`<li><b>${nRev}</b> cards due for review${nNew?` + <b>${nNew}</b> new card${nNew===1?'':'s'} today`:''} (spaced repetition).</li>`;
+  plan+=`<li><b>${nUnseen}</b> unseen card${nUnseen===1?'':'s'} to learn${nNeed?` · <b>${nNeed}</b> that need more work`:''} (Study tab → card filter).</li>`;
   if(nMcq)plan+=`<li><b>${nMcq}</b> missed question${nMcq===1?'':'s'} ready to re-attempt (Review missed questions).</li>`;
   if(nHard)plan+=`<li><b>${nHard}</b> hard/flagged card${nHard===1?'':'s'} to drill down.</li>`;
   if(cur)plan+=`<li>Focus module: <b>${cur.id}</b> — run a quiz or practice exam.</li>`;
@@ -723,9 +733,8 @@ function moduleItems(course,mod){
     mcqs:  MCQ.filter(q=>q.m===course&&moduleOf(q)===mod)
   };
 }
-function moduleDueCount(course,mod){
-  const today=ymd(new Date());
-  return CARDS.filter((c,i)=>c.m===course&&moduleOf(c)===mod&&(()=>{const st=S.cards['c'+i];return st&&srsMigrate(st).due<=today;})()).length;
+function moduleUnseenCount(course,mod){
+  return CARDS.filter((c,i)=>c.m===course&&moduleOf(c)===mod&&!S.cards['c'+i]).length;
 }
 // module-scoped mastery = accuracy (scoped attempts) × coverage (distinct items seen in the module)
 function moduleMastery(course,mod){
@@ -753,7 +762,7 @@ function openReaderTab(course,mod){
 // launch a scoped study session for this module from the hub
 function studyScoped(course,mod,mode){
   window.MODF=String(mod);
-  const sEl=document.getElementById('studySession'); window.SESSLEN=sEl?sEl.value:'ALL';
+  const sEl=document.getElementById('studySession'); window.CARDFILTER=sEl?sEl.value:'all';
   const sm=document.getElementById('studyModule'); if(sm){sm.value=course; if(typeof fillModuleNumSelect==='function')fillModuleNumSelect();}
   const mn=document.getElementById('studyModuleNum'); if(mn){mn.disabled=false; mn.value=String(mod);}
   const md=document.getElementById('studyMode'); if(md)md.value=mode;
@@ -778,7 +787,7 @@ function renderModuleHub(course,mod){
   const dms=DOMAINS.filter(d=>d.mod===course);
   const color=dms[0]?dms[0].c:'#9aa3b5';
   const {cards,mcqs}=moduleItems(course,mod);
-  const due=moduleDueCount(course,mod);
+  const unseen=moduleUnseenCount(course,mod);
   const mm=moduleMastery(course,mod);
   const ready=S.modReady[course+'_'+mod];
   let readyBadge;
@@ -810,11 +819,11 @@ function renderModuleHub(course,mod){
       '<div style="font-weight:700;margin:2px 0">'+name+'</div>'+
       '<div class="small muted">'+dms.map(d=>d.k+' '+d.name+' · '+d.w+'% of exam').join(' · ')+'</div>'+
       '<div class="bar" style="margin-top:8px"><i style="width:'+mm+'%;background:'+color+'"></i></div>'+
-      '<div class="small muted" style="margin-top:4px">'+mm+'% module mastery · '+cards.length+' cards ('+due+' due) · '+mcqs.length+' questions</div>'+
+      '<div class="small muted" style="margin-top:4px">'+mm+'% module mastery · '+cards.length+' cards ('+unseen+' unseen) · '+mcqs.length+' questions</div>'+
     '</div>'+
     '<div class="card"><h3>Study this module</h3>'+
       '<div class="row" style="flex-wrap:wrap;gap:8px;margin-top:8px">'+
-        '<button class="btn" onclick="studyScoped(\''+course+'\','+mod+',\'flash\')">🃏 Flashcards'+(due?' ('+due+' due)':'')+'</button>'+
+        '<button class="btn" onclick="studyScoped(\''+course+'\','+mod+',\'flash\')">🃏 Flashcards'+(unseen?' ('+unseen+' unseen)':'')+'</button>'+
         '<button class="btn gray" onclick="studyScoped(\''+course+'\','+mod+',\'quiz\')">❓ Quiz</button>'+
         '<button class="btn gray" onclick="runDiagnostic(\''+course+'\','+mod+')">🎯 Readiness check</button>'+
         (hasCalc?'<button class="btn gray" onclick="studyScoped(\''+course+'\','+mod+',\'calc\')">🧮 Calc drills</button>':'')+
@@ -925,7 +934,7 @@ document.getElementById('startBtn').onclick=()=>{
   const mnEl=document.getElementById('studyModuleNum');
   window.MODF=(mnEl&&!mnEl.disabled)?mnEl.value:"ALL";
   const sEl=document.getElementById('studySession');
-  window.SESSLEN=sEl?sEl.value:"ALL";
+  window.CARDFILTER=sEl?sEl.value:"all";
   const mode=document.getElementById('studyMode').value;
   ({flash:runFlash,hard:runHard,quiz:runQuiz,exam:runExam,mcqreview:runMcqReview,mock:runMock,scenario:runScenario,calc:runCalc,ethics:runEthics,keys:runKeys,tips:runTips})[mode](mod);
 };
@@ -980,7 +989,7 @@ function mcqDuePool(){
 // Quiz / Exam / Mock — MCQ runner with confidence
 function mcqRunner(pool,title,opts={}){
   pool=shuffle(pool);
-  const lim=opts.limit||(window.SESSLEN&&window.SESSLEN!=='ALL'?+window.SESSLEN:0);
+  const lim=opts.limit||0;            // quiz passes limit:10; exam/mock run the full pool
   if(lim)pool=pool.slice(0,lim);
   let idx=0,correct=0;
   const area=document.getElementById('studyArea');
@@ -1381,7 +1390,7 @@ autoBackup();
     <button id="cfpTkTheme" style="width:100%;padding:12px;border:1px solid #dfe3ee;border-radius:12px;background:#fff;color:#1d2433;font:600 15px system-ui;cursor:pointer;margin-bottom:9px">🌙 Dark mode</button>
     <button id="cfpTkReset" style="width:100%;padding:11px;border:none;border-radius:12px;background:#fdecea;color:#d6453d;font:600 14px system-ui;cursor:pointer">Reset all progress</button>
     <div id="cfpTkMsg" style="font-size:12.5px;color:#1f9d6b;text-align:center;min-height:16px;margin-top:10px"></div>
-    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.12.0</div>
+    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.13.0</div>
   </div>
 </div>
 <script>
