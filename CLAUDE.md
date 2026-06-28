@@ -25,15 +25,19 @@ simplified **SM-2** algorithm (not the old Leitner boxes):
   lapses, due, last, leech, flag}`. `gradeCard(i, grade)` takes `grade` 0=Again
   1=Hard 2=Good 3=Easy (still accepts the legacy boolean). `srsMigrate()` upgrades
   old `{box}` saves in place.
-- **OPTIONAL daily new-card cap** `S.newPerDay` (default **0 = OFF / show all**;
-  editable in Settings, blank/0 = all). When set >0 it paces how many never-seen
-  cards enter the deck per day; it NEVER removes cards. `newRemainingToday()`
-  returns `Infinity` when off. `S.newSeen[ymd]` counts new cards introduced today.
-  `dueCards()` = reviews + remaining new. The **session-length** select (`#studySession`,
-  default **Full deck**) is the primary control: "Full deck" studies EVERY card in
-  scope; a number runs a focused due-reviews+new session capped to that count.
-  (History: v2.10.0 shipped with the cap defaulting to 20, which looked like cards
-  were deleted — v2.10.1 made it off-by-default and auto-reverts saved `20`s to 0.)
+- **Card filter (the primary flashcard control)** — `#studySession` select →
+  `window.CARDFILTER` ∈ `all | unseen | needwork | known`. `cardStatus(i)` classifies
+  each card: `unseen` (no SRS state), `needwork` (flag/leech/`lapses>=1`/`ease<2.5` —
+  i.e. you pressed Hard/Again), else `known`. `flashcards.js` builds the deck from the
+  in-scope cards filtered by status (no count cap, no due-date gating). Grading still
+  updates ease/lapses (that's what drives the buckets) — it just no longer schedules a
+  "due date." Same-day resume keys on course+sub-module+mode+**filter**.
+  (History: the old spaced-rep "due today" / session-length count model — `dueCards`,
+  `dueReviews`, `newPerDay`, `SESSLEN` — was removed in v2.13.0 in favor of this; those
+  fns/`S.newPerDay` may still exist but are no longer surfaced.)
+- Dashboard KPI shows **Unseen cards** (`unseenCount()`); the Module Hub shows
+  per-module **unseen** counts (`moduleUnseenCount`). The separate **Hard cards** mode
+  (`#studyMode`, `hardCards()`) is kept as-is, independent of the card filter.
 - **Leeches**: `lapses>=8` flags `leech`. **Flag/star** via `toggleFlag(i)`.
   `hardCards()` (flagged ∪ leech ∪ `ease<=2.0`) powers the **Hard cards** mode.
 - **MCQ misses** schedule into `S.mcqDue[questionText]` (Leitner ladder) via
