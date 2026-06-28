@@ -174,6 +174,20 @@ Print" outputs only the sheet, full-width, color-exact). Case-study modules auth
 when a module has cards OR `MODCHEAT` content.
 
 ## Interactive Readers
+> **STANDING RULE — readers are the COMPLETE visualized source of truth.** Each course's
+> reader must contain EVERYTHING in that course's textbook — every concept the flashcards,
+> MCQs, or exam cheat-sheets (`MODCHEAT`) teach must also be explained in the reader. The
+> **textbooks are the authority**, stored in Google Drive under **`CFP → Textbooks`** (each
+> course as a whole PDF, plus split halves, e.g. `FP512 Modules 1-4` / `5-8`). When you add or
+> revise a course — or whenever asked to check — run a **coverage cross-check**: extract the
+> distinct card/MCQ topics + `MODCHEAT` key terms per course, grep the reader text, and confirm
+> each concept is present (verify the *concept*, not just the phrase — many are worded
+> differently). Fill any genuine gap with a concise, style-matched entry in the right tab,
+> grounded in the textbook (the audited cards are a faithful textbook distillation and fine to
+> ground from). This applies to ALL future courses (FP513+). (History: a v2.11.x audit added
+> physical-hazard, 1035 exchange, Section 132 fringes, mutual-vs-stock, yield curve, financial
+> therapy, cultural humility, PTIN, mortgage points, written-disclosure list, BOP-vs-CPP, etc.)
+
 `apps/fp511-reading.html`, `apps/fp512-reading.html` — standalone long-form reading
 docs (their own styling). They have injected: a "Home" button (back to `../index.html`),
 SW registration, and the shared **reader theme** (`reader-theme.css` + `reader-theme.js`,
