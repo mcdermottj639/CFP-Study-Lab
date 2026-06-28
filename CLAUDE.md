@@ -18,6 +18,30 @@ the UI — plus two long-form **Interactive Readers** reachable from the Modules
 - The app is **standalone/offline**: no external CDNs, no analytics, no backend.
   Progress is saved per-device in `localStorage` key `cfpStudyHome.v1`.
 
+### Study engine / spaced repetition (SM-2)
+The Study tab's scheduler lives in `src/study-home.src.html`. Flashcards use a
+simplified **SM-2** algorithm (not the old Leitner boxes):
+- Per-card state in `S.cards["c"+index]` = `{ease, intj(interval days), reps,
+  lapses, due, last, leech, flag}`. `gradeCard(i, grade)` takes `grade` 0=Again
+  1=Hard 2=Good 3=Easy (still accepts the legacy boolean). `srsMigrate()` upgrades
+  old `{box}` saves in place.
+- **Daily new-card cap** `S.newPerDay` (default 20, editable in Settings): only
+  that many never-seen cards enter the deck per day. `S.newSeen[ymd]` counts new
+  cards introduced today; `newRemainingToday()`/`dueReviews()`/`newCards()` drive
+  the deck and the dashboard "due" count. `dueCards()` = reviews + remaining new.
+- **Leeches**: `lapses>=8` flags `leech`. **Flag/star** via `toggleFlag(i)`.
+  `hardCards()` (flagged ∪ leech ∪ `ease<=2.0`) powers the **Hard cards** mode.
+- **MCQ misses** schedule into `S.mcqDue[questionText]` (Leitner ladder) via
+  `mcqSchedule()`; the **Review missed questions** mode (`mcqDuePool()`) resurfaces
+  them; they retire after enough correct answers.
+- **Mastery coverage** uses DISTINCT items seen (`S.seen[mod]` via `markSeen()`),
+  not attempt count, so re-drilling one card no longer inflates readiness.
+- **Mock exam** samples WITHOUT replacement and reports any per-domain shortfall
+  instead of silently duplicating questions.
+- Study UI adds a **session-length** select (`#studySession` → `window.SESSLEN`)
+  honored by both the flashcard deck and `mcqRunner`, plus the Hard-cards and
+  Review-missed modes in `#studyMode`.
+
 ## How it's built (IMPORTANT — index.html is generated, don't hand-edit it)
 `index.html` is **built** from a source artifact + overlays. Editing it directly
 will be overwritten on the next build. The real sources are:
@@ -140,7 +164,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.8.0`) on every shippable change so installed apps auto-update
+  (current: `v2.9.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
@@ -152,9 +176,14 @@ Everything is local — repo scan for `https://` in served files must stay empty
 ## Gotchas
 - **Never hand-edit `index.html`** — change `src/`, `content/`, or `scripts/` and rebuild.
 - The flashcard runner is overridden by `flashcards.js` (Term/Definition first,
-  Shuffle/In-order, Auto-flip). It replaces `window.runFlash` and relies on the
-  app globals `dueCards, filt, CARDS, shuffle, gradeCard, go` plus `window.MODF`
-  and `moduleOf` for per-module filtering (see "Per-module filtering" above).
+  Shuffle/In-order, Auto-flip **preview**, **Again/Hard/Good/Easy grading**,
+  keyboard shortcuts `Space`=flip · `1-4`=grade · `f`=flag, selectable session
+  length, flag/star, and same-day session resume via `localStorage.cfpFlashSession`).
+  It replaces `window.runFlash` and relies on the app globals `dueReviews,
+  newCards, newRemainingToday, hardCards, filt, CARDS, shuffle, gradeCard,
+  toggleFlag, go, S, save` plus `window.MODF` / `window.SESSLEN` / `moduleOf`.
+  Each graded card also pushes a confidence-calibration attempt into `S.attempts`
+  so flashcards show up in Analytics (Again→guess/wrong … Easy→confident/right).
 - The source has an inert `MOBILE_TPL` string (old Kyle payload) containing a
   second `<style>`/`<title>` — it's not live DOM; ignore it.
 - `build_index.mjs` FIXES use regex against the (minified) source — if the source

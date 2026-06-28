@@ -132,14 +132,23 @@ a.link{color:var(--brand);text-decoration:none;font-weight:600}
           <select id="studyModuleNum"></select>
           <select id="studyMode">
             <option value="flash">Flashcards (spaced repetition)</option>
+            <option value="hard">Hard cards (flagged &amp; leeches)</option>
             <option value="quiz">Quiz</option>
             <option value="exam">Practice exam (module)</option>
+            <option value="mcqreview">Review missed questions</option>
             <option value="mock">Cumulative mock (blueprint-weighted)</option>
             <option value="scenario">Scenario item-sets</option>
             <option value="calc">Calculator drills</option>
             <option value="ethics">Ethics &amp; Standards drill</option>
             <option value="keys">Key numbers sheet</option>
             <option value="tips">Exam strategies &amp; traps</option>
+          </select>
+          <select id="studySession" title="Session length">
+            <option value="ALL">Full deck</option>
+            <option value="10">10 items</option>
+            <option value="20" selected>20 items</option>
+            <option value="30">30 items</option>
+            <option value="50">50 items</option>
           </select>
         </div>
         <button class="btn" id="startBtn">Start</button>
@@ -174,6 +183,7 @@ a.link{color:var(--brand);text-decoration:none;font-weight:600}
       <div class="row" style="align-items:center">
         <label class="small">Exam date <input type="date" id="examDate"></label>
         <label class="small">Daily card goal <input type="number" id="goalCards" min="5" max="200" style="width:80px"></label>
+        <label class="small">New cards/day <input type="number" id="newPerDay" min="0" max="200" style="width:80px"></label>
         <button class="btn sm" onclick="saveSettings()">Save</button>
         <button class="btn gray sm" onclick="resetAll()">Reset all progress</button>
       </div>
@@ -306,31 +316,88 @@ const EXAM_TOTAL=170; // real CFP exam item count
 const LS="cfpStudyHome.v1";
 let S=load();
 function load(){
-  try{const x=JSON.parse(localStorage.getItem(LS));if(x)return x;}catch(e){}
-  return {cards:{}, attempts:[], misses:[], sessions:{}, mastery:{}, examDate:"2027-03-09", goal:30, lastStudy:null, streak:0};
+  try{const x=JSON.parse(localStorage.getItem(LS));if(x){
+    // migrate older saves to the SM-2 schema
+    if(!x.seen)x.seen={}; if(!x.mcqDue)x.mcqDue={}; if(!x.newSeen)x.newSeen={};
+    if(typeof x.newPerDay!=='number')x.newPerDay=20;
+    return x;
+  }}catch(e){}
+  return {cards:{}, attempts:[], misses:[], sessions:{}, mastery:{}, seen:{}, mcqDue:{}, newSeen:{}, newPerDay:20, examDate:"2027-03-09", goal:30, lastStudy:null, streak:0};
 }
 function save(){localStorage.setItem(LS,JSON.stringify(S));}
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._);t._=setTimeout(()=>t.classList.remove('show'),2200);}
 
-/* ====================== SPACED REPETITION (Leitner) ====================== */
+/* ====================== SPACED REPETITION (SM-2) ======================
+   Each card stores {ease, intj(interval days), reps, lapses, due, last,
+   leech, flag}. Grades: 0=Again 1=Hard 2=Good 3=Easy. A daily NEW-card cap
+   (S.newPerDay) limits how many never-seen cards enter the deck each day so
+   the "due today" count stays meaningful instead of dumping the whole deck. */
 function cardKey(i){return "c"+i;}
-function dueCards(){
-  const today=ymd(new Date());
-  return CARDS.map((c,i)=>({c,i})).filter(x=>{
-    const st=S.cards[cardKey(x.i)];
-    if(!st)return true;
-    return st.due<=today;
-  });
+const LEECH_LAPSES=8;
+// migrate a legacy Leitner card ({box,due}) to the SM-2 shape, in place
+function srsMigrate(st){
+  if(st && st.box!==undefined && st.reps===undefined){
+    st.reps=st.box; st.ease=2.5; st.intj=[0,1,2,4,9,21][Math.min(5,st.box)]||0; st.lapses=0;
+  }
+  return st;
 }
-function gradeCard(i,known){
-  const k=cardKey(i);const st=S.cards[k]||{box:0};
-  st.box=known?Math.min(5,(st.box||0)+1):0;
-  const days=[0,1,2,4,9,21][st.box];
-  st.due=ymd(addDays(new Date(),days));
-  st.last=ymd(new Date());
-  S.cards[k]=st;
-  bumpMastery(CARDS[i].m, known?1:0);
+function newRemainingToday(){
+  const used=S.newSeen[ymd(new Date())]||0;
+  return Math.max(0,(S.newPerDay||20)-used);
+}
+// reviews that are actually due (state exists and due<=today)
+function dueReviews(){
+  const today=ymd(new Date());
+  const out=[];
+  CARDS.forEach((c,i)=>{const st=S.cards[cardKey(i)];if(st&&srsMigrate(st).due<=today)out.push({c,i});});
+  return out;
+}
+// cards never studied yet
+function newCards(){
+  const out=[];
+  CARDS.forEach((c,i)=>{if(!S.cards[cardKey(i)])out.push({c,i});});
+  return out;
+}
+// global due deck (reviews + today's remaining new-card allowance) for KPIs
+function dueCards(){
+  return dueReviews().concat(newCards().slice(0,newRemainingToday()));
+}
+function gradeCard(i,grade){
+  if(grade===true)grade=2; if(grade===false)grade=0;       // back-compat w/ old boolean API
+  grade=Math.max(0,Math.min(3,grade|0));
+  const k=cardKey(i);
+  const wasNew=!S.cards[k];
+  const st=srsMigrate(S.cards[k])||{ease:2.5,intj:0,reps:0,lapses:0};
+  let ease=st.ease||2.5, intj=st.intj||0, reps=st.reps||0, lapses=st.lapses||0;
+  if(grade===0){                                            // Again — reset, schedule for today
+    reps=0; lapses++; ease=Math.max(1.3,ease-0.20); intj=0;
+  }else{
+    if(grade===1)ease=Math.max(1.3,ease-0.15);
+    else if(grade===3)ease=ease+0.15;
+    if(reps===0)      intj=(grade===3?4:1);
+    else if(reps===1) intj=(grade===3?6:3);
+    else              intj=Math.max(1,Math.round(intj*(grade===1?1.2:grade===3?ease*1.3:ease)));
+    reps++;
+  }
+  intj=Math.min(intj,365);
+  const ns={ease,intj,reps,lapses,due:ymd(addDays(new Date(),intj)),last:ymd(new Date())};
+  if(st.flag)ns.flag=true;
+  if(lapses>=LEECH_LAPSES)ns.leech=true;
+  S.cards[k]=ns;
+  if(wasNew){const t=ymd(new Date());S.newSeen[t]=(S.newSeen[t]||0)+1;}
+  markSeen(CARDS[i].m,k);
+  bumpMastery(CARDS[i].m, grade===0?0:1);
   logSession();save();
+}
+function toggleFlag(i){
+  const k=cardKey(i);const st=srsMigrate(S.cards[k])||{ease:2.5,intj:0,reps:0,lapses:0};
+  st.flag=!st.flag; S.cards[k]=st; save(); return !!st.flag;
+}
+// cards the learner struggles with: flagged, leeches, or low ease
+function hardCards(){
+  const out=[];
+  CARDS.forEach((c,i)=>{const st=S.cards[cardKey(i)];if(st&&(st.flag||st.leech||(st.ease&&st.ease<=2.0)))out.push({c,i});});
+  return out;
 }
 
 /* ====================== MASTERY ====================== */
@@ -338,12 +405,18 @@ function bumpMastery(mod,correct){
   const m=S.mastery[mod]||{n:0,c:0};
   m.n++; m.c+=correct; S.mastery[mod]=m;
 }
+// record a DISTINCT item (card or MCQ) seen for a module — drives coverage
+function markSeen(mod,key){
+  const s=S.seen[mod]||(S.seen[mod]={});
+  s[key]=1;
+}
+function seenCount(mod){const s=S.seen[mod];return s?Object.keys(s).length:0;}
 function totalItems(mod){return CARDS.filter(c=>c.m===mod).length + MCQ.filter(q=>q.m===mod).length;}
 function masteryPct(mod){
   const m=S.mastery[mod]; if(!m||!m.n)return 0;
-  const acc=m.c/m.n;                      // accuracy
-  const cov=Math.min(1, m.n/(totalItems(mod)||1)); // coverage of the module's material
-  return Math.round(100*acc*cov);         // exam-readiness needs BOTH accuracy and breadth
+  const acc=m.c/m.n;                                  // accuracy across attempts
+  const cov=Math.min(1, seenCount(mod)/(totalItems(mod)||1)); // breadth = DISTINCT items seen
+  return Math.round(100*acc*cov);                     // exam-readiness needs BOTH accuracy and breadth
 }
 function readiness(){
   let r=0;
@@ -406,9 +479,14 @@ function renderDash(){
   const due=dueCards().length;
   document.getElementById('paceTag').textContent = days>0 ? Math.max(S.goal, Math.ceil(remainingCards/Math.max(days,1)))+" cards/day target" : "exam time";
   const wk=weakDomains();
+  const nRev=dueReviews().length, nNew=Math.min(newCards().length,newRemainingToday());
+  const nMcq=mcqDuePool().length, nHard=hardCards().length;
+  const cur=MODULES.find(m=>m.status==='current');
   let plan=`<ul style="margin:8px 0 0;padding-left:18px">`;
-  plan+=`<li><b>${due}</b> flashcards due for review (spaced repetition).</li>`;
-  plan+=`<li>Focus module: <b>${MODULES.find(m=>m.status==='current').id}</b> — run a quiz or practice exam.</li>`;
+  plan+=`<li><b>${nRev}</b> cards due for review${nNew?` + <b>${nNew}</b> new card${nNew===1?'':'s'} today`:''} (spaced repetition).</li>`;
+  if(nMcq)plan+=`<li><b>${nMcq}</b> missed question${nMcq===1?'':'s'} ready to re-attempt (Review missed questions).</li>`;
+  if(nHard)plan+=`<li><b>${nHard}</b> hard/flagged card${nHard===1?'':'s'} to drill down.</li>`;
+  if(cur)plan+=`<li>Focus module: <b>${cur.id}</b> — run a quiz or practice exam.</li>`;
   if(wk[0])plan+=`<li>Shore up weak topic: <b>${wk[0]}</b>.</li>`;
   plan+=`<li>Do 1 scenario item-set to build exam stamina.</li></ul>`;
   document.getElementById('todayPlan').innerHTML=plan;
@@ -514,9 +592,13 @@ document.getElementById('startBtn').onclick=()=>{
   const mod=document.getElementById('studyModule').value;
   const mnEl=document.getElementById('studyModuleNum');
   window.MODF=(mnEl&&!mnEl.disabled)?mnEl.value:"ALL";
+  const sEl=document.getElementById('studySession');
+  window.SESSLEN=sEl?sEl.value:"ALL";
   const mode=document.getElementById('studyMode').value;
-  ({flash:runFlash,quiz:runQuiz,exam:runExam,mock:runMock,scenario:runScenario,calc:runCalc,ethics:runEthics,keys:runKeys,tips:runTips})[mode](mod);
+  ({flash:runFlash,hard:runHard,quiz:runQuiz,exam:runExam,mcqreview:runMcqReview,mock:runMock,scenario:runScenario,calc:runCalc,ethics:runEthics,keys:runKeys,tips:runTips})[mode](mod);
 };
+// Hard-cards mode reuses the flashcard runner over the struggling-cards pool
+function runHard(mod){window._hardOnly=true;runFlash(mod);}
 function filt(arr,mod){let r=mod==="ALL"?arr:arr.filter(x=>x.m===mod);const mf=window.MODF;if(mf&&mf!=="ALL")r=r.filter(x=>moduleOf(x)===+mf);return r;}
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 
@@ -547,10 +629,27 @@ function runFlash(mod){
   draw();
 }
 
+/* ===== MCQ spaced review — missed questions resurface on a Leitner ladder ===== */
+function mcqKey(q){return q.q;}                       // question text is the identity
+function mcqSchedule(q,known){
+  const today=ymd(new Date());const k=mcqKey(q);
+  const st=S.mcqDue[k]||{box:0};
+  st.box=known?Math.min(5,(st.box||0)+1):0;
+  st.due=ymd(addDays(new Date(),[0,1,2,4,9,21][st.box]));
+  st.mod=q.m;st.d=q.d;st.t=q.t;
+  if(known&&st.box>=4)delete S.mcqDue[k];              // retired — answered right enough times
+  else S.mcqDue[k]=st;
+}
+function mcqDuePool(){
+  const today=ymd(new Date());
+  return MCQ.filter(q=>{const st=S.mcqDue[mcqKey(q)];return st&&st.due<=today;});
+}
+
 // Quiz / Exam / Mock — MCQ runner with confidence
 function mcqRunner(pool,title,opts={}){
   pool=shuffle(pool);
-  if(opts.limit)pool=pool.slice(0,opts.limit);
+  const lim=opts.limit||(window.SESSLEN&&window.SESSLEN!=='ALL'?+window.SESSLEN:0);
+  if(lim)pool=pool.slice(0,lim);
   let idx=0,correct=0;
   const area=document.getElementById('studyArea');
   function draw(){
@@ -578,6 +677,8 @@ function mcqRunner(pool,title,opts={}){
     const q=pool[idx];const ok=picked===q.a;if(ok)correct++;
     S.attempts.push({mod:q.m,domain:q.d,topic:q.t,correct:ok?1:0,conf:cf,ts:Date.now()});
     bumpMastery(q.m,ok?1:0);
+    markSeen(q.m,'q:'+mcqKey(q));
+    mcqSchedule(q,ok);                                   // miss → resurfaces; right → advances/retires
     if(!ok)S.misses.push({mod:q.m,topic:q.t,q:q.q,correct:q.o[q.a],e:q.e,ts:Date.now()});
     logSession();save();
     const opts=document.querySelectorAll('#opts .opt');
@@ -594,13 +695,26 @@ function modLabel(mod){const mf=window.MODF;return (mf&&mf!=="ALL"&&MODMETA[mod]
 function runQuiz(mod){const p=filt(MCQ,mod);if(!p.length)return emptyMsg("No quiz questions yet for "+modLabel(mod));mcqRunner(p,"Quiz",{limit:10});}
 function runExam(mod){const p=filt(MCQ,mod);if(!p.length)return emptyMsg("No exam questions yet for "+modLabel(mod));mcqRunner(p,(mod==="ALL"?"Practice exam":modLabel(mod)+" practice exam"));}
 function runMock(){
-  // blueprint-weighted selection from available MCQ
+  // blueprint-weighted selection from available MCQ — NO repeats; flag any shortfall honestly
   const byDom={};MCQ.forEach(q=>{(byDom[q.d]=byDom[q.d]||[]).push(q);});
-  let pool=[];
-  DOMAINS.forEach(d=>{const n=Math.round((d.w/100)*30);const avail=shuffle(byDom[d.k]||[]);for(let i=0;i<n;i++)pool.push(avail[i%(avail.length||1)]);});
-  pool=pool.filter(Boolean);
+  let pool=[];const short=[];
+  DOMAINS.forEach(d=>{
+    const want=Math.round((d.w/100)*30);if(!want)return;
+    const take=shuffle(byDom[d.k]||[]).slice(0,want);   // sample WITHOUT replacement
+    pool=pool.concat(take);
+    if(take.length<want)short.push(`${d.k} ${take.length}/${want}`);
+  });
+  pool=shuffle(pool.filter(Boolean));
   if(!pool.length)return emptyMsg("Add more questions to build a mock.");
-  mcqRunner(pool,"Cumulative mock (blueprint-weighted)");
+  const header=short.length
+    ? `<b>Cumulative mock</b> — ${pool.length} questions (blueprint-weighted, no repeats). <span class="small muted">Limited content, fewer than target in: ${short.join(', ')}.</span>`
+    : null;
+  mcqRunner(pool,"Cumulative mock (blueprint-weighted)",header?{header}:{});
+}
+function runMcqReview(){
+  const p=mcqDuePool();
+  if(!p.length)return emptyMsg("No questions due for review — miss some quiz/exam questions and they'll resurface here on a spaced schedule.");
+  mcqRunner(p,"Review missed questions");
 }
 function runScenario(mod){
   const list=filt(SCENARIOS,mod);
@@ -611,8 +725,9 @@ function runScenario(mod){
   mcqRunner(flat,"Scenario: "+sc.title,{header});
 }
 function runEthics(){
-  const p=MCQ.filter(q=>q.d==="A").concat(CARDS.filter(c=>c.d==="A").map(c=>({m:c.m,d:"A",t:c.t,q:"True/False & recall: "+c.f,o:["Reveal answer"],a:0,e:c.b})));
-  mcqRunner(MCQ.filter(q=>q.d==="A"),"Ethics & Standards drill");
+  const p=MCQ.filter(q=>q.d==="A");
+  if(!p.length)return emptyMsg("No ethics questions yet.");
+  mcqRunner(p,"Ethics & Standards drill");
 }
 /* ===== PARAMETERIZED CALC GENERATORS (infinite, never stale) ===== */
 function _r(a,b){return a+Math.random()*(b-a);}
@@ -631,13 +746,13 @@ const CALCGEN=[
 ];
 function runCalc(mod){
   var list=CALCGEN.filter(function(g){return mod==='ALL'||g.m===mod;}); if(!list.length)list=CALCGEN;
-  var count=0,correct=0,cur=null;var area=document.getElementById('studyArea');
+  var count=0,correct=0,cur=null,curGen=null;var area=document.getElementById('studyArea');
   function draw(){
-    var g=list[Math.floor(Math.random()*list.length)];cur=g.gen();
+    var g=list[Math.floor(Math.random()*list.length)];curGen=g;cur=g.gen();
     area.innerHTML='<div class="card"><div class="flex"><span class="small muted">Calc drill #'+(count+1)+' · '+correct+' correct</span><span class="tag">'+g.m+'</span></div><div class="small muted" style="margin:2px 0 6px">'+g.name+' — fresh numbers every time</div><h3>'+cur.prompt+'</h3><div class="row"><input id="calcin" type="number" step="any" placeholder="Your answer"><button class="btn" onclick="window._csub()">Check</button><button class="btn gray" onclick="window._cskip()">New problem</button></div><div id="calcrev"></div></div>';
     var el=document.getElementById('calcin'); if(el){el.focus(); el.addEventListener('keydown',function(e){if(e.key==='Enter')window._csub();});}
   }
-  window._csub=function(){var v=parseFloat(document.getElementById('calcin').value);var ok=!isNaN(v)&&Math.abs(v-cur.answer)<=cur.tol;count++;if(ok)correct++;S.attempts.push({mod:cur&&list[0]?list[0].m:'FP511',domain:'B',topic:'Calculator',correct:ok?1:0,conf:2,ts:Date.now()});logSession();save();document.getElementById('calcrev').innerHTML='<div class="expl"><b>'+(ok?'✓ Within tolerance':'✗ Answer ≈ '+Math.round(cur.answer).toLocaleString())+'.</b><br>'+cur.steps+'</div><div class="center" style="margin-top:10px"><button class="btn" onclick="window._cnext()">Next problem →</button></div>';};
+  window._csub=function(){var v=parseFloat(document.getElementById('calcin').value);var ok=!isNaN(v)&&Math.abs(v-cur.answer)<=cur.tol;count++;if(ok)correct++;S.attempts.push({mod:curGen?curGen.m:'FP511',domain:curGen?curGen.d:'B',topic:(curGen?curGen.name:'Calculator'),correct:ok?1:0,conf:2,ts:Date.now()});if(curGen)bumpMastery(curGen.m,ok?1:0);logSession();save();document.getElementById('calcrev').innerHTML='<div class="expl"><b>'+(ok?'✓ Within tolerance':'✗ Answer ≈ '+Math.round(cur.answer).toLocaleString())+'.</b><br>'+cur.steps+'</div><div class="center" style="margin-top:10px"><button class="btn" onclick="window._cnext()">Next problem →</button></div>';};
   window._cskip=function(){draw();};
   window._cnext=function(){draw();};
   draw();
@@ -862,10 +977,12 @@ function autoBackup(){ var wk=7*86400000; if(!S.lastBackup || (Date.now()-S.last
 function saveSettings(){
   S.examDate=document.getElementById('examDate').value||S.examDate;
   S.goal=parseInt(document.getElementById('goalCards').value)||S.goal;
+  const np=parseInt(document.getElementById('newPerDay').value);
+  if(!isNaN(np)&&np>=0)S.newPerDay=np;
   save();renderDash();toast("Settings saved");
 }
 function resetAll(){if(confirm("Erase all progress on this device? (Drive backups are kept.)")){localStorage.removeItem(LS);S=load();initFields();go('dash');toast("Progress reset");}}
-function initFields(){document.getElementById('examDate').value=S.examDate;document.getElementById('goalCards').value=S.goal;}
+function initFields(){document.getElementById('examDate').value=S.examDate;document.getElementById('goalCards').value=S.goal;const n=document.getElementById('newPerDay');if(n)n.value=(S.newPerDay==null?20:S.newPerDay);}
 
 
 /* ====================== IN-ARTIFACT VIEWER ====================== */
