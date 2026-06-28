@@ -562,11 +562,11 @@ function courseModuleList(course,color){
     const badge=hasContent?`<span class="pill" style="background:#f0f2f8;color:var(--muted)">${mm}%</span>`
       :open?`<span class="pill" style="background:#eef4ff;color:var(--brand)">guide</span>`
       :`<span class="pill" style="background:#f0f2f8;color:var(--muted)">soon</span>`;
-    const onclick=open?` onclick="openModule('${course}',${n})" style="cursor:pointer"`:` style="opacity:.55"`;
-    return `<div class="flex hubrow"${onclick}>
-      <span class="small"><b style="color:${color}">M${n}</b> ${meta[n]}</span>${badge}</div>`;
+    return `<button type="button" class="modrow"${open?` onclick="openModule('${course}',${n})"`:' disabled'}>
+      <span class="modrow-l"><span class="modnum" style="background:${color}22;color:${color}">M${n}</span><span class="modname">${meta[n]}</span></span>
+      <span class="modrow-r">${badge}${open?'<span class="modchev">›</span>':''}</span></button>`;
   }).join('');
-  return `<details class="modlist" style="margin-top:10px"><summary class="small" style="cursor:pointer;font-weight:700">${nums.length} modules — deep dive ▾</summary>${rows}</details>`;
+  return `<details class="modlist"><summary>📂 ${nums.length} modules — tap to deep-dive</summary><div class="modrows">${rows}</div></details>`;
 }
 function moduleLinks(id){
   if(driveFiles===null)return '<span class="muted">Loading links… </span><a class="link" style="cursor:pointer" onclick="loadDrive()">Refresh</a>';
