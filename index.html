@@ -251,6 +251,9 @@ section:not(.hidden){animation:rise .42s cubic-bezier(.2,.7,.3,1)}
     <div class="grid g2" id="moduleGrid"></div>
   </section>
 
+  <!-- MODULE HUB (per-module deep dive; reached by clicking a module) -->
+  <section id="modhub" class="hidden"></section>
+
   <!-- STUDY -->
   <section id="study" class="hidden">
     <div class="card" style="margin-bottom:14px">
@@ -440,10 +443,11 @@ function load(){
   try{const x=JSON.parse(localStorage.getItem(LS));if(x){
     // migrate older saves to the SM-2 schema
     if(!x.seen)x.seen={}; if(!x.mcqDue)x.mcqDue={}; if(!x.newSeen)x.newSeen={};
+    if(!x.modReady)x.modReady={}; if(!x.objChecked)x.objChecked={};
     if(typeof x.newPerDay!=='number')x.newPerDay=20;
     return x;
   }}catch(e){}
-  return {cards:{}, attempts:[], misses:[], sessions:{}, mastery:{}, seen:{}, mcqDue:{}, newSeen:{}, newPerDay:20, examDate:"2027-03-09", goal:30, lastStudy:null, streak:0};
+  return {cards:{}, attempts:[], misses:[], sessions:{}, mastery:{}, seen:{}, mcqDue:{}, newSeen:{}, modReady:{}, objChecked:{}, newPerDay:20, examDate:"2027-03-09", goal:30, lastStudy:null, streak:0};
 }
 function save(){localStorage.setItem(LS,JSON.stringify(S));}
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._);t._=setTimeout(()=>t.classList.remove('show'),2200);}
@@ -575,7 +579,7 @@ function daysTo(dstr){const d=new Date(dstr+"T00:00:00");return Math.ceil((d-new
 /* ====================== TABS ====================== */
 function go(t){
   document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.t===t));
-  ['dash','modules','study','analytics','mobile'].forEach(id=>document.getElementById(id).classList.toggle('hidden',id!==t));
+  ['dash','modules','study','analytics','mobile','modhub'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.toggle('hidden',id!==t);});
   if(t==='dash')renderDash();
   if(t==='analytics')renderAnalytics();
   if(t==='modules')renderModules();
@@ -657,8 +661,32 @@ function renderModules(){
       <div class="bar"><i style="width:${mp}%;background:${color}"></i></div>
       <div class="small muted" style="margin:4px 0 10px">${mp}% exam-ready</div>
       <div class="small">${links}</div>
+      ${courseModuleList(m.id,color)}
     </div>`;
   }).join('');
+}
+// Clickable list of the individual modules inside a course — each opens its Module Hub.
+function courseModuleList(course,color){
+  const meta=(typeof MODMETA!=='undefined')?MODMETA[course]:null;
+  if(!meta)return '';
+  const nums=Object.keys(meta).map(Number).sort((a,b)=>a-b);
+  // modules that have study material (cards/MCQs)…
+  const present=new Set();
+  CARDS.concat(MCQ).forEach(x=>{if(x.m===course){const n=moduleOf(x);if(n)present.add(n);}});
+  // …or authored teaching content (objectives/synthesis) → still openable as a guide
+  const guide=n=>!!(((window.MODOBJ||{})[course]||{})[n]||((window.MODSYN||{})[course]||{})[n]);
+  const rows=nums.map(n=>{
+    const hasContent=present.has(n);
+    const open=hasContent||guide(n);
+    const mm=hasContent?moduleMastery(course,n):0;
+    const badge=hasContent?`<span class="pill" style="background:#f0f2f8;color:var(--muted)">${mm}%</span>`
+      :open?`<span class="pill" style="background:#eef4ff;color:var(--brand)">guide</span>`
+      :`<span class="pill" style="background:#f0f2f8;color:var(--muted)">soon</span>`;
+    const onclick=open?` onclick="openModule('${course}',${n})" style="cursor:pointer"`:` style="opacity:.55"`;
+    return `<div class="flex hubrow"${onclick}>
+      <span class="small"><b style="color:${color}">M${n}</b> ${meta[n]}</span>${badge}</div>`;
+  }).join('');
+  return `<details class="modlist" style="margin-top:10px"><summary class="small" style="cursor:pointer;font-weight:700">${nums.length} modules — deep dive ▾</summary>${rows}</details>`;
 }
 function moduleLinks(id){
   var R={FP511:'apps/fp511-reading.html',FP512:'apps/fp512-reading.html'};
@@ -667,6 +695,112 @@ function moduleLinks(id){
   return '<a class="link" href="'+r+'">📖 Open interactive reader</a>';
 }
 function loadDrive(){renderModules();}
+
+/* ====================== MODULE HUB (per-module deep dive) ====================== */
+function moduleItems(course,mod){
+  return {
+    cards: CARDS.filter(c=>c.m===course&&moduleOf(c)===mod),
+    mcqs:  MCQ.filter(q=>q.m===course&&moduleOf(q)===mod)
+  };
+}
+function moduleDueCount(course,mod){
+  const today=ymd(new Date());
+  return CARDS.filter((c,i)=>c.m===course&&moduleOf(c)===mod&&(()=>{const st=S.cards['c'+i];return st&&srsMigrate(st).due<=today;})()).length;
+}
+// module-scoped mastery = accuracy (scoped attempts) × coverage (distinct items seen in the module)
+function moduleMastery(course,mod){
+  let n=0,c=0;
+  S.attempts.forEach(a=>{ if(a.mod===course&&moduleOf({m:a.mod,t:a.topic})===mod){n++;c+=a.correct;} });
+  if(!n)return 0;
+  const acc=c/n;
+  const seen=S.seen[course]||{};
+  let distinct=0,total=0;
+  CARDS.forEach((cd,i)=>{ if(cd.m===course&&moduleOf(cd)===mod){total++; if(seen['c'+i])distinct++;} });
+  MCQ.forEach(q=>{ if(q.m===course&&moduleOf(q)===mod){total++; if(seen['q:'+q.q])distinct++;} });
+  const cov=total?Math.min(1,distinct/total):0;
+  return Math.round(100*acc*cov);
+}
+function openModule(course,mod){ window._hubCtx={course:course,mod:mod}; renderModuleHub(course,mod); go('modhub'); window.scrollTo(0,0); }
+function toggleObj(course,mod,i){
+  const k=course+'_'+mod; const set=S.objChecked[k]||(S.objChecked[k]={});
+  set[i]=!set[i]; save(); renderModuleHub(course,mod);
+}
+function openReaderTab(course,mod){
+  const file=(window.READER_MAP||{})[course]; if(!file)return;
+  const tab=((window.TAB_MAP||{})[course]||{})[mod];
+  location.href=file+(tab?('#'+tab):'');
+}
+// launch a scoped study session for this module from the hub
+function studyScoped(course,mod,mode){
+  window.MODF=String(mod);
+  const sEl=document.getElementById('studySession'); window.SESSLEN=sEl?sEl.value:'ALL';
+  const sm=document.getElementById('studyModule'); if(sm){sm.value=course; if(typeof fillModuleNumSelect==='function')fillModuleNumSelect();}
+  const mn=document.getElementById('studyModuleNum'); if(mn){mn.disabled=false; mn.value=String(mod);}
+  const md=document.getElementById('studyMode'); if(md)md.value=mode;
+  go('study');
+  ({flash:runFlash,quiz:runQuiz,calc:runCalc,scenario:runScenario,exam:runExam})[mode](course);
+}
+function runDiagnostic(course,mod){
+  window.MODF=String(mod);
+  const pool=MCQ.filter(q=>q.m===course&&moduleOf(q)===mod);
+  if(pool.length<3)return toast("Not enough questions for a diagnostic on this module yet");
+  go('study');
+  mcqRunner(pool,modLabel(course)+" readiness check",{
+    limit:Math.min(10,pool.length),
+    hub:{course:course,mod:mod},
+    onDone:(pct)=>{ S.modReady[course+'_'+mod]={score:pct,ts:ymd(new Date())}; save(); }
+  });
+}
+function renderModuleHub(course,mod){
+  const sec=document.getElementById('modhub'); if(!sec)return;
+  const meta=(typeof MODMETA!=='undefined'&&MODMETA[course])?MODMETA[course]:{};
+  const name=meta[mod]||('Module '+mod);
+  const dms=DOMAINS.filter(d=>d.mod===course);
+  const color=dms[0]?dms[0].c:'#9aa3b5';
+  const {cards,mcqs}=moduleItems(course,mod);
+  const due=moduleDueCount(course,mod);
+  const mm=moduleMastery(course,mod);
+  const ready=S.modReady[course+'_'+mod];
+  let readyBadge;
+  if(!ready){ readyBadge='<span class="pill" style="background:#f0f2f8;color:var(--muted)">Not assessed</span>'; }
+  else {
+    const days=Math.round((Date.now()-new Date(ready.ts+'T00:00:00').getTime())/86400000);
+    const good=ready.score>=70;
+    readyBadge='<span class="pill" style="background:'+(good?'#e7f7ef':'#fdecea')+';color:'+(good?'var(--good)':'var(--bad)')+'">Readiness '+ready.score+'%</span>'+(days>=14?' <span class="pill" style="background:#fff5e6;color:#b06a00">review due</span>':'');
+  }
+  const objs=((window.MODOBJ||{})[course]||{})[mod]||[];
+  const checked=S.objChecked[course+'_'+mod]||{};
+  const doneN=objs.filter((_,i)=>checked[i]).length;
+  const objHtml=objs.length?'<div class="card" style="margin-top:12px"><div class="flex"><h3>Learning objectives</h3><span class="small muted">'+doneN+'/'+objs.length+' you can explain</span></div>'+
+    objs.map((o,i)=>'<div class="flex hubrow" onclick="toggleObj(\''+course+'\','+mod+','+i+')" style="cursor:pointer;padding:6px 0;border-top:1px solid var(--line)"><span class="small">'+(checked[i]?'✅':'⬜')+' '+o+'</span></div>').join('')+
+    '<div class="small muted" style="margin-top:6px">Tap each one once you can teach it from memory (Feynman check).</div></div>':'';
+  const syn=((window.MODSYN||{})[course]||{})[mod];
+  const synHtml=syn?'<div class="card" style="margin-top:12px"><h3>How it connects</h3><p class="small" style="margin:6px 0 0;line-height:1.5">'+syn+'</p></div>':'';
+  const ex=((window.MODEX||{})[course]||{})[mod];
+  const exHtml=ex?'<div class="card" style="margin-top:12px"><h3>'+ex.title+'</h3><div class="small" style="line-height:1.5">'+ex.html+'</div></div>':'';
+  const qref=cards.length?'<details class="card" style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">📑 Quick-reference cheat sheet ('+cards.length+' cards)</summary>'+
+    '<table style="margin-top:8px"><tbody>'+cards.map(c=>'<tr><td style="vertical-align:top;width:40%"><b>'+c.f+'</b></td><td class="small">'+c.b+'</td></tr>').join('')+'</tbody></table></details>':'';
+  const hasReader=!!((window.READER_MAP||{})[course]);
+  const hasCalc=(typeof CALCGEN!=='undefined')&&CALCGEN.some(g=>g.m===course);
+  sec.innerHTML=
+    '<div class="card" style="margin-bottom:12px;border-left:4px solid '+color+'">'+
+      '<a class="link small" style="cursor:pointer" onclick="go(\'modules\')">← All modules</a>'+
+      '<div class="flex" style="margin-top:6px"><h2 style="margin:0">'+course+' · Module '+mod+'</h2>'+readyBadge+'</div>'+
+      '<div style="font-weight:700;margin:2px 0">'+name+'</div>'+
+      '<div class="small muted">'+dms.map(d=>d.k+' '+d.name+' · '+d.w+'% of exam').join(' · ')+'</div>'+
+      '<div class="bar" style="margin-top:8px"><i style="width:'+mm+'%;background:'+color+'"></i></div>'+
+      '<div class="small muted" style="margin-top:4px">'+mm+'% module mastery · '+cards.length+' cards ('+due+' due) · '+mcqs.length+' questions</div>'+
+    '</div>'+
+    '<div class="card"><h3>Study this module</h3>'+
+      '<div class="row" style="flex-wrap:wrap;gap:8px;margin-top:8px">'+
+        '<button class="btn" onclick="studyScoped(\''+course+'\','+mod+',\'flash\')">🃏 Flashcards'+(due?' ('+due+' due)':'')+'</button>'+
+        '<button class="btn gray" onclick="studyScoped(\''+course+'\','+mod+',\'quiz\')">❓ Quiz</button>'+
+        '<button class="btn gray" onclick="runDiagnostic(\''+course+'\','+mod+')">🎯 Readiness check</button>'+
+        (hasCalc?'<button class="btn gray" onclick="studyScoped(\''+course+'\','+mod+',\'calc\')">🧮 Calc drills</button>':'')+
+        (hasReader?'<button class="btn gray" onclick="openReaderTab(\''+course+'\','+mod+')">📖 Deep-dive reader</button>':'')+
+      '</div></div>'+
+    objHtml+synHtml+exHtml+qref;
+}
 
 /* ====================== STUDY ENGINE ====================== */
 function fillModuleSelect(){
@@ -756,7 +890,9 @@ function mcqRunner(pool,title,opts={}){
   function draw(){
     if(idx>=pool.length){
       const pct=Math.round(100*correct/pool.length);
-      area.innerHTML=`<div class="card center"><h2>${title} complete</h2><div class="kpi">${pct}%</div><p class="muted">${correct} / ${pool.length} correct</p><button class="btn" onclick="go('dash')">Dashboard</button> <button class="btn gray" onclick="go('analytics')">See analytics</button></div>`;
+      if(opts.onDone){try{opts.onDone(pct,correct,pool.length);}catch(e){}}
+      const backHub=opts.hub?`<button class="btn" onclick="openModule('${opts.hub.course}',${opts.hub.mod})">← Back to module</button> `:"";
+      area.innerHTML=`<div class="card center"><h2>${title} complete</h2><div class="kpi">${pct}%</div><p class="muted">${correct} / ${pool.length} correct</p>${backHub}<button class="btn ${opts.hub?'gray':''}" onclick="go('dash')">Dashboard</button> <button class="btn gray" onclick="go('analytics')">See analytics</button></div>`;
       return;
     }
     const q=pool[idx];
@@ -1148,7 +1284,7 @@ autoBackup();
     <button id="cfpTkTheme" style="width:100%;padding:12px;border:1px solid #dfe3ee;border-radius:12px;background:#fff;color:#1d2433;font:600 15px system-ui;cursor:pointer;margin-bottom:9px">🌙 Dark mode</button>
     <button id="cfpTkReset" style="width:100%;padding:11px;border:none;border-radius:12px;background:#fdecea;color:#d6453d;font:600 14px system-ui;cursor:pointer">Reset all progress</button>
     <div id="cfpTkMsg" style="font-size:12.5px;color:#1f9d6b;text-align:center;min-height:16px;margin-top:10px"></div>
-    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.9.0</div>
+    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.10.0</div>
   </div>
 </div>
 <script>
@@ -1195,6 +1331,7 @@ autoBackup();
   syncTheme();
 })();
 </script>
+<script src="module-content.js"></script>
 <script src="flashcards.js"></script>
 <script>
 if('serviceWorker' in navigator){
