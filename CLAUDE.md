@@ -159,8 +159,19 @@ with an `onDone` hook storing `S.modReady[course_mod]`). Self-check state =
 - **Authored content lives in `module-content.js`** (loaded before `flashcards.js`,
   precached in `sw.js`): `MODOBJ[course][mod]` (objective strings), `MODSYN[course][mod]`
   (synthesis paragraph), `MODEX[course][mod]` (`{title, html}` worked example),
+  `MODCHEAT[course][mod]` (`{keyNumbers:[[label,detail]], mustKnow:[], traps:[], tips:[]}`),
   `TAB_MAP[course][mod]` (reader tab id), `READER_MAP[course]` (reader path). The engine
   reads these with graceful fallbacks, so adding a course = add entries here, no engine change.
+
+### Printable exam cheat sheet (Module Hub → "Exam cheat sheet")
+`openCheatSheet(course,mod)` (in `src/study-home.src.html`) renders a full-screen,
+**print-to-PDF** sheet from `MODCHEAT` + the module's cards: gradient header, ★ key
+numbers grid, must-know rules beside ⚠ traps / ✓ tips boxes, and a two-column term
+reference. `buildCheatHTML()` builds it; `ensureCheatCSS()` injects the `ck-*` styles
+incl. an `@media print` block that hides everything but `#cheatPrint` (so "Save as PDF /
+Print" outputs only the sheet, full-width, color-exact). Case-study modules author only
+`mustKnow`+`tips` (no key-numbers/traps) so they render lighter. The hub shows the button
+when a module has cards OR `MODCHEAT` content.
 
 ## Interactive Readers
 `apps/fp511-reading.html`, `apps/fp512-reading.html` — standalone long-form reading
@@ -196,7 +207,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.10.1`) on every shippable change so installed apps auto-update
+  (current: `v2.11.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
