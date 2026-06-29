@@ -12,7 +12,9 @@
  *
  * The token lives only in this device's localStorage (never in the repo). The app
  * stays fully offline/local; this layer only talks to GitHub when online + connected.
- * Loaded after cfp-sync.js. UI injected into the ⋯ Backup & tools modal.
+ * This is the SOLE cloud-sync backend (Google Drive sync was removed in v2.23.0
+ * because its silent token refresh tripped iOS's repeated "allow sign-in" prompt).
+ * UI injected into the ⋯ Backup & tools modal.
  */
 (function () {
   'use strict';
