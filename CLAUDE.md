@@ -312,8 +312,36 @@ mode on a content wrapper so fixed buttons/charts stay correct). Their Chart.js 
   **delete + re-add** the home-screen icon.
 
 ## Cloud sync & mergeable memory (opt-in, v2.15.0)
-Cross-device progress sync via the user's **Google Drive**, layered on top of the
-offline-first localStorage store (the app is 100% functional offline; sync is opt-in).
+Cross-device progress sync, layered on top of the offline-first localStorage store
+(the app is 100% functional offline; sync is opt-in). There are **two** sync backends
+sharing the same mergeable-memory core; both inject UI into the ⋯ Backup & tools modal:
+- **GitHub Gist sync (`cfp-gist-sync.js`, v2.22.0) — the recommended popup-free path.**
+- **Google Drive sync (`cfp-sync.js`, v2.15.0) — legacy; reliable on desktop but needs a
+  per-session "Allow" tap on the installed iPhone PWA (see below).**
+
+### GitHub Gist sync — popup-free (v2.22.0)
+**Why it exists:** Google's GIS token model gives ~1h access tokens whose only silent
+refresh relies on a hidden-iframe read of the Google session cookie, which iOS blocks
+inside an installed standalone PWA → an "Allow" popup is unavoidable there with Drive.
+A GitHub **personal access token (classic, `gist` scope)** does NOT expire, so sync is
+fully silent on every platform (no popup ever) — this is the user's chosen primary.
+- **`cfp-gist-sync.js`** (loaded after `cfp-sync.js`; precached in `sw.js`): stores the
+  save as one file (`cfp-study-progress.json`) in a **secret gist** via the GitHub REST
+  API (`https://api.github.com/gists`). The token is pasted once and kept ONLY in this
+  device's `localStorage` (`cfpGistToken`; never in the repo); the gist id is cached in
+  `cfpGistId`. Flow: connect (paste token) → `findGist()` (lists the user's gists and
+  links to the one holding our filename, so a 2nd device with the SAME token auto-joins,
+  else `createGist`) → pull+merge+push (+reload if changed). `save()` is wrapped → 5s
+  debounced silent `pushOnly`; on tab-hide → `pushOnly`; on load (if connected) →
+  pull+merge+push once. All silent because the PAT never expires. Reuses
+  `window.cfpMergeState`. A "Create a token (gist scope)" link points at GitHub's
+  prefilled token page.
+- **Tradeoff to remember:** the `gist` scope is all-or-nothing (the token can read/write
+  ALL the user's gists, not just ours). Acceptable for a single-user personal app; keep
+  the token gist-scoped only. Token lives in `localStorage`, so a future XSS would expose
+  it — the app renders no untrusted HTML, so the surface is minimal.
+
+### Google Drive sync (legacy)
 - **Mergeable memory** — `mergeState(a,b)` in `src/study-home.src.html` (exposed as
   `window.cfpMergeState`) reconciles two saves field-by-field so devices combine
   instead of clobbering: union seen/flags/objectives, most-recent-wins per card
@@ -333,23 +361,25 @@ offline-first localStorage store (the app is 100% functional offline; sync is op
   the panel falls back to "tap Sync now". A shared `error_callback` on the reused
   `tokenClient` rejects the pending silent attempt so it never hangs. UI injected into the
   ⋯ Backup & tools modal.
-- **Offline-rule exception:** `cfp-sync.js` is the ONE served file allowed to contain
-  `https://` (accounts.google.com GIS + googleapis.com) — it loads Google's script
-  **lazily, only when the user connects**, so the core app stays dependency-free/offline.
+- **Offline-rule exception:** `cfp-sync.js` (accounts.google.com GIS + googleapis.com) and
+  `cfp-gist-sync.js` (api.github.com) are the served files allowed to contain `https://`.
+  Both only reach the network when the user has connected that backend, so the core app
+  stays dependency-free/offline. (Drive also loads Google's script lazily on connect.)
 - iOS caveat: OAuth popups can be flaky inside an installed standalone PWA; sign-in may
   be smoother in Safari. Tokens are short-lived (GIS, ~1h); silent refresh works while the
   Google session is valid, else the panel shows "Sync now / reconnect".
 
 ## Offline / fonts / vendored assets
 Everything is local — repo scan for `https://` in served files must stay empty
-(the sole exception is `cfp-sync.js`, the opt-in Google Drive sync — see above).
+(the only exceptions are `cfp-sync.js` (Google Drive) and `cfp-gist-sync.js`
+(GitHub gist), the opt-in cloud-sync backends — see above).
 - `vendor/chart.umd.js` (Chart.js 4.5.0), `vendor/mathjax/tex-mml-svg.js`
 - `vendor/fonts/dancing-script-latin-{400,700}-normal.woff2` (title font, `@font-face`)
 - App body uses system fonts; title uses Dancing Script.
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.21.0`) on every shippable change so installed apps auto-update
+  (current: `v2.22.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
