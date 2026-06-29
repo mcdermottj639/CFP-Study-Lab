@@ -36,14 +36,19 @@
     });
   }
   function getToken(interactive) {
+    // Reuse the in-memory token (valid ~1h). NEVER open the sign-in popup unless this
+    // call is from a user gesture (interactive) — auto/background calls must stay silent
+    // and simply fail if there's no live token, so the app never pops up on its own.
+    if (token) return Promise.resolve(token);
+    if (!interactive) return Promise.reject(new Error('not signed in'));
     return loadGIS().then(function () {
       return new Promise(function (res, rej) {
         if (!tokenClient) tokenClient = google.accounts.oauth2.initTokenClient({ client_id: CLIENT_ID, scope: SCOPE, callback: function () {} });
         tokenClient.callback = function (resp) {
-          if (resp && resp.access_token) { token = resp.access_token; res(token); }
-          else rej(new Error((resp && resp.error) || 'sign-in required'));
+          if (resp && resp.access_token) { token = resp.access_token; setTimeout(function () { token = null; }, 55 * 60 * 1000); res(token); }
+          else rej(new Error((resp && resp.error) || 'sign-in cancelled'));
         };
-        try { tokenClient.requestAccessToken(interactive ? {} : { prompt: '' }); } catch (e) { rej(e); }
+        try { tokenClient.requestAccessToken({}); } catch (e) { rej(e); }
       });
     });
   }
@@ -133,8 +138,7 @@
       fullSync(true).then(function (changed) { if (changed) setTimeout(function () { location.reload(); }, 600); }).catch(function () {});
     };
     document.getElementById('cfpSyncNow').onclick = function () {
-      fullSync(false).then(function (changed) { if (changed) setTimeout(function () { location.reload(); }, 600); })
-        .catch(function () { /* token may have expired → prompt interactively */ status('Re-connecting…'); fullSync(true).then(function (ch) { if (ch) setTimeout(function () { location.reload(); }, 600); }).catch(function () {}); });
+      fullSync(true).then(function (changed) { if (changed) setTimeout(function () { location.reload(); }, 600); }).catch(function () {});
     };
     document.getElementById('cfpSyncOff').onclick = function () {
       try { if (token && window.google && google.accounts && google.accounts.oauth2) google.accounts.oauth2.revoke(token, function () {}); } catch (e) {}
@@ -152,14 +156,13 @@
       window.save = function () { var r = orig.apply(this, arguments); schedulePush(); return r; };
       window.save.__cfpWrapped = true;
     }
+    // Background push only fires when we already hold a live token (i.e. AFTER the user
+    // tapped Sync now this session) — pushOnly()/getToken(false) never open a popup.
     document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') pushOnly(); });
-    window.addEventListener('online', function () { if (enabled()) schedulePush(); });
-    // auto pull+merge once per load if connected (silent; no popup — fails quietly if re-consent needed)
-    if (enabled() && online()) {
-      var guard = 'cfpSyncedLoad';
-      try { if (sessionStorage.getItem(guard)) return; sessionStorage.setItem(guard, '1'); } catch (e) {}
-      fullSync(false).then(function (changed) { if (changed) location.reload(); }).catch(function () { status('Tap "Sync now" to reconnect.'); });
-    }
+    window.addEventListener('online', function () { if (enabled() && token) schedulePush(); });
+    // NO automatic sign-in / sync on load (that caused repeated "allow" popups). If connected,
+    // just nudge the user to pull when they want it.
+    if (enabled()) status('Connected — tap “Sync now” to pull the latest.');
   }
   if (document.readyState === 'complete') init(); else window.addEventListener('load', init);
 })();
