@@ -190,7 +190,7 @@
       var cal = CAL[grade] || CAL[2];
       var c = item.c;
       try {
-        S.attempts.push({ mod: c.m, domain: c.d, topic: c.t, correct: cal.c, conf: cal.conf, ts: Date.now() });
+        S.attempts.push({ mod: c.m, domain: c.d, topic: c.t, correct: cal.c, conf: cal.conf, ts: Date.now(), src: 'card' });
         save();
       } catch (e) {}
       idx++; persist(); draw();
