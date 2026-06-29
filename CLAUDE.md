@@ -319,10 +319,14 @@ reconciles two saves field-by-field so devices combine instead of clobbering: un
 seen/flags/objectives, most-recent-wins per card (`_mergeCard`), de-dupe attempts/misses
 by `ts` **or content hash when ts-less**, max streak/sessions, higher mcq box. **Import**
 (Backup panel) offers Merge (uses this) or Replace. The sync backend (below) reuses the
-same merge. **`mergeState` must be idempotent** (`merge(x,x)` stringify-equals `x`) — the
-gist sync reloads when a load-time merge changes local state, so a non-idempotent merge
-(the v2.23.0 ts-less-attempt bug, fixed v2.24.0) spins the page in an endless reload loop.
-`cfp-gist-sync.js` also reloads **at most once per page load** (`reloadOnce`) as a backstop.
+same merge. **`mergeState` must be idempotent** (`merge(x,x)` stringify-equals `x`, incl.
+key set — don't synthesize keys like `lastBackup` that `a` lacks) — the gist sync reloads
+when a load-time merge changes local state, so a non-idempotent merge spins the page in an
+endless reload loop (the v2.23.0 ts-less-attempt + synthesized-`lastBackup` bugs; both fixed
+v2.24.0/v2.25.0). As a backstop `cfp-gist-sync.js` reloads **at most once per tab session**
+via a **`sessionStorage` flag** (`cfpGistReloaded`). NB it MUST be sessionStorage, not a
+module variable — a module flag resets on every reload and so can't break a cross-reload
+loop (that was the v2.24.0 `reloadOnce` miss). Verify idempotency by running `merge(x,x)`.
 
 > **History — Google Drive sync removed in v2.23.0.** The original backend (`cfp-sync.js`,
 > v2.15.0) synced to the Drive app-data folder via Google Identity Services (GIS). GIS
@@ -373,7 +377,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.24.0`) on every shippable change so installed apps auto-update
+  (current: `v2.25.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
