@@ -15,6 +15,9 @@ const HEAD = `
 <script>try{var _t=localStorage.getItem('cfpTheme');if(_t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
 `;
 const BODY = `<script src="../reader-theme.js"></script>`;
+// In-reader search (loads AFTER reader-theme so its UI sits on <body>, outside the wrapper)
+const SEARCH_MARK = 'reader-search-injected';
+const SEARCH = `<!-- ${SEARCH_MARK} --><script src="../reader-search.js"></script>`;
 
 for (const f of files) {
   let html = readFileSync(f, 'utf8');
@@ -36,6 +39,13 @@ for (const f of files) {
     changed = true;
   }
 
-  if (changed) { writeFileSync(f, html); console.log('themed:', f); }
+  // search script (separate marker so it lands on already-themed readers too)
+  if (!html.includes(SEARCH_MARK)) {
+    const idx = html.lastIndexOf('</body>');
+    html = idx !== -1 ? html.slice(0, idx) + SEARCH + '\n' + html.slice(idx) : html + SEARCH;
+    changed = true;
+  }
+
+  if (changed) { writeFileSync(f, html); console.log('updated:', f); }
   else console.log('unchanged:', f);
 }
