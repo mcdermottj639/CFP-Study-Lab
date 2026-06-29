@@ -51,6 +51,34 @@ simplified **SM-2** algorithm (not the old Leitner boxes):
   honored by both the flashcard deck and `mcqRunner`, plus the Hard-cards and
   Review-missed modes in `#studyMode`.
 
+### Readiness composite & Analytics (v2.17.0)
+Exam-readiness is no longer a flat `accuracy×coverage`. `domainReadiness(d)` blends
+three transparent 0..1 sub-scores per domain — **Coverage** (`seenCount/totalItems`),
+**Accuracy** (`domainAccuracy()`, weighting graded quizzes/exams above softer flashcard
+self-grades: `accWeight()` = exam 1.15 · mcq/legacy 1.0 · card 0.5), and **Exam**
+(`domainExam()` = mean of the latest module-exam scores in `S.modReady` for that course) —
+with weights **cov .30 / acc .40 / exam .30** renormalized over present signals (Exam only
+once taken), times a light **recency decay** (`daysSinceMod`, full ≤14d easing to a 0.85
+floor by ~90d). `readiness()` then **blueprint-weights** these across the 8 domains by `d.w`
+(unchanged). So module Exam scores now actually move the dashboard number. NOTE: accuracy/
+coverage/exam are tracked per **module (course)**, so the 3 FP511 domains (A/B/H) share one
+score — only the blueprint weights differ. Attempts now carry a **`src`** field
+(`'exam'|'mcq'|'card'`); set in `mcqRunner.record` and `flashcards.js`.
+- **Dashboard:** `#readyDrivers` sub-line ("X% covered · Y% accuracy · Z% exam avg",
+  thin-data flagged under 8 answers) via `readinessBreakdown()`; `#readyTrend` inline-SVG
+  **sparkline** of `S.history` (daily readiness snapshot written by `snapshotReadiness()` in
+  `renderDash`, merged by date, capped 180); `dueReexam()` (exams >21 days old) adds a
+  re-exam nudge to the today-plan. The domain chart now plots `domainReadiness().score`
+  (was `masteryPct`).
+- **Analytics page (`renderAnalytics`)** adds: **Biggest gaps** (`#gapList`, domains ranked
+  by `exam weight × (1−readiness)` = points left on the table, each with a Study→ launch via
+  `studyDomain(course,mode)` — course-wide sibling of `studyScoped`); **Module exam scoreboard**
+  (`#examBoard`, latest %/▲▼/date/due-flag, Re-take→); **Card status by course** (`#cardStatusBoard`,
+  known/needwork/unseen bar via `cardStatusCounts`); **actionable Weak topics** (`#weakTopicsBoard`,
+  one-tap Drill→ scoped by `TOPIC_MOD`); plus thin-data flags on the calibration note.
+- New state: `S.history` (array of `{d:ymd,r:readiness}`; defaulted in `load()`, merged in
+  `mergeState`). `S.attempts[].src` is additive (legacy attempts treated as `mcq` weight).
+
 ## How it's built (IMPORTANT — index.html is generated, don't hand-edit it)
 `index.html` is **built** from a source artifact + overlays. Editing it directly
 will be overwritten on the next build. The real sources are:
@@ -260,7 +288,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.11.0`) on every shippable change so installed apps auto-update
+  (current: `v2.17.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
