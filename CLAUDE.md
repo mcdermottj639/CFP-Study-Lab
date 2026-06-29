@@ -311,21 +311,29 @@ mode on a content wrapper so fixed buttons/charts stay correct). Their Chart.js 
   the `apple-touch-icon`/`favicon` links in `build_index.mjs`, and the user must
   **delete + re-add** the home-screen icon.
 
-## Cloud sync & mergeable memory (opt-in, v2.15.0)
+## Cloud sync & mergeable memory (opt-in)
 Cross-device progress sync, layered on top of the offline-first localStorage store
-(the app is 100% functional offline; sync is opt-in). There are **two** sync backends
-sharing the same mergeable-memory core; both inject UI into the ⋯ Backup & tools modal:
-- **GitHub Gist sync (`cfp-gist-sync.js`, v2.22.0) — the recommended popup-free path.**
-- **Google Drive sync (`cfp-sync.js`, v2.15.0) — legacy; reliable on desktop but needs a
-  per-session "Allow" tap on the installed iPhone PWA (see below).**
+(the app is 100% functional offline; sync is opt-in). The **mergeable-memory core**
+(`mergeState(a,b)` in `src/study-home.src.html`, exposed as `window.cfpMergeState`)
+reconciles two saves field-by-field so devices combine instead of clobbering: union
+seen/flags/objectives, most-recent-wins per card (`_mergeCard`), de-dupe attempts/misses
+by `ts`, max streak/sessions, higher mcq box. **Import** (Backup panel) offers Merge
+(uses this) or Replace. The sync backend (below) reuses the same merge.
 
-### GitHub Gist sync — popup-free (v2.22.0)
-**Why it exists:** Google's GIS token model gives ~1h access tokens whose only silent
-refresh relies on a hidden-iframe read of the Google session cookie, which iOS blocks
-inside an installed standalone PWA → an "Allow" popup is unavoidable there with Drive.
-A GitHub **personal access token (classic, `gist` scope)** does NOT expire, so sync is
-fully silent on every platform (no popup ever) — this is the user's chosen primary.
-- **`cfp-gist-sync.js`** (loaded after `cfp-sync.js`; precached in `sw.js`): stores the
+> **History — Google Drive sync removed in v2.23.0.** The original backend (`cfp-sync.js`,
+> v2.15.0) synced to the Drive app-data folder via Google Identity Services (GIS). GIS
+> access tokens expire ~hourly and the only silent refresh relies on a hidden-iframe read
+> of the Google session cookie — which iOS blocks inside an installed standalone PWA, and
+> which (after the v2.21.0 on-load auto-refresh) tripped Safari's "allow … to sign in"
+> prompt on **every load**, on both iPhone and desktop. It was deleted in favor of the
+> popup-free GitHub Gist backend. `cfp-sync.js` no longer exists; if you ever reintroduce
+> a Google backend, do NOT auto-run a silent token request on load.
+
+### GitHub Gist sync — popup-free (v2.22.0, sole backend since v2.23.0)
+**Why it's used:** a GitHub **personal access token (classic, `gist` scope)** does NOT
+expire, so sync is fully silent on every platform (no popup ever, including the installed
+iPhone PWA) — unlike Google's short-lived session tokens.
+- **`cfp-gist-sync.js`** (loaded after `flashcards.js`; precached in `sw.js`): stores the
   save as one file (`cfp-study-progress.json`) in a **secret gist** via the GitHub REST
   API (`https://api.github.com/gists`). The token is pasted once and kept ONLY in this
   device's `localStorage` (`cfpGistToken`; never in the repo); the gist id is cached in
@@ -340,34 +348,16 @@ fully silent on every platform (no popup ever) — this is the user's chosen pri
   ALL the user's gists, not just ours). Acceptable for a single-user personal app; keep
   the token gist-scoped only. Token lives in `localStorage`, so a future XSS would expose
   it — the app renders no untrusted HTML, so the surface is minimal.
+- **Offline-rule exception:** `cfp-gist-sync.js` (api.github.com) is the ONE served file
+  allowed to contain `https://`. It only reaches the network when the user has connected
+  (a token is saved), so the core app stays dependency-free/offline.
 
-### Google Drive sync (legacy)
-- **Mergeable memory** — `mergeState(a,b)` in `src/study-home.src.html` (exposed as
-  `window.cfpMergeState`) reconciles two saves field-by-field so devices combine
-  instead of clobbering: union seen/flags/objectives, most-recent-wins per card
-  (`_mergeCard`), de-dupe attempts/misses by `ts`, max streak/sessions, higher mcq box.
-  **Import** (Backup panel) now offers Merge (uses this) or Replace.
-- **`cfp-sync.js`** (loaded after flashcards.js; precached in `sw.js`): stores the save
-  as a private file (`cfp-study-progress.json`) in the Drive **app-data folder** (scope
-  `drive.appdata` — the app can only see its own file). OAuth via Google Identity
-  Services (GIS), `CLIENT_ID` is a public web OAuth client (origin `mcdermottj639.github.io`).
-  Flow: connect → pull+merge+push (+reload if changed); on load (if connected) a **silent
-  token refresh** (`getToken(false)` → `requestAccessToken({prompt:'none'})`, no UI ever)
-  then pull+merge+push once; after `save()` (wrapped) + on tab-hide → background push-only
-  (safe, no running-state mutation). **Background pushes self-refresh the token silently**
-  (v2.21.0) so auto-save works across the ~1h token expiry and fresh app loads — you no
-  longer have to tap "Sync now" each session to arm it. `prompt:'none'` succeeds only while
-  the Google session + prior consent are alive; otherwise it fails quietly (no popup) and
-  the panel falls back to "tap Sync now". A shared `error_callback` on the reused
-  `tokenClient` rejects the pending silent attempt so it never hangs. UI injected into the
-  ⋯ Backup & tools modal.
-- **Offline-rule exception:** `cfp-sync.js` (accounts.google.com GIS + googleapis.com) and
-  `cfp-gist-sync.js` (api.github.com) are the served files allowed to contain `https://`.
-  Both only reach the network when the user has connected that backend, so the core app
-  stays dependency-free/offline. (Drive also loads Google's script lazily on connect.)
-- iOS caveat: OAuth popups can be flaky inside an installed standalone PWA; sign-in may
-  be smoother in Safari. Tokens are short-lived (GIS, ~1h); silent refresh works while the
-  Google session is valid, else the panel shows "Sync now / reconnect".
+### Backup & tools panel (⋯)
+The ⋯ modal (built in `build_index.mjs`'s `TOOLKIT`) holds: dark-mode toggle, **Reset all
+progress**, the version stamp, and the GitHub auto-sync UI (injected by `cfp-gist-sync.js`).
+The manual **Export / Import progress** buttons were **removed in v2.23.0** (redundant once
+auto-sync exists; the user asked to drop them) — the merge path (`window.cfpMergeState`)
+they used still exists and is now driven only by the gist sync.
 
 ## Offline / fonts / vendored assets
 Everything is local — repo scan for `https://` in served files must stay empty
