@@ -146,9 +146,14 @@ When two decks teach the same concept (the original app `CARDS` in `src/study-ho
 vs. `content/*.cards.json`), **de-dupe to one keeper** — the de-dupe is by exact front text,
 so differently-worded duplicates both survive unless you remove one. Policy: **content JSON is
 the home**; author the reconciled atomic/list cards there and strip the duplicates out of the
-source `CARDS` array (FP512 Module 1 — "Principles of Insurance" topic — was reconciled this
-way in v2.18.0: 68 atomic/list cards in `fp512-textbook.cards.json`, source dupes removed).
-Remaining FP512 modules + FP511 still hold legacy grouped cards to convert by these rules.
+source `CARDS` array. **STATUS: complete for FP511 + FP512** — every module of both courses
+was reconciled this way (FP512 M1 in v2.18.0; all remaining FP511 M1–7 and FP512 M2–8 in
+v2.19.0 via a 14-module author→QA agent pass). As a result **ALL FP511/FP512 flashcards now
+live in `content/*.cards.json`** (the app `CARDS` array no longer contains any FP511/FP512
+flashcards — only their MCQs remain in source). `content/extra.cards.json` is now empty and
+`content/fixups.json` was cleared (its 3 corrections are baked into the reconciled cards).
+Future courses (FP513+) should be authored atomic from the start, so this de-dupe step won't
+recur — but keep applying the shape rules above.
 
 Taxonomy (the `d` domain code drives analytics / exam-weight readiness):
 | m | course | d | domain | weight |
@@ -162,8 +167,8 @@ Taxonomy (the `d` domain code drives analytics / exam-weight readiness):
 | FP515 | Retirement | F | Retirement | 18% |
 | FP516 | Estate Planning | G | Estate | 10% |
 
-Current content: **FP511 + FP512 only** (~525 cards, ~413 MCQs), textbook-grounded
-and audited. **FP513–518 are "coming soon"** placeholders — the user has NO
+Current content: **FP511 + FP512 only** (~555 cards, ~413 MCQs), textbook-grounded
+and audited. All flashcards are atomic/list-shaped (see authoring rules above). **FP513–518 are "coming soon"** placeholders — the user has NO
 textbooks for them yet and will drop each into the Google Drive `CFP` folder when
 available. `MODULES`/`DOMAINS` in the source already scaffold all 8.
 
@@ -316,7 +321,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.18.0`) on every shippable change so installed apps auto-update
+  (current: `v2.19.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
