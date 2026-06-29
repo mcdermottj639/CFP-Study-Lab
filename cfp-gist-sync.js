@@ -91,6 +91,10 @@
       .catch(function () {});
   }
   function schedulePush() { if (!enabled()) return; clearTimeout(pushTimer); pushTimer = setTimeout(pushOnly, 5000); }
+  // Reload at most ONCE per page load. A non-idempotent merge that keeps reporting
+  // "changed" must never be able to spin the page in an endless reload loop again.
+  var reloaded = false;
+  function reloadOnce() { if (reloaded) return; reloaded = true; setTimeout(function () { location.reload(); }, 600); }
 
   // ---- UI (injected into the ⋯ Backup & tools modal) ----
   function status(m) { var s = document.getElementById('cfpGistStatus'); if (s) s.textContent = m; }
@@ -139,11 +143,11 @@
       try { localStorage.setItem(TOK, v); } catch (e) {}
       if (el) el.value = '';
       status('Connecting…');
-      fullSync().then(function (changed) { refreshUI(); if (changed) setTimeout(function () { location.reload(); }, 600); })
+      fullSync().then(function (changed) { refreshUI(); if (changed) reloadOnce(); })
         .catch(function (e) { if (/bad token/.test(e && e.message || '')) { try { localStorage.removeItem(TOK); } catch (_) {} } refreshUI(); });
     };
     document.getElementById('cfpGistNow').onclick = function () {
-      fullSync().then(function (changed) { if (changed) setTimeout(function () { location.reload(); }, 600); }).catch(function () {});
+      fullSync().then(function (changed) { if (changed) reloadOnce(); }).catch(function () {});
     };
     document.getElementById('cfpGistOff').onclick = function () {
       try { localStorage.removeItem(TOK); localStorage.removeItem(GID); } catch (e) {}
@@ -167,7 +171,7 @@
     // fully silent — no popup on any platform (this is the whole point vs. Drive sync).
     if (enabled()) {
       status('Auto-syncing…');
-      fullSync().then(function (changed) { if (changed) setTimeout(function () { location.reload(); }, 600); }).catch(function () {});
+      fullSync().then(function (changed) { if (changed) reloadOnce(); }).catch(function () {});
     }
   }
   if (document.readyState === 'complete') init(); else window.addEventListener('load', init);

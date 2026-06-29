@@ -389,10 +389,14 @@ function mergeState(a,b){
   // per-day counters — max
   ['sessions','newSeen'].forEach(function(key){ out[key]=O(out[key]); var bb=O(b[key]);
     Object.keys(bb).forEach(function(d){ out[key][d]=Math.max(out[key][d]||0, bb[d]||0); }); });
-  // attempts/misses — concat + de-dupe by ts
+  // attempts/misses — concat + de-dupe. Key on ts when present, else fall back to a
+  // content hash so ts-less entries de-dupe too. (Keying ts-less items as "always new"
+  // made merge(x,x) grow the array every call — non-idempotent, which drove the gist
+  // sync into an endless reload loop. Content-keying keeps merge a true fixed point.)
   ['attempts','misses'].forEach(function(key){
     var seen={},res=[]; (a[key]||[]).concat(b[key]||[]).forEach(function(it){
-      var id=it&&it.ts; if(id==null){res.push(it);return;} if(!seen[id]){seen[id]=1;res.push(it);} });
+      var id=(it&&it.ts!=null)?('t'+it.ts):('j'+JSON.stringify(it));
+      if(!seen[id]){seen[id]=1;res.push(it);} });
     out[key]=res;
   });
   // mastery — take the more-studied (higher n) per module
