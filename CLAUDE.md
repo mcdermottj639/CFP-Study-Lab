@@ -37,7 +37,28 @@ simplified **SM-2** algorithm (not the old Leitner boxes):
   fns/`S.newPerDay` may still exist but are no longer surfaced.)
 - Dashboard KPI shows **Unseen cards** (`unseenCount()`); the Module Hub shows
   per-module **unseen** counts (`moduleUnseenCount`). The separate **Hard cards** mode
-  (`#studyMode`, `hardCards()`) is kept as-is, independent of the card filter.
+  (`#studyMode`, `hardCards()`) is kept as-is, independent of the card filter. (Its
+  dropdown label is **"Flagged & leech cards"** as of v2.20.0 to disambiguate it from the
+  card filter's "Need more work" bucket — same `hard`/`runHard` mechanics.)
+
+### Study mode dropdown — scoped vs. global (v2.20.0)
+The `#studyMode` `<select>` is split into two `<optgroup>`s by what the course/sub-module
+pickers actually affect, so the UI stops pretending scope applies when it doesn't:
+- **"This course / module"** (honor `studyModule`+`studyModuleNum`+`CARDFILTER`): `flash`,
+  `hard`, `quiz`, `exam`, `calc`.
+- **"Across the whole exam"** (ignore all three pickers): `mcqreview` (`mcqDuePool()`),
+  `mock` (`runMock`, blueprint-weighted), `scenario`, `ethics` (`d==="A"`). `runScenario`
+  was **globalized** in v2.20.0 (uses the full `SCENARIOS` list instead of `filt(SCENARIOS,mod)`,
+  which silently dead-ended under a specific module since scenarios have no topic→module map).
+- `studyScopeSync()` (wired in `fillModuleSelect` + on `#studyMode` change; `GLOBAL_MODES`
+  set) **dims** the three scope selects (opacity + tooltip) when a global mode is picked.
+- **`exam` now routes to the scored `runModuleExam`** (was the unscored instant-feedback
+  `runExam`, which duplicated `quiz`). So a Study-tab "Exam (scored)" is the SAME exam-style,
+  deferred-feedback, verdict-producing run as the Module Hub's Exam — and when a specific
+  module is selected it writes `S.modReady[course_mod]`, feeding the readiness composite and
+  Analytics exam scoreboard (course-wide / `MODF==="ALL"` runs score but save no badge).
+  `runExam` is now dead code (left defined, unreferenced). **Quiz** stays the quick 10-Q
+  instant-feedback practice.
 - **Leeches**: `lapses>=8` flags `leech`. **Flag/star** via `toggleFlag(i)`.
   `hardCards()` (flagged ∪ leech ∪ `ease<=2.0`) powers the **Hard cards** mode.
 - **MCQ misses** schedule into `S.mcqDue[questionText]` (Leitner ladder) via
@@ -321,7 +342,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.19.0`) on every shippable change so installed apps auto-update
+  (current: `v2.20.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
