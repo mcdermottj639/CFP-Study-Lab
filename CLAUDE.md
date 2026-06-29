@@ -155,9 +155,13 @@ has tagged cards/MCQs **or** authored teaching content (then it shows a "guide" 
 e.g. FP511 M8 Case Study which has no cards). The hub assembles, all scoped to that one
 module: deep-dive reader link, learning-objectives self-check, "how it connects"
 synthesis, a worked example, an auto quick-reference cheat-sheet (the module's cards),
-module mastery %, item counts, and launch buttons (`studyScoped` → flashcards/quiz/calc
-honoring `window.MODF`) plus a **readiness diagnostic** (`runDiagnostic` → `mcqRunner`
-with an `onDone` hook storing `S.modReady[course_mod]`). Self-check state =
+module mastery %, item counts, and launch buttons (`studyScoped` → `window.MODF`-scoped):
+**Flashcards**, **Readiness check** (`runAdaptive` — adaptive PRACTICE: instant feedback,
+pool tiered missed→unseen→rest, not scored), and **Exam** (`runModuleExam` — exam-style:
+answer all then a scored verdict + ⚠ weak-spot tags with reader/cheat-sheet links + a
+collapsible full review; `mcqRunner(...,{exam:true})` defers feedback and `onDone` stores
+`S.modReady[course_mod]` incl. `prev` for the ▲/▼ delta). Exam button shows "· limited"
+when a module has <8 MCQs; hidden under 3 (e.g. Case Study). Self-check state =
 `S.objChecked[course_mod]`. The hub header also has a **module switcher** (`moduleSwitcher`): ‹ Prev / Next › + M# chips to jump straight to another module's hub without returning to the module map (only openable modules are clickable). New state keys: `modReady`, `objChecked` (migrated in `load()`).
 
 - **Calculator drills are module-tagged:** each `CALCGEN` generator in `src/study-home.src.html` has a `mods:[..]` array (a drill can belong to several modules). The Module Hub shows the **Calc drills** button only when a generator matches that module, and `runCalc` filters by `window.MODF` so a module-scoped launch runs only its drills (course-wide runs all). FP511 calc lives on M3/M4/M7; FP512 on M2/M4/M7.
