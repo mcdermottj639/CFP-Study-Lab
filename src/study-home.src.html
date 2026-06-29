@@ -146,15 +146,19 @@ a.link{color:var(--brand);text-decoration:none;font-weight:600}
           <select id="studyModule"></select>
           <select id="studyModuleNum"></select>
           <select id="studyMode">
-            <option value="flash">Flashcards</option>
-            <option value="hard">Hard cards (flagged &amp; leeches)</option>
-            <option value="quiz">Quiz</option>
-            <option value="exam">Practice exam (module)</option>
-            <option value="mcqreview">Review missed questions</option>
-            <option value="mock">Cumulative mock (blueprint-weighted)</option>
-            <option value="scenario">Scenario item-sets</option>
-            <option value="calc">Calculator drills</option>
-            <option value="ethics">Ethics &amp; Standards drill</option>
+            <optgroup label="This course / module">
+              <option value="flash">Flashcards</option>
+              <option value="hard">Flagged &amp; leech cards</option>
+              <option value="quiz">Quiz</option>
+              <option value="exam">Exam (scored)</option>
+              <option value="calc">Calculator drills</option>
+            </optgroup>
+            <optgroup label="Across the whole exam">
+              <option value="mcqreview">Review missed questions</option>
+              <option value="mock">Cumulative mock (blueprint-weighted)</option>
+              <option value="scenario">Scenario item-sets</option>
+              <option value="ethics">Ethics &amp; Standards drill</option>
+            </optgroup>
           </select>
           <select id="studySession" title="Which cards to study">
             <option value="all" selected>All cards</option>
@@ -1016,8 +1020,23 @@ function closeCheatSheet(){const w=document.getElementById('cheatWrap');if(w)w.s
 function fillModuleSelect(){
   const sel=document.getElementById('studyModule');
   sel.innerHTML=`<option value="ALL">All courses</option>`+MODULES.filter(m=>m.status!=='upcoming'||CARDS.some(c=>c.m===m.id)).map(m=>`<option value="${m.id}" ${m.status==='current'?'selected':''}>${m.id}</option>`).join('');
-  sel.onchange=fillModuleNumSelect;
+  sel.onchange=()=>{fillModuleNumSelect();studyScopeSync();};
   fillModuleNumSelect();
+  const md=document.getElementById('studyMode');
+  if(md&&!md._scopeWired){md._scopeWired=true;md.addEventListener('change',studyScopeSync);}
+  studyScopeSync();
+}
+// Some study modes span the whole exam (Review missed, Cumulative mock, Scenario
+// item-sets, Ethics) and ignore the course/module pickers — dim them so the UI is honest.
+const GLOBAL_MODES={mcqreview:1,mock:1,scenario:1,ethics:1};
+function studyScopeSync(){
+  const md=document.getElementById('studyMode');if(!md)return;
+  const g=GLOBAL_MODES[md.value]?1:0;
+  ['studyModule','studyModuleNum','studySession'].forEach(id=>{
+    const e=document.getElementById(id);if(!e)return;
+    e.style.opacity=g?'0.4':'';
+    e.title=g?'This mode covers the whole exam — the course/module scope doesn’t apply':'';
+  });
 }
 // Populate the per-course sub-module filter — only modules that actually have content show.
 function fillModuleNumSelect(){
@@ -1040,7 +1059,7 @@ document.getElementById('startBtn').onclick=()=>{
   const sEl=document.getElementById('studySession');
   window.CARDFILTER=sEl?sEl.value:"all";
   const mode=document.getElementById('studyMode').value;
-  ({flash:runFlash,hard:runHard,quiz:runQuiz,exam:runExam,mcqreview:runMcqReview,mock:runMock,scenario:runScenario,calc:runCalc,ethics:runEthics})[mode](mod);
+  ({flash:runFlash,hard:runHard,quiz:runQuiz,exam:runModuleExam,mcqreview:runMcqReview,mock:runMock,scenario:runScenario,calc:runCalc,ethics:runEthics})[mode](mod);
 };
 // Hard-cards mode reuses the flashcard runner over the struggling-cards pool
 function runHard(mod){window._hardOnly=true;runFlash(mod);}
@@ -1196,8 +1215,8 @@ function runMcqReview(){
   mcqRunner(p,"Review missed questions");
 }
 function runScenario(mod){
-  const list=filt(SCENARIOS,mod);
-  if(!list.length)return emptyMsg("No scenario sets yet for "+mod);
+  const list=SCENARIOS;   // global: scenario sets span courses; ignore course/module scope
+  if(!list.length)return emptyMsg("No scenario sets yet.");
   const sc=shuffle(list)[0];
   const flat=sc.items.map(it=>({m:sc.m,d:sc.d,t:sc.title,q:it.q,o:it.o,a:it.a,e:it.e}));
   const header=`<span class="tag">${sc.m}</span><b>${sc.title}</b><p style="margin:6px 0 0">${sc.stem}</p>`;
