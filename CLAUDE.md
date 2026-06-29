@@ -122,6 +122,34 @@ courses drop in without touching the engine. `add_content.mjs`:
 - applies `content/replace.json` — literal `[{from,to}]` swaps across all fields
 - `content/_audit.json` is the saved output of a past semantic review (not used at build)
 
+### Flashcard authoring rules (STANDING — apply to ALL cards, every course)
+Cards must be **atomic** so SM-2 grading and the `needwork`/`unseen`/`known` buckets
+work at the right granularity (one missed term shouldn't force re-drilling a whole
+cluster). The `f` (front) must be a real **question/prompt**, never a bare topic label
+(no `"f":"Types of Insurance Agents"`). The "Definition first" toggle already gives the
+def→term direction for free, so **do NOT author reverse-clone cards.** Decide a card's
+shape by what it is:
+- **Unrelated facts bundled together** (e.g. "How is ACV calculated, and what is
+  subrogation?") → **split into separate atomic cards**, no list card. Test: if the two
+  halves would never share one exam question, they don't share a card.
+- **A term-set you must recall as a group** (contract characteristics, agent types,
+  agent-authority types, contract-dispute doctrines) → **one list card** ("Name the four
+  characteristics…") **+ one atomic card per term** ("What makes a contract *unilateral*?").
+- **A binary / small contrast** (moral vs. morale, mutual vs. stock, pure vs. speculative,
+  contributory vs. comparative) → **keep as ONE "distinguish X from Y" card.** Don't
+  atomize — splitting adds friction with no learning gain.
+- **A checklist of conditions/steps** (insurable-risk elements, 5 contract requirements,
+  7-step RM process) → the **list card** is the primary target; only atomize an item that
+  carries standalone definitional weight.
+
+When two decks teach the same concept (the original app `CARDS` in `src/study-home.src.html`
+vs. `content/*.cards.json`), **de-dupe to one keeper** — the de-dupe is by exact front text,
+so differently-worded duplicates both survive unless you remove one. Policy: **content JSON is
+the home**; author the reconciled atomic/list cards there and strip the duplicates out of the
+source `CARDS` array (FP512 Module 1 — "Principles of Insurance" topic — was reconciled this
+way in v2.18.0: 68 atomic/list cards in `fp512-textbook.cards.json`, source dupes removed).
+Remaining FP512 modules + FP511 still hold legacy grouped cards to convert by these rules.
+
 Taxonomy (the `d` domain code drives analytics / exam-weight readiness):
 | m | course | d | domain | weight |
 |---|---|---|---|---|
@@ -288,7 +316,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.17.0`) on every shippable change so installed apps auto-update
+  (current: `v2.18.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
