@@ -486,6 +486,57 @@ function load(){
   return {cards:{}, attempts:[], misses:[], sessions:{}, mastery:{}, seen:{}, mcqDue:{}, newSeen:{}, modReady:{}, objChecked:{}, newPerDay:0, examDate:"2027-03-09", goal:30, lastStudy:null, streak:0};
 }
 function save(){localStorage.setItem(LS,JSON.stringify(S));}
+
+/* ====================== MERGEABLE MEMORY (cross-device sync foundation) ======================
+   mergeState(a,b) reconciles two saves field-by-field so devices combine instead of
+   clobbering: union of seen/flags/objectives, most-recent-wins per card, de-duped
+   attempts/misses, max streak/sessions. Used by Import (merge) and (later) Drive sync. */
+function _mergeCard(x,y){
+  var base=((y.last||'')>=(x.last||''))?y:x;            // most recently studied wins
+  var m=Object.assign({},base);
+  m.flag=!!(x.flag||y.flag); m.leech=!!(x.leech||y.leech);
+  m.lapses=Math.max(x.lapses||0,y.lapses||0); m.reps=Math.max(x.reps||0,y.reps||0);
+  return m;
+}
+function mergeState(a,b){
+  a=a||{}; b=b||{};
+  var O=function(x){return (x&&typeof x==='object'&&!Array.isArray(x))?x:{};};
+  var out=JSON.parse(JSON.stringify(a));
+  // per-card SRS
+  out.cards=O(out.cards); var bc=O(b.cards);
+  Object.keys(bc).forEach(function(k){ out.cards[k]=out.cards[k]?_mergeCard(out.cards[k],bc[k]):bc[k]; });
+  // distinct seen {mod:{key:1}} — union
+  out.seen=O(out.seen); var bs=O(b.seen);
+  Object.keys(bs).forEach(function(m){ out.seen[m]=Object.assign({},O(out.seen[m]),O(bs[m])); });
+  // mcq review ladder — higher box / later due
+  out.mcqDue=O(out.mcqDue); var bm=O(b.mcqDue);
+  Object.keys(bm).forEach(function(k){ var x=out.mcqDue[k],y=bm[k]; out.mcqDue[k]=(!x||(y.box||0)>(x.box||0)||(y.due||'')>(x.due||''))?y:x; });
+  // per-day counters — max
+  ['sessions','newSeen'].forEach(function(key){ out[key]=O(out[key]); var bb=O(b[key]);
+    Object.keys(bb).forEach(function(d){ out[key][d]=Math.max(out[key][d]||0, bb[d]||0); }); });
+  // attempts/misses — concat + de-dupe by ts
+  ['attempts','misses'].forEach(function(key){
+    var seen={},res=[]; (a[key]||[]).concat(b[key]||[]).forEach(function(it){
+      var id=it&&it.ts; if(id==null){res.push(it);return;} if(!seen[id]){seen[id]=1;res.push(it);} });
+    out[key]=res;
+  });
+  // mastery — take the more-studied (higher n) per module
+  out.mastery=O(out.mastery); var bma=O(b.mastery);
+  Object.keys(bma).forEach(function(m){ var x=out.mastery[m],y=bma[m]; if(!x||(y&&(y.n||0)>(x.n||0))) out.mastery[m]=y; });
+  // module readiness — latest, objective checks — union
+  out.modReady=O(out.modReady); var br=O(b.modReady);
+  Object.keys(br).forEach(function(k){ var x=out.modReady[k],y=br[k]; if(!x||(y&&(y.ts||'')>(x.ts||''))) out.modReady[k]=y; });
+  out.objChecked=O(out.objChecked); var bo=O(b.objChecked);
+  Object.keys(bo).forEach(function(k){ out.objChecked[k]=Object.assign({},O(out.objChecked[k]),O(bo[k])); });
+  // streak / activity
+  out.streak=Math.max(a.streak||0,b.streak||0);
+  out.lastStudy=((b.lastStudy||'')>(a.lastStudy||''))?b.lastStudy:(a.lastStudy||b.lastStudy||null);
+  out.lastBackup=Math.max(a.lastBackup||0,b.lastBackup||0);
+  // settings — keep this device's, fall back to incoming
+  ['examDate','goal','newPerDay'].forEach(function(k){ if(out[k]==null) out[k]=b[k]; });
+  return out;
+}
+window.cfpMergeState=mergeState;
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._);t._=setTimeout(()=>t.classList.remove('show'),2200);}
 
 /* ====================== SPACED REPETITION (SM-2) ======================
@@ -1453,7 +1504,7 @@ autoBackup();
     <button id="cfpTkTheme" style="width:100%;padding:12px;border:1px solid #dfe3ee;border-radius:12px;background:#fff;color:#1d2433;font:600 15px system-ui;cursor:pointer;margin-bottom:9px">🌙 Dark mode</button>
     <button id="cfpTkReset" style="width:100%;padding:11px;border:none;border-radius:12px;background:#fdecea;color:#d6453d;font:600 14px system-ui;cursor:pointer">Reset all progress</button>
     <div id="cfpTkMsg" style="font-size:12.5px;color:#1f9d6b;text-align:center;min-height:16px;margin-top:10px"></div>
-    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.14.0</div>
+    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.15.0</div>
   </div>
 </div>
 <script>
@@ -1477,8 +1528,15 @@ autoBackup();
   $("cfpTkImport").onchange=function(e){
     var f=e.target.files[0];if(!f)return;var r=new FileReader();
     r.onload=function(){
-      try{JSON.parse(r.result);localStorage.setItem(LS,r.result);
-        msg.style.color="#1f9d6b";msg.textContent="Restored. Reloading…";
+      try{
+        var incoming=JSON.parse(r.result);
+        var cur={};try{cur=JSON.parse(localStorage.getItem(LS)||"{}");}catch(_){}
+        var hasLocal=cur&&Object.keys(cur).length>0;
+        var doMerge = hasLocal && typeof window.cfpMergeState==="function" &&
+          confirm("Merge this backup with the progress already on THIS device?\n\nOK = Merge (combine both)\nCancel = Replace (use only the imported file)");
+        var result = doMerge ? window.cfpMergeState(cur, incoming) : incoming;
+        localStorage.setItem(LS, JSON.stringify(result));
+        msg.style.color="#1f9d6b";msg.textContent=(doMerge?"Merged":"Restored")+". Reloading…";
         setTimeout(function(){location.reload();},700);
       }catch(err){msg.style.color="#d6453d";msg.textContent="That file isn't a valid backup.";}
     };r.readAsText(f);
@@ -1502,6 +1560,7 @@ autoBackup();
 </script>
 <script src="module-content.js"></script>
 <script src="flashcards.js"></script>
+<script src="cfp-sync.js"></script>
 <script>
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('sw.js').catch(function(){});

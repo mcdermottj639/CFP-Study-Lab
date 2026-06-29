@@ -12,7 +12,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 
 const SRC = process.argv[2] || 'src/study-home.src.html';
 const OUT = 'index.html';
-const APP_VERSION = 'v2.14.0';
+const APP_VERSION = 'v2.15.0';
 let html = readFileSync(SRC, 'utf8');
 
 const HEAD = `
@@ -71,8 +71,15 @@ const TOOLKIT = `
   $("cfpTkImport").onchange=function(e){
     var f=e.target.files[0];if(!f)return;var r=new FileReader();
     r.onload=function(){
-      try{JSON.parse(r.result);localStorage.setItem(LS,r.result);
-        msg.style.color="#1f9d6b";msg.textContent="Restored. Reloading…";
+      try{
+        var incoming=JSON.parse(r.result);
+        var cur={};try{cur=JSON.parse(localStorage.getItem(LS)||"{}");}catch(_){}
+        var hasLocal=cur&&Object.keys(cur).length>0;
+        var doMerge = hasLocal && typeof window.cfpMergeState==="function" &&
+          confirm("Merge this backup with the progress already on THIS device?\\n\\nOK = Merge (combine both)\\nCancel = Replace (use only the imported file)");
+        var result = doMerge ? window.cfpMergeState(cur, incoming) : incoming;
+        localStorage.setItem(LS, JSON.stringify(result));
+        msg.style.color="#1f9d6b";msg.textContent=(doMerge?"Merged":"Restored")+". Reloading…";
         setTimeout(function(){location.reload();},700);
       }catch(err){msg.style.color="#d6453d";msg.textContent="That file isn't a valid backup.";}
     };r.readAsText(f);
@@ -96,6 +103,7 @@ const TOOLKIT = `
 </script>
 <script src="module-content.js"></script>
 <script src="flashcards.js"></script>
+<script src="cfp-sync.js"></script>
 <script>
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('sw.js').catch(function(){});

@@ -1,5 +1,5 @@
 /* FP Study Lab — service worker (offline support) */
-const VERSION = 'v2.14.0';
+const VERSION = 'v2.15.0';
 const CORE_CACHE = `fpsl-core-${VERSION}`;
 const RUNTIME_CACHE = `fpsl-runtime-${VERSION}`;
 
@@ -13,6 +13,7 @@ const CORE_ASSETS = [
   './vendor/fonts/dancing-script-latin-400-normal.woff2',
   './flashcards.js',
   './module-content.js',
+  './cfp-sync.js',
   './reader-theme.css',
   './reader-theme.js',
   './reader-search.js',

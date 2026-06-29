@@ -225,8 +225,31 @@ mode on a content wrapper so fixed buttons/charts stay correct). Their Chart.js 
   the `apple-touch-icon`/`favicon` links in `build_index.mjs`, and the user must
   **delete + re-add** the home-screen icon.
 
+## Cloud sync & mergeable memory (opt-in, v2.15.0)
+Cross-device progress sync via the user's **Google Drive**, layered on top of the
+offline-first localStorage store (the app is 100% functional offline; sync is opt-in).
+- **Mergeable memory** — `mergeState(a,b)` in `src/study-home.src.html` (exposed as
+  `window.cfpMergeState`) reconciles two saves field-by-field so devices combine
+  instead of clobbering: union seen/flags/objectives, most-recent-wins per card
+  (`_mergeCard`), de-dupe attempts/misses by `ts`, max streak/sessions, higher mcq box.
+  **Import** (Backup panel) now offers Merge (uses this) or Replace.
+- **`cfp-sync.js`** (loaded after flashcards.js; precached in `sw.js`): stores the save
+  as a private file (`cfp-study-progress.json`) in the Drive **app-data folder** (scope
+  `drive.appdata` — the app can only see its own file). OAuth via Google Identity
+  Services (GIS), `CLIENT_ID` is a public web OAuth client (origin `mcdermottj639.github.io`).
+  Flow: connect → pull+merge+push (+reload if changed); on load (if connected) silent
+  pull+merge once; after `save()` (wrapped) + on tab-hide → background push-only (safe,
+  no running-state mutation). UI injected into the ⋯ Backup & tools modal.
+- **Offline-rule exception:** `cfp-sync.js` is the ONE served file allowed to contain
+  `https://` (accounts.google.com GIS + googleapis.com) — it loads Google's script
+  **lazily, only when the user connects**, so the core app stays dependency-free/offline.
+- iOS caveat: OAuth popups can be flaky inside an installed standalone PWA; sign-in may
+  be smoother in Safari. Tokens are short-lived (GIS, ~1h); silent refresh works while the
+  Google session is valid, else the panel shows "Sync now / reconnect".
+
 ## Offline / fonts / vendored assets
-Everything is local — repo scan for `https://` in served files must stay empty.
+Everything is local — repo scan for `https://` in served files must stay empty
+(the sole exception is `cfp-sync.js`, the opt-in Google Drive sync — see above).
 - `vendor/chart.umd.js` (Chart.js 4.5.0), `vendor/mathjax/tex-mml-svg.js`
 - `vendor/fonts/dancing-script-latin-{400,700}-normal.woff2` (title font, `@font-face`)
 - App body uses system fonts; title uses Dancing Script.
