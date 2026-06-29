@@ -158,7 +158,7 @@ synthesis, a worked example, an auto quick-reference cheat-sheet (the module's c
 module mastery %, item counts, and launch buttons (`studyScoped` → flashcards/quiz/calc
 honoring `window.MODF`) plus a **readiness diagnostic** (`runDiagnostic` → `mcqRunner`
 with an `onDone` hook storing `S.modReady[course_mod]`). Self-check state =
-`S.objChecked[course_mod]`. New state keys: `modReady`, `objChecked` (migrated in `load()`).
+`S.objChecked[course_mod]`. The hub header also has a **module switcher** (`moduleSwitcher`): ‹ Prev / Next › + M# chips to jump straight to another module's hub without returning to the module map (only openable modules are clickable). New state keys: `modReady`, `objChecked` (migrated in `load()`).
 
 - **Calculator drills are module-tagged:** each `CALCGEN` generator in `src/study-home.src.html` has a `mods:[..]` array (a drill can belong to several modules). The Module Hub shows the **Calc drills** button only when a generator matches that module, and `runCalc` filters by `window.MODF` so a module-scoped launch runs only its drills (course-wide runs all). FP511 calc lives on M3/M4/M7; FP512 on M2/M4/M7.
 - **Authored content lives in `module-content.js`** (loaded before `flashcards.js`,
@@ -211,6 +211,7 @@ mode on a content wrapper so fixed buttons/charts stay correct). Their Chart.js 
   `load` event (its chart fns are defined late); FP512 opens it in `DOMContentLoaded`.
   Tab ids per module are in `TAB_MAP`. If you re-import a reader artifact, re-add the
   hash-open snippet near `activateTab('overview')` / the tab `go()` setup.
+- **In-reader search** (`reader-search.js`, shared; injected by `inject_reader_theme.mjs` with its own `reader-search-injected` marker, precached in `sw.js`): a floating 🔍 opens a search panel that indexes EVERY tab + collapsible section (even hidden ones — native find-in-page can't), lists hits as **Tab › Section** + snippet, and on tap switches tab, expands the section, scrolls, and highlights. Reader-agnostic: maps sections→tabs by probing which `.active` panel contains them, and drives navigation by clicking the existing `.tab-btn`/section headers — so it works on FP511, FP512, and future readers with no per-reader code.
 
 ## Icons
 - App icon = cursive **"CFP"** (Dancing Script) on **deep green `#1f4d3a`**

@@ -670,6 +670,29 @@ function runDiagnostic(course,mod){
     onDone:(pct)=>{ S.modReady[course+'_'+mod]={score:pct,ts:ymd(new Date())}; save(); }
   });
 }
+// Quick module-to-module navigation inside the hub (prev/next + M# chips) so you
+// don't have to go back to the module map to switch modules.
+function moduleSwitcher(course,current,color){
+  const meta=(typeof MODMETA!=='undefined')?MODMETA[course]:null;
+  if(!meta)return '';
+  const nums=Object.keys(meta).map(Number).sort((a,b)=>a-b);
+  const present=new Set();
+  CARDS.concat(MCQ).forEach(x=>{if(x.m===course){const n=moduleOf(x);if(n)present.add(n);}});
+  const openable=n=>present.has(n)||!!(((window.MODOBJ||{})[course]||{})[n]||((window.MODSYN||{})[course]||{})[n]);
+  const idx=nums.indexOf(current);
+  let prev=null,next=null;
+  for(let i=idx-1;i>=0;i--){if(openable(nums[i])){prev=nums[i];break;}}
+  for(let i=idx+1;i<nums.length;i++){if(openable(nums[i])){next=nums[i];break;}}
+  const chips=nums.map(n=>{
+    const cur=n===current, ok=openable(n);
+    return '<button class="modchip'+(cur?' on':'')+'"'+
+      (ok&&!cur?' onclick="openModule(\''+course+'\','+n+')"':(cur?'':' disabled'))+
+      ' title="'+(meta[n]||('Module '+n)).replace(/"/g,'')+'">M'+n+'</button>';
+  }).join('');
+  const arrow=(n,label)=> n?'<button class="modchip" onclick="openModule(\''+course+'\','+n+')">'+label+'</button>'
+                          :'<button class="modchip" disabled>'+label+'</button>';
+  return '<div class="modswitch">'+arrow(prev,'‹ Prev')+chips+arrow(next,'Next ›')+'</div>';
+}
 function renderModuleHub(course,mod){
   const sec=document.getElementById('modhub'); if(!sec)return;
   const meta=(typeof MODMETA!=='undefined'&&MODMETA[course])?MODMETA[course]:{};
@@ -710,6 +733,7 @@ function renderModuleHub(course,mod){
       '<div class="small muted">'+dms.map(d=>d.k+' '+d.name+' · '+d.w+'% of exam').join(' · ')+'</div>'+
       '<div class="bar" style="margin-top:8px"><i style="width:'+mm+'%;background:'+color+'"></i></div>'+
       '<div class="small muted" style="margin-top:4px">'+mm+'% module mastery · '+cards.length+' cards ('+unseen+' unseen) · '+mcqs.length+' questions</div>'+
+      moduleSwitcher(course,mod,color)+
     '</div>'+
     '<div class="card"><h3>Study this module</h3>'+
       '<div class="row" style="flex-wrap:wrap;gap:8px;margin-top:8px">'+

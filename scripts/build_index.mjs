@@ -12,7 +12,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 
 const SRC = process.argv[2] || 'src/study-home.src.html';
 const OUT = 'index.html';
-const APP_VERSION = 'v2.13.2';
+const APP_VERSION = 'v2.14.0';
 let html = readFileSync(SRC, 'utf8');
 
 const HEAD = `
@@ -232,6 +232,14 @@ a.link:hover{text-decoration:underline}
 .modname{font-size:14.5px;font-weight:600;line-height:1.25}
 .modrow-r{display:flex;align-items:center;gap:9px;flex:0 0 auto}
 .modchev{font-size:22px;color:var(--muted);line-height:1;font-weight:700}
+
+/* Module Hub → quick module switcher (prev/next + M# chips) */
+.modswitch{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.modchip{min-width:36px;padding:7px 10px;border:1px solid var(--line);border-radius:9px;background:var(--card);color:var(--ink);font:700 12.5px system-ui,-apple-system,sans-serif;cursor:pointer;transition:.12s}
+.modchip.on{background:var(--grad);color:#fff;border-color:transparent}
+.modchip[disabled]{opacity:.38;cursor:default}
+.modchip:not(.on):not([disabled]):hover{border-color:var(--brand);background:#fdf3ea}
+html[data-theme="dark"] .modchip:not(.on):not([disabled]):hover{background:#2f251d}
 
 /* ---- Warm dark mode (opt-in via Settings/toolkit) ---- */
 html[data-theme="dark"]{
