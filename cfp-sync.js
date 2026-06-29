@@ -16,7 +16,7 @@
   var FILE = 'cfp-study-progress.json';
   var LS = 'cfpStudyHome.v1', FLAG = 'cfpSyncEnabled', AT = 'cfpSyncAt';
 
-  var token = null, tokenClient = null, fileId = null, busy = false, pushTimer = null;
+  var token = null, tokenClient = null, fileId = null, busy = false, pushTimer = null, pendingRej = null;
 
   function enabled() { try { return localStorage.getItem(FLAG) === '1'; } catch (e) { return false; } }
   function setEnabled(v) { try { v ? localStorage.setItem(FLAG, '1') : localStorage.removeItem(FLAG); } catch (e) {} }
@@ -35,20 +35,36 @@
       document.head.appendChild(s);
     });
   }
+  function ensureTokenClient() {
+    if (tokenClient) return;
+    tokenClient = google.accounts.oauth2.initTokenClient({
+      client_id: CLIENT_ID, scope: SCOPE, callback: function () {},
+      // Fires when a token request fails without a token response (e.g. a silent
+      // prompt:'none' attempt that needs interaction). Reject the pending promise
+      // so silent refreshes fail quietly instead of hanging.
+      error_callback: function (err) { var r = pendingRej; pendingRej = null; if (r) r(new Error((err && err.type) || 'sign-in failed')); }
+    });
+  }
   function getToken(interactive) {
-    // Reuse the in-memory token (valid ~1h). NEVER open the sign-in popup unless this
-    // call is from a user gesture (interactive) — auto/background calls must stay silent
-    // and simply fail if there's no live token, so the app never pops up on its own.
+    // Reuse the in-memory token (valid ~1h). For interactive calls (user gesture) we
+    // open the normal consent flow. For background/auto calls we attempt a SILENT
+    // refresh with prompt:'none' — Google returns a token without any UI while the
+    // user's Google session + prior consent are alive, and fails quietly otherwise.
+    // So the app still NEVER pops up on its own, but background pushes keep working
+    // across token expiry and fresh app loads (no manual "Sync now" needed each time).
     if (token) return Promise.resolve(token);
-    if (!interactive) return Promise.reject(new Error('not signed in'));
+    if (!interactive && !enabled()) return Promise.reject(new Error('not connected'));
+    if (!interactive && !online()) return Promise.reject(new Error('offline'));
     return loadGIS().then(function () {
       return new Promise(function (res, rej) {
-        if (!tokenClient) tokenClient = google.accounts.oauth2.initTokenClient({ client_id: CLIENT_ID, scope: SCOPE, callback: function () {} });
+        ensureTokenClient();
+        pendingRej = rej;
         tokenClient.callback = function (resp) {
+          pendingRej = null;
           if (resp && resp.access_token) { token = resp.access_token; setTimeout(function () { token = null; }, 55 * 60 * 1000); res(token); }
-          else rej(new Error((resp && resp.error) || 'sign-in cancelled'));
+          else rej(new Error((resp && resp.error) || (interactive ? 'sign-in cancelled' : 'silent refresh failed')));
         };
-        try { tokenClient.requestAccessToken({}); } catch (e) { rej(e); }
+        try { tokenClient.requestAccessToken(interactive ? {} : { prompt: 'none' }); } catch (e) { pendingRej = null; rej(e); }
       });
     });
   }
@@ -156,13 +172,19 @@
       window.save = function () { var r = orig.apply(this, arguments); schedulePush(); return r; };
       window.save.__cfpWrapped = true;
     }
-    // Background push only fires when we already hold a live token (i.e. AFTER the user
-    // tapped Sync now this session) — pushOnly()/getToken(false) never open a popup.
+    // Background push self-refreshes its token silently (prompt:'none'), so it works
+    // even after the ~1h token expires or a fresh app load — and still never pops up.
     document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') pushOnly(); });
-    window.addEventListener('online', function () { if (enabled() && token) schedulePush(); });
-    // NO automatic sign-in / sync on load (that caused repeated "allow" popups). If connected,
-    // just nudge the user to pull when they want it.
-    if (enabled()) status('Connected — tap “Sync now” to pull the latest.');
+    window.addEventListener('online', function () { if (enabled()) schedulePush(); });
+    // On load, if connected, do ONE silent token refresh + pull/merge. prompt:'none'
+    // shows no UI: if the Google session/consent is alive we sync automatically; if not,
+    // we fall back to nudging the user to tap "Sync now" (no popup either way).
+    if (enabled()) {
+      status('Connected — syncing…');
+      getToken(false).then(function () { return fullSync(false); })
+        .then(function (changed) { if (changed) setTimeout(function () { location.reload(); }, 600); })
+        .catch(function () { status('Connected — tap “Sync now” to pull the latest.'); });
+    }
   }
   if (document.readyState === 'complete') init(); else window.addEventListener('load', init);
 })();

@@ -323,9 +323,16 @@ offline-first localStorage store (the app is 100% functional offline; sync is op
   as a private file (`cfp-study-progress.json`) in the Drive **app-data folder** (scope
   `drive.appdata` — the app can only see its own file). OAuth via Google Identity
   Services (GIS), `CLIENT_ID` is a public web OAuth client (origin `mcdermottj639.github.io`).
-  Flow: connect → pull+merge+push (+reload if changed); on load (if connected) silent
-  pull+merge once; after `save()` (wrapped) + on tab-hide → background push-only (safe,
-  no running-state mutation). UI injected into the ⋯ Backup & tools modal.
+  Flow: connect → pull+merge+push (+reload if changed); on load (if connected) a **silent
+  token refresh** (`getToken(false)` → `requestAccessToken({prompt:'none'})`, no UI ever)
+  then pull+merge+push once; after `save()` (wrapped) + on tab-hide → background push-only
+  (safe, no running-state mutation). **Background pushes self-refresh the token silently**
+  (v2.21.0) so auto-save works across the ~1h token expiry and fresh app loads — you no
+  longer have to tap "Sync now" each session to arm it. `prompt:'none'` succeeds only while
+  the Google session + prior consent are alive; otherwise it fails quietly (no popup) and
+  the panel falls back to "tap Sync now". A shared `error_callback` on the reused
+  `tokenClient` rejects the pending silent attempt so it never hangs. UI injected into the
+  ⋯ Backup & tools modal.
 - **Offline-rule exception:** `cfp-sync.js` is the ONE served file allowed to contain
   `https://` (accounts.google.com GIS + googleapis.com) — it loads Google's script
   **lazily, only when the user connects**, so the core app stays dependency-free/offline.
@@ -342,7 +349,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.20.0`) on every shippable change so installed apps auto-update
+  (current: `v2.21.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
