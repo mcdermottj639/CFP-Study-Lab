@@ -160,6 +160,7 @@ honoring `window.MODF`) plus a **readiness diagnostic** (`runDiagnostic` → `mc
 with an `onDone` hook storing `S.modReady[course_mod]`). Self-check state =
 `S.objChecked[course_mod]`. New state keys: `modReady`, `objChecked` (migrated in `load()`).
 
+- **Calculator drills are module-tagged:** each `CALCGEN` generator in `src/study-home.src.html` has a `mods:[..]` array (a drill can belong to several modules). The Module Hub shows the **Calc drills** button only when a generator matches that module, and `runCalc` filters by `window.MODF` so a module-scoped launch runs only its drills (course-wide runs all). FP511 calc lives on M3/M4/M7; FP512 on M2/M4/M7.
 - **Authored content lives in `module-content.js`** (loaded before `flashcards.js`,
   precached in `sw.js`): `MODOBJ[course][mod]` (objective strings), `MODSYN[course][mod]`
   (synthesis paragraph), `MODEX[course][mod]` (`{title, html}` worked example),
