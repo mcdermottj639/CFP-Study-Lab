@@ -537,10 +537,14 @@ function mergeState(a,b){
   // per-day counters — max
   ['sessions','newSeen'].forEach(function(key){ out[key]=O(out[key]); var bb=O(b[key]);
     Object.keys(bb).forEach(function(d){ out[key][d]=Math.max(out[key][d]||0, bb[d]||0); }); });
-  // attempts/misses — concat + de-dupe by ts
+  // attempts/misses — concat + de-dupe. Key on ts when present, else fall back to a
+  // content hash so ts-less entries de-dupe too. (Keying ts-less items as "always new"
+  // made merge(x,x) grow the array every call — non-idempotent, which drove the gist
+  // sync into an endless reload loop. Content-keying keeps merge a true fixed point.)
   ['attempts','misses'].forEach(function(key){
     var seen={},res=[]; (a[key]||[]).concat(b[key]||[]).forEach(function(it){
-      var id=it&&it.ts; if(id==null){res.push(it);return;} if(!seen[id]){seen[id]=1;res.push(it);} });
+      var id=(it&&it.ts!=null)?('t'+it.ts):('j'+JSON.stringify(it));
+      if(!seen[id]){seen[id]=1;res.push(it);} });
     out[key]=res;
   });
   // mastery — take the more-studied (higher n) per module
@@ -1747,7 +1751,7 @@ autoBackup();
     <button id="cfpTkTheme" style="width:100%;padding:12px;border:1px solid #dfe3ee;border-radius:12px;background:#fff;color:#1d2433;font:600 15px system-ui;cursor:pointer;margin-bottom:9px">🌙 Dark mode</button>
     <button id="cfpTkReset" style="width:100%;padding:11px;border:none;border-radius:12px;background:#fdecea;color:#d6453d;font:600 14px system-ui;cursor:pointer">Reset all progress</button>
     <div id="cfpTkMsg" style="font-size:12.5px;color:#1f9d6b;text-align:center;min-height:16px;margin-top:10px"></div>
-    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.23.0</div>
+    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.24.0</div>
   </div>
 </div>
 <script>
