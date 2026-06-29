@@ -708,17 +708,28 @@ function studyScoped(course,mod,mode){
   const mn=document.getElementById('studyModuleNum'); if(mn){mn.disabled=false; mn.value=String(mod);}
   const md=document.getElementById('studyMode'); if(md)md.value=mode;
   go('study');
-  ({flash:runFlash,quiz:runQuiz,calc:runCalc,scenario:runScenario,exam:runExam})[mode](course);
+  ({flash:runFlash,adaptive:runAdaptive,exam:runModuleExam,quiz:runQuiz,calc:runCalc,scenario:runScenario})[mode](course);
 }
-function runDiagnostic(course,mod){
-  window.MODF=String(mod);
-  const pool=MCQ.filter(q=>q.m===course&&moduleOf(q)===mod);
-  if(pool.length<3)return toast("Not enough questions for a diagnostic on this module yet");
-  go('study');
-  mcqRunner(pool,modLabel(course)+" readiness check",{
-    limit:Math.min(10,pool.length),
-    hub:{course:course,mod:mod},
-    onDone:(pct)=>{ S.modReady[course+'_'+mod]={score:pct,ts:ymd(new Date())}; save(); }
+// "Readiness check" = adaptive practice: prioritize missed (mcqDue), then unseen,
+// then the rest; instant feedback per question; not scored to the badge.
+function runAdaptive(course){
+  let pool=filt(MCQ,course);
+  if(!pool.length)return emptyMsg("No questions yet for "+modLabel(course));
+  const seen=S.seen[course]||{};
+  const tier=q=>S.mcqDue[q.q]?0:(!seen['q:'+q.q]?1:2);
+  pool=shuffle(pool); pool.sort((a,b)=>tier(a)-tier(b));        // stable-ish tiering
+  mcqRunner(pool,"Readiness check",{limit:Math.min(12,pool.length),ordered:true});
+}
+// "Exam" = exam-style: answer all (no per-question reveal), then scored verdict +
+// weak-spot breakdown; saves the module readiness badge.
+function runModuleExam(course){
+  const mf=window.MODF;
+  const pool=filt(MCQ,course);
+  if(pool.length<3)return emptyMsg("Not enough questions for an exam on "+modLabel(course)+" yet.");
+  const hub=(mf&&mf!=="ALL")?{course:course,mod:+mf}:null;
+  mcqRunner(pool,"Exam · "+modLabel(course),{
+    limit:Math.min(15,pool.length), exam:true, hub:hub,
+    onDone:(pct)=>{ if(hub){ const prev=(S.modReady[course+'_'+mf]||{}).score; S.modReady[course+'_'+mf]={score:pct,ts:ymd(new Date()),prev:(prev==null?null:prev)}; save(); } }
   });
 }
 // Quick module-to-module navigation inside the hub (prev/next + M# chips) so you
@@ -789,8 +800,8 @@ function renderModuleHub(course,mod){
     '<div class="card"><h3>Study this module</h3>'+
       '<div class="row" style="flex-wrap:wrap;gap:8px;margin-top:8px">'+
         '<button class="btn" onclick="studyScoped(\''+course+'\','+mod+',\'flash\')">🃏 Flashcards'+(unseen?' ('+unseen+' unseen)':'')+'</button>'+
-        '<button class="btn gray" onclick="studyScoped(\''+course+'\','+mod+',\'quiz\')">❓ Quiz</button>'+
-        '<button class="btn gray" onclick="runDiagnostic(\''+course+'\','+mod+')">🎯 Readiness check</button>'+
+        (mcqs.length?'<button class="btn gray" onclick="studyScoped(\''+course+'\','+mod+',\'adaptive\')">🎯 Readiness check</button>':'')+
+        (mcqs.length>=3?'<button class="btn gray" onclick="studyScoped(\''+course+'\','+mod+',\'exam\')">📝 Exam'+(mcqs.length<8?' <span style="opacity:.65;font-weight:400">· limited</span>':'')+'</button>':'')+
         (hasCalc?'<button class="btn gray" onclick="studyScoped(\''+course+'\','+mod+',\'calc\')">🧮 Calc drills</button>':'')+
         (hasReader?'<button class="btn gray" onclick="openReaderTab(\''+course+'\','+mod+')">📖 Deep-dive reader</button>':'')+
       '</div></div>'+
@@ -953,49 +964,81 @@ function mcqDuePool(){
 
 // Quiz / Exam / Mock — MCQ runner with confidence
 function mcqRunner(pool,title,opts={}){
-  pool=shuffle(pool);
-  const lim=opts.limit||0;            // quiz passes limit:10; exam/mock run the full pool
+  if(!opts.ordered)pool=shuffle(pool);                  // adaptive passes a pre-tiered, ordered pool
+  const lim=opts.limit||0;
   if(lim)pool=pool.slice(0,lim);
-  let idx=0,correct=0;
+  const exam=!!opts.exam;                               // exam = answer all, reveal at the end
+  let idx=0,correct=0,picked=null;const results=[];
   const area=document.getElementById('studyArea');
+
+  function record(oi,cf){
+    const q=pool[idx];const ok=oi===q.a;if(ok)correct++;cf=cf||2;
+    S.attempts.push({mod:q.m,domain:q.d,topic:q.t,correct:ok?1:0,conf:cf,ts:Date.now()});
+    bumpMastery(q.m,ok?1:0); markSeen(q.m,'q:'+mcqKey(q)); mcqSchedule(q,ok);
+    if(!ok)S.misses.push({mod:q.m,topic:q.t,q:q.q,correct:q.o[q.a],e:q.e,ts:Date.now()});
+    if(exam)results.push({q:q,picked:oi,ok:ok});
+    logSession();save();
+    return ok;
+  }
   function draw(){
-    if(idx>=pool.length){
-      const pct=Math.round(100*correct/pool.length);
-      if(opts.onDone){try{opts.onDone(pct,correct,pool.length);}catch(e){}}
-      const backHub=opts.hub?`<button class="btn" onclick="openModule('${opts.hub.course}',${opts.hub.mod})">← Back to module</button> `:"";
-      area.innerHTML=`<div class="card center"><h2>${title} complete</h2><div class="kpi">${pct}%</div><p class="muted">${correct} / ${pool.length} correct</p>${backHub}<button class="btn ${opts.hub?'gray':''}" onclick="go('dash')">Dashboard</button> <button class="btn gray" onclick="go('analytics')">See analytics</button></div>`;
-      return;
-    }
+    if(idx>=pool.length)return finish();
     const q=pool[idx];
     const header=opts.header?`<div class="card" style="margin-bottom:12px;background:#f4f7ff">${opts.header}</div>`:"";
-    area.innerHTML=`${header}<div class="card"><div class="flex"><span class="small muted">${title} — Q${idx+1}/${pool.length}</span><span><span class="tag">${q.m}</span><span class="tag">${domainName(q.d)}</span></span></div>
+    const sub=exam?` <span class="small muted">· answer all, then review</span>`:"";
+    area.innerHTML=`${header}<div class="card"><div class="flex"><span class="small muted">${title} — Q${idx+1}/${pool.length}${sub}</span><span><span class="tag">${q.m}</span><span class="tag">${domainName(q.d)}</span></span></div>
       <h3 style="margin-top:8px">${q.q}</h3>
-      <div id="opts">${q.o.map((o,oi)=>`<button class="opt" onclick="window._pick(${oi})">${String.fromCharCode(65+oi)}. ${o}</button>`).join('')}</div>
-      <div id="conf" class="hidden"><div class="small muted" style="margin-top:8px">Before revealing, how confident were you?</div>
-        <div class="confbtns"><button class="btn gray sm" onclick="window._conf(1)">Guess</button><button class="btn gray sm" onclick="window._conf(2)">Unsure</button><button class="btn gray sm" onclick="window._conf(3)">Confident</button></div></div>
-      <div id="rev"></div></div>`;
+      <div id="opts">${q.o.map((o,oi)=>`<button class="opt" onclick="window._pick(${oi})">${String.fromCharCode(65+oi)}. ${o}</button>`).join('')}</div>`+
+      (exam?'':`<div id="conf" class="hidden"><div class="small muted" style="margin-top:8px">Before revealing, how confident were you?</div>
+        <div class="confbtns"><button class="btn gray sm" onclick="window._conf(1)">Guess</button><button class="btn gray sm" onclick="window._conf(2)">Unsure</button><button class="btn gray sm" onclick="window._conf(3)">Confident</button></div></div>`)+
+      `<div id="rev"></div></div>`;
   }
-  let picked=null;
   window._pick=(oi)=>{
+    if(exam){ record(oi); idx++; draw(); return; }       // exam: lock + advance, no reveal
     if(picked!==null)return;picked=oi;
     document.getElementById('conf').classList.remove('hidden');
     document.querySelectorAll('#opts .opt').forEach(b=>b.classList.add('dim'));
   };
   window._conf=(cf)=>{
-    const q=pool[idx];const ok=picked===q.a;if(ok)correct++;
-    S.attempts.push({mod:q.m,domain:q.d,topic:q.t,correct:ok?1:0,conf:cf,ts:Date.now()});
-    bumpMastery(q.m,ok?1:0);
-    markSeen(q.m,'q:'+mcqKey(q));
-    mcqSchedule(q,ok);                                   // miss → resurfaces; right → advances/retires
-    if(!ok)S.misses.push({mod:q.m,topic:q.t,q:q.q,correct:q.o[q.a],e:q.e,ts:Date.now()});
-    logSession();save();
-    const opts=document.querySelectorAll('#opts .opt');
-    opts.forEach((b,oi)=>{b.classList.remove('dim');if(oi===q.a)b.classList.add('correct');if(oi===picked&&!ok)b.classList.add('wrong');b.onclick=null;});
+    const q=pool[idx];const ok=record(picked,cf);
+    const els=document.querySelectorAll('#opts .opt');
+    els.forEach((b,oi)=>{b.classList.remove('dim');if(oi===q.a)b.classList.add('correct');if(oi===picked&&!ok)b.classList.add('wrong');b.onclick=null;});
     document.getElementById('conf').classList.add('hidden');
     document.getElementById('rev').innerHTML=`<div class="expl"><b>${ok?'✓ Correct':'✗ Not quite'}.</b> ${q.e}</div>
       <div class="center" style="margin-top:10px"><button class="btn" onclick="window._next()">Next →</button></div>`;
   };
   window._next=()=>{idx++;picked=null;draw();};
+
+  function finish(){
+    const pct=Math.round(100*correct/(pool.length||1));
+    if(opts.onDone){try{opts.onDone(pct,correct,pool.length,results);}catch(e){}}
+    if(exam){area.innerHTML=examResults(pct);return;}
+    const backHub=opts.hub?`<button class="btn" onclick="openModule('${opts.hub.course}',${opts.hub.mod})">← Back to module</button> `:"";
+    area.innerHTML=`<div class="card center"><h2>${title} complete</h2><div class="kpi">${pct}%</div><p class="muted">${correct} / ${pool.length} correct</p>${backHub}<button class="btn ${opts.hub?'gray':''}" onclick="go('dash')">Dashboard</button> <button class="btn gray" onclick="go('analytics')">See analytics</button></div>`;
+  }
+  function examResults(pct){
+    const v=pct>=80?{t:'✅ On track',c:'var(--good)'}:pct>=70?{t:'⚠ Almost there',c:'#d98a1f'}:{t:'❌ Needs work',c:'var(--bad)'};
+    const hub=opts.hub;
+    let delta='';
+    if(hub){const mr=S.modReady[hub.course+'_'+hub.mod];if(mr&&mr.prev!=null){const d=pct-mr.prev;delta=` · <span style="color:${d>=0?'var(--good)':'var(--bad)'}">${d>=0?'▲':'▼'} ${Math.abs(d)} pts from last</span>`;}}
+    const weak=[...new Set(results.filter(r=>!r.ok).map(r=>r.q.t))];
+    const links=hub?`<div class="row" style="gap:8px;margin-top:10px;flex-wrap:wrap">`+((window.READER_MAP&&window.READER_MAP[hub.course])?'<button class="btn gray sm" onclick="openReaderTab(\''+hub.course+'\','+hub.mod+')">📖 Reader</button>':'')+'<button class="btn gray sm" onclick="openCheatSheet(\''+hub.course+'\','+hub.mod+')">📄 Cheat sheet</button></div>':'';
+    const weakHtml=weak.length
+      ?`<div class="card" style="margin-top:12px"><h3>⚠ Review these</h3><div style="margin-top:4px">${weak.map(t=>'<span class="tag">'+t+'</span>').join(' ')}</div>${links}</div>`
+      :`<div class="card" style="margin-top:12px"><p class="small">Clean sweep — nothing missed. 🎉</p></div>`;
+    const review=results.map((r,i)=>{const q=r.q;return `<div style="padding:8px 0;border-bottom:1px solid var(--line)">
+      <div class="small"><b>${i+1}. ${q.q}</b></div>
+      <div class="small" style="color:${r.ok?'var(--good)':'var(--bad)'}">Your answer: ${String.fromCharCode(65+r.picked)}. ${q.o[r.picked]} ${r.ok?'✓':'✗'}</div>
+      ${r.ok?'':`<div class="small" style="color:var(--good)">Correct: ${String.fromCharCode(65+q.a)}. ${q.o[q.a]}</div>`}
+      <div class="small muted" style="margin-top:2px">${q.e}</div></div>`;}).join('');
+    const back=hub?`<button class="btn" onclick="openModule('${hub.course}',${hub.mod})">← Back to module</button> `:'';
+    return `<div class="card center"><h2>${title}</h2>
+        <div class="kpi" style="color:${v.c}">${pct}%</div>
+        <div style="font-weight:800;color:${v.c}">${v.t}</div>
+        <div class="small muted">${correct} / ${pool.length} correct${delta}</div>
+        <div style="margin-top:10px">${back}<button class="btn gray" onclick="go('dash')">Dashboard</button></div></div>`+
+      weakHtml+
+      `<details class="card" style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">Review all ${pool.length} questions &amp; explanations</summary>${review}</details>`;
+  }
   draw();
 }
 function domainName(k){const d=DOMAINS.find(x=>x.k===k);return d?d.k:k;}
