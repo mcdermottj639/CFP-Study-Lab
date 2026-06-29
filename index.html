@@ -561,7 +561,7 @@ function mergeState(a,b){
   // streak / activity
   out.streak=Math.max(a.streak||0,b.streak||0);
   out.lastStudy=((b.lastStudy||'')>(a.lastStudy||''))?b.lastStudy:(a.lastStudy||b.lastStudy||null);
-  out.lastBackup=Math.max(a.lastBackup||0,b.lastBackup||0);
+  if(a.lastBackup!=null||b.lastBackup!=null) out.lastBackup=Math.max(a.lastBackup||0,b.lastBackup||0); // don't synthesize the key (kept merge from always reporting "changed")
   // settings — keep this device's, fall back to incoming
   ['examDate','goal','newPerDay'].forEach(function(k){ if(out[k]==null) out[k]=b[k]; });
   return out;
@@ -1751,7 +1751,7 @@ autoBackup();
     <button id="cfpTkTheme" style="width:100%;padding:12px;border:1px solid #dfe3ee;border-radius:12px;background:#fff;color:#1d2433;font:600 15px system-ui;cursor:pointer;margin-bottom:9px">🌙 Dark mode</button>
     <button id="cfpTkReset" style="width:100%;padding:11px;border:none;border-radius:12px;background:#fdecea;color:#d6453d;font:600 14px system-ui;cursor:pointer">Reset all progress</button>
     <div id="cfpTkMsg" style="font-size:12.5px;color:#1f9d6b;text-align:center;min-height:16px;margin-top:10px"></div>
-    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.24.0</div>
+    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.25.0</div>
   </div>
 </div>
 <script>

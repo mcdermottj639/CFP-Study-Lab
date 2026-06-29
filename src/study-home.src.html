@@ -413,7 +413,7 @@ function mergeState(a,b){
   // streak / activity
   out.streak=Math.max(a.streak||0,b.streak||0);
   out.lastStudy=((b.lastStudy||'')>(a.lastStudy||''))?b.lastStudy:(a.lastStudy||b.lastStudy||null);
-  out.lastBackup=Math.max(a.lastBackup||0,b.lastBackup||0);
+  if(a.lastBackup!=null||b.lastBackup!=null) out.lastBackup=Math.max(a.lastBackup||0,b.lastBackup||0); // don't synthesize the key (kept merge from always reporting "changed")
   // settings — keep this device's, fall back to incoming
   ['examDate','goal','newPerDay'].forEach(function(k){ if(out[k]==null) out[k]=b[k]; });
   return out;

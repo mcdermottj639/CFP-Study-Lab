@@ -91,10 +91,17 @@
       .catch(function () {});
   }
   function schedulePush() { if (!enabled()) return; clearTimeout(pushTimer); pushTimer = setTimeout(pushOnly, 5000); }
-  // Reload at most ONCE per page load. A non-idempotent merge that keeps reporting
-  // "changed" must never be able to spin the page in an endless reload loop again.
-  var reloaded = false;
-  function reloadOnce() { if (reloaded) return; reloaded = true; setTimeout(function () { location.reload(); }, 600); }
+  // Reload at most ONCE per TAB SESSION to surface pulled changes. The guard MUST live
+  // in sessionStorage (survives reloads), not a module variable (which resets on every
+  // reload and so can't break a loop that spans reloads — that was the v2.24.0 bug). If
+  // a load-time merge keeps reporting "changed" (e.g. a 2nd device still pushing, or any
+  // future non-idempotency), we reload only the first time and then leave the page alone;
+  // later pulls still merge+save silently and show up on the next manual reload.
+  var RELOAD_FLAG = 'cfpGistReloaded';
+  function reloadOnce() {
+    try { if (sessionStorage.getItem(RELOAD_FLAG)) return; sessionStorage.setItem(RELOAD_FLAG, '1'); } catch (e) {}
+    setTimeout(function () { location.reload(); }, 600);
+  }
 
   // ---- UI (injected into the ⋯ Backup & tools modal) ----
   function status(m) { var s = document.getElementById('cfpGistStatus'); if (s) s.textContent = m; }
