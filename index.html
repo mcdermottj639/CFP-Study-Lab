@@ -243,7 +243,7 @@ section:not(.hidden){animation:rise .42s cubic-bezier(.2,.7,.3,1)}
   <!-- DASHBOARD -->
   <section id="dash">
     <div class="grid g4">
-      <div class="card"><div class="sub">Exam readiness</div><div class="kpi" id="kReady">—</div><div class="bar" style="margin-top:8px"><i id="readyBar" style="width:0%"></i></div><div class="small muted" style="margin-top:6px">Blueprint-weighted across 8 domains</div></div>
+      <div class="card"><div class="flex"><div class="sub">Exam readiness</div><span id="readyTrend" class="small muted" title="Readiness trend"></span></div><div class="kpi" id="kReady">—</div><div class="bar" style="margin-top:8px"><i id="readyBar" style="width:0%"></i></div><div class="small muted" id="readyDrivers" style="margin-top:6px">Blueprint-weighted across 8 domains</div></div>
       <div class="card"><div class="sub">Study streak</div><div class="kpi" id="kStreak">—</div><div class="small muted">days in a row</div></div>
       <div class="card"><div class="sub">Unseen cards</div><div class="kpi" id="kDue">—</div><div class="small muted">not studied yet</div></div>
       <div class="card"><div class="sub">Hours logged</div><div class="kpi" id="kHours">—</div><div class="small muted">total study time</div></div>
@@ -326,9 +326,27 @@ section:not(.hidden){animation:rise .42s cubic-bezier(.2,.7,.3,1)}
 
   <!-- ANALYTICS -->
   <section id="analytics" class="hidden">
-    <div class="grid g2">
+    <div class="card">
+      <div class="flex"><h2>Biggest gaps to your score</h2><span class="small muted">readiness points left on the table</span></div>
+      <div class="small muted" style="margin:2px 0 8px">Domains ranked by <b>exam weight × how far you are from ready</b> — fix the top ones first.</div>
+      <div id="gapList" class="small"></div>
+    </div>
+    <div class="grid g2" style="margin-top:14px">
       <div class="card"><h2>Mastery by module</h2><div style="height:240px"><canvas id="masteryChart"></canvas></div></div>
       <div class="card"><h2>Confidence vs. accuracy</h2><div style="height:240px"><canvas id="calChart"></canvas></div><div class="small muted" id="calNote" style="margin-top:6px"></div></div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h2>Module exam scoreboard</h2>
+      <div class="small muted" style="margin:2px 0 8px">Your latest practice-exam score per module (the objective readiness signal).</div>
+      <div id="examBoard" class="small"></div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h2>Card status by course</h2>
+      <div id="cardStatusBoard" class="small"></div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <div class="flex"><h2>Weak topics — make a plan</h2><span class="small muted">accuracy under 70%</span></div>
+      <div id="weakTopicsBoard" class="small"></div>
     </div>
     <div class="card" style="margin-top:14px">
       <div class="flex"><h2>Mistake journal</h2><button class="btn gray sm" onclick="reviewMisses()">Review my misses →</button></div>
@@ -480,10 +498,11 @@ function load(){
     // migrate older saves to the SM-2 schema
     if(!x.seen)x.seen={}; if(!x.mcqDue)x.mcqDue={}; if(!x.newSeen)x.newSeen={};
     if(!x.modReady)x.modReady={}; if(!x.objChecked)x.objChecked={};
+    if(!Array.isArray(x.history))x.history=[];               // daily readiness snapshots for the trend sparkline
     if(typeof x.newPerDay!=='number'||x.newPerDay===20)x.newPerDay=0; // 0 = show ALL new cards (undo the earlier 20/day default)
     return x;
   }}catch(e){}
-  return {cards:{}, attempts:[], misses:[], sessions:{}, mastery:{}, seen:{}, mcqDue:{}, newSeen:{}, modReady:{}, objChecked:{}, newPerDay:0, examDate:"2027-03-09", goal:30, lastStudy:null, streak:0};
+  return {cards:{}, attempts:[], misses:[], sessions:{}, mastery:{}, seen:{}, mcqDue:{}, newSeen:{}, modReady:{}, objChecked:{}, history:[], newPerDay:0, examDate:"2027-03-09", goal:30, lastStudy:null, streak:0};
 }
 function save(){localStorage.setItem(LS,JSON.stringify(S));}
 
@@ -528,6 +547,9 @@ function mergeState(a,b){
   Object.keys(br).forEach(function(k){ var x=out.modReady[k],y=br[k]; if(!x||(y&&(y.ts||'')>(x.ts||''))) out.modReady[k]=y; });
   out.objChecked=O(out.objChecked); var bo=O(b.objChecked);
   Object.keys(bo).forEach(function(k){ out.objChecked[k]=Object.assign({},O(out.objChecked[k]),O(bo[k])); });
+  // readiness history — union by date (most-recent snapshot per day wins), sorted, capped
+  (function(){ var byDay={}; (a.history||[]).concat(b.history||[]).forEach(function(h){ if(h&&h.d) byDay[h.d]=h; });
+    out.history=Object.keys(byDay).sort().map(function(d){return byDay[d];}).slice(-180); })();
   // streak / activity
   out.streak=Math.max(a.streak||0,b.streak||0);
   out.lastStudy=((b.lastStudy||'')>(a.lastStudy||''))?b.lastStudy:(a.lastStudy||b.lastStudy||null);
@@ -643,16 +665,103 @@ function masteryPct(mod){
   const cov=Math.min(1, seenCount(mod)/(totalItems(mod)||1)); // breadth = DISTINCT items seen
   return Math.round(100*acc*cov);                     // exam-readiness needs BOTH accuracy and breadth
 }
+/* ---- Readiness composite ----------------------------------------------------
+   Per-domain readiness blends three transparent sub-scores (each 0..1):
+     • Coverage  — distinct items seen / total items (breadth)
+     • Accuracy  — correctness, weighting graded QUIZZES/EXAMS above softer
+                   flashcard self-grades (objective signal > self-report)
+     • Exam      — your latest module-exam score(s) for that course
+   Weights: cov .30 / acc .40 / exam .30, renormalized over present signals
+   (Exam only counts once you've taken one). A light recency decay nudges a
+   domain down if you haven't touched it in weeks. The whole thing is then
+   BLUEPRINT-weighted across the 8 domains by the official exam percentages. */
+function accWeight(a){return (a.src==='exam')?1.15:(a.src==='card'?0.5:1);} // mcq/legacy=1, exam slightly more, card softer
+// Weighted accuracy for a course from S.attempts → {acc(0..1), n, mcqN}
+function domainAccuracy(mod){
+  let wc=0,wn=0,n=0,mcqN=0;
+  S.attempts.forEach(a=>{ if(a.mod!==mod)return; const w=accWeight(a); wn+=w; wc+=w*(a.correct?1:0); n++; if(a.src!=='card')mcqN++; });
+  return {acc: wn? wc/wn : 0, n:n, mcqN:mcqN};
+}
+// Latest module-exam signal for a course → mean of the most-recent exam score per module {pct(0..1), n}
+function domainExam(course){
+  let sum=0,n=0;
+  Object.keys(S.modReady||{}).forEach(k=>{ if(k.indexOf(course+'_')!==0)return; const v=S.modReady[k]; if(v&&typeof v.score==='number'){sum+=v.score;n++;} });
+  return n? {pct:sum/100/n, n:n} : null;
+}
+// Days since the most recent attempt in a course (Infinity if none)
+function daysSinceMod(mod){
+  let last=0; S.attempts.forEach(a=>{ if(a.mod===mod && a.ts>last)last=a.ts; });
+  return last? (Date.now()-last)/86400000 : Infinity;
+}
+// Per-domain readiness → {score(0..100), cov, acc, exam, n, examN}
+function domainReadiness(d){
+  const modObj=MODULES.find(x=>x.id===d.mod);
+  const started=!!S.mastery[d.mod] || seenCount(d.mod)>0;
+  if(modObj && modObj.status==='upcoming' && !started) return {score:0,cov:0,acc:0,exam:null,n:0,examN:0};
+  const cov=Math.min(1, seenCount(d.mod)/(totalItems(d.mod)||1));
+  const A=domainAccuracy(d.mod);
+  const E=domainExam(d.mod);
+  let num=0.30*cov + 0.40*A.acc, den=0.70;
+  if(E){ num+=0.30*E.pct; den+=0.30; }
+  let score=num/den;
+  // light recency decay: full ≤14d, easing to a 0.85 floor by ~90d
+  const ds=daysSinceMod(d.mod);
+  if(isFinite(ds)&&ds>14){ const dec=Math.max(0.85, 1-0.15*Math.min(1,(ds-14)/76)); score*=dec; }
+  return {score:Math.round(100*score), cov:Math.round(100*cov), acc:Math.round(100*A.acc), exam:E?Math.round(100*E.pct):null, n:A.n, examN:E?E.n:0};
+}
 function readiness(){
   let r=0;
-  DOMAINS.forEach(d=>{
-    const mod=MODULES.find(x=>x.id===d.mod);
-    let mp=masteryPct(d.mod);
-    // unstarted future modules contribute 0
-    if(mod && mod.status==="upcoming" && (!S.mastery[d.mod])) mp=0;
-    r += d.w * (mp/100);
-  });
+  DOMAINS.forEach(d=>{ r += d.w * (domainReadiness(d).score/100); });
   return Math.round(r);
+}
+// Blueprint-weighted aggregate of each sub-driver across started domains → for the dashboard sub-line
+function readinessBreakdown(){
+  let wCov=0,wAcc=0,wExam=0,wSumCA=0,wSumE=0,nMcq=0,nCard=0;
+  DOMAINS.forEach(d=>{
+    const r=domainReadiness(d); if(!r.n && !r.cov) return;
+    wCov+=d.w*r.cov; wAcc+=d.w*r.acc; wSumCA+=d.w;
+    if(r.exam!=null){ wExam+=d.w*r.exam; wSumE+=d.w; }
+    const A=domainAccuracy(d.mod); nMcq+=A.mcqN; nCard+=(A.n-A.mcqN);
+  });
+  return {
+    cov: wSumCA? Math.round(wCov/wSumCA):0,
+    acc: wSumCA? Math.round(wAcc/wSumCA):0,
+    exam: wSumE? Math.round(wExam/wSumE):null,
+    mcqN:nMcq, cardN:nCard
+  };
+}
+// Record one readiness snapshot per day (for the trend sparkline). Idempotent within a day.
+function snapshotReadiness(){
+  const t=ymd(new Date()), r=readiness();
+  const h=S.history||(S.history=[]);
+  const last=h[h.length-1];
+  if(last&&last.d===t){ last.r=r; } else { h.push({d:t,r:r}); }
+  if(h.length>180)S.history=h.slice(-180);
+}
+// Modules whose latest exam is going stale (>21 days) → re-exam nudge
+function dueReexam(){
+  const out=[]; const today=new Date();
+  Object.keys(S.modReady||{}).forEach(k=>{ const v=S.modReady[k]; if(!v||!v.ts)return;
+    const age=(today-new Date(v.ts+'T00:00:00'))/86400000; if(age>21)out.push({k:k,age:Math.round(age),score:v.score}); });
+  return out.sort((a,b)=>b.age-a.age);
+}
+// Tiny inline-SVG sparkline of the last ~30 readiness snapshots (no Chart.js needed)
+function trendSparkline(){
+  const h=(S.history||[]).slice(-30);
+  if(h.length<2)return '';
+  const w=70,ht=20,pad=2, vals=h.map(x=>x.r);
+  const mn=Math.min(...vals), mx=Math.max(...vals), span=(mx-mn)||1;
+  const pts=vals.map((v,i)=>{const x=pad+i*(w-2*pad)/(vals.length-1); const y=ht-pad-(v-mn)/span*(ht-2*pad); return x.toFixed(1)+','+y.toFixed(1);}).join(' ');
+  const delta=vals[vals.length-1]-vals[0];
+  const col=delta>0?'#1f9d6b':(delta<0?'#d6453d':'#9aa3b5');
+  const arrow=delta>0?'▲':(delta<0?'▼':'·');
+  return `<svg width="${w}" height="${ht}" viewBox="0 0 ${w} ${ht}" style="vertical-align:middle"><polyline points="${pts}" fill="none" stroke="${col}" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg> <span style="color:${col};font-weight:700">${arrow}${Math.abs(delta)}</span>`;
+}
+// Per-course card-status tallies {unseen,needwork,known,total} using cardStatus()
+function cardStatusCounts(mod){
+  let u=0,nw=0,kn=0,tot=0;
+  CARDS.forEach((c,i)=>{ if(c.m!==mod)return; tot++; const s=cardStatus(i); if(s==='unseen')u++; else if(s==='needwork')nw++; else kn++; });
+  return {unseen:u,needwork:nw,known:kn,total:tot};
 }
 
 /* ====================== SESSIONS / STREAK ====================== */
@@ -692,9 +801,16 @@ function renderDash(){
   const days=daysTo(S.examDate);
   document.getElementById('countDays').textContent=days;
   document.getElementById('examLabel').textContent=new Date(S.examDate+"T00:00:00").toLocaleDateString(undefined,{month:'long',year:'numeric'});
+  snapshotReadiness(); save();
   const rd=readiness();
   document.getElementById('kReady').textContent=rd+"%";
   document.getElementById('readyBar').style.width=rd+"%";
+  // readiness drivers sub-line (blueprint-weighted aggregate of each signal)
+  const bd=readinessBreakdown();
+  const examTxt=bd.exam!=null?` · <b>${bd.exam}%</b> exam avg`:'';
+  const thin=(bd.mcqN+bd.cardN)<8?` <span class="muted">· based on ${bd.mcqN+bd.cardN} answer${(bd.mcqN+bd.cardN)===1?'':'s'}</span>`:'';
+  document.getElementById('readyDrivers').innerHTML=`<b>${bd.cov}%</b> covered · <b>${bd.acc}%</b> accuracy${examTxt}${thin}`;
+  document.getElementById('readyTrend').innerHTML=trendSparkline();
   document.getElementById('kStreak').textContent=S.streak||0;
   document.getElementById('kDue').textContent=unseenCount();
   document.getElementById('kHours').textContent=totalHours();
@@ -711,6 +827,8 @@ function renderDash(){
   if(nMcq)plan+=`<li><b>${nMcq}</b> missed question${nMcq===1?'':'s'} ready to re-attempt (Review missed questions).</li>`;
   if(nHard)plan+=`<li><b>${nHard}</b> hard/flagged card${nHard===1?'':'s'} to drill down.</li>`;
   if(cur)plan+=`<li>Focus module: <b>${cur.id}</b> — run a quiz or practice exam.</li>`;
+  const reex=dueReexam();
+  if(reex.length)plan+=`<li><b>${reex.length}</b> module${reex.length===1?'':'s'} due for a re-exam (last taken ${reex[0].age}+ days ago) — re-take to keep readiness honest.</li>`;
   if(wk[0])plan+=`<li>Shore up weak topic: <b>${wk[0]}</b>.</li>`;
   plan+=`<li>Do 1 scenario item-set to build exam stamina.</li></ul>`;
   document.getElementById('todayPlan').innerHTML=plan;
@@ -723,13 +841,13 @@ function renderDash(){
 
   // domain chart
   const labels=DOMAINS.map(d=>d.k+" · "+d.name.split(" ").slice(0,2).join(" "));
-  const data=DOMAINS.map(d=>{const mod=MODULES.find(x=>x.id===d.mod);let mp=masteryPct(d.mod);if(mod&&mod.status==='upcoming'&&!S.mastery[d.mod])mp=0;return mp;});
+  const data=DOMAINS.map(d=>domainReadiness(d).score);
   const weights=DOMAINS.map(d=>d.w);
   if(domainChart)domainChart.destroy();
   domainChart=new Chart(document.getElementById('domainChart'),{
     type:'bar',
     data:{labels,datasets:[
-      {label:'Your mastery %',data,backgroundColor:DOMAINS.map(d=>d.c)},
+      {label:'Your readiness %',data,backgroundColor:DOMAINS.map(d=>d.c)},
       {label:'Exam weight %',data:weights,backgroundColor:'#d7dcea'}
     ]},
     options:{responsive:true,maintainAspectRatio:false,scales:{y:{beginAtZero:true,max:100}},plugins:{legend:{position:'bottom'}}}
@@ -834,6 +952,16 @@ function studyScoped(course,mod,mode){
   const sEl=document.getElementById('studySession'); window.CARDFILTER=sEl?sEl.value:'all';
   const sm=document.getElementById('studyModule'); if(sm){sm.value=course; if(typeof fillModuleNumSelect==='function')fillModuleNumSelect();}
   const mn=document.getElementById('studyModuleNum'); if(mn){mn.disabled=false; mn.value=String(mod);}
+  const md=document.getElementById('studyMode'); if(md)md.value=mode;
+  go('study');
+  ({flash:runFlash,adaptive:runAdaptive,exam:runModuleExam,quiz:runQuiz,calc:runCalc,scenario:runScenario})[mode](course);
+}
+// Course-wide study launch (no sub-module filter) — used by the Analytics widgets.
+function studyDomain(course,mode){
+  window.MODF="ALL";
+  const sEl=document.getElementById('studySession'); window.CARDFILTER=sEl?sEl.value:'all';
+  const sm=document.getElementById('studyModule'); if(sm){sm.value=course; if(typeof fillModuleNumSelect==='function')fillModuleNumSelect();}
+  const mn=document.getElementById('studyModuleNum'); if(mn){mn.value='ALL';}
   const md=document.getElementById('studyMode'); if(md)md.value=mode;
   go('study');
   ({flash:runFlash,adaptive:runAdaptive,exam:runModuleExam,quiz:runQuiz,calc:runCalc,scenario:runScenario})[mode](course);
@@ -1101,7 +1229,7 @@ function mcqRunner(pool,title,opts={}){
 
   function record(oi,cf){
     const q=pool[idx];const ok=oi===q.a;if(ok)correct++;cf=cf||2;
-    S.attempts.push({mod:q.m,domain:q.d,topic:q.t,correct:ok?1:0,conf:cf,ts:Date.now()});
+    S.attempts.push({mod:q.m,domain:q.d,topic:q.t,correct:ok?1:0,conf:cf,ts:Date.now(),src:exam?'exam':'mcq'});
     bumpMastery(q.m,ok?1:0); markSeen(q.m,'q:'+mcqKey(q)); mcqSchedule(q,ok);
     if(!ok)S.misses.push({mod:q.m,topic:q.t,q:q.q,correct:q.o[q.a],e:q.e,ts:Date.now()});
     if(exam)results.push({q:q,picked:oi,ok:ok});
@@ -1304,7 +1432,62 @@ function renderAnalytics(){
     options:{responsive:true,maintainAspectRatio:false,scales:{y:{beginAtZero:true,max:100}},plugins:{legend:{display:false}}}
   });
   const conf=buckets[3];
-  document.getElementById('calNote').textContent = conf&&conf.n? (acc[2]<80? `⚠ Overconfidence flag: only ${acc[2]}% correct when 'Confident'. Review those topics.` : `Calibration looks healthy — confident answers are ${acc[2]}% accurate.`) : "Take a few quizzes to see your calibration.";
+  const cn=buckets[3].n;
+  document.getElementById('calNote').innerHTML = cn? (acc[2]<80? `⚠ Overconfidence flag: only <b>${acc[2]}%</b> correct when you felt 'Confident'${cn<8?` <span class="muted">(based on ${cn})</span>`:''}. Review those topics.` : `Calibration looks healthy — confident answers are <b>${acc[2]}%</b> accurate${cn<8?` <span class="muted">(based on ${cn})</span>`:''}.`) : "Take a few quizzes to see your calibration.";
+
+  // ---- Biggest gaps: domains ranked by exam-weight × distance-from-ready ----
+  const gaps=DOMAINS.map(d=>{const r=domainReadiness(d);return {d,r,gap:d.w*(1-r.score/100)};}).sort((a,b)=>b.gap-a.gap);
+  document.getElementById('gapList').innerHTML=gaps.map(g=>{
+    const d=g.d,r=g.r; const avail=MODULES.find(m=>m.id===d.mod&&m.status!=='upcoming')||totalItems(d.mod)>0;
+    const thin=(r.n<8)?` <span class="muted">· ${r.n} ans${r.n===1?'':'wers'}</span>`:'';
+    const drivers=`${r.cov}% cov · ${r.acc}% acc${r.exam!=null?` · ${r.exam}% exam`:''}`;
+    const act=avail?`<button class="btn gray sm" onclick="studyDomain('${d.mod}','adaptive')">Study →</button>`:`<span class="pill" style="background:#f0f2f8;color:var(--muted)">soon</span>`;
+    return `<div class="flex" style="padding:8px 0;border-bottom:1px solid var(--line);gap:10px;align-items:center">
+      <div style="flex:1;min-width:0"><span class="tag" style="background:${d.c}22;color:${d.c}">${d.k} · ${d.w}%</span> ${d.name}
+        <div class="small muted">${r.score}% ready · ${drivers}${thin}</div></div>
+      <div style="text-align:right;white-space:nowrap"><b style="color:${d.c}">−${g.gap.toFixed(1)} pts</b><div style="margin-top:4px">${act}</div></div></div>`;
+  }).join('');
+
+  // ---- Module exam scoreboard ----
+  const examKeys=Object.keys(S.modReady||{}).filter(k=>S.modReady[k]&&typeof S.modReady[k].score==='number');
+  const eb=document.getElementById('examBoard');
+  if(!examKeys.length){ eb.innerHTML=`<span class="muted">No practice exams taken yet. Open a module → <b>📝 Exam</b> to start scoring.</span>`; }
+  else { eb.innerHTML=examKeys.map(k=>{const v=S.modReady[k];const[course,mn]=k.split('_');
+      const name=((MODMETA[course]||{})[mn])||('Module '+mn);
+      const due=v.ts&&((new Date()-new Date(v.ts+'T00:00:00'))/86400000>21);
+      let delta=''; if(v.prev!=null){const dd=v.score-v.prev;delta=` <span style="color:${dd>=0?'var(--good)':'var(--bad)'}">${dd>=0?'▲':'▼'}${Math.abs(dd)}</span>`;}
+      const col=v.score>=75?'var(--good)':(v.score>=50?'var(--brand)':'var(--bad)');
+      return `<div class="flex" style="padding:8px 0;border-bottom:1px solid var(--line);gap:10px;align-items:center">
+        <div style="flex:1;min-width:0"><span class="tag">${course}</span> M${mn} · ${name}
+          <div class="small muted">${v.ts||''}${due?` · <span style="color:var(--bad)">due for re-exam</span>`:''}</div></div>
+        <div style="white-space:nowrap;text-align:right"><b style="color:${col};font-size:16px">${v.score}%</b>${delta}
+          <div style="margin-top:4px"><button class="btn gray sm" onclick="studyScoped('${course}',${mn},'exam')">Re-take →</button></div></div></div>`;
+    }).join(''); }
+
+  // ---- Card status by course ----
+  const csb=document.getElementById('cardStatusBoard');
+  const courses=MODULES.filter(m=>CARDS.some(c=>c.m===m.id));
+  csb.innerHTML=courses.map(m=>{const c=cardStatusCounts(m.id);const tot=c.total||1;
+    const seg=(n,col)=>n?`<span style="display:inline-block;height:10px;width:${(100*n/tot).toFixed(1)}%;background:${col}"></span>`:'';
+    return `<div style="padding:8px 0;border-bottom:1px solid var(--line)">
+      <div class="flex"><b>${m.id}</b><span class="small muted">${c.total} cards</span></div>
+      <div style="display:flex;border-radius:6px;overflow:hidden;margin:6px 0 4px;background:#eef0f6">${seg(c.known,'#1f9d6b')}${seg(c.needwork,'#d98a1f')}${seg(c.unseen,'#cfd5e3')}</div>
+      <div class="small muted"><span style="color:#1f9d6b">●</span> ${c.known} known · <span style="color:#d98a1f">●</span> ${c.needwork} need work · <span style="color:#9aa3b5">●</span> ${c.unseen} unseen</div></div>`;
+  }).join('');
+
+  // ---- Weak topics, actionable ----
+  const wt=weakTopics();
+  const wtb=document.getElementById('weakTopicsBoard');
+  wtb.innerHTML = wt.length? wt.map(w=>{const mn=(TOPIC_MOD[w.mod]||{})[w.topic]||0;
+    const thin=w.n<5?` <span class="muted">· ${w.n} ans${w.n===1?'':'wers'}</span>`:'';
+    const drill=mn?`<button class="btn gray sm" onclick="studyScoped('${w.mod}',${mn},'adaptive')">Drill →</button>`
+                  :`<button class="btn gray sm" onclick="studyDomain('${w.mod}','adaptive')">Drill →</button>`;
+    return `<div class="flex" style="padding:8px 0;border-bottom:1px solid var(--line);gap:10px;align-items:center">
+      <div style="flex:1;min-width:0"><span class="tag">${w.mod}${mn?' · M'+mn:''}</span> ${w.topic}${thin}</div>
+      <div style="white-space:nowrap;text-align:right"><span class="pill" style="background:#fdecea;color:var(--bad)">${w.acc}%</span>
+        <span style="margin-left:6px">${drill}</span></div></div>`;
+  }).join('') : `<span class="muted">Answer a few quizzes and weak topics (under 70%) will surface here with a one-tap drill.</span>`;
+
   // mistakes
   const ml=document.getElementById('mistakeList');
   ml.innerHTML = S.misses.length? S.misses.slice(-12).reverse().map(m=>`<div style="padding:8px 0;border-bottom:1px solid var(--line)"><span class="tag">${m.mod}</span><span class="tag">${m.topic}</span><div style="margin:4px 0">${m.q}</div><div class="small"><b>Answer:</b> ${m.correct}. ${m.e}</div></div>`).join('') : `<span class="muted">No misses logged yet — nice.</span>`;
@@ -1547,7 +1730,7 @@ autoBackup();
     <button id="cfpTkTheme" style="width:100%;padding:12px;border:1px solid #dfe3ee;border-radius:12px;background:#fff;color:#1d2433;font:600 15px system-ui;cursor:pointer;margin-bottom:9px">🌙 Dark mode</button>
     <button id="cfpTkReset" style="width:100%;padding:11px;border:none;border-radius:12px;background:#fdecea;color:#d6453d;font:600 14px system-ui;cursor:pointer">Reset all progress</button>
     <div id="cfpTkMsg" style="font-size:12.5px;color:#1f9d6b;text-align:center;min-height:16px;margin-top:10px"></div>
-    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.16.0</div>
+    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.17.0</div>
   </div>
 </div>
 <script>
