@@ -30,6 +30,13 @@
     };
   /* INFOGRAPHICS-GEN-END */
 
+  // Per-module slide decks (NotebookLM / AI slide PDFs). Course -> module -> [{src,title}].
+  // GENERATED from assets/slides/ by scripts/sync_media.mjs — same markers/rules as
+  // infographics; PDFs are runtime-cached on first view (not precached — too large).
+  /* SLIDES-GEN-START */
+  window.SLIDES = {};
+  /* SLIDES-GEN-END */
+
   window.MODOBJ = {
     FP511: {
       1: [

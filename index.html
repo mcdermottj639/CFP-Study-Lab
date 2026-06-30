@@ -1054,6 +1054,9 @@ function renderModuleHub(course,mod){
   const infos=((window.INFOGRAPHICS||{})[course]||{})[mod]||[];
   const infoHtml=infos.length?'<div class="card" style="margin-top:12px"><div class="flex"><div><h3>Visual guide'+(infos.length>1?'s':'')+'</h3><div class="small muted">One-page infographic — tap to view full-screen, pinch to zoom.</div></div></div>'+
     '<div class="row" style="flex-wrap:wrap;gap:10px;margin-top:10px">'+infos.map((g,i)=>'<div class="infothumb" onclick="openInfographic(\''+course+'\','+mod+','+i+')"><img src="'+g.src+'" alt="'+g.title.replace(/"/g,'&quot;')+'" loading="lazy"><div class="small">'+g.title+'</div></div>').join('')+'</div></div>':'';
+  const decks=((window.SLIDES||{})[course]||{})[mod]||[];
+  const deckHtml=decks.length?'<div class="card" style="margin-top:12px"><div class="flex"><div><h3>Slide deck'+(decks.length>1?'s':'')+'</h3><div class="small muted">NotebookLM study slides — tap to view full-screen.</div></div></div>'+
+    '<div class="row" style="flex-wrap:wrap;gap:8px;margin-top:10px">'+decks.map((g,i)=>'<button class="btn gray" onclick="openSlides(\''+course+'\','+mod+','+i+')">📑 '+g.title+'</button>').join('')+'</div></div>':'';
   sec.innerHTML=
     '<div class="card" style="margin-bottom:12px;border-left:4px solid '+color+'">'+
       '<a class="link small" style="cursor:pointer" onclick="go(\'modules\')">← All modules</a>'+
@@ -1072,7 +1075,7 @@ function renderModuleHub(course,mod){
         (hasCalc?'<button class="btn gray" onclick="studyScoped(\''+course+'\','+mod+',\'calc\')">🧮 Calc drills</button>':'')+
         (hasReader?'<button class="btn gray" onclick="openReaderTab(\''+course+'\','+mod+')">📖 Deep-dive reader</button>':'')+
       '</div></div>'+
-    objHtml+synHtml+exHtml+infoHtml+qref;
+    objHtml+synHtml+exHtml+infoHtml+deckHtml+qref;
 }
 
 /* ====================== INFOGRAPHIC VIEWER (full-screen popup) ====================== */
@@ -1104,6 +1107,36 @@ function openInfographic(course,mod,idx){
   wrap.style.display='block'; document.body.classList.add('infoOpen'); wrap.scrollTop=0;
 }
 function closeInfographic(){const w=document.getElementById('infoWrap');if(w)w.style.display='none';document.body.classList.remove('infoOpen');}
+
+/* ====================== SLIDE-DECK VIEWER (full-screen PDF popup) ====================== */
+function ensureSlideCSS(){
+  if(document.getElementById('slideCSS'))return;
+  const s=document.createElement('style'); s.id='slideCSS';
+  s.textContent=
+  '#slideWrap{position:fixed;inset:0;z-index:100002;background:#1a140f;display:none;flex-direction:column}'+
+  'body.slideOpen{overflow:hidden}'+
+  '#slideWrap.on{display:flex}'+
+  '.slideTools{flex:0 0 auto;display:flex;gap:10px;justify-content:space-between;align-items:center;padding:11px 14px;background:rgba(22,17,12,.96);color:#fff}'+
+  '.slideTools .st-t{font-weight:700;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}'+
+  '.slideTools .st-r{display:flex;gap:8px;flex:0 0 auto;align-items:center}'+
+  '.slideTools a.btn{text-decoration:none}'+
+  '#slideFrame{flex:1 1 auto;width:100%;border:0;background:#33302b}';
+  document.head.appendChild(s);
+}
+function openSlides(course,mod,idx){
+  const decks=((window.SLIDES||{})[course]||{})[mod]||[];
+  const g=decks[idx]; if(!g)return;
+  ensureSlideCSS();
+  let wrap=document.getElementById('slideWrap');
+  if(!wrap){wrap=document.createElement('div');wrap.id='slideWrap';document.body.appendChild(wrap);}
+  // iOS Safari can't render a PDF inside an iframe; offer a reliable "Open" fallback.
+  wrap.innerHTML='<div class="slideTools"><span class="st-t">'+g.title+'</span>'+
+    '<span class="st-r"><a class="btn gray" href="'+g.src+'" target="_blank" rel="noopener">⤢ Open</a>'+
+    '<button class="btn gray" onclick="closeSlides()">✕ Close</button></span></div>'+
+    '<iframe id="slideFrame" src="'+g.src+'#view=FitH" title="'+g.title.replace(/"/g,'&quot;')+'"></iframe>';
+  wrap.classList.add('on'); document.body.classList.add('slideOpen');
+}
+function closeSlides(){const w=document.getElementById('slideWrap');if(w){w.classList.remove('on');w.innerHTML='';}document.body.classList.remove('slideOpen');}
 
 /* ====================== EXAM CHEAT SHEET (printable / save-as-PDF) ====================== */
 function ensureCheatCSS(){
@@ -1784,7 +1817,7 @@ autoBackup();
     <button id="cfpTkTheme" style="width:100%;padding:12px;border:1px solid #dfe3ee;border-radius:12px;background:#fff;color:#1d2433;font:600 15px system-ui;cursor:pointer;margin-bottom:9px">🌙 Dark mode</button>
     <button id="cfpTkReset" style="width:100%;padding:11px;border:none;border-radius:12px;background:#fdecea;color:#d6453d;font:600 14px system-ui;cursor:pointer">Reset all progress</button>
     <div id="cfpTkMsg" style="font-size:12.5px;color:#1f9d6b;text-align:center;min-height:16px;margin-top:10px"></div>
-    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.26.0</div>
+    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.27.0</div>
   </div>
 </div>
 <script>
