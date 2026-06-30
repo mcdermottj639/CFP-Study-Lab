@@ -19,6 +19,17 @@
     FP512: { 1: 'principles', 2: 'property', 3: 'life', 4: 'annuities', 5: 'health', 6: 'disability', 7: 'group', 8: 'business' }
   };
 
+  // Per-module infographics (visual study guides). Course -> module -> [{src,title}].
+  // GENERATED from assets/infographics/ by scripts/sync_infographics.mjs — do not
+  // hand-edit between the markers; add images (named FP###-M#-Title.ext) and re-run.
+  /* INFOGRAPHICS-GEN-START */
+  window.INFOGRAPHICS = {
+      FP512: {
+        1: [ { src: 'assets/infographics/FP512-M1-Insurance-and-Risk-Management-Guide.png', title: 'Insurance and Risk Management Guide' } ]
+      }
+    };
+  /* INFOGRAPHICS-GEN-END */
+
   window.MODOBJ = {
     FP511: {
       1: [
