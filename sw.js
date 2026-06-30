@@ -1,5 +1,5 @@
 /* FP Study Lab — service worker (offline support) */
-const VERSION = 'v2.28.0';
+const VERSION = 'v2.29.0';
 const CORE_CACHE = `fpsl-core-${VERSION}`;
 const RUNTIME_CACHE = `fpsl-runtime-${VERSION}`;
 /* Infographics live in an UNVERSIONED cache so large images aren't re-downloaded
@@ -9,6 +9,8 @@ const MEDIA_CACHE = 'fpsl-media';
 const MEDIA_ASSETS = [
   /* INFOGRAPHICS-GEN-START */
   './assets/infographics/FP512-M1-Insurance-and-Risk-Management-Guide.png',
+  './assets/infographics/FP512-M2-Insurance-Professional-Exam-Quick-Reference.png',
+  './assets/infographics/FP512-M2-Property-and-Casualty-Exam-Guide.png',
   /* INFOGRAPHICS-GEN-END */
 ];
 
