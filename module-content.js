@@ -37,7 +37,8 @@
   /* SLIDES-GEN-START */
   window.SLIDES = {
       FP512: {
-        1: [ { src: 'assets/slides/FP512-M1-Principles-of-Insurance-and-Risk-Management.pdf', title: 'Principles of Insurance and Risk Management' } ]
+        1: [ { src: 'assets/slides/FP512-M1-Principles-of-Insurance-and-Risk-Management.pdf', title: 'Principles of Insurance and Risk Management' } ],
+        2: [ { src: 'assets/slides/FP512-M2-Property-and-Casualty-Blueprint.pdf', title: 'Property and Casualty Blueprint' } ]
       }
     };
   /* SLIDES-GEN-END */
