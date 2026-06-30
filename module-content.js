@@ -34,7 +34,11 @@
   // GENERATED from assets/slides/ by scripts/sync_media.mjs — same markers/rules as
   // infographics; PDFs are runtime-cached on first view (not precached — too large).
   /* SLIDES-GEN-START */
-  window.SLIDES = {};
+  window.SLIDES = {
+      FP512: {
+        1: [ { src: 'assets/slides/FP512-M1-Principles-of-Insurance-and-Risk-Management.pdf', title: 'Principles of Insurance and Risk Management' } ]
+      }
+    };
   /* SLIDES-GEN-END */
 
   window.MODOBJ = {
