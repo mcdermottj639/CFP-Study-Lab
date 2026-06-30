@@ -299,6 +299,42 @@ mode on a content wrapper so fixed buttons/charts stay correct). Their Chart.js 
   hash-open snippet near `activateTab('overview')` / the tab `go()` setup.
 - **In-reader search** (`reader-search.js`, shared; injected by `inject_reader_theme.mjs` with its own `reader-search-injected` marker, precached in `sw.js`): a floating 🔍 opens a search panel that indexes EVERY tab + collapsible section (even hidden ones — native find-in-page can't), lists hits as **Tab › Section** + snippet, and on tap switches tab, expands the section, scrolls, and highlights. Reader-agnostic: maps sections→tabs by probing which `.active` panel contains them, and drives navigation by clicking the existing `.tab-btn`/section headers — so it works on FP511, FP512, and future readers with no per-reader code.
 
+## Per-module media — infographics & slide decks (Module Hub)
+Each Module Hub can show, under "Study this module", a **"Visual guide"** card (one-page
+**infographic** images) and a **"Slide deck"** card (NotebookLM/AI **slide PDFs**), each
+scoped to that one module. Both open a full-screen popup; `renderModuleHub` reads the data
+maps with a graceful empty-default (no card when a module has none). All in
+`src/study-home.src.html`:
+- **Infographics** — data `window.INFOGRAPHICS` (course → module → `[{src,title}]`).
+  Thumbnail grid; `openInfographic`/`closeInfographic` show the image in `#infoWrap`
+  (styles via `ensureInfoCSS`); tap backdrop or ✕ to close.
+- **Slide decks** — data `window.SLIDES` (same shape). Labeled buttons; `openSlides`/
+  `closeSlides` render the PDF in a full-screen `<iframe id="slideFrame">` inside
+  `#slideWrap` (styles via `ensureSlideCSS`). The toolbar has an **⤢ Open** link
+  (`target="_blank"`) as a fallback because **iOS Safari can't render a PDF inside an
+  iframe**.
+- **Files are LOCAL (offline rule).** Source media lives in Google Drive under
+  **`CFP → Infographics`** and **`CFP → Slides Notebook LM`** — pull into the repo (or the
+  user uploads here); never hot-link Drive. Storage split by size:
+  - `assets/infographics/` images (~4–5 MB) → **precached** by `sw.js` into an
+    **unversioned** `fpsl-media` cache (`MEDIA_ASSETS`), so they survive version bumps
+    without re-downloading (kept out of the versioned core/runtime caches; `activate`
+    cleanup excludes `MEDIA_CACHE`).
+  - `assets/slides/` PDFs (~20–25 MB each) → **NOT precached** (too big for install);
+    they're **runtime-cached on first view** by the SW's same-origin cache-first path,
+    so they're offline after being opened once online. Watch repo size as decks pile up
+    (GitHub: 100 MB/file hard limit, ~1 GB repo soft) — compress or rehost if it grows.
+- **Adding one is filename-driven, no engine change.** Name the file
+  `FP<course>-M<module>[-Free Text Title].<ext>` (title optional → "Visual guide" /
+  "Slide deck"; e.g. `FP512-M1-Insurance-and-Risk-Management-Guide.png`,
+  `FP512-M1-Principles-of-Insurance.pdf`), drop it in `assets/infographics/` or
+  `assets/slides/`, then run **`node scripts/sync_media.mjs`** — it regenerates the
+  `window.INFOGRAPHICS` + `window.SLIDES` blocks in `module-content.js` and the
+  `MEDIA_ASSETS` precache list in `sw.js` (delimited by `/* INFOGRAPHICS-GEN-START/END */`
+  and `/* SLIDES-GEN-START/END */` markers — don't hand-edit between them). Then rebuild
+  (`build_index` + `add_content`), bump versions, deploy. Multiple files per module are
+  supported.
+
 ## Icons
 - App icon = cursive **"CFP"** (Dancing Script) on **deep green `#1f4d3a`**
   (green chosen so it's NOT confused with Claude's orange app icon).
@@ -377,7 +413,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.25.0`) on every shippable change so installed apps auto-update
+  (current: `v2.26.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
