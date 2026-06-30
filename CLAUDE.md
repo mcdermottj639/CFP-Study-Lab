@@ -299,6 +299,30 @@ mode on a content wrapper so fixed buttons/charts stay correct). Their Chart.js 
   hash-open snippet near `activateTab('overview')` / the tab `go()` setup.
 - **In-reader search** (`reader-search.js`, shared; injected by `inject_reader_theme.mjs` with its own `reader-search-injected` marker, precached in `sw.js`): a floating 🔍 opens a search panel that indexes EVERY tab + collapsible section (even hidden ones — native find-in-page can't), lists hits as **Tab › Section** + snippet, and on tap switches tab, expands the section, scrolls, and highlights. Reader-agnostic: maps sections→tabs by probing which `.active` panel contains them, and drives navigation by clicking the existing `.tab-btn`/section headers — so it works on FP511, FP512, and future readers with no per-reader code.
 
+## Infographics (per-module visual guides — Module Hub)
+Each Module Hub can show one or more **infographic** images (one-page visual study
+guides) in a **"Visual guide"** card under "Study this module". Tapping a thumbnail
+opens a full-screen popup viewer (`openInfographic`/`closeInfographic` in
+`src/study-home.src.html`; thumb + `#infoWrap` styles via `ensureInfoCSS`). Tap the
+backdrop or ✕ to close. The data map is `window.INFOGRAPHICS` (course → module →
+`[{src,title}]`) in `module-content.js`, read by `renderModuleHub` with a graceful
+empty-default (no card when a module has none).
+- **Images are LOCAL (offline-first):** they live in `assets/infographics/` and are
+  precached by `sw.js` into an **unversioned** `fpsl-media` cache (`MEDIA_ASSETS`),
+  so they survive version bumps without re-downloading (kept out of the versioned
+  core/runtime caches; the `activate` cleanup excludes `MEDIA_CACHE`). The source
+  images live in Google Drive under **`CFP → Infographics`** — pull them into the repo
+  (or the user uploads here), don't hot-link Drive (would break the offline rule).
+- **Adding one is filename-driven, no engine change:** name the file
+  `FP<course>-M<module>[-Free Text Title].<ext>` (e.g.
+  `FP512-M1-Insurance-and-Risk-Management-Guide.png`; title optional → "Visual guide"),
+  drop it in `assets/infographics/`, then run **`node scripts/sync_infographics.mjs`** —
+  it regenerates the `window.INFOGRAPHICS` block in `module-content.js` AND the
+  `MEDIA_ASSETS` precache list in `sw.js` (both delimited by `/* INFOGRAPHICS-GEN-START/END */`
+  markers — don't hand-edit between them). Then rebuild (`build_index` + `add_content`),
+  bump versions, deploy. Multiple images per module are supported. Note: source PNGs can be
+  large (~4–5 MB each) — fine for a few, but consider compressing if the set grows.
+
 ## Icons
 - App icon = cursive **"CFP"** (Dancing Script) on **deep green `#1f4d3a`**
   (green chosen so it's NOT confused with Claude's orange app icon).
@@ -377,7 +401,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.25.0`) on every shippable change so installed apps auto-update
+  (current: `v2.26.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
