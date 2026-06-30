@@ -24,6 +24,9 @@
   // hand-edit between the markers; add images (named FP###-M#-Title.ext) and re-run.
   /* INFOGRAPHICS-GEN-START */
   window.INFOGRAPHICS = {
+      FP511: {
+        1: [ { src: 'assets/infographics/FP511-M1-Personal-Financial-Planning.png', title: 'Personal Financial Planning' } ]
+      },
       FP512: {
         1: [ { src: 'assets/infographics/FP512-M1-Insurance-and-Risk-Management-Guide.png', title: 'Insurance and Risk Management Guide' } ],
         2: [ { src: 'assets/infographics/FP512-M2-Insurance-Professional-Exam-Quick-Reference.png', title: 'Insurance Professional Exam Quick Reference' }, { src: 'assets/infographics/FP512-M2-Property-and-Casualty-Exam-Guide.png', title: 'Property and Casualty Exam Guide' } ],
