@@ -1,11 +1,15 @@
 /* Sync per-module media (infographics + slide decks) into the app.
  *
  * Drop files into the right folder, named  FP<course>-M<module>[-Free Text Title].<ext>
+ * for a single module, or  FP<course>[-Free Text Title].<ext>  (no -M#) for a
+ * WHOLE-COURSE deck — course-level media lands under module 0 (SLIDES[course][0]),
+ * which the Modules-tab course card surfaces above the module list.
  *     assets/infographics/   images (png/jpg/webp/gif/svg/avif)  -> window.INFOGRAPHICS
  *     assets/slides/         slide-deck PDFs                     -> window.SLIDES
  *   e.g.  assets/infographics/FP512-M1-Insurance-and-Risk-Management-Guide.png
  *         assets/slides/FP512-M1-Principles-of-Insurance.pdf
  *         assets/slides/FP513-M4.pdf            (no title -> default below)
+ *         assets/slides/FP511.pdf               (whole-course deck -> module 0)
  *
  * Then run:  node scripts/sync_media.mjs
  *
@@ -25,7 +29,8 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const NAME = /^(FP\d{3})-M(\d+)(?:-(.*))?$/i;
+const NAME = /^(FP\d{3})-M(\d+)(?:-(.*))?$/i;        // single module: FP511-M3[-Title]
+const NAME_COURSE = /^(FP\d{3})(?:-(.*))?$/i;         // whole course: FP511[-Title] -> module 0
 const esc = (s) => String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
 
 // Media kinds: dir, extension filter, default title, JS global, whether precached.
@@ -43,11 +48,17 @@ function scan(kind) {
   const skipped = [];
   for (const f of files) {
     const base = f.replace(kind.ext, '');
-    const m = base.match(NAME);
-    if (!m) { skipped.push(f); continue; }
-    const course = m[1].toUpperCase();
-    const mod = parseInt(m[2], 10);
-    const title = (m[3] || '').replace(/[-_]+/g, ' ').trim() || kind.deft;
+    // Module-level (FP511-M3[-Title]) first; else whole-course (FP511[-Title]) -> module 0.
+    let m = base.match(NAME), course, mod, title;
+    if (m) {
+      course = m[1].toUpperCase();
+      mod = parseInt(m[2], 10);
+      title = (m[3] || '').replace(/[-_]+/g, ' ').trim() || kind.deft;
+    } else if ((m = base.match(NAME_COURSE))) {
+      course = m[1].toUpperCase();
+      mod = 0;
+      title = (m[2] || '').replace(/[-_]+/g, ' ').trim() || kind.deft;
+    } else { skipped.push(f); continue; }
     const src = 'assets/' + kind.dir + '/' + f;
     (data[course] ||= {});
     (data[course][mod] ||= []);

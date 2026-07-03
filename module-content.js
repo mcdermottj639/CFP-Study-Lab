@@ -38,7 +38,11 @@
   // infographics; PDFs are runtime-cached on first view (not precached — too large).
   /* SLIDES-GEN-START */
   window.SLIDES = {
+      FP511: {
+        0: [ { src: 'assets/slides/FP511.pdf', title: 'Slide deck' } ]
+      },
       FP512: {
+        0: [ { src: 'assets/slides/FP512.pdf', title: 'Slide deck' } ],
         1: [ { src: 'assets/slides/FP512-M1-Principles-of-Insurance-and-Risk-Management.pdf', title: 'Principles of Insurance and Risk Management' } ],
         2: [ { src: 'assets/slides/FP512-M2-Property-and-Casualty-Blueprint.pdf', title: 'Property and Casualty Blueprint' } ]
       }

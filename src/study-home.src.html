@@ -738,6 +738,7 @@ function renderModules(){
       <div class="bar"><i style="width:${mp}%;background:${color}"></i></div>
       <div class="small muted" style="margin:4px 0 10px">${mp}% exam-ready</div>
       <div class="small">${links}</div>
+      ${courseSlides(m.id)}
       ${courseModuleList(m.id,color)}
     </div>`;
   }).join('');
@@ -764,6 +765,15 @@ function courseModuleList(course,color){
       <span class="modrow-r">${badge}${open?'<span class="modchev">›</span>':''}</span></button>`;
   }).join('');
   return `<details class="modlist"><summary>📂 ${nums.length} modules — tap to deep-dive</summary><div class="modrows">${rows}</div></details>`;
+}
+// Whole-course NotebookLM slide deck(s) — course-level media (SLIDES[course][0]),
+// shown on the Modules-tab card just under the reader link for quick access.
+function courseSlides(course){
+  const decks=((window.SLIDES||{})[course]||{})[0]||[];
+  if(!decks.length)return '';
+  return '<div class="small" style="margin:6px 0 2px">'+
+    decks.map((g,i)=>'<a class="link" style="cursor:pointer" onclick="openSlides(\''+course+'\',0,'+i+')">📑 '+g.title+'</a>').join(' &nbsp;·&nbsp; ')+
+    '</div>';
 }
 function moduleLinks(id){
   if(driveFiles===null)return '<span class="muted">Loading links… </span><a class="link" style="cursor:pointer" onclick="loadDrive()">Refresh</a>';
