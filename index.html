@@ -886,6 +886,7 @@ function renderModules(){
       <div class="bar"><i style="width:${mp}%;background:${color}"></i></div>
       <div class="small muted" style="margin:4px 0 10px">${mp}% exam-ready</div>
       <div class="small">${links}</div>
+      ${courseSlides(m.id)}
       ${courseModuleList(m.id,color)}
     </div>`;
   }).join('');
@@ -912,6 +913,15 @@ function courseModuleList(course,color){
       <span class="modrow-r">${badge}${open?'<span class="modchev">›</span>':''}</span></button>`;
   }).join('');
   return `<details class="modlist"><summary>📂 ${nums.length} modules — tap to deep-dive</summary><div class="modrows">${rows}</div></details>`;
+}
+// Whole-course NotebookLM slide deck(s) — course-level media (SLIDES[course][0]),
+// shown on the Modules-tab card just under the reader link for quick access.
+function courseSlides(course){
+  const decks=((window.SLIDES||{})[course]||{})[0]||[];
+  if(!decks.length)return '';
+  return '<div class="small" style="margin:6px 0 2px">'+
+    decks.map((g,i)=>'<a class="link" style="cursor:pointer" onclick="openSlides(\''+course+'\',0,'+i+')">📑 '+g.title+'</a>').join(' &nbsp;·&nbsp; ')+
+    '</div>';
 }
 function moduleLinks(id){
   var R={FP511:'apps/fp511-reading.html',FP512:'apps/fp512-reading.html'};
@@ -1827,7 +1837,7 @@ autoBackup();
     <button id="cfpTkTheme" style="width:100%;padding:12px;border:1px solid #dfe3ee;border-radius:12px;background:#fff;color:#1d2433;font:600 15px system-ui;cursor:pointer;margin-bottom:9px">🌙 Dark mode</button>
     <button id="cfpTkReset" style="width:100%;padding:11px;border:none;border-radius:12px;background:#fdecea;color:#d6453d;font:600 14px system-ui;cursor:pointer">Reset all progress</button>
     <div id="cfpTkMsg" style="font-size:12.5px;color:#1f9d6b;text-align:center;min-height:16px;margin-top:10px"></div>
-    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.35.0</div>
+    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.36.0</div>
   </div>
 </div>
 <script>
