@@ -313,6 +313,15 @@ maps with a graceful empty-default (no card when a module has none). All in
   `#slideWrap` (styles via `ensureSlideCSS`). The toolbar has an **⤢ Open** link
   (`target="_blank"`) as a fallback because **iOS Safari can't render a PDF inside an
   iframe**.
+- **Whole-course slide decks (Modules-tab course card, v2.36.0)** — a per-course deck lives
+  under **module `0`** (`SLIDES[course][0]`). `courseSlides(course)` renders it as a **📑 link
+  on the course card in `renderModules`, right under "📖 Open interactive reader" and above the
+  "📂 N modules — tap to deep-dive" list** (the user wanted the course-wide NotebookLM slides
+  reachable there for quick access). It reuses the same `openSlides(course,0,i)` viewer; module 0
+  is never a real Module Hub so it only ever surfaces on the course card. Filename = **`FP<course>[-Free
+  Text Title].pdf`** (NO `-M<module>` segment, e.g. `FP511.pdf` → default "Slide deck"); `sync_media.mjs`
+  routes any `-M#`-less file to module 0 via its `NAME_COURSE` fallback. Same offline behavior as
+  module slide PDFs (runtime-cached, not precached).
 - **Files are LOCAL (offline rule).** Source media lives in Google Drive under
   **`CFP → Infographics`** and **`CFP → Slides Notebook LM`** — pull into the repo (or the
   user uploads here); never hot-link Drive. Storage split by size:
@@ -327,7 +336,8 @@ maps with a graceful empty-default (no card when a module has none). All in
 - **Adding one is filename-driven, no engine change.** Name the file
   `FP<course>-M<module>[-Free Text Title].<ext>` (title optional → "Visual guide" /
   "Slide deck"; e.g. `FP512-M1-Insurance-and-Risk-Management-Guide.png`,
-  `FP512-M1-Principles-of-Insurance.pdf`), drop it in `assets/infographics/` or
+  `FP512-M1-Principles-of-Insurance.pdf`) — or `FP<course>[-Title].<ext>` with no `-M#`
+  for a **whole-course** deck (→ module 0, shown on the course card; see above) — drop it in `assets/infographics/` or
   `assets/slides/`, then run **`node scripts/sync_media.mjs`** — it regenerates the
   `window.INFOGRAPHICS` + `window.SLIDES` blocks in `module-content.js` and the
   `MEDIA_ASSETS` precache list in `sw.js` (delimited by `/* INFOGRAPHICS-GEN-START/END */`
@@ -413,7 +423,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.28.0`) on every shippable change so installed apps auto-update
+  (current: `v2.36.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
