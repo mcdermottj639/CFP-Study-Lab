@@ -1,5 +1,5 @@
 /* FP Study Lab — service worker (offline support) */
-const VERSION = 'v2.37.0';
+const VERSION = 'v2.38.0';
 const CORE_CACHE = `fpsl-core-${VERSION}`;
 const RUNTIME_CACHE = `fpsl-runtime-${VERSION}`;
 /* Infographics live in an UNVERSIONED cache so large images aren't re-downloaded
@@ -14,6 +14,7 @@ const MEDIA_ASSETS = [
   './assets/infographics/FP512-M3-Life-Insurance-Reference-Guide.png',
   './assets/infographics/FP512-M4-Annuities-Exam-Quick-Reference.png',
   './assets/infographics/FP512-M5-Health-Coverage-Exam-Quick-Reference.png',
+  './assets/infographics/FP512-M6-Disability-and-Long-Term-Care-Guide.png',
   /* INFOGRAPHICS-GEN-END */
 ];
 
