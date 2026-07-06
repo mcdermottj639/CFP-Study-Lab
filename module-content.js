@@ -30,7 +30,8 @@
         3: [ { src: 'assets/infographics/FP512-M3-Life-Insurance-Reference-Guide.png', title: 'Life Insurance Reference Guide' } ],
         4: [ { src: 'assets/infographics/FP512-M4-Annuities-Exam-Quick-Reference.png', title: 'Annuities Exam Quick Reference' } ],
         5: [ { src: 'assets/infographics/FP512-M5-Health-Coverage-Exam-Quick-Reference.png', title: 'Health Coverage Exam Quick Reference' } ],
-        6: [ { src: 'assets/infographics/FP512-M6-Disability-and-Long-Term-Care-Guide.png', title: 'Disability and Long Term Care Guide' } ]
+        6: [ { src: 'assets/infographics/FP512-M6-Disability-and-Long-Term-Care-Guide.png', title: 'Disability and Long Term Care Guide' } ],
+        7: [ { src: 'assets/infographics/FP512-M7-Employee-Benefits-Taxation-Study-Guide.png', title: 'Employee Benefits Taxation Study Guide' } ]
       }
     };
   /* INFOGRAPHICS-GEN-END */
