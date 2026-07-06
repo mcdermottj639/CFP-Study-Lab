@@ -29,7 +29,8 @@
         2: [ { src: 'assets/infographics/FP512-M2-Insurance-Professional-Exam-Quick-Reference.png', title: 'Insurance Professional Exam Quick Reference' }, { src: 'assets/infographics/FP512-M2-Property-and-Casualty-Exam-Guide.png', title: 'Property and Casualty Exam Guide' } ],
         3: [ { src: 'assets/infographics/FP512-M3-Life-Insurance-Reference-Guide.png', title: 'Life Insurance Reference Guide' } ],
         4: [ { src: 'assets/infographics/FP512-M4-Annuities-Exam-Quick-Reference.png', title: 'Annuities Exam Quick Reference' } ],
-        5: [ { src: 'assets/infographics/FP512-M5-Health-Coverage-Exam-Quick-Reference.png', title: 'Health Coverage Exam Quick Reference' } ]
+        5: [ { src: 'assets/infographics/FP512-M5-Health-Coverage-Exam-Quick-Reference.png', title: 'Health Coverage Exam Quick Reference' } ],
+        6: [ { src: 'assets/infographics/FP512-M6-Disability-and-Long-Term-Care-Guide.png', title: 'Disability and Long Term Care Guide' } ]
       }
     };
   /* INFOGRAPHICS-GEN-END */
