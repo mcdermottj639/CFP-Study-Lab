@@ -230,9 +230,11 @@ filter. How it works (all in `src/study-home.src.html`, defined next to `MODULES
    the Module Hub section below.
 
 ## Module Hub (per-module deep dive — Modules tab)
-Each course card on the Modules tab expands to a clickable list of its modules
-(`courseModuleList` in `src/study-home.src.html`); clicking one opens the **Module
-Hub** (`#modhub` section, rendered by `renderModuleHub`). A module is openable if it
+Each course card on the Modules tab has a **"📂 N modules — tap to deep-dive"** button
+(`courseModuleList` in `src/study-home.src.html`) that jumps STRAIGHT into the first
+openable module's **Module Hub** (`#modhub` section, rendered by `renderModuleHub`) — no
+intermediate list (v2.48.0; the old `<details>` module list was dropped since the hub's
+own M1/M2/… `moduleSwitcher` chips navigate between modules faster than scrolling a list). A module is openable if it
 has tagged cards/MCQs **or** authored teaching content (then it shows a "guide" badge,
 e.g. FP511 M8 Case Study which has no cards). The hub assembles, all scoped to that one
 module: deep-dive reader link, learning-objectives self-check, "how it connects"

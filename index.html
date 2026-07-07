@@ -141,6 +141,11 @@ a.link:hover{text-decoration:underline}
 .modlist>summary{cursor:pointer;font-weight:700;font-size:14px;padding:10px 6px;list-style:none;border-top:1px solid var(--line)}
 .modlist>summary::-webkit-details-marker{display:none}
 .modlist>summary:hover{color:var(--brand)}
+.modlist-open{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;
+  margin-top:12px;padding:11px 6px;border:none;border-top:1px solid var(--line);border-radius:0;
+  background:transparent;color:var(--ink);font:inherit;font-weight:700;font-size:14px;cursor:pointer;transition:.13s}
+.modlist-open:hover{color:var(--brand)}
+.modlist-open:active{opacity:.7}
 .modrows{margin-top:4px}
 .modrow{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;
   min-height:50px;padding:11px 14px;margin:7px 0;border:1px solid var(--line);border-radius:13px;
@@ -891,7 +896,8 @@ function renderModules(){
     </div>`;
   }).join('');
 }
-// Clickable list of the individual modules inside a course — each opens its Module Hub.
+// "Deep-dive" entry point — jumps straight into the FIRST openable module's Module Hub,
+// where the M1/M2/… switcher chips let you hop between modules faster than scrolling a list.
 function courseModuleList(course,color){
   const meta=(typeof MODMETA!=='undefined')?MODMETA[course]:null;
   if(!meta)return '';
@@ -900,19 +906,10 @@ function courseModuleList(course,color){
   const present=new Set();
   CARDS.concat(MCQ).forEach(x=>{if(x.m===course){const n=moduleOf(x);if(n)present.add(n);}});
   // …or authored teaching content (objectives/synthesis) → still openable as a guide
-  const guide=n=>!!(((window.MODOBJ||{})[course]||{})[n]||((window.MODSYN||{})[course]||{})[n]);
-  const rows=nums.map(n=>{
-    const hasContent=present.has(n);
-    const open=hasContent||guide(n);
-    const mm=hasContent?moduleMastery(course,n):0;
-    const badge=hasContent?`<span class="pill" style="background:#f0f2f8;color:var(--muted)">${mm}%</span>`
-      :open?`<span class="pill" style="background:#eef4ff;color:var(--brand)">guide</span>`
-      :`<span class="pill" style="background:#f0f2f8;color:var(--muted)">soon</span>`;
-    return `<button type="button" class="modrow"${open?` onclick="openModule('${course}',${n})"`:' disabled'}>
-      <span class="modrow-l"><span class="modnum" style="background:${color}22;color:${color}">M${n}</span><span class="modname">${meta[n]}</span></span>
-      <span class="modrow-r">${badge}${open?'<span class="modchev">›</span>':''}</span></button>`;
-  }).join('');
-  return `<details class="modlist"><summary>📂 ${nums.length} modules — tap to deep-dive</summary><div class="modrows">${rows}</div></details>`;
+  const openable=n=>present.has(n)||!!(((window.MODOBJ||{})[course]||{})[n]||((window.MODSYN||{})[course]||{})[n]);
+  const first=nums.find(openable);
+  if(!first)return '';
+  return `<button type="button" class="modlist-open" onclick="openModule('${course}',${first})">📂 ${nums.length} modules — tap to deep-dive<span class="modchev">›</span></button>`;
 }
 // Whole-course NotebookLM slide deck(s) — course-level media (SLIDES[course][0]),
 // shown on the Modules-tab card just under the reader link for quick access.
@@ -1892,7 +1889,7 @@ autoBackup();
     <button id="cfpTkTheme" style="width:100%;padding:12px;border:1px solid #dfe3ee;border-radius:12px;background:#fff;color:#1d2433;font:600 15px system-ui;cursor:pointer;margin-bottom:9px">🌙 Dark mode</button>
     <button id="cfpTkReset" style="width:100%;padding:11px;border:none;border-radius:12px;background:#fdecea;color:#d6453d;font:600 14px system-ui;cursor:pointer">Reset all progress</button>
     <div id="cfpTkMsg" style="font-size:12.5px;color:#1f9d6b;text-align:center;min-height:16px;margin-top:10px"></div>
-    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.47.0</div>
+    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.48.0</div>
   </div>
 </div>
 <script>
