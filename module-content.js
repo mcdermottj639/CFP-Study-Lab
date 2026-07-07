@@ -60,7 +60,8 @@
   window.VIDEO = {
       FP512: {
         1: [ { src: 'assets/video/FP512-M1-Top-4-Insurance-Exam-Traps.mp4', title: 'Top 4 Insurance Exam Traps' } ],
-        2: [ { src: 'assets/video/FP512-M2-High-Yield-Property-and-Casualty-Rules.mp4', title: 'High Yield Property and Casualty Rules' } ]
+        2: [ { src: 'assets/video/FP512-M2-High-Yield-Property-and-Casualty-Rules.mp4', title: 'High Yield Property and Casualty Rules' } ],
+        3: [ { src: 'assets/video/FP512-M3-High-Yield-Life-Insurance-Review.mp4', title: 'High Yield Life Insurance Review' } ]
       }
     };
   /* VIDEO-GEN-END */
