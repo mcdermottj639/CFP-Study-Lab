@@ -344,10 +344,15 @@ card when a module has none). All in `src/study-home.src.html`:
 - **Files are LOCAL (offline rule).** Source media lives in Google Drive under
   **`CFP → Infographics`** and **`CFP → Slides Notebook LM`** — pull into the repo (or the
   user uploads here); never hot-link Drive. Storage split by size:
-  - `assets/infographics/` images (~4–5 MB) → **precached** by `sw.js` into an
-    **unversioned** `fpsl-media` cache (`MEDIA_ASSETS`), so they survive version bumps
-    without re-downloading (kept out of the versioned core/runtime caches; `activate`
-    cleanup excludes `MEDIA_CACHE`).
+  - `assets/infographics/` images → stored as **WebP** (~0.4–0.5 MB each) and **precached**
+    by `sw.js` into an **unversioned** `fpsl-media` cache (`MEDIA_ASSETS`), so they survive
+    version bumps without re-downloading (kept out of the versioned core/runtime caches;
+    `activate` cleanup excludes `MEDIA_CACHE`). **Convert source PNGs to WebP on ingestion**
+    (`ffmpeg -i in.png -c:v libwebp -quality 92 out.webp`) — a text-dense 1536-wide guide goes
+    ~4.5 MB PNG → ~0.4 MB WebP (10×) with text still crisp; q92 is the safe floor for dense
+    tables. iOS Safari 14+/Chrome decode WebP fine. (v2.45.0 converted the original 9 PNGs; the
+    old `.png` blobs may linger orphaned in existing devices' unversioned `fpsl-media` cache —
+    harmless, browser-evictable.)
   - `assets/slides/` PDFs (~20–25 MB each) and `assets/video/` clips (MP4) → **NOT precached**
     (too big for install); they're **runtime-cached on first view** by the SW's same-origin
     path (video via the Range-safe branch above), so they're offline after being opened once
