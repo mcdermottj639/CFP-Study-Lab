@@ -22,6 +22,19 @@
     });
     b.insertBefore(wrap, b.firstChild);
 
+    // Wide tables clip past the right edge in portrait (their container is
+    // overflow:hidden). Wrap each in a horizontal-scroll box so phones can swipe
+    // to see every column instead of having to rotate to landscape.
+    var tables = wrap.querySelectorAll('table');
+    for (var t = 0; t < tables.length; t++) {
+      var tbl = tables[t], par = tbl.parentNode;
+      if (par && par.classList && par.classList.contains('tbl-scroll')) continue;
+      var sc = document.createElement('div');
+      sc.className = 'tbl-scroll';
+      par.insertBefore(sc, tbl);
+      sc.appendChild(tbl);
+    }
+
     var btn = document.createElement('button');
     btn.id = 'rdrTheme';
     btn.type = 'button';
@@ -32,6 +45,19 @@
       set(d ? 'light' : 'dark');
     };
     b.appendChild(btn);
+
+    // "Back to module" — only when we arrived from a specific Module Hub. Returns
+    // to that exact module (not the dashboard, which is what Home does).
+    try {
+      var ret = sessionStorage.getItem('cfpReaderReturn');
+      if (ret && /^[A-Za-z0-9]+\/\d+$/.test(ret)) {
+        var back = document.createElement('a');
+        back.id = 'rdrBack';
+        back.href = '../index.html#m/' + ret;
+        back.innerHTML = '‹ Module ' + ret.split('/')[1];
+        b.appendChild(back);
+      }
+    } catch (e) {}
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

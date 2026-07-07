@@ -34,3 +34,33 @@ html[data-theme="dark"] #rdrWrap mjx-container {
   box-shadow: 0 6px 20px -6px rgba(0,0,0,.5);
   cursor: pointer;
 }
+
+/* "Back to module" pill — sits above the Theme toggle; outlined so it reads as
+   distinct from the solid Home (green) and Theme (terracotta) buttons. */
+#rdrBack {
+  position: fixed;
+  left: max(14px, env(safe-area-inset-left));
+  bottom: calc(106px + env(safe-area-inset-bottom));
+  z-index: 99999;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 9px 13px; border-radius: 999px;
+  background: #fffdf8; color: #1f4d3a;
+  font: 700 13px/1 system-ui, -apple-system, sans-serif;
+  text-decoration: none;
+  border: 1.5px solid #1f4d3a;
+  box-shadow: 0 6px 20px -6px rgba(0,0,0,.5);
+}
+html[data-theme="dark"] #rdrBack { background: #17120e; color: #7fd3ac; border-color: #7fd3ac; }
+
+/* ---- Portrait overflow fixes (apply to every reader) ---- */
+/* Wide tables scroll horizontally in their own box instead of being clipped. */
+.tbl-scroll { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tbl-scroll > table { margin: 0; }
+/* Long words / inline content wrap instead of running off the right edge. */
+#rdrWrap p, #rdrWrap li, #rdrWrap td, #rdrWrap th,
+#rdrWrap h1, #rdrWrap h2, #rdrWrap h3, #rdrWrap h4 { overflow-wrap: break-word; }
+/* .key-list li is display:flex, so mixed inline content (e.g. <strong> + text)
+   becomes separate non-wrapping flex items and overflows in portrait. Render as a
+   normal block list-item with a hanging ▸ marker so the prose wraps. */
+#rdrWrap .key-list li { display: block; position: relative; padding-left: 1.3rem; }
+#rdrWrap .key-list li::before { position: absolute; left: 0; top: 0.5rem; }

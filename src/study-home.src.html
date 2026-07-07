@@ -834,6 +834,8 @@ function toggleObj(course,mod,i){
 function openReaderTab(course,mod){
   const file=(window.READER_MAP||{})[course]; if(!file)return;
   const tab=((window.TAB_MAP||{})[course]||{})[mod];
+  // Remember where we came from so the reader can offer a "back to this module" button.
+  try{sessionStorage.setItem('cfpReaderReturn',course+'/'+mod);}catch(e){}
   location.href=file+(tab?('#'+tab):'');
 }
 // launch a scoped study session for this module from the hub
@@ -1730,6 +1732,18 @@ initFields();
 renderDash();
 loadDrive();
 autoBackup();
+
+/* Deep-link straight to a Module Hub via URL hash (#m/FP512/2). Used by the
+   Interactive Reader's "back to module" button so it returns you to the exact
+   module you left, not the dashboard. */
+(function(){
+  function openFromHash(){
+    var m=/^#m\/([A-Za-z0-9]+)\/(\d+)$/.exec(location.hash||'');
+    if(m && typeof openModule==='function') openModule(m[1], parseInt(m[2],10));
+  }
+  openFromHash();
+  window.addEventListener('hashchange', openFromHash);
+})();
 </script>
 </body>
 </html>

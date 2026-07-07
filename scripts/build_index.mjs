@@ -12,7 +12,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 
 const SRC = process.argv[2] || 'src/study-home.src.html';
 const OUT = 'index.html';
-const APP_VERSION = 'v2.45.0';
+const APP_VERSION = 'v2.46.0';
 let html = readFileSync(SRC, 'utf8');
 
 const HEAD = `
@@ -99,7 +99,8 @@ const FIXES = [
   var R={FP511:'apps/fp511-reading.html',FP512:'apps/fp512-reading.html'};
   var r=R[id];
   if(!r)return '<span class="muted">Interactive reader arrives with this course.</span>';
-  return '<a class="link" href="'+r+'">📖 Open interactive reader</a>';
+  // Opened course-wide (not from a module) -> clear any stale module-return context.
+  return '<a class="link" href="'+r+'" onclick="try{sessionStorage.removeItem(\\'cfpReaderReturn\\')}catch(e){}">📖 Open interactive reader</a>';
 }
 `,
   ],

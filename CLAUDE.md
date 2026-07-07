@@ -292,6 +292,19 @@ injected by `scripts/inject_reader_theme.mjs`). Theme = warm canvas + dark mode 
 **syncs with the app** via the shared `cfpTheme` localStorage key (filter-based dark
 mode on a content wrapper so fixed buttons/charts stay correct). Their Chart.js and
 (FP512) MathJax are vendored locally (`vendor/chart.umd.js`, `vendor/mathjax/tex-mml-svg.js`).
+- **Back to Module (v2.46.0).** Opening a reader from a Module Hub (`openReaderTab`) stashes
+  `sessionStorage.cfpReaderReturn = "COURSE/mod"`; `reader-theme.js` then injects a **‹ Module N**
+  pill (`#rdrBack`, outlined so it reads distinct from the solid Home/Theme pills) that links to
+  `../index.html#m/COURSE/mod`. The app boot parses that hash and calls `openModule()`, dropping
+  you back on that exact hub (Home still → Dashboard). The Modules-tab course-card reader link
+  clears the flag on click so it doesn't show a stale button when opened course-wide.
+- **Portrait overflow fixes (v2.46.0, in `reader-theme.css`/`.js`, so every reader benefits).**
+  Wide tables were clipped past the right edge in portrait (`.collapsible-content{overflow:hidden}`
+  with no scroll — you had to rotate to landscape). `reader-theme.js` now wraps each `<table>` in a
+  `.tbl-scroll` div (`overflow-x:auto`) so it swipes horizontally; long words/inline content wrap
+  (`overflow-wrap:break-word`); and `.key-list li` (which is `display:flex`, so mixed inline content
+  became non-wrapping flex items) is overridden to `display:block` with a hanging ▸ marker. Verified
+  headless at 390px: zero elements overflow the viewport outside a `.tbl-scroll` on either reader.
 - **Reader deep-linking:** both readers honor a URL hash (`…#annuities`) to open a
   specific tab — the Module Hub uses this. FP511 defers the initial hash open to the
   `load` event (its chart fns are defined late); FP512 opens it in `DOMContentLoaded`.
