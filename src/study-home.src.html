@@ -940,6 +940,9 @@ function renderModuleHub(course,mod){
   const decks=((window.SLIDES||{})[course]||{})[mod]||[];
   const deckHtml=decks.length?'<div class="card" style="margin-top:12px"><div class="flex"><div><h3>Slide deck'+(decks.length>1?'s':'')+'</h3><div class="small muted">NotebookLM study slides — tap to view full-screen.</div></div></div>'+
     '<div class="row" style="flex-wrap:wrap;gap:8px;margin-top:10px">'+decks.map((g,i)=>'<button class="btn gray" onclick="openSlides(\''+course+'\','+mod+','+i+')">📑 '+g.title+'</button>').join('')+'</div></div>':'';
+  const vids=((window.VIDEO||{})[course]||{})[mod]||[];
+  const vidHtml=vids.length?'<div class="card" style="margin-top:12px"><div class="flex"><div><h3>Video'+(vids.length>1?'s':'')+'</h3><div class="small muted">NotebookLM video overview — tap to watch full-screen.</div></div></div>'+
+    '<div class="row" style="flex-wrap:wrap;gap:8px;margin-top:10px">'+vids.map((g,i)=>'<button class="btn gray" onclick="openVideo(\''+course+'\','+mod+','+i+')">🎬 '+g.title+'</button>').join('')+'</div></div>':'';
   sec.innerHTML=
     '<div class="card" style="margin-bottom:12px;border-left:4px solid '+color+'">'+
       '<a class="link small" style="cursor:pointer" onclick="go(\'modules\')">← All modules</a>'+
@@ -959,8 +962,9 @@ function renderModuleHub(course,mod){
         (hasReader?'<button class="btn gray" onclick="openReaderTab(\''+course+'\','+mod+')">📖 Deep-dive reader</button>':'')+
         (infos.length?'<button class="btn gray" onclick="openInfographic(\''+course+'\','+mod+',0)">📊 Visual guide'+(infos.length>1?'s':'')+'</button>':'')+
         (decks.length?'<button class="btn gray" onclick="openSlides(\''+course+'\','+mod+',0)">📑 Slide deck'+(decks.length>1?'s':'')+'</button>':'')+
+        (vids.length?'<button class="btn gray" onclick="openVideo(\''+course+'\','+mod+',0)">🎬 Video'+(vids.length>1?'s':'')+'</button>':'')+
       '</div></div>'+
-    objHtml+synHtml+exHtml+infoHtml+deckHtml+qref;
+    objHtml+synHtml+exHtml+infoHtml+deckHtml+vidHtml+qref;
 }
 
 /* ====================== INFOGRAPHIC VIEWER (full-screen popup) ====================== */
@@ -1031,6 +1035,36 @@ function openSlides(course,mod,idx){
   wrap.classList.add('on'); document.body.classList.add('slideOpen');
 }
 function closeSlides(){const w=document.getElementById('slideWrap');if(w){w.classList.remove('on');w.innerHTML='';}document.body.classList.remove('slideOpen');}
+
+/* ====================== VIDEO VIEWER (full-screen HTML5 player) ====================== */
+function ensureVideoCSS(){
+  if(document.getElementById('videoCSS'))return;
+  const s=document.createElement('style'); s.id='videoCSS';
+  s.textContent=
+  '#videoWrap{position:fixed;inset:0;z-index:100002;background:#0d0b08;display:none;flex-direction:column}'+
+  'body.videoOpen{overflow:hidden}'+
+  '#videoWrap.on{display:flex}'+
+  '.videoTools{flex:0 0 auto;display:flex;gap:10px;justify-content:space-between;align-items:center;padding:11px 14px;background:rgba(22,17,12,.96);color:#fff}'+
+  '.videoTools .vt-t{font-weight:700;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}'+
+  '.videoTools .vt-r{display:flex;gap:8px;flex:0 0 auto;align-items:center}'+
+  '.videoTools a.btn{text-decoration:none}'+
+  '#videoEl{flex:1 1 auto;width:100%;min-height:0;background:#000;object-fit:contain}';
+  document.head.appendChild(s);
+}
+function openVideo(course,mod,idx){
+  const vids=((window.VIDEO||{})[course]||{})[mod]||[];
+  const g=vids[idx]; if(!g)return;
+  ensureVideoCSS();
+  let wrap=document.getElementById('videoWrap');
+  if(!wrap){wrap=document.createElement('div');wrap.id='videoWrap';document.body.appendChild(wrap);}
+  // ⤢ Open fallback opens the raw file (e.g. if a browser can't play it inline).
+  wrap.innerHTML='<div class="videoTools"><span class="vt-t">'+g.title+'</span>'+
+    '<span class="vt-r"><a class="btn gray" href="'+g.src+'" target="_blank" rel="noopener">⤢ Open</a>'+
+    '<button class="btn gray" onclick="closeVideo()">✕ Close</button></span></div>'+
+    '<video id="videoEl" src="'+g.src+'" controls autoplay playsinline preload="metadata" title="'+g.title.replace(/"/g,'&quot;')+'"></video>';
+  wrap.classList.add('on'); document.body.classList.add('videoOpen');
+}
+function closeVideo(){const w=document.getElementById('videoWrap');if(w){const v=w.querySelector('video');if(v){try{v.pause();}catch(e){}}w.classList.remove('on');w.innerHTML='';}document.body.classList.remove('videoOpen');}
 
 /* ====================== EXAM CHEAT SHEET (printable / save-as-PDF) ====================== */
 function ensureCheatCSS(){

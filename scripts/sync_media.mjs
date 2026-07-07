@@ -6,6 +6,7 @@
  * which the Modules-tab course card surfaces above the module list.
  *     assets/infographics/   images (png/jpg/webp/gif/svg/avif)  -> window.INFOGRAPHICS
  *     assets/slides/         slide-deck PDFs                     -> window.SLIDES
+ *     assets/video/          video clips (mp4/webm/mov/m4v)      -> window.VIDEO
  *   e.g.  assets/infographics/FP512-M1-Insurance-and-Risk-Management-Guide.png
  *         assets/slides/FP512-M1-Principles-of-Insurance.pdf
  *         assets/slides/FP513-M4.pdf            (no title -> default below)
@@ -37,6 +38,7 @@ const esc = (s) => String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
 const KINDS = [
   { dir: 'infographics', ext: /\.(png|jpe?g|webp|gif|svg|avif)$/i, deft: 'Visual guide', global: 'INFOGRAPHICS', precache: true },
   { dir: 'slides',       ext: /\.pdf$/i,                            deft: 'Slide deck',   global: 'SLIDES',       precache: false },
+  { dir: 'video',        ext: /\.(mp4|webm|mov|m4v)$/i,             deft: 'Video',        global: 'VIDEO',        precache: false },
 ];
 
 function scan(kind) {
