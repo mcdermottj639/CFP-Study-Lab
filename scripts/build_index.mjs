@@ -12,7 +12,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 
 const SRC = process.argv[2] || 'src/study-home.src.html';
 const OUT = 'index.html';
-const APP_VERSION = 'v2.47.0';
+const APP_VERSION = 'v2.48.0';
 let html = readFileSync(SRC, 'utf8');
 
 const HEAD = `
@@ -202,6 +202,11 @@ a.link:hover{text-decoration:underline}
 .modlist>summary{cursor:pointer;font-weight:700;font-size:14px;padding:10px 6px;list-style:none;border-top:1px solid var(--line)}
 .modlist>summary::-webkit-details-marker{display:none}
 .modlist>summary:hover{color:var(--brand)}
+.modlist-open{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;
+  margin-top:12px;padding:11px 6px;border:none;border-top:1px solid var(--line);border-radius:0;
+  background:transparent;color:var(--ink);font:inherit;font-weight:700;font-size:14px;cursor:pointer;transition:.13s}
+.modlist-open:hover{color:var(--brand)}
+.modlist-open:active{opacity:.7}
 .modrows{margin-top:4px}
 .modrow{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;
   min-height:50px;padding:11px 14px;margin:7px 0;border:1px solid var(--line);border-radius:13px;

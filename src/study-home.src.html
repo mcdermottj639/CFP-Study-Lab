@@ -743,7 +743,8 @@ function renderModules(){
     </div>`;
   }).join('');
 }
-// Clickable list of the individual modules inside a course — each opens its Module Hub.
+// "Deep-dive" entry point — jumps straight into the FIRST openable module's Module Hub,
+// where the M1/M2/… switcher chips let you hop between modules faster than scrolling a list.
 function courseModuleList(course,color){
   const meta=(typeof MODMETA!=='undefined')?MODMETA[course]:null;
   if(!meta)return '';
@@ -752,19 +753,10 @@ function courseModuleList(course,color){
   const present=new Set();
   CARDS.concat(MCQ).forEach(x=>{if(x.m===course){const n=moduleOf(x);if(n)present.add(n);}});
   // …or authored teaching content (objectives/synthesis) → still openable as a guide
-  const guide=n=>!!(((window.MODOBJ||{})[course]||{})[n]||((window.MODSYN||{})[course]||{})[n]);
-  const rows=nums.map(n=>{
-    const hasContent=present.has(n);
-    const open=hasContent||guide(n);
-    const mm=hasContent?moduleMastery(course,n):0;
-    const badge=hasContent?`<span class="pill" style="background:#f0f2f8;color:var(--muted)">${mm}%</span>`
-      :open?`<span class="pill" style="background:#eef4ff;color:var(--brand)">guide</span>`
-      :`<span class="pill" style="background:#f0f2f8;color:var(--muted)">soon</span>`;
-    return `<button type="button" class="modrow"${open?` onclick="openModule('${course}',${n})"`:' disabled'}>
-      <span class="modrow-l"><span class="modnum" style="background:${color}22;color:${color}">M${n}</span><span class="modname">${meta[n]}</span></span>
-      <span class="modrow-r">${badge}${open?'<span class="modchev">›</span>':''}</span></button>`;
-  }).join('');
-  return `<details class="modlist"><summary>📂 ${nums.length} modules — tap to deep-dive</summary><div class="modrows">${rows}</div></details>`;
+  const openable=n=>present.has(n)||!!(((window.MODOBJ||{})[course]||{})[n]||((window.MODSYN||{})[course]||{})[n]);
+  const first=nums.find(openable);
+  if(!first)return '';
+  return `<button type="button" class="modlist-open" onclick="openModule('${course}',${first})">📂 ${nums.length} modules — tap to deep-dive<span class="modchev">›</span></button>`;
 }
 // Whole-course NotebookLM slide deck(s) — course-level media (SLIDES[course][0]),
 // shown on the Modules-tab card just under the reader link for quick access.
