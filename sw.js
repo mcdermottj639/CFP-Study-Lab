@@ -1,5 +1,5 @@
 /* FP Study Lab — service worker (offline support) */
-const VERSION = 'v2.44.0';
+const VERSION = 'v2.45.0';
 const CORE_CACHE = `fpsl-core-${VERSION}`;
 const RUNTIME_CACHE = `fpsl-runtime-${VERSION}`;
 /* Infographics live in an UNVERSIONED cache so large images aren't re-downloaded
@@ -8,15 +8,15 @@ const RUNTIME_CACHE = `fpsl-runtime-${VERSION}`;
 const MEDIA_CACHE = 'fpsl-media';
 const MEDIA_ASSETS = [
   /* INFOGRAPHICS-GEN-START */
-  './assets/infographics/FP512-M1-Insurance-and-Risk-Management-Guide.png',
-  './assets/infographics/FP512-M2-Insurance-Professional-Exam-Quick-Reference.png',
-  './assets/infographics/FP512-M2-Property-and-Casualty-Exam-Guide.png',
-  './assets/infographics/FP512-M3-Life-Insurance-Reference-Guide.png',
-  './assets/infographics/FP512-M4-Annuities-Exam-Quick-Reference.png',
-  './assets/infographics/FP512-M5-Health-Coverage-Exam-Quick-Reference.png',
-  './assets/infographics/FP512-M6-Disability-and-Long-Term-Care-Guide.png',
-  './assets/infographics/FP512-M7-Employee-Benefits-Taxation-Study-Guide.png',
-  './assets/infographics/FP512-M8-Business-Risk-Management-Study-Guide.png',
+  './assets/infographics/FP512-M1-Insurance-and-Risk-Management-Guide.webp',
+  './assets/infographics/FP512-M2-Insurance-Professional-Exam-Quick-Reference.webp',
+  './assets/infographics/FP512-M2-Property-and-Casualty-Exam-Guide.webp',
+  './assets/infographics/FP512-M3-Life-Insurance-Reference-Guide.webp',
+  './assets/infographics/FP512-M4-Annuities-Exam-Quick-Reference.webp',
+  './assets/infographics/FP512-M5-Health-Coverage-Exam-Quick-Reference.webp',
+  './assets/infographics/FP512-M6-Disability-and-Long-Term-Care-Guide.webp',
+  './assets/infographics/FP512-M7-Employee-Benefits-Taxation-Study-Guide.webp',
+  './assets/infographics/FP512-M8-Business-Risk-Management-Study-Guide.webp',
   /* INFOGRAPHICS-GEN-END */
 ];
 
