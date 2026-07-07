@@ -1870,7 +1870,11 @@ autoBackup();
     var m=/^#m\/([A-Za-z0-9]+)\/(\d+)$/.exec(location.hash||'');
     if(m && typeof openModule==='function') openModule(m[1], parseInt(m[2],10));
   }
-  openFromHash();
+  // Defer to `load`: module-content.js (READER_MAP/INFOGRAPHICS/SLIDES/VIDEO) loads
+  // AFTER this inline script, so opening the hub earlier would drop the reader/media
+  // buttons that depend on those globals.
+  if(document.readyState==='complete') openFromHash();
+  else window.addEventListener('load', openFromHash);
   window.addEventListener('hashchange', openFromHash);
 })();
 </script>
@@ -1888,7 +1892,7 @@ autoBackup();
     <button id="cfpTkTheme" style="width:100%;padding:12px;border:1px solid #dfe3ee;border-radius:12px;background:#fff;color:#1d2433;font:600 15px system-ui;cursor:pointer;margin-bottom:9px">🌙 Dark mode</button>
     <button id="cfpTkReset" style="width:100%;padding:11px;border:none;border-radius:12px;background:#fdecea;color:#d6453d;font:600 14px system-ui;cursor:pointer">Reset all progress</button>
     <div id="cfpTkMsg" style="font-size:12.5px;color:#1f9d6b;text-align:center;min-height:16px;margin-top:10px"></div>
-    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.46.0</div>
+    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.47.0</div>
   </div>
 </div>
 <script>

@@ -1741,7 +1741,11 @@ autoBackup();
     var m=/^#m\/([A-Za-z0-9]+)\/(\d+)$/.exec(location.hash||'');
     if(m && typeof openModule==='function') openModule(m[1], parseInt(m[2],10));
   }
-  openFromHash();
+  // Defer to `load`: module-content.js (READER_MAP/INFOGRAPHICS/SLIDES/VIDEO) loads
+  // AFTER this inline script, so opening the hub earlier would drop the reader/media
+  // buttons that depend on those globals.
+  if(document.readyState==='complete') openFromHash();
+  else window.addEventListener('load', openFromHash);
   window.addEventListener('hashchange', openFromHash);
 })();
 </script>
