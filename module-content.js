@@ -59,6 +59,7 @@
   /* VIDEO-GEN-START */
   window.VIDEO = {
       FP512: {
+        1: [ { src: 'assets/video/FP512-M1-Top-4-Insurance-Exam-Traps.mp4', title: 'Top 4 Insurance Exam Traps' } ],
         2: [ { src: 'assets/video/FP512-M2-High-Yield-Property-and-Casualty-Rules.mp4', title: 'High Yield Property and Casualty Rules' } ]
       }
     };
