@@ -305,6 +305,12 @@ Each Module Hub can show, under "Study this module", a **"Visual guide"** card (
 scoped to that one module. Both open a full-screen popup; `renderModuleHub` reads the data
 maps with a graceful empty-default (no card when a module has none). All in
 `src/study-home.src.html`:
+- **Quick-jump buttons (v2.41.0).** The **"Study this module"** launch row also gets a
+  **📊 Visual guide** and **📑 Slide deck** button (right after 📖 Deep-dive reader) whenever
+  that module has `INFOGRAPHICS`/`SLIDES` — they call `openInfographic(course,mod,0)` /
+  `openSlides(course,mod,0)` to open the first/primary item directly (label pluralizes when
+  >1). The fuller preview cards below (infographic thumbnails, per-deck buttons) stay for
+  multi-item modules.
 - **Infographics** — data `window.INFOGRAPHICS` (course → module → `[{src,title}]`).
   Thumbnail grid; `openInfographic`/`closeInfographic` show the image in `#infoWrap`
   (styles via `ensureInfoCSS`); tap backdrop or ✕ to close.

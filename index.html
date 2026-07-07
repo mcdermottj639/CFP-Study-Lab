@@ -1085,6 +1085,8 @@ function renderModuleHub(course,mod){
         (mcqs.length>=3?'<button class="btn gray" onclick="studyScoped(\''+course+'\','+mod+',\'exam\')">📝 Exam'+(mcqs.length<8?' <span style="opacity:.65;font-weight:400">· limited</span>':'')+'</button>':'')+
         (hasCalc?'<button class="btn gray" onclick="studyScoped(\''+course+'\','+mod+',\'calc\')">🧮 Calc drills</button>':'')+
         (hasReader?'<button class="btn gray" onclick="openReaderTab(\''+course+'\','+mod+')">📖 Deep-dive reader</button>':'')+
+        (infos.length?'<button class="btn gray" onclick="openInfographic(\''+course+'\','+mod+',0)">📊 Visual guide'+(infos.length>1?'s':'')+'</button>':'')+
+        (decks.length?'<button class="btn gray" onclick="openSlides(\''+course+'\','+mod+',0)">📑 Slide deck'+(decks.length>1?'s':'')+'</button>':'')+
       '</div></div>'+
     objHtml+synHtml+exHtml+infoHtml+deckHtml+qref;
 }
@@ -1837,7 +1839,7 @@ autoBackup();
     <button id="cfpTkTheme" style="width:100%;padding:12px;border:1px solid #dfe3ee;border-radius:12px;background:#fff;color:#1d2433;font:600 15px system-ui;cursor:pointer;margin-bottom:9px">🌙 Dark mode</button>
     <button id="cfpTkReset" style="width:100%;padding:11px;border:none;border-radius:12px;background:#fdecea;color:#d6453d;font:600 14px system-ui;cursor:pointer">Reset all progress</button>
     <div id="cfpTkMsg" style="font-size:12.5px;color:#1f9d6b;text-align:center;min-height:16px;margin-top:10px"></div>
-    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.40.0</div>
+    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.41.0</div>
   </div>
 </div>
 <script>
