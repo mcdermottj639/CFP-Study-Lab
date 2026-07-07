@@ -25,14 +25,14 @@
   /* INFOGRAPHICS-GEN-START */
   window.INFOGRAPHICS = {
       FP512: {
-        1: [ { src: 'assets/infographics/FP512-M1-Insurance-and-Risk-Management-Guide.png', title: 'Insurance and Risk Management Guide' } ],
-        2: [ { src: 'assets/infographics/FP512-M2-Insurance-Professional-Exam-Quick-Reference.png', title: 'Insurance Professional Exam Quick Reference' }, { src: 'assets/infographics/FP512-M2-Property-and-Casualty-Exam-Guide.png', title: 'Property and Casualty Exam Guide' } ],
-        3: [ { src: 'assets/infographics/FP512-M3-Life-Insurance-Reference-Guide.png', title: 'Life Insurance Reference Guide' } ],
-        4: [ { src: 'assets/infographics/FP512-M4-Annuities-Exam-Quick-Reference.png', title: 'Annuities Exam Quick Reference' } ],
-        5: [ { src: 'assets/infographics/FP512-M5-Health-Coverage-Exam-Quick-Reference.png', title: 'Health Coverage Exam Quick Reference' } ],
-        6: [ { src: 'assets/infographics/FP512-M6-Disability-and-Long-Term-Care-Guide.png', title: 'Disability and Long Term Care Guide' } ],
-        7: [ { src: 'assets/infographics/FP512-M7-Employee-Benefits-Taxation-Study-Guide.png', title: 'Employee Benefits Taxation Study Guide' } ],
-        8: [ { src: 'assets/infographics/FP512-M8-Business-Risk-Management-Study-Guide.png', title: 'Business Risk Management Study Guide' } ]
+        1: [ { src: 'assets/infographics/FP512-M1-Insurance-and-Risk-Management-Guide.webp', title: 'Insurance and Risk Management Guide' } ],
+        2: [ { src: 'assets/infographics/FP512-M2-Insurance-Professional-Exam-Quick-Reference.webp', title: 'Insurance Professional Exam Quick Reference' }, { src: 'assets/infographics/FP512-M2-Property-and-Casualty-Exam-Guide.webp', title: 'Property and Casualty Exam Guide' } ],
+        3: [ { src: 'assets/infographics/FP512-M3-Life-Insurance-Reference-Guide.webp', title: 'Life Insurance Reference Guide' } ],
+        4: [ { src: 'assets/infographics/FP512-M4-Annuities-Exam-Quick-Reference.webp', title: 'Annuities Exam Quick Reference' } ],
+        5: [ { src: 'assets/infographics/FP512-M5-Health-Coverage-Exam-Quick-Reference.webp', title: 'Health Coverage Exam Quick Reference' } ],
+        6: [ { src: 'assets/infographics/FP512-M6-Disability-and-Long-Term-Care-Guide.webp', title: 'Disability and Long Term Care Guide' } ],
+        7: [ { src: 'assets/infographics/FP512-M7-Employee-Benefits-Taxation-Study-Guide.webp', title: 'Employee Benefits Taxation Study Guide' } ],
+        8: [ { src: 'assets/infographics/FP512-M8-Business-Risk-Management-Study-Guide.webp', title: 'Business Risk Management Study Guide' } ]
       }
     };
   /* INFOGRAPHICS-GEN-END */
