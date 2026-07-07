@@ -1,5 +1,5 @@
 /* FP Study Lab — service worker (offline support) */
-const VERSION = 'v2.41.0';
+const VERSION = 'v2.42.0';
 const CORE_CACHE = `fpsl-core-${VERSION}`;
 const RUNTIME_CACHE = `fpsl-runtime-${VERSION}`;
 /* Infographics live in an UNVERSIONED cache so large images aren't re-downloaded
@@ -98,6 +98,23 @@ self.addEventListener('fetch', (event) => {
 
   // Same-origin static assets (incl. PDFs): cache-first.
   if (sameOrigin) {
+    // Media (video/audio) is fetched with a Range header -> the 206 partial can't be
+    // stored/replayed by the Cache API. Fetch the FULL file (drop the Range), cache it,
+    // and return that 200 (browsers accept a 200 for a Range request); then it plays
+    // offline on later views. Keyed by URL so the ranged match still hits the cache.
+    if (req.headers.has('range')) {
+      event.respondWith(
+        caches.match(req.url).then((cached) =>
+          cached ||
+          fetch(req.url).then((res) => {
+            const copy = res.clone();
+            caches.open(RUNTIME_CACHE).then((c) => c.put(req.url, copy)).catch(() => {});
+            return res;
+          }).catch(() => cached)
+        )
+      );
+      return;
+    }
     event.respondWith(
       caches.match(req).then((cached) =>
         cached ||

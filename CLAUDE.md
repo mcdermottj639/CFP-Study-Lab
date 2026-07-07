@@ -301,16 +301,16 @@ mode on a content wrapper so fixed buttons/charts stay correct). Their Chart.js 
 
 ## Per-module media — infographics & slide decks (Module Hub)
 Each Module Hub can show, under "Study this module", a **"Visual guide"** card (one-page
-**infographic** images) and a **"Slide deck"** card (NotebookLM/AI **slide PDFs**), each
-scoped to that one module. Both open a full-screen popup; `renderModuleHub` reads the data
-maps with a graceful empty-default (no card when a module has none). All in
-`src/study-home.src.html`:
+**infographic** images), a **"Slide deck"** card (NotebookLM/AI **slide PDFs**), and a
+**"Video"** card (NotebookLM/AI **video clips**), each scoped to that one module. All open a
+full-screen popup; `renderModuleHub` reads the data maps with a graceful empty-default (no
+card when a module has none). All in `src/study-home.src.html`:
 - **Quick-jump buttons (v2.41.0).** The **"Study this module"** launch row also gets a
-  **📊 Visual guide** and **📑 Slide deck** button (right after 📖 Deep-dive reader) whenever
-  that module has `INFOGRAPHICS`/`SLIDES` — they call `openInfographic(course,mod,0)` /
-  `openSlides(course,mod,0)` to open the first/primary item directly (label pluralizes when
-  >1). The fuller preview cards below (infographic thumbnails, per-deck buttons) stay for
-  multi-item modules.
+  **📊 Visual guide**, **📑 Slide deck**, and **🎬 Video** button (right after 📖 Deep-dive
+  reader) whenever that module has `INFOGRAPHICS`/`SLIDES`/`VIDEO` — they call
+  `openInfographic`/`openSlides`/`openVideo(course,mod,0)` to open the first/primary item
+  directly (label pluralizes when >1). The fuller preview cards below stay for multi-item
+  modules.
 - **Infographics** — data `window.INFOGRAPHICS` (course → module → `[{src,title}]`).
   Thumbnail grid; `openInfographic`/`closeInfographic` show the image in `#infoWrap`
   (styles via `ensureInfoCSS`); tap backdrop or ✕ to close.
@@ -319,6 +319,19 @@ maps with a graceful empty-default (no card when a module has none). All in
   `#slideWrap` (styles via `ensureSlideCSS`). The toolbar has an **⤢ Open** link
   (`target="_blank"`) as a fallback because **iOS Safari can't render a PDF inside an
   iframe**.
+- **Videos (v2.42.0)** — data `window.VIDEO` (course → module → `[{src,title}]`; also
+  supports whole-course under module 0). Labeled 🎬 buttons; `openVideo`/`closeVideo` render
+  a full-screen HTML5 `<video id="videoEl" controls autoplay playsinline>` inside `#videoWrap`
+  (styles via `ensureVideoCSS`); `closeVideo` pauses before clearing so audio stops. Keep
+  clips as **H.264 video + AAC audio in MP4** — the most iOS-/Safari-compatible format (don't
+  transcode NotebookLM MP4s to WebM; that *loses* Safari support). NB open-source Chromium
+  can't decode H.264, so headless-browser tests show `error:4` even though real Safari/Chrome
+  play fine — verify the file *serves* + the element gets the right `src`, not pixels.
+- **SW range-safe media caching (v2.42.0).** `<video>`/`<audio>` fetch with a `Range` header,
+  and the Cache API can't store/replay a `206`. So `sw.js`'s same-origin handler has a
+  `req.headers.has('range')` branch that refetches the **full** file (no Range → `200`),
+  caches it keyed by URL, and returns it (browsers accept a `200` for a Range request) — so
+  runtime-cached video plays offline on later views.
 - **Whole-course slide decks (Modules-tab course card, v2.36.0)** — a per-course deck lives
   under **module `0`** (`SLIDES[course][0]`). `courseSlides(course)` renders it as a **📑 link
   on the course card in `renderModules`, right under "📖 Open interactive reader" and above the
@@ -335,17 +348,20 @@ maps with a graceful empty-default (no card when a module has none). All in
     **unversioned** `fpsl-media` cache (`MEDIA_ASSETS`), so they survive version bumps
     without re-downloading (kept out of the versioned core/runtime caches; `activate`
     cleanup excludes `MEDIA_CACHE`).
-  - `assets/slides/` PDFs (~20–25 MB each) → **NOT precached** (too big for install);
-    they're **runtime-cached on first view** by the SW's same-origin cache-first path,
-    so they're offline after being opened once online. Watch repo size as decks pile up
-    (GitHub: 100 MB/file hard limit, ~1 GB repo soft) — compress or rehost if it grows.
+  - `assets/slides/` PDFs (~20–25 MB each) and `assets/video/` clips (MP4) → **NOT precached**
+    (too big for install); they're **runtime-cached on first view** by the SW's same-origin
+    path (video via the Range-safe branch above), so they're offline after being opened once
+    online. Watch repo size as media piles up (GitHub: 100 MB/file hard limit, ~1 GB repo
+    soft) — compress or rehost if it grows. NotebookLM audio exports as WAV (~10 MB/min) — if
+    audio is added, transcode to MP3 first (a WAV overview blows past the 100 MB file limit).
 - **Adding one is filename-driven, no engine change.** Name the file
   `FP<course>-M<module>[-Free Text Title].<ext>` (title optional → "Visual guide" /
-  "Slide deck"; e.g. `FP512-M1-Insurance-and-Risk-Management-Guide.png`,
-  `FP512-M1-Principles-of-Insurance.pdf`) — or `FP<course>[-Title].<ext>` with no `-M#`
-  for a **whole-course** deck (→ module 0, shown on the course card; see above) — drop it in `assets/infographics/` or
-  `assets/slides/`, then run **`node scripts/sync_media.mjs`** — it regenerates the
-  `window.INFOGRAPHICS` + `window.SLIDES` blocks in `module-content.js` and the
+  "Slide deck" / "Video"; e.g. `FP512-M1-Insurance-and-Risk-Management-Guide.png`,
+  `FP512-M1-Principles-of-Insurance.pdf`, `FP512-M2-High-Yield-Property-and-Casualty-Rules.mp4`)
+  — or `FP<course>[-Title].<ext>` with no `-M#`
+  for a **whole-course** deck (→ module 0, shown on the course card; see above) — drop it in `assets/infographics/`,
+  `assets/slides/`, or `assets/video/`, then run **`node scripts/sync_media.mjs`** — it regenerates the
+  `window.INFOGRAPHICS` + `window.SLIDES` + `window.VIDEO` blocks in `module-content.js` and the
   `MEDIA_ASSETS` precache list in `sw.js` (delimited by `/* INFOGRAPHICS-GEN-START/END */`
   and `/* SLIDES-GEN-START/END */` markers — don't hand-edit between them). Then rebuild
   (`build_index` + `add_content`), bump versions, deploy. Multiple files per module are

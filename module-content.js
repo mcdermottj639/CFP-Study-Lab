@@ -53,6 +53,17 @@
     };
   /* SLIDES-GEN-END */
 
+  // Per-module video overviews (NotebookLM / AI video clips). Course -> module -> [{src,title}].
+  // GENERATED from assets/video/ by scripts/sync_media.mjs — same markers/rules as slides;
+  // MP4s are runtime-cached on first view (not precached).
+  /* VIDEO-GEN-START */
+  window.VIDEO = {
+      FP512: {
+        2: [ { src: 'assets/video/FP512-M2-High-Yield-Property-and-Casualty-Rules.mp4', title: 'High Yield Property and Casualty Rules' } ]
+      }
+    };
+  /* VIDEO-GEN-END */
+
   window.MODOBJ = {
     FP511: {
       1: [
