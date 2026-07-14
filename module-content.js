@@ -66,6 +66,15 @@
     };
   /* VIDEO-GEN-END */
 
+  // Per-module / whole-course audio overviews (NotebookLM / AI deep-dive audio).
+  // Course -> module -> [{src,title}]. A whole-course file (no -M#) lands under
+  // module 0 and surfaces on the Modules-tab course card (like SLIDES[course][0]).
+  // GENERATED from assets/audio/ by scripts/sync_media.mjs — same markers/rules as
+  // video; audio is runtime-cached on first listen (not precached — too large).
+  /* AUDIO-GEN-START */
+  window.AUDIO = {};
+  /* AUDIO-GEN-END */
+
   window.MODOBJ = {
     FP511: {
       1: [

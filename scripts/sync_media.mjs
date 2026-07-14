@@ -7,6 +7,7 @@
  *     assets/infographics/   images (png/jpg/webp/gif/svg/avif)  -> window.INFOGRAPHICS
  *     assets/slides/         slide-deck PDFs                     -> window.SLIDES
  *     assets/video/          video clips (mp4/webm/mov/m4v)      -> window.VIDEO
+ *     assets/audio/          audio overviews (mp3/m4a/aac/ogg)   -> window.AUDIO
  *   e.g.  assets/infographics/FP512-M1-Insurance-and-Risk-Management-Guide.png
  *         assets/slides/FP512-M1-Principles-of-Insurance.pdf
  *         assets/slides/FP513-M4.pdf            (no title -> default below)
@@ -17,6 +18,8 @@
  * It rewrites the generated blocks (between the GEN markers) in:
  *   - module-content.js  -> window.INFOGRAPHICS  (INFOGRAPHICS-GEN block)
  *                           window.SLIDES        (SLIDES-GEN block)
+ *                           window.VIDEO         (VIDEO-GEN block)
+ *                           window.AUDIO         (AUDIO-GEN block)
  *   - sw.js              -> MEDIA_ASSETS precache list (infographics ONLY — slide
  *                           PDFs are large, so they're runtime-cached on first view
  *                           via the SW's cache-first path instead of precached)
@@ -39,6 +42,7 @@ const KINDS = [
   { dir: 'infographics', ext: /\.(png|jpe?g|webp|gif|svg|avif)$/i, deft: 'Visual guide', global: 'INFOGRAPHICS', precache: true },
   { dir: 'slides',       ext: /\.pdf$/i,                            deft: 'Slide deck',   global: 'SLIDES',       precache: false },
   { dir: 'video',        ext: /\.(mp4|webm|mov|m4v)$/i,             deft: 'Video',        global: 'VIDEO',        precache: false },
+  { dir: 'audio',        ext: /\.(mp3|m4a|aac|ogg|wav)$/i,          deft: 'Audio overview', global: 'AUDIO',      precache: false },
 ];
 
 function scan(kind) {

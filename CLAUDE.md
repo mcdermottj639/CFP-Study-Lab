@@ -314,18 +314,20 @@ mode on a content wrapper so fixed buttons/charts stay correct). Their Chart.js 
   hash-open snippet near `activateTab('overview')` / the tab `go()` setup.
 - **In-reader search** (`reader-search.js`, shared; injected by `inject_reader_theme.mjs` with its own `reader-search-injected` marker, precached in `sw.js`): a floating 🔍 opens a search panel that indexes EVERY tab + collapsible section (even hidden ones — native find-in-page can't), lists hits as **Tab › Section** + snippet, and on tap switches tab, expands the section, scrolls, and highlights. Reader-agnostic: maps sections→tabs by probing which `.active` panel contains them, and drives navigation by clicking the existing `.tab-btn`/section headers — so it works on FP511, FP512, and future readers with no per-reader code.
 
-## Per-module media — infographics & slide decks (Module Hub)
+## Per-module media — infographics, slide decks, video & audio (Module Hub)
 Each Module Hub can show, under "Study this module", a **"Visual guide"** card (one-page
-**infographic** images), a **"Slide deck"** card (NotebookLM/AI **slide PDFs**), and a
-**"Video"** card (NotebookLM/AI **video clips**), each scoped to that one module. All open a
+**infographic** images), a **"Slide deck"** card (NotebookLM/AI **slide PDFs**), a
+**"Video"** card (NotebookLM/AI **video clips**), and an **"Audio overview"** card
+(NotebookLM/AI **deep-dive audio**), each scoped to that one module. All open a
 full-screen popup; `renderModuleHub` reads the data maps with a graceful empty-default (no
 card when a module has none). All in `src/study-home.src.html`:
-- **Quick-jump buttons (v2.41.0).** The **"Study this module"** launch row also gets a
-  **📊 Visual guide**, **📑 Slide deck**, and **🎬 Video** button (right after 📖 Deep-dive
-  reader) whenever that module has `INFOGRAPHICS`/`SLIDES`/`VIDEO` — they call
-  `openInfographic`/`openSlides`/`openVideo(course,mod,0)` to open the first/primary item
-  directly (label pluralizes when >1). The fuller preview cards below stay for multi-item
-  modules.
+- **Quick-jump buttons (v2.41.0; 🎧 added v2.49.0).** The **"Study this module"** launch row
+  also gets a **📊 Visual guide**, **📑 Slide deck**, **🎬 Video**, and **🎧 Audio** button
+  (right after 📖 Deep-dive reader) whenever that module has
+  `INFOGRAPHICS`/`SLIDES`/`VIDEO`/`AUDIO` — they call
+  `openInfographic`/`openSlides`/`openVideo`/`openAudio(course,mod,0)` to open the
+  first/primary item directly (label pluralizes when >1). The fuller preview cards below stay
+  for multi-item modules.
 - **Infographics** — data `window.INFOGRAPHICS` (course → module → `[{src,title}]`).
   Thumbnail grid; `openInfographic`/`closeInfographic` show the image in `#infoWrap`
   (styles via `ensureInfoCSS`); tap backdrop or ✕ to close.
@@ -342,6 +344,17 @@ card when a module has none). All in `src/study-home.src.html`:
   transcode NotebookLM MP4s to WebM; that *loses* Safari support). NB open-source Chromium
   can't decode H.264, so headless-browser tests show `error:4` even though real Safari/Chrome
   play fine — verify the file *serves* + the element gets the right `src`, not pixels.
+- **Audio overviews (v2.49.0)** — data `window.AUDIO` (course → module → `[{src,title}]`;
+  also supports whole-course under module 0, shown on the course card — see below). Labeled
+  🎧 buttons; `openAudio`/`closeAudio` render a full-screen player (🎧 icon + title + an
+  HTML5 `<audio id="audioEl" controls autoplay preload="metadata">` + ⤢ Open fallback) inside
+  `#audioWrap` (styles via `ensureAudioCSS`); `closeAudio` pauses before clearing so audio
+  stops. Keep files as **MP3 (or AAC/m4a) — mono ~64 kbps is plenty for spoken-word
+  NotebookLM "deep dive" audio** and keeps a ~2 hr overview around ~55 MB (comfortably under
+  GitHub's 100 MB/file limit; a raw NotebookLM m4a is ~117 MB and MUST be compressed first —
+  `ffmpeg -i in.m4a -ac 1 -c:a libmp3lame -b:a 64k out.mp3`). Unlike H.264 video, MP3 decodes
+  in headless Chromium, so a browser test can assert `loadedmetadata`/duration (this feature
+  was verified that way). Runtime-cached (not precached) via the Range-safe SW branch below.
 - **SW range-safe media caching (v2.42.0).** `<video>`/`<audio>` fetch with a `Range` header,
   and the Cache API can't store/replay a `206`. So `sw.js`'s same-origin handler has a
   `req.headers.has('range')` branch that refetches the **full** file (no Range → `200`),
@@ -355,10 +368,18 @@ card when a module has none). All in `src/study-home.src.html`:
   is never a real Module Hub so it only ever surfaces on the course card. Filename = **`FP<course>[-Free
   Text Title].pdf`** (NO `-M<module>` segment, e.g. `FP511.pdf` → default "Slide deck"); `sync_media.mjs`
   routes any `-M#`-less file to module 0 via its `NAME_COURSE` fallback. Same offline behavior as
-  module slide PDFs (runtime-cached, not precached).
+  module slide PDFs (runtime-cached, not precached). **Whole-course audio works the same way**
+  (v2.49.0): `courseAudio(course)` renders `AUDIO[course][0]` as a **🎧 link on the course card**
+  (right under the slide-deck link), opening the same `openAudio(course,0,i)` player. This is the
+  home for a full-course NotebookLM deep-dive (e.g. `FP512-The-Mechanics-of-Financial-Risk-Management.mp3`).
 - **Files are LOCAL (offline rule).** Source media lives in Google Drive under
-  **`CFP → Infographics`** and **`CFP → Slides Notebook LM`** — pull into the repo (or the
-  user uploads here); never hot-link Drive. Storage split by size:
+  **`CFP → Infographics`**, **`CFP → Slides Notebook LM`**, and **`CFP → Audios`** — pull into
+  the repo (or the user uploads here); never hot-link Drive. **NOTE: the build container's egress
+  proxy blocks `drive.google.com` (403), and the Drive MCP `download_file_content` tool returns
+  the file inline as base64 — fine for small text/JSON but unusable for media-sized files (a
+  117 MB audio → ~156 MB base64 blows the context). So large media can't be fetched from Drive
+  here; the user must drop the file into the session/repo directly (or pre-compress it locally).**
+  Storage split by size:
   - `assets/infographics/` images → stored as **WebP** (~0.4–0.5 MB each) and **precached**
     by `sw.js` into an **unversioned** `fpsl-media` cache (`MEDIA_ASSETS`), so they survive
     version bumps without re-downloading (kept out of the versioned core/runtime caches;
@@ -368,24 +389,27 @@ card when a module has none). All in `src/study-home.src.html`:
     tables. iOS Safari 14+/Chrome decode WebP fine. (v2.45.0 converted the original 9 PNGs; the
     old `.png` blobs may linger orphaned in existing devices' unversioned `fpsl-media` cache —
     harmless, browser-evictable.)
-  - `assets/slides/` PDFs (~20–25 MB each) and `assets/video/` clips (MP4) → **NOT precached**
-    (too big for install); they're **runtime-cached on first view** by the SW's same-origin
-    path (video via the Range-safe branch above), so they're offline after being opened once
+  - `assets/slides/` PDFs (~20–25 MB each), `assets/video/` clips (MP4), and `assets/audio/`
+    overviews (MP3/m4a, ~55 MB for a compressed ~2 hr file) → **NOT precached** (too big for
+    install); they're **runtime-cached on first view/listen** by the SW's same-origin path
+    (video/audio via the Range-safe branch above), so they're offline after being opened once
     online. Watch repo size as media piles up (GitHub: 100 MB/file hard limit, ~1 GB repo
-    soft) — compress or rehost if it grows. NotebookLM audio exports as WAV (~10 MB/min) — if
-    audio is added, transcode to MP3 first (a WAV overview blows past the 100 MB file limit).
+    soft) — compress or rehost if it grows. NotebookLM audio exports as WAV (~10 MB/min) or a
+    large m4a — transcode to **mono 64 kbps MP3** first (a raw WAV/m4a overview blows past the
+    100 MB file limit); see the audio bullet above for the ffmpeg command.
 - **Adding one is filename-driven, no engine change.** Name the file
   `FP<course>-M<module>[-Free Text Title].<ext>` (title optional → "Visual guide" /
-  "Slide deck" / "Video"; e.g. `FP512-M1-Insurance-and-Risk-Management-Guide.png`,
-  `FP512-M1-Principles-of-Insurance.pdf`, `FP512-M2-High-Yield-Property-and-Casualty-Rules.mp4`)
+  "Slide deck" / "Video" / "Audio overview"; e.g. `FP512-M1-Insurance-and-Risk-Management-Guide.png`,
+  `FP512-M1-Principles-of-Insurance.pdf`, `FP512-M2-High-Yield-Property-and-Casualty-Rules.mp4`,
+  `FP512-M3-Life-Insurance-Deep-Dive.mp3`)
   — or `FP<course>[-Title].<ext>` with no `-M#`
-  for a **whole-course** deck (→ module 0, shown on the course card; see above) — drop it in `assets/infographics/`,
-  `assets/slides/`, or `assets/video/`, then run **`node scripts/sync_media.mjs`** — it regenerates the
-  `window.INFOGRAPHICS` + `window.SLIDES` + `window.VIDEO` blocks in `module-content.js` and the
-  `MEDIA_ASSETS` precache list in `sw.js` (delimited by `/* INFOGRAPHICS-GEN-START/END */`
-  and `/* SLIDES-GEN-START/END */` markers — don't hand-edit between them). Then rebuild
-  (`build_index` + `add_content`), bump versions, deploy. Multiple files per module are
-  supported.
+  for a **whole-course** item (→ module 0, shown on the course card; see above) — drop it in `assets/infographics/`,
+  `assets/slides/`, `assets/video/`, or `assets/audio/`, then run **`node scripts/sync_media.mjs`** — it regenerates the
+  `window.INFOGRAPHICS` + `window.SLIDES` + `window.VIDEO` + `window.AUDIO` blocks in `module-content.js` and the
+  `MEDIA_ASSETS` precache list in `sw.js` (delimited by `/* INFOGRAPHICS-GEN-START/END */`,
+  `/* SLIDES-GEN-START/END */`, `/* VIDEO-GEN-START/END */`, and `/* AUDIO-GEN-START/END */` markers —
+  don't hand-edit between them). Then rebuild (`build_index` + `add_content`), bump versions, deploy.
+  Multiple files per module are supported. (`assets/audio/.gitkeep` keeps the dir tracked while empty.)
 
 ## Icons
 - App icon = cursive **"CFP"** (Dancing Script) on **deep green `#1f4d3a`**
@@ -465,7 +489,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.36.0`) on every shippable change so installed apps auto-update
+  (current: `v2.49.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.

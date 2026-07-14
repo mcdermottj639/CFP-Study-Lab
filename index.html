@@ -892,6 +892,7 @@ function renderModules(){
       <div class="small muted" style="margin:4px 0 10px">${mp}% exam-ready</div>
       <div class="small">${links}</div>
       ${courseSlides(m.id)}
+      ${courseAudio(m.id)}
       ${courseModuleList(m.id,color)}
     </div>`;
   }).join('');
@@ -918,6 +919,15 @@ function courseSlides(course){
   if(!decks.length)return '';
   return '<div class="small" style="margin:6px 0 2px">'+
     decks.map((g,i)=>'<a class="link" style="cursor:pointer" onclick="openSlides(\''+course+'\',0,'+i+')">📑 '+g.title+'</a>').join(' &nbsp;·&nbsp; ')+
+    '</div>';
+}
+// Whole-course audio overview(s) — course-level media (AUDIO[course][0]), shown on
+// the Modules-tab card under the slide-deck link. A full-course NotebookLM deep-dive.
+function courseAudio(course){
+  const auds=((window.AUDIO||{})[course]||{})[0]||[];
+  if(!auds.length)return '';
+  return '<div class="small" style="margin:6px 0 2px">'+
+    auds.map((g,i)=>'<a class="link" style="cursor:pointer" onclick="openAudio(\''+course+'\',0,'+i+')">🎧 '+g.title+'</a>').join(' &nbsp;·&nbsp; ')+
     '</div>';
 }
 function moduleLinks(id){
@@ -1071,6 +1081,9 @@ function renderModuleHub(course,mod){
   const vids=((window.VIDEO||{})[course]||{})[mod]||[];
   const vidHtml=vids.length?'<div class="card" style="margin-top:12px"><div class="flex"><div><h3>Video'+(vids.length>1?'s':'')+'</h3><div class="small muted">NotebookLM video overview — tap to watch full-screen.</div></div></div>'+
     '<div class="row" style="flex-wrap:wrap;gap:8px;margin-top:10px">'+vids.map((g,i)=>'<button class="btn gray" onclick="openVideo(\''+course+'\','+mod+','+i+')">🎬 '+g.title+'</button>').join('')+'</div></div>':'';
+  const auds=((window.AUDIO||{})[course]||{})[mod]||[];
+  const audHtml=auds.length?'<div class="card" style="margin-top:12px"><div class="flex"><div><h3>Audio overview'+(auds.length>1?'s':'')+'</h3><div class="small muted">NotebookLM deep-dive audio — tap to listen; plays offline after the first listen.</div></div></div>'+
+    '<div class="row" style="flex-wrap:wrap;gap:8px;margin-top:10px">'+auds.map((g,i)=>'<button class="btn gray" onclick="openAudio(\''+course+'\','+mod+','+i+')">🎧 '+g.title+'</button>').join('')+'</div></div>':'';
   sec.innerHTML=
     '<div class="card" style="margin-bottom:12px;border-left:4px solid '+color+'">'+
       '<a class="link small" style="cursor:pointer" onclick="go(\'modules\')">← All modules</a>'+
@@ -1091,8 +1104,9 @@ function renderModuleHub(course,mod){
         (infos.length?'<button class="btn gray" onclick="openInfographic(\''+course+'\','+mod+',0)">📊 Visual guide'+(infos.length>1?'s':'')+'</button>':'')+
         (decks.length?'<button class="btn gray" onclick="openSlides(\''+course+'\','+mod+',0)">📑 Slide deck'+(decks.length>1?'s':'')+'</button>':'')+
         (vids.length?'<button class="btn gray" onclick="openVideo(\''+course+'\','+mod+',0)">🎬 Video'+(vids.length>1?'s':'')+'</button>':'')+
+        (auds.length?'<button class="btn gray" onclick="openAudio(\''+course+'\','+mod+',0)">🎧 Audio'+(auds.length>1?'s':'')+'</button>':'')+
       '</div></div>'+
-    objHtml+synHtml+exHtml+infoHtml+deckHtml+vidHtml+qref;
+    objHtml+synHtml+exHtml+infoHtml+deckHtml+vidHtml+audHtml+qref;
 }
 
 /* ====================== INFOGRAPHIC VIEWER (full-screen popup) ====================== */
@@ -1193,6 +1207,42 @@ function openVideo(course,mod,idx){
   wrap.classList.add('on'); document.body.classList.add('videoOpen');
 }
 function closeVideo(){const w=document.getElementById('videoWrap');if(w){const v=w.querySelector('video');if(v){try{v.pause();}catch(e){}}w.classList.remove('on');w.innerHTML='';}document.body.classList.remove('videoOpen');}
+
+/* ====================== AUDIO VIEWER (full-screen player) ====================== */
+function ensureAudioCSS(){
+  if(document.getElementById('audioCSS'))return;
+  const s=document.createElement('style'); s.id='audioCSS';
+  s.textContent=
+  '#audioWrap{position:fixed;inset:0;z-index:100002;background:rgba(22,17,12,.94);display:none;flex-direction:column}'+
+  'body.audioOpen{overflow:hidden}'+
+  '#audioWrap.on{display:flex}'+
+  '.audioTools{flex:0 0 auto;display:flex;gap:10px;justify-content:space-between;align-items:center;padding:11px 14px;background:rgba(22,17,12,.96);color:#fff}'+
+  '.audioTools .at-t{font-weight:700;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}'+
+  '.audioTools .at-r{display:flex;gap:8px;flex:0 0 auto;align-items:center}'+
+  '.audioTools a.btn{text-decoration:none}'+
+  '#audioBody{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;text-align:center}'+
+  '#audioBody .au-ico{font-size:64px;line-height:1}'+
+  '#audioBody .au-title{color:#fff;font-weight:700;font-size:18px;max-width:640px;line-height:1.35}'+
+  '#audioBody .au-sub{color:#f3efe7;opacity:.7;font-size:13px;max-width:520px}'+
+  '#audioEl{width:min(640px,92vw)}';
+  document.head.appendChild(s);
+}
+function openAudio(course,mod,idx){
+  const auds=((window.AUDIO||{})[course]||{})[mod]||[];
+  const g=auds[idx]; if(!g)return;
+  ensureAudioCSS();
+  let wrap=document.getElementById('audioWrap');
+  if(!wrap){wrap=document.createElement('div');wrap.id='audioWrap';document.body.appendChild(wrap);}
+  // ⤢ Open fallback opens the raw file (e.g. to hand off to the OS media player).
+  wrap.innerHTML='<div class="audioTools"><span class="at-t">'+g.title+'</span>'+
+    '<span class="at-r"><a class="btn gray" href="'+g.src+'" target="_blank" rel="noopener">⤢ Open</a>'+
+    '<button class="btn gray" onclick="closeAudio()">✕ Close</button></span></div>'+
+    '<div id="audioBody"><div class="au-ico">🎧</div><div class="au-title">'+g.title+'</div>'+
+    '<audio id="audioEl" src="'+g.src+'" controls autoplay preload="metadata" title="'+g.title.replace(/"/g,'&quot;')+'"></audio>'+
+    '<div class="au-sub">Audio overview — plays offline after the first listen while online.</div></div>';
+  wrap.classList.add('on'); document.body.classList.add('audioOpen');
+}
+function closeAudio(){const w=document.getElementById('audioWrap');if(w){const a=w.querySelector('audio');if(a){try{a.pause();}catch(e){}}w.classList.remove('on');w.innerHTML='';}document.body.classList.remove('audioOpen');}
 
 /* ====================== EXAM CHEAT SHEET (printable / save-as-PDF) ====================== */
 function ensureCheatCSS(){
@@ -1889,7 +1939,7 @@ autoBackup();
     <button id="cfpTkTheme" style="width:100%;padding:12px;border:1px solid #dfe3ee;border-radius:12px;background:#fff;color:#1d2433;font:600 15px system-ui;cursor:pointer;margin-bottom:9px">🌙 Dark mode</button>
     <button id="cfpTkReset" style="width:100%;padding:11px;border:none;border-radius:12px;background:#fdecea;color:#d6453d;font:600 14px system-ui;cursor:pointer">Reset all progress</button>
     <div id="cfpTkMsg" style="font-size:12.5px;color:#1f9d6b;text-align:center;min-height:16px;margin-top:10px"></div>
-    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.48.0</div>
+    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.49.0</div>
   </div>
 </div>
 <script>
