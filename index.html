@@ -1369,24 +1369,31 @@ function mcqRunner(pool,title,opts={}){
   const lim=opts.limit||0;
   if(lim)pool=pool.slice(0,lim);
   const exam=!!opts.exam;                               // exam = answer all, reveal at the end
-  let idx=0,correct=0,picked=null;const results=[];
+  const endless=!!opts.endless;                          // endless = loop forever until user ends, then recap
+  const fullPool=pool.slice();                           // kept for reshuffling each pass in endless mode
+  let idx=0,correct=0,answered=0,picked=null;const results=[];
   const area=document.getElementById('studyArea');
 
   function record(oi,cf){
-    const q=pool[idx];const ok=oi===q.a;if(ok)correct++;cf=cf||2;
+    const q=pool[idx];const ok=oi===q.a;if(ok)correct++;answered++;cf=cf||2;
     S.attempts.push({mod:q.m,domain:q.d,topic:q.t,correct:ok?1:0,conf:cf,ts:Date.now(),src:exam?'exam':'mcq'});
     bumpMastery(q.m,ok?1:0); markSeen(q.m,'q:'+mcqKey(q)); mcqSchedule(q,ok);
     if(!ok)S.misses.push({mod:q.m,topic:q.t,q:q.q,correct:q.o[q.a],e:q.e,ts:Date.now()});
-    if(exam)results.push({q:q,picked:oi,ok:ok});
+    if(exam||endless)results.push({q:q,picked:oi,ok:ok});
     logSession();save();
     return ok;
   }
   function draw(){
-    if(idx>=pool.length)return finish();
+    if(idx>=pool.length){
+      if(endless){pool=shuffle(fullPool);idx=0;}          // never run out — reshuffle and keep going
+      else return finish();
+    }
     const q=pool[idx];
     const header=opts.header?`<div class="card" style="margin-bottom:12px;background:#f4f7ff">${opts.header}</div>`:"";
     const sub=exam?` <span class="small muted">· answer all, then review</span>`:"";
-    area.innerHTML=`${header}<div class="card"><div class="flex"><span class="small muted">${title} — Q${idx+1}/${pool.length}${sub}</span><span><span class="tag">${q.m}</span><span class="tag">${domainName(q.d)}</span></span></div>
+    const counter=endless?`${title} — Q${answered+1} · ${correct}/${answered} correct`:`${title} — Q${idx+1}/${pool.length}${sub}`;
+    const endRow=endless?`<div class="center" style="margin-bottom:10px"><button class="btn gray sm" onclick="window._endQuiz()">■ End &amp; see recap</button></div>`:"";
+    area.innerHTML=`${header}${endRow}<div class="card"><div class="flex"><span class="small muted">${counter}</span><span><span class="tag">${q.m}</span><span class="tag">${domainName(q.d)}</span></span></div>
       <h3 style="margin-top:8px">${q.q}</h3>
       <div id="opts">${q.o.map((o,oi)=>`<button class="opt" onclick="window._pick(${oi})">${String.fromCharCode(65+oi)}. ${o}</button>`).join('')}</div>`+
       (exam?'':`<div id="conf" class="hidden"><div class="small muted" style="margin-top:8px">Before revealing, how confident were you?</div>
@@ -1408,6 +1415,32 @@ function mcqRunner(pool,title,opts={}){
       <div class="center" style="margin-top:10px"><button class="btn" onclick="window._next()">Next →</button></div>`;
   };
   window._next=()=>{idx++;picked=null;draw();};
+  window._endQuiz=()=>endlessRecap();
+
+  function endlessRecap(){
+    const restart=`runQuiz('${opts.restartMod||'ALL'}')`;
+    if(!answered){area.innerHTML=`<div class="card center"><h2>Quiz ended</h2><p class="muted">No questions answered yet.</p><button class="btn" onclick="${restart}">Start again</button> <button class="btn gray" onclick="go('dash')">Dashboard</button></div>`;return;}
+    const pct=Math.round(100*correct/answered);
+    const v=pct>=80?{t:'✅ Strong',c:'var(--good)'}:pct>=70?{t:'⚠ Getting there',c:'#d98a1f'}:{t:'❌ Keep drilling',c:'var(--bad)'};
+    const wrong=results.filter(r=>!r.ok);
+    const byTopic={};wrong.forEach(r=>{const t=r.q.t||'General';byTopic[t]=(byTopic[t]||0)+1;});
+    const topics=Object.entries(byTopic).sort((a,b)=>b[1]-a[1]);
+    const areas=topics.length
+      ?`<div class="card" style="margin-top:12px"><h3>🎯 Areas to work on</h3><div style="margin-top:6px">${topics.map(([t,n])=>`<span class="tag">${t} · ${n} missed</span>`).join(' ')}</div></div>`
+      :`<div class="card" style="margin-top:12px"><p class="small">No misses — every question correct. 🎉</p></div>`;
+    const review=wrong.map((r,i)=>{const q=r.q;return `<div style="padding:8px 0;border-bottom:1px solid var(--line)">
+      <div class="small"><b>${i+1}. ${q.q}</b></div>
+      <div class="small" style="color:var(--bad)">Your answer: ${String.fromCharCode(65+r.picked)}. ${q.o[r.picked]} ✗</div>
+      <div class="small" style="color:var(--good)">Correct: ${String.fromCharCode(65+q.a)}. ${q.o[q.a]}</div>
+      <div class="small muted" style="margin-top:2px">${q.e}</div></div>`;}).join('');
+    const reviewBlock=wrong.length?`<details class="card" style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">Review ${wrong.length} missed question${wrong.length>1?'s':''} &amp; explanations</summary>${review}</details>`:'';
+    area.innerHTML=`<div class="card center"><h2>Quiz recap</h2>
+        <div class="kpi" style="color:${v.c}">${pct}%</div>
+        <div style="font-weight:800;color:${v.c}">${v.t}</div>
+        <div class="small muted">${correct} / ${answered} correct</div>
+        <div style="margin-top:10px"><button class="btn" onclick="${restart}">Keep practicing</button> <button class="btn gray" onclick="go('dash')">Dashboard</button> <button class="btn gray" onclick="go('analytics')">Analytics</button></div></div>`+
+      areas+reviewBlock;
+  }
 
   function finish(){
     const pct=Math.round(100*correct/(pool.length||1));
@@ -1444,7 +1477,7 @@ function mcqRunner(pool,title,opts={}){
 }
 function domainName(k){const d=DOMAINS.find(x=>x.k===k);return d?d.k:k;}
 function modLabel(mod){const mf=window.MODF;return (mf&&mf!=="ALL"&&MODMETA[mod])?(mod+" Module "+mf+" — "+MODMETA[mod][mf]):mod;}
-function runQuiz(mod){const p=filt(MCQ,mod);if(!p.length)return emptyMsg("No quiz questions yet for "+modLabel(mod));mcqRunner(p,"Quiz",{limit:10});}
+function runQuiz(mod){const p=filt(MCQ,mod);if(!p.length)return emptyMsg("No quiz questions yet for "+modLabel(mod));mcqRunner(p,"Quiz",{endless:true,restartMod:mod});}
 function runExam(mod){const p=filt(MCQ,mod);if(!p.length)return emptyMsg("No exam questions yet for "+modLabel(mod));mcqRunner(p,(mod==="ALL"?"Practice exam":modLabel(mod)+" practice exam"));}
 function runMock(){
   // blueprint-weighted selection from available MCQ — NO repeats; flag any shortfall honestly
@@ -1889,7 +1922,7 @@ autoBackup();
     <button id="cfpTkTheme" style="width:100%;padding:12px;border:1px solid #dfe3ee;border-radius:12px;background:#fff;color:#1d2433;font:600 15px system-ui;cursor:pointer;margin-bottom:9px">🌙 Dark mode</button>
     <button id="cfpTkReset" style="width:100%;padding:11px;border:none;border-radius:12px;background:#fdecea;color:#d6453d;font:600 14px system-ui;cursor:pointer">Reset all progress</button>
     <div id="cfpTkMsg" style="font-size:12.5px;color:#1f9d6b;text-align:center;min-height:16px;margin-top:10px"></div>
-    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.48.0</div>
+    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.49.0</div>
   </div>
 </div>
 <script>
