@@ -57,8 +57,16 @@ pickers actually affect, so the UI stops pretending scope applies when it doesn'
   deferred-feedback, verdict-producing run as the Module Hub's Exam — and when a specific
   module is selected it writes `S.modReady[course_mod]`, feeding the readiness composite and
   Analytics exam scoreboard (course-wide / `MODF==="ALL"` runs score but save no badge).
-  `runExam` is now dead code (left defined, unreferenced). **Quiz** stays the quick 10-Q
-  instant-feedback practice.
+  `runExam` is now dead code (left defined, unreferenced). **Quiz** is an **endless**
+  instant-feedback practice (v2.49.0): `runQuiz` calls `mcqRunner` with `{endless:true,
+  restartMod:mod}` (no `limit`) — the runner keeps serving questions, **reshuffling the full
+  in-scope pool each time it's exhausted** (`fullPool`/`draw()` loop) so it never hits the
+  "complete" screen. A persistent **"■ End & see recap"** button (`window._endQuiz`) lets you
+  stop any time; the header shows a running `Q{answered+1} · {correct}/{answered} correct`
+  counter. Ending calls `endlessRecap()` → score %, verdict, and **"🎯 Areas to work on"**
+  (missed topics ranked by miss-count) + a collapsible review of missed questions, with
+  Keep-practicing (`runQuiz(restartMod)`) / Dashboard / Analytics buttons. `mcqRunner` now
+  tracks `answered` and accumulates `results` when `exam||endless` (was exam-only).
 - **Leeches**: `lapses>=8` flags `leech`. **Flag/star** via `toggleFlag(i)`.
   `hardCards()` (flagged ∪ leech ∪ `ease<=2.0`) powers the **Hard cards** mode.
 - **MCQ misses** schedule into `S.mcqDue[questionText]` (Leitner ladder) via
