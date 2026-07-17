@@ -61,6 +61,10 @@ h2{font-size:17px}
 .opt.wrong{background:#fdecea;border-color:var(--bad)}
 .opt.dim{opacity:.6}
 .expl{background:#f4f7ff;border:1px solid #dbe6ff;border-radius:10px;padding:11px 13px;font-size:13.5px;margin-top:8px}
+.tts-btn{display:inline-flex;align-items:center;gap:5px;margin-top:8px;padding:5px 11px;font:inherit;font-size:12.5px;font-weight:600;line-height:1;color:var(--brand);background:#fff;border:1px solid var(--brand);border-radius:999px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.tts-btn:hover{background:#f4f7ff}
+.tts-btn.speaking{color:#fff;background:var(--brand)}
+.tts-btn:disabled{opacity:.5;cursor:default}
 table{width:100%;border-collapse:collapse;font-size:13.5px}
 th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
 th{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.4px}
@@ -800,6 +804,7 @@ function daysTo(dstr){const d=new Date(dstr+"T00:00:00");return Math.ceil((d-new
 
 /* ====================== TABS ====================== */
 function go(t){
+  if(typeof ttsStop==='function')ttsStop();          // stop any read-aloud when navigating tabs
   document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.t===t));
   ['dash','modules','study','analytics','mobile','modhub'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.toggle('hidden',id!==t);});
   if(t==='dash')renderDash();
@@ -1364,6 +1369,30 @@ function mcqDuePool(){
 }
 
 // Quiz / Exam / Mock — MCQ runner with confidence
+/* ── Read-aloud (Web Speech API, fully offline — uses the OS voices) ────────── */
+function ttsSupported(){return typeof window!=='undefined' && 'speechSynthesis' in window && typeof SpeechSynthesisUtterance!=='undefined';}
+function ttsPlain(html){const d=document.createElement('div');d.innerHTML=html||'';return (d.textContent||d.innerText||'').replace(/\s+/g,' ').trim();}
+function ttsStop(){if(ttsSupported())speechSynthesis.cancel();if(window._ttsBtn){window._ttsBtn.classList.remove('speaking');window._ttsBtn.innerHTML=window._ttsBtn.getAttribute('data-label')||'🔊 Listen';window._ttsBtn=null;}}
+function ttsSpeak(el){
+  if(!ttsSupported()){el.disabled=true;el.textContent='🔇 Audio unavailable';return;}
+  const speaking=el.classList.contains('speaking');
+  ttsStop();                                   // stop anything already playing (and reset its button)
+  if(speaking)return;                          // tapping the active button = just stop
+  const txt=(el.getAttribute('data-tts')||'').trim();if(!txt)return;
+  const u=new SpeechSynthesisUtterance(txt);u.rate=0.95;
+  const restore=()=>{if(window._ttsBtn===el){el.classList.remove('speaking');el.innerHTML=el.getAttribute('data-label')||'🔊 Listen';window._ttsBtn=null;}};
+  u.onend=restore;u.onerror=restore;
+  el.classList.add('speaking');el.innerHTML='⏸ Stop';window._ttsBtn=el;
+  speechSynthesis.speak(u);
+}
+/* Build a "Listen" button that reads plain-text `html` aloud. Returns '' where TTS is unsupported. */
+function ttsBtn(html,label){
+  if(!ttsSupported())return '';
+  const plain=ttsPlain(html);if(!plain)return '';
+  const esc=plain.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  label=label||'🔊 Listen';
+  return `<button type="button" class="tts-btn" data-tts="${esc}" data-label="${label}" onclick="ttsSpeak(this)" aria-label="Read explanation aloud">${label}</button>`;
+}
 function mcqRunner(pool,title,opts={}){
   if(!opts.ordered)pool=shuffle(pool);                  // adaptive passes a pre-tiered, ordered pool
   const lim=opts.limit||0;
@@ -1402,7 +1431,7 @@ function mcqRunner(pool,title,opts={}){
       `<div id="rev"></div></div>`;
   }
   window._pick=(oi)=>{
-    if(exam){ record(oi); idx++; draw(); return; }       // exam: lock + advance, no reveal
+    if(exam){ ttsStop(); record(oi); idx++; draw(); return; }       // exam: lock + advance, no reveal
     if(picked!==null)return;picked=oi;
     document.getElementById('conf').classList.remove('hidden');
     document.querySelectorAll('#opts .opt').forEach(b=>b.classList.add('dim'));
@@ -1412,11 +1441,11 @@ function mcqRunner(pool,title,opts={}){
     const els=document.querySelectorAll('#opts .opt');
     els.forEach((b,oi)=>{b.classList.remove('dim');if(oi===q.a)b.classList.add('correct');if(oi===picked&&!ok)b.classList.add('wrong');b.onclick=null;});
     document.getElementById('conf').classList.add('hidden');
-    document.getElementById('rev').innerHTML=`<div class="expl"><b>${ok?'✓ Correct':'✗ Not quite'}.</b> ${q.e}</div>
+    document.getElementById('rev').innerHTML=`<div class="expl"><b>${ok?'✓ Correct':'✗ Not quite'}.</b> ${q.e}<div>${ttsBtn(q.e)}</div></div>
       <div class="center" style="margin-top:10px"><button class="btn" onclick="window._next()">Next →</button></div>`;
   };
-  window._next=()=>{idx++;picked=null;draw();};
-  window._endQuiz=()=>endlessRecap();
+  window._next=()=>{ttsStop();idx++;picked=null;draw();};
+  window._endQuiz=()=>{ttsStop();endlessRecap();};
 
   function endlessRecap(){
     const restart=`runQuiz('${opts.restartMod||'ALL'}')`;
@@ -1433,7 +1462,7 @@ function mcqRunner(pool,title,opts={}){
       <div class="small"><b>${i+1}. ${q.q}</b></div>
       <div class="small" style="color:var(--bad)">Your answer: ${String.fromCharCode(65+r.picked)}. ${q.o[r.picked]} ✗</div>
       <div class="small" style="color:var(--good)">Correct: ${String.fromCharCode(65+q.a)}. ${q.o[q.a]}</div>
-      <div class="small muted" style="margin-top:2px">${q.e}</div></div>`;}).join('');
+      <div class="small muted" style="margin-top:2px">${q.e}</div><div>${ttsBtn(q.e)}</div></div>`;}).join('');
     const reviewBlock=wrong.length?`<details class="card" style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">Review ${wrong.length} missed question${wrong.length>1?'s':''} &amp; explanations</summary>${review}</details>`:'';
     area.innerHTML=`<div class="card center"><h2>Quiz recap</h2>
         <div class="kpi" style="color:${v.c}">${pct}%</div>
@@ -1464,7 +1493,7 @@ function mcqRunner(pool,title,opts={}){
       <div class="small"><b>${i+1}. ${q.q}</b></div>
       <div class="small" style="color:${r.ok?'var(--good)':'var(--bad)'}">Your answer: ${String.fromCharCode(65+r.picked)}. ${q.o[r.picked]} ${r.ok?'✓':'✗'}</div>
       ${r.ok?'':`<div class="small" style="color:var(--good)">Correct: ${String.fromCharCode(65+q.a)}. ${q.o[q.a]}</div>`}
-      <div class="small muted" style="margin-top:2px">${q.e}</div></div>`;}).join('');
+      <div class="small muted" style="margin-top:2px">${q.e}</div><div>${ttsBtn(q.e)}</div></div>`;}).join('');
     const back=hub?`<button class="btn" onclick="openModule('${hub.course}',${hub.mod})">← Back to module</button> `:'';
     return `<div class="card center"><h2>${title}</h2>
         <div class="kpi" style="color:${v.c}">${pct}%</div>
@@ -2223,7 +2252,7 @@ autoBackup();
     <button id="cfpTkTheme" style="width:100%;padding:12px;border:1px solid #dfe3ee;border-radius:12px;background:#fff;color:#1d2433;font:600 15px system-ui;cursor:pointer;margin-bottom:9px">🌙 Dark mode</button>
     <button id="cfpTkReset" style="width:100%;padding:11px;border:none;border-radius:12px;background:#fdecea;color:#d6453d;font:600 14px system-ui;cursor:pointer">Reset all progress</button>
     <div id="cfpTkMsg" style="font-size:12.5px;color:#1f9d6b;text-align:center;min-height:16px;margin-top:10px"></div>
-    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.51.0</div>
+    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.52.0</div>
   </div>
 </div>
 <script>
