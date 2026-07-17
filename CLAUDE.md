@@ -57,6 +57,19 @@ navigation — `_next`, exam-advance (`_pick`), `_endQuiz`, and `go()` all call 
 so audio never bleeds across questions/tabs. Button styles = `.tts-btn` (pill, filled while
 `.speaking`) in the source `<style>` block.
 
+**Voice selection (v2.54.0).** By default the Web Speech API uses the OS's lowest-quality
+*compact* voice (robotic "Samantha" on iOS), and **iOS hides the Siri voices (Voice 1–5) from
+web pages entirely** — so the app actively picks the best voice the API *does* expose.
+`ttsPickVoice()` (source, next to the TTS helpers) honors a saved pick in `localStorage.cfpTtsVoice`
+else auto-ranks via `ttsScoreVoice()` (premium > enhanced > named e.g. Ava/Evan > compact; novelty
+voices heavily penalized); `ttsSpeak` sets `u.voice`/`u.lang` from it. `reader-tts.js` mirrors the
+same `pickVoice()`/`scoreVoice()` reading the SAME key (kept in sync). The **⋯ Backup & tools panel**
+(`build_index.mjs` TOOLKIT) has a **🔊 Read-aloud voice** picker (`#cfpTkVoice` + ▶︎ preview) that
+lists the API's English voices and writes `cfpTtsVoice`; it repopulates on `voiceschanged` and on
+modal open (iOS populates voices lazily). To actually get a good voice on iOS the user must download
+an **Enhanced/Premium named** voice (Ava, Evan…) in Settings → Accessibility → Spoken Content →
+Voices — a Siri voice will never appear to the web API (the panel note says so).
+
 **Read-aloud is spread across the whole app (v2.53.0)** using the same helpers. `ttsRow(html,label)`
 (next to `ttsBtn`) wraps a Listen button in a spaced row (empty string where unsupported):
 - **Flashcards** (`flashcards.js`) — a 🔊 Listen on the card face reads the **question** (front),
@@ -545,7 +558,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.53.0`) on every shippable change so installed apps auto-update
+  (current: `v2.54.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
