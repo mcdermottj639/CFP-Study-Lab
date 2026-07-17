@@ -93,11 +93,18 @@ Content → Voices → English.
 in `CORE_ASSETS`) adds a floating **🎧 Listen** FAB (right side, stacked above the 🔍 search FAB)
 that reads the **active tab** aloud via `speechSynthesis` — fully offline, OS voices, no vendored
 asset. It highlights (`.rt-hi`) + auto-scrolls each block and **auto-expands a collapsed section**
-when it reaches text inside it (clicks the `.collapsible-header`/`.ch`). A control strip (`#rtBar`)
-gives ⏮ ⏭ prev/next, ⏸/▶ pause, ⏹ stop, a **reading-speed button** (`.rt-speed`, v2.58.0 — taps
-cycle `RATES` = 0.8/1/1.25/1.5/1.75/2×, persisted in `localStorage.cfpTtsRate`, applied as
-`utterance.rate`; changing mid-read re-speaks the current block since rate can't change in flight),
-and a `¶ n/total` counter. Reader-agnostic: the reading root
+when it reaches text inside it (clicks the `.collapsible-header`/`.ch`).
+**Docked player bar + no-clutter layout (v2.60.0).** `#rtBar` is a **full-width bar docked at the
+bottom** (not a centered pill — it was colliding with Home/Theme/search). `showBar(on)` toggles it,
+sets `body.rt-on`, and while playing **hides the 🎧 `#rtFab` + 🔍 `#rsFab`** (the bar has its own Stop,
+so no redundant buttons) and **lifts `#fpslHome`/`#rdrTheme`/`#rdrBack` above the bar** via
+`body.rt-on` CSS overrides. The bar has ⏮ ⏭ prev/next, ⏸/▶ pause, ⏹ stop, a **reading-speed button**
+(`.rt-speed`, v2.58.0 — taps cycle `RATES` = 0.8/1/1.25/1.5/1.75/2×, persisted in
+`localStorage.cfpTtsRate`), and a `¶ n/total` counter.
+**Natural pacing (v2.60.0).** `u.rate = RATE_BASE(0.95) × rate` (so "1×" is an unhurried default, not
+the old rushed 1.0); each block's text gets a sentence-final period (`sentence()`) so blocks don't run
+together; and a **~220 ms gap** (`GAP`) is inserted between blocks on natural advance (a `setTimeout`
+inside `onend`, re-checking the `gen`/`paused` guard) — a human breath instead of a continuous rush. Reader-agnostic: the reading root
 is the largest `.active` panel (same convention `reader-search.js` uses), so it works on FP511, FP512,
 and any future reader with **no per-reader code**. A **generation counter** (`gen`) guards the
 utterance `onend` chain so cancel/skip/pause never double-advance. Pause re-speaks the current block
@@ -590,7 +597,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.59.0`) on every shippable change so installed apps auto-update
+  (current: `v2.60.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
