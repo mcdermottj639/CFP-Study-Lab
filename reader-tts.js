@@ -68,12 +68,29 @@
       '<button data-a="toggle" title="Pause / resume">⏸</button>' +
       '<button data-a="next" title="Next">⏭</button>' +
       '<button data-a="stop" title="Stop">⏹</button>' +
+      '<button class="rt-speed" data-a="speed" title="Reading speed"></button>' +
       '<span class="rt-pos"></span>';
     document.body.appendChild(bar);
     var posEl = bar.querySelector('.rt-pos');
     var toggleBtn = bar.querySelector('[data-a="toggle"]');
+    var speedBtn = bar.querySelector('[data-a="speed"]');
 
     var blocks = [], pos = 0, playing = false, paused = false, gen = 0;
+
+    // Reading speed — tap to cycle, persisted in localStorage 'cfpTtsRate'.
+    var RATES = [0.8, 1, 1.25, 1.5, 1.75, 2];
+    var rate = 1;
+    try { var sr = parseFloat(localStorage.getItem('cfpTtsRate')); if (sr >= 0.5 && sr <= 3) rate = sr; } catch (e) {}
+    function fmtRate(r) { return (r === Math.round(r) ? r : r.toFixed(2).replace(/0$/, '')) + '×'; }
+    function syncSpeed() { speedBtn.textContent = fmtRate(rate); }
+    function cycleSpeed() {
+      var i = RATES.indexOf(rate);
+      rate = RATES[(i + 1) % RATES.length];
+      try { localStorage.setItem('cfpTtsRate', String(rate)); } catch (e) {}
+      syncSpeed();
+      if (playing && !paused) playIndex(pos, true);   // re-speak current block at the new rate (can't retune in flight)
+    }
+    syncSpeed();
 
     fab.onclick = function () { if (playing) stop(); else start(); };
     bar.addEventListener('click', function (e) {
@@ -82,6 +99,7 @@
       else if (a === 'next') jump(pos + 1);
       else if (a === 'toggle') togglePause();
       else if (a === 'stop') stop();
+      else if (a === 'speed') cycleSpeed();
     });
 
     // Stop cleanly on tab switch / navigation away / tab hidden.
@@ -205,7 +223,7 @@
       reveal(unit.el);
       if (!unit.text) { playIndex(i + 1, viaCancel); return; }
       var u = new SpeechSynthesisUtterance(unit.text);
-      u.rate = 0.96;
+      u.rate = rate;
       var v = pickVoice(); if (v) { u.voice = v; u.lang = v.lang; }
       u.onend = function () { if (myGen === gen && playing && !paused) playIndex(pos + 1, false); };
       u.onerror = function () { if (myGen === gen && playing && !paused) playIndex(pos + 1, false); };
@@ -256,6 +274,7 @@
         '#rtBar.on{display:inline-flex}' +
         '#rtBar button{border:none;background:#f1ece3;color:#3a2e25;width:40px;height:40px;border-radius:50%;font-size:15px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}' +
         '#rtBar button:hover{background:#e7ddcd}' +
+        '#rtBar button.rt-speed{width:auto;min-width:46px;border-radius:20px;padding:0 12px;font:700 13px system-ui,-apple-system,sans-serif;font-variant-numeric:tabular-nums}' +
         '#rtBar .rt-pos{font:600 12px system-ui,-apple-system,sans-serif;color:#7a6f5f;padding:0 8px;white-space:nowrap}' +
         '.rt-hi{background:#ffe9b8 !important;border-radius:3px;box-shadow:0 0 0 3px #ffe9b8;scroll-margin-top:80px}' +
         'html[data-theme="dark"] #rtBar{background:#241c16;border-color:#3a2e25}' +

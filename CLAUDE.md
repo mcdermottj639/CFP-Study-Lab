@@ -94,7 +94,10 @@ in `CORE_ASSETS`) adds a floating **🎧 Listen** FAB (right side, stacked above
 that reads the **active tab** aloud via `speechSynthesis` — fully offline, OS voices, no vendored
 asset. It highlights (`.rt-hi`) + auto-scrolls each block and **auto-expands a collapsed section**
 when it reaches text inside it (clicks the `.collapsible-header`/`.ch`). A control strip (`#rtBar`)
-gives ⏮ ⏭ prev/next, ⏸/▶ pause, ⏹ stop, and a `¶ n/total` counter. Reader-agnostic: the reading root
+gives ⏮ ⏭ prev/next, ⏸/▶ pause, ⏹ stop, a **reading-speed button** (`.rt-speed`, v2.58.0 — taps
+cycle `RATES` = 0.8/1/1.25/1.5/1.75/2×, persisted in `localStorage.cfpTtsRate`, applied as
+`utterance.rate`; changing mid-read re-speaks the current block since rate can't change in flight),
+and a `¶ n/total` counter. Reader-agnostic: the reading root
 is the largest `.active` panel (same convention `reader-search.js` uses), so it works on FP511, FP512,
 and any future reader with **no per-reader code**. A **generation counter** (`gen`) guards the
 utterance `onend` chain so cancel/skip/pause never double-advance. Pause re-speaks the current block
@@ -581,7 +584,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.57.0`) on every shippable change so installed apps auto-update
+  (current: `v2.58.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
