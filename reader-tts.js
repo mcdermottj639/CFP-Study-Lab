@@ -86,7 +86,12 @@
     window.addEventListener('beforeunload', function () { sp.cancel(); });
     document.addEventListener('visibilitychange', function () { if (document.hidden && playing) stop(); });
 
-    // ---- collect readable blocks from the active tab (leaf text blocks, in order) ----
+    var TEXTSEL = 'h1,h2,h3,h4,p,li,blockquote,dd,dt';
+    function textOf(e) { return (e.innerText || e.textContent || '').replace(/\s+/g, ' ').trim(); }
+
+    // ---- collect readable blocks from the active tab (in document order) ----
+    // Includes section headers and TABLES (as whole units, serialized to prose) so
+    // nothing on the page is silently skipped.
     function collect() {
       var panels = [].slice.call(document.querySelectorAll('.active')).filter(function (n) {
         return !n.matches('.tab-btn,.collapsible-header,.collapsible-content,.ch,.cc');
@@ -94,15 +99,60 @@
       var root = null, max = -1;
       panels.forEach(function (p) { var len = (p.textContent || '').length; if (len > max) { max = len; root = p; } });
       if (!root) root = document.getElementById('rdrWrap') || document.body;
-      var sel = 'h1,h2,h3,h4,p,li,blockquote,dd,dt';
-      return [].slice.call(root.querySelectorAll(sel)).filter(function (e) {
-        if (e.querySelector(sel)) return false;                 // leaf text blocks only (no double-read of nested lists)
-        if (e.closest('#rtBar,#rtFab')) return false;
-        return (e.textContent || '').replace(/\s+/g, ' ').trim().length > 1;
+
+      var tables = [].slice.call(root.querySelectorAll('table'));
+      // Section headers that aren't already an <h1-4> (those get picked up as leaves).
+      var heads = [].slice.call(root.querySelectorAll('.collapsible-header,.ch')).filter(function (e) {
+        return !e.querySelector('h1,h2,h3,h4') && textOf(e).length > 1;
       });
+      // Leaf text blocks, but NOT cells inside a table (the table serializer handles those).
+      var leaves = [].slice.call(root.querySelectorAll(TEXTSEL)).filter(function (e) {
+        if (e.querySelector(TEXTSEL)) return false;             // leaf only (no double-read of nested lists)
+        if (e.closest('table')) return false;
+        return textOf(e).length > 1;
+      });
+      return tables.concat(heads, leaves)
+        .filter(function (e) { return !e.closest('#rtBar,#rtFab'); })
+        .sort(function (a, b) {                                  // restore document order across the merged sets
+          var p = a.compareDocumentPosition(b);
+          if (p & Node.DOCUMENT_POSITION_FOLLOWING) return -1;
+          if (p & Node.DOCUMENT_POSITION_PRECEDING) return 1;
+          return 0;
+        });
     }
 
-    function plain(e) { return (e.innerText || e.textContent || '').replace(/\s+/g, ' ').trim(); }
+    // Read a table row-by-row, pairing each cell with its row header (first cell) and
+    // column header (top row) so a matrix reads naturally instead of as jumbled cells.
+    function tableToSpeech(tbl) {
+      var rows = [].slice.call(tbl.querySelectorAll('tr'));
+      if (!rows.length) return textOf(tbl);
+      var head0 = [].slice.call(rows[0].children);
+      var headerRow = head0.length && head0.some(function (c) { return c.tagName === 'TH'; });
+      var cols = headerRow ? head0.map(textOf) : null;
+      var out = [], i, j;
+      for (i = headerRow ? 1 : 0; i < rows.length; i++) {
+        var cells = [].slice.call(rows[i].children);
+        if (!cells.length) continue;
+        var rowLabel = cells[0].tagName === 'TH' ? textOf(cells[0]) : '';
+        var parts = [];
+        for (j = rowLabel ? 1 : 0; j < cells.length; j++) {
+          var val = textOf(cells[j]); if (!val) continue;
+          var col = cols ? cols[j] : '';
+          parts.push(col ? col + ': ' + val : val);
+        }
+        var line = (rowLabel ? rowLabel + '. ' : '') + parts.join('. ');
+        if (line.trim()) out.push(line);
+      }
+      return out.join('. ') || textOf(tbl);
+    }
+
+    function plain(e) {
+      if (e.tagName === 'TABLE') return tableToSpeech(e);
+      var t = textOf(e);
+      if (e.classList && (e.classList.contains('collapsible-header') || e.classList.contains('ch')))
+        t = t.replace(/^[\s+\-–—▸▾▲▼]+/, '').replace(/[\s+\-–—▸▾▲▼]+$/, '').trim();  // drop the ± toggle glyph
+      return t;
+    }
 
     function start() {
       blocks = collect();
