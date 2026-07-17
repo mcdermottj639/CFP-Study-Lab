@@ -102,6 +102,12 @@ is the largest `.active` panel (same convention `reader-search.js` uses), so it 
 and any future reader with **no per-reader code**. A **generation counter** (`gen`) guards the
 utterance `onend` chain so cancel/skip/pause never double-advance. Pause re-speaks the current block
 on resume (robust on iOS). Stops on tab switch, `pagehide`/`beforeunload`, and when the tab is hidden.
+**Double-click / double-tap a word → start reading from there (v2.59.0).** A `dblclick` listener
+(desktop) maps the click to its block via `unitIndexForNode()` and starts/jumps there; for leaf blocks
+it computes `wordLevelText()` (a Range from the block start to the double-click selection) so a long
+paragraph starts at the *exact word*, delivered as a one-shot `startOverride` on the first utterance.
+A `touchend` double-tap detector (≤350 ms, <28 px) does the same at block granularity (no reliable
+tap selection). If not already playing it collects + begins; if playing it `jump()`s.
 
 **Generic collector — reads EVERYTHING, flowing (v2.56.0).** The original tag-whitelist collector
 (`p/li/h*`) silently skipped anything in a styled `<div>` (callout boxes, stat tiles, cards). `collect()`
@@ -584,7 +590,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.58.0`) on every shippable change so installed apps auto-update
+  (current: `v2.59.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
