@@ -1245,6 +1245,24 @@ function mcqDuePool(){
 /* ── Read-aloud (Web Speech API, fully offline — uses the OS voices) ────────── */
 function ttsSupported(){return typeof window!=='undefined' && 'speechSynthesis' in window && typeof SpeechSynthesisUtterance!=='undefined';}
 function ttsPlain(html){const d=document.createElement('div');d.innerHTML=html||'';return (d.textContent||d.innerText||'').replace(/\s+/g,' ').trim();}
+/* Voice selection. iOS hides Siri voices from web pages, and the default utterance
+   voice is the low-quality compact one — so we actively pick the best voice the Web
+   Speech API exposes (honoring the user's saved pick in localStorage 'cfpTtsVoice',
+   set by the ⋯ Backup & tools voice picker). Shared with reader-tts.js via that key. */
+function ttsAllVoices(){try{return speechSynthesis.getVoices()||[];}catch(e){return [];}}
+function ttsScoreVoice(v){var u=((v.voiceURI||'')+' '+(v.name||'')).toLowerCase(),s=0;
+  if(u.indexOf('premium')>=0)s+=6; if(u.indexOf('enhanced')>=0)s+=5; if(/siri/.test(u))s+=4;
+  if(/(ava|evan|zoe|nathan|joelle|allison|samantha|susan|tom|nicky|aaron)/.test(u))s+=2;
+  if(u.indexOf('compact')>=0)s-=3; if(/en-us/i.test(v.lang||''))s+=1;
+  if(/(novelty|bells|trinoids|bad news|good news|jester|organ|cellos|zarvox|whisper|bahh|boing|bubbles|wobble|superstar|albert|fred|ralph|kathy|junior)/.test(u))s-=20;
+  return s;}
+function ttsPickVoice(){
+  var vs=ttsAllVoices(); if(!vs.length)return null;
+  var pref=null; try{pref=localStorage.getItem('cfpTtsVoice');}catch(e){}
+  if(pref){var m=vs.filter(function(v){return v.voiceURI===pref||v.name===pref;})[0]; if(m)return m;}
+  var en=vs.filter(function(v){return /^en/i.test(v.lang||'');}); var pool=en.length?en:vs;
+  return pool.slice().sort(function(a,b){return ttsScoreVoice(b)-ttsScoreVoice(a);})[0]||null;
+}
 function ttsStop(){if(ttsSupported())speechSynthesis.cancel();if(window._ttsBtn){window._ttsBtn.classList.remove('speaking');window._ttsBtn.innerHTML=window._ttsBtn.getAttribute('data-label')||'🔊 Listen';window._ttsBtn=null;}}
 function ttsSpeak(el){
   if(!ttsSupported()){el.disabled=true;el.textContent='🔇 Audio unavailable';return;}
@@ -1253,6 +1271,7 @@ function ttsSpeak(el){
   if(speaking)return;                          // tapping the active button = just stop
   const txt=(el.getAttribute('data-tts')||'').trim();if(!txt)return;
   const u=new SpeechSynthesisUtterance(txt);u.rate=0.95;
+  const v=ttsPickVoice();if(v){u.voice=v;u.lang=v.lang;}
   const restore=()=>{if(window._ttsBtn===el){el.classList.remove('speaking');el.innerHTML=el.getAttribute('data-label')||'🔊 Listen';window._ttsBtn=null;}};
   u.onend=restore;u.onerror=restore;
   el.classList.add('speaking');el.innerHTML='⏸ Stop';window._ttsBtn=el;
