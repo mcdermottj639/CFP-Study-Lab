@@ -41,6 +41,22 @@ simplified **SM-2** algorithm (not the old Leitner boxes):
   dropdown label is **"Flagged & leech cards"** as of v2.20.0 to disambiguate it from the
   card filter's "Need more work" bucket — same `hard`/`runHard` mechanics.)
 
+### Read-aloud answer explanations (TTS, v2.52.0)
+Every MCQ answer explanation carries a **🔊 Listen** button that reads the explanation
+aloud using the browser's built-in **Web Speech API** (`speechSynthesis` +
+`SpeechSynthesisUtterance`) — the OS's own voices, so it's **fully offline, no vendored
+asset, no CDN, no `https://`** (doesn't violate the offline rule). Helpers live in
+`src/study-home.src.html` just above `mcqRunner`: `ttsSupported()`, `ttsPlain(html)`
+(strips tags/entities to plain text via a scratch `<div>`), `ttsStop()`, `ttsSpeak(el)`
+(toggle: tapping the active button stops; only one utterance plays at a time via
+`window._ttsBtn`), and `ttsBtn(html,label)` which returns the button markup (empty string
+where TTS is unsupported, so it degrades gracefully). `ttsBtn(q.e)` is spliced into all
+three explanation render points in `mcqRunner`: the instant-feedback reveal (`_conf`), the
+endless-quiz recap review, and the scored-exam results review. Speech is cancelled on
+navigation — `_next`, exam-advance (`_pick`), `_endQuiz`, and `go()` all call `ttsStop()`
+so audio never bleeds across questions/tabs. Button styles = `.tts-btn` (pill, filled while
+`.speaking`) in the source `<style>` block.
+
 ### Study mode dropdown — scoped vs. global (v2.20.0)
 The `#studyMode` `<select>` is split into two `<optgroup>`s by what the course/sub-module
 pickers actually affect, so the UI stops pretending scope applies when it doesn't:
@@ -497,7 +513,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.51.0`) on every shippable change so installed apps auto-update
+  (current: `v2.52.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
