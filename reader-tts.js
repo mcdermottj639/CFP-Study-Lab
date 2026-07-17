@@ -76,6 +76,7 @@
     var speedBtn = bar.querySelector('[data-a="speed"]');
 
     var blocks = [], pos = 0, playing = false, paused = false, gen = 0;
+    var startOverride = null;                          // {index, text} one-shot: read a block from a double-clicked word
 
     // Reading speed — tap to cycle, persisted in localStorage 'cfpTtsRate'.
     var RATES = [0.8, 1, 1.25, 1.5, 1.75, 2];
@@ -107,6 +108,68 @@
     window.addEventListener('pagehide', function () { sp.cancel(); });
     window.addEventListener('beforeunload', function () { sp.cancel(); });
     document.addEventListener('visibilitychange', function () { if (document.hidden && playing) stop(); });
+
+    // ---- Double-click / double-tap a word → start reading from there ----
+    function unitIndexForNode(node) {
+      var elx = node && node.nodeType === 3 ? node.parentElement : node;
+      while (elx) {
+        for (var i = 0; i < blocks.length; i++) { if (blocks[i].el === elx) return i; }
+        elx = elx.parentElement;
+      }
+      return -1;
+    }
+    // Text from the double-click selection to the end of the block (leaf blocks only),
+    // so a long paragraph starts at the exact word rather than from its top.
+    function wordLevelText(unitEl) {
+      try {
+        var sel = window.getSelection();
+        if (!sel || !sel.rangeCount) return null;
+        var r = sel.getRangeAt(0);
+        if (!unitEl.contains(r.startContainer)) return null;
+        var before = document.createRange();
+        before.setStart(unitEl, 0);
+        before.setEnd(r.startContainer, r.startOffset);
+        var full = unitEl.innerText || unitEl.textContent || '';
+        var from = full.slice(before.toString().length).replace(/\s+/g, ' ').trim();
+        return from.length > 1 ? from : null;
+      } catch (e) { return null; }
+    }
+    function startFromNode(node, allowWordLevel) {
+      if (!playing) blocks = collect();               // need the block list before we can locate the click
+      if (!blocks.length) return;
+      var idx = unitIndexForNode(node);
+      if (idx < 0) return;                            // click wasn't on readable content
+      startOverride = null;
+      if (allowWordLevel && blocks[idx].el && blocks[idx].el.tagName !== 'TR') {
+        var wt = wordLevelText(blocks[idx].el);
+        if (wt) startOverride = { index: idx, text: wt };
+      }
+      try { window.getSelection().removeAllRanges(); } catch (e) {}
+      if (!playing) {
+        playing = true; paused = false;
+        bar.classList.add('on'); fab.classList.add('playing'); fab.innerHTML = '⏹ Stop';
+        ensureVoices(function () { if (playing) playIndex(idx, true); });
+      } else {
+        jump(idx);
+      }
+    }
+    document.addEventListener('dblclick', function (e) {
+      var t = e.target;
+      if (!t || !t.closest || t.closest('#rtBar,#rtFab')) return;
+      startFromNode(t, true);
+    });
+    // Touch double-tap fallback (block-level — no reliable selection on tap).
+    var lastTap = 0, lastX = 0, lastY = 0;
+    document.addEventListener('touchend', function (e) {
+      if (!e.changedTouches || e.changedTouches.length !== 1) return;
+      var tch = e.changedTouches[0], now = (new Date()).getTime();
+      var quick = (now - lastTap) < 350, near = Math.abs(tch.clientX - lastX) < 28 && Math.abs(tch.clientY - lastY) < 28;
+      lastTap = now; lastX = tch.clientX; lastY = tch.clientY;
+      if (quick && near) {
+        var hit = document.elementFromPoint(tch.clientX, tch.clientY);
+        if (hit && hit.closest && !hit.closest('#rtBar,#rtFab')) { startFromNode(hit, false); lastTap = 0; }
+      }
+    }, { passive: true });
 
     function textOf(e) { return (e.innerText || e.textContent || '').replace(/\s+/g, ' ').trim(); }
 
@@ -221,8 +284,10 @@
       if (i >= blocks.length) { finish(); return; }
       var unit = blocks[i];
       reveal(unit.el);
-      if (!unit.text) { playIndex(i + 1, viaCancel); return; }
-      var u = new SpeechSynthesisUtterance(unit.text);
+      var txt = unit.text;
+      if (startOverride && startOverride.index === i) { txt = startOverride.text; startOverride = null; }  // one-shot: start mid-block from a double-clicked word
+      if (!txt) { playIndex(i + 1, viaCancel); return; }
+      var u = new SpeechSynthesisUtterance(txt);
       u.rate = rate;
       var v = pickVoice(); if (v) { u.voice = v; u.lang = v.lang; }
       u.onend = function () { if (myGen === gen && playing && !paused) playIndex(pos + 1, false); };
