@@ -69,9 +69,33 @@ pickers actually affect, so the UI stops pretending scope applies when it doesn'
   tracks `answered` and accumulates `results` when `exam||endless` (was exam-only).
 - **Leeches**: `lapses>=8` flags `leech`. **Flag/star** via `toggleFlag(i)`.
   `hardCards()` (flagged ∪ leech ∪ `ease<=2.0`) powers the **Hard cards** mode.
-- **MCQ misses** schedule into `S.mcqDue[questionText]` (Leitner ladder) via
+- **MCQ misses** schedule into `S.mcqDue[mcqKey(q)]` (Leitner ladder) via
   `mcqSchedule()`; the **Review missed questions** mode (`mcqDuePool()`) resurfaces
-  them; they retire after enough correct answers.
+  them; they retire after enough correct answers. `mcqKey(q)` = `q.g || q.q` (see
+  dynamic MCQs below).
+- **Dynamic number MCQs (`MCQGEN`, v2.51.0)** — calculation-style bank questions get
+  **fresh numbers on every serve** (the user was seeing e.g. the Zachary coinsurance
+  question with identical numbers over and over). The `MCQGEN` map (in
+  `src/study-home.src.html`, `/* MCQGEN-START */…END */` block next to `CALCGEN`) holds
+  32 parameterized generators (coinsurance, TVM family, Section 79 imputed income,
+  exclusion ratio, EIA/EIUL participation, UL Option A/B, MOOP, misstatement-of-age, …);
+  a bank question opts in via a **`g` field** naming its generator (29 tagged in the source
+  `MCQ` array + 3 in `content/fp512-textbook.mcqs.json`; `add_content.mjs` passes `g`
+  through untouched). `mcqRunner` maps `mcqFresh()` over its pool per pass (and per endless
+  reshuffle), so EVERY MCQ mode — readiness check, quiz, exam, mock, review — serves fresh
+  numbers; distractors are generated from the same wrong-method logic as the originals
+  (e.g. "forgot the deductible"). `mcqKey()` returns the stable `g` id so SRS scheduling,
+  `markSeen`, and miss records survive the changing text (misses also store `g`;
+  `mcqKeyMigrate()` at boot moves old text-keyed `mcqDue`/`seen` entries to `g` ids).
+  A generator returns `null` on option-collision and `mcqFresh` retries (30×); each accepts
+  an optional `fx` fixed-inputs object so tests can pin the original bank numbers — the
+  regression+fuzz harness lives in the session scratchpad (`test-mcqgen.js`), pinning all
+  32 against the original answers. Static-fact numeric questions (FDIC $250k, COBRA months,
+  Coverdell $2,000…) are deliberately NOT tagged. NB the original `tax.medded` bank item was
+  arithmetically wrong ($30,000−$15,000 keyed as "$14,500"); the generator computes correctly.
+  When authoring generator code that gets spliced into the source, never use `String.replace`
+  with the block as replacement — `$'` inside JS strings is a special replacement pattern
+  (use index slicing).
 - **Mastery coverage** uses DISTINCT items seen (`S.seen[mod]` via `markSeen()`),
   not attempt count, so re-drilling one card no longer inflates readiness.
 - **Mock exam** samples WITHOUT replacement and reports any per-domain shortfall
@@ -473,7 +497,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.36.0`) on every shippable change so installed apps auto-update
+  (current: `v2.51.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
