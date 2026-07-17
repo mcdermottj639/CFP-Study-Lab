@@ -922,11 +922,11 @@ function renderModuleHub(course,mod){
   const doneN=objs.filter((_,i)=>checked[i]).length;
   const objHtml=objs.length?'<div class="card" style="margin-top:12px"><div class="flex"><h3>Learning objectives</h3><span class="small muted">'+doneN+'/'+objs.length+' you can explain</span></div>'+
     objs.map((o,i)=>'<div class="flex hubrow" onclick="toggleObj(\''+course+'\','+mod+','+i+')" style="cursor:pointer;padding:6px 0;border-top:1px solid var(--line)"><span class="small">'+(checked[i]?'✅':'⬜')+' '+o+'</span></div>').join('')+
-    '<div class="small muted" style="margin-top:6px">Tap each one once you can teach it from memory (Feynman check).</div></div>':'';
+    '<div class="small muted" style="margin-top:6px">Tap each one once you can teach it from memory (Feynman check).</div>'+ttsRow('You should be able to explain: '+objs.join('. '),'🔊 Read objectives')+'</div>':'';
   const syn=((window.MODSYN||{})[course]||{})[mod];
-  const synHtml=syn?'<div class="card" style="margin-top:12px"><h3>How it connects</h3><p class="small" style="margin:6px 0 0;line-height:1.5">'+syn+'</p></div>':'';
+  const synHtml=syn?'<div class="card" style="margin-top:12px"><h3>How it connects</h3><p class="small" style="margin:6px 0 0;line-height:1.5">'+syn+'</p>'+ttsRow(syn)+'</div>':'';
   const ex=((window.MODEX||{})[course]||{})[mod];
-  const exHtml=ex?'<div class="card" style="margin-top:12px"><h3>'+ex.title+'</h3><div class="small" style="line-height:1.5">'+ex.html+'</div></div>':'';
+  const exHtml=ex?'<div class="card" style="margin-top:12px"><h3>'+ex.title+'</h3><div class="small" style="line-height:1.5">'+ex.html+'</div>'+ttsRow(ex.title+'. '+ex.html)+'</div>':'';
   const hasCheat=!!(((window.MODCHEAT||{})[course]||{})[mod]);
   const qref=(cards.length||hasCheat)?'<div class="card" style="margin-top:12px"><div class="flex"><div><h3>Exam cheat sheet</h3><div class="small muted">Key numbers, traps &amp; tips — printable / save as PDF.</div></div>'+
     '<button class="btn" onclick="openCheatSheet(\''+course+'\','+mod+')">📄 Open</button></div></div>':'';
@@ -1133,13 +1133,20 @@ function openCheatSheet(course,mod){
   ensureCheatCSS();
   let wrap=document.getElementById('cheatWrap');
   if(!wrap){wrap=document.createElement('div');wrap.id='cheatWrap';document.body.appendChild(wrap);}
+  const C=((window.MODCHEAT||{})[course]||{})[mod]||{};
+  const readable=[].concat(
+    (C.mustKnow&&C.mustKnow.length)?['Must-know rules.'].concat(C.mustKnow):[],
+    (C.traps&&C.traps.length)?['Common traps.'].concat(C.traps):[],
+    (C.tips&&C.tips.length)?['Test-taking tips.'].concat(C.tips):[]
+  ).join(' ');
   wrap.innerHTML='<div class="cheatTools">'+
       '<button class="btn" onclick="window.print()">📄 Save as PDF / Print</button> '+
+      (readable?ttsBtn(readable,'🔊 Listen')+' ':'')+
       '<button class="btn gray" onclick="closeCheatSheet()">✕ Close</button>'+
     '</div><div id="cheatPrint">'+buildCheatHTML(course,mod)+'</div>';
   wrap.style.display='block'; document.body.classList.add('cheatOpen'); wrap.scrollTop=0;
 }
-function closeCheatSheet(){const w=document.getElementById('cheatWrap');if(w)w.style.display='none';document.body.classList.remove('cheatOpen');}
+function closeCheatSheet(){ttsStop();const w=document.getElementById('cheatWrap');if(w)w.style.display='none';document.body.classList.remove('cheatOpen');}
 
 /* ====================== STUDY ENGINE ====================== */
 function fillModuleSelect(){
@@ -1257,8 +1264,10 @@ function ttsBtn(html,label){
   const plain=ttsPlain(html);if(!plain)return '';
   const esc=plain.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   label=label||'🔊 Listen';
-  return `<button type="button" class="tts-btn" data-tts="${esc}" data-label="${label}" onclick="ttsSpeak(this)" aria-label="Read explanation aloud">${label}</button>`;
+  return `<button type="button" class="tts-btn" data-tts="${esc}" data-label="${label}" onclick="ttsSpeak(this)" aria-label="Read aloud">${label}</button>`;
 }
+/* Wrap a Listen button in its own spaced row (empty string where TTS is unsupported). */
+function ttsRow(html,label){const b=ttsBtn(html,label);return b?`<div style="margin-top:8px">${b}</div>`:'';}
 function mcqRunner(pool,title,opts={}){
   if(!opts.ordered)pool=shuffle(pool);                  // adaptive passes a pre-tiered, ordered pool
   const lim=opts.limit||0;
@@ -1763,16 +1772,19 @@ function runTips(){
   openRefOverlay('<div class="ck-sheet" style="--ck-accent:#1f7a4d">'+
     '<div class="ck-top"><div class="ck-crumb">CFP® Study Lab · Quick Reference</div><h1>Exam strategies &amp; traps</h1>'+
       '<div class="ck-meta">How to attack the exam · '+TIPS.length+' tips</div></div>'+
-    '<div class="ck-body"><ul style="margin:0;padding-left:18px;line-height:1.5">'+items+'</ul></div></div>');
+    '<div class="ck-body"><ul style="margin:0;padding-left:18px;line-height:1.5">'+items+'</ul></div></div>',
+    TIPS.map(function(x){return x.t+': '+x.s;}).join('. '));
 }
 
 // Open arbitrary reference content in the shared full-screen overlay (printable).
-function openRefOverlay(innerHTML){
+// Pass `readable` (plain text) to add a 🔊 Listen button to the toolbar.
+function openRefOverlay(innerHTML,readable){
   ensureCheatCSS();
   let wrap=document.getElementById('cheatWrap');
   if(!wrap){wrap=document.createElement('div');wrap.id='cheatWrap';document.body.appendChild(wrap);}
   wrap.innerHTML='<div class="cheatTools">'+
       '<button class="btn" onclick="window.print()">📄 Save as PDF / Print</button> '+
+      (readable?ttsBtn(readable,'🔊 Listen')+' ':'')+
       '<button class="btn gray" onclick="closeCheatSheet()">✕ Close</button>'+
     '</div><div id="cheatPrint">'+innerHTML+'</div>';
   wrap.style.display='block'; document.body.classList.add('cheatOpen'); wrap.scrollTop=0;
@@ -1782,7 +1794,8 @@ function runKeys(){
   openRefOverlay('<div class="ck-sheet" style="--ck-accent:#2f5fe0">'+
     '<div class="ck-top"><div class="ck-crumb">CFP® Study Lab · Quick Reference</div><h1>Key numbers</h1>'+
       '<div class="ck-meta">2025 figures · verify against current tax tables · '+KEYS.length+' items</div></div>'+
-    '<div class="ck-body"><div class="ck-tlist">'+rows+'</div></div></div>');
+    '<div class="ck-body"><div class="ck-tlist">'+rows+'</div></div></div>',
+    KEYS.map(k=>k.cat+': '+k.item).join('. '));
 }
 function emptyMsg(m){document.getElementById('studyArea').innerHTML=`<div class="card center"><p class="muted">${m}</p><p class="small">Content for upcoming modules is added as you reach them.</p></div>`;}
 

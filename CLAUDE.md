@@ -57,6 +57,37 @@ navigation — `_next`, exam-advance (`_pick`), `_endQuiz`, and `go()` all call 
 so audio never bleeds across questions/tabs. Button styles = `.tts-btn` (pill, filled while
 `.speaking`) in the source `<style>` block.
 
+**Read-aloud is spread across the whole app (v2.53.0)** using the same helpers. `ttsRow(html,label)`
+(next to `ttsBtn`) wraps a Listen button in a spaced row (empty string where unsupported):
+- **Flashcards** (`flashcards.js`) — a 🔊 Listen on the card face reads the **question** (front),
+  and after flip a "🔊 Read answer" reads the back. Buttons live in `#flashctrl` (OUTSIDE
+  `#flashface`) so tapping them doesn't also flip the card. `draw()`/`flip()` call `ttsHalt()`
+  (thin wrapper over `window.ttsStop`) so audio stops on card change / flip. This is the
+  hands-free drilling path.
+- **Module Hub** (`renderModuleHub`) — `ttsRow` on **Learning objectives** (reads all objs),
+  **How it connects** (`MODSYN`), and the **Worked example** (`MODEX`).
+- **Exam cheat sheet** (`openCheatSheet`) — a toolbar 🔊 Listen reads the prose parts
+  (`MODCHEAT` mustKnow + traps + tips; key-numbers/term tables are skipped as they read poorly).
+  `closeCheatSheet()` calls `ttsStop()`.
+- **Quick references** (`runKeys`/`runTips` via `openRefOverlay(html, readable)`) — pass a plain-text
+  `readable` string to get a toolbar Listen (Key numbers and Exam tips & traps).
+
+### Reader read-aloud — "audiobook mode" (TTS, v2.53.0)
+`reader-tts.js` (shared, injected after `reader-theme.js`/`reader-search.js` by
+`inject_reader_theme.mjs` with its own `reader-tts-injected` marker; precached in `sw.js`;
+in `CORE_ASSETS`) adds a floating **🎧 Listen** FAB (right side, stacked above the 🔍 search FAB)
+that reads the **active tab** aloud via `speechSynthesis` — fully offline, OS voices, no vendored
+asset. It reads **block-by-block** (each `h1-h4`/`p`/`li`/`blockquote`/`dd`/`dt` leaf is its own
+utterance) which (a) sidesteps iOS Safari's long-utterance cut-off, (b) lets it highlight
+(`.rt-hi`) + auto-scroll the current block, and (c) **auto-expands a collapsed section** when it
+reaches text inside it (clicks the `.collapsible-header`/`.ch`). A control strip (`#rtBar`) gives
+⏮ ⏭ prev/next, ⏸/▶ pause, ⏹ stop, and a `¶ n/total` counter. Reader-agnostic: the reading root is
+the largest `.active` panel (same convention `reader-search.js` uses), so it works on FP511,
+FP512, and any future reader with **no per-reader code**. A **generation counter** (`gen`) guards
+the utterance `onend` chain so cancel/skip/pause never double-advance. Pause re-speaks the current
+block on resume (robust on iOS, where `pause()`/`resume()` are flaky). Stops on tab switch,
+`pagehide`/`beforeunload`, and when the tab is hidden.
+
 ### Study mode dropdown — scoped vs. global (v2.20.0)
 The `#studyMode` `<select>` is split into two `<optgroup>`s by what the course/sub-module
 pickers actually affect, so the UI stops pretending scope applies when it doesn't:
@@ -361,6 +392,7 @@ mode on a content wrapper so fixed buttons/charts stay correct). Their Chart.js 
   Tab ids per module are in `TAB_MAP`. If you re-import a reader artifact, re-add the
   hash-open snippet near `activateTab('overview')` / the tab `go()` setup.
 - **In-reader search** (`reader-search.js`, shared; injected by `inject_reader_theme.mjs` with its own `reader-search-injected` marker, precached in `sw.js`): a floating 🔍 opens a search panel that indexes EVERY tab + collapsible section (even hidden ones — native find-in-page can't), lists hits as **Tab › Section** + snippet, and on tap switches tab, expands the section, scrolls, and highlights. Reader-agnostic: maps sections→tabs by probing which `.active` panel contains them, and drives navigation by clicking the existing `.tab-btn`/section headers — so it works on FP511, FP512, and future readers with no per-reader code.
+- **Reader read-aloud / "audiobook mode"** (`reader-tts.js`, shared; injected by `inject_reader_theme.mjs` with its own `reader-tts-injected` marker, precached in `sw.js`): a floating 🎧 Listen FAB reads the active tab aloud block-by-block via the offline Web Speech API, highlighting + auto-scrolling each block and auto-expanding collapsed sections as it reaches them, with a ⏮/⏸/⏭/⏹ control strip. Reader-agnostic (largest `.active` panel = reading root). See the "Reader read-aloud" subsection under the Study engine for the full mechanics.
 
 ## Per-module media — infographics & slide decks (Module Hub)
 Each Module Hub can show, under "Study this module", a **"Visual guide"** card (one-page
@@ -513,7 +545,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.52.0`) on every shippable change so installed apps auto-update
+  (current: `v2.53.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
