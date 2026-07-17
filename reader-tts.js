@@ -78,6 +78,18 @@
     var blocks = [], pos = 0, playing = false, paused = false, gen = 0;
     var startOverride = null;                          // {index, text} one-shot: read a block from a double-clicked word
 
+    var RATE_BASE = 0.95, GAP = 220;                   // unhurried base pace + a human breath between blocks
+    function sentence(t) { return /[.!?…:;,)]$/.test(t) ? t : t + '.'; }   // sentence-final cadence so blocks don't run together
+    // Single source of truth for the player UI: docked control bar visible, 🎧 FAB +
+    // search FAB hidden (they'd pile up), and body.rt-on lifts the Home/Theme buttons
+    // above the bar (see injectStyles).
+    function showBar(on) {
+      bar.classList.toggle('on', on);
+      document.body.classList.toggle('rt-on', on);
+      fab.classList.toggle('playing', on);
+      fab.innerHTML = on ? '⏹ Stop' : '🎧 Listen';
+    }
+
     // Reading speed — tap to cycle, persisted in localStorage 'cfpTtsRate'.
     var RATES = [0.8, 1, 1.25, 1.5, 1.75, 2];
     var rate = 1;
@@ -147,7 +159,7 @@
       try { window.getSelection().removeAllRanges(); } catch (e) {}
       if (!playing) {
         playing = true; paused = false;
-        bar.classList.add('on'); fab.classList.add('playing'); fab.innerHTML = '⏹ Stop';
+        showBar(true);
         ensureVoices(function () { if (playing) playIndex(idx, true); });
       } else {
         jump(idx);
@@ -268,9 +280,7 @@
       blocks = collect();
       if (!blocks.length) return;
       playing = true; paused = false;
-      bar.classList.add('on');
-      fab.classList.add('playing');
-      fab.innerHTML = '⏹ Stop';
+      showBar(true);
       ensureVoices(function () { if (playing) playIndex(0, true); });   // wait for the voice list before the 1st utterance
     }
 
@@ -287,10 +297,11 @@
       var txt = unit.text;
       if (startOverride && startOverride.index === i) { txt = startOverride.text; startOverride = null; }  // one-shot: start mid-block from a double-clicked word
       if (!txt) { playIndex(i + 1, viaCancel); return; }
-      var u = new SpeechSynthesisUtterance(txt);
-      u.rate = rate;
+      var u = new SpeechSynthesisUtterance(sentence(txt));
+      u.rate = RATE_BASE * rate;
       var v = pickVoice(); if (v) { u.voice = v; u.lang = v.lang; }
-      u.onend = function () { if (myGen === gen && playing && !paused) playIndex(pos + 1, false); };
+      // Pause a beat between blocks (a human breath) instead of running them together.
+      u.onend = function () { if (myGen === gen && playing && !paused) setTimeout(function () { if (myGen === gen && playing && !paused) playIndex(pos + 1, false); }, GAP); };
       u.onerror = function () { if (myGen === gen && playing && !paused) playIndex(pos + 1, false); };
       if (viaCancel) sp.cancel();
       sp.speak(u);
@@ -312,9 +323,7 @@
       playing = false; paused = false; gen++;
       try { sp.cancel(); } catch (e) {}
       clearHi();
-      bar.classList.remove('on');
-      fab.classList.remove('playing');
-      fab.innerHTML = '🎧 Listen';
+      showBar(false);
     }
 
     function reveal(node) {
@@ -335,14 +344,23 @@
       var css =
         '#rtFab{position:fixed;right:max(14px,env(safe-area-inset-right));bottom:calc(74px + env(safe-area-inset-bottom));z-index:9000;height:50px;padding:0 16px;border:none;border-radius:25px;background:linear-gradient(135deg,#2f8f6b,#3cae86);color:#fff;font:600 14px system-ui,-apple-system,sans-serif;display:inline-flex;align-items:center;gap:7px;cursor:pointer;box-shadow:0 6px 18px -4px rgba(20,60,44,.55)}' +
         '#rtFab.playing{background:linear-gradient(135deg,#c0453d,#dc6b3a)}' +
-        '#rtBar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom));z-index:9001;display:none;align-items:center;gap:4px;background:#fffdf8;border:1px solid #e2d8c6;border-radius:999px;padding:6px 8px;box-shadow:0 12px 34px -10px rgba(0,0,0,.45)}' +
-        '#rtBar.on{display:inline-flex}' +
-        '#rtBar button{border:none;background:#f1ece3;color:#3a2e25;width:40px;height:40px;border-radius:50%;font-size:15px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}' +
+        // Docked player bar across the bottom — a single strip so the controls never
+        // pile onto the corner buttons. While it's up, the 🎧 + 🔍 FABs hide and the
+        // Home/Theme/Back pills lift above it (body.rt-on rules below).
+        '#rtBar{position:fixed;left:0;right:0;bottom:0;z-index:9002;display:none;align-items:center;justify-content:center;gap:6px;padding:9px 12px calc(9px + env(safe-area-inset-bottom));background:rgba(255,253,248,.97);border-top:1px solid #e2d8c6;box-shadow:0 -8px 26px -12px rgba(0,0,0,.35);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}' +
+        '#rtBar.on{display:flex}' +
+        '#rtBar button{flex:0 0 auto;border:none;background:#f1ece3;color:#3a2e25;width:42px;height:42px;border-radius:50%;font-size:15px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}' +
         '#rtBar button:hover{background:#e7ddcd}' +
-        '#rtBar button.rt-speed{width:auto;min-width:46px;border-radius:20px;padding:0 12px;font:700 13px system-ui,-apple-system,sans-serif;font-variant-numeric:tabular-nums}' +
-        '#rtBar .rt-pos{font:600 12px system-ui,-apple-system,sans-serif;color:#7a6f5f;padding:0 8px;white-space:nowrap}' +
-        '.rt-hi{background:#ffe9b8 !important;border-radius:3px;box-shadow:0 0 0 3px #ffe9b8;scroll-margin-top:80px}' +
-        'html[data-theme="dark"] #rtBar{background:#241c16;border-color:#3a2e25}' +
+        '#rtBar button:active{transform:scale(.92)}' +
+        '#rtBar button.rt-speed{width:auto;min-width:48px;border-radius:21px;padding:0 12px;font:700 13px system-ui,-apple-system,sans-serif;font-variant-numeric:tabular-nums}' +
+        '#rtBar .rt-pos{font:600 12.5px system-ui,-apple-system,sans-serif;color:#7a6f5f;padding:0 4px 0 8px;white-space:nowrap;min-width:52px;text-align:right}' +
+        'body.rt-on #rtFab{display:none}' +
+        'body.rt-on #rsFab{display:none!important}' +
+        'body.rt-on #fpslHome{bottom:calc(80px + env(safe-area-inset-bottom))!important}' +
+        'body.rt-on #rdrTheme{bottom:calc(126px + env(safe-area-inset-bottom))!important}' +
+        'body.rt-on #rdrBack{bottom:calc(172px + env(safe-area-inset-bottom))!important}' +
+        '.rt-hi{background:#ffe9b8 !important;border-radius:3px;box-shadow:0 0 0 3px #ffe9b8;scroll-margin-top:80px;scroll-margin-bottom:96px}' +
+        'html[data-theme="dark"] #rtBar{background:rgba(23,18,14,.97);border-color:#3a2e25}' +
         'html[data-theme="dark"] #rtBar button{background:#2f251d;color:#e8dccb}' +
         'html[data-theme="dark"] #rtBar button:hover{background:#3a2e25}' +
         'html[data-theme="dark"] #rtBar .rt-pos{color:#b7a996}';
