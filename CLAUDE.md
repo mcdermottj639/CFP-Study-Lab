@@ -57,18 +57,20 @@ navigation — `_next`, exam-advance (`_pick`), `_endQuiz`, and `go()` all call 
 so audio never bleeds across questions/tabs. Button styles = `.tts-btn` (pill, filled while
 `.speaking`) in the source `<style>` block.
 
-**Voice selection (v2.54.0).** By default the Web Speech API uses the OS's lowest-quality
-*compact* voice (robotic "Samantha" on iOS), and **iOS hides the Siri voices (Voice 1–5) from
-web pages entirely** — so the app actively picks the best voice the API *does* expose.
-`ttsPickVoice()` (source, next to the TTS helpers) honors a saved pick in `localStorage.cfpTtsVoice`
-else auto-ranks via `ttsScoreVoice()` (premium > enhanced > named e.g. Ava/Evan > compact; novelty
-voices heavily penalized); `ttsSpeak` sets `u.voice`/`u.lang` from it. `reader-tts.js` mirrors the
-same `pickVoice()`/`scoreVoice()` reading the SAME key (kept in sync). The **⋯ Backup & tools panel**
-(`build_index.mjs` TOOLKIT) has a **🔊 Read-aloud voice** picker (`#cfpTkVoice` + ▶︎ preview) that
-lists the API's English voices and writes `cfpTtsVoice`; it repopulates on `voiceschanged` and on
-modal open (iOS populates voices lazily). To actually get a good voice on iOS the user must download
-an **Enhanced/Premium named** voice (Ava, Evan…) in Settings → Accessibility → Spoken Content →
-Voices — a Siri voice will never appear to the web API (the panel note says so).
+**Voice selection (v2.54.0, corrected v2.57.0).** `ttsPickVoice()` (source, next to the TTS helpers)
+honors **only an explicit pick** in `localStorage.cfpTtsVoice`; with no pick it returns `null` and
+`ttsSpeak` leaves `u.voice` **unset**, so the OS uses its own default voice. `reader-tts.js` mirrors
+this (`pickVoice()`). **Why not auto-pick "the best" voice? (the v2.54–2.56 bug)** iOS **hides the
+Siri voices (Voice 1–5) from web pages** and **doesn't expose the "(Enhanced)/(Premium)" labels** —
+`getVoices()` just lists plain names like "Ava". Crucially, **force-setting** a `getVoices()` entry on
+iOS often selects the low-quality *compact* rendition, whereas leaving `voice` unset uses the
+**enhanced/premium voice the user set as their device default**. So the old auto-rank
+(`ttsScoreVoice`) actively made every surface robotic while the ⋯-picker *preview* (which set no
+voice) sounded right — the reported symptom. Fix: **"Automatic" = device default (no `u.voice`)**; the
+explicit list is mainly for desktop. The **⋯ Backup & tools panel** picker (`#cfpTkVoice` + ▶︎ preview,
+writes `cfpTtsVoice`; repopulates on `voiceschanged` + modal open) leads with "Automatic (device
+default) — recommended" and tells iOS users to set their default in Settings → Accessibility → Spoken
+Content → Voices → English.
 
 **Read-aloud is spread across the whole app (v2.53.0)** using the same helpers. `ttsRow(html,label)`
 (next to `ttsBtn`) wraps a Listen button in a spaced row (empty string where unsupported):
@@ -579,7 +581,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.56.0`) on every shippable change so installed apps auto-update
+  (current: `v2.57.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.

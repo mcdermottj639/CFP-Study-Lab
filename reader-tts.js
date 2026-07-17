@@ -20,25 +20,17 @@
 
   var sp = window.speechSynthesis;
 
-  // Pick the best available voice (honoring the ⋯ voice picker's localStorage
-  // 'cfpTtsVoice'). iOS hides Siri voices from web pages and defaults to the
-  // low-quality compact voice, so we select explicitly. Mirrors ttsPickVoice()
-  // in the app source (kept in sync).
+  // Honor ONLY an explicit user pick (⋯ voice picker's localStorage 'cfpTtsVoice').
+  // Otherwise return null so we DON'T set utterance.voice — the OS default is used.
+  // On iOS, force-setting a getVoices() entry often picks the compact/robotic
+  // rendition, whereas leaving voice unset uses the user's chosen enhanced default
+  // (e.g. Ava). Mirrors ttsPickVoice() in the app source (kept in sync).
   function allVoices() { try { return sp.getVoices() || []; } catch (e) { return []; } }
-  function scoreVoice(v) {
-    var u = ((v.voiceURI || '') + ' ' + (v.name || '')).toLowerCase(), s = 0;
-    if (u.indexOf('premium') >= 0) s += 6; if (u.indexOf('enhanced') >= 0) s += 5; if (/siri/.test(u)) s += 4;
-    if (/(ava|evan|zoe|nathan|joelle|allison|samantha|susan|tom|nicky|aaron)/.test(u)) s += 2;
-    if (u.indexOf('compact') >= 0) s -= 3; if (/en-us/i.test(v.lang || '')) s += 1;
-    if (/(novelty|bells|trinoids|bad news|good news|jester|organ|cellos|zarvox|whisper|bahh|boing|bubbles|wobble|superstar|albert|fred|ralph|kathy|junior)/.test(u)) s -= 20;
-    return s;
-  }
   function pickVoice() {
-    var vs = allVoices(); if (!vs.length) return null;
     var pref = null; try { pref = localStorage.getItem('cfpTtsVoice'); } catch (e) {}
-    if (pref) { var m = vs.filter(function (v) { return v.voiceURI === pref || v.name === pref; })[0]; if (m) return m; }
-    var en = vs.filter(function (v) { return /^en/i.test(v.lang || ''); }); var pool = en.length ? en : vs;
-    return pool.slice().sort(function (a, b) { return scoreVoice(b) - scoreVoice(a); })[0] || null;
+    if (!pref) return null;                          // Automatic → OS default (don't override)
+    var vs = allVoices(); if (!vs.length) return null;
+    return vs.filter(function (v) { return v.voiceURI === pref || v.name === pref; })[0] || null;
   }
   // iOS/Safari populate getVoices() asynchronously — the first call on a fresh page
   // returns []. Warm it at load, and gate the first utterance on voices being ready

@@ -12,7 +12,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 
 const SRC = process.argv[2] || 'src/study-home.src.html';
 const OUT = 'index.html';
-const APP_VERSION = 'v2.56.0';
+const APP_VERSION = 'v2.57.0';
 let html = readFileSync(SRC, 'utf8');
 
 const HEAD = `
@@ -50,7 +50,7 @@ const TOOLKIT = `
         <select id="cfpTkVoice" style="flex:1;min-width:0;padding:10px;border:1px solid #dfe3ee;border-radius:10px;background:#fff;color:#1d2433;font:14px system-ui"></select>
         <button id="cfpTkVoicePrev" style="flex:0 0 auto;padding:10px 13px;border:1px solid #dfe3ee;border-radius:10px;background:#fff;color:#1d2433;font:600 13px system-ui;cursor:pointer">▶︎</button>
       </div>
-      <p style="font-size:11.5px;color:#9aa3b5;margin:8px 0 0;line-height:1.45">Used everywhere the app reads aloud. <b>iOS:</b> Siri voices (Voice&nbsp;1–5) can't be used by web apps — download an <b>Enhanced</b> or <b>Premium</b> named voice (e.g. Ava, Evan) in Settings → Accessibility → Spoken Content → Voices, then pick it here.</p>
+      <p style="font-size:11.5px;color:#9aa3b5;margin:8px 0 0;line-height:1.45"><b>On iPhone, keep this on “Automatic.”</b> The app then uses your <b>device default</b> voice — set it in Settings → Accessibility → Spoken Content → <b>Voices → English</b> (download <b>Ava</b> or another Enhanced/Premium voice and tap it to make it the default). iOS doesn’t show Enhanced/Premium labels to web apps and can’t use Siri voices — and forcing a specific voice here often sounds worse than the device default, so the list is mainly for desktop.</p>
     </div>
     <div id="cfpTkMsg" style="font-size:12.5px;color:#1f9d6b;text-align:center;min-height:16px;margin-top:10px"></div>
     <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · __APP_VERSION__</div>
@@ -74,7 +74,7 @@ const TOOLKIT = `
     var en=vs.filter(function(v){return /^en/i.test(v.lang||"");});if(!en.length)en=vs;
     var cur="";try{cur=localStorage.getItem("cfpTtsVoice")||"";}catch(e){}
     function esc(s){return String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");}
-    vsel.innerHTML='<option value="">Automatic (best available)</option>'+en.map(function(v){
+    vsel.innerHTML='<option value="">Automatic (device default) — recommended</option>'+en.map(function(v){
       var id=v.voiceURI||v.name,sel=(id===cur||v.name===cur)?" selected":"";
       return '<option value="'+esc(id)+'"'+sel+'>'+esc(v.name)+" ("+esc(v.lang)+")</option>";
     }).join("");
