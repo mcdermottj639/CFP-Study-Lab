@@ -40,6 +40,18 @@
     var en = vs.filter(function (v) { return /^en/i.test(v.lang || ''); }); var pool = en.length ? en : vs;
     return pool.slice().sort(function (a, b) { return scoreVoice(b) - scoreVoice(a); })[0] || null;
   }
+  // iOS/Safari populate getVoices() asynchronously — the first call on a fresh page
+  // returns []. Warm it at load, and gate the first utterance on voices being ready
+  // so the reader uses the chosen/best voice instead of falling back to the robotic
+  // default. (This is why the app worked but the reader didn't: the app's ⋯ picker
+  // calls getVoices() on load; the reader never did.)
+  try { sp.getVoices(); sp.addEventListener('voiceschanged', function () {}); } catch (e) {}
+  function ensureVoices(cb) {
+    if (allVoices().length) { cb(); return; }
+    var done = false, fire = function () { if (done) return; done = true; cb(); };
+    try { sp.addEventListener('voiceschanged', fire); } catch (e) { try { sp.onvoiceschanged = fire; } catch (e2) {} }
+    setTimeout(fire, 300);                          // fallback if the event never fires
+  }
 
   function ready(fn) {
     if (document.readyState === 'complete') fn();
@@ -86,12 +98,54 @@
     window.addEventListener('beforeunload', function () { sp.cancel(); });
     document.addEventListener('visibilitychange', function () { if (document.hidden && playing) stop(); });
 
-    var TEXTSEL = 'h1,h2,h3,h4,p,li,blockquote,dd,dt';
     function textOf(e) { return (e.innerText || e.textContent || '').replace(/\s+/g, ' ').trim(); }
 
-    // ---- collect readable blocks from the active tab (in document order) ----
-    // Includes section headers and TABLES (as whole units, serialized to prose) so
-    // nothing on the page is silently skipped.
+    // An element is a "leaf text block" if it has text and every child element is
+    // inline — so <div class="callout">…</div>, stat cards, key-fact boxes, etc.
+    // are read, not just the p/li/heading whitelist. Containers with block children
+    // are recursed into instead.
+    var INLINE = { B:1,I:1,EM:1,STRONG:1,SPAN:1,A:1,CODE:1,SUB:1,SUP:1,SMALL:1,MARK:1,BR:1,U:1,ABBR:1,TIME:1,WBR:1,S:1,Q:1,CITE:1,KBD:1,VAR:1,SAMP:1,BDI:1,BDO:1,DFN:1,LABEL:1,OUTPUT:1 };
+    var SKIP = { SCRIPT:1,STYLE:1,NOSCRIPT:1,CANVAS:1,SVG:1,IMG:1,VIDEO:1,AUDIO:1,IFRAME:1,BUTTON:1,INPUT:1,SELECT:1,TEXTAREA:1,NAV:1,FORM:1 };
+    function skipEl(el) {
+      if (SKIP[el.tagName]) return true;
+      if (el.id === 'rtBar' || el.id === 'rtFab') return true;
+      if (el.classList && el.classList.contains('tab-btn')) return true;
+      if (el.getAttribute && el.getAttribute('aria-hidden') === 'true') return true;
+      return false;
+    }
+    function isLeafBlock(el) {
+      if (!textOf(el)) return false;
+      var k = el.children;
+      for (var i = 0; i < k.length; i++) { if (!INLINE[k[i].tagName]) return false; }
+      return true;
+    }
+    // A small container whose children are all simple leaf blocks and whose combined
+    // text is short (a stat tile: number + label, a two-line badge, …). Reading these
+    // as ONE phrase avoids choppy "15%" … "Exam Weight" fragments.
+    function isCompactGroup(el) {
+      var k = el.children; if (k.length < 2 || k.length > 6) return false;
+      var total = 0;
+      for (var i = 0; i < k.length; i++) {
+        var c = k[i];
+        if (SKIP[c.tagName] || c.tagName === 'TABLE' || !isLeafBlock(c)) return false;
+        total += textOf(c).length;
+      }
+      return total > 0 && total <= 120;
+    }
+    // Collapse/expand toggle glyphs many section headers carry as their first/last
+    // char (hyphen, Unicode minus U+2212, dashes, triangles, chevrons). Stripped so
+    // "Course Scope & Module Map −" doesn't read as "…Map minus".
+    var TOGGLE = '[\\s\\u00a0+\\-\\u2212\\u2013\\u2014\\u25be\\u25b8\\u25bc\\u25b6\\u25bd\\u25b2\\u25b4\\u203a\\u00bb\\u2039\\u00ab]';
+    function blockText(el) {
+      var t = textOf(el);
+      return t.replace(new RegExp('^' + TOGGLE + '+'), '').replace(new RegExp(TOGGLE + '+$'), '').trim();
+    }
+
+    // ---- collect readable units from the active tab, in natural document order ----
+    // Returns [{el, text}] so each unit has an element to highlight/scroll and the
+    // exact text to speak. Walks the DOM generically so NOTHING with text is skipped;
+    // tables are expanded row-by-row (each row paired with its header labels) so a
+    // matrix reads as flowing sentences and highlights row-by-row.
     function collect() {
       var panels = [].slice.call(document.querySelectorAll('.active')).filter(function (n) {
         return !n.matches('.tab-btn,.collapsible-header,.collapsible-content,.ch,.cc');
@@ -100,58 +154,41 @@
       panels.forEach(function (p) { var len = (p.textContent || '').length; if (len > max) { max = len; root = p; } });
       if (!root) root = document.getElementById('rdrWrap') || document.body;
 
-      var tables = [].slice.call(root.querySelectorAll('table'));
-      // Section headers that aren't already an <h1-4> (those get picked up as leaves).
-      var heads = [].slice.call(root.querySelectorAll('.collapsible-header,.ch')).filter(function (e) {
-        return !e.querySelector('h1,h2,h3,h4') && textOf(e).length > 1;
-      });
-      // Leaf text blocks, but NOT cells inside a table (the table serializer handles those).
-      var leaves = [].slice.call(root.querySelectorAll(TEXTSEL)).filter(function (e) {
-        if (e.querySelector(TEXTSEL)) return false;             // leaf only (no double-read of nested lists)
-        if (e.closest('table')) return false;
-        return textOf(e).length > 1;
-      });
-      return tables.concat(heads, leaves)
-        .filter(function (e) { return !e.closest('#rtBar,#rtFab'); })
-        .sort(function (a, b) {                                  // restore document order across the merged sets
-          var p = a.compareDocumentPosition(b);
-          if (p & Node.DOCUMENT_POSITION_FOLLOWING) return -1;
-          if (p & Node.DOCUMENT_POSITION_PRECEDING) return 1;
-          return 0;
-        });
-    }
-
-    // Read a table row-by-row, pairing each cell with its row header (first cell) and
-    // column header (top row) so a matrix reads naturally instead of as jumbled cells.
-    function tableToSpeech(tbl) {
-      var rows = [].slice.call(tbl.querySelectorAll('tr'));
-      if (!rows.length) return textOf(tbl);
-      var head0 = [].slice.call(rows[0].children);
-      var headerRow = head0.length && head0.some(function (c) { return c.tagName === 'TH'; });
-      var cols = headerRow ? head0.map(textOf) : null;
-      var out = [], i, j;
-      for (i = headerRow ? 1 : 0; i < rows.length; i++) {
-        var cells = [].slice.call(rows[i].children);
-        if (!cells.length) continue;
-        var rowLabel = cells[0].tagName === 'TH' ? textOf(cells[0]) : '';
-        var parts = [];
-        for (j = rowLabel ? 1 : 0; j < cells.length; j++) {
-          var val = textOf(cells[j]); if (!val) continue;
-          var col = cols ? cols[j] : '';
-          parts.push(col ? col + ': ' + val : val);
+      var units = [];
+      function pushTable(tbl) {
+        var rows = [].slice.call(tbl.querySelectorAll('tr'));
+        if (!rows.length) { var tt = textOf(tbl); if (tt.length > 1) units.push({ el: tbl, text: tt }); return; }
+        var head0 = [].slice.call(rows[0].children);
+        var headerRow = head0.length > 1 && head0.some(function (c) { return c.tagName === 'TH'; });
+        var cols = headerRow ? head0.map(textOf) : null;
+        var pushed = 0;
+        for (var i = headerRow ? 1 : 0; i < rows.length; i++) {
+          var cells = [].slice.call(rows[i].children);
+          if (!cells.length) continue;
+          var rowLabel = cells[0].tagName === 'TH' ? textOf(cells[0]) : '';
+          var parts = [];
+          for (var j = rowLabel ? 1 : 0; j < cells.length; j++) {
+            var val = textOf(cells[j]); if (!val) continue;
+            var col = cols ? cols[j] : '';
+            parts.push(col ? col + ': ' + val : val);
+          }
+          var line = (rowLabel ? rowLabel + '. ' : '') + parts.join('. ');
+          if (line.trim().length > 1) { units.push({ el: rows[i], text: line }); pushed++; }
         }
-        var line = (rowLabel ? rowLabel + '. ' : '') + parts.join('. ');
-        if (line.trim()) out.push(line);
+        if (!pushed) { var t2 = textOf(tbl); if (t2.length > 1) units.push({ el: tbl, text: t2 }); }
       }
-      return out.join('. ') || textOf(tbl);
-    }
-
-    function plain(e) {
-      if (e.tagName === 'TABLE') return tableToSpeech(e);
-      var t = textOf(e);
-      if (e.classList && (e.classList.contains('collapsible-header') || e.classList.contains('ch')))
-        t = t.replace(/^[\s+\-–—▸▾▲▼]+/, '').replace(/[\s+\-–—▸▾▲▼]+$/, '').trim();  // drop the ± toggle glyph
-      return t;
+      (function walk(node) {
+        var kids = node.children;
+        for (var i = 0; i < kids.length; i++) {
+          var el = kids[i];
+          if (skipEl(el)) continue;
+          if (el.tagName === 'TABLE') { pushTable(el); continue; }
+          if (isLeafBlock(el)) { var t = blockText(el); if (t.length > 1) units.push({ el: el, text: t }); }
+          else if (isCompactGroup(el)) { var g = blockText(el); if (g.length > 1) units.push({ el: el, text: g }); }
+          else walk(el);
+        }
+      })(root);
+      return units;
     }
 
     function start() {
@@ -161,30 +198,35 @@
       bar.classList.add('on');
       fab.classList.add('playing');
       fab.innerHTML = '⏹ Stop';
-      playIndex(0);
+      ensureVoices(function () { if (playing) playIndex(0, true); });   // wait for the voice list before the 1st utterance
     }
 
-    function playIndex(i) {
+    // viaCancel: cancel the queue first (start / skip / resume). On natural advance
+    // (from onend) we DON'T cancel — that avoids the gap/clip between blocks, so it
+    // flows continuously instead of stuttering.
+    function playIndex(i, viaCancel) {
       gen++; var myGen = gen;
       if (i < 0) i = 0;
       pos = i;
       if (i >= blocks.length) { finish(); return; }
-      var node = blocks[i];
-      reveal(node);
-      var u = new SpeechSynthesisUtterance(plain(node));
-      u.rate = 0.98;
+      var unit = blocks[i];
+      reveal(unit.el);
+      if (!unit.text) { playIndex(i + 1, viaCancel); return; }
+      var u = new SpeechSynthesisUtterance(unit.text);
+      u.rate = 0.96;
       var v = pickVoice(); if (v) { u.voice = v; u.lang = v.lang; }
-      u.onend = function () { if (myGen === gen && playing && !paused) playIndex(pos + 1); };
-      u.onerror = function () { if (myGen === gen && playing && !paused) playIndex(pos + 1); };
-      sp.cancel(); sp.speak(u);
+      u.onend = function () { if (myGen === gen && playing && !paused) playIndex(pos + 1, false); };
+      u.onerror = function () { if (myGen === gen && playing && !paused) playIndex(pos + 1, false); };
+      if (viaCancel) sp.cancel();
+      sp.speak(u);
       updateBar();
     }
 
-    function jump(i) { if (!playing) return; paused = false; syncToggle(); playIndex(i); }
+    function jump(i) { if (!playing) return; paused = false; syncToggle(); playIndex(i, true); }
 
     function togglePause() {
       if (!playing) return;
-      if (paused) { paused = false; try { sp.resume(); } catch (e) {} playIndex(pos); }  // resume by re-speaking current block (robust on iOS)
+      if (paused) { paused = false; try { sp.resume(); } catch (e) {} playIndex(pos, true); }  // resume by re-speaking current block (robust on iOS)
       else { paused = true; gen++; try { sp.cancel(); } catch (e) {} }
       syncToggle();
     }
