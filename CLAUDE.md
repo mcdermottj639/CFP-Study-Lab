@@ -93,8 +93,14 @@ that reads the **active tab** aloud via `speechSynthesis` — fully offline, OS 
 asset. It reads **block-by-block** (each `h1-h4`/`p`/`li`/`blockquote`/`dd`/`dt` leaf is its own
 utterance) which (a) sidesteps iOS Safari's long-utterance cut-off, (b) lets it highlight
 (`.rt-hi`) + auto-scroll the current block, and (c) **auto-expands a collapsed section** when it
-reaches text inside it (clicks the `.collapsible-header`/`.ch`). A control strip (`#rtBar`) gives
-⏮ ⏭ prev/next, ⏸/▶ pause, ⏹ stop, and a `¶ n/total` counter. Reader-agnostic: the reading root is
+reaches text inside it (clicks the `.collapsible-header`/`.ch`). **Tables are read too (v2.55.0)** —
+`collect()` gathers `<table>` as a whole unit (plus section headers `.collapsible-header`/`.ch` that
+aren't already an `<h1-4>`), merged with the text leaves in document order (via `compareDocumentPosition`);
+`tableToSpeech()` serializes each row pairing every cell with its row header (first `<th>`) + column
+header (top `<th>` row) so a matrix reads naturally ("High Severity. High Frequency: Avoidance… ")
+instead of jumbled cells or being skipped. Table cells are excluded from the leaf pass to avoid
+double-reading. A control strip (`#rtBar`) gives ⏮ ⏭ prev/next, ⏸/▶ pause, ⏹ stop, and a `¶ n/total`
+counter. Reader-agnostic: the reading root is
 the largest `.active` panel (same convention `reader-search.js` uses), so it works on FP511,
 FP512, and any future reader with **no per-reader code**. A **generation counter** (`gen`) guards
 the utterance `onend` chain so cancel/skip/pause never double-advance. Pause re-speaks the current
@@ -558,7 +564,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.54.0`) on every shippable change so installed apps auto-update
+  (current: `v2.55.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
