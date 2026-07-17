@@ -90,22 +90,37 @@ Voices — a Siri voice will never appear to the web API (the panel note says so
 `inject_reader_theme.mjs` with its own `reader-tts-injected` marker; precached in `sw.js`;
 in `CORE_ASSETS`) adds a floating **🎧 Listen** FAB (right side, stacked above the 🔍 search FAB)
 that reads the **active tab** aloud via `speechSynthesis` — fully offline, OS voices, no vendored
-asset. It reads **block-by-block** (each `h1-h4`/`p`/`li`/`blockquote`/`dd`/`dt` leaf is its own
-utterance) which (a) sidesteps iOS Safari's long-utterance cut-off, (b) lets it highlight
-(`.rt-hi`) + auto-scroll the current block, and (c) **auto-expands a collapsed section** when it
-reaches text inside it (clicks the `.collapsible-header`/`.ch`). **Tables are read too (v2.55.0)** —
-`collect()` gathers `<table>` as a whole unit (plus section headers `.collapsible-header`/`.ch` that
-aren't already an `<h1-4>`), merged with the text leaves in document order (via `compareDocumentPosition`);
-`tableToSpeech()` serializes each row pairing every cell with its row header (first `<th>`) + column
-header (top `<th>` row) so a matrix reads naturally ("High Severity. High Frequency: Avoidance… ")
-instead of jumbled cells or being skipped. Table cells are excluded from the leaf pass to avoid
-double-reading. A control strip (`#rtBar`) gives ⏮ ⏭ prev/next, ⏸/▶ pause, ⏹ stop, and a `¶ n/total`
-counter. Reader-agnostic: the reading root is
-the largest `.active` panel (same convention `reader-search.js` uses), so it works on FP511,
-FP512, and any future reader with **no per-reader code**. A **generation counter** (`gen`) guards
-the utterance `onend` chain so cancel/skip/pause never double-advance. Pause re-speaks the current
-block on resume (robust on iOS, where `pause()`/`resume()` are flaky). Stops on tab switch,
-`pagehide`/`beforeunload`, and when the tab is hidden.
+asset. It highlights (`.rt-hi`) + auto-scrolls each block and **auto-expands a collapsed section**
+when it reaches text inside it (clicks the `.collapsible-header`/`.ch`). A control strip (`#rtBar`)
+gives ⏮ ⏭ prev/next, ⏸/▶ pause, ⏹ stop, and a `¶ n/total` counter. Reader-agnostic: the reading root
+is the largest `.active` panel (same convention `reader-search.js` uses), so it works on FP511, FP512,
+and any future reader with **no per-reader code**. A **generation counter** (`gen`) guards the
+utterance `onend` chain so cancel/skip/pause never double-advance. Pause re-speaks the current block
+on resume (robust on iOS). Stops on tab switch, `pagehide`/`beforeunload`, and when the tab is hidden.
+
+**Generic collector — reads EVERYTHING, flowing (v2.56.0).** The original tag-whitelist collector
+(`p/li/h*`) silently skipped anything in a styled `<div>` (callout boxes, stat tiles, cards). `collect()`
+now walks the panel DOM generically and returns `[{el,text}]` units in document order:
+- `isLeafBlock(el)` = has text and **every child element is inline** (`INLINE` set) → so div-based
+  content is read, not just the whitelist. Containers with block children are recursed into.
+- `isCompactGroup(el)` = a small container (2–6 all-leaf children, combined text ≤120 chars) is read as
+  ONE phrase, so stat tiles read "15% CFP® Exam Weight" instead of choppy "15%" … "Exam Weight".
+- **Tables are expanded row-by-row** (`pushTable`): each `<tr>` becomes its own unit (its own highlight),
+  text = row header (first `<th>`) + each cell paired with its column header (top `<th>` row) → a matrix
+  reads as flowing sentences and never hits the iOS long-utterance cut-off. Cells are not collected as
+  leaves (no double-read). `<canvas>/<svg>/<img>/<button>/<nav>` etc. are skipped (`SKIP` set), as is
+  `aria-hidden`.
+- `blockText()` strips leading/trailing collapse-toggle glyphs (`TOGGLE` set incl. U+2212 minus,
+  dashes, triangles/chevrons) so "Course Scope & Module Map −" doesn't read "…Map minus". Applied to
+  leaf AND compact-group text.
+- **Flow:** natural advance (from `onend`) does NOT call `sp.cancel()` before the next utterance (only
+  start/skip/resume do) — removes the inter-block gap/clip so it reads continuously. Rate 0.96.
+
+**Voice on the reader (v2.56.0 fix).** iOS/Safari populate `getVoices()` asynchronously (empty on first
+call). The app warmed voices via its ⋯ picker but the reader didn't, so it fell back to the robotic
+default even when the user had Ava selected. `reader-tts.js` now warms voices at load (`sp.getVoices()`
++ a `voiceschanged` listener) and `start()` gates the first utterance on `ensureVoices()` (waits for the
+voice list, 300 ms fallback), so `pickVoice()` sees the real list and uses the chosen/best voice.
 
 ### Study mode dropdown — scoped vs. global (v2.20.0)
 The `#studyMode` `<select>` is split into two `<optgroup>`s by what the course/sub-module
@@ -564,7 +579,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.55.0`) on every shippable change so installed apps auto-update
+  (current: `v2.56.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
