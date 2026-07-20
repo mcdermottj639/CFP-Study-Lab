@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FP512 · Module 7 — Employee Group Benefits (Visual Deck)</title>
+<style>
+/* ---- Dancing Script title (vendored, offline) ---- */
+@font-face{font-family:'Dancing Script';src:url('../vendor/fonts/dancing-script-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap;}
+
+:root{
+  --canvas:#f4ecdf; --card:#fffdf8; --card2:#faf3e6;
+  --ink:#2c2118; --ink2:#5b4b3a; --muted:#897357;
+  --line:#e6d8c2; --line2:#d8c6aa;
+  --terra:#d0613a; --terra-d:#b34d2a;
+  --green:#1f4d3a; --green-l:#2f7355;
+  --gold:#c58a2e; --sky:#3a6ea5;
+  --trap:#b34d2a; --trap-bg:#fbe9e1; --tip:#2f7355; --tip-bg:#e6f2ea;
+  --key-bg:#efe4d0;
+  --radius:18px; --shadow:0 8px 26px -14px rgba(60,40,20,.55);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--canvas);}
+body{font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;color:var(--ink);-webkit-text-size-adjust:100%;}
+
+/* ---- App-synced dark mode: filter-invert the content wrapper (matches readers) ---- */
+html[data-theme="dark"]{background:#17120e;}
+html[data-theme="dark"] body{background:#17120e;}
+html[data-theme="dark"] #rdrWrap{filter:invert(.92) hue-rotate(180deg);}
+html[data-theme="dark"] #rdrWrap svg,
+html[data-theme="dark"] #rdrWrap img,
+html[data-theme="dark"] #rdrWrap canvas{filter:invert(1) hue-rotate(180deg);}
+
+#rdrWrap{max-width:820px;margin:0 auto;padding:18px 15px 90px;}
+
+/* ---- Header ---- */
+.deck-head{padding:26px 20px 22px;border-radius:var(--radius);color:#fff;
+  background:linear-gradient(135deg,#1f4d3a 0%,#2f7355 55%,#d0613a 160%);
+  box-shadow:var(--shadow);position:relative;overflow:hidden;}
+.deck-head .eyebrow{font:700 12px/1 system-ui;letter-spacing:.16em;text-transform:uppercase;opacity:.85;}
+.deck-head h1{font-family:'Dancing Script',cursive;font-size:clamp(34px,9vw,52px);margin:.15em 0 .1em;line-height:1;}
+.deck-head .sub{font-size:15px;opacity:.95;max-width:46ch;}
+.deck-head .pillrow{margin-top:14px;display:flex;flex-wrap:wrap;gap:7px;}
+.deck-head .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+  border-radius:999px;padding:5px 11px;font:600 12px/1 system-ui;}
+
+/* ---- Section divider ---- */
+.sect{margin:34px 2px 14px;display:flex;align-items:center;gap:12px;}
+.sect .n{flex:none;width:38px;height:38px;border-radius:11px;background:var(--green);color:#fff;
+  font:800 15px/38px system-ui;text-align:center;box-shadow:var(--shadow);}
+.sect h2{font-size:19px;margin:0;color:var(--green);letter-spacing:.01em;}
+.sect .lo{font:600 11px/1 system-ui;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
+
+/* ---- Slide card ---- */
+.slide{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 19px;margin:13px 0;box-shadow:var(--shadow);}
+.slide h3{margin:0 0 8px;font-size:18px;color:var(--ink);display:flex;gap:9px;align-items:baseline;}
+.slide h3 .ic{font-size:19px;}
+.slide p{margin:8px 0;color:var(--ink2);}
+.slide ul{margin:9px 0;padding-left:1.15em;}
+.slide li{margin:5px 0;color:var(--ink2);}
+.lead{font-size:16.5px;color:var(--ink)!important;}
+
+/* ---- Stat tiles ---- */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:11px;margin:14px 0 4px;}
+.tile{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:13px 14px;}
+.tile .v{font:800 24px/1.05 system-ui;color:var(--terra-d);letter-spacing:-.01em;}
+.tile .k{font-size:12.5px;color:var(--ink2);margin-top:5px;}
+
+/* ---- Callouts ---- */
+.callout{border-radius:13px;padding:12px 14px 12px 15px;margin:13px 0;border-left:5px solid;font-size:14.5px;}
+.callout.trap{background:var(--trap-bg);border-color:var(--trap);}
+.callout.tip{background:var(--tip-bg);border-color:var(--tip);}
+.callout b{color:var(--ink);}
+.callout .lab{display:block;font:800 11px/1 system-ui;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;}
+.callout.trap .lab{color:var(--trap);}
+.callout.tip .lab{color:var(--tip);}
+
+/* ---- Tables ---- */
+.tbl-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0 4px;
+  border:1px solid var(--line);border-radius:13px;}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:460px;}
+caption{caption-side:top;text-align:left;font:700 13px/1.4 system-ui;color:var(--muted);padding:2px 4px 9px;}
+th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
+thead th{background:var(--green);color:#fff;font-weight:700;font-size:12.5px;position:sticky;top:0;}
+tbody th{background:var(--card2);color:var(--ink);font-weight:700;white-space:nowrap;}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:none;}
+td.y{color:var(--tip);font-weight:700;} td.n{color:var(--trap);font-weight:700;}
+
+/* ---- Chart figure ---- */
+figure{margin:14px 0 4px;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:14px 14px 10px;}
+figure svg{width:100%;height:auto;display:block;}
+figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center;}
+.legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:9px;font:600 12.5px/1 system-ui;}
+.legend span{display:inline-flex;align-items:center;gap:6px;color:var(--ink2);}
+.legend i{width:14px;height:3px;border-radius:2px;display:inline-block;}
+
+/* ---- Three-up option groups ---- */
+.triad{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;margin:13px 0 4px;}
+.opt{background:var(--card2);border:1px solid var(--line);border-radius:13px;padding:12px 13px;}
+.opt .t{font:800 13.5px/1.2 system-ui;color:var(--green);margin-bottom:5px;}
+.opt .d{font-size:13px;color:var(--ink2);}
+
+/* ---- Worked example ---- */
+.calc{background:#1c2b24;color:#e9f3ee;border-radius:14px;padding:16px 16px 12px;margin:14px 0 4px;}
+.calc h4{margin:0 0 10px;color:#7fd3ac;font-size:14.5px;}
+.calc .step{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-top:1px solid rgba(255,255,255,.12);}
+.calc .step:first-of-type{border-top:none;}
+.calc .sn{flex:none;width:24px;height:24px;border-radius:8px;background:#2f7355;color:#fff;font:800 12px/24px system-ui;text-align:center;}
+.calc .sb{font-size:13.5px;}
+.calc .sb b{color:#fff;}
+.calc code{font:600 12.5px/1.5 ui-monospace,Menlo,monospace;color:#ffd9a8;background:rgba(255,255,255,.07);
+  padding:1px 6px;border-radius:6px;display:inline-block;margin-top:3px;}
+.calc .res{margin-top:11px;background:#d0613a;color:#fff;border-radius:10px;padding:10px 13px;font:700 15px/1.2 system-ui;}
+
+/* ---- Quiz (tap to reveal) ---- */
+.quiz{background:var(--card);border:1.5px solid var(--terra);border-radius:14px;padding:0;margin:13px 0;overflow:hidden;box-shadow:var(--shadow);}
+.quiz>summary{list-style:none;cursor:pointer;padding:15px 16px;font-size:15px;color:var(--ink);position:relative;}
+.quiz>summary::-webkit-details-marker{display:none;}
+.quiz>summary .qlab{display:inline-block;font:800 10.5px/1 system-ui;letter-spacing:.12em;color:var(--terra-d);
+  background:var(--trap-bg);border-radius:6px;padding:4px 7px;margin-bottom:8px;text-transform:uppercase;}
+.quiz>summary .opts{margin-top:9px;font-size:13.5px;color:var(--ink2);}
+.quiz>summary .tap{margin-top:10px;font:700 12.5px/1 system-ui;color:var(--terra);}
+.quiz[open]>summary .tap{display:none;}
+.quiz .ans{padding:0 16px 15px;border-top:1px dashed var(--line2);margin-top:2px;}
+.quiz .ans .correct{font:800 14px/1.4 system-ui;color:var(--tip);margin:12px 0 6px;}
+.quiz .ans p{font-size:13.5px;color:var(--ink2);margin:6px 0 0;}
+
+.foot{margin-top:34px;padding:16px;border-radius:var(--radius);background:var(--card2);border:1px solid var(--line);
+  font-size:12.5px;color:var(--muted);text-align:center;}
+
+/* ---- Floating theme toggle (standalone preview; injection can replace) ---- */
+#tgl{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:9999;
+  background:var(--terra);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:999px;
+  padding:10px 15px;font:700 13px/1 system-ui;cursor:pointer;box-shadow:0 8px 22px -8px rgba(0,0,0,.55);}
+
+/* ---- Sticky progress ---- */
+#prog{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--green),var(--terra));z-index:9999;transition:width .1s;}
+
+@media(min-width:560px){.slide{padding:22px 24px;} #rdrWrap{padding:22px 20px 90px;}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<div id="rdrWrap">
+
+  <header class="deck-head">
+    <div class="eyebrow">FP512 · Risk, Insurance &amp; Benefits</div>
+    <h1>Employee Group Benefits</h1>
+    <div class="sub">Module 7 at a glance — group life &amp; Section 79, group health, funding &amp; tax-advantaged accounts, ERISA, disability, and fringe benefits. Built from the College for Financial Planning® (Kaplan) course deck.</div>
+    <div class="pillrow">
+      <span class="pill">🛡️ Sec. 79 group term life</span>
+      <span class="pill">🧮 Table I imputed income</span>
+      <span class="pill">🏥 FSA · HSA · HRAs</span>
+      <span class="pill">⚖️ ERISA</span>
+    </div>
+  </header>
+
+  <!-- ============ LO 7.1.1 — Group life insurance & tax ============ -->
+  <div class="sect"><div class="n">1</div><div><div class="lo">Learning Objective 7.1.1</div><h2>Group life insurance &amp; its taxation</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🛡️</span>Section 79 — what makes a group life plan qualify</h3>
+    <p class="lead">A Section 79 group term life (GTL) plan has three basic <b>policy requirements</b>:</p>
+    <ul>
+      <li>Must provide a <b>general death benefit</b></li>
+      <li>Must be provided to a <b>group of employees</b> (all employees, or a class based on age, marital status, or work-related factors — duties, compensation, length of service)</li>
+      <li>Coverage amount must be based on a <b>uniform formula</b> for all employees</li>
+    </ul>
+    <p>Typical GTL features: annual renewable term, face amount paid to beneficiary, coverage based on compensation/position/service or a flat amount — <b>low cost, tax-advantaged, simple administration, no medical exam, premium waiver.</b></p>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">✅</span>The four nondiscrimination "qualify" tests</h3>
+    <p>A plan must meet <b>one</b> of the following four requirements to qualify:</p>
+    <ol style="margin:9px 0;padding-left:1.3em;">
+      <li>At least <b>70% of employees</b> must benefit</li>
+      <li>At least <b>85% of plan participants</b> are <b>not key employees</b></li>
+      <li>Plan benefits a <b>nondiscriminatory classification</b> of employees</li>
+      <li>Complies with <b>IRC §125</b> requirements if part of a cafeteria plan</li>
+    </ol>
+    <div class="tiles">
+      <div class="tile"><div class="v">70%</div><div class="k">of employees must benefit</div></div>
+      <div class="tile"><div class="v">85%</div><div class="k">of participants are NOT key employees</div></div>
+    </div>
+    <div class="callout tip"><span class="lab">Memory hook</span>Only <b>one</b> of the four tests must be satisfied — not all four. The 70%/85% figures are the most-tested numbers.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">💵</span>The $50,000 line — GTL taxation</h3>
+    <p>Employer-provided GTL is tax-free to the employee <b>up to $50,000</b> of coverage. The cost of coverage <b>over $50,000</b> becomes <b>taxable imputed income</b> to the employee, valued using the IRS <b>Table I</b> uniform-premium rates (not the employer's actual cost).</p>
+    <div class="tbl-scroll"><table>
+      <caption>Income-tax treatment of GTL by coverage layer</caption>
+      <thead><tr><th>Coverage layer</th><th>Employer deduction</th><th>Employee income</th></tr></thead>
+      <tbody>
+        <tr><th>Up to $50,000</th><td class="y">Deductible (nonbeneficiary)</td><td class="y">Nontaxable to employee</td></tr>
+        <tr><th>Over $50,000</th><td class="y">Deductible (nonbeneficiary)</td><td class="n">Taxable imputed income*</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:12.5px;color:var(--muted);margin-top:8px;">*Employee contributions toward coverage are deductible from the cost of employer-paid coverage over $50,000. <b>Exceptions:</b> the excess cost is <b>not</b> taxable if the beneficiary is a charity or the employer, or if the covered employee is disabled or a certain retired person.</p>
+    <figure>
+      <svg viewBox="0 0 460 210" role="img" aria-label="The fifty thousand dollar line: coverage below is tax free, coverage above is taxable imputed income">
+        <line x1="46" y1="20" x2="46" y2="170" stroke="#d8c6aa" stroke-width="1.5"/>
+        <line x1="46" y1="170" x2="430" y2="170" stroke="#d8c6aa" stroke-width="1.5"/>
+        <!-- tax-free zone (below 50k) -->
+        <rect x="46" y="112" width="372" height="58" fill="#2f7355" fill-opacity="0.20"/>
+        <text x="232" y="146" font-size="12" font-weight="800" fill="#1f4d3a" text-anchor="middle">First $50,000 — TAX-FREE</text>
+        <!-- taxable zone (above 50k) -->
+        <rect x="46" y="34" width="372" height="76" fill="#d0613a" fill-opacity="0.22"/>
+        <text x="232" y="70" font-size="12" font-weight="800" fill="#b34d2a" text-anchor="middle">Coverage OVER $50,000</text>
+        <text x="232" y="90" font-size="11" font-weight="700" fill="#b34d2a" text-anchor="middle">taxable imputed income (Table I)</text>
+        <!-- the $50,000 line -->
+        <line x1="46" y1="111" x2="418" y2="111" stroke="#2c2118" stroke-width="2.5" stroke-dasharray="6 4"/>
+        <text x="52" y="106" font-size="11" font-weight="800" fill="#2c2118">$50,000 line</text>
+      </svg>
+      <figcaption>Below the $50,000 line: no income to the employee. Above it: Table I cost is added to W-2 income.</figcaption>
+    </figure>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">📊</span>IRS Table I — uniform-premium rate schedule</h3>
+    <p>Monthly cost per <b>$1,000</b> of coverage over $50,000, by the employee's age:</p>
+    <div class="tbl-scroll"><table>
+      <caption>Table I — cost per $1,000 of protection per month</caption>
+      <thead><tr><th>Age of employee</th><th>Cost / $1,000 / month</th><th>Age of employee</th><th>Cost / $1,000 / month</th></tr></thead>
+      <tbody>
+        <tr><th>Under 25</th><td>$0.05</td><th>50–54</th><td>$0.23</td></tr>
+        <tr><th>25–29</th><td>$0.06</td><th>55–59</th><td>$0.43</td></tr>
+        <tr><th>30–34</th><td>$0.08</td><th>60–64</th><td>$0.66</td></tr>
+        <tr><th>35–39</th><td>$0.09</td><th>65–69</th><td>$1.27</td></tr>
+        <tr><th>40–44</th><td>$0.10</td><th>70 &amp; over</th><td>$2.06</td></tr>
+        <tr><th>45–49</th><td>$0.15</td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+    <figure>
+      <svg viewBox="0 0 460 220" role="img" aria-label="Table I cost per one thousand rises slowly then steeply with age, from 0.05 under age 25 to 2.06 at age 70 and over">
+        <line x1="50" y1="30" x2="50" y2="180" stroke="#d8c6aa" stroke-width="1.5"/>
+        <line x1="50" y1="180" x2="440" y2="180" stroke="#d8c6aa" stroke-width="1.5"/>
+        <text x="12" y="36" font-size="10" fill="#897357">$/1k</text>
+        <text x="398" y="197" font-size="10" fill="#897357">Age →</text>
+        <text x="30" y="34" font-size="9" fill="#897357">2.06</text>
+        <!-- rate curve -->
+        <polyline points="50,176 88,176 126,174 164,173 202,173 240,169 278,163 316,149 354,132 392,88 430,30"
+          fill="none" stroke="#1f4d3a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- points -->
+        <circle cx="50" cy="176" r="3" fill="#d0613a"/>
+        <circle cx="240" cy="169" r="3" fill="#d0613a"/>
+        <circle cx="392" cy="88" r="3" fill="#d0613a"/>
+        <circle cx="430" cy="30" r="4" fill="#d0613a"/>
+        <text x="46" y="196" font-size="9" fill="#897357">&lt;25</text>
+        <text x="228" y="196" font-size="9" fill="#897357">50–54</text>
+        <text x="378" y="196" font-size="9" fill="#897357">65–69</text>
+        <text x="410" y="26" font-size="9.5" font-weight="700" fill="#b34d2a">70+ = 2.06</text>
+      </svg>
+      <figcaption>The rate stays cheap through mid-career, then climbs sharply after age 60 — imputed income accelerates with age.</figcaption>
+    </figure>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧮</span>Worked example — Table I imputed income</h3>
+    <p>John is <b>52</b> and his company provides <b>$250,000</b> of group term life as part of his benefits. What is the annual tax impact of this benefit on John?</p>
+    <div class="calc">
+      <h4>Imputed-income calculation</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Subtract the $50,000 tax-free layer.</b><br><code>$250,000 − $50,000 = $200,000 excess coverage</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Convert the excess to units of $1,000.</b><br><code>$200,000 ÷ $1,000 = 200 units</code></div></div>
+      <div class="step"><div class="sn">3</div><div class="sb"><b>Look up John's Table I rate (age 52 → 50–54 bracket).</b><br><code>Rate = $0.23 per $1,000 per month</code></div></div>
+      <div class="step"><div class="sn">4</div><div class="sb"><b>Multiply, then annualize.</b><br><code>200 × $0.23 = $46.00 / month · × 12 = $552.00 / year</code></div></div>
+      <div class="res">Imputed income added to John's W-2 ≈ $46.00/month → $552.00/year.</div>
+    </div>
+    <div class="callout tip"><span class="lab">Method</span>Always subtract $50,000 first, divide by 1,000, multiply by the Table I <b>monthly</b> rate — and remember to annualize (× 12) if the question asks for the yearly amount.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">👥</span>Types of group life coverage</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Group life insurance coverage types</caption>
+      <thead><tr><th>Type</th><th>Key features</th></tr></thead>
+      <tbody>
+        <tr><th>Group carve-out</th><td>Individual, <b>discriminatory</b> benefits for selected (older, higher-paid) executives <b>removed</b> from GTL coverage; can help the GTL plan come into compliance. Nondiscrimination does <b>not</b> apply; tax consequences to the employee.</td></tr>
+        <tr><th>Dependent group life</th><td>Covers spouse &amp; unmarried children; generally only with employee coverage. Coverage <b>limited to $2,000</b>; spouse coverage convertible.</td></tr>
+        <tr><th>Supplemental group life</th><td>Contributory group term for a class of (or all) employees, not selected individuals. Generally requires <b>evidence of insurability</b>.</td></tr>
+        <tr><th>Group survivors income benefit</th><td>Monthly benefit to surviving spouse/children; <b>no choice of beneficiary</b>; amount is <b>taxable</b>, not treated as life insurance; no lump-sum available.</td></tr>
+        <tr><th>Group paid-up &amp; group ordinary</th><td>Combine term with permanent coverage; both provide some permanent coverage (ordinary may be contributory).</td></tr>
+        <tr><th>Group universal</th><td>Individual UL contracts, usually employee-paid, flexible premiums, death-benefit options, potentially higher returns.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">Exam traps</span><b>Dependent group life is capped at $2,000.</b> The <b>group carve-out</b> pulls older/higher-paid execs OUT of GTL, and nondiscrimination rules don't apply to them.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🔑</span>Key employee life insurance</h3>
+    <p>Insurance on executives / highly valued employees; the policy is <b>owned by, applied for by, and payable to the company</b>.</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Premiums NOT deductible</div><div class="d">The company cannot deduct premiums on key-employee coverage.</div></div>
+      <div class="opt"><div class="t">Death benefit tax-free</div><div class="d">Proceeds received by the company are generally income-tax-free.</div></div>
+      <div class="opt"><div class="t">Company-owned</div><div class="d">Company owns, applies for, and is beneficiary of the policy.</div></div>
+    </div>
+    <div class="callout trap"><span class="lab">Most-tested fact</span>Key-employee life <b>premiums are NOT tax-deductible</b> — this is the classic "which is NOT correct" answer.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🔁</span>Conversion of GTL coverage</h3>
+    <p>GTL typically carries a <b>conversion provision</b> to a permanent cash-value policy on leaving the group:</p>
+    <ul>
+      <li>Conversion is <b>guaranteed</b> (no new evidence of insurability)</li>
+      <li>The permanent-policy <b>premium is higher</b> than the group term rate</li>
+    </ul>
+  </div>
+
+  <!-- ============ LO 7.2.1 — Group health coverage types ============ -->
+  <div class="sect"><div class="n">2</div><div><div class="lo">Learning Objective 7.2.1</div><h2>Types of group health coverage</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🏥</span>Managed-care &amp; supplemental coverages</h3>
+    <div class="triad">
+      <div class="opt"><div class="t">PPO</div><div class="d">Preferred Provider Plan — network of providers; out-of-network allowed at higher cost.</div></div>
+      <div class="opt"><div class="t">POS</div><div class="d">Point of Service Plan — hybrid of HMO gatekeeping and PPO flexibility.</div></div>
+      <div class="opt"><div class="t">HMO</div><div class="d">Health Maintenance Organization — in-network care through a primary-care gatekeeper.</div></div>
+    </div>
+    <p><b>Group vision:</b> covers eye exams, eyeglasses, contact lenses and other corrective items; network of providers; usually limited benefits.</p>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🦷</span>Group dental &amp; group LTC</h3>
+    <p><b>Group dental</b> typically covers routine care — cleanings, fillings, crowns, root canals, orthodontia. <b>Many plans are PPOs</b> today (not indemnity). <b>Oral surgery is generally covered under health insurance</b>, not dental.</p>
+    <div class="tbl-scroll"><table>
+      <caption>Group LTC vs. individual LTC insurance</caption>
+      <thead><tr><th>Group LTC</th><th>Individual LTC</th></tr></thead>
+      <tbody>
+        <tr><td>Less expensive; group rates; lower rates</td><td>Can be <b>customized</b> to individual needs</td></tr>
+        <tr><td><b>No evidence of insurability</b>; similar coverage &amp; benefits</td><td>Fully tailored per person</td></tr>
+        <tr><td>May extend to other family members; continued at termination/retirement via direct pay (no employer premium contribution)</td><td>Portable by nature</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout tip"><span class="lab">Distinguish</span>Group LTC's edge = <b>no evidence of insurability</b> and lower cost. Individual LTC's edge = it can be <b>customized</b>. Employers cannot tailor group LTC per employee.</div>
+  </div>
+
+  <!-- ============ LO 7.2.2 — Funding & tax-advantaged accounts ============ -->
+  <div class="sect"><div class="n">3</div><div><div class="lo">Learning Objective 7.2.2</div><h2>Funding methods &amp; tax-advantaged accounts</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">💼</span>Employer funding &amp; Section 125 cafeteria plans</h3>
+    <p><b>Funding methods:</b> fully insured (traditional) · self-insured · combination.</p>
+    <p>A <b>Section 125 cafeteria plan</b> lets employees choose among qualified benefits, including a <b>cash option</b>; elected qualified benefits are taken <b>pretax</b>.</p>
+    <div class="callout trap"><span class="lab">NOT cafeteria-eligible</span>Scholarships &amp; fellowships, educational assistance, employee discounts, and retirement / nonqualified plan benefits are <b>not</b> qualified cafeteria-plan benefits.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧾</span>Flexible Spending Accounts (FSA) &amp; DCAP</h3>
+    <ul>
+      <li><b>Pretax</b> contributions (federal, state, FICA) through the employer</li>
+      <li>2025 limit: <b>$3,300</b></li>
+      <li><b>Use-it-or-lose-it</b> — employer may allow either a <b>$660 rollover</b> into next year, or a grace period paying prior-year balance in the first 2½ months</li>
+      <li>Covers eligible medical expenses, but <b>not OTC</b></li>
+      <li><b>DCAP</b> — dependent-care expenses are FSA-eligible; a <b>self-employed person is not eligible</b> for an FSA</li>
+    </ul>
+    <div class="tiles">
+      <div class="tile"><div class="v">$3,300</div><div class="k">2025 health FSA limit</div></div>
+      <div class="tile"><div class="v">$660</div><div class="k">optional 2025 rollover</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">💰</span>Health Savings Accounts (HSA) — 2025 limits</h3>
+    <p>Funded by the participant, employer, or both; unused balances <b>accrue</b> and are <b>not tied to the employer</b> (unlike FSAs). Contributions can be invested (stocks, bonds, index funds, ETFs, mutual funds).</p>
+    <div class="tbl-scroll"><table>
+      <caption>HSA / HDHP 2025 figures (single / family)</caption>
+      <thead><tr><th>Item</th><th>Single</th><th>Family</th></tr></thead>
+      <tbody>
+        <tr><th>Maximum annual contribution</th><td>$4,300</td><td>$8,550</td></tr>
+        <tr><th>HDHP minimum deductible</th><td>$1,650</td><td>$3,300</td></tr>
+        <tr><th>HDHP maximum out-of-pocket</th><td>$8,300</td><td>$16,600</td></tr>
+      </tbody>
+    </table></div>
+    <p><b>Tax character:</b> qualified medical expenses are always tax- and penalty-free. Nonmedical withdrawals = ordinary income tax + <b>20% penalty</b>; at <b>age 65+</b> nonmedical use is ordinary income tax but <b>no penalty</b>. Triple tax advantage makes the HSA a strong supplemental retirement vehicle.</p>
+    <div class="callout tip"><span class="lab">FSA vs. HSA</span>FSA = use-it-or-lose-it and tied to the employer. HSA = <b>portable, rolls over, invests, and outlives the job</b>.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🏛️</span>The HRA family &amp; Medicare MSA</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Health Reimbursement Arrangements &amp; the Medicare MSA</caption>
+      <thead><tr><th>Vehicle</th><th>Key rules (2025)</th></tr></thead>
+      <tbody>
+        <tr><th>ICHRA</th><td>Individual Coverage HRA — self-insured, <b>employer-funded only</b> (no employee contributions); reimburses substantiated unreimbursed medical expenses; reimbursements not taxed to employees/spouses/dependents.</td></tr>
+        <tr><th>QSEHRA</th><td>For small employers with <b>&lt;50 eligible employees</b> that offer no group health plan; employer-funded only; not a group health plan (not subject to ERISA); reimbursements capped at <b>$6,350 single / $12,800 family</b>.</td></tr>
+        <tr><th>EBHRA</th><td>Excepted-Benefit HRA — up to <b>$2,150/yr</b> for qualified expenses (dental, vision, short-term limited-duration insurance); no employee contributions; need not comply with ACA; cannot reimburse group/individual/Medicare premiums.</td></tr>
+        <tr><th>Medicare MSA</th><td>Offered under a <b>Medicare Advantage (Part C)</b> plan; requires a high deductible; only limited states allow it.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">Exam anchors</span><b>QSEHRA = &lt;50 employees</b>, <b>EBHRA = $2,150</b>, all three HRAs are <b>employer-funded only</b> (no employee contributions).</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🤝</span>VEBAs</h3>
+    <p>A <b>Voluntary Employees' Beneficiary Association</b> is a <b>tax-exempt trust</b> established by the employer to fund employee benefits. Some benefits are not eligible to be provided through a VEBA.</p>
+  </div>
+
+  <!-- ============ LO 7.2.3 — Regulation & taxation ============ -->
+  <div class="sect"><div class="n">4</div><div><div class="lo">Learning Objective 7.2.3</div><h2>Regulation &amp; taxation of group health</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">⚖️</span>ERISA</h3>
+    <p>The <b>Employee Retirement Income Security Act of 1974 (ERISA)</b> protects benefit-plan participants, establishes <b>fiduciary standards</b>, and imposes <b>reporting &amp; disclosure</b> requirements.</p>
+    <div class="tbl-scroll"><table>
+      <caption>ERISA reporting &amp; disclosure responsibilities</caption>
+      <thead><tr><th>Employee communications</th><th>Government reporting</th></tr></thead>
+      <tbody>
+        <tr><td>Summary Annual Report (SAR)</td><td>Form 5500</td></tr>
+        <tr><td>Summary Plan Description (SPD)</td><td>Form 5330</td></tr>
+        <tr><td>Summary of Material Modifications (SMM)</td><td>Form 1099-R</td></tr>
+        <tr><td>Personal benefits statements · periodic pension benefit statements</td><td></td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout tip"><span class="lab">Scope trap</span>Most employer-sponsored group life plans <b>must meet ERISA's reporting, disclosure, and fiduciary provisions</b> — but they are NOT subject to participation/vesting or plan-termination-insurance rules (those apply to pensions).</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">📋</span>Other group-insurance regulation &amp; tax</h3>
+    <div class="triad">
+      <div class="opt"><div class="t">COBRA</div><div class="d">Consolidated Omnibus Budget Reconciliation Act — continuation of coverage.</div></div>
+      <div class="opt"><div class="t">HIPAA (1996)</div><div class="d">Health Insurance Portability and Accountability Act.</div></div>
+      <div class="opt"><div class="t">PPACA (2010)</div><div class="d">Patient Protection and Affordable Care Act.</div></div>
+    </div>
+    <p><b>Tax:</b> premiums are generally deductible by the employer (C corp, closely held C corp, S corp, partnership, sole proprietor); benefits paid are generally <b>not taxed</b>.</p>
+  </div>
+
+  <!-- ============ LO 7.3.1 — Group disability ============ -->
+  <div class="sect"><div class="n">5</div><div><div class="lo">Learning Objective 7.3.1</div><h2>Group disability coverage</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🩺</span>Group disability — types &amp; taxation</h3>
+    <p>Covers sick pay, short-term disability, and long-term disability. Group DI generally has <b>no riders</b>, leans toward a <b>modified any-occupation</b> definition (more stringent than own-occupation), and is usually <b>issued without health questions</b> — its biggest advantage.</p>
+    <div class="tbl-scroll"><table>
+      <caption>Who pays the premium drives the taxation of benefits</caption>
+      <thead><tr><th>Who pays the premium</th><th>Taxation of benefit</th></tr></thead>
+      <tbody>
+        <tr><th>Employer pays</th><td class="n">Employee pays tax on the benefit</td></tr>
+        <tr><th>Employee pays</th><td class="y">Employee does not pay tax on the benefit</td></tr>
+        <tr><th>Shared (each pays a portion)</th><td>Employee taxed on a <b>portion</b> of the benefit</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">Who-paid rule</span>Follow the premium dollars: <b>employer-paid premium → taxable benefit; employee-paid (after-tax) premium → tax-free benefit.</b></div>
+  </div>
+
+  <!-- ============ LO 7.4.1 — Fringe benefits, workers' comp, unemployment ============ -->
+  <div class="sect"><div class="n">6</div><div><div class="lo">Learning Objective 7.4.1</div><h2>Fringe benefits, workers' comp &amp; unemployment</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🎁</span>Nontaxable noncash fringe benefits</h3>
+    <ul>
+      <li><b>De minimis</b> fringe benefits — limited copier use, occasional business tickets</li>
+      <li><b>Working-condition</b> fringes (must be business-related &amp; substantiated)</li>
+      <li>No-additional-cost services · qualified employee discounts</li>
+      <li>Use of on-premises athletic facilities</li>
+      <li>Meals &amp; lodging furnished for the employer's convenience</li>
+      <li><b>Commuter transportation &amp; transit passes up to $325/month (2025)</b></li>
+    </ul>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🏗️</span>Workers' compensation</h3>
+    <p>Common themes: <b>mandatory</b>, negligence is not a factor, indemnity is partial but final, periodic payments, and premiums are a cost of production.</p>
+    <ul>
+      <li><b>Benefits:</b> medical expenses; disability (temporary total/partial, permanent total/partial); death benefits; rehabilitation</li>
+      <li><b>Benefits are NOT taxed</b></li>
+    </ul>
+    <p><b>Prepaid legal services</b> may cover bankruptcy, adoption, divorce legal fees, and estate-planning document preparation; the employer pays and deducts the cost of maintaining the plan.</p>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧰</span>Unemployment insurance</h3>
+    <p>Funded by the <b>employer</b> through federal and state taxes. Eligibility requires covered employment, minimum income earned, continued attachment, and <b>involuntary</b> unemployment (voluntary quitters and those discharged for misconduct are denied/limited).</p>
+    <ul>
+      <li>Benefit amount is earnings-based via a state formula (roughly 50% of previous earnings, up to a state maximum)</li>
+      <li>Duration is set by the state — <b>typically 26 weeks</b></li>
+      <li>A waiting period applies; <b>benefits are taxed</b></li>
+    </ul>
+    <div class="tiles">
+      <div class="tile"><div class="v">26 wks</div><div class="k">typical unemployment duration</div></div>
+      <div class="tile"><div class="v">$325/mo</div><div class="k">2025 transit-pass exclusion</div></div>
+    </div>
+  </div>
+
+  <!-- ============ Quiz ============ -->
+  <div class="sect"><div class="n">?</div><div><div class="lo">Check yourself</div><h2>Kaplan questions from this module</h2></div></div>
+
+  <details class="quiz">
+    <summary><span class="qlab">Key employee life</span><div>Which of these statements regarding key employee life insurance is <b>NOT</b> correct?</div><div class="opts">A. Policy premiums are tax-deductible · B. Death benefits received by the company are generally tax-free · C. The policy is owned by the company · D. The policy is applied for by the company</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ A — premiums are NOT tax-deductible</div><p>Key-employee life premiums cannot be deducted. The other three statements are correct — the company owns, applies for, and receives the (tax-free) death benefit.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">GTLI · Table I</span><div>ABC provides GTLI equal to two times salary. Taylor earns $75,000; the Table I cost is $0.63 per $1,000 per month for Taylor's age. What monthly amount is included in Taylor's compensation?</div><div class="opts">A. $15.75 · B. $63.00 · C. $94.50 · D. $756.00</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — $63.00 per month</div><p>Coverage = 2 × $75,000 = $150,000. Excess over $50,000 = $100,000 → 100 units of $1,000. 100 × $0.63 = <b>$63.00/month</b>.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Group carve-out</span><div>Which group of employees is typically carved out of group term life insurance plans?</div><div class="opts">A. Older, higher-paid employees · B. Younger, lower-paid employees · C. &lt;3 years of service · D. &gt;3 years of service</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ A — older, higher-paid employees</div><p>Older, higher-paid executives are carved out of GTL (to keep plan costs down) and given individual, discriminatory coverage; nondiscrimination rules don't apply to them.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">FSA</span><div>FSAs may provide funds to pay all of these <b>except</b>:</div><div class="opts">A. Deductibles on group health policies · B. Coinsurance on group health policies · C. A self-employed person's health-insurance deductibles · D. Dependent-care expenses</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — a self-employed person is not eligible for an FSA</div><p>FSAs are an employee benefit; the self-employed can't participate. The other items are all eligible FSA expenses.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Group dental</span><div>Which statement regarding dental expense insurance is CORRECT? <br>I. Coverage generally includes cleanings, fillings, crowns, and oral surgery. II. Many dental plans are offered through indemnity plans.</div><div class="opts">A. I only · B. II only · C. Both · D. Neither</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ D — Neither is correct</div><p>Dental covers cleanings, fillings, crowns, and orthodontia — but <b>oral surgery is generally covered under health insurance</b>, not dental. And today <b>many dental plans are PPOs</b>, not indemnity plans.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Unemployment</span><div>Which statement regarding unemployment insurance is CORRECT?</div><div class="opts">A. Paid under FICA shared by employers &amp; employees · B. Voluntary receives same benefits as involuntary · C. Worker must have had unemployment taxes paid on their behalf · D. Benefits typically last 46 weeks</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — the worker must have had unemployment taxes paid on their behalf</div><p>Unemployment is funded by the <b>employer</b> (not FICA); voluntary quitters are denied/limited; and benefits typically run <b>26 weeks</b>, not 46. The benefit is roughly 50% of prior earnings up to a state max.</p></div>
+  </details>
+
+  <div class="foot">
+    Visual deck rebuilt from the College for Financial Planning® (Kaplan) FP512 Module 7 course slides.<br>
+    Figures reflect 2025 limits. Verify all numbers against your current course materials before the exam.
+  </div>
+
+</div>
+
+<button id="tgl" aria-label="Toggle dark mode">🌙 Theme</button>
+<script>
+/* Progress bar */
+var prog=document.getElementById('prog');
+addEventListener('scroll',function(){
+  var h=document.documentElement,b=document.body;
+  var st=h.scrollTop||b.scrollTop, sh=(h.scrollHeight||b.scrollHeight)-h.clientHeight;
+  prog.style.width=(sh>0?(st/sh*100):0)+'%';
+},{passive:true});
+/* Theme — synced with the app via localStorage cfpTheme */
+var root=document.documentElement;
+function applyTheme(t){root.setAttribute('data-theme',t);}
+try{
+  var saved=localStorage.getItem('cfpTheme');
+  if(saved){applyTheme(saved);}
+  else if(matchMedia('(prefers-color-scheme:dark)').matches){applyTheme('dark');}
+}catch(e){}
+document.getElementById('tgl').addEventListener('click',function(){
+  var t=root.getAttribute('data-theme')==='dark'?'light':'dark';
+  applyTheme(t);try{localStorage.setItem('cfpTheme',t);}catch(e){}
+});
+</script>
+</body>
+</html>
