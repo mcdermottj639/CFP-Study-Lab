@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FP512 · Module 4 — Annuities (Visual Deck)</title>
+<style>
+/* ---- Dancing Script title (vendored, offline) ---- */
+@font-face{font-family:'Dancing Script';src:url('../vendor/fonts/dancing-script-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap;}
+
+:root{
+  --canvas:#f4ecdf; --card:#fffdf8; --card2:#faf3e6;
+  --ink:#2c2118; --ink2:#5b4b3a; --muted:#897357;
+  --line:#e6d8c2; --line2:#d8c6aa;
+  --terra:#d0613a; --terra-d:#b34d2a;
+  --green:#1f4d3a; --green-l:#2f7355;
+  --gold:#c58a2e; --sky:#3a6ea5;
+  --trap:#b34d2a; --trap-bg:#fbe9e1; --tip:#2f7355; --tip-bg:#e6f2ea;
+  --key-bg:#efe4d0;
+  --radius:18px; --shadow:0 8px 26px -14px rgba(60,40,20,.55);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--canvas);}
+body{font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;color:var(--ink);-webkit-text-size-adjust:100%;}
+
+/* ---- App-synced dark mode: filter-invert the content wrapper (matches readers) ---- */
+html[data-theme="dark"]{background:#17120e;}
+html[data-theme="dark"] body{background:#17120e;}
+html[data-theme="dark"] #rdrWrap{filter:invert(.92) hue-rotate(180deg);}
+html[data-theme="dark"] #rdrWrap svg,
+html[data-theme="dark"] #rdrWrap img,
+html[data-theme="dark"] #rdrWrap canvas{filter:invert(1) hue-rotate(180deg);}
+
+#rdrWrap{max-width:820px;margin:0 auto;padding:18px 15px 90px;}
+
+/* ---- Header ---- */
+.deck-head{padding:26px 20px 22px;border-radius:var(--radius);color:#fff;
+  background:linear-gradient(135deg,#1f4d3a 0%,#2f7355 55%,#d0613a 160%);
+  box-shadow:var(--shadow);position:relative;overflow:hidden;}
+.deck-head .eyebrow{font:700 12px/1 system-ui;letter-spacing:.16em;text-transform:uppercase;opacity:.85;}
+.deck-head h1{font-family:'Dancing Script',cursive;font-size:clamp(34px,9vw,52px);margin:.15em 0 .1em;line-height:1;}
+.deck-head .sub{font-size:15px;opacity:.95;max-width:46ch;}
+.deck-head .pillrow{margin-top:14px;display:flex;flex-wrap:wrap;gap:7px;}
+.deck-head .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+  border-radius:999px;padding:5px 11px;font:600 12px/1 system-ui;}
+
+/* ---- Section divider ---- */
+.sect{margin:34px 2px 14px;display:flex;align-items:center;gap:12px;}
+.sect .n{flex:none;width:38px;height:38px;border-radius:11px;background:var(--green);color:#fff;
+  font:800 15px/38px system-ui;text-align:center;box-shadow:var(--shadow);}
+.sect h2{font-size:19px;margin:0;color:var(--green);letter-spacing:.01em;}
+.sect .lo{font:600 11px/1 system-ui;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
+
+/* ---- Slide card ---- */
+.slide{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 19px;margin:13px 0;box-shadow:var(--shadow);}
+.slide h3{margin:0 0 8px;font-size:18px;color:var(--ink);display:flex;gap:9px;align-items:baseline;}
+.slide h3 .ic{font-size:19px;}
+.slide p{margin:8px 0;color:var(--ink2);}
+.slide ul{margin:9px 0;padding-left:1.15em;}
+.slide li{margin:5px 0;color:var(--ink2);}
+.lead{font-size:16.5px;color:var(--ink)!important;}
+
+/* ---- Stat tiles ---- */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:11px;margin:14px 0 4px;}
+.tile{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:13px 14px;}
+.tile .v{font:800 24px/1.05 system-ui;color:var(--terra-d);letter-spacing:-.01em;}
+.tile .k{font-size:12.5px;color:var(--ink2);margin-top:5px;}
+
+/* ---- Callouts ---- */
+.callout{border-radius:13px;padding:12px 14px 12px 15px;margin:13px 0;border-left:5px solid;font-size:14.5px;}
+.callout.trap{background:var(--trap-bg);border-color:var(--trap);}
+.callout.tip{background:var(--tip-bg);border-color:var(--tip);}
+.callout b{color:var(--ink);}
+.callout .lab{display:block;font:800 11px/1 system-ui;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;}
+.callout.trap .lab{color:var(--trap);}
+.callout.tip .lab{color:var(--tip);}
+
+/* ---- Tables ---- */
+.tbl-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0 4px;
+  border:1px solid var(--line);border-radius:13px;}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:460px;}
+caption{caption-side:top;text-align:left;font:700 13px/1.4 system-ui;color:var(--muted);padding:2px 4px 9px;}
+th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
+thead th{background:var(--green);color:#fff;font-weight:700;font-size:12.5px;position:sticky;top:0;}
+tbody th{background:var(--card2);color:var(--ink);font-weight:700;white-space:nowrap;}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:none;}
+td.y{color:var(--tip);font-weight:700;} td.n{color:var(--trap);font-weight:700;}
+
+/* ---- Chart figure ---- */
+figure{margin:14px 0 4px;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:14px 14px 10px;}
+figure svg{width:100%;height:auto;display:block;}
+figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center;}
+.legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:9px;font:600 12.5px/1 system-ui;}
+.legend span{display:inline-flex;align-items:center;gap:6px;color:var(--ink2);}
+.legend i{width:14px;height:3px;border-radius:2px;display:inline-block;}
+
+/* ---- Three-up option groups ---- */
+.triad{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;margin:13px 0 4px;}
+.opt{background:var(--card2);border:1px solid var(--line);border-radius:13px;padding:12px 13px;}
+.opt .t{font:800 13.5px/1.2 system-ui;color:var(--green);margin-bottom:5px;}
+.opt .d{font-size:13px;color:var(--ink2);}
+
+/* ---- Worked example ---- */
+.calc{background:#1c2b24;color:#e9f3ee;border-radius:14px;padding:16px 16px 12px;margin:14px 0 4px;}
+.calc h4{margin:0 0 10px;color:#7fd3ac;font-size:14.5px;}
+.calc .step{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-top:1px solid rgba(255,255,255,.12);}
+.calc .step:first-of-type{border-top:none;}
+.calc .sn{flex:none;width:24px;height:24px;border-radius:8px;background:#2f7355;color:#fff;font:800 12px/24px system-ui;text-align:center;}
+.calc .sb{font-size:13.5px;}
+.calc .sb b{color:#fff;}
+.calc code{font:600 12.5px/1.5 ui-monospace,Menlo,monospace;color:#ffd9a8;background:rgba(255,255,255,.07);
+  padding:1px 6px;border-radius:6px;display:inline-block;margin-top:3px;}
+.calc .res{margin-top:11px;background:#d0613a;color:#fff;border-radius:10px;padding:10px 13px;font:700 15px/1.2 system-ui;}
+
+/* ---- Quiz (tap to reveal) ---- */
+.quiz{background:var(--card);border:1.5px solid var(--terra);border-radius:14px;padding:0;margin:13px 0;overflow:hidden;box-shadow:var(--shadow);}
+.quiz>summary{list-style:none;cursor:pointer;padding:15px 16px;font-size:15px;color:var(--ink);position:relative;}
+.quiz>summary::-webkit-details-marker{display:none;}
+.quiz>summary .qlab{display:inline-block;font:800 10.5px/1 system-ui;letter-spacing:.12em;color:var(--terra-d);
+  background:var(--trap-bg);border-radius:6px;padding:4px 7px;margin-bottom:8px;text-transform:uppercase;}
+.quiz>summary .opts{margin-top:9px;font-size:13.5px;color:var(--ink2);}
+.quiz>summary .tap{margin-top:10px;font:700 12.5px/1 system-ui;color:var(--terra);}
+.quiz[open]>summary .tap{display:none;}
+.quiz .ans{padding:0 16px 15px;border-top:1px dashed var(--line2);margin-top:2px;}
+.quiz .ans .correct{font:800 14px/1.4 system-ui;color:var(--tip);margin:12px 0 6px;}
+.quiz .ans p{font-size:13.5px;color:var(--ink2);margin:6px 0 0;}
+
+.foot{margin-top:34px;padding:16px;border-radius:var(--radius);background:var(--card2);border:1px solid var(--line);
+  font-size:12.5px;color:var(--muted);text-align:center;}
+
+/* ---- Floating theme toggle (standalone preview; injection can replace) ---- */
+#tgl{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:9999;
+  background:var(--terra);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:999px;
+  padding:10px 15px;font:700 13px/1 system-ui;cursor:pointer;box-shadow:0 8px 22px -8px rgba(0,0,0,.55);}
+
+/* ---- Sticky progress ---- */
+#prog{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--green),var(--terra));z-index:9999;transition:width .1s;}
+
+@media(min-width:560px){.slide{padding:22px 24px;} #rdrWrap{padding:22px 20px 90px;}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<div id="rdrWrap">
+
+  <header class="deck-head">
+    <div class="eyebrow">FP512 · Risk, Insurance &amp; Benefits</div>
+    <h1>Annuities</h1>
+    <div class="sub">Module 4 at a glance — the three annuity types &amp; riders, classifications, QLACs, RILAs, taxation of the payout, and how to judge suitability. Built from the College for Financial Planning® (Kaplan) course deck.</div>
+    <div class="pillrow">
+      <span class="pill">🧱 Fixed · Variable · Indexed</span>
+      <span class="pill">⏳ QLAC &amp; longevity risk</span>
+      <span class="pill">🛡️ RILA buffer vs. floor</span>
+      <span class="pill">🧾 Exclusion ratio · LIFO</span>
+    </div>
+  </header>
+
+  <!-- ============ LO 4.1.1 — Types & riders ============ -->
+  <div class="sect"><div class="n">1</div><div><div class="lo">Learning Objective 4.1.1</div><h2>The three annuity types &amp; their riders</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🧱</span>Three main types of annuities</h3>
+    <p class="lead">Every annuity you'll be tested on is one of three flavors — the label describes how the <b>cash value grows</b>.</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Fixed</div><div class="d">Guaranteed, stated rate of interest — the insurer bears the investment risk.</div></div>
+      <div class="opt"><div class="t">Variable</div><div class="d">Cash value sits in subaccounts; the owner bears market risk.</div></div>
+      <div class="opt"><div class="t">Indexed</div><div class="d">A fixed value safety net plus growth tied to an index (via participation rate, caps, floors).</div></div>
+    </div>
+    <div class="callout tip"><span class="lab">Preeminent benefit</span>Of everything annuities offer, the <b>preeminent</b> feature is <b>longevity-risk protection</b> — guaranteed lifetime income, like Social Security. (Not creditor protection, not a guaranteed death benefit.)</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">✨</span>Chief benefits of annuities</h3>
+    <ul>
+      <li><b>Tax-deferred growth</b> during the accumulation stage</li>
+      <li><b>NO contribution limits or income phase-outs</b> — unlike 401(k)s, IRAs, and Roth accounts</li>
+      <li>Protect against <b>longevity risk</b> — the risk of outliving one's savings</li>
+      <li>Their unique investment strategies can offer protection from bear markets</li>
+    </ul>
+    <div class="callout trap"><span class="lab">Exam trap</span>Annuity gains are <b>ordinary income</b> — there is <b>no long-term capital-gain treatment</b>. Highest-bracket clients benefit most from the deferral (a nonqualified annuity vs. a taxable brokerage account).</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">❓</span>The six key annuity questions</h3>
+    <p>Kaplan frames every annuity classification as answers to six questions:</p>
+    <ol style="margin:9px 0;padding-left:1.3em;color:var(--ink2);">
+      <li>How are <b>premiums paid</b>?</li>
+      <li>When do <b>benefits begin</b>?</li>
+      <li>Who is the <b>annuitant</b>?</li>
+      <li>What is the <b>accumulation structure</b>?</li>
+      <li>What is the <b>method of benefit payment</b>?</li>
+      <li>How <b>long are benefits paid</b>?</li>
+    </ol>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🗂️</span>Classifications of annuities</h3>
+    <p>Each classification is a paired contrast — answers to those six questions.</p>
+    <div class="tbl-scroll"><table>
+      <caption>Annuity classifications (paired contrasts)</caption>
+      <thead><tr><th>Classification axis</th><th>One side</th><th>The other side</th></tr></thead>
+      <tbody>
+        <tr><th>Premium payment</th><td>Single premium</td><td>Fixed or flexible premium</td></tr>
+        <tr><th>When benefits begin</th><td>Immediate</td><td>Deferred</td></tr>
+        <tr><th>Whose life</th><td>Individual life</td><td>Joint &amp; last survivor</td></tr>
+        <tr><th>Payout duration</th><td>Straight / pure life</td><td>Period certain or refund</td></tr>
+        <tr><th>Payout structure</th><td>Fixed-dollar payout</td><td>Variable payout</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout tip"><span class="lab">Watch the wording</span>"Fixed" and "variable" refer <b>only</b> to the underlying investments. <b>All deferred annuities</b> begin payments at some point in the future — only an <b>immediate</b> annuity pays shortly after purchase.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">📈</span>Accumulation phase vs. payout phase</h3>
+    <p>An annuity has two lives: money goes <b>in and grows tax-deferred</b> (accumulation), then is converted to a stream of <b>income</b> (annuitization / payout).</p>
+    <figure>
+      <svg viewBox="0 0 460 180" role="img" aria-label="Timeline: accumulation phase with tax-deferred growth, then annuitization into an income stream">
+        <line x1="30" y1="120" x2="430" y2="120" stroke="#d8c6aa" stroke-width="2"/>
+        <!-- accumulation growth curve -->
+        <path d="M30,120 C120,120 190,90 240,54" fill="none" stroke="#1f4d3a" stroke-width="3" stroke-linecap="round"/>
+        <text x="60" y="46" font-size="11" font-weight="700" fill="#1f4d3a">Accumulation —</text>
+        <text x="60" y="60" font-size="11" font-weight="700" fill="#1f4d3a">tax-deferred growth</text>
+        <!-- annuitization marker -->
+        <line x1="240" y1="40" x2="240" y2="130" stroke="#c58a2e" stroke-width="1.5" stroke-dasharray="3 4"/>
+        <text x="240" y="30" font-size="10.5" font-weight="800" fill="#b8860b" text-anchor="middle">Annuitization</text>
+        <!-- payout income bars -->
+        <g fill="#d0613a">
+          <rect x="266" y="86" width="14" height="34" rx="2"/>
+          <rect x="292" y="86" width="14" height="34" rx="2"/>
+          <rect x="318" y="86" width="14" height="34" rx="2"/>
+          <rect x="344" y="86" width="14" height="34" rx="2"/>
+          <rect x="370" y="86" width="14" height="34" rx="2"/>
+          <rect x="396" y="86" width="14" height="34" rx="2"/>
+        </g>
+        <text x="338" y="74" font-size="11" font-weight="700" fill="#b34d2a" text-anchor="middle">Payout — income stream</text>
+        <text x="30" y="140" font-size="10" fill="#897357">Deposit</text>
+        <text x="392" y="140" font-size="10" fill="#897357">For life →</text>
+      </svg>
+      <figcaption>Deposits grow tax-deferred; at annuitization the contract flips to paying income, which can last for life.</figcaption>
+    </figure>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🎛️</span>Annuity investment options &amp; their riders</h3>
+    <p>The three types differ in what they credit — and the <b>variable</b> family carries the guarantee riders the exam loves.</p>
+    <div class="tbl-scroll"><table>
+      <caption>Investment options: fixed vs. variable vs. equity-indexed</caption>
+      <thead><tr><th>Type</th><th>How value grows</th><th>Riders / features</th></tr></thead>
+      <tbody>
+        <tr><th>Fixed</th><td>Guaranteed stated rate</td><td>Predictable, insurer bears risk</td></tr>
+        <tr><th>Variable</th><td>Subaccounts (owner bears market risk)</td><td class="y">GMIB · GMWB · GMAB · GLWB</td></tr>
+        <tr><th>Equity-indexed</th><td>Fixed value safety net + index-linked upside</td><td>Participation rate, cap, floor 0%</td></tr>
+      </tbody>
+    </table></div>
+    <div class="triad" style="margin-top:12px">
+      <div class="opt"><div class="t">GMIB</div><div class="d">Guaranteed minimum <b>income</b> benefit.</div></div>
+      <div class="opt"><div class="t">GMWB</div><div class="d">Guaranteed minimum <b>withdrawal</b> benefit.</div></div>
+      <div class="opt"><div class="t">GMAB</div><div class="d">Guaranteed minimum <b>accumulation</b> benefit.</div></div>
+      <div class="opt"><div class="t">GLWB</div><div class="d">Guaranteed <b>lifetime</b> withdrawal benefit.</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">⏳</span>Qualified Longevity Annuity Contracts (QLACs)</h3>
+    <p>A <b>QLAC</b> is a <b>deferred</b> annuity funded with proceeds from a <b>qualified</b> account (IRA, 401(k)). It provides guaranteed income later in life to manage longevity risk.</p>
+    <div class="tiles">
+      <div class="tile"><div class="v">$210,000</div><div class="k">Max allowed investment (2025, indexed)</div></div>
+      <div class="tile"><div class="v">Age 85</div><div class="k">RMDs can be deferred to (vs. normal age 73)</div></div>
+      <div class="tile"><div class="v">90 days</div><div class="k">Free-look period allowed</div></div>
+    </div>
+    <ul>
+      <li>Clarified <b>spousal survivor rights</b></li>
+      <li>Married couples may continue joint lifetimes even <b>after divorce</b></li>
+    </ul>
+    <div class="callout trap"><span class="lab">Exam trap</span>QLACs <b>do</b> have contribution limits ($210,000 for 2025) and delay income to a later age (e.g., 80–85). They are <b>not</b> a liquidity source and do <b>not</b> guarantee higher returns — that's their whole design against longevity risk.</div>
+  </div>
+
+  <details class="quiz">
+    <summary><span class="qlab">QLAC</span><div>Maria, 67, worries about outliving her savings and is considering a QLAC for guaranteed income starting at age 80. What should she do to decide if a QLAC fits?</div><div class="opts">A. Count on penalty-free early withdrawals for liquidity · B. Evaluate the max she can contribute — QLACs have contribution limits &amp; pay income later · C. Choose it for guaranteed higher returns · D. Avoid it if she expects a long life</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — evaluate the contribution limit &amp; payout timing</div><p>QLACs are capped at $210,000 (2025) and intentionally delay income to a later age (80 or 85) to hedge longevity risk. The other answers misrepresent liquidity, payout duration, or returns.</p></div>
+  </details>
+
+  <!-- ============ LO 4.1.2 — Distribution options & taxation ============ -->
+  <div class="sect"><div class="n">2</div><div><div class="lo">Learning Objective 4.1.2</div><h2>Distribution options &amp; taxation</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">💵</span>Annuitization (payout) options</h3>
+    <p>How long — and to whom — the income is paid:</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Straight life income</div><div class="d">Largest payment; stops at the annuitant's death (nothing to heirs).</div></div>
+      <div class="opt"><div class="t">Life with period certain</div><div class="d">Pays for life, but at least a guaranteed number of years to a beneficiary.</div></div>
+      <div class="opt"><div class="t">Life with refund</div><div class="d">Pays for life; any unrecovered premium is refunded.</div></div>
+      <div class="opt"><div class="t">Joint &amp; last survivor</div><div class="d">Pays until the second of two lives dies.</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🔗</span>Equity-Indexed Annuities (EIAs)</h3>
+    <p>A <b>fixed annuity</b> with <b>two cash-value accounts</b>: a <b>guaranteed interest account</b> and a <b>variable indexed account</b>.</p>
+    <ul>
+      <li>Market-linked growth with <b>principal protection</b></li>
+      <li>Guaranteed minimum interest during negative market returns</li>
+      <li>Upside tied to an external index (e.g., S&amp;P 500), limited by <b>caps, spreads, and participation rates</b></li>
+      <li>Similar interest-crediting methods as EIUL policies</li>
+    </ul>
+    <div class="callout tip"><span class="lab">Indexed mechanics</span><b>Participation rate</b> = the share of index gain credited · <b>Cap</b> = the ceiling on credited gain · <b>Floor</b> = <b>0%</b> in a down market (principal protected).</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🛡️</span>Registered Index-Linked Annuities (RILAs) — buffer vs. floor</h3>
+    <p>RILAs resemble EIAs (variable indexed account, similar crediting, caps &amp; participation) but have <b>no guaranteed minimum interest account</b>. Instead they offer a <b>buffer</b> or a <b>floor</b>.</p>
+    <figure>
+      <svg viewBox="0 0 460 210" role="img" aria-label="RILA buffer versus floor: a 12% market drop with a 10% buffer leaves a 2% loss; a 20% market drop with a 10% floor caps loss at 10%">
+        <!-- baseline -->
+        <line x1="30" y1="40" x2="430" y2="40" stroke="#d8c6aa" stroke-width="1.5" stroke-dasharray="3 4"/>
+        <text x="34" y="34" font-size="10" fill="#897357">0% (no loss)</text>
+        <!-- BUFFER group -->
+        <text x="115" y="196" font-size="11.5" font-weight="800" fill="#1f4d3a" text-anchor="middle">10% BUFFER</text>
+        <!-- market drop 12% -->
+        <rect x="60" y="40" width="42" height="120" rx="3" fill="#b34d2a" fill-opacity=".85"/>
+        <text x="81" y="176" font-size="9.5" fill="#5b4b3a" text-anchor="middle">Mkt −12%</text>
+        <!-- investor loss 2% -->
+        <rect x="128" y="40" width="42" height="20" rx="3" fill="#1f4d3a"/>
+        <text x="149" y="176" font-size="9.5" fill="#5b4b3a" text-anchor="middle">You −2%</text>
+        <text x="149" y="76" font-size="10" font-weight="800" fill="#1f4d3a" text-anchor="middle">−2%</text>
+        <!-- divider -->
+        <line x1="235" y1="30" x2="235" y2="185" stroke="#e6d8c2" stroke-width="1.5"/>
+        <!-- FLOOR group -->
+        <text x="340" y="196" font-size="11.5" font-weight="800" fill="#b34d2a" text-anchor="middle">10% FLOOR</text>
+        <!-- market drop 20% -->
+        <rect x="285" y="40" width="42" height="140" rx="3" fill="#b34d2a" fill-opacity=".85"/>
+        <text x="306" y="176" font-size="9.5" fill="#5b4b3a" text-anchor="middle">Mkt −20%</text>
+        <!-- investor loss capped 10% -->
+        <rect x="353" y="40" width="42" height="70" rx="3" fill="#d0613a"/>
+        <text x="374" y="176" font-size="9.5" fill="#5b4b3a" text-anchor="middle">You −10%</text>
+        <text x="374" y="126" font-size="10" font-weight="800" fill="#b34d2a" text-anchor="middle">−10% max</text>
+      </svg>
+      <div class="legend">
+        <span><i style="background:#b34d2a"></i>Market decline</span>
+        <span><i style="background:#1f4d3a"></i>Buffer — you absorb the excess</span>
+        <span><i style="background:#d0613a"></i>Floor — loss capped</span>
+      </div>
+      <figcaption>Buffer: 10% buffer + 12% drop → the buffer absorbs the first 10%, you take only −2%. Floor: 10% floor + 20% drop → you lose no more than the 10% floor.</figcaption>
+    </figure>
+    <div class="callout tip"><span class="lab">Buffer vs. floor</span>A <b>buffer</b> absorbs the <b>first</b> X% of loss (you take anything beyond it). A <b>floor</b> caps your <b>maximum</b> loss at X% (the insurer absorbs anything worse). Higher buffers = more protection but usually lower upside.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">⚖️</span>RILA vs. EIA — key differences</h3>
+    <div class="tbl-scroll"><table>
+      <caption>RILA vs. Equity-Indexed Annuity</caption>
+      <thead><tr><th>Feature</th><th>RILA</th><th>EIA</th></tr></thead>
+      <tbody>
+        <tr><th>Risk</th><td class="n">Subject to market risk; may lose value</td><td class="y">Guaranteed return (normally 0%–3%); avoids directly investing in equities via index call options</td></tr>
+        <tr><th>Regulatory authority</th><td>SEC</td><td>State insurance commissioner</td></tr>
+        <tr><th>Market participation</th><td class="y">Higher upside</td><td>Limited upside due to caps</td></tr>
+        <tr><th>Growth potential</th><td>Higher (shared risk)</td><td>Lower (no risk exposure)</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout tip"><span class="lab">One-line summary</span>RILAs = potential for <b>higher gains with some risk exposure</b>. EIAs = <b>more conservative</b>, guaranteed loss protection but capped upside.</div>
+  </div>
+
+  <details class="quiz">
+    <summary><span class="qlab">RILA</span><div>Lena, 55, wants market growth without risking her whole nest egg and is considering a RILA. What should she do to balance growth and downside protection?</div><div class="opts">A. Chase the highest potential return, ignore downside · B. Compare buffer vs. floor options and the cap on gains · C. Insist on zero losses in any market · D. Pick the shortest contract term</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — compare the buffer/floor options and the cap on gains</div><p>The buffer or floor directly determines how much loss she absorbs; the cap is the key upside trade-off. Evaluating both is how a RILA is matched to a risk tolerance.</p></div>
+  </details>
+
+  <div class="slide">
+    <h3><span class="ic">🧾</span>Annuity income taxation — the map</h3>
+    <p>Two ways money comes out, taxed differently:</p>
+    <div class="tbl-scroll"><table>
+      <caption>How annuity distributions are taxed</caption>
+      <thead><tr><th>Distribution type</th><th>Tax treatment</th></tr></thead>
+      <tbody>
+        <tr><th>Nonperiodic (lump sum)</th><td class="n">LIFO — earnings come out first and are fully taxable</td></tr>
+        <tr><th>Annuitized (fixed or variable)</th><td>Each payment split: return of basis (excluded) + earnings (taxable), via the <b>exclusion ratio</b></td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">Exam trap</span>A <b>lump-sum / withdrawal</b> from a nonqualified annuity is <b>LIFO</b> — gains first, so it's taxed until you're down to basis. Annuitizing spreads basis across payments instead.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">➗</span>The exclusion ratio</h3>
+    <p>For a fixed annuity, part of every payment is a tax-free return of your investment; the rest is taxable earnings.</p>
+    <div class="calc">
+      <h4>Exclusion ratio = Investment in the contract ÷ Expected return</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Numerator</b> = investment in the contract (basis).<br><code>Jimmy's basis = $400,000</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Denominator</b> = expected return (payment × payments over life expectancy).<br><code>25 yrs × 12 mo × $2,000 = $600,000</code></div></div>
+      <div class="step"><div class="sn">3</div><div class="sb"><b>Exclusion ratio</b> = basis ÷ expected return.<br><code>$400,000 ÷ $600,000 = 0.6667</code></div></div>
+      <div class="step"><div class="sn">4</div><div class="sb"><b>Excluded per year</b> = ratio × annual payments.<br><code>0.6667 × (12 × $2,000 = $24,000) = $16,000 excluded</code></div></div>
+      <div class="res">Excluded ≈ $16,000 · Taxable ordinary income = $24,000 − $16,000 = $8,000 / yr</div>
+    </div>
+    <div class="callout trap"><span class="lab">After basis is recovered</span>Once total life expectancy is reached, <b>basis is fully recovered</b> — any payments <b>beyond projected life expectancy are fully taxable</b>. If the annuitant <b>dies before</b> recovering basis, the unrecovered basis is deductible.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🚜</span>Inherited annuities &amp; 1035 exchanges</h3>
+    <ul>
+      <li>An inherited annuity <b>not yet annuitized</b> gets <b>NO step-up in basis</b> at death.</li>
+      <li><b>Spousal continuation</b> is possible if the spouse is the <b>sole</b> beneficiary.</li>
+      <li>A <b>non-spouse</b> beneficiary is subject to the <b>10-year rule</b>.</li>
+      <li>Tax impact can sometimes be mitigated via <b>annuitization</b> or a <b>§1035 exchange</b>.</li>
+      <li>Roth annuities (funded with Roth IRAs) can grow <b>tax-free</b> — less common than traditional.</li>
+    </ul>
+    <div class="callout trap"><span class="lab">Exam trap</span>Unlike appreciated stock, an inherited <b>nonqualified annuity gets NO step-up in basis</b> — the built-in gain stays taxable to the beneficiary. Non-spouse heirs face the 10-year rule.</div>
+  </div>
+
+  <details class="quiz">
+    <summary><span class="qlab">Exclusion ratio</span><div>Ralph, 63, used $700,000 to buy a nonqualified fixed annuity paying $62,000/yr for life; his life expectancy is 25 years. How much of each annual payment is <b>taxable</b>?</div><div class="opts">A. $0 · B. $28,000 · C. $34,000 · D. $62,000</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — $34,000 taxable</div><p>Expected return = $62,000 × 25 = $1,550,000. Exclusion ratio = $700,000 ÷ $1,550,000 = 0.4516. Excluded = 0.4516 × $62,000 = $28,000. Taxable = $62,000 − $28,000 = <b>$34,000</b>.</p></div>
+  </details>
+
+  <!-- ============ LO 4.1.3 — Suitability ============ -->
+  <div class="sect"><div class="n">3</div><div><div class="lo">Learning Objective 4.1.3</div><h2>Suitability, risks &amp; regulation</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">✅</span>The suitability standard</h3>
+    <p>Annuities pay high commissions, which create strong incentives and potential conflicts. Poor disclosures and widespread violations mean recommendations must be handled with care.</p>
+    <ul>
+      <li><b>Suitability</b> = aligning the annuity with the client's goals and risk tolerance</li>
+      <li>Per <b>FINRA</b>, suitability is whether a product/transaction is <b>appropriate for the individual's specific financial goals, risk tolerance, and overall situation</b></li>
+      <li>A signed disclosure helps but does not, by itself, ensure protection</li>
+    </ul>
+    <div class="callout tip"><span class="lab">FINRA Rule 2111</span>Cost must be <b>considered</b> — but the rule does <b>not</b> require recommending the lowest-cost option.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">⚠️</span>The subtle risks clients miss</h3>
+    <p>Guarantees make annuities <i>feel</i> less risky than the stock market — partly true, but they carry quieter risks:</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Inflation risk</div><div class="d">Fixed payments lose purchasing power over time.</div></div>
+      <div class="opt"><div class="t">Opportunity cost</div><div class="d">Locked-up dollars can't chase higher returns elsewhere.</div></div>
+      <div class="opt"><div class="t">Insolvency risk</div><div class="d">The guarantee is only as strong as the insurer.</div></div>
+      <div class="opt"><div class="t">Mortality risk</div><div class="d">Dying early can forfeit unrecovered value (depending on payout option).</div></div>
+    </div>
+    <div class="callout tip"><span class="lab">Longevity example</span>Peter &amp; Mary Jane ($225k nest egg) chose a straight-life joint-and-survivor immediate annuity with a 3% COLA rider paying $1,200/mo instead of drawing $1,787/mo (which would run out in 19 years). Both reached age 96 — with COLA, the payment had grown to <b>$2,909/mo</b>, and it lasts indefinitely.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">💧</span>Liquidity &amp; time horizon</h3>
+    <ul>
+      <li><b>Limited liquidity</b> — surrender charges and tax rules; some exceptions (free withdrawals, health-related waivers)</li>
+      <li><b>C-share annuities</b> allow fee-free withdrawals but carry higher ongoing costs</li>
+      <li><b>Annuitization is irreversible</b> — an opportunity-cost risk, though it also discourages impulsive behavior</li>
+      <li>Long-term products: benefits grow over time and are based on life expectancy</li>
+      <li>Optional features like <b>COLA riders</b> add more value the longer they're held</li>
+    </ul>
+    <div class="tiles">
+      <div class="tile"><div class="v">5–10 yrs</div><div class="k">Typical surrender-charge period</div></div>
+      <div class="tile"><div class="v">10–25%</div><div class="k">Early-withdrawal surrender charge range</div></div>
+      <div class="tile"><div class="v">Age 59½</div><div class="k">IRS 10% penalty applies before this age</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🏛️</span>Regulatory standards</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Who governs annuity recommendations</caption>
+      <thead><tr><th>Standard</th><th>What it requires</th></tr></thead>
+      <tbody>
+        <tr><th>Reg BI</th><td>Applies to <b>variable</b> annuity transactions by broker-dealers — a "best interest" standard. <b>Does NOT apply to fixed annuities.</b></td></tr>
+        <tr><th>CFP® Code of Ethics</th><td>Holds practitioners to a <b>fiduciary</b> standard — loyalty, conflict disclosure, informed consent, competence.</td></tr>
+        <tr><th>SEC &amp; FINRA</th><td>Enforce through fines — e.g., <b>$25M</b> (FINRA, 2022), <b>$50M</b> (SEC, 2022), <b>$97M</b> (SEC, 2024).</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">Exam trap</span><b>Reg BI does NOT cover fixed annuities</b> — only variable annuities sold by broker-dealers. Fixed annuities are regulated at the state insurance level.</div>
+  </div>
+
+  <!-- ============ Quiz round-up ============ -->
+  <div class="sect"><div class="n">?</div><div><div class="lo">Check yourself</div><h2>More Kaplan questions from this module</h2></div></div>
+
+  <details class="quiz">
+    <summary><span class="qlab">Immediate vs. deferred</span><div>Which of these annuities allows payments to the policyholder to begin <b>shortly after purchase</b>?</div><div class="opts">A. Variable, flexible installment, immediate annuity · B. Single premium immediate annuity · C. Single premium, variable deferred with some fixed subaccounts · D. Fixed variable annuity</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — Single premium immediate annuity</div><p>"Flexible premium" and "immediate annuity" mixed together aren't real single types; "variable"/"fixed" refer only to the underlying investments; and <b>all deferred annuities</b> pay at some future point — so only the immediate annuity begins payments shortly after purchase.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Suitability</span><div>According to FINRA, the <b>suitability standard</b> refers to:</div><div class="opts">A. Whether a product/transaction is appropriate for the person's goals, risk tolerance &amp; situation · B. Whether the client signed all disclosure forms · C. Recommending only the lowest-cost option · D. Matching investments to the adviser's own preferences</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ A — appropriate for the client's goals, risk tolerance &amp; situation</div><p>A signed disclosure helps but doesn't ensure protection in arbitration; FINRA Rule 2111 requires cost to be considered but not that you pick the cheapest option.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Core benefit</span><div>The <b>preeminent</b> feature offered by annuities is:</div><div class="opts">A. Market risk protection · B. Longevity risk protection · C. Creditor protection · D. Death benefit protection</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — Longevity risk protection</div><p>Variable annuities can lose value like stocks/ETFs; annuities typically offer limited or no creditor protection (state-dependent); and a death benefit, if any, is not universally guaranteed. Their standout benefit is guaranteed lifetime income.</p></div>
+  </details>
+
+  <div class="foot">
+    Visual deck rebuilt from the College for Financial Planning® (Kaplan) FP512 Module 4 — Annuities course slides.<br>
+    Dollar limits (e.g., the $210,000 QLAC cap) are 2025 indexed figures — verify against current course materials before the exam.
+  </div>
+
+</div>
+
+<button id="tgl" aria-label="Toggle dark mode">🌙 Theme</button>
+<script>
+/* Progress bar */
+var prog=document.getElementById('prog');
+addEventListener('scroll',function(){
+  var h=document.documentElement,b=document.body;
+  var st=h.scrollTop||b.scrollTop, sh=(h.scrollHeight||b.scrollHeight)-h.clientHeight;
+  prog.style.width=(sh>0?(st/sh*100):0)+'%';
+},{passive:true});
+/* Theme — synced with the app via localStorage cfpTheme */
+var root=document.documentElement;
+function applyTheme(t){root.setAttribute('data-theme',t);}
+try{
+  var saved=localStorage.getItem('cfpTheme');
+  if(saved){applyTheme(saved);}
+  else if(matchMedia('(prefers-color-scheme:dark)').matches){applyTheme('dark');}
+}catch(e){}
+document.getElementById('tgl').addEventListener('click',function(){
+  var t=root.getAttribute('data-theme')==='dark'?'light':'dark';
+  applyTheme(t);try{localStorage.setItem('cfpTheme',t);}catch(e){}
+});
+</script>
+</body>
+</html>
