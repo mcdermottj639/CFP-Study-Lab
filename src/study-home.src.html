@@ -1865,6 +1865,7 @@ function runCalc(mod){
 /* ===== EXAM STRATEGY & TRAPS ===== */
 const TIPS=[
  {t:'Format',s:'170 questions, two 3-hour sessions in one day, with stand-alone items AND case-study sets. ~250–300 study hours recommended.'},
+ {t:'Use the official practice exam',s:'Recent test-takers rate the CFP Board\'s own practice exam (on the CFP Board website, cfp.net) as the closest match to the real exam\'s style and format — closer than third-party banks. Take it timed as your primary dress rehearsal.'},
  {t:'Apply, don\'t memorize',s:'Questions test application to client scenarios, not recall. Read each fact pattern asking "what should the planner DO?" — translate concepts into actions.'},
  {t:'Education funding trap',s:'In Step 2 of college funding, solve for PRESENT VALUE (lump sum needed Day 1), not future value. Use BEG mode with the inflation-adjusted rate. This is one of the most-missed topics.'},
  {t:'Answer your way first',s:'Read the full stem, form your answer BEFORE reading the options, then eliminate wrong choices. The options are designed to distract.'},
@@ -1911,10 +1912,10 @@ function runKeys(){
 // expectations so study effort maps to how the real exam actually behaves.
 const EXPECT=[
   {h:'The exam comes in three flavors',b:'Candidates report the exam leans toward one of three forms — a <b>Theory</b> version (mostly concept questions), a <b>Math</b> version (several multi-step calculations), or a <b>Case-study</b> version. You don’t choose which you get, so prepare for all three. Drill each with the Study tab’s new <b>Exam-version simulators</b>.'},
+  {h:'Take the CFP Board’s own practice exam',b:'This is the single most important tip from recent test-takers: the <b>official CFP Board practice exam</b> — on the CFP Board website (<b>cfp.net</b>, in the candidate/exam resources) — was the <b>most accurate representation of the real exam’s style and format</b>, closer than any third-party question bank. Take it under timed conditions as your primary dress rehearsal, then use this app’s scored <b>Exam</b> modes to shore up the weak spots it reveals.'},
   {h:'It’s a "best answer" test, not a "right answer" test',b:'On the theory-heavy form, most questions come down to <b>one or two very plausible answers</b>. The skill being tested is elimination — knowing why the tempting distractor is wrong. Use the <b>"Why the other answers are wrong"</b> notes that now appear under each explanation.'},
   {h:'Expect only a couple of heavy calculations',b:'A theory-leaning sitting may have as few as <b>two</b> complex multi-step calculator problems and <b>one</b> case study. Know your calculations cold, but don’t assume the whole exam is math.'},
-  {h:'You will study topics that never appear',b:'The blueprint is broad and no single sitting covers all of it — several topics you spend hours on may not show up even once. That’s expected. Study to the <b>blueprint weights</b> (see the domain chart on the Dashboard) rather than trying to master every niche equally.'},
-  {h:'Mirror the real format when you practice',b:'Test-takers found the <b>CFP Board’s own practice exam</b> the most accurate representation of the real style and format. Treat scored, answer-all-then-review runs (the Exam modes here) as your primary rehearsal, not just instant-feedback quizzing.'}
+  {h:'You will study topics that never appear',b:'The blueprint is broad and no single sitting covers all of it — several topics you spend hours on may not show up even once. That’s expected. Study to the <b>blueprint weights</b> (see the domain chart on the Dashboard) rather than trying to master every niche equally.'}
 ];
 function runExpectations(){
   var items=EXPECT.map(function(x){return '<div class="ck-trow" style="margin:10px 0"><b>'+x.h+'</b><div style="margin-top:3px;line-height:1.5">'+x.b+'</div></div>';}).join('');
