@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FP512 · Module 3 — Life Insurance (Visual Deck)</title>
+<style>
+/* ---- Dancing Script title (vendored, offline) ---- */
+@font-face{font-family:'Dancing Script';src:url('../vendor/fonts/dancing-script-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap;}
+
+:root{
+  --canvas:#f4ecdf; --card:#fffdf8; --card2:#faf3e6;
+  --ink:#2c2118; --ink2:#5b4b3a; --muted:#897357;
+  --line:#e6d8c2; --line2:#d8c6aa;
+  --terra:#d0613a; --terra-d:#b34d2a;
+  --green:#1f4d3a; --green-l:#2f7355;
+  --gold:#c58a2e; --sky:#3a6ea5;
+  --trap:#b34d2a; --trap-bg:#fbe9e1; --tip:#2f7355; --tip-bg:#e6f2ea;
+  --key-bg:#efe4d0;
+  --radius:18px; --shadow:0 8px 26px -14px rgba(60,40,20,.55);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--canvas);}
+body{font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;color:var(--ink);-webkit-text-size-adjust:100%;}
+
+/* ---- App-synced dark mode: filter-invert the content wrapper (matches readers) ---- */
+html[data-theme="dark"]{background:#17120e;}
+html[data-theme="dark"] body{background:#17120e;}
+html[data-theme="dark"] #rdrWrap{filter:invert(.92) hue-rotate(180deg);}
+html[data-theme="dark"] #rdrWrap svg,
+html[data-theme="dark"] #rdrWrap img,
+html[data-theme="dark"] #rdrWrap canvas{filter:invert(1) hue-rotate(180deg);}
+
+#rdrWrap{max-width:820px;margin:0 auto;padding:18px 15px 90px;}
+
+/* ---- Header ---- */
+.deck-head{padding:26px 20px 22px;border-radius:var(--radius);color:#fff;
+  background:linear-gradient(135deg,#1f4d3a 0%,#2f7355 55%,#d0613a 160%);
+  box-shadow:var(--shadow);position:relative;overflow:hidden;}
+.deck-head .eyebrow{font:700 12px/1 system-ui;letter-spacing:.16em;text-transform:uppercase;opacity:.85;}
+.deck-head h1{font-family:'Dancing Script',cursive;font-size:clamp(34px,9vw,52px);margin:.15em 0 .1em;line-height:1;}
+.deck-head .sub{font-size:15px;opacity:.95;max-width:46ch;}
+.deck-head .pillrow{margin-top:14px;display:flex;flex-wrap:wrap;gap:7px;}
+.deck-head .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+  border-radius:999px;padding:5px 11px;font:600 12px/1 system-ui;}
+
+/* ---- Section divider ---- */
+.sect{margin:34px 2px 14px;display:flex;align-items:center;gap:12px;}
+.sect .n{flex:none;width:38px;height:38px;border-radius:11px;background:var(--green);color:#fff;
+  font:800 15px/38px system-ui;text-align:center;box-shadow:var(--shadow);}
+.sect h2{font-size:19px;margin:0;color:var(--green);letter-spacing:.01em;}
+.sect .lo{font:600 11px/1 system-ui;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
+
+/* ---- Slide card ---- */
+.slide{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 19px;margin:13px 0;box-shadow:var(--shadow);}
+.slide h3{margin:0 0 8px;font-size:18px;color:var(--ink);display:flex;gap:9px;align-items:baseline;}
+.slide h3 .ic{font-size:19px;}
+.slide p{margin:8px 0;color:var(--ink2);}
+.slide ul{margin:9px 0;padding-left:1.15em;}
+.slide li{margin:5px 0;color:var(--ink2);}
+.lead{font-size:16.5px;color:var(--ink)!important;}
+
+/* ---- Stat tiles ---- */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:11px;margin:14px 0 4px;}
+.tile{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:13px 14px;}
+.tile .v{font:800 24px/1.05 system-ui;color:var(--terra-d);letter-spacing:-.01em;}
+.tile .k{font-size:12.5px;color:var(--ink2);margin-top:5px;}
+
+/* ---- Callouts ---- */
+.callout{border-radius:13px;padding:12px 14px 12px 15px;margin:13px 0;border-left:5px solid;font-size:14.5px;}
+.callout.trap{background:var(--trap-bg);border-color:var(--trap);}
+.callout.tip{background:var(--tip-bg);border-color:var(--tip);}
+.callout b{color:var(--ink);}
+.callout .lab{display:block;font:800 11px/1 system-ui;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;}
+.callout.trap .lab{color:var(--trap);}
+.callout.tip .lab{color:var(--tip);}
+
+/* ---- Tables ---- */
+.tbl-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0 4px;
+  border:1px solid var(--line);border-radius:13px;}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:460px;}
+caption{caption-side:top;text-align:left;font:700 13px/1.4 system-ui;color:var(--muted);padding:2px 4px 9px;}
+th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
+thead th{background:var(--green);color:#fff;font-weight:700;font-size:12.5px;position:sticky;top:0;}
+tbody th{background:var(--card2);color:var(--ink);font-weight:700;white-space:nowrap;}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:none;}
+td.y{color:var(--tip);font-weight:700;} td.n{color:var(--trap);font-weight:700;}
+
+/* ---- Chart figure ---- */
+figure{margin:14px 0 4px;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:14px 14px 10px;}
+figure svg{width:100%;height:auto;display:block;}
+figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center;}
+.legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:9px;font:600 12.5px/1 system-ui;}
+.legend span{display:inline-flex;align-items:center;gap:6px;color:var(--ink2);}
+.legend i{width:14px;height:3px;border-radius:2px;display:inline-block;}
+
+/* ---- Three-up option groups ---- */
+.triad{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;margin:13px 0 4px;}
+.opt{background:var(--card2);border:1px solid var(--line);border-radius:13px;padding:12px 13px;}
+.opt .t{font:800 13.5px/1.2 system-ui;color:var(--green);margin-bottom:5px;}
+.opt .d{font-size:13px;color:var(--ink2);}
+
+/* ---- Worked example ---- */
+.calc{background:#1c2b24;color:#e9f3ee;border-radius:14px;padding:16px 16px 12px;margin:14px 0 4px;}
+.calc h4{margin:0 0 10px;color:#7fd3ac;font-size:14.5px;}
+.calc .step{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-top:1px solid rgba(255,255,255,.12);}
+.calc .step:first-of-type{border-top:none;}
+.calc .sn{flex:none;width:24px;height:24px;border-radius:8px;background:#2f7355;color:#fff;font:800 12px/24px system-ui;text-align:center;}
+.calc .sb{font-size:13.5px;}
+.calc .sb b{color:#fff;}
+.calc code{font:600 12.5px/1.5 ui-monospace,Menlo,monospace;color:#ffd9a8;background:rgba(255,255,255,.07);
+  padding:1px 6px;border-radius:6px;display:inline-block;margin-top:3px;}
+.calc .res{margin-top:11px;background:#d0613a;color:#fff;border-radius:10px;padding:10px 13px;font:700 15px/1.2 system-ui;}
+
+/* ---- Quiz (tap to reveal) ---- */
+.quiz{background:var(--card);border:1.5px solid var(--terra);border-radius:14px;padding:0;margin:13px 0;overflow:hidden;box-shadow:var(--shadow);}
+.quiz>summary{list-style:none;cursor:pointer;padding:15px 16px;font-size:15px;color:var(--ink);position:relative;}
+.quiz>summary::-webkit-details-marker{display:none;}
+.quiz>summary .qlab{display:inline-block;font:800 10.5px/1 system-ui;letter-spacing:.12em;color:var(--terra-d);
+  background:var(--trap-bg);border-radius:6px;padding:4px 7px;margin-bottom:8px;text-transform:uppercase;}
+.quiz>summary .opts{margin-top:9px;font-size:13.5px;color:var(--ink2);}
+.quiz>summary .tap{margin-top:10px;font:700 12.5px/1 system-ui;color:var(--terra);}
+.quiz[open]>summary .tap{display:none;}
+.quiz .ans{padding:0 16px 15px;border-top:1px dashed var(--line2);margin-top:2px;}
+.quiz .ans .correct{font:800 14px/1.4 system-ui;color:var(--tip);margin:12px 0 6px;}
+.quiz .ans p{font-size:13.5px;color:var(--ink2);margin:6px 0 0;}
+
+.foot{margin-top:34px;padding:16px;border-radius:var(--radius);background:var(--card2);border:1px solid var(--line);
+  font-size:12.5px;color:var(--muted);text-align:center;}
+
+/* ---- Floating theme toggle (standalone preview; injection can replace) ---- */
+#tgl{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:9999;
+  background:var(--terra);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:999px;
+  padding:10px 15px;font:700 13px/1 system-ui;cursor:pointer;box-shadow:0 8px 22px -8px rgba(0,0,0,.55);}
+
+/* ---- Sticky progress ---- */
+#prog{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--green),var(--terra));z-index:9999;transition:width .1s;}
+
+@media(min-width:560px){.slide{padding:22px 24px;} #rdrWrap{padding:22px 20px 90px;}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<div id="rdrWrap">
+
+  <header class="deck-head">
+    <div class="eyebrow">FP512 · Risk, Insurance &amp; Benefits</div>
+    <h1>Life Insurance</h1>
+    <div class="sub">Module 3 at a glance — products, taxation, provisions, riders, and how to size &amp; place a policy. Built from the College for Financial Planning® (Kaplan) course deck.</div>
+    <div class="pillrow">
+      <span class="pill">🛡️ Term · Whole · UL · VUL · EIUL</span>
+      <span class="pill">🧮 Needs analysis</span>
+      <span class="pill">📄 MEC &amp; taxation</span>
+      <span class="pill">🔁 1035 exchange</span>
+    </div>
+  </header>
+
+  <!-- ============ LO 3.1 — Purpose & needs ============ -->
+  <div class="sect"><div class="n">1</div><div><div class="lo">Learning Objective 3.1</div><h2>Why life insurance — and what to assume</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🎯</span>The job of life insurance</h3>
+    <p class="lead">The purpose is to provide a <b>death benefit</b>. Common client goals:</p>
+    <ul>
+      <li>Pay off debt (mortgage, loans, cards)</li>
+      <li>Replace lost income</li>
+      <li>Fund college education costs</li>
+      <li>Cover final expenses</li>
+    </ul>
+    <div class="callout trap"><span class="lab">Exam trap</span><b>Final expenses</b> = funeral, last-illness costs, emergency fund, estate taxes. <b>Investment funds are NOT a final expense</b> — they're an asset.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">⚖️</span>Economic assumptions vs. client attributes</h3>
+    <p>A classic tested distinction. Only two inputs are <b>broad economic assumptions</b>; the rest describe the client.</p>
+    <div class="tbl-scroll"><table>
+      <caption>What must be assumed vs. what is a client fact</caption>
+      <thead><tr><th>Broad economic assumptions</th><th>Client attributes / inputs</th></tr></thead>
+      <tbody>
+        <tr><td class="y">Rate of return on investments</td><td>Risk tolerance</td></tr>
+        <tr><td class="y">Inflation rate for the period</td><td>Current resources available</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout tip"><span class="lab">Remember</span>Rate of return &amp; inflation are the two economic assumptions. Risk tolerance and current resources matter — but they're client attributes, not assumptions.</div>
+  </div>
+
+  <!-- ============ LO 3.2 — Product types ============ -->
+  <div class="sect"><div class="n">2</div><div><div class="lo">Learning Objective 3.2</div><h2>The product ladder</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">⏳</span>Term life — pure protection</h3>
+    <ul>
+      <li>Coverage for a <b>specific period</b>; level death benefit (unless decreasing term)</li>
+      <li>Typically <b>annually renewable</b> after the initial term</li>
+      <li><b>Convertible</b> to permanent; riders customize it</li>
+    </ul>
+    <figure>
+      <svg viewBox="0 0 460 190" role="img" aria-label="Level term keeps a flat death benefit; decreasing term declines over the term">
+        <!-- axes -->
+        <line x1="46" y1="20" x2="46" y2="150" stroke="#d8c6aa" stroke-width="1.5"/>
+        <line x1="46" y1="150" x2="430" y2="150" stroke="#d8c6aa" stroke-width="1.5"/>
+        <text x="8" y="30" font-size="10" fill="#897357">DB</text>
+        <text x="392" y="167" font-size="10" fill="#897357">Time →</text>
+        <!-- level term (flat) -->
+        <line x1="46" y1="46" x2="418" y2="46" stroke="#1f4d3a" stroke-width="3" stroke-linecap="round"/>
+        <text x="250" y="38" font-size="11" font-weight="700" fill="#1f4d3a">Level term — flat benefit</text>
+        <!-- decreasing term -->
+        <line x1="46" y1="70" x2="418" y2="138" stroke="#d0613a" stroke-width="3" stroke-linecap="round"/>
+        <text x="250" y="128" font-size="11" font-weight="700" fill="#b34d2a">Decreasing term</text>
+      </svg>
+      <figcaption>Two term shapes: a level death benefit vs. a benefit that declines (often paired to a mortgage balance).</figcaption>
+    </figure>
+    <div class="callout tip"><span class="lab">Application — "Darla"</span>Healthy now, family history of mid-life illness, little cash, wants a future permanent option with <b>no new medical exam</b> → <b>Convertible term</b>.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🏛️</span>Whole life — guarantees that don't change</h3>
+    <p>Permanent coverage for the insured's <b>whole life</b>, with three guarantees:</p>
+    <ul>
+      <li><b>Level premiums</b> — never increase</li>
+      <li><b>Level death benefit</b></li>
+      <li>Guaranteed <b>cash values</b> (tax-deferred growth; dividends can accelerate it)</li>
+    </ul>
+    <figure>
+      <svg viewBox="0 0 460 190" role="img" aria-label="Whole life: level premium line flat while cash value grows over time">
+        <line x1="46" y1="20" x2="46" y2="150" stroke="#d8c6aa" stroke-width="1.5"/>
+        <line x1="46" y1="150" x2="430" y2="150" stroke="#d8c6aa" stroke-width="1.5"/>
+        <!-- cash value growth area -->
+        <path d="M46,150 C160,150 300,120 418,54 L418,150 Z" fill="#2f7355" fill-opacity="0.18"/>
+        <path d="M46,150 C160,150 300,120 418,54" fill="none" stroke="#1f4d3a" stroke-width="3"/>
+        <text x="300" y="86" font-size="11" font-weight="700" fill="#1f4d3a">Cash value grows</text>
+        <!-- level premium -->
+        <line x1="46" y1="118" x2="418" y2="118" stroke="#d0613a" stroke-width="3" stroke-dasharray="2 5" stroke-linecap="round"/>
+        <text x="120" y="112" font-size="11" font-weight="700" fill="#b34d2a">Level premium (flat)</text>
+      </svg>
+      <figcaption>Premiums stay level while guaranteed cash value builds — the engine behind loans, nonforfeiture, and dividends.</figcaption>
+    </figure>
+    <p><b>Limited pay:</b> higher premiums for a set number of years, then paid-up — no more premium due.</p>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🎚️</span>Universal life — the unbundled cousin</h3>
+    <p>UL <b>unbundles</b> the pieces: cost of insurance, policy expenses, and interest are shown separately. Flexible premiums and an adjustable death benefit. A current and a guaranteed interest rate; may also be indexed.</p>
+    <figure>
+      <svg viewBox="0 0 460 210" role="img" aria-label="UL Option A level death benefit versus Option B increasing death benefit">
+        <!-- Option A -->
+        <text x="30" y="18" font-size="11.5" font-weight="800" fill="#1f4d3a">Option A — Level DB</text>
+        <rect x="30" y="26" width="180" height="70" rx="6" fill="#e6d8c2"/>
+        <path d="M30,96 L30,66 Q120,58 210,40 L210,96 Z" fill="#d0613a" fill-opacity=".8"/>
+        <rect x="30" y="26" width="180" height="70" rx="6" fill="none" stroke="#d8c6aa"/>
+        <text x="120" y="21" font-size="9" fill="#897357"> </text>
+        <text x="38" y="40" font-size="9.5" font-weight="700" fill="#5b4b3a">Net amount at risk ↓</text>
+        <text x="120" y="88" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">Cash value ↑</text>
+        <!-- Option B -->
+        <text x="250" y="18" font-size="11.5" font-weight="800" fill="#1f4d3a">Option B — Increasing DB</text>
+        <path d="M250,96 L250,60 Q340,52 430,26 L430,40 Q340,66 250,74 Z" fill="#e6d8c2"/>
+        <path d="M250,96 L250,74 Q340,66 430,40 L430,96 Z" fill="#d0613a" fill-opacity=".8"/>
+        <text x="258" y="52" font-size="9.5" font-weight="700" fill="#5b4b3a">Level net amt at risk</text>
+        <text x="340" y="90" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">Cash value ↑</text>
+        <text x="30" y="128" font-size="11" fill="#5b4b3a">Option A holds the <tspan font-weight="700">total</tspan> death benefit level (cash value rises, net amount at risk falls).</text>
+        <text x="30" y="146" font-size="11" fill="#5b4b3a">Option B pays <tspan font-weight="700">face + cash value</tspan>, so the total death benefit increases.</text>
+      </svg>
+      <figcaption>The two UL death-benefit designs — the exam loves the Option A vs. Option B distinction.</figcaption>
+    </figure>
+    <div class="callout trap"><span class="lab">Exam trap</span>UL does <b>NOT</b> lend itself to a compulsory savings program — flexible premiums let owners underpay, and it can become expensive term.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">📊</span>Variable, VUL &amp; EIUL — who bears the risk</h3>
+    <p><b>Variable life:</b> permanent, guaranteed death benefit, but cash value sits in <b>subaccounts</b> — the owner bears investment risk. <b>VUL</b> combines UL's flexibility with variable subaccounts. <b>EIUL</b> credits a minimum fixed rate in down markets plus limited index participation (with participation &amp; rate <b>caps</b>) in up markets.</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Subaccounts ≠ mutual funds</div><div class="d">Similar idea, different structure, fees &amp; performance; no need for internal tax efficiency.</div></div>
+      <div class="opt"><div class="t">EIUL two accounts</div><div class="d">Guaranteed interest account + variable indexed account.</div></div>
+      <div class="opt"><div class="t">EIUL crediting methods</div><div class="d">% change · ratchet/point-to-point · spread · high-water mark.</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧭</span>One table to compare them all</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Life insurance product comparison</caption>
+      <thead><tr><th>Type</th><th>Duration</th><th>Premium</th><th>Cash value</th><th>Investment risk</th></tr></thead>
+      <tbody>
+        <tr><th>Term</th><td>Set period</td><td>Level (in term)</td><td class="n">None</td><td>—</td></tr>
+        <tr><th>Whole life</th><td>Permanent</td><td>Level, fixed</td><td class="y">Guaranteed</td><td>Insurer</td></tr>
+        <tr><th>Universal (UL)</th><td>Permanent</td><td>Flexible</td><td class="y">Yes (interest)</td><td>Insurer*</td></tr>
+        <tr><th>Variable</th><td>Permanent</td><td>Level</td><td class="y">Yes (subaccts)</td><td class="n">Owner</td></tr>
+        <tr><th>VUL</th><td>Permanent</td><td>Flexible</td><td class="y">Yes (subaccts)</td><td class="n">Owner</td></tr>
+        <tr><th>EIUL</th><td>Permanent</td><td>Flexible</td><td class="y">Yes (indexed)</td><td>Shared (capped)</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:12.5px;color:var(--muted);margin-top:8px;">*UL bears interest-rate risk to the insurer down to the guaranteed rate; indexed UL shares upside subject to caps.</p>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">👥</span>Other policy types</h3>
+    <div class="triad">
+      <div class="opt"><div class="t">Adjustable life</div><div class="d">Reconfigure face, premium &amp; term over time.</div></div>
+      <div class="opt"><div class="t">Joint / first-to-die</div><div class="d">Pays on the first insured's death.</div></div>
+      <div class="opt"><div class="t">Second-to-die (survivorship)</div><div class="d">Pays at the <b>last</b> death — estate liquidity; cheaper than two policies.</div></div>
+      <div class="opt"><div class="t">Low-load life</div><div class="d">Reduced sales-load structure.</div></div>
+    </div>
+    <div class="callout tip"><span class="lab">Why second-to-die</span>Ideal for <b>estate planning</b>: liquidity for estate taxes at the second death, and it can work well when one insured is older / highly rated.</div>
+  </div>
+
+  <!-- ============ MEC & taxation ============ -->
+  <div class="sect"><div class="n">3</div><div><div class="lo">Learning Objective 3.2.5</div><h2>MEC &amp; how life insurance is taxed</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">📄</span>Modified Endowment Contract (MEC)</h3>
+    <p>A policy that's <b>overfunded</b> — fails the <b>7-pay test</b> (deposits in the first 7 years exceed 7 annual net level premiums).</p>
+    <div class="tiles">
+      <div class="tile"><div class="v">7-pay</div><div class="k">Test that triggers MEC status</div></div>
+      <div class="tile"><div class="v">LIFO</div><div class="k">Loans/withdrawals taxed gains-first</div></div>
+      <div class="tile"><div class="v">10%</div><div class="k">Penalty on gain before age 59½</div></div>
+    </div>
+    <p>The <b>death benefit keeps its normal tax status</b> — it's living access (loans/withdrawals) that's penalized.</p>
+    <div class="callout trap"><span class="lab">Which policies can become a MEC?</span><b>Whole life, UL, and VUL — NOT term.</b> Term has no cash-value/investment capacity, so it can never be a MEC.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧾</span>Taxation of life insurance — the grid</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Income-tax treatment by product / funding status</caption>
+      <thead><tr><th>Product</th><th>Cash-value growth</th><th>Death benefit</th><th>Surrender / withdrawals</th><th>Loans</th></tr></thead>
+      <tbody>
+        <tr><th>Term</th><td>N/A</td><td class="y">No income tax*</td><td>N/A</td><td>N/A</td></tr>
+        <tr><th>Non-MEC cash value<br><span style="font-weight:400;color:var(--muted)">(WL, UL, VUL, EIUL)</span></th><td class="y">Tax-deferred</td><td class="y">No income tax*</td><td>Tax on gains above basis</td><td class="y">No income tax</td></tr>
+        <tr><th>MEC cash value</th><td class="y">Tax-deferred</td><td class="y">No income tax*</td><td class="n">Tax on any gains (LIFO)</td><td class="n">Tax on any gains</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:12.5px;color:var(--muted);margin-top:8px;">*Death benefit is income-tax-free but may face <b>estate tax</b>. The MEC row differs from non-MEC only in <b>living access</b>: loans &amp; withdrawals become taxable (and pre-59½ penalized).</p>
+  </div>
+
+  <!-- ============ LO 3.3 — Provisions, dividends, riders ============ -->
+  <div class="sect"><div class="n">4</div><div><div class="lo">Learning Objective 3.3</div><h2>Provisions, options &amp; riders</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">📌</span>Common contractual provisions</h3>
+    <ul>
+      <li><b>Grace period</b> — time to pay a late premium before lapse</li>
+      <li><b>Incontestability clause</b> — insurer can't contest after a set period</li>
+      <li><b>Suicide clause</b> — exclusion window early in the policy</li>
+      <li><b>Reinstatement clause</b> — restore a lapsed policy under conditions</li>
+      <li><b>Misstatement of age/gender</b> — benefit adjusted to what the premium would have bought</li>
+    </ul>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🎯</span>Beneficiary designations</h3>
+    <div class="triad">
+      <div class="opt"><div class="t">Primary vs. contingent</div><div class="d">Primary is paid first; contingent (secondary) only if no primary survives.</div></div>
+      <div class="opt"><div class="t">Revocable vs. irrevocable</div><div class="d">Revocable can be changed anytime; irrevocable needs the beneficiary's consent.</div></div>
+      <div class="opt"><div class="t">No class limit</div><div class="d">There's no limit to the number of beneficiaries in a class.</div></div>
+    </div>
+    <div class="callout trap"><span class="lab">Exam trap</span><b>Most beneficiary designations are REVOCABLE</b> — only a small percentage are irrevocable. (Spouses are the most commonly named primary beneficiaries.)</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🔀</span>Three sets of options — don't mix them up</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Nonforfeiture vs. Dividend vs. Settlement options</caption>
+      <thead><tr><th>Nonforfeiture<br><span style="font-weight:400">(if you stop paying)</span></th><th>Dividend<br><span style="font-weight:400">(participating policies)</span></th><th>Settlement<br><span style="font-weight:400">(how the DB is paid out)</span></th></tr></thead>
+      <tbody>
+        <tr><td>Cash surrender value</td><td>Cash</td><td>Interest option</td></tr>
+        <tr><td>Reduced paid-up insurance</td><td>Reduce premium (offset)</td><td>Fixed-period option</td></tr>
+        <tr><td>Extended term insurance</td><td>Accumulate at interest</td><td>Fixed-amount option</td></tr>
+        <tr><td></td><td>Paid-up additions</td><td>Life income options</td></tr>
+        <tr><td></td><td>One-year term (fifth option)</td><td></td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout tip"><span class="lab">New vs. the app</span><b>Settlement options</b> (how the death benefit is paid to the beneficiary) are the column most often confused with annuity payout — worth memorizing as its own set.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">➕</span>Policy riders</h3>
+    <div class="triad">
+      <div class="opt"><div class="t">Disability waiver of premium</div><div class="d">Premiums waived if the insured is disabled.</div></div>
+      <div class="opt"><div class="t">Guaranteed insurability (GIO)</div><div class="d">Buy <b>additional cash-value coverage on the named insured</b> — no new exam.</div></div>
+      <div class="opt"><div class="t">Accidental death (ADB)</div><div class="d">Formerly "double indemnity."</div></div>
+      <div class="opt"><div class="t">Term riders</div><div class="d">Added term on insured, spouse, or children.</div></div>
+      <div class="opt"><div class="t">Accelerated death benefit</div><div class="d">Access DB early for terminal illness.</div></div>
+      <div class="opt"><div class="t">Critical illness · LTC · Family income · ROP</div><div class="d">Common customizations.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ LO 3.4 — Needs analysis ============ -->
+  <div class="sect"><div class="n">5</div><div><div class="lo">Learning Objective 3.4</div><h2>How much? Sizing the need</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🧮</span>Three methods + the LIFE framework</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Needs-determination methods</caption>
+      <thead><tr><th>Method</th><th>How it works</th><th>Watch-out</th></tr></thead>
+      <tbody>
+        <tr><th>Multiple of salary</th><td>Salary × number of years (rule of thumb)</td><td>Simple but imprecise</td></tr>
+        <tr><th>Human life value</th><td>PV of future earnings, discounted</td><td>Capital is depleted; income-only</td></tr>
+        <tr><th>Income replacement</th><td><b>Capital utilization</b> (spend principal) or <b>capital retention</b> (live on interest, keep principal)</td><td>Retention needs a larger sum</td></tr>
+      </tbody>
+    </table></div>
+    <p><b>LIFE</b> totals it up: <b>L</b>iabilities · <b>I</b>ncome replacement · <b>F</b>inal expenses · <b>E</b>ducation → minus existing insurance = amount needed.</p>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🎓</span>Worked example — education funding (3-step)</h3>
+    <p>Wayne wants insurance to fund college for son Mark (age 4; starts at 18, four-year program). Tuition today <b>$25,000</b>, college inflation <b>6%</b>, funds earn <b>8%</b>.</p>
+    <div class="calc">
+      <h4>Serial-payment / PVAD method — BEGIN mode</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Inflate today's cost to the first year of college</b> (14 years out).<br><code>$25,000 → 14 N, 6 I/YR → FV = $56,522.60</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>PV of the 4-year serial payment</b> at the inflation-adjusted rate.<br><code>[(1.08 ÷ 1.06) − 1] × 100 = 1.8868 I/YR · 4 N · PMT $56,522.60 (BEG) → PV = $219,887.28</code></div></div>
+      <div class="step"><div class="sn">3</div><div class="sb"><b>Discount that lump sum back to today</b> (14 years) at 8%.<br><code>$219,887.28 FV, 8 I/YR, 14 N → PV</code></div></div>
+      <div class="res">Include ≈ $74,863.05 in Wayne's life-insurance need for education.</div>
+    </div>
+  </div>
+
+  <!-- ============ LO 3.5 — Recommend / keep-or-replace / 1035 ============ -->
+  <div class="sect"><div class="n">6</div><div><div class="lo">Learning Objective 3.5</div><h2>Recommend, keep-or-replace &amp; 1035</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🔎</span>Keep or replace a policy — factors</h3>
+    <ul>
+      <li>New <b>acquisition costs</b> (front-end load again)</li>
+      <li>Existing policy values you'd give up</li>
+      <li><b>New contestability &amp; suicide-clause periods restart</b></li>
+      <li>Dividends in a new policy are likely lower initially</li>
+      <li>New initial cash values are likely lower</li>
+      <li>A replacement may simply not meet the client's needs</li>
+    </ul>
+    <div class="callout tip"><span class="lab">Rule of thumb</span>Replacing <b>term via its own conversion clause</b> is usually the best, least-expensive path. Replacing a cash-value policy with a similar one is seldom advantageous once a policy has been in force.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🔁</span>1035 exchanges — which way is allowed?</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Tax-free §1035 exchange directions</caption>
+      <thead><tr><th>From →</th><th>Life</th><th>Annuity</th><th>MEC</th><th>LTC combo</th></tr></thead>
+      <tbody>
+        <tr><th>Cash-value life</th><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><th>MEC</th><td class="n">✗</td><td class="y">✓</td><td class="y">✓ (similar MEC)</td><td class="y">✓</td></tr>
+        <tr><th>Annuity</th><td class="n">✗</td><td class="y">✓</td><td class="n">✗</td><td class="y">✓</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">One-way street</span>You can go life → annuity, but <b>never annuity → life</b> (or annuity → MEC). A MEC can only exchange to a similar MEC or an annuity.</div>
+  </div>
+
+  <!-- ============ Quiz ============ -->
+  <div class="sect"><div class="n">?</div><div><div class="lo">Check yourself</div><h2>Kaplan questions from this module</h2></div></div>
+
+  <details class="quiz">
+    <summary><span class="qlab">MEC</span><div>Modified endowment contracts can <b>only</b> be created in which of these policies? <br>I. Term II. Whole life III. Universal life IV. Variable universal life</div><div class="opts">A. I &amp; II · B. III &amp; IV · C. II, III &amp; IV · D. I, II, III &amp; IV</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — II, III &amp; IV</div><p>Term can never be a MEC (no cash-value capacity). Whole life, UL, and VUL all can, because they can be overfunded past the 7-pay limit.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Needs analysis</span><div>Which are <b>broad economic assumptions</b> (not the individual's situation)?<br>I. Rate of return II. Inflation rate III. Current resources IV. Risk tolerance</div><div class="opts">A. I &amp; II · B. II &amp; III · C. III &amp; IV · D. I &amp; IV</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ A — I &amp; II</div><p>Rate of return and inflation are the economic variables you must assume. Current resources and risk tolerance are client attributes, not assumptions.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Beneficiaries</span><div>All of these are correct regarding life insurance beneficiaries <b>except</b>:</div><div class="opts">A. Primary paid before secondary · B. No limit to beneficiaries in a class · C. Spouses most commonly named primary · D. Most designations are irrevocable</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ D — "Most designations are irrevocable" is false</div><p>Only a small percentage are irrevocable; <b>most are revocable</b>. The other three statements are true.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Universal life</span><div>Which is <b>NOT</b> an advantage of universal life (UL)?</div><div class="opts">A. Flexible premiums · B. Lends itself to a compulsory savings program · C. Adjustable death benefit · D. Unbundled structure</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — it does NOT suit compulsory savings</div><p>Because premiums are flexible, owners often reduce payments until the policy behaves like expensive term — the opposite of a forced-savings vehicle.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">1035 exchange</span><div>Which identifies an acceptable §1035(a) exchange?</div><div class="opts">A. LTC → variable life · B. Annuity → whole life · C. Annuity → MEC · D. MEC → annuity</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ D — MEC → annuity contract</div><p>A MEC can exchange to a similar MEC or an annuity. An annuity can never go to a life policy or a MEC, and LTC can't exchange to life.</p></div>
+  </details>
+
+  <div class="foot">
+    Visual deck rebuilt from the College for Financial Planning® (Kaplan) FP512 Module 3 course slides.<br>
+    Verify all figures against your current course materials before the exam.
+  </div>
+
+</div>
+
+<button id="tgl" aria-label="Toggle dark mode">🌙 Theme</button>
+<script>
+/* Progress bar */
+var prog=document.getElementById('prog');
+addEventListener('scroll',function(){
+  var h=document.documentElement,b=document.body;
+  var st=h.scrollTop||b.scrollTop, sh=(h.scrollHeight||b.scrollHeight)-h.clientHeight;
+  prog.style.width=(sh>0?(st/sh*100):0)+'%';
+},{passive:true});
+/* Theme — synced with the app via localStorage cfpTheme */
+var root=document.documentElement;
+function applyTheme(t){root.setAttribute('data-theme',t);}
+try{
+  var saved=localStorage.getItem('cfpTheme');
+  if(saved){applyTheme(saved);}
+  else if(matchMedia('(prefers-color-scheme:dark)').matches){applyTheme('dark');}
+}catch(e){}
+document.getElementById('tgl').addEventListener('click',function(){
+  var t=root.getAttribute('data-theme')==='dark'?'light':'dark';
+  applyTheme(t);try{localStorage.setItem('cfpTheme',t);}catch(e){}
+});
+</script>
+</body>
+</html>
