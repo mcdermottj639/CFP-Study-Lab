@@ -61,6 +61,12 @@ h2{font-size:17px}
 .opt.wrong{background:#fdecea;border-color:var(--bad)}
 .opt.dim{opacity:.6}
 .expl{background:#f4f7ff;border:1px solid #dbe6ff;border-radius:10px;padding:11px 13px;font-size:13.5px;margin-top:8px}
+.casebox{background:#fff8ef;border:1px solid #f0dcc0;border-left:3px solid #d98a1f;border-radius:8px;padding:10px 12px;margin:8px 0;font-size:13.5px;line-height:1.45}
+.whynot{background:#fdf3f2;border:1px solid #f3d6d3;border-radius:10px;padding:10px 13px;margin-top:8px}
+.whynot .wn-h{font-size:12px;font-weight:800;letter-spacing:.02em;text-transform:uppercase;color:#b3453a;margin-bottom:4px}
+.whynot ul{margin:0;padding-left:18px;font-size:13px;line-height:1.5}
+.whynot li{margin:3px 0}
+.whynot .wn-you{color:#b3453a;font-weight:700}
 .tts-btn{display:inline-flex;align-items:center;gap:5px;margin-top:8px;padding:5px 11px;font:inherit;font-size:12.5px;font-weight:600;line-height:1;color:var(--brand);background:#fff;border:1px solid var(--brand);border-radius:999px;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .tts-btn:hover{background:#f4f7ff}
 .tts-btn.speaking{color:#fff;background:var(--brand)}
@@ -263,6 +269,7 @@ section:not(.hidden){animation:rise .42s cubic-bezier(.2,.7,.3,1)}
       <div class="row" style="flex-wrap:wrap;gap:8px;margin-top:8px">
         <button class="btn gray" onclick="runKeys()">📊 Key numbers</button>
         <button class="btn gray" onclick="runTips()">🎯 Exam tips &amp; traps</button>
+        <button class="btn gray" onclick="runExpectations()">🎓 Exam-day expectations</button>
       </div>
     </div>
 
@@ -294,6 +301,7 @@ section:not(.hidden){animation:rise .42s cubic-bezier(.2,.7,.3,1)}
       <div class="row" style="flex-wrap:wrap;gap:8px;margin-top:10px">
         <button class="btn gray sm" onclick="runKeys()">📊 Key numbers</button>
         <button class="btn gray sm" onclick="runTips()">🎯 Exam tips &amp; traps</button>
+        <button class="btn gray sm" onclick="runExpectations()">🎓 Exam-day expectations</button>
       </div>
     </div>
     <div class="grid g2" id="moduleGrid"></div>
@@ -322,6 +330,11 @@ section:not(.hidden){animation:rise .42s cubic-bezier(.2,.7,.3,1)}
               <option value="mock">Cumulative mock (blueprint-weighted)</option>
               <option value="scenario">Scenario item-sets</option>
               <option value="ethics">Ethics &amp; Standards drill</option>
+            </optgroup>
+            <optgroup label="Exam-version simulators">
+              <option value="vtheory">Theory version — concept &amp; best-answer</option>
+              <option value="vmath">Math version — multi-step calc</option>
+              <option value="vcase">Case-study version</option>
             </optgroup>
           </select>
           <select id="studySession" title="Which cards to study">
@@ -476,6 +489,36 @@ const SCENARIOS=[
  {q:"Do the Lees meet the 80% coinsurance requirement?",o:["Yes — they carry exactly enough","No — they carry less than 80% of replacement cost","Coinsurance does not apply to fire","Only if they file within 60 days"],a:1,e:"80% of $400,000 = $320,000 required. They carry only $280,000, so they are underinsured and the coinsurance penalty applies."},
  {q:"Their approximate recovery on the $50,000 loss is:",o:["$50,000","$43,750 before deductible","$50,000 less deductible","$28,000"],a:1,e:"Ratio = 280,000/320,000 = 0.875. 0.875 × 50,000 = $43,750, then subtract the $1,000 deductible → $42,750 paid."},
  {q:"To avoid this penalty in the future, the planner should recommend:",o:["A higher deductible","Insuring to at least 80% — ideally 100% — of replacement cost","Switching to a named-perils HO-2","Dropping coverage C"],a:1,e:"Best practice is to insure to 100% of replacement cost (at minimum 80%) to avoid coinsurance penalties."}
+]},
+{m:"FP511",d:"B",title:"Cash-flow checkup",stem:"The Nguyens have gross monthly income of $10,000. Their housing costs (PITI) are $2,600 and total monthly debt payments (including housing) are $4,000. They keep $9,000 in savings and have $6,000 of non-discretionary monthly expenses. Both spouses work.",items:[
+ {q:"Their housing (front-end) ratio is:",o:["26%","28%","40%","36%"],a:0,e:"Front-end ratio = PITI ÷ gross = $2,600 ÷ $10,000 = 26% (benchmark ≤28%), so housing is in range."},
+ {q:"Their total-debt (back-end) ratio is:",o:["26%","40%","36%","20%"],a:1,e:"Back-end ratio = total monthly debt ÷ gross = $4,000 ÷ $10,000 = 40%, above the ≤36% benchmark — a flag."},
+ {q:"Given two incomes, their $9,000 emergency fund is:",o:["Adequate — over 6 months","Short — about 1.5 months vs a ~3-month target","Excessive","Exactly 3 months"],a:1,e:"Dual-income households target ~3 months of expenses (~$18,000). $9,000 ÷ $6,000 ≈ 1.5 months, so they are under-funded."}
+]},
+{m:"FP511",d:"A",title:"Fiduciary duty & conflicts",stem:"David, CFP®, gives a client financial advice and recommends a proprietary annuity that pays him a higher commission than comparable products. He is not delivering a full financial plan.",items:[
+ {q:"When providing Financial Advice, David owes the client:",o:["A suitability standard only","A fiduciary duty at all times — loyalty, care, and to follow client instructions","A duty only once a plan is delivered","No duty until a contract is signed"],a:1,e:"Under the CFP Board Code & Standards, a CFP® professional must act as a fiduciary at all times when providing Financial Advice."},
+ {q:"The higher commission is:",o:["A non-issue — all annuities pay commissions","A material conflict he must disclose, obtain informed consent for, and manage","A prohibited transaction he may never make","Only his firm's obligation to disclose"],a:1,e:"The duty of loyalty requires that material conflicts be fully disclosed, that informed consent be obtained, and that the conflict be managed in the client's interest."},
+ {q:"Because he is providing advice but NOT Financial Planning, his conflict disclosure may be:",o:["Made orally or in writing (writing is specifically required when Financial Planning is provided)","Skipped entirely","Made only after the sale","Delegated to the client"],a:0,e:"For Financial Advice, conflicts may be disclosed orally or in writing; written disclosure is specifically required when the engagement rises to Financial Planning."}
+]},
+{m:"FP512",d:"C",title:"Auto (PAP) at-fault accident",stem:"Rosa's Personal Auto Policy has split limits of 100/300/50. She runs a red light and injures three people (bodily-injury claims of $80,000, $120,000, and $90,000) and causes $40,000 of damage to the other vehicle.",items:[
+ {q:"The most her coverage pays on the $120,000 injury claim is:",o:["$120,000","$100,000 — the per-person limit","$300,000","$50,000"],a:1,e:"In 100/300/50, the first number ($100,000) caps bodily injury PER PERSON, so the $120,000 claim is paid only up to $100,000."},
+ {q:"Her total bodily-injury payout for the accident is capped at:",o:["$100,000","$300,000 — the per-accident limit","$270,000","$50,000"],a:1,e:"The second number ($300,000) is the total bodily-injury limit PER ACCIDENT, regardless of how many people are hurt."},
+ {q:"For the $40,000 of damage to the other car, her property-damage coverage pays:",o:["$40,000 — it is within the $50,000 limit","$50,000","$40,000 minus a deductible","Nothing — PD excludes other vehicles"],a:0,e:"The third number ($50,000) is the property-damage-per-accident limit; $40,000 is within it and paid in full. Liability PD covers others' property with no deductible."}
+]},
+{m:"FP512",d:"C",title:"Disability income policy",stem:"Kevin, age 40, buys an individual disability income policy: 'own-occupation' definition, 90-day elimination period, $5,000/month benefit to age 65. He pays the premiums himself with after-tax dollars.",items:[
+ {q:"Under a true 'own-occupation' definition, Kevin is disabled if he:",o:["Cannot work in ANY occupation","Cannot perform the material duties of HIS OWN occupation, even if he could do another job","Is hospitalized","Simply loses his job"],a:1,e:"Own-occupation — the most liberal (and costliest) definition — pays if he can't perform his own occupation's duties, even if able to work elsewhere."},
+ {q:"The 90-day elimination period is:",o:["When benefits stop","The waiting period after disability before benefits begin","When the policy expires","The deadline to file a claim"],a:1,e:"The elimination (waiting) period is the gap between the onset of disability and the start of benefits. A longer elimination period lowers the premium."},
+ {q:"Because he paid the premiums with after-tax dollars, his benefits are:",o:["Fully taxable as ordinary income","Received income-tax-free","Taxable only above $5,000/month","Taxed as capital gains"],a:1,e:"When the insured personally pays DI premiums with after-tax dollars, the benefits are income-tax-free. Employer-paid premiums would make benefits taxable."}
+]},
+{m:"FP512",d:"C",title:"Life insurance needs analysis",stem:"The Alvarados want to insure Maria's life. Survivors would need $600,000 to retire the mortgage and debts, $50,000 for final expenses, and a fund to replace $40,000/year of income. They already own $150,000 of life insurance and hold $100,000 of liquid assets.",items:[
+ {q:"Under the needs (capital-needs) approach, the analysis:",o:["Just buys the cheapest term policy","Totals the survivors' capital needs, then subtracts existing resources","Uses only future earnings (human life value)","Starts by choosing a policy type"],a:1,e:"The needs approach sums capital needs (debts, final expenses, income replacement, education) and subtracts existing insurance and liquid assets to size the gap."},
+ {q:"Their immediate lump-sum needs (debts + final expenses) total:",o:["$600,000","$650,000","$550,000","$690,000"],a:1,e:"$600,000 of debts + $50,000 of final expenses = $650,000 of immediate cash needs, before any income-replacement fund."},
+ {q:"The existing $150,000 policy and $100,000 of liquid assets are:",o:["Ignored in a needs analysis","Subtracted as existing resources, lowering new coverage needed","Added on top of the need","Counted only if held in a trust"],a:1,e:"Existing life insurance and liquid assets are subtracted from total needs — here $250,000 of resources reduces the additional coverage required."}
+]},
+{m:"FP512",d:"C",title:"Medicare & long-term care",stem:"George turns 65 and enrolls in Medicare. Worried about future long-term care costs, he reviews what Medicare does and does not cover.",items:[
+ {q:"Inpatient hospital care is covered under:",o:["Medicare Part B","Medicare Part A","Medicare Part D","A Medigap policy"],a:1,e:"Part A covers inpatient hospital, short-term skilled nursing, hospice, and some home health. Part B covers physician and outpatient services."},
+ {q:"Routine custodial long-term care is:",o:["Fully covered by Medicare","Generally NOT covered by Medicare — the gap LTC insurance fills","Covered by Part D","Covered automatically by Medigap"],a:1,e:"Medicare does not pay for custodial long-term care; that gap is why LTC insurance (or, for the indigent, Medicaid) matters."},
+ {q:"To cover Original Medicare's deductibles and coinsurance, George could buy:",o:["A Medigap (Medicare Supplement) policy","A second Part A","An HSA","Disability insurance"],a:0,e:"Medigap (Medicare Supplement) policies pay cost-sharing gaps — deductibles and coinsurance — left by Original Medicare."}
 ]}
 ];
 
@@ -1294,7 +1337,7 @@ function fillModuleSelect(){
 }
 // Some study modes span the whole exam (Review missed, Cumulative mock, Scenario
 // item-sets, Ethics) and ignore the course/module pickers — dim them so the UI is honest.
-const GLOBAL_MODES={mcqreview:1,mock:1,scenario:1,ethics:1};
+const GLOBAL_MODES={mcqreview:1,mock:1,scenario:1,ethics:1,vcase:1};
 function studyScopeSync(){
   const md=document.getElementById('studyMode');if(!md)return;
   const g=GLOBAL_MODES[md.value]?1:0;
@@ -1325,7 +1368,7 @@ document.getElementById('startBtn').onclick=()=>{
   const sEl=document.getElementById('studySession');
   window.CARDFILTER=sEl?sEl.value:"all";
   const mode=document.getElementById('studyMode').value;
-  ({flash:runFlash,hard:runHard,quiz:runQuiz,exam:runModuleExam,mcqreview:runMcqReview,mock:runMock,scenario:runScenario,calc:runCalc,ethics:runEthics})[mode](mod);
+  ({flash:runFlash,hard:runHard,quiz:runQuiz,exam:runModuleExam,mcqreview:runMcqReview,mock:runMock,scenario:runScenario,calc:runCalc,ethics:runEthics,vtheory:runTheoryExam,vmath:runMathExam,vcase:runCaseExam})[mode](mod);
 };
 // Hard-cards mode reuses the flashcard runner over the struggling-cards pool
 function runHard(mod){window._hardOnly=true;runFlash(mod);}
@@ -1361,6 +1404,21 @@ function runFlash(mod){
 
 /* ===== MCQ spaced review — missed questions resurface on a Leitner ladder ===== */
 function mcqKey(q){return q.g||q.q;}                  // generator id (stable across regenerated numbers), else question text
+/* "Why not the others?" — per-distractor rationale so learners train the exam's core skill:
+   choosing between one or two very plausible answers (a recent test-taker's #1 difficulty).
+   Data lives in window.MCQWHY (mcq-why.js), keyed by the question text → {wrongOptionText:why}.
+   Only authored for stable-text theory MCQs (generator questions reshuffle their option text,
+   so they are intentionally excluded). Degrades to nothing when no rationale exists. */
+function whyNotHtml(q,picked){
+  var w=window.MCQWHY&&window.MCQWHY[mcqKey(q)];if(!w)return '';
+  var rows=q.o.map(function(o,oi){
+    if(oi===q.a)return '';
+    var r=w[o];if(!r)return '';
+    var you=(oi===picked)?' <span class="wn-you">(your pick)</span>':'';
+    return '<li><b>'+String.fromCharCode(65+oi)+'.</b> '+r+you+'</li>';
+  }).filter(Boolean).join('');
+  return rows?'<div class="whynot"><div class="wn-h">Why the other answers are wrong</div><ul>'+rows+'</ul></div>':'';
+}
 function mcqSchedule(q,known){
   const today=ymd(new Date());const k=mcqKey(q);
   const st=S.mcqDue[k]||{box:0};
@@ -1447,6 +1505,7 @@ function mcqRunner(pool,title,opts={}){
     const counter=endless?`${title} — Q${answered+1} · ${correct}/${answered} correct`:`${title} — Q${idx+1}/${pool.length}${sub}`;
     const endRow=endless?`<div class="center" style="margin-bottom:10px"><button class="btn gray sm" onclick="window._endQuiz()">■ End &amp; see recap</button></div>`:"";
     area.innerHTML=`${header}${endRow}<div class="card"><div class="flex"><span class="small muted">${counter}</span><span><span class="tag">${q.m}</span><span class="tag">${domainName(q.d)}</span></span></div>
+      ${q.stem?`<div class="casebox">${q.stem}</div>`:''}
       <h3 style="margin-top:8px">${q.q}</h3>
       <div id="opts">${q.o.map((o,oi)=>`<button class="opt" onclick="window._pick(${oi})">${String.fromCharCode(65+oi)}. ${o}</button>`).join('')}</div>`+
       (exam?'':`<div id="conf" class="hidden"><div class="small muted" style="margin-top:8px">Before revealing, how confident were you?</div>
@@ -1464,7 +1523,7 @@ function mcqRunner(pool,title,opts={}){
     const els=document.querySelectorAll('#opts .opt');
     els.forEach((b,oi)=>{b.classList.remove('dim');if(oi===q.a)b.classList.add('correct');if(oi===picked&&!ok)b.classList.add('wrong');b.onclick=null;});
     document.getElementById('conf').classList.add('hidden');
-    document.getElementById('rev').innerHTML=`<div class="expl"><b>${ok?'✓ Correct':'✗ Not quite'}.</b> ${q.e}<div>${ttsBtn(q.e)}</div></div>
+    document.getElementById('rev').innerHTML=`<div class="expl"><b>${ok?'✓ Correct':'✗ Not quite'}.</b> ${q.e}<div>${ttsBtn(q.e)}</div></div>${whyNotHtml(q,picked)}
       <div class="center" style="margin-top:10px"><button class="btn" onclick="window._next()">Next →</button></div>`;
   };
   window._next=()=>{ttsStop();idx++;picked=null;draw();};
@@ -1485,7 +1544,7 @@ function mcqRunner(pool,title,opts={}){
       <div class="small"><b>${i+1}. ${q.q}</b></div>
       <div class="small" style="color:var(--bad)">Your answer: ${String.fromCharCode(65+r.picked)}. ${q.o[r.picked]} ✗</div>
       <div class="small" style="color:var(--good)">Correct: ${String.fromCharCode(65+q.a)}. ${q.o[q.a]}</div>
-      <div class="small muted" style="margin-top:2px">${q.e}</div><div>${ttsBtn(q.e)}</div></div>`;}).join('');
+      <div class="small muted" style="margin-top:2px">${q.e}</div><div>${ttsBtn(q.e)}</div>${whyNotHtml(q,r.picked)}</div>`;}).join('');
     const reviewBlock=wrong.length?`<details class="card" style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">Review ${wrong.length} missed question${wrong.length>1?'s':''} &amp; explanations</summary>${review}</details>`:'';
     area.innerHTML=`<div class="card center"><h2>Quiz recap</h2>
         <div class="kpi" style="color:${v.c}">${pct}%</div>
@@ -1516,7 +1575,7 @@ function mcqRunner(pool,title,opts={}){
       <div class="small"><b>${i+1}. ${q.q}</b></div>
       <div class="small" style="color:${r.ok?'var(--good)':'var(--bad)'}">Your answer: ${String.fromCharCode(65+r.picked)}. ${q.o[r.picked]} ${r.ok?'✓':'✗'}</div>
       ${r.ok?'':`<div class="small" style="color:var(--good)">Correct: ${String.fromCharCode(65+q.a)}. ${q.o[q.a]}</div>`}
-      <div class="small muted" style="margin-top:2px">${q.e}</div><div>${ttsBtn(q.e)}</div></div>`;}).join('');
+      <div class="small muted" style="margin-top:2px">${q.e}</div><div>${ttsBtn(q.e)}</div>${r.ok?'':whyNotHtml(q,r.picked)}</div>`;}).join('');
     const back=hub?`<button class="btn" onclick="openModule('${hub.course}',${hub.mod})">← Back to module</button> `:'';
     return `<div class="card center"><h2>${title}</h2>
         <div class="kpi" style="color:${v.c}">${pct}%</div>
@@ -1566,6 +1625,43 @@ function runEthics(){
   const p=MCQ.filter(q=>q.d==="A");
   if(!p.length)return emptyMsg("No ethics questions yet.");
   mcqRunner(p,"Ethics & Standards drill");
+}
+/* ===== Exam-version simulators — mirror the real CFP® exam's three forms =====
+   A recent test-taker reported the exam ships as Theory / Math / Case-Study versions and
+   that a given sitting leans heavily one way: the Theory form is mostly conceptual
+   "choose between one or two very plausible answers" items with only a couple of
+   calculations and one case study; the Math form has several multi-step calculator
+   problems; the Case-Study form is built around integrated scenarios. These modes drill
+   each flavor from pools we already have — conceptual MCQs (theory), MCQGEN
+   generator-backed questions + calc items (math), and SCENARIOS item-sets (case). All
+   are scored (answer all → verdict) so they feel like the real deferred-feedback exam. */
+function mcqSplit(mod){const p=filt(MCQ,mod);return {math:p.filter(q=>q.g),theory:p.filter(q=>!q.g)};}
+function vHeader(title,sub){return '<b>'+title+'</b> <span class="small muted">· '+sub+'</span>';}
+function runTheoryExam(mod){
+  const s=mcqSplit(mod);
+  if(!s.theory.length)return emptyMsg("No theory questions yet for "+modLabel(mod));
+  // Concept-heavy, with only a couple of calculations mixed in (as reported on the real Theory form).
+  let pool=shuffle(s.theory).slice(0,20).concat(shuffle(s.math).slice(0,2));
+  pool=shuffle(pool);
+  const note=s.math.length?"":" <span class='muted'>(no calc items in scope)</span>";
+  mcqRunner(pool,"Theory-version exam",{exam:true,header:vHeader("Theory version","concept &amp; best-answer — answer all, then a scored verdict")+note});
+}
+function runMathExam(mod){
+  const s=mcqSplit(mod);
+  if(!s.math.length)return emptyMsg("No calculation questions in "+modLabel(mod)+". Try a course-wide scope or a different module.");
+  // Several multi-step calculator problems (fresh numbers each serve) plus a few concepts around them.
+  let pool=shuffle(s.math).concat(shuffle(s.theory).slice(0,3));
+  pool=shuffle(pool);
+  const lim=s.math.length<3?" · limited calc content in this scope":"";
+  mcqRunner(pool,"Math-version exam",{exam:true,header:vHeader("Math version","multi-step calculations"+lim)});
+}
+function runCaseExam(){
+  const list=SCENARIOS;   // scenarios span courses and have no module map — always global
+  if(!list.length)return emptyMsg("No case-study sets yet.");
+  // Present up to 3 integrated scenario sets; each item keeps its own case stem for context.
+  const sets=shuffle(list).slice(0,3);const flat=[];
+  sets.forEach(sc=>sc.items.forEach(it=>flat.push({m:sc.m,d:sc.d,t:sc.title,stem:'<b>'+sc.title+'</b> — '+sc.stem,q:it.q,o:it.o,a:it.a,e:it.e})));
+  mcqRunner(flat,"Case-study exam",{exam:true,ordered:true,header:vHeader("Case-study version","integrated scenarios — read each case, then answer")});
 }
 /* ===== PARAMETERIZED CALC GENERATORS (infinite, never stale) ===== */
 function _r(a,b){return a+Math.random()*(b-a);}
@@ -1945,6 +2041,23 @@ function runKeys(){
     '<div class="ck-body"><div class="ck-tlist">'+rows+'</div></div></div>',
     KEYS.map(k=>k.cat+': '+k.item).join('. '));
 }
+// Exam-day expectations — distilled from a recent CFP® test-taker's debrief. Sets honest
+// expectations so study effort maps to how the real exam actually behaves.
+const EXPECT=[
+  {h:'The exam comes in three flavors',b:'Candidates report the exam leans toward one of three forms — a <b>Theory</b> version (mostly concept questions), a <b>Math</b> version (several multi-step calculations), or a <b>Case-study</b> version. You don’t choose which you get, so prepare for all three. Drill each with the Study tab’s new <b>Exam-version simulators</b>.'},
+  {h:'It’s a "best answer" test, not a "right answer" test',b:'On the theory-heavy form, most questions come down to <b>one or two very plausible answers</b>. The skill being tested is elimination — knowing why the tempting distractor is wrong. Use the <b>"Why the other answers are wrong"</b> notes that now appear under each explanation.'},
+  {h:'Expect only a couple of heavy calculations',b:'A theory-leaning sitting may have as few as <b>two</b> complex multi-step calculator problems and <b>one</b> case study. Know your calculations cold, but don’t assume the whole exam is math.'},
+  {h:'You will study topics that never appear',b:'The blueprint is broad and no single sitting covers all of it — several topics you spend hours on may not show up even once. That’s expected. Study to the <b>blueprint weights</b> (see the domain chart on the Dashboard) rather than trying to master every niche equally.'},
+  {h:'Mirror the real format when you practice',b:'Test-takers found the <b>CFP Board’s own practice exam</b> the most accurate representation of the real style and format. Treat scored, answer-all-then-review runs (the Exam modes here) as your primary rehearsal, not just instant-feedback quizzing.'}
+];
+function runExpectations(){
+  var items=EXPECT.map(function(x){return '<div class="ck-trow" style="margin:10px 0"><b>'+x.h+'</b><div style="margin-top:3px;line-height:1.5">'+x.b+'</div></div>';}).join('');
+  openRefOverlay('<div class="ck-sheet" style="--ck-accent:#b3703a">'+
+    '<div class="ck-top"><div class="ck-crumb">CFP® Study Lab · Quick Reference</div><h1>Exam-day expectations</h1>'+
+      '<div class="ck-meta">What the real exam feels like · from recent test-taker debriefs</div></div>'+
+    '<div class="ck-body">'+items+'</div></div>',
+    EXPECT.map(function(x){return x.h+'. '+x.b.replace(/<[^>]+>/g,'');}).join(' '));
+}
 function emptyMsg(m){document.getElementById('studyArea').innerHTML=`<div class="card center"><p class="muted">${m}</p><p class="small">Content for upcoming modules is added as you reach them.</p></div>`;}
 
 /* ====================== ANALYTICS ====================== */
@@ -2287,7 +2400,7 @@ autoBackup();
       <p style="font-size:11.5px;color:#9aa3b5;margin:8px 0 0;line-height:1.45"><b>On iPhone, keep this on “Automatic.”</b> The app then uses your <b>device default</b> voice — set it in Settings → Accessibility → Spoken Content → <b>Voices → English</b> (download <b>Ava</b> or another Enhanced/Premium voice and tap it to make it the default). iOS doesn’t show Enhanced/Premium labels to web apps and can’t use Siri voices — and forcing a specific voice here often sounds worse than the device default, so the list is mainly for desktop.</p>
     </div>
     <div id="cfpTkMsg" style="font-size:12.5px;color:#1f9d6b;text-align:center;min-height:16px;margin-top:10px"></div>
-    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.60.0</div>
+    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.61.0</div>
   </div>
 </div>
 <script>
@@ -2345,6 +2458,7 @@ autoBackup();
 })();
 </script>
 <script src="module-content.js"></script>
+<script src="mcq-why.js"></script>
 <script src="flashcards.js"></script>
 <script src="cfp-gist-sync.js"></script>
 <script>
