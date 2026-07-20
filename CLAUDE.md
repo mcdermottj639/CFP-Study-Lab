@@ -140,6 +140,38 @@ default even when the user had Ava selected. `reader-tts.js` now warms voices at
 + a `voiceschanged` listener) and `start()` gates the first utterance on `ensureVoices()` (waits for the
 voice list, 300 ms fallback), so `pickVoice()` sees the real list and uses the chosen/best voice.
 
+### Exam-version simulators + "why not the others?" + expectations (v2.61.0)
+Built from a recent test-taker's exam-day debrief (the real CFP® exam ships in **three
+forms** — Theory / Math / Case-Study — and a given sitting leans heavily one way; the hard
+part is choosing between *two very plausible answers*; and breadth means some studied topics
+never appear). Three coordinated additions, all in `src/study-home.src.html` unless noted:
+- **Exam-version simulator modes** — a third `#studyMode` optgroup ("Exam-version simulators"):
+  `vtheory` → `runTheoryExam`, `vmath` → `runMathExam`, `vcase` → `runCaseExam`. All are
+  **scored** (`mcqRunner(...,{exam:true})` — answer all, then a verdict), mirroring the real
+  deferred-feedback exam. `mcqSplit(mod)` partitions in-scope `MCQ` into `math` (has a `g`
+  generator field) vs `theory` (no `g`). **Theory** = concept-heavy (≤20 theory + up to 2
+  calc). **Math** = the generator-backed calc questions (fresh numbers) + a few concepts;
+  flags "limited calc content" when thin. **Case** = up to 3 `SCENARIOS` sets flattened, each
+  item carrying its own `stem` (global — scenarios have no module map, so `vcase` is in
+  `GLOBAL_MODES`). `mcqRunner.draw()` renders `q.stem` in a `.casebox` above the question when
+  present. `vtheory`/`vmath` honor course/module scope; only `vcase` is global.
+- **"Why the other answers are wrong"** — per-distractor rationale (`whyNotHtml(q,picked)`,
+  next to `mcqKey`) reads `window.MCQWHY` (**`mcq-why.js`**, loaded after `module-content.js`,
+  precached in `sw.js`, in `CORE_ASSETS`), keyed by **exact question text → {exact wrong-option
+  text: rationale}**. Spliced into all three explanation render points (instant-feedback
+  reveal, endless recap review, exam results review; exam/recap pass `r.picked` so the user's
+  pick is bold-tagged). **Only stable-text theory MCQs are covered** — generator (`g`) questions
+  reshuffle their option text every serve so they're intentionally excluded. Degrades to nothing
+  when a question has no entry. **Coverage: all 381 theory MCQs, 1,142 rationales.** Regenerate
+  via the merge harness in the session scratchpad (`scratch_merge_why.mjs`) which validates every
+  key against the live bank (drops unmatched question/option text, strips any correct-option
+  leak) before writing `mcq-why.js`. Styles: `.whynot`/`.wn-h`/`.wn-you` in the source `<style>`.
+- **Exam-day expectations** reference (`runExpectations()`, `EXPECT` data) — a printable overlay
+  (reuses `openRefOverlay`) surfaced as a **🎓 Exam-day expectations** button in both "Quick
+  references" rows (Dashboard + Modules tab), alongside Key numbers / Exam tips.
+- **Scenario bank grew 2 → 8** (added FP511 cash-flow + fiduciary/conflicts, FP512 auto-PAP,
+  disability-income, life-needs-analysis, Medicare/LTC) so `vcase`/`runScenario` feel substantial.
+
 ### Study mode dropdown — scoped vs. global (v2.20.0)
 The `#studyMode` `<select>` is split into two `<optgroup>`s by what the course/sub-module
 pickers actually affect, so the UI stops pretending scope applies when it doesn't:
@@ -597,7 +629,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.60.0`) on every shippable change so installed apps auto-update
+  (current: `v2.61.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
