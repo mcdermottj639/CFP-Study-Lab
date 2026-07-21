@@ -102,8 +102,10 @@ tab automatically** — press play once, put the phone down. `buildPlaylist()` c
 order; because `tab.click()` switches tabs synchronously with no repaint (same trick
 `reader-search.js` uses) this pre-collect causes **no visible flicker** and restores the originally-
 active tab at the end. Playback walks the flat list; `focusTab(unit)` switches the active tab only
-when a block lives on a different tab. A manual tab tap **stops** the podcast, but our own auto-
-advance switches don't (guarded by an `autoSwitch` flag on the tab-click stop-listener).
+when a block lives on a different tab. **A manual tab tap JUMPS playback to that tab** (`jumpToTab` →
+first playlist entry on that tab) rather than stopping — you navigate the audio by tapping tabs
+(v2.72.5); our own auto-advance switches are ignored (guarded by an `autoSwitch` flag). Use the bar's
+⏹ to stop.
 - **Resume.** Position is bookmarked in `localStorage['cfpPodcast:'+<reader file>]` (per reader) on
   every block, on pause, on stop, and on `visibilitychange`-hidden — `{pos, txt(first 40 chars), n(playlist
   length)}`. `start()` resumes from the bookmark only if `n` still matches the current playlist length
@@ -147,8 +149,11 @@ isn't. Same offline OS voice; different *words*. Built as a second mode inside t
   carries intonation across sentences instead of hard-stopping, the v2.72.1 "less stiff" fix; under iOS's
   long-utterance cut-off), all sharing the anchor. `reveal()` expands a collapsed section header
   (class-based: FP512 `.collapsed`, FP511 `.closed`; clicks only when actually collapsed) and, via
-  `lastRevealEl`, **scrolls once per section** instead of re-yanking on every sentence. A manual tab tap
-  stops it.
+  `lastRevealEl`, **scrolls once per section** instead of re-yanking on every sentence.
+- **Reposition mid-lesson (v2.72.5).** While playing, tapping a **tab** jumps the teacher to that tab
+  (`jumpToTab`), and **double-tapping a section** jumps to that section's narration (`teachIndexForNode`
+  maps the tapped node → its section header → the teach entry anchored to it). Read mode's double-tap
+  starts the verbatim read from the tapped word instead (only when not already teaching).
 - **Two independent whole-reader bookmarks.** `bmKey()` switches by mode: read = `cfpPodcast:<file>`,
   teach = `cfpTeach:<file>` (both per reader now that teach also flows across the whole reader). Each FAB
   reflects its own Resume state (`reflectFab`/`updateTeachFab`): 🎧 Resume / 👩‍🏫 Resume lesson. Reaching
@@ -181,9 +186,9 @@ re-checking the `gen`/`paused` guard) — a human breath instead of a continuous
 is the largest `.active` panel (same convention `reader-search.js` uses), so it works on FP511, FP512,
 and any future reader with **no per-reader code**. A **generation counter** (`gen`) guards the
 utterance `onend` chain so cancel/skip/pause never double-advance. Pause re-speaks the current block
-on resume (robust on iOS). Stops on a **manual** tab switch and on `pagehide`/`beforeunload` (both
-save the bookmark first); when the tab is **hidden** it now saves the bookmark and keeps state so it
-can recover on return (see Podcast section above) rather than tearing down.
+on resume (robust on iOS). A **manual** tab tap now jumps playback to that tab (v2.72.5, see above)
+rather than stopping; `pagehide`/`beforeunload` save the bookmark then stop; when the tab is **hidden**
+it saves the bookmark and keeps state so it can recover on return (see Podcast section above).
 **Double-click / double-tap a word → start reading from there (v2.59.0).** A `dblclick` listener
 (desktop) maps the click to its block via `unitIndexForNode()` and starts/jumps there; for leaf blocks
 it computes `wordLevelText()` (a Range from the block start to the double-click selection) so a long

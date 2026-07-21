@@ -207,13 +207,19 @@
       else if (a === 'speed') cycleSpeed();
     });
 
-    // A MANUAL tab tap stops the podcast; our own auto-advance switches (autoSwitch)
-    // don't. Navigation away / tab hidden save the bookmark so you can resume.
+    // A MANUAL tab tap while playing NAVIGATES the audio to that tab (jumps to its first
+    // block) rather than stopping — so you can move the podcast/teacher to a new page.
+    // Our own auto-advance switches (autoSwitch) are ignored. Use the bar's ⏹ to stop.
     tabs.forEach(function (t) { t.addEventListener('click', function () {
       if (autoSwitch) return;                          // our own auto-advance switch — ignore
-      if (playing) stop();                             // a manual tab tap stops playback
+      if (playing) { jumpToTab(t); return; }           // move playback to this tab, don't stop
       setTimeout(updateTeachFab, 0);                   // refresh the Teach FAB for the new tab (after the reader flips .active)
     }); });
+    // Jump playback to the first block that lives on tab `t` (reader-agnostic: matches by
+    // the tab-button element stored on each playlist entry).
+    function jumpToTab(t) {
+      for (var i = 0; i < playlist.length; i++) { if (playlist[i].tab === t) { jump(i); return; } }
+    }
     window.addEventListener('pagehide', function () { if (playing) saveBookmark(pos); sp.cancel(); });
     window.addEventListener('beforeunload', function () { if (playing) saveBookmark(pos); sp.cancel(); });
     document.addEventListener('visibilitychange', function () {
@@ -252,8 +258,27 @@
         return from.length > 1 ? from : null;
       } catch (e) { return null; }
     }
+    // In TEACH mode the playlist anchors are section HEADERS, so map a tapped node to the
+    // teach entry for its enclosing section (walk to the header, then to the section body's
+    // preceding header). Lets you double-tap a section to send the teacher there.
+    function teachIndexForNode(node) {
+      var el = node && node.nodeType === 3 ? node.parentElement : node;
+      if (!el || !el.closest) return -1;
+      var header = el.closest('.collapsible-header, .ch');
+      if (!header) { var cc = el.closest('.collapsible-content, .cc'); if (cc) header = cc.previousElementSibling; }
+      if (!header) return -1;
+      for (var i = 0; i < playlist.length; i++) { if (playlist[i].el === header) return i; }
+      return -1;
+    }
     function startFromNode(node, allowWordLevel) {
-      if (!playing) { mode = 'read'; playlist = buildPlaylist(); }   // double-tap always starts the verbatim read from here
+      // While teaching, a double-tap repositions the TEACHER to the tapped section
+      // (rather than switching into verbatim read).
+      if (playing && mode === 'teach') {
+        var ti = teachIndexForNode(node);
+        if (ti >= 0) { try { window.getSelection().removeAllRanges(); } catch (e) {} jump(ti); }
+        return;
+      }
+      if (!playing) { mode = 'read'; playlist = buildPlaylist(); }   // double-tap (when not playing) starts the verbatim read from here
       if (!playlist.length) return;
       var idx = unitIndexForNode(node);
       if (idx < 0) return;                            // click wasn't on readable content
