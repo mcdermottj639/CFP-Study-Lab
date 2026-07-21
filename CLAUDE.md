@@ -175,9 +175,15 @@ isn't. Same offline OS voice; different *words*. Built as a second mode inside t
 bottom** (not a centered pill — it was colliding with Home/Theme/search). `showBar(on)` toggles it,
 sets `body.rt-on`, and while playing **hides the 🎧 `#rtFab` + 🔍 `#rsFab`** (the bar has its own Stop,
 so no redundant buttons) and **lifts `#fpslHome`/`#rdrTheme`/`#rdrBack` above the bar** via
-`body.rt-on` CSS overrides. The bar has ⏮ ⏭ prev/next, ⏸/▶ pause, ⏹ stop, a **reading-speed button**
-(`.rt-speed`, v2.58.0 — taps cycle `RATES` = 0.8/1/1.25/1.5/1.75/2×, persisted in
-`localStorage.cfpTtsRate`), and a `¶ n/total` counter.
+`body.rt-on` CSS overrides. The bar has a **☰ Contents** button (v2.72.6), ⏮ ⏭ prev/next, ⏸/▶ pause,
+⏹ stop, a **reading-speed button** (`.rt-speed`, v2.58.0 — taps cycle `RATES` = 0.8/1/1.25/1.5/1.75/2×,
+persisted in `localStorage.cfpTtsRate`), and a `¶ n/total` counter.
+**Contents / table of contents (v2.72.6).** The ☰ button opens `#rtToc`, a bottom-sheet overlay listing
+every **tab → section** for the current playlist (`buildTOC`): a group row per tab + a jumpable row per
+section (teach = each distinct anchor; read = each `.collapsible-header`/`.ch` block), the current
+section marked **▶ now** (`.rt-toc-cur`, auto-scrolled into view). Tapping a section `jump()`s playback
+there and closes; backdrop/✕/Esc close. Labels come from `tocLabel()` (strips toggle glyphs + trailing
+EXAM). Reader-agnostic — derived entirely from the playlist, so it works in both modes on any reader.
 **Natural pacing (v2.60.0).** `u.rate = RATE_BASE(0.95) × rate` (so "1×" is an unhurried default, not
 the old rushed 1.0); each block's text gets a sentence-final period (`sentence()`) so blocks don't run
 together; and a **light gap** (`gapMs()` — 150 ms read / 70 ms teach, v2.72.1; was a fixed 220 ms that
