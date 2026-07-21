@@ -153,14 +153,19 @@ isn't. Same offline OS voice; different *words*. Built as a second mode inside t
   teach = `cfpTeach:<file>` (both per reader now that teach also flows across the whole reader). Each FAB
   reflects its own Resume state (`reflectFab`/`updateTeachFab`): 🎧 Resume / 👩‍🏫 Resume lesson. Reaching
   the end clears that mode's bookmark; a manual stop keeps it. Double-tap-to-start always forces `mode='read'`.
-- **STATUS: complete for FP511 + FP512.** Every tab of both readers is authored — **FP511: 9 tabs / 42
-  sections; FP512: 11 tabs / 52 sections; ~24k words total** — each grounded strictly in that tab's own
-  extracted reader text and matching the pilot voice, with **every anchor runtime-verified** against a
-  real section header (`.collapsible-header`/`.ch`). Authored via a per-tab agent pass (one subagent per
-  tab; a shared brief + a `scratch_tabs.json` extraction of each tab's headers+text; assembled and
-  anchor-validated by a scratch harness). To revise a tab, edit its entries in `reader-teach.js`; the
-  Teach FAB auto-appears wherever content exists. **When adding a new course reader (FP513+), author
-  Teach narration for its tabs the same way.**
+- **STATUS: complete + coverage-audited for FP511 + FP512.** Every tab of both readers is authored —
+  **FP511: 9 tabs / 42 sections; FP512: 11 tabs / 52 sections; ~28k words total** — each grounded strictly
+  in that tab's own extracted reader text and matching the pilot voice, with **every anchor runtime-verified**
+  against a real section header (`.collapsible-header`/`.ch`). Built in two passes: (1) a per-tab authoring
+  pass (one subagent per tab; shared brief + a `scratch_tabs.json` extraction of each tab's headers+text),
+  then (2) a **coverage-audit pass** where an agent per reader compared each tab's narration against its
+  full reader text and flagged untaught material, and a per-gap-tab expansion pass folded those items into
+  the right sections (e.g. FP512 principles gained the Paul v. Virginia → US v. Southeastern Underwriters →
+  McCarran-Ferguson case chain; FP511 statements gained the whole mortgage/leasing block; plus QLAC caps,
+  Medigap K/L, HRA variants, LTC deduction limits, the 5 unnamed cognitive biases, FCBA, etc.). Assembled +
+  anchor-validated + runtime-smoke-tested (all 20 tabs play, anchors resolve, no errors) by a scratch
+  harness. To revise a tab, edit its entries in `reader-teach.js`. **When adding a new course reader
+  (FP513+), author Teach narration for its tabs the same way (author pass, then coverage audit).**
 **Docked player bar + no-clutter layout (v2.60.0).** `#rtBar` is a **full-width bar docked at the
 bottom** (not a centered pill — it was colliding with Home/Theme/search). `showBar(on)` toggles it,
 sets `body.rt-on`, and while playing **hides the 🎧 `#rtFab` + 🔍 `#rsFab`** (the bar has its own Stop,
