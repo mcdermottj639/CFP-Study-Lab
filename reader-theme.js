@@ -46,17 +46,21 @@
     };
     b.appendChild(btn);
 
-    // "Back to module" — only when we arrived from a specific Module Hub. Returns
-    // to that exact module (not the dashboard, which is what Home does).
+    // "Back" pill — ALWAYS shown so there's a one-tap path back into the modules
+    // area (Home still → dashboard). If we arrived from a specific Module Hub, return
+    // to that exact module; otherwise return to the Modules tab (the module map).
     try {
       var ret = sessionStorage.getItem('cfpReaderReturn');
+      var back = document.createElement('a');
+      back.id = 'rdrBack';
       if (ret && /^[A-Za-z0-9]+\/\d+$/.test(ret)) {
-        var back = document.createElement('a');
-        back.id = 'rdrBack';
         back.href = '../index.html#m/' + ret;
         back.innerHTML = '‹ Module ' + ret.split('/')[1];
-        b.appendChild(back);
+      } else {
+        back.href = '../index.html#modules';
+        back.innerHTML = '‹ Modules';
       }
+      b.appendChild(back);
     } catch (e) {}
   }
 
