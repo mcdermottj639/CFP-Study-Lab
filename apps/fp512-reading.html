@@ -91,6 +91,44 @@
   strong { color: #1e293b; }
   .badge { display: inline-block; padding: 0.15rem 0.55rem; border-radius: 6px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em; margin-left: 0.4rem; vertical-align: middle; }
   .badge.exam { background: #fef3c7; color: #92400e; }
+
+  /* ===== DEEP READER LAYER — depth stratification, worked mechanics, confused
+          pairs, cross-module synthesis, primary-source anchoring ===== */
+  /* 1 · Depth stratification — opt-in "Go deeper" (uses the existing [data-toggle] JS; starts collapsed) */
+  .deep-toggle { display:flex; justify-content:space-between; align-items:center; cursor:pointer; user-select:none;
+    margin:1rem 0 0; padding:0.5rem 0.9rem; background:#f5f3ff; border:1px solid #ddd6fe; border-left:4px solid #8b5cf6;
+    border-radius:10px; font-weight:700; color:#6d28d9; font-size:0.88rem; }
+  .deep-toggle:hover { background:#ede9fe; }
+  .deep-toggle .toggle-icon { background:#ede9fe; color:#7c3aed; width:24px; height:24px; font-size:1.1rem; }
+  .deep-body { border:1px solid #ede9fe; border-top:none; border-radius:0 0 10px 10px; background:#fbfaff; }
+  .deep-body .inner { padding:0.9rem 1.1rem; }
+  .deep-body .inner > *:first-child { margin-top:0; }
+
+  /* 2 · Worked mechanics */
+  .worked { border:1px solid #bbf7d0; border-left:4px solid #10b981; border-radius:12px; background:#f0fdf4; padding:1rem 1.2rem; margin:1.1rem 0; }
+  .worked-h { font-weight:800; color:#065f46; font-size:0.95rem; margin-bottom:0.5rem; }
+  .worked ol { margin:0.4rem 0 0.6rem 1.2rem; } .worked ol li { margin:0.3rem 0; }
+  .keys { font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; background:#052e16; color:#bbf7d0;
+    border-radius:8px; padding:0.7rem 0.9rem; margin:0.6rem 0; font-size:0.8rem; line-height:1.6; overflow-x:auto; white-space:pre; }
+  .worked .wrong { background:#fff1f2; border-left:4px solid #e11d48; border-radius:8px; padding:0.55rem 0.8rem; margin:0.6rem 0; font-size:0.86rem; }
+  .worked .tryit { background:#eff6ff; border-left:4px solid #1a56db; border-radius:8px; padding:0.55rem 0.8rem; margin:0.6rem 0; font-size:0.86rem; }
+
+  /* 3 · Confused pairs */
+  .confuse { border:1px solid #fde68a; border-left:4px solid #f59e0b; border-radius:12px; background:#fffbeb; padding:1rem 1.2rem; margin:1.1rem 0; }
+  .confuse-h { font-weight:800; color:#92400e; font-size:0.95rem; margin-bottom:0.5rem; }
+  .confuse .tell { margin-top:0.6rem; background:#fef9c3; border-radius:8px; padding:0.5rem 0.8rem; font-size:0.85rem; }
+  .confuse .tell strong { color:#854d0e; }
+
+  /* 4 · Cross-module synthesis */
+  .synth { border:1px solid #ddd6fe; border-left:4px solid #8b5cf6; border-radius:12px; background:#faf5ff; padding:1rem 1.2rem; margin:1.1rem 0; }
+  .synth-h { font-weight:800; color:#6d28d9; font-size:0.95rem; margin-bottom:0.5rem; }
+
+  /* 5 · Primary-source anchoring */
+  .srcref { display:inline-block; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:0.68rem;
+    font-weight:700; background:#e0e7ff; color:#3730a3; border-radius:5px; padding:0.06rem 0.4rem; margin:0 0.12rem; vertical-align:middle; white-space:nowrap; }
+  .sources { margin-top:1.4rem; padding-top:0.9rem; border-top:1px dashed #cbd5e1; font-size:0.78rem; color:#64748b; }
+  .sources h4 { font-size:0.82rem; color:#475569; margin-bottom:0.3rem; letter-spacing:0.02em; }
+  .sources ul { list-style:none; padding:0; } .sources li { margin:0.25rem 0; padding-left:1rem; text-indent:-1rem; }
 </style>
 </head>
 <body>
@@ -153,6 +191,21 @@
           <div class="stat-box"><div class="number">7</div><div class="label">Monitor &amp; Update<br><em>Review for new exposures</em></div></div>
         </div>
         <div class="highlight-box blue mt-2"><strong>Note:</strong> The risk management process mirrors the financial planning process and is a key component of it. Clients spend 10%+ of income on risk protection on average.</div>
+        <div class="synth">
+          <div class="synth-h">&#128279; Connects to FP511 &mdash; risk management IS the financial planning process, applied</div>
+          <p class="text-sm">These seven risk steps map almost one-to-one onto the CFP Board&rsquo;s <strong>7-step Financial Planning Process</strong> tested in FP511. Same spine, insurance lens:</p>
+          <table>
+            <thead><tr><th>Risk-management step</th><th>CFP Board planning step</th></tr></thead>
+            <tbody>
+              <tr><td>Identify &amp; establish goals · Gather data</td><td>1&ndash;2 Understand circumstances · Identify &amp; select goals</td></tr>
+              <tr><td>Analyze &amp; evaluate exposures</td><td>3 Analyze current &amp; alternative courses of action</td></tr>
+              <tr><td>Develop a plan (avoid/reduce/retain/transfer)</td><td>4 Develop the recommendation(s)</td></tr>
+              <tr><td>Communicate &middot; Implement</td><td>5&ndash;6 Present &middot; Implement</td></tr>
+              <tr><td>Monitor &amp; update</td><td>7 Monitor progress &amp; update</td></tr>
+            </tbody>
+          </table>
+          <div class="tell"><strong>Why it&rsquo;s worth knowing:</strong> the four risk-handling choices in step 4 sort onto the frequency/severity matrix &mdash; <strong>avoid/reduce</strong> = risk <em>control</em>; <strong>retain/transfer</strong> = risk <em>financing</em>. &ldquo;Transfer&rdquo; is where insurance itself lives.</div>
+        </div>
       </div>
     </div>
     <div class="section-card">
@@ -193,6 +246,18 @@
         <hr>
         <p class="text-sm"><strong>Physical hazard:</strong> A tangible/physical condition that increases the chance or severity of loss (oily rags, an icy sidewalk, a wood-frame building). <strong>Moral hazard:</strong> Dishonesty or intent to induce a claim (arson for insurance proceeds). <strong>Morale hazard:</strong> Indifference/carelessness because insurance exists (not locking the car). <strong>Adverse selection:</strong> Those most likely to claim seek coverage &mdash; controlled by underwriting.</p>
         <div class="chart-wrap" style="max-width:420px;"><canvas id="chartRiskClassification"></canvas></div>
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; the three hazards (moral vs. morale vs. physical)</div>
+          <table>
+            <thead><tr><th>Hazard</th><th>Root</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Physical</strong></td><td>A tangible condition</td><td>Oily rags, icy sidewalk, wood-frame home</td></tr>
+              <tr><td><strong>Moral</strong></td><td><strong>Dishonesty / intent</strong></td><td>Arson for the proceeds; lying on the application</td></tr>
+              <tr><td><strong>Morale</strong></td><td><strong>Carelessness / indifference</strong> ("it&rsquo;s insured")</td><td>Leaving the car unlocked, keys in the ignition</td></tr>
+            </tbody>
+          </table>
+          <div class="tell"><strong>How to tell moral from morale:</strong> <strong>moral = intent</strong> (a deliberate, often dishonest act), <strong>morale = attitude</strong> (sloppiness because insurance exists). Same misspelling, opposite mindsets: <em>mor<strong>A</strong>l = <strong>A</strong>ction/intent</em>; <em>mor<strong>ALE</strong> = a bad <strong>ALE</strong>-drinker&rsquo;s carelessness.</em></div>
+        </div>
       </div>
     </div>
     <div class="section-card">
@@ -210,6 +275,17 @@
         <hr>
         <p class="text-sm"><strong>Other factors limiting insurer liability:</strong> Policy limits/face value, other insurance provisions, coinsurance clauses, deductibles, and subrogation rights.</p>
         <div class="chart-wrap" style="max-width:420px;"><canvas id="chartRiskMatrix"></canvas></div>
+
+        <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; insurable interest timing &amp; where subrogation does (and doesn&rsquo;t) apply<span class="toggle-icon">+</span></div>
+        <div class="collapsible-content deep-body collapsed"><div class="inner">
+          <p><strong>Insurable interest &mdash; the timing trap (high-value on the exam):</strong></p>
+          <ul class="key-list">
+            <li><strong>Property &amp; casualty:</strong> interest must exist at <strong>BOTH</strong> policy issue <strong>AND</strong> the time of loss (you must still own the thing when it burns).</li>
+            <li><strong>Life:</strong> interest must exist <strong>only at issue</strong> &mdash; not at the time of the claim. (A business partner who insures a co-owner, then the partnership dissolves, still collects if the insured later dies.)</li>
+          </ul>
+          <p><strong>The insurable-risk elements are judged from the <em>insurer&rsquo;s</em> viewpoint:</strong> a large pool of homogeneous units (law of large numbers), a definite &amp; measurable loss, a <em>fortuitous/accidental</em> loss, and a loss that is <strong>not catastrophic to the company</strong>. The one exception the exam presses: <strong>life-insurance loss need not be fortuitous</strong> &mdash; death is certain, only its timing is uncertain.</p>
+          <div class="highlight-box amber"><strong>Subrogation applies to property &amp; health only.</strong> After paying, the insurer &ldquo;steps into the insured&rsquo;s shoes&rdquo; to recover from the at-fault party &mdash; preventing double recovery. It does <strong>NOT</strong> apply to <strong>life or disability</strong> (both are <em>valued</em>, not indemnity, contracts): you can collect the policy <em>and</em> still sue the wrongdoer. Same logic as why life insurance pays a stated face rather than &ldquo;actual loss.&rdquo;</div>
+        </div></div>
       </div>
     </div>
     <div class="section-card">
@@ -300,7 +376,19 @@
           <li><strong>McCarran-Ferguson Act (1945):</strong> Congress responded: federal authority limited to antitrust and fair labor; states carry the major burden of regulating insurance</li>
           <li><strong>NAIC:</strong> All 50 state insurance commissioners. Develops model laws and accreditation standards. Has <em>no power to force states to adopt recommendations.</em> Primary goal: maintain state regulation to prevent federal takeover.</li>
         </ul>
+        <div class="highlight-box blue mt-1"><strong>Rating agencies (know the differentiators):</strong> <strong>A.M. Best</strong> is the oldest and the <em>only</em> agency that specializes exclusively in insurers. <strong>S&amp;P</strong> issues a &ldquo;claims-paying ability&rdquo; rating; <strong>Moody&rsquo;s</strong> a &ldquo;financial strength&rdquo; rating; <strong>TheStreet/Weiss</strong> is the only service that does <em>not</em> charge the companies it rates. The <strong>NAIC is NOT a rating agency</strong> &mdash; it runs the IRIS watchlist (12 financial ratios), not financial-strength ratings.</div>
       </div>
+    </div>
+
+    <div class="sources">
+      <h4>&#128206; Primary sources for this module</h4>
+      <ul>
+        <li><span class="srcref">Paul v. Virginia (1868)</span> &mdash; insurance is NOT interstate commerce &rarr; states regulate.</li>
+        <li><span class="srcref">U.S. v. SE Underwriters (1944)</span> &mdash; reversed Paul; insurance IS interstate commerce &rarr; federal reach.</li>
+        <li><span class="srcref">McCarran-Ferguson Act (1945)</span> &mdash; Congress&rsquo;s response: reserves only antitrust/fair-labor to the feds; <strong>all other insurance regulation stays with the states.</strong></li>
+        <li><span class="srcref">NAIC</span> &mdash; model laws + accreditation (since 1989); the IRIS financial-ratio watchlist; cannot compel states.</li>
+      </ul>
+      <p style="margin-top:0.5rem;font-style:italic;">Grounded in the FP512 course textbook (Module 1, Principles of Insurance). The three landmark cases + McCarran-Ferguson are the tested chain for &ldquo;who regulates insurance.&rdquo;</p>
     </div>
   </div>
 
@@ -353,6 +441,32 @@
           </tbody>
         </table>
         <div class="highlight-box blue mt-1"><strong>Contestability period:</strong> Life insurance may be contested for material misrepresentation within first 2 years. After 2 years: incontestable (except fraud).</div>
+
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; two doctrine pairs the exam swaps</div>
+          <table>
+            <thead><tr><th>Pair</th><th>Distinction</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Waiver vs. Estoppel</strong></td><td><strong>Waiver</strong> = the insurer <em>voluntarily gives up</em> a known right. <strong>Estoppel</strong> = the insurer is <em>barred</em> from asserting a right because the insured <em>detrimentally relied</em> on its conduct. (Estoppel often <em>follows</em> a waiver.)</td></tr>
+              <tr><td><strong>Void vs. Voidable</strong></td><td><strong>Void</strong> = never enforceable from the start (illegal object, no insurable interest). <strong>Voidable</strong> = valid, but one party may cancel &mdash; e.g., a <strong>minor&rsquo;s</strong> contract is voidable <em>by the minor</em> while the insurer stays bound.</td></tr>
+            </tbody>
+          </table>
+          <div class="tell"><strong>Tell:</strong> <em>waiver</em> is a choice the insurer makes; <em>estoppel</em> is a consequence forced <em>on</em> the insurer. <em>Void</em> = dead on arrival; <em>voidable</em> = one side holds an escape hatch.</div>
+        </div>
+
+        <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; why each contract characteristic actually matters<span class="toggle-icon">+</span></div>
+        <div class="collapsible-content deep-body collapsed"><div class="inner">
+          <p>The seven characteristics aren&rsquo;t vocabulary for its own sake &mdash; each drives a real outcome:</p>
+          <ul class="key-list">
+            <li><strong>Adhesion</strong> &rarr; because the insurer drafted every word, any <strong>ambiguity is construed <em>against</em> the insurer</strong> (contra proferentem). This is <em>the</em> reason coverage disputes so often tilt to the insured.</li>
+            <li><strong>Utmost good faith</strong> &rarr; both sides must disclose material facts, which is what lets an insurer <strong>rescind</strong> for material <em>concealment</em> or <em>misrepresentation</em>.</li>
+            <li><strong>Aleatory</strong> &rarr; the dollars exchanged are deliberately <strong>unequal</strong> (a small premium can yield a huge benefit, or none) &mdash; a statement demanding &ldquo;equal value&rdquo; is wrong.</li>
+            <li><strong>Unilateral</strong> &rarr; only the <em>insurer</em> makes an enforceable promise; the insured&rsquo;s sole real obligation is paying premiums (they can walk away anytime).</li>
+            <li><strong>Conditional</strong> &rarr; the insurer pays only if the insured has met policy conditions (notice, proof of loss) <em>and</em> a covered loss occurs.</li>
+            <li><strong>Personal</strong> &rarr; the contract follows the <em>person</em>, so it can&rsquo;t be assigned without consent (the life-insurance death-benefit assignment is the exception).</li>
+            <li><strong>Indemnity</strong> &rarr; reimburses only up to the actual loss &mdash; no profit from insurance (life insurance is the exception; it pays a stated face).</li>
+          </ul>
+        </div></div>
       </div>
     </div>
   </div>
@@ -393,6 +507,29 @@
         <hr>
         <p class="text-sm"><strong>Coverage levels:</strong> Basic (12 perils: fire, lightning, wind, hail, explosion, riot, aircraft, vehicles, smoke, vandalism, theft, volcanic eruption) &rarr; Broad (adds 6 more: falling objects, weight of ice/snow, accidental water discharge, freezing of plumbing, electrical damage, sudden bursting = 18 total) &rarr; Open perils (all perils except excluded).</p>
         <p class="text-sm mt-1"><strong>Standard exclusions:</strong> Flood, earthquake, neglect, war/nuclear hazards, power failure, intentional loss. Flood and earthquake require separate policies.</p>
+
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; HO-3 vs. HO-5 (the single most-tested form pair)</div>
+          <table>
+            <thead><tr><th></th><th>Dwelling (Cov A)</th><th>Contents (Cov C)</th></tr></thead>
+            <tbody>
+              <tr><td><strong>HO-3</strong> (Special)</td><td><strong>Open</strong> perils</td><td><strong>Named</strong> perils</td></tr>
+              <tr><td><strong>HO-5</strong> (Comprehensive)</td><td>Open perils</td><td><strong>Open</strong> perils</td></tr>
+            </tbody>
+          </table>
+          <div class="tell"><strong>How to tell them apart:</strong> both cover the <em>dwelling</em> on open perils &mdash; the <strong>only</strong> difference is the <em>contents</em>. HO-3 = named-peril contents; HO-5 = open-peril contents. Adding the <strong>HO-15 endorsement</strong> to an HO-3 upgrades its contents to open perils &mdash; effectively creating HO-5-level coverage. (Trap: people assume HO-3 gives open-peril contents; it does not.)</div>
+        </div>
+
+        <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; named vs. open perils, the 12&rarr;18 peril ladder, and what&rsquo;s always excluded<span class="toggle-icon">+</span></div>
+        <div class="collapsible-content deep-body collapsed"><div class="inner">
+          <p>The whole HO system is built on <strong>who carries the burden of proof</strong>:</p>
+          <ul class="key-list">
+            <li><strong>Named perils</strong> (Basic, Broad) &mdash; covered <em>only</em> if the loss matches a listed peril. <strong>The insured must prove</strong> the cause is on the list.</li>
+            <li><strong>Open perils</strong> (a.k.a. &ldquo;all-risk&rdquo;/special) &mdash; covered <em>unless</em> specifically excluded. <strong>The insurer must prove</strong> an exclusion applies. Far broader for the insured.</li>
+          </ul>
+          <p><strong>The peril ladder:</strong> Basic = <strong>12 perils</strong> (fire, lightning, windstorm, hail, explosion, riot, aircraft, vehicles, smoke, vandalism, theft, volcanic eruption) &rarr; Broad adds <strong>6 more</strong> (falling objects, weight of ice/snow, accidental water discharge, freezing of plumbing, electrical damage, sudden bursting) = <strong>18</strong> &rarr; Open = everything except the exclusions.</p>
+          <div class="highlight-box red"><strong>Always excluded from every HO form:</strong> flood and earthquake (need NFIP / a state earthquake pool such as the CEA), plus neglect, war/nuclear, intentional loss, and off-premises power failure. Nuance the exam loves: an <em>internal</em> water loss (a burst pipe) IS covered, but <em>external/ground</em> water (flood, sewer backup without endorsement) is not; a <strong>power surge</strong> is covered but a <strong>power failure</strong> that originates off-premises is not.</div>
+        </div></div>
       </div>
     </div>
     <div class="section-card">
@@ -405,6 +542,28 @@
           <li><strong>Other Insurance Provision:</strong> Pro-rata or primary/excess coordination; insured cannot profit from a loss</li>
           <li><strong>Pair or set clause:</strong> If one item of a pair/set is lost, insurer pays only the difference in value, not the full replacement cost of the pair</li>
         </ul>
+
+        <div class="worked">
+          <div class="worked-h">&#129518; Worked mechanics &mdash; the coinsurance (80%) penalty, start to finish</div>
+          <p class="text-sm mb-1"><strong>Formula:</strong> ( amount carried &divide; amount <em>required</em> ) &times; loss &minus; deductible, where <strong>amount required = 80% &times; replacement cost</strong>. On a partial loss when under-insured, the insurer pays the <strong>GREATER</strong> of this formula result or plain ACV.</p>
+          <p class="text-sm mb-1"><strong>Facts:</strong> Zachary&rsquo;s home has a <strong>$400,000</strong> replacement cost. He carries <strong>$300,000</strong>. Deductible <strong>$1,000</strong>. A kitchen fire causes a <strong>$20,000</strong> partial loss.</p>
+          <ol>
+            <li><strong>Amount required</strong> = $400,000 &times; 80% = <strong>$320,000</strong>.</li>
+            <li><strong>Coinsurance fraction</strong> = $300,000 &divide; $320,000 = <strong>0.9375</strong>.</li>
+            <li>0.9375 &times; $20,000 = <strong>$18,750</strong>, then &minus; $1,000 deductible = <strong>$17,750 paid</strong>. Zachary eats the $2,250 shortfall for being under-insured.</li>
+          </ol>
+          <div class="keys">HP-12C / BA II Plus
+  400,000 [&times;] .80 [=] 320,000        (required)
+  300,000 [&divide;] 320,000 [=] 0.9375     (coinsurance fraction)
+  0.9375 [&times;] 20,000 [=] 18,750
+  18,750 [-] 1,000 [=] 17,750            (paid)</div>
+          <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> (1) dividing by the <em>full</em> replacement cost ($400k) instead of the <em>80% required</em> amount ($320k) &mdash; that under-pays; (2) forgetting the insurer pays the <strong>greater</strong> of the formula or ACV, not the lesser; (3) applying coinsurance to a <strong>total</strong> loss &mdash; the penalty only touches <em>partial</em> losses (a total loss is capped at the face regardless).</div>
+          <div class="tryit"><strong>Try it:</strong> Same home, but Zachary had carried the full $320,000. Fraction = 320,000 &divide; 320,000 = 1.0 &rarr; pays $20,000 &minus; $1,000 = <strong>$19,000</strong> (no penalty). That&rsquo;s the whole point of the 80% rule: hit 80% of replacement cost and partial losses are paid in full (less deductible).</div>
+        </div>
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; Replacement Cost vs. Actual Cash Value</div>
+          <div class="tell" style="margin-top:0;"><strong>RC</strong> rebuilds &ldquo;as it was,&rdquo; no depreciation. <strong>ACV = RC &minus; depreciation.</strong> To collect <em>replacement cost</em> you must insure to <strong>at least 80%</strong> of RC (that&rsquo;s what the coinsurance clause enforces). <strong>The PAP settles autos on ACV only</strong> &mdash; there is no replacement-cost auto coverage, so a totaled car pays depreciated value, not the price of a new one.</div>
+        </div>
       </div>
     </div>
     <div class="section-card">
@@ -418,7 +577,38 @@
           <li><strong>Part D &mdash; Physical Damage:</strong> Collision (your fault or single-car) + Comprehensive (theft, weather, animals &mdash; other than collision)</li>
           <li><strong>Umbrella/Excess:</strong> Additional liability layer above auto and homeowners limits; recommended for high-net-worth clients</li>
         </ul>
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; Collision vs. Comprehensive (PAP Part D)</div>
+          <div class="tell" style="margin-top:0;"><strong>Collision</strong> = your car hits something or overturns (another car, a tree, a guardrail). <strong>Comprehensive (&ldquo;other than collision&rdquo;)</strong> = everything else: fire, theft, glass, falling objects, flood, and <strong>animal contact</strong>. <em>The classic trap:</em> hitting a <strong>tree</strong> = collision; hitting a <strong>deer</strong> = comprehensive. And the PAP settles both on <strong>ACV</strong> only.</div>
+        </div>
+
+        <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; how an umbrella &ldquo;drops down,&rdquo; and the required-underlying trap<span class="toggle-icon">+</span></div>
+        <div class="collapsible-content deep-body collapsed"><div class="inner">
+          <p>A personal liability umbrella (PLUP) sits <em>above</em> your auto and homeowners liability, but it will only do so if you carry the <strong>required underlying limits</strong> (commonly $250,000 or $500,000). If you don&rsquo;t, the umbrella still measures its drop-down from the <strong>required</strong> underlying amount &mdash; <em>not</em> from what you actually bought &mdash; leaving <em>you</em> to fill the gap.</p>
+          <div class="worked">
+            <div class="worked-h">&#129518; Worked &mdash; the self-insured gap</div>
+            <p class="text-sm">Harry has a <strong>$1,000,000</strong> umbrella that <strong>requires $300,000</strong> of underlying auto liability, but he carries only <strong>$200,000</strong>. He&rsquo;s sued for <strong>$1,000,000</strong>.</p>
+            <ul class="key-list">
+              <li>His auto policy pays its actual limit: <strong>$200,000</strong>.</li>
+              <li>The umbrella pays from the <em>required</em> $300,000 up to $1M = <strong>$700,000</strong>.</li>
+              <li>Total available = $200,000 + $700,000 = <strong>$900,000</strong>.</li>
+              <li><strong>Harry personally owes the missing $100,000</strong> &mdash; the gap between the $300k <em>required</em> and the $200k he actually carried.</li>
+            </ul>
+            <div class="wrong"><strong>&#9888;&#65039; The trap:</strong> assuming the umbrella fills everything above what you <em>bought</em>. It fills above what it <em>required</em> &mdash; under-buying the underlying limit punches a hole you pay for. Rule of thumb: carry liability at least equal to <strong>net worth</strong>.</div>
+          </div>
+        </div></div>
       </div>
+    </div>
+
+    <div class="sources">
+      <h4>&#128206; Primary sources for this module</h4>
+      <ul>
+        <li><span class="srcref">ISO</span> (Insurance Services Office) &mdash; publishes the standard HO forms (HO-1 through HO-8, HO-15) and the Personal Auto Policy.</li>
+        <li><span class="srcref">NFIP</span> &mdash; National Flood Insurance Program (the federal flood carrier; flood is excluded from every HO form).</li>
+        <li><span class="srcref">CEA</span> / state pools &mdash; earthquake coverage (also excluded from every HO form).</li>
+        <li><span class="srcref">State financial-responsibility laws</span> &mdash; mandate minimum auto liability limits.</li>
+      </ul>
+      <p style="margin-top:0.5rem;font-style:italic;">Grounded in the FP512 course textbook (Module 2, Property &amp; Casualty). Coverage percentages and special limits are ISO-standard illustrative amounts (they vary by policy); worked examples use the textbook&rsquo;s own figures.</p>
     </div>
   </div>
 
@@ -437,6 +627,28 @@
         </div>
         <div class="chart-wrap" style="max-width:450px;"><canvas id="chartLifeInsuranceTypes"></canvas></div>
         <div class="highlight-box amber mt-1"><strong>VL vs. VUL:</strong> Variable Life has a GUARANTEED minimum DB (premium split: part to DB, part to subaccounts). VUL has NO guaranteed DB &mdash; all premium goes to subaccounts. VUL lapses if subaccounts reach zero; VL&#39;s guaranteed DB survives.</div>
+
+        <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; UL death-benefit Option A vs. Option B (net amount at risk)<span class="toggle-icon">+</span></div>
+        <div class="collapsible-content deep-body collapsed"><div class="inner">
+          <p>Universal life lets the owner choose how the death benefit relates to the cash value. The exam tests this through the <strong>net amount at risk (NAR)</strong> &mdash; the pure-insurance slice the insurer is actually on the hook for (<em>NAR = death benefit &minus; cash value</em>), because the mortality charge is levied on the NAR, not the whole face.</p>
+          <table>
+            <thead><tr><th></th><th>Option A (Type I)</th><th>Option B (Type II)</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Death benefit</strong></td><td><strong>Level</strong> (stays at the face)</td><td>Face <strong>+ cash value</strong> (rises)</td></tr>
+              <tr><td><strong>Net amount at risk</strong></td><td><strong>Decreases</strong> as cash value grows</td><td><strong>Stays level</strong></td></tr>
+              <tr><td><strong>Cost / funding</strong></td><td>Cheaper &mdash; insurer&rsquo;s risk shrinks</td><td>Costlier &mdash; needs more premium</td></tr>
+            </tbody>
+          </table>
+          <div class="worked">
+            <div class="worked-h">&#129518; Worked &mdash; what the beneficiary collects</div>
+            <p class="text-sm">Face $300,000, cash value has grown to $75,000 at death.</p>
+            <ul class="key-list">
+              <li><strong>Option A:</strong> beneficiary gets the <strong>$300,000 face</strong> (the cash value is <em>absorbed</em> into it, not paid on top). NAR at death = $300,000 &minus; $75,000 = $225,000.</li>
+              <li><strong>Option B:</strong> beneficiary gets <strong>$375,000</strong> (face $300,000 + cash value $75,000). NAR stayed at $300,000 the whole time.</li>
+            </ul>
+            <div class="wrong"><strong>&#9888;&#65039; Common trap:</strong> assuming Option A pays face <em>plus</em> cash value. Under Option A the cash value is <em>not</em> added on top &mdash; it funds the level benefit, so heirs receive only the face.</div>
+          </div>
+        </div></div>
       </div>
     </div>
     <div class="section-card">
@@ -523,8 +735,43 @@
           <li><strong>MEC:</strong> Fails 7-pay test. Withdrawals: LIFO + 10% penalty before age 59&frac12;. A MEC can arise in any cash-value policy (<strong>whole life, UL, or VUL</strong>) but <strong>never in term insurance</strong>, which has no cash value to over-fund.</li>
           <li><strong>Transfer for value rule:</strong> Sale/transfer of policy for consideration may make death proceeds taxable. Exceptions: transfer to insured, insured&#39;s partner, partnership where insured is partner, or corporation where insured is officer/shareholder.</li>
           <li><strong>1035 Exchange (IRC &sect;1035):</strong> Tax-free, basis-carryover swap of a life policy into another life, endowment, annuity, or qualified LTC contract. <em>Note: an annuity or LTC contract canNOT be exchanged back into life insurance.</em></li>
-          <li><strong>Group life $50K rule:</strong> First $50K employer-paid coverage is tax-free. Above $50K: imputed income using Table I rates, reported on W-2.</li>
+          <li><strong>Group life $50K rule:</strong> First $50K employer-paid coverage is tax-free. Above $50K: imputed income using Table I rates, reported on W-2. <em>(Full Table I + worked imputed-income calc: see Group Benefits tab.)</em></li>
         </ul>
+
+        <div class="worked">
+          <div class="worked-h">&#129518; Worked mechanics &mdash; cash-value surrender: what&rsquo;s taxable</div>
+          <p class="text-sm mb-1">Gain on a surrendered cash-value policy = cash received &minus; <strong>basis</strong>, where <strong>basis = total premiums paid &minus; prior dividends received &minus; prior tax-free withdrawals</strong>. The gain is <strong>ordinary income</strong> (never capital gain).</p>
+          <ol>
+            <li>Susan paid <strong>$20,000</strong> in premiums, later took a <strong>$15,000</strong> tax-free withdrawal (basis now $5,000), then paid <strong>$10,000</strong> more in premiums &rarr; basis = <strong>$15,000</strong>.</li>
+            <li>She surrenders for <strong>$28,000</strong>.</li>
+            <li>Taxable gain = $28,000 &minus; $15,000 = <strong>$13,000 ordinary income</strong>.</li>
+          </ol>
+          <div class="wrong"><strong>&#9888;&#65039; Common wrong method:</strong> treating the whole $28,000 (or the gain over <em>total premiums</em>) as taxable. Basis is <em>premiums net of prior dividends and withdrawals</em> &mdash; and dividends are a nontaxable return of premium only <em>until basis is exhausted</em>.</div>
+        </div>
+
+        <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; the 7-pay test &amp; what makes a policy a MEC<span class="toggle-icon">+</span></div>
+        <div class="collapsible-content deep-body collapsed"><div class="inner">
+          <p>Congress created the <strong>Modified Endowment Contract</strong> to stop people from stuffing a life policy purely as a tax shelter. A policy is a MEC if <strong>cumulative premiums paid in the first 7 years exceed the cumulative net-level premium</strong> needed to pay it up in 7 years <span class="srcref">7-pay test</span>. Key mechanics:</p>
+          <ul class="key-list">
+            <li><strong>&ldquo;Once a MEC, always a MEC&rdquo;</strong> &mdash; the status never washes out, and it passes to any policy it&rsquo;s §1035-exchanged into.</li>
+            <li><strong>All single-premium life is automatically a MEC</strong> (it blows past the 7-pay limit on day one).</li>
+            <li>A <strong>material change</strong> (e.g., a face increase) <strong>restarts a fresh 7-year test.</strong></li>
+            <li>A MEC isn&rsquo;t &ldquo;bad&rdquo; if intentional &mdash; a single-premium policy meant as a bequest never triggers the living-withdrawal rules because the owner never touches it.</li>
+          </ul>
+          <div class="confuse">
+            <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; MEC vs. non-MEC withdrawal taxation</div>
+            <table>
+              <thead><tr><th></th><th>Non-MEC (normal policy)</th><th>MEC</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Withdrawal ordering</strong></td><td><strong>FIFO</strong> &mdash; basis out first, tax-free</td><td><strong>LIFO</strong> &mdash; gain out first, ordinary income</td></tr>
+                <tr><td><strong>10% penalty &lt;59&frac12;?</strong></td><td>No</td><td>Yes, on the taxable portion</td></tr>
+                <tr><td><strong>Policy loans</strong></td><td>Generally <strong>not</strong> taxable</td><td><strong>Taxable</strong> (treated like a distribution)</td></tr>
+              </tbody>
+            </table>
+            <div class="tell"><strong>How to tell it matters:</strong> the death benefit is income-tax-free under §101 <em>either way</em> &mdash; MEC status only bites on <em>living</em> access (withdrawals and loans). So a MEC is fine for pure death-benefit planning and painful for anyone who wants to tap the cash value.</div>
+          </div>
+          <p class="text-sm"><strong>Transfer-for-value rule:</strong> selling or transferring a policy <em>for valuable consideration</em> makes the death benefit <strong>ordinary-income taxable</strong> to the buyer (above their basis). Safe-harbor exceptions: transfer to the <strong>insured</strong>, a <strong>partner of the insured</strong>, a <strong>partnership in which the insured is a partner</strong>, or a <strong>corporation in which the insured is an officer or shareholder</strong>. <span class="srcref">IRC &sect;101(a)(2)</span></p>
+        </div></div>
       </div>
     </div>
     <div class="section-card">
@@ -541,10 +788,47 @@
           <strong>Capital Utilization (BEG mode):</strong> I/YR = (1+return)/(1+inflation)&minus;1; PMT = needed income; Solve PV<br>
           <strong>Capital Retention:</strong> PV = Annual Income &divide; Inflation-adjusted rate
         </div>
+
+        <div class="worked">
+          <div class="worked-h">&#129518; Worked mechanics &mdash; human life value, both methods</div>
+          <p class="text-sm mb-1">A 45-year-old needs to replace <strong>$50,000</strong> of income growing <strong>3%</strong>/yr to age 90 (N = 45), earning <strong>6%</strong>. The engine of both methods is the <strong>inflation-adjusted (real) rate</strong>, entered in <strong>BEG mode</strong> because survivors draw at the start of each year.</p>
+          <ol>
+            <li><strong>Real rate</strong> = [(1.06 &divide; 1.03) &minus; 1] &times; 100 = <strong>2.9126%</strong>.</li>
+            <li><strong>Capital utilization</strong> (fund is <em>fully depleted</em> at 90): N 45, I/YR 2.9126, PMT 50,000, BEG &rarr; <strong>PV = $1,281,305</strong>.</li>
+            <li><strong>Capital retention</strong> (principal <em>preserved</em> for heirs, live on earnings): $50,000 &divide; 0.029126 = <strong>$1,716,667</strong>.</li>
+          </ol>
+          <div class="keys">HP-12C / BA II Plus (utilization, BEG mode)
+  [BEG]  N 45   I/YR 2.9126   PMT 50,000  [PV] -> 1,281,305
+  retention: 50,000 [&divide;] .029126 [=] 1,716,667</div>
+          <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> (1) using the <em>nominal</em> 6% instead of the 2.9126% real rate &mdash; that ignores that the need grows with inflation; (2) leaving the calculator in <strong>END</strong> mode &mdash; needs analysis is a BEG problem. Retention always produces the <em>larger</em> number (you never spend principal), so it&rsquo;s the conservative sizing.</div>
+          <div class="tryit"><strong>Why the gap?</strong> Utilization ($1.28M) assumes the beneficiary can spend down to zero exactly at age 90 &mdash; cheaper, but leaves nothing and carries <em>outliving-the-fund</em> risk if they live past 90. Retention ($1.72M) self-insures that longevity risk by never touching principal.</div>
+        </div>
         <hr>
         <p class="text-sm"><strong>Churning:</strong> Repeatedly switching policies to generate commissions &mdash; unethical, may be illegal. <strong>Twisting:</strong> Misrepresenting a competitor policy to induce replacement. State replacement regulations require specific disclosure forms and comparisons before replacing an existing policy.</p>
         <div class="highlight-box amber mt-1"><strong>Keep vs. replace factors:</strong> Replacing an existing policy usually favors <em>keeping</em> the old one, because a new policy resets several disadvantages: fresh <strong>acquisition costs</strong> (new commissions and underwriting) restart the drag on cash value; the <strong>2-year contestability and suicide periods start over</strong> on the new contract; and a new policy pays <strong>lower initial dividends and builds cash value more slowly</strong> in its early years. Replace only when a genuine need change or a materially better product justifies these costs.</div>
+
+        <div class="synth">
+          <div class="synth-h">&#128279; Connects across the exam &mdash; &ldquo;income-tax-free&rdquo; is NOT &ldquo;estate-tax-free&rdquo;</div>
+          <p class="text-sm">The death benefit is income-tax-free <span class="srcref">IRC &sect;101</span>, but it is <strong>included in the gross estate of the policy <em>owner</em></strong>. That single distinction bridges FP512 and <strong>FP516 (Estate)</strong>:</p>
+          <ul class="key-list mt-1">
+            <li>Move ownership to an <strong>ILIT</strong> (irrevocable life insurance trust) or another person and the proceeds escape the insured&rsquo;s estate &mdash; but the <strong>3-year lookback</strong> pulls a <em>transferred existing</em> policy back in if the insured dies within 3 years (buy the new policy <em>inside</em> the ILIT to avoid it).</li>
+            <li>Keep any <strong>incident of ownership</strong> (right to change beneficiary, borrow, surrender) and the full death benefit stays in the estate.</li>
+            <li>Second-to-die (survivorship) policies pair with the <strong>unlimited marital deduction</strong> &mdash; liquidity arrives exactly when the estate tax is finally due (second death).</li>
+          </ul>
+        </div>
       </div>
+    </div>
+
+    <div class="sources">
+      <h4>&#128206; Primary sources for this module</h4>
+      <ul>
+        <li><span class="srcref">IRC &sect;101</span> &mdash; income-tax-free death benefit; <span class="srcref">&sect;101(a)(2)</span> transfer-for-value rule + its safe-harbor exceptions.</li>
+        <li><span class="srcref">IRC &sect;1035(a)</span> &mdash; tax-free exchange (life &rarr; life / endowment / annuity / qualified LTC; never <em>into</em> life; same insured for life-for-life).</li>
+        <li><span class="srcref">DEFRA 1984</span> &mdash; statutory <em>definition of life insurance</em> tying cash value to death benefit (the <span class="srcref">&sect;7702</span> concept).</li>
+        <li><span class="srcref">TAMRA 1988</span> &mdash; created Modified Endowment Contracts / the 7-pay test (the <span class="srcref">&sect;7702A</span> concept).</li>
+        <li><span class="srcref">NAIC Life Insurance Disclosure Model Reg</span> &mdash; policy illustrations &amp; buyer&rsquo;s guide (delivered &ge;5 days before policy delivery).</li>
+      </ul>
+      <p style="margin-top:0.5rem;font-style:italic;">Grounded in the FP512 course textbook (Module 3, Life Insurance). The textbook cites only &sect;1035(a) by number; other IRC section numbers come from the underlying tax code (the text names DEFRA 1984 for &sect;7702 and TAMRA 1988 for &sect;7702A). Figures are 2025-vintage.</p>
     </div>
   </div>
 
@@ -565,6 +849,18 @@
           </tbody>
         </table>
         <div class="highlight-box amber mt-1"><strong>Key distinction:</strong> Annuities are insurance contracts, NOT investment products. Primary purpose is hedging longevity risk (superannuation risk), not maximizing growth.</div>
+
+        <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; the two phases &amp; why an annuity can pay more than a CD<span class="toggle-icon">+</span></div>
+        <div class="collapsible-content deep-body collapsed"><div class="inner">
+          <p>Every deferred annuity lives <strong>two lives</strong>. Understanding the hand-off is what most classification questions are really testing:</p>
+          <ol>
+            <li><strong>Accumulation phase</strong> &mdash; money goes in and grows <em>tax-deferred</em> (no 1099 each year, unlike a CD or brokerage account). The contract has an <strong>account value</strong> you can surrender (subject to surrender charges).</li>
+            <li><strong>Annuitization / payout phase</strong> &mdash; at annuitization the owner <em>irrevocably</em> trades the account value for a stream of income. The account value ceases to exist; you now own a <em>promise to pay</em>, not a balance. This is why annuitization is a one-way door and why liquidity disappears.</li>
+          </ol>
+          <p><strong>Mortality credits &mdash; the reason a life annuity beats a bond ladder for pure income.</strong> The insurer pools thousands of annuitants. Those who die early &ldquo;forfeit&rdquo; their remaining principal, and that money subsidizes the payments of those who live long. This <em>mortality credit</em> is income you cannot manufacture on your own with a portfolio &mdash; it&rsquo;s the payment for accepting that you get <em>nothing back</em> at death under a straight-life payout. The trade-off: you bear <strong>no market risk</strong> on the income, but you accept <strong>no liquidity</strong> and (on straight life) <strong>no residual</strong> for heirs.</p>
+          <div class="highlight-box purple"><strong>Exam framing:</strong> A pure/straight-life annuity gives the <em>highest</em> monthly income precisely <em>because</em> it has no refund feature &mdash; the mortality credits are largest when nothing is promised to a beneficiary. Adding period-certain or refund features lowers the payout.</div>
+          <p class="text-sm">Authority: annuity taxation and the deferral inside the contract flow from <span class="srcref">IRC &sect;72</span>; the &ldquo;annuity is a contract, not a security&rdquo; line holds only for <em>fixed/indexed</em> products &mdash; variable and registered index-linked annuities <em>are</em> securities (see Product Types below).</p>
+        </div></div>
       </div>
     </div>
     <div class="section-card">
@@ -580,6 +876,36 @@
           <div class="stat-box"><div class="number" style="font-size:1rem;">DIA</div><div class="label">Deferred Income Annuity &mdash; premium paid now; income begins at a future date; can be nonqualified; addresses superannuation risk</div></div>
         </div>
         <div class="chart-wrap" style="max-width:420px;"><canvas id="chartAnnuityComparison"></canvas></div>
+
+        <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; how an indexed annuity actually credits interest (participation, cap, spread, floor)<span class="toggle-icon">+</span></div>
+        <div class="collapsible-content deep-body collapsed"><div class="inner">
+          <p>An EIA/FIA never buys the index. The insurer buys mostly bonds, then spends a slice of the yield on <strong>index call options</strong>. How much of the index&rsquo;s move you receive is throttled by <em>three levers</em> &mdash; and a given contract usually uses one, not all:</p>
+          <table>
+            <thead><tr><th>Lever</th><th>How it limits you</th><th>Example (index +12%)</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Participation rate</strong></td><td>You get a <em>percentage of</em> the index gain</td><td>80% &rarr; credited <strong>9.6%</strong></td></tr>
+              <tr><td><strong>Cap rate</strong></td><td>Credit is capped at a ceiling</td><td>6% cap &rarr; credited <strong>6%</strong></td></tr>
+              <tr><td><strong>Spread / margin</strong></td><td>A fixed % is subtracted off the top</td><td>3% spread &rarr; credited <strong>9%</strong></td></tr>
+            </tbody>
+          </table>
+          <p>The <strong>floor is 0%</strong>: in a down year you&rsquo;re credited nothing, but you never lose principal to market losses (surrender charges are separate). Crediting is measured over a <strong>term</strong> using a method &mdash; most commonly <em>annual reset / ratchet</em> (locks each year&rsquo;s gain and never gives it back), or <em>point-to-point</em> (start vs. end of a multi-year term). <span class="pill amber">Trap</span> A high participation rate means little if paired with a low cap &mdash; always read the <em>combination</em>.</p>
+
+          <div class="confuse">
+            <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; Equity-Indexed vs. Variable annuity</div>
+            <table>
+              <thead><tr><th></th><th>Equity-Indexed (EIA/FIA)</th><th>Variable (VA)</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Who bears market risk</strong></td><td>Insurer (you have a 0% floor)</td><td>Owner (subaccounts can lose value)</td></tr>
+                <tr><td><strong>Regulated as a security?</strong></td><td>No &mdash; insurance product, state-regulated</td><td>Yes &mdash; prospectus, FINRA-licensed rep</td></tr>
+                <tr><td><strong>Upside</strong></td><td>Limited by cap/par/spread</td><td>Uncapped (full subaccount return)</td></tr>
+                <tr><td><strong>Downside</strong></td><td>Principal protected</td><td>Full downside exposure</td></tr>
+              </tbody>
+            </table>
+            <div class="tell"><strong>How to tell them apart on the exam:</strong> if the question says <em>&ldquo;prospectus,&rdquo; &ldquo;subaccounts,&rdquo;</em> or <em>&ldquo;securities license,&rdquo;</em> it&rsquo;s a <strong>variable</strong> annuity. If it says <em>&ldquo;minimum guarantee,&rdquo; &ldquo;participation rate,&rdquo; &ldquo;cap,&rdquo;</em> or <em>&ldquo;principal protection,&rdquo;</em> it&rsquo;s <strong>indexed</strong>. A <strong>RILA</strong> is the hybrid &mdash; indexed <em>crediting</em> but a registered security with a buffer/floor that <em>can</em> lose value.</div>
+          </div>
+
+          <p class="text-sm"><strong>QLAC, current figures:</strong> funded from an IRA/qualified plan; income (and the RMDs on that money) can defer to age <strong>85</strong>. <span class="srcref">SECURE 2.0 (2022)</span> removed the old 25%-of-balance limit and set a dollar cap of $200,000 indexed &mdash; <strong>$210,000 for 2025</strong> <span class="pill amber">verify each year</span>. Variable annuities are securities under the <span class="srcref">Securities Act of 1933</span>; RILAs are separately registered.</p>
+        </div></div>
       </div>
     </div>
     <div class="section-card">
@@ -596,6 +922,29 @@
           </tbody>
         </table>
         <div class="highlight-box blue mt-1"><strong>Cost:</strong> GLB riders add 0.50%-1.50% annually on top of existing mortality and expense (M&amp;E) charges. Always weigh cost vs. value for each client.</div>
+
+        <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; benefit base vs. account value (the machinery behind every GLB)<span class="toggle-icon">+</span></div>
+        <div class="collapsible-content deep-body collapsed"><div class="inner">
+          <p>Every living-benefit rider runs on <strong>two separate numbers</strong>, and confusing them is the #1 GLB mistake:</p>
+          <ul class="key-list">
+            <li><strong>Account value</strong> &mdash; the real money. It&rsquo;s what you can surrender or pass to heirs, and it rises and falls with the subaccounts.</li>
+            <li><strong>Benefit base</strong> (a.k.a. income base) &mdash; a <em>bookkeeping</em> figure used <strong>only</strong> to calculate the guaranteed benefit. You cannot withdraw it as a lump sum. It typically grows by the greater of a <strong>roll-up rate</strong> (e.g., a guaranteed 5%/yr in the deferral period) or an annual <strong>ratchet/step-up</strong> that locks in market highs.</li>
+          </ul>
+          <p>So a GLWB can keep paying you 5% of a <em>$200,000 benefit base</em> for life even after the <em>account value</em> has fallen to $0 &mdash; the insurer is now paying from its own pocket. That guarantee is exactly what the rider fee buys. <span class="pill red">Trap</span> Excess withdrawals (above the guaranteed annual amount) usually reduce the benefit base <em>proportionally</em>, which can permanently cut the guarantee &mdash; a classic suitability landmine.</p>
+
+          <div class="confuse">
+            <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; GMIB vs. GMWB vs. GLWB</div>
+            <table>
+              <thead><tr><th>Rider</th><th>What it guarantees</th><th>Must you annuitize?</th></tr></thead>
+              <tbody>
+                <tr><td><strong>GMIB</strong></td><td>A minimum <em>income</em> if you <strong>annuitize</strong> &mdash; a floor on the payout rate</td><td><strong>Yes</strong> &mdash; you give up the account value to turn it on</td></tr>
+                <tr><td><strong>GMWB</strong></td><td>Get your <em>principal</em> back via annual <strong>withdrawals</strong> (until total withdrawals = premium)</td><td><strong>No</strong> &mdash; keep control of the account</td></tr>
+                <tr><td><strong>GLWB</strong></td><td>Withdraw a % <strong>for life</strong>, even if the account hits $0 &mdash; and keep the account value</td><td><strong>No</strong> &mdash; this is why it&rsquo;s the most popular</td></tr>
+              </tbody>
+            </table>
+            <div class="tell"><strong>How to tell them apart:</strong> <strong>GMIB</strong> = the word &ldquo;<em>income</em>&rdquo; and it forces <em>annuitization</em>. <strong>GMWB</strong> = &ldquo;<em>withdrawal</em>&rdquo; but it <em>ends</em> once you&rsquo;ve pulled out your premium. <strong>GLWB</strong> = the <em>&ldquo;L for Lifetime&rdquo;</em> &mdash; withdrawals continue for life <em>without</em> annuitizing. If the question stresses &ldquo;doesn&rsquo;t want to give up access to the money but wants lifetime income,&rdquo; the answer is <strong>GLWB</strong>.</div>
+          </div>
+        </div></div>
       </div>
     </div>
     <div class="section-card">
@@ -619,6 +968,23 @@
           <strong>Exclusion Ratio:</strong> Investment in Contract &divide; Total Expected Return &times; Payment = Tax-Free Portion per Payment<br>
           <em>Example: $100K invested, $750/mo for 20 years. Expected return = $180K. Ratio = 55.6%. Tax-free = $416.67/mo; taxable = $333.33/mo.</em>
         </div>
+
+        <div class="worked">
+          <div class="worked-h">&#129518; Worked mechanics &mdash; the exclusion ratio, start to finish <span class="srcref">IRC &sect;72(b)</span></div>
+          <p class="text-sm mb-1"><strong>Facts:</strong> Diane, 65, annuitizes a nonqualified deferred annuity. Basis (investment in the contract) = <strong>$100,000</strong>. The contract pays <strong>$750/month</strong>. Her expected return is figured over the payout period.</p>
+          <ol>
+            <li><strong>Find the expected return.</strong> For a <em>fixed-period</em> annuity it&rsquo;s just payment &times; months: $750 &times; 240 = <strong>$180,000</strong>. For a <em>life</em> annuity you don&rsquo;t guess &mdash; you multiply the annualized payment by the life-expectancy multiple from the <strong>IRS actuarial tables</strong> (Table V), so $9,000/yr &times; a ~20.0 multiple &asymp; $180,000.</li>
+            <li><strong>Exclusion ratio</strong> = basis &divide; expected return = $100,000 &divide; $180,000 = <strong>0.5556 (55.6%)</strong>.</li>
+            <li><strong>Tax-free per payment</strong> = 55.6% &times; $750 = <strong>$416.67</strong>. The rest, <strong>$333.33</strong>, is taxable ordinary income.</li>
+          </ol>
+          <div class="keys">HP-12C / BA II Plus (fixed-period expected return)
+  750  [&times;]  240  [=]   180,000   (expected return)
+  100,000 [&divide;] 180,000 [=]  0.5556   (exclusion ratio)
+  0.5556 [&times;] 750 [=]   416.67   (tax-free portion)</div>
+          <div class="wrong"><strong>&#9888;&#65039; Common wrong method:</strong> excluding $416.67 <em>forever</em>. Once Diane has recovered her full $100,000 of basis (here, at ~month 240), <strong>every later payment is 100% taxable</strong> <span class="srcref">&sect;72(b)(2)</span>. And the mirror trap: if she dies <em>before</em> recovering basis, the <strong>unrecovered basis is deductible on her final return</strong> <span class="srcref">&sect;72(b)(3)</span> &mdash; it is not simply lost.</div>
+          <div class="tryit"><strong>Try it:</strong> Same contract but $600/month for 20 years. Expected return $144,000; ratio = 100,000 &divide; 144,000 = 69.4%; tax-free = <strong>$416.67/mo</strong> (the dollar amount of returned basis is unchanged &mdash; only the <em>ratio</em> moved). That&rsquo;s the intuition: the exclusion ratio always returns the <em>same total basis</em>, just spread across whatever the payments are.</div>
+        </div>
+        <div class="highlight-box amber"><strong>Pre-annuitization is different:</strong> a withdrawal from a deferred annuity <em>before</em> annuitizing is <strong>LIFO</strong> &mdash; earnings first, fully taxable, plus a 10% penalty before 59&frac12; <span class="srcref">IRC &sect;72(q)</span>. The clean exclusion-ratio split above applies <em>only</em> once the contract is annuitized into a payment stream.</div>
         <hr>
         <h3 style="font-size:1rem;font-weight:600;margin:0.75rem 0 0.4rem;">Inherited / Beneficiary Annuity Taxation</h3>
         <ul class="key-list mt-1">
@@ -627,6 +993,22 @@
           <li><strong>Non-spouse beneficiary:</strong> Generally must fully distribute under the <strong>10-year rule</strong> (contract emptied by the end of the 10th year after death); a stretch/annuitized life-expectancy payout is available only to certain eligible designated beneficiaries.</li>
         </ul>
         <div class="highlight-box green mt-1"><strong>Roth annuity:</strong> An annuity held inside a <strong>Roth</strong> IRA/account grows and pays out <strong>tax-free</strong> when qualified. Note also that annuities have <strong>no contribution limits and no income phase-outs</strong> &mdash; a key reason high earners who have maxed out qualified plans use nonqualified annuities to keep deferring.</div>
+
+        <div class="synth">
+          <div class="synth-h">&#128279; Connects across the exam &mdash; how &ldquo;inside-the-contract&rdquo; taxation compares</div>
+          <p class="text-sm mb-1">The exam loves to test annuity taxation <em>against</em> life insurance and retirement accounts in the same question. One matrix reconciles all three:</p>
+          <table>
+            <thead><tr><th>Feature</th><th>Nonqualified annuity</th><th>Life insurance cash value</th><th>Traditional IRA / 401(k)</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Growth</strong></td><td>Tax-deferred</td><td>Tax-deferred</td><td>Tax-deferred</td></tr>
+              <tr><td><strong>Living withdrawal ordering</strong></td><td><strong>LIFO</strong> (gain first, taxable)</td><td><strong>FIFO</strong> (basis first, tax-free) &mdash; unless a MEC, which is LIFO</td><td>All taxable (pre-tax dollars)</td></tr>
+              <tr><td><strong>10% early penalty</strong></td><td>Yes &lt;59&frac12; <span class="srcref">&sect;72(q)</span></td><td>No (not a qualified plan)</td><td>Yes &lt;59&frac12; <span class="srcref">&sect;72(t)</span></td></tr>
+              <tr><td><strong>Death benefit to heir</strong></td><td>Gain = <strong>IRD, ordinary income</strong>; <em>no step-up</em></td><td><strong>Income-tax-free</strong> <span class="srcref">&sect;101(a)</span></td><td>Ordinary income; <em>no step-up</em>; 10-yr rule</td></tr>
+              <tr><td><strong>Tax-free swaps</strong></td><td>Annuity &rarr; annuity/LTC only <span class="srcref">&sect;1035</span></td><td>Life &rarr; life/annuity/LTC <span class="srcref">&sect;1035</span></td><td>Trustee-to-trustee rollover</td></tr>
+            </tbody>
+          </table>
+          <div class="tell" style="background:#ede9fe;border-radius:8px;padding:0.5rem 0.8rem;margin-top:0.6rem;font-size:0.85rem;"><strong>The one-line takeaway:</strong> annuities are the <em>worst</em> of the three at death (IRD, no step-up, ordinary income) but excellent for <em>living</em> longevity income. Life insurance is the mirror image &mdash; best at death (§101 tax-free), FIFO in life. That asymmetry is the whole point of matching product to goal.</div>
+        </div>
       </div>
     </div>
     <div class="section-card">
@@ -651,7 +1033,33 @@
           </tbody>
         </table>
         <div class="highlight-box purple mt-1"><strong>State Guaranty Fund:</strong> Annuities and life insurance are protected by state guaranty associations if insurer enters receivership. Coverage limits vary by state (typically $100K-$500K). NOT federally backed like FDIC.</div>
+
+        <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; the &ldquo;best interest&rdquo; standard that now governs annuity sales<span class="toggle-icon">+</span></div>
+        <div class="collapsible-content deep-body collapsed"><div class="inner">
+          <p>Suitability isn&rsquo;t just a vibe check &mdash; most states have adopted the <span class="srcref">NAIC Model #275</span> (Suitability in Annuity Transactions Model Regulation, 2020 revision), which layers a <strong>best-interest</strong> standard on top of old suitability rules. It has <strong>four obligations</strong> the producer must satisfy:</p>
+          <ul class="key-list">
+            <li><strong>Care</strong> &mdash; have a reasonable basis that the annuity effectively addresses the client&rsquo;s needs, based on their <em>consumer profile</em> (age, income, liquidity needs, risk tolerance, time horizon, existing holdings).</li>
+            <li><strong>Disclosure</strong> &mdash; describe the producer&rsquo;s role, products offered, and how they&rsquo;re compensated (cash and non-cash).</li>
+            <li><strong>Conflict of interest</strong> &mdash; identify and avoid or reasonably manage conflicts; sales contests based on a specific product are prohibited.</li>
+            <li><strong>Documentation</strong> &mdash; record the basis for the recommendation.</li>
+          </ul>
+          <p>This aligns state annuity rules with the direction of <span class="srcref">SEC Reg BI</span> for securities. <span class="pill amber">Exam link</span> A <em>variable</em> annuity recommendation is <em>also</em> a securities recommendation, so it&rsquo;s subject to FINRA suitability / Reg BI <em>on top of</em> the state annuity rule &mdash; a nonqualified <em>fixed</em> annuity is state-only.</p>
+          <div class="synth"><div class="synth-h">&#128279; Connects to FP511</div>A CFP&reg; professional recommending any of these is <em>separately</em> held to the <strong>CFP Board&rsquo;s fiduciary duty</strong> (Duties Owed to Clients) whenever providing financial advice &mdash; a higher and broader bar than either the NAIC best-interest rule or Reg BI. See <em>Regulation &amp; Suitability</em> and the FP511 conduct material.</div>
+        </div></div>
       </div>
+    </div>
+
+    <div class="sources">
+      <h4>&#128206; Primary sources for this module</h4>
+      <ul>
+        <li><span class="srcref">IRC &sect;72</span> &mdash; taxation of annuities: exclusion ratio &sect;72(b), 10% penalty on nonqualified early distributions &sect;72(q), LIFO ordering.</li>
+        <li><span class="srcref">IRC &sect;1035</span> &mdash; tax-free exchanges (annuity &rarr; annuity or qualified LTC only; never <em>into</em> life insurance).</li>
+        <li><span class="srcref">IRC &sect;101(a)</span> &mdash; income-tax-free life insurance death benefit (the contrast used in the cross-module table).</li>
+        <li><span class="srcref">SECURE 2.0 Act (2022)</span> &mdash; QLAC 25%-of-balance limit removed; dollar cap $200,000 indexed (<strong>$210,000 for 2025</strong> &mdash; verify annually).</li>
+        <li><span class="srcref">NAIC Model #275</span> &mdash; Suitability in Annuity Transactions (best-interest standard: Care, Disclosure, Conflict, Documentation).</li>
+        <li><span class="srcref">Securities Act of 1933</span> / FINRA &mdash; variable &amp; registered index-linked annuities are securities (prospectus + licensed rep required).</li>
+      </ul>
+      <p style="margin-top:0.5rem;font-style:italic;">Grounded in the FP512 course textbook (Risk, Insurance &amp; Benefits) and the audited card/MCQ bank; dollar figures reflect 2025 and should be re-checked each tax year.</p>
     </div>
   </div>
 
@@ -707,6 +1115,17 @@
         </table>
         <p class="text-sm mt-1"><strong>Capitation:</strong> PCP paid fixed monthly fee per enrolled patient regardless of services. <strong>Gatekeeper:</strong> PCP controls all specialist referrals.</p>
         <p class="text-sm mt-1"><strong>Telemedicine / direct-to-consumer (DTC):</strong> Virtual visits by phone, video, or app for non-emergency care. Increasingly bundled into group and Marketplace plans (often low or $0 copay) to cut cost and expand access; standalone <strong>DTC</strong> subscription services sell virtual-care access directly to consumers. Convenient for routine issues, but not a substitute for comprehensive major-medical coverage.</p>
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; HMO vs. PPO vs. POS vs. EPO</div>
+          <div class="tell" style="margin-top:0;">Sort them on <strong>two questions: is there a PCP gatekeeper, and is there out-of-network coverage?</strong>
+            <ul class="key-list mt-1">
+              <li><strong>HMO</strong> = gatekeeper <strong>yes</strong>, out-of-network <strong>no</strong> (capitation, copays, cheapest, most restrictive).</li>
+              <li><strong>PPO</strong> = gatekeeper <strong>no</strong>, out-of-network <strong>yes</strong> (e.g. 80% in / 50% out; most flexible, priciest).</li>
+              <li><strong>POS</strong> = the <strong>hybrid</strong> &mdash; gatekeeper <strong>yes</strong> like an HMO, but <em>some</em> out-of-network benefit like a PPO.</li>
+              <li><strong>EPO</strong> = gatekeeper <strong>no</strong> (no referrals), out-of-network <strong>no</strong> (emergencies only).</li>
+            </ul>
+            <em>Tell:</em> only the <strong>HMO and POS</strong> use a PCP gatekeeper; only the <strong>PPO and POS</strong> pay anything out-of-network.</div>
+        </div>
         <div class="chart-wrap" style="max-width:420px;"><canvas id="chartHealthPlanCosts"></canvas></div>
         <hr>
         <div class="highlight-box blue"><strong>Health Care Cost Example (Frank, $25K hospital stay):</strong><br>Policy: $1,000 deductible, 20% coinsurance, $5,000 MOOP<br>Step 1: Frank pays $1,000 deductible. Remaining = $24,000.<br>Step 2: 20% of $24,000 = $4,800, but MOOP caps Frank at $5,000 total.<br>Step 3: Insurer pays $20,000. Frank&#39;s total out-of-pocket: $5,000.<br><br>Simple formula: (Expense &minus; Deductible) &times; Insurer% = Insurer payment.<br><em>Example: $1,500 loss, $500 deductible, 80/20 plan &rarr; ($1,500-$500) &times; 80% = $800 insurer payment.</em></div>
@@ -756,6 +1175,32 @@
         </table>
         <div class="highlight-box red mt-1"><strong>Critical distinctions:</strong> Medicare does NOT cover custodial care. Part A covers skilled nursing facility care ONLY (requires skilled care, not just custodial). Hospice coverage = life expectancy of 6 months or less. Outpatient hospital services are covered under Part B, NOT Part A.</div>
         <div class="highlight-box amber mt-1"><strong>Part B enrollment:</strong> General enrollment period is January 1-March 31 annually. If a beneficiary cancels Part B, they cannot re-enroll until January of the following year and may incur a lifetime late enrollment penalty. Veterans should sign up for Medicare as soon as eligible.</div>
+
+        <div class="worked">
+          <div class="worked-h">&#129518; Worked mechanics &mdash; a Part D year (2025)</div>
+          <p class="text-sm mb-1">Part D collapsed to <strong>three</strong> phases in 2025 (the donut hole is gone): pay the deductible, then 25% coinsurance until your true out-of-pocket hits the <strong>$2,000 cap</strong>, then $0 the rest of the year.</p>
+          <ol>
+            <li>John hits the <strong>$590</strong> deductible first (pays $590).</li>
+            <li>Then <strong>25%</strong> of the next drug costs until his OOP reaches $2,000. On the next $1,410 of drugs he pays 25% &times; $1,410 = <strong>$352</strong> (plan pays $1,058).</li>
+            <li>Once his total OOP reaches <strong>$2,000</strong>, he pays <strong>$0</strong> for covered drugs for the rest of the year.</li>
+          </ol>
+          <div class="wrong"><strong>&#9888;&#65039; Note:</strong> the $2,000 is a <em>true out-of-pocket</em> cap, not a spending cap &mdash; and IRMAA can add a surcharge on the Part D <em>premium</em> (based on MAGI from 2 years prior), separate from this cost-sharing.</div>
+        </div>
+
+        <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; every Medicare enrollment window &amp; the penalties for missing them<span class="toggle-icon">+</span></div>
+        <div class="collapsible-content deep-body collapsed"><div class="inner">
+          <table>
+            <thead><tr><th>Window</th><th>When</th><th>Miss it &rarr;</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Initial Enrollment (IEP)</strong></td><td>7 months: 3 before + birth month + 3 after turning 65</td><td>Late-enrollment penalty</td></tr>
+              <tr><td><strong>General Enrollment</strong></td><td>Jan 1 &ndash; Mar 31 (coverage effective July 1)</td><td><strong>Part A/B penalty: 10%/yr, permanent</strong></td></tr>
+              <tr><td><strong>Special Enrollment (SEP)</strong></td><td><strong>8 months</strong> after employer coverage / employment ends (worked past 65)</td><td>No penalty if used in time</td></tr>
+              <tr><td><strong>Part C / Advantage open enrollment</strong></td><td>Oct 15 &ndash; Dec 7</td><td>&mdash;</td></tr>
+              <tr><td><strong>Medigap guaranteed-issue</strong></td><td><strong>6 months</strong> from Part B enrollment</td><td>Insurer may medically underwrite / decline</td></tr>
+            </tbody>
+          </table>
+          <div class="highlight-box red"><strong>The two look-alikes:</strong> the <strong>6-month</strong> Medigap guaranteed-issue window is <em>not</em> the <strong>8-month</strong> Part B Special Enrollment for people who worked past 65 &mdash; a classic swapped-number trap.</div>
+        </div></div>
       </div>
     </div>
     <div class="section-card">
@@ -771,7 +1216,29 @@
         </ul>
         <hr>
         <div class="highlight-box blue"><strong>IRMAA:</strong> Income-Related Monthly Adjustment Amount. Higher-income Medicare beneficiaries pay surcharge on Part B and Part D premiums. Based on MAGI from 2-year prior tax return (2025 premiums based on 2023 MAGI). Thresholds: $106,000+ single; $212,000+ MFJ (2025). Beneficiary may APPEAL IRMAA for qualifying life-changing events (retirement, death of spouse, divorce, work stoppage).</div>
+
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; three Medicare pairs the exam swaps</div>
+          <table>
+            <thead><tr><th>Pair</th><th>How to tell them apart</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Medigap vs. Medicare Advantage (Part C)</strong></td><td>Medigap <em>supplements</em> Original Medicare (fills the A/B gaps); Advantage <em>replaces</em> A+B with a private plan (often bundling Rx/dental/vision). <strong>You cannot have both</strong> &mdash; Medigap is useless with Advantage.</td></tr>
+              <tr><td><strong>Plan F vs. Plan G</strong></td><td>Both are top-tier Medigap; the <em>only</em> difference is the <strong>Part B deductible</strong> &mdash; <strong>F pays it, G does not</strong>. F is closed to anyone who became Medicare-eligible on/after Jan 1, 2020, so <strong>G is the new go-to</strong>. (Only Plans <strong>C &amp; F</strong> ever pay the Part B deductible.)</td></tr>
+              <tr><td><strong>Medicare vs. Medicaid on LTC</strong></td><td>Medicare pays only <strong>skilled</strong> care (post-3-day hospital, up to 100 SNF days) &mdash; <em>never custodial</em>. <strong>Medicaid</strong> is the real long-term custodial-care payer (after a spend-down).</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
+    </div>
+
+    <div class="sources">
+      <h4>&#128206; Primary sources for this module</h4>
+      <ul>
+        <li><span class="srcref">COBRA (1985)</span> &middot; <span class="srcref">HIPAA (1996)</span> &middot; <span class="srcref">ACA/PPACA (2010)</span> &middot; <span class="srcref">FMLA (1993)</span> &mdash; the federal continuation/portability/leave framework.</li>
+        <li><span class="srcref">Inflation Reduction Act (2022)</span> &mdash; Part D $2,000 OOP cap (2025); Medicare drug-price negotiation (2026). <span class="srcref">No Surprises Act (2022)</span>.</li>
+        <li><span class="srcref">CMS</span> &mdash; administers Medicare (Parts A/B/C/D), Medicaid, and CHIP.</li>
+      </ul>
+      <p style="margin-top:0.5rem;font-style:italic;">Grounded in the FP512 course textbook (Module 5). All dollar figures are the textbook&rsquo;s <strong>2025 published values</strong> &mdash; 2026 Medicare figures were not available at publication; re-check each year.</p>
     </div>
   </div>
 
@@ -790,6 +1257,18 @@
           </tbody>
         </table>
         <div class="highlight-box amber mt-1"><strong>Test Tip:</strong> DI policies do NOT have deductibles or coinsurance. They have elimination periods (waiting periods) and benefit periods. No double-dipping from multiple DI policies &mdash; participation limits apply.</div>
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; the disability definitions, easiest to hardest to collect</div>
+          <div class="tell" style="margin-top:0;">Ranked from <em>most</em> favorable to the insured (broadest, priciest) to <em>least</em>:
+            <ul class="key-list mt-1">
+              <li><strong>Own-occ</strong> &mdash; disabled if you can&rsquo;t do <em>your</em> occupation, even if you work elsewhere. Broadest, most expensive (professionals).</li>
+              <li><strong>Modified own-occ / split</strong> &mdash; own-occ for a first period (e.g. 2&ndash;5 yrs), then converts to any-occ.</li>
+              <li><strong>Any-occ</strong> &mdash; disabled only if you can&rsquo;t do <em>any</em> job you&rsquo;re reasonably suited to. Narrowest private definition (group/blue-collar).</li>
+              <li><strong>Social Security</strong> &mdash; <strong>strictest of all</strong>: unable to do <em>any</em> substantial gainful activity, expected to last &ge;12 months or result in death.</li>
+            </ul>
+            <em>Tell:</em> &ldquo;can&rsquo;t do <strong>your</strong> job&rdquo; = own-occ; &ldquo;can&rsquo;t do <strong>any</strong> job&rdquo; = any-occ; Social Security is <em>always</em> the hardest bar.</div>
+        </div>
+        <div class="highlight-box blue mt-1"><strong>Elimination-period timing trap:</strong> the first monthly benefit is <em>received</em> about <strong>30 days AFTER the elimination period ends</strong> (benefits pay in arrears). So a 60-day EP means the first check arrives around <strong>day 90</strong>, not day 60.</div>
       </div>
     </div>
     <div class="section-card">
@@ -840,6 +1319,16 @@
             <tr><td>S-corp (2%+ shareholder)</td><td>Entity deducts; passed through as W-2 income</td><td><strong>No</strong> &mdash; since treated as taxable W-2 income, benefits are tax-free</td></tr>
           </tbody>
         </table>
+        <div class="worked">
+          <div class="worked-h">&#129518; Worked mechanics &mdash; the one rule behind all of it, plus a split-premium case</div>
+          <p class="text-sm mb-1">The whole table reduces to one idea: <strong>you either deduct the premium OR the benefit is tax-free &mdash; never both.</strong> Whoever bore the tax on the premium dollars determines the benefit&rsquo;s taxability.</p>
+          <ol>
+            <li><strong>Pure employer-paid:</strong> employer deducted the premium (nobody was taxed on it) &rarr; the whole benefit is <strong>taxable</strong> to the employee.</li>
+            <li><strong>Split premium (contributory):</strong> employer pays 60%, employee pays 40% with after-tax dollars &rarr; on a $3,000/mo benefit, <strong>60% ($1,800) is taxable</strong> and <strong>40% ($1,200) is tax-free</strong>.</li>
+            <li><strong>SIS rider offset:</strong> a $2,500/mo policy with a Social Insurance Supplement reduces dollar-for-dollar once SS disability pays &mdash; if SS pays $700, the policy pays <strong>$1,800</strong> to keep the total at target.</li>
+          </ol>
+          <div class="wrong"><strong>&#9888;&#65039; The &gt;2% S-corp twist:</strong> a &gt;2% S-corp shareholder&rsquo;s premium is deducted by the entity <em>but added back to the owner&rsquo;s W-2 as income</em> &mdash; because the owner was effectively taxed on the premium, the <strong>benefit comes out tax-free</strong>.</div>
+        </div>
       </div>
     </div>
     <div class="section-card">
@@ -860,6 +1349,33 @@
           <li><strong>PACE (Program of All-Inclusive Care for the Elderly):</strong> Federally funded; comprehensive medical and social services for frail elderly who qualify for both Medicare and Medicaid; alternative to nursing home placement.</li>
           <li><strong>Qualified LTCI tax treatment:</strong> Individual premiums deductible as medical expenses above 7.5% AGI (age-based annual limits). Employer-paid LTCI: deductible to employer, not taxable to employee. Benefits: generally tax-free up to indexed limits.</li>
         </ul>
+
+        <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; the LTC numbers: deduction limits, per-diem cap &amp; the Medicaid spend-down<span class="toggle-icon">+</span></div>
+        <div class="collapsible-content deep-body collapsed"><div class="inner">
+          <p><strong>Age-based premium-deduction limits (2025, Schedule A medical expense):</strong> the older you are, the more of a qualified LTC premium counts as a deductible medical expense.</p>
+          <table>
+            <thead><tr><th>Attained age</th><th>2025 deductible limit</th></tr></thead>
+            <tbody>
+              <tr><td>40 or under</td><td>$480</td></tr>
+              <tr><td>41&ndash;50</td><td>$900</td></tr>
+              <tr><td>51&ndash;60</td><td>$1,800</td></tr>
+              <tr><td>61&ndash;70</td><td>$4,810</td></tr>
+              <tr><td>71+</td><td>$6,020</td></tr>
+            </tbody>
+          </table>
+          <p class="text-sm">Per-diem (indemnity) benefits are tax-free up to <strong>$420/day (2025)</strong>; anything above that is taxable unless it matches actual qualified LTC costs. Reimbursement-basis benefits for qualified costs are fully tax-free.</p>
+          <div class="worked">
+            <div class="worked-h">&#129518; Worked &mdash; Medicaid transfer penalty &amp; the Partnership offset</div>
+            <ol>
+              <li><strong>Transfer penalty:</strong> Medicaid has a <strong>5-year (60-month) lookback</strong>. If Dylan gifts <strong>$100,000</strong> during it, he must private-pay the <em>first</em> $100,000 of care before Medicaid starts (penalty = amount transferred &divide; average monthly nursing-home cost).</li>
+              <li><strong>Partnership offset:</strong> a Partnership LTC policy lets you keep assets equal to benefits paid. A $100,000 policy that grew to <strong>$140,000</strong> with inflation and paid out fully lets the insured keep <strong>$140,000 + the ~$2,000</strong> baseline Medicaid asset limit = <strong>$142,000</strong> and still qualify.</li>
+            </ol>
+          </div>
+          <div class="confuse">
+            <div class="confuse-h">&#9878;&#65039; Confused &mdash; noncancelable vs. guaranteed renewable &middot; qualified vs. nonqualified LTC</div>
+            <div class="tell" style="margin-top:0;"><strong>Noncancelable</strong> = premium can <em>never</em> change; <strong>guaranteed renewable</strong> = insurer must renew but <em>can raise premiums for the whole class</em> (not you individually). &nbsp;|&nbsp; <strong>Qualified LTC</strong> gets the tax breaks and uses the 2-of-6-ADL trigger; <strong>nonqualified</strong> may add a looser <em>medical-necessity</em> trigger and return-of-premium but loses the tax advantages.</div>
+          </div>
+        </div></div>
       </div>
     </div>
     <div class="section-card">
@@ -878,6 +1394,16 @@
         <div class="highlight-box amber mt-1"><strong>Important:</strong> If a veteran cancels Medicare Part B, they cannot re-enroll until January of the following year and may incur a lifetime late enrollment penalty.</div>
       </div>
     </div>
+
+    <div class="sources">
+      <h4>&#128206; Primary sources for this module</h4>
+      <ul>
+        <li><span class="srcref">HIPAA</span> &mdash; defines tax-qualified LTC: guaranteed-renewable, NAIC-model consumer protections, the 2-of-6-ADL / cognitive trigger, and premium deductibility (the <span class="srcref">&sect;7702B</span> framework; the textbook says &ldquo;HIPAA-qualified&rdquo;).</li>
+        <li><span class="srcref">IRC &sect;1035</span> &mdash; funds annuity/LTC and life/LTC hybrid contracts tax-free.</li>
+        <li><span class="srcref">Long-Term Care Security Act (2000)</span> &mdash; the Federal LTC Insurance Program. Social Security disability definition governs SIS-rider offsets.</li>
+      </ul>
+      <p style="margin-top:0.5rem;font-style:italic;">Grounded in the FP512 course textbook (Module 6). Deduction limits, per-diem cap, and cost-of-care figures are the textbook&rsquo;s <strong>2025 values</strong> (Genworth 2024 cost-of-care survey); re-check annually.</p>
+    </div>
   </div>
 
   <!-- GROUP BENEFITS -->
@@ -889,6 +1415,21 @@
         <div class="formula-block mt-1">
           <strong>Imputed Income Formula:</strong> [(Coverage above $50K &divide; 1,000) &times; Table I monthly rate &times; 12] = Annual taxable income<br>
           <em>Example: $210,000 total coverage &rarr; $160,000 above threshold. Table I rate $0.06/month for age band: ($160K &divide; 1,000) &times; $0.06 &times; 12 = $115.20 taxable income per year.</em>
+        </div>
+
+        <div class="worked">
+          <div class="worked-h">&#129518; Worked mechanics &mdash; §79 imputed income, with the full Uniform Premium Table I</div>
+          <p class="text-sm mb-1">Table I is the IRS cost <em>per $1,000 of coverage per month</em>, by 5-year age band (2025):</p>
+          <table>
+            <thead><tr><th>Age</th><th>&lt;25</th><th>25&ndash;29</th><th>30&ndash;34</th><th>35&ndash;39</th><th>40&ndash;44</th><th>45&ndash;49</th><th>50&ndash;54</th><th>55&ndash;59</th><th>60&ndash;64</th><th>65&ndash;69</th><th>70+</th></tr></thead>
+            <tbody><tr><td><strong>$/mo</strong></td><td>.05</td><td>.06</td><td>.08</td><td>.09</td><td>.10</td><td>.15</td><td>.23</td><td>.43</td><td>.66</td><td>1.27</td><td>2.06</td></tr></tbody>
+          </table>
+          <ol>
+            <li>John, age <strong>52</strong>, has <strong>$250,000</strong> of employer group-term life. Coverage above $50k = <strong>$200,000</strong> = 200 units of $1,000.</li>
+            <li>His age-52 Table I rate is <strong>$0.23</strong>/mo.</li>
+            <li>Imputed income = 200 &times; $0.23 &times; 12 = <strong>$552</strong> added to his W-2 (offset by any after-tax premiums he pays).</li>
+          </ol>
+          <div class="wrong"><strong>&#9888;&#65039; The discriminatory-plan twist:</strong> if the plan <em>discriminates</em> in favor of key employees, a <strong>key employee</strong> must include the <em>greater of</em> actual premium or Table I cost on the <strong>entire</strong> coverage &mdash; the first $50,000 is no longer excluded for them. Rank-and-file employees keep the $50k exclusion regardless.</div>
         </div>
         <ul class="key-list mt-1">
           <li><strong>Discriminatory plan rule:</strong> If group term life plan discriminates in favor of key employees, those key employees must include the ENTIRE employer premium paid on their behalf as taxable compensation (not just the amount above $50,000)</li>
@@ -967,6 +1508,30 @@
           </ul>
         </div>
         <div class="highlight-box amber mt-1"><strong>Self-employed deduction:</strong> Self-employed individuals deduct 100% of health insurance premiums (including qualified LTCI premiums within age-based limits) as an above-the-line deduction from gross income.</div>
+
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; HSA vs. FSA vs. HRA</div>
+          <table>
+            <thead><tr><th></th><th>Funded by</th><th>Portable?</th><th>Rollover?</th></tr></thead>
+            <tbody>
+              <tr><td><strong>HSA</strong></td><td>Employee &amp;/or employer</td><td><strong>Yes</strong> (you own it, it invests)</td><td>Rolls over indefinitely</td></tr>
+              <tr><td><strong>FSA</strong></td><td>Employee salary reduction</td><td>No</td><td><strong>Use-it-or-lose-it</strong> ($660 carryover, 2025)</td></tr>
+              <tr><td><strong>HRA</strong></td><td><strong>Employer only</strong></td><td>No (unless employer allows)</td><td>Employer sets terms</td></tr>
+            </tbody>
+          </table>
+          <div class="tell"><strong>Tells:</strong> only the <strong>HSA</strong> is <em>yours</em>, portable, and invests (needs an HDHP). Only the <strong>HRA</strong> is <em>employer-only</em> money (no employee dollars, so the self-employed can&rsquo;t use one). The <strong>FSA</strong> is the use-it-or-lose-it salary-reduction account.</div>
+        </div>
+
+        <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; the HSA numbers (2025) and its two sharpest traps<span class="toggle-icon">+</span></div>
+        <div class="collapsible-content deep-body collapsed"><div class="inner">
+          <div class="flex-grid">
+            <div class="stat-box"><div class="number">$4,300</div><div class="label">HSA contribution &mdash; self (2025)</div></div>
+            <div class="stat-box"><div class="number">$8,550</div><div class="label">HSA contribution &mdash; family (2025)</div></div>
+            <div class="stat-box"><div class="number">$1,000</div><div class="label">Age-55 catch-up (each spouse needs own HSA)</div></div>
+          </div>
+          <p class="text-sm">Qualifying HDHP for 2025: minimum deductible <strong>$1,650 self / $3,300 family</strong>; out-of-pocket max <strong>$8,300 / $16,600</strong>. Contributions are <strong>above-the-line</strong> (deductible even without itemizing); you have until <strong>April 15</strong> to contribute for the prior year. The triple tax benefit: deductible in, tax-free growth, tax-free out for qualified medical.</p>
+          <div class="highlight-box red"><strong>Trap 1 &mdash; the age-65 wall:</strong> once you enroll in Medicare you can <em>no longer contribute</em> to an HSA (and you can&rsquo;t <em>establish</em> one after 65) &mdash; though you can still <em>spend</em> an existing balance. After 65, a non-qualified withdrawal is just ordinary income (the <strong>20% penalty</strong> disappears at 65/disability/death). <strong>Trap 2 &mdash; the premium rule:</strong> HSA funds generally can&rsquo;t pay <em>insurance premiums</em> &mdash; but <strong>qualified LTC, COBRA, and Medicare premiums are the exceptions.</strong></div>
+        </div></div>
       </div>
     </div>
     <div class="section-card">
@@ -1006,7 +1571,22 @@
           <li><strong>Educational Assistance (IRC &sect;127):</strong> Up to <strong>$5,250/year</strong> excludable from employee income for undergraduate AND graduate education; no job-relation requirement</li>
           <li><strong>Group LTCI:</strong> Generally less expensive than individual; premiums deductible to employer, not taxable to employee; benefits tax-free up to indexed limits</li>
         </ul>
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; workers&rsquo; comp vs. unemployment (opposite tax treatment)</div>
+          <div class="tell" style="margin-top:0;"><strong>Workers&rsquo; comp</strong> is no-fault, <strong>employer-funded only</strong>, and its benefits are <strong>income-tax-FREE</strong>. <strong>Unemployment</strong> (FUTA/SUTA) benefits <strong>ARE taxable</strong> because they replace wages. Same &ldquo;government safety-net&rdquo; feel, opposite tax answer &mdash; a frequent trap. (Related: a &gt;2% S-corp shareholder&rsquo;s health premium lands in W-2 Box 1 wages but is <em>not</em> subject to FICA.)</div>
+        </div>
       </div>
+    </div>
+
+    <div class="sources">
+      <h4>&#128206; Primary sources for this module</h4>
+      <ul>
+        <li><span class="srcref">IRC &sect;79</span> &mdash; group-term life $50k exclusion + Uniform Premium Table I (<span class="srcref">Reg &sect;1.79-3</span>); <span class="srcref">&sect;416(i)</span> key-employee definition.</li>
+        <li><span class="srcref">IRC &sect;125</span> &mdash; cafeteria plans (LTC, educational assistance &amp; commuter benefits are <em>prohibited</em> qualified benefits); <span class="srcref">&sect;105</span>/<span class="srcref">&sect;106</span> employer health exclusion; <span class="srcref">&sect;132</span> fringe benefits; <span class="srcref">&sect;127</span> $5,250 educational assistance.</li>
+        <li><span class="srcref">IRC &sect;223</span> &mdash; HSAs (created by the Medicare Modernization Act 2003); <span class="srcref">&sect;501(c)(9)</span> VEBA.</li>
+        <li><span class="srcref">ERISA (1974)</span> &mdash; Form 5500 / SPD / fiduciary duty; self-funded plans are ERISA-preempt from state insurance mandates.</li>
+      </ul>
+      <p style="margin-top:0.5rem;font-style:italic;">Grounded in the FP512 course textbook (Module 7). Contribution/deduction figures are the textbook&rsquo;s <strong>2025 values</strong>; re-check annually.</p>
     </div>
   </div>
 
@@ -1043,6 +1623,15 @@
           <div class="stat-box"><div class="number" style="font-size:1rem;">Cross-Purchase</div><div class="label">Each owner buys policy on every other owner. Surviving owner gets <strong>stepped-up cost basis</strong>. Requires N&times;(N&minus;1) policies. Better for small number of owners.</div></div>
           <div class="stat-box"><div class="number" style="font-size:1rem;">Entity Redemption</div><div class="label">Company buys policy on each owner; redeems deceased&#39;s interest. N policies needed (simpler). Surviving owners get <strong>NO step-up in basis</strong>. C-corp: AMT risk on policy proceeds.</div></div>
         </div>
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; cross-purchase vs. entity redemption</div>
+          <div class="tell" style="margin-top:0;">Two levers decide it: <strong>policy count</strong> and <strong>basis step-up</strong>.
+            <ul class="key-list mt-1">
+              <li><strong>Cross-purchase</strong> &mdash; owners buy on each <em>other</em>: <strong>N&times;(N&minus;1)</strong> policies (2 owners = 2, but 4 owners = 12 &mdash; unwieldy fast). Survivors <strong>DO get a basis step-up</strong> (they paid for the shares).</li>
+              <li><strong>Entity redemption</strong> &mdash; the <em>business</em> buys on each owner: only <strong>N</strong> policies (simple to administer). Survivors get <strong>NO basis step-up</strong>, and a C-corp faces AMT exposure on the proceeds.</li>
+            </ul>
+            <em>Tell:</em> few owners who want the step-up &rarr; cross-purchase; many owners who want simplicity &rarr; entity. The number of policies is the fastest way to identify which the question describes.</div>
+        </div>
         <ul class="key-list mt-2">
           <li><strong>Disability buy-sell:</strong> Triggered after 12-24 month total disability; funded with disability insurance; long EP confirms permanent disability</li>
           <li><strong>Valuation:</strong> Agreed value (risk of being stale), book value formula, earnings multiple, or independent appraisal</li>
@@ -1070,7 +1659,34 @@
           <li><strong>LIRP (Life Insurance Retirement Plan):</strong> Permanent life insurance (whole, UL, VUL) accumulates tax-deferred cash value for retirement income. Tax-deferred growth; tax-free policy loans/withdrawals (up to basis). Must avoid MEC status. Not subject to ERISA or &sect;415 limits. Death benefit provides succession liquidity.</li>
         </ul>
         <div class="highlight-box amber mt-1"><strong>LIRP Example (Sara):</strong> Pays $200,000 in premiums by age 65; cash value grows to $650,000. Withdraws $20,000/year tax-free (up to basis), then takes policy loans for remainder &mdash; still tax-free if policy remains in force.</div>
+
+        <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; who deducts, who&rsquo;s taxed: every business-owned arrangement in one grid<span class="toggle-icon">+</span></div>
+        <div class="collapsible-content deep-body collapsed"><div class="inner">
+          <p>Business insurance questions almost always reduce to <strong>&ldquo;is the premium deductible, and is the benefit taxable?&rdquo;</strong> Line them up:</p>
+          <table>
+            <thead><tr><th>Arrangement</th><th>Premium deductible?</th><th>Benefit taxable?</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Key person life</strong></td><td>No</td><td>No (income-tax-free; COLI notice rules apply)</td></tr>
+              <tr><td><strong>Life-funded buy-sell</strong></td><td>No</td><td>No (death benefit funds the buyout)</td></tr>
+              <tr><td><strong>BOE disability</strong></td><td><strong>Yes</strong> (business expense)</td><td><strong>Yes</strong></td></tr>
+              <tr><td><strong>Executive bonus (&sect;162)</strong></td><td><strong>Yes</strong> (deductible bonus)</td><td><strong>Yes</strong> to the executive (who owns the policy)</td></tr>
+              <tr><td><strong>NQDC / SERP</strong></td><td>No (until paid)</td><td><strong>Yes</strong> when received (informal COLI funding)</td></tr>
+              <tr><td><strong>LIRP</strong></td><td>No</td><td>No (tax-free loans/withdrawals to basis; must avoid MEC)</td></tr>
+            </tbody>
+          </table>
+          <div class="tell"><strong>The pattern:</strong> when the business (or nobody) got a deduction on the premium, the benefit tends to come out <em>tax-free</em> (key person, buy-sell, LIRP). When someone <em>did</em> deduct it (BOE, §162 bonus), the benefit is <em>taxable</em> &mdash; the same &ldquo;deduct the premium OR the benefit is tax-free, never both&rdquo; logic from disability income.</div>
+        </div></div>
       </div>
+    </div>
+
+    <div class="sources">
+      <h4>&#128206; Primary sources for this module</h4>
+      <ul>
+        <li><span class="srcref">IRC &sect;162</span> &mdash; deductible executive bonus (&ldquo;§162 plan&rdquo;) on an employee-owned policy.</li>
+        <li><span class="srcref">COLI best-practices / notice rules</span> &mdash; employer-owned life insurance requires employee consent + notice for the death benefit to stay income-tax-free.</li>
+        <li><span class="srcref">ERISA</span> &mdash; NQDC/SERP are informally-funded top-hat plans; a <strong>LIRP is <em>not</em> ERISA-covered</strong> and has no &sect;415 contribution limit.</li>
+      </ul>
+      <p style="margin-top:0.5rem;font-style:italic;">Grounded in the FP512 course textbook (Module 8). Note: the textbook&rsquo;s commercial-lines detail (BOP/CPP, cyber, E&amp;O, D&amp;O, EPLI) is fully covered in the sections above; figures are 2025-vintage.</p>
     </div>
   </div>
 
@@ -1095,6 +1711,32 @@
           <li><strong>CFP Board Standards:</strong> Fiduciary duty (loyalty, care, follow client instructions). Full disclosure of material conflicts. Act in the client&#39;s best interest at all times.</li>
           <li><strong>FINRA Rule 2111 (Suitability):</strong> Does not require lowest-cost product, but does require that costs are reasonable and necessary given the client&#39;s profile.</li>
         </ul>
+
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; which standard governs which annuity sale</div>
+          <table>
+            <thead><tr><th>Standard</th><th>Applies to</th><th>Bar</th></tr></thead>
+            <tbody>
+              <tr><td><strong>NAIC Suitability / best-interest model</strong></td><td><strong>Fixed &amp; fixed-indexed</strong> annuities (insurance, state-regulated)</td><td>Best interest (Care/Disclosure/Conflict/Documentation)</td></tr>
+              <tr><td><strong>SEC Reg BI</strong></td><td><strong>Variable</strong> annuities (securities) sold by broker-dealers</td><td>Best interest + Form CRS</td></tr>
+              <tr><td><strong>FINRA Rule 2111</strong></td><td>Broker-dealer securities recommendations</td><td>Suitability (costs reasonable/necessary)</td></tr>
+              <tr><td><strong>CFP Board Code</strong></td><td><em>Any</em> financial advice by a CFP&reg; professional</td><td><strong>Fiduciary</strong> &mdash; the highest bar</td></tr>
+            </tbody>
+          </table>
+          <div class="tell"><strong>Tell:</strong> the <em>product</em> picks the regulator &mdash; a <strong>fixed</strong> annuity is insurance (state/NAIC), a <strong>variable</strong> annuity is a security (Reg BI/FINRA). But a <strong>CFP&reg; professional is always a fiduciary</strong> on top of whichever product rule applies &mdash; a broader, higher duty than either best-interest standard. (See the Annuities tab&rsquo;s suitability deep-dive.)</div>
+        </div>
+
+        <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; the four best-interest obligations &amp; how CFP fiduciary sits above them<span class="toggle-icon">+</span></div>
+        <div class="collapsible-content deep-body collapsed"><div class="inner">
+          <p>The NAIC best-interest standard (adopted by most states) and SEC Reg BI both decompose &ldquo;best interest&rdquo; into <strong>four obligations</strong> a producer must satisfy:</p>
+          <ul class="key-list">
+            <li><strong>Care</strong> &mdash; a reasonable basis that the recommendation fits the client&rsquo;s <em>consumer profile</em> (age, income, liquidity needs, risk tolerance, horizon, existing holdings).</li>
+            <li><strong>Disclosure</strong> &mdash; describe the producer&rsquo;s role, products offered, and how they&rsquo;re paid (cash and non-cash).</li>
+            <li><strong>Conflict of interest</strong> &mdash; identify and avoid or reasonably manage conflicts; product-specific sales contests are prohibited.</li>
+            <li><strong>Documentation</strong> &mdash; record the basis for the recommendation.</li>
+          </ul>
+          <div class="synth"><div class="synth-h">&#128279; Connects to FP511</div>The <strong>CFP Board&rsquo;s fiduciary duty</strong> (Duties of Loyalty, Care, and to Follow Client Instructions) applies to <em>all</em> financial advice a CFP&reg; professional gives &mdash; a broader and higher bar than either the insurance best-interest rule or Reg BI, both of which are transaction-specific. When they overlap, the fiduciary duty is the controlling standard.</div>
+        </div></div>
         <hr>
         <h3 style="font-size:1rem;font-weight:600;margin:0.75rem 0 0.4rem;">Abusive Sales Practices</h3>
         <ul class="key-list">
@@ -1107,6 +1749,17 @@
         <hr>
         <div class="highlight-box purple"><strong>Annuity Performance Context:</strong> Annuities underperform in sustained bull markets due to caps, participation rate limitations, and expense charges. EIAs average 80-90% participation rates; caps typically 3-7%. Annuities are designed for longevity risk protection, NOT growth maximization. Compare annuities to annuities, not to brokerage accounts. The right question is: does this client need guaranteed income they cannot outlive?</div>
       </div>
+    </div>
+
+    <div class="sources">
+      <h4>&#128206; Primary sources for this module</h4>
+      <ul>
+        <li><span class="srcref">McCarran-Ferguson Act (1945)</span> &mdash; insurance is primarily state-regulated.</li>
+        <li><span class="srcref">NAIC Suitability in Annuity Transactions Model Reg</span> &mdash; best-interest standard for fixed/indexed annuities (Care/Disclosure/Conflict/Documentation).</li>
+        <li><span class="srcref">SEC Reg BI</span> + <span class="srcref">Form CRS</span> &mdash; variable annuities (securities); <span class="srcref">FINRA Rule 2111</span> suitability.</li>
+        <li><span class="srcref">CFP Board Code of Ethics &amp; Standards of Conduct</span> &mdash; fiduciary duty owed on all financial advice (the controlling standard for a CFP&reg; professional).</li>
+      </ul>
+      <p style="margin-top:0.5rem;font-style:italic;">Grounded in the FP512 course textbook (Module 8, Regulation &amp; Suitability). Consistent with the standards cross-referenced in the Annuities tab.</p>
     </div>
   </div>
 
