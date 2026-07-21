@@ -1,0 +1,312 @@
+FP512 Exam Cram — CFP Study Lab
+===============================
+FP512 — Risk Management, Insurance & Employee Benefits
+===== FP512 EXAM CRAM =====
+
+Pocket cram sheet — key numbers, must-know rules, traps and tips per module. Skim before the exam or between sittings.
+
+
+
+===== FP512 · M1 PRINCIPLES OF INSURANCE =====
+
+Everything in insurance planning rests on these fundamentals. Risk/peril/hazard vocabulary, the requisites of an insurable risk, and contract-law elements (insurable interest, utmost good faith, adhesion) are the definitions the rest of the course applies. Adverse selection and indemnity explain why policies are designed the way they are.
+
+-- Learning objectives --
+
+  • Define risk, peril, and hazard and distinguish the hazard types (physical/moral/morale)
+  • List the requisites of an insurable risk and the role of the law of large numbers
+  • Explain indemnity, adverse selection, and how insurers control it
+  • Apply contract-law elements: offer/acceptance, insurable interest, utmost good faith, adhesion
+
+-- ★ Key numbers --
+
+  • Risk / peril / hazard: Risk = uncertainty · peril = cause of loss · hazard = increases chance/severity
+  • Hazard types: Physical · Moral (dishonesty) · Morale (carelessness)
+  • Insurable risk: Large pool, definite/measurable, accidental, non-catastrophic, calculable, affordable
+  • Insurable interest: Life: at INCEPTION · Property: at TIME OF LOSS
+  • Adverse selection: Controlled via underwriting, exclusions, riders, pricing
+
+-- Must know --
+
+  • Indemnity: restore the insured to pre-loss condition — no profit from a loss.
+  • Contract traits: adhesion, utmost good faith, aleatory, unilateral, conditional.
+  • Law of large numbers: bigger pools make losses more predictable.
+  • Insurable-interest timing differs: life at inception, property at loss.
+
+-- ⚠ Traps --
+
+  • Mixing up moral (dishonesty) vs morale (carelessness) hazard.
+  • Saying property insurable interest must exist at inception — it's at time of loss.
+  • Treating insurance as a way to profit — indemnity prevents that.
+
+-- ✓ Tips --
+
+  • 'Cause of loss' → peril; 'condition that increases loss' → hazard.
+  • Policy ambiguity is construed against the insurer (adhesion).
+
+
+
+===== FP512 · M2 PROPERTY & CASUALTY =====
+
+Property & casualty is where the coinsurance formula lives — the single most tested P&C calculation. Tie the HO forms to what they cover and remember auto/umbrella layering. The recovery math here is the same proportional logic you'll reuse elsewhere.
+
+-- Learning objectives --
+
+  • Match an HO form to the perils and property it covers (HO-2/3/5/4/6/8)
+  • Apply the coinsurance formula to compute a partial-loss recovery
+  • Identify Personal Auto Policy coverages (liability, med pay, UM/UIM, collision, comprehensive)
+  • Explain when an umbrella policy responds and its underlying-limit requirement
+
+-- ★ Key numbers --
+
+  • Coinsurance: Payment = (Carried ÷ Required[usually 80% of RC]) × Loss − deductible
+  • HO-3: Open perils dwelling / named perils contents (most common)
+  • HO-4 / HO-6: Renters / condo unit-owners
+  • PAP: Liability, Med Pay, UM/UIM, Collision, Comprehensive
+  • Umbrella: Excess liability above auto/home; requires underlying limits
+
+-- Must know --
+
+  • Coinsurance penalizes insuring below the required % (usually 80% of replacement cost).
+  • HO-3 = open perils on the dwelling, named perils on contents.
+  • Auto collision = your car in a crash; comprehensive = theft, fire, weather, animals.
+  • An umbrella needs minimum underlying limits before it responds.
+
+-- ⚠ Traps --
+
+  • Forgetting to subtract the deductible after the coinsurance calc.
+  • Calling theft/weather damage 'collision' — that's comprehensive.
+  • Assuming flood/earthquake is covered by a standard HO policy — it's excluded.
+
+-- ✓ Tips --
+
+  • Coinsurance: (did ÷ should) × loss − deductible; cap the payout at the loss amount.
+
+
+
+===== FP512 · M3 LIFE INSURANCE =====
+
+Life insurance combines product knowledge with needs analysis. The two methods (human life value vs. needs approach) answer 'how much,' while the product comparison answers 'what kind.' The taxation rules — tax-free death benefit, tax-deferred cash value, basis-first loans — recur in estate and tax planning.
+
+-- Learning objectives --
+
+  • Compare term vs. permanent and whole/universal/variable life on cost, cash value, and risk
+  • Quantify need using the human-life-value and needs (capital-retention) approaches
+  • Apply key policy provisions, dividend options, and common riders
+  • State the income-tax treatment of death benefits, cash-value growth, and policy loans
+
+-- ★ Key numbers --
+
+  • Human life value: PV of future earnings devoted to the family
+  • Needs approach: Capital + final expenses + debts − existing resources (exam-preferred)
+  • Death benefit: Income-tax-FREE to the beneficiary
+  • Cash value: Grows tax-deferred; loans tax-free (basis first) unless lapse/MEC
+  • MEC: Fails 7-pay test → withdrawals/loans taxed LIFO + 10% penalty
+
+-- Must know --
+
+  • Term = pure protection; whole = guaranteed; universal = flexible; variable = subaccounts (a security).
+  • Death benefit is income-tax-free; cash value grows tax-deferred.
+  • Needs approach is usually exam-preferred; HLV sets an upper bound.
+  • A MEC loses favorable loan/withdrawal tax treatment.
+
+-- ⚠ Traps --
+
+  • Saying cash-value growth or policy loans are taxable (they aren't, absent lapse/MEC).
+  • Confusing HLV (income replacement) with the needs approach.
+  • Forgetting variable life = a security needing a prospectus.
+
+-- ✓ Tips --
+
+  • 'How much insurance?' → usually the needs approach.
+  • Variable/registered product cue → suitability + prospectus.
+
+
+
+===== FP512 · M4 ANNUITIES =====
+
+Annuities are the mirror image of life insurance: they protect against living too long. The exclusion ratio (basis ÷ expected return) is the key calc, and the taxation rules (LIFO, 10% penalty, 1035 exchange) connect directly to retirement-income planning in FP515.
+
+-- Learning objectives --
+
+  • Distinguish deferred vs. immediate and fixed vs. variable annuities
+  • Compute the exclusion ratio and the taxable portion of annuity payments
+  • Compare payout options (life-only, period certain, joint-and-survivor)
+  • Apply annuity taxation (LIFO on withdrawals, 10% penalty) and the 1035 exchange
+
+-- ★ Key numbers --
+
+  • 10% penalty: Early withdrawal before age 59½ (nonqualified gains)
+  • Exclusion ratio: Investment (basis) ÷ Expected total return
+  • LIFO: Nonqualified withdrawals taxed gains-first (ordinary income)
+  • 1035 exchange: Annuity→Annuity ✔ · Life→Annuity ✔ · Annuity→Life ✘
+  • RMDs: Qualified annuities only; none for nonqualified in accumulation
+  • ~70%: of buyers choose the GLWB living-benefit rider
+
+-- Must know --
+
+  • Annuity = protection against living too long (longevity) — the mirror of life insurance.
+  • Tax- deferred growth; premiums not deductible (after-tax basis if nonqualified).
+  • Payouts: life-only = highest, nothing to heirs → period-certain → joint & survivor = lowest.
+  • Variable = a security (prospectus + FINRA); fixed = insurance; indexed/EIA = NOT a security.
+
+-- ⚠ Traps --
+
+  • 1035 from an annuity into life insurance — not allowed (one-way toward annuities).
+  • Mixing the exclusion ratio (annuitized) with LIFO (pre-annuitization withdrawals).
+  • Annuity death benefit is NOT income-tax-free like life insurance — the gain is taxable.
+  • Applying RMDs to a nonqualified annuity during accumulation.
+
+-- ✓ Tips --
+
+  • Client fears outliving money → annuity (longevity), never life insurance.
+  • 'Max monthly income, no heirs' → straight life annuity.
+  • Spot the tax wrapper first (qualified vs nonqualified) — it drives RMD & basis.
+
+
+
+===== FP512 · M5 HEALTH, MEDICARE & MEDICAID =====
+
+Health coverage is mostly rules and acronyms, but the HSA triple-tax advantage and the Medicare A/B/C/D map are reliably tested. Keep COBRA/ACA timelines straight and understand Medicaid's spend-down role for long-term care, which links to Module 6.
+
+-- Learning objectives --
+
+  • Compare HMO, PPO, POS, and HDHP plan designs and cost-sharing
+  • Apply HSA eligibility, contribution limits, and triple-tax advantage
+  • Explain COBRA and ACA rights and timelines
+  • Map Medicare Parts A/B/C/D and the Medicaid spend-down / long-term-care role
+
+-- ★ Key numbers --
+
+  • HSA: Requires an HDHP; triple-tax-advantaged
+  • COBRA: ~18 months; employers with ≥ 20 employees; you pay full premium + 2%
+  • Medicare A / B: A = hospital (premium-free at 40 quarters) · B = outpatient (premium, IRMAA)
+  • Medicare C / D: C = Advantage · D = prescription drugs
+  • Medicaid: Means-tested; main payer of long-term care after spend-down
+
+-- Must know --
+
+  • HSA needs an HDHP and is the only triple-tax-advantaged account.
+  • COBRA continues group coverage ~18 months at full cost + 2%.
+  • Medicare: A hospital · B outpatient · C Advantage · D drugs.
+  • Medicaid (not Medicare) pays for long-term custodial care after spend-down.
+
+-- ⚠ Traps --
+
+  • Saying Medicare covers long-term custodial care — that's Medicaid.
+  • Funding an HSA without an HDHP.
+  • Confusing Medicare Part C (Advantage) with Part D (drugs).
+
+-- ✓ Tips --
+
+  • Long-term custodial care + low assets → Medicaid.
+  • 'Triple tax advantage' → HSA.
+
+
+
+===== FP512 · M6 DISABILITY, LTC & VETERANS BENEFITS =====
+
+Disability and LTC protect human capital — the asset behind every other plan. The own-occ → any-occ definition ladder and the premium-paid-by-whom taxation rule are the two highest-yield ideas. Veterans benefits round out the safety-net picture.
+
+-- Learning objectives --
+
+  • Rank disability definitions from own-occ to any-occ to Social Security
+  • Apply elimination and benefit periods to a DI fact pattern
+  • State the taxation of DI benefits based on who paid the premium
+  • Identify when LTC insurance and veterans benefits apply
+
+-- ★ Key numbers --
+
+  • DI definitions: Own-occ (broadest) → modified own-occ → any-occ → Social Security (narrowest)
+  • Elimination period: Waiting period before benefits begin (e.g., 90 days)
+  • Benefit period: How long benefits last (e.g., to age 65)
+  • DI taxation: Employer-paid premium → benefits TAXABLE · employee after-tax → TAX-FREE
+  • LTC trigger: 2 of 6 ADLs or cognitive impairment
+
+-- Must know --
+
+  • Rank DI definitions: own-occ is broadest/most expensive; any-occ narrowest.
+  • DI benefit taxation depends on who paid the premium (with what dollars).
+  • LTC triggers: unable to perform 2 of 6 ADLs or cognitive impairment.
+
+-- ⚠ Traps --
+
+  • Reversing DI taxation — employer-paid = taxable; employee after-tax = tax-free.
+  • Confusing the elimination period (start delay) with the benefit period (duration).
+  • Mixing up own-occ vs any-occ definitions.
+
+-- ✓ Tips --
+
+  • 'Who paid the premium?' decides DI benefit taxation.
+  • Broadest / most-expensive disability definition = own-occ.
+
+
+
+===== FP512 · M7 EMPLOYEE GROUP BENEFITS =====
+
+Group benefits is where insurance meets employee-benefits tax law. Section 79 imputed income on group term life over $50,000 is the signature calculation; cafeteria plans and FSAs add the tax-advantaged wrappers. Nondiscrimination rules decide whether the favorable tax treatment survives.
+
+-- Learning objectives --
+
+  • Compute Section 79 imputed income on group term life over $50,000
+  • Explain cafeteria (Section 125) plans, FSAs, and the use-it-or-lose-it rule
+  • Apply nondiscrimination rules for group benefits
+  • Compare group vs. individual coverage on cost, portability, and underwriting
+
+-- ★ Key numbers --
+
+  • Group term life: First $50,000 tax-free; excess → Section 79 imputed income (Table I)
+  • Section 125: Cafeteria plan: choose pre-tax benefits
+  • FSA: Use-it-or-lose-it (limited carryover/grace); not portable
+  • Nondiscrimination: Favoring HCEs can void the tax break for them
+
+-- Must know --
+
+  • First $50,000 of employer group term life is tax-free; the excess is imputed income (Table I).
+  • Cafeteria (Section 125) plans let employees choose pre-tax benefits.
+  • FSAs are use-it-or-lose-it with limited carryover/grace.
+  • Nondiscrimination rules protect rank-and-file; violations cost HCEs the tax break.
+
+-- ⚠ Traps --
+
+  • Imputing income on the first $50k — only coverage over $50k is taxable.
+  • Treating an FSA like an HSA (FSAs aren't investable or portable).
+
+-- ✓ Tips --
+
+  • Group term life > $50k → compute Section 79 imputed income on the excess only.
+
+
+
+===== FP512 · M8 BUSINESS RISK SOLUTIONS =====
+
+Business risk solutions apply individual products to business problems: buy-sell agreements fund ownership transfers, key-person insurance offsets the loss of talent, and split-dollar shares premium and benefit. The cross-purchase vs. entity distinction (and its basis consequences) is the part most often tested.
+
+-- Learning objectives --
+
+  • Compare cross-purchase vs. entity-purchase buy-sell agreements and their tax/basis effects
+  • Size key-person coverage and explain its purpose
+  • Structure business-continuation and split-dollar arrangements
+  • Match a business risk to the appropriate insurance solution
+
+-- ★ Key numbers --
+
+  • Cross-purchase: Owners buy each other's interest; buyers get a BASIS STEP-UP; n(n−1) policies
+  • Entity-purchase: Business buys the interest; fewer policies (n); NO basis step-up
+  • Key person: Business owns/pays/benefits; premiums NOT deductible, proceeds generally tax-free
+  • Split-dollar: Employer & employee share premium and benefit
+
+-- Must know --
+
+  • Cross-purchase: surviving owners get a basis step-up; needs many policies.
+  • Entity (stock-redemption): company buys; fewer policies but no basis step-up.
+  • Key-person: business is owner & beneficiary; premiums not deductible.
+
+-- ⚠ Traps --
+
+  • Saying entity-purchase gives survivors a basis step-up — only cross-purchase does.
+  • Deducting key-person or buy-sell premiums (they're not deductible).
+
+-- ✓ Tips --
+
+  • Few owners + want basis step-up → cross-purchase; many owners → entity.

@@ -1,0 +1,1208 @@
+FP512 Interactive Reader — CFP Study Lab
+========================================
+FP512 — Risk Management, Insurance & Employee Benefits
+===== FP512 INTERACTIVE READER =====
+
+The full course reference, reflowed for e-ink. Charts and interactive bits are omitted; every concept the reader teaches is here as plain prose.
+  • Insurance Principles
+  • Contract Law
+  • Property & Casualty
+  • Life Insurance
+  • Annuities
+  • Health & Medicare
+  • Disability & LTC
+  • Group Benefits
+  • Business Solutions
+  • Regulation & Suitability
+
+
+
+===== INSURANCE PRINCIPLES =====
+
+-- Risk Terminology & Classification --
+
+Risk = possibility of loss | Peril = cause of loss | Hazard = condition that increases potential for loss
+
+Physical hazard: A tangible/physical condition that increases the chance or severity of loss (oily rags, an icy sidewalk, a wood-frame building). Moral hazard: Dishonesty or intent to induce a claim (arson for insurance proceeds). Morale hazard: Indifference/carelessness because insurance exists (not locking the car). Adverse selection: Those most likely to claim seek coverage — controlled by underwriting.
+
+Hazard: Physical · Root: A tangible condition · Example: Oily rags, icy sidewalk, wood-frame home
+
+Hazard: Moral · Root: Dishonesty / intent · Example: Arson for the proceeds; lying on the application
+
+Hazard: Morale · Root: Carelessness / indifference ("it’s insured") · Example: Leaving the car unlocked, keys in the ignition
+
+-- Insurable Risk Requirements & Limiting Factors --
+
+  • Large homogeneous pool — law of large numbers enables actuarial prediction
+
+  • Definite & measurable loss — time, place, and amount determinable
+
+  • Fortuitous/accidental — must be accidental (life insurance exception: death is certain but timing is not)
+
+  • Non-catastrophic to insurer — no single event destroys the insurer
+
+  • Geographic distribution — spread exposure to avoid single-peril devastation
+
+  • Insurable interest — Life: must exist at issuance only. Property: must exist at BOTH issuance AND time of loss.
+
+  • ACV (Actual Cash Value) = Replacement Cost − Depreciation — limits insurer liability to actual loss
+
+Other factors limiting insurer liability: Policy limits/face value, other insurance provisions, coinsurance clauses, deductibles, and subrogation rights.
+
+Insurable interest — the timing trap (high-value on the exam):
+
+  • Property & casualty: interest must exist at BOTH policy issue AND the time of loss (you must still own the thing when it burns).
+
+  • Life: interest must exist only at issue — not at the time of the claim. (A business partner who insures a co-owner, then the partnership dissolves, still collects if the insured later dies.)
+
+The insurable-risk elements are judged from the insurer’s viewpoint: a large pool of homogeneous units (law of large numbers), a definite & measurable loss, a fortuitous/accidental loss, and a loss that is not catastrophic to the company. The one exception the exam presses: life-insurance loss need not be fortuitous — death is certain, only its timing is uncertain.
+
+-- Insurance Producers & Authority --
+
+  • Express authority: Specifically conferred in writing in the agency contract
+
+  • Implied authority: Not expressly granted but reasonably necessary to carry out duties (e.g., collecting premiums, delivering policies)
+
+  • Apparent authority: Appearance of authority based on insurer's actions or words; insurer may be bound even if agent exceeded actual scope
+
+  • Ratification: Insurer accepts premium with full knowledge of agent's unauthorized act — thereby binding itself to that act going forward and modifying agent's powers
+
+-- Tort Law & Liability Exposures --
+
+Tort: A civil wrong causing physical, emotional, or financial harm. The wrongdoer = tortfeasor. People buy liability insurance to protect against unintentional torts (negligence).
+
+-- Four Elements of Negligence (ALL must be present) --
+
+  • Attractive nuisance: Property feature likely to attract and injure children (e.g., swimming pool). Owner must fence/lock to prevent harm.
+
+  • Negligence per se: Duty of care is determined by a statute designed to protect the class of plaintiff from this type of harm. Other negligence elements still required.
+
+  • Absolute (strict) liability: Responsible for ANY damages even without negligence — applies to extra-hazardous activities (wild animals, blasting). Liability and fault are NOT synonymous.
+
+  • Vicarious liability: Held liable for acts of another (parent/child; employer/employee acting on employer's behalf, even on own time)
+
+Defense: Contributory Negligence · Concept: Plaintiff was negligent in any degree · Effect: Bars ALL recovery (strictest; mostly replaced by comparative)
+
+Defense: Comparative Negligence · Concept: Reduces award by plaintiff's % of fault · Effect: Most common today — partial recovery allowed
+
+Defense: Last Clear Chance · Concept: Defendant had final opportunity to avoid accident · Effect: Plaintiff may still recover despite contributory negligence
+
+Defense: Assumption of Risk · Concept: Plaintiff knowingly engaged in dangerous activity · Effect: May bar recovery entirely
+
+-- Types of Damages --
+
+  • Special (economic) damages: Quantifiable out-of-pocket losses — medical bills, lost wages, property repair/replacement.
+
+  • General (non-economic) damages: Harder-to-value losses such as pain & suffering, disfigurement, and loss of consortium.
+
+  • Punitive damages: Awarded to punish reckless, malicious, or intentional conduct and deter others — not tied to the plaintiff's actual loss.
+
+-- Underwriting, Loss Adjustment & Selecting Insurers --
+
+Underwriting: Process of evaluating applicants to determine whether and on what terms to accept risk. Agents perform field underwriting (initial screening). Insurers use morbidity (probability of sickness) and mortality (probability of death) tables to price policies.
+
+  • Adverse selection: Those most likely to have losses seek coverage; underwriting, waiting periods, and exclusions control this
+
+  • Subrogation: After paying a claim, insurer recovers from at-fault third party; prevents double recovery by insured
+
+  • Salvage: Insurer's right to take damaged property after paying full claim (e.g., totaled vehicles)
+
+  • Abandonment: Insured cannot abandon property to insurer and demand full value; insurer may accept or reject salvage
+
+  • Collateral source rule: Damages not reduced even if plaintiff received compensation from another source (e.g., health insurance)
+
+-- Selecting an Agent vs. Selecting the Company --
+
+-- Regulation of the Insurance Industry --
+
+Insurance is primarily regulated at the state level. Three branches involved: legislative (laws), executive/administrative (insurance department), judicial (interpretation).
+
+  • Paul v. Virginia (1868): Supreme Court ruled insurance is NOT interstate commerce — states regulate
+
+  • US v. Southeastern Underwriters (1944): Reversed Paul v. Virginia — insurance IS interstate commerce subject to federal regulation
+
+  • McCarran-Ferguson Act (1945): Congress responded: federal authority limited to antitrust and fair labor; states carry the major burden of regulating insurance
+
+  • NAIC: All 50 state insurance commissioners. Develops model laws and accreditation standards. Has no power to force states to adopt recommendations. Primary goal: maintain state regulation to prevent federal takeover.
+
+-- 📎 Primary sources for this module --
+
+  • Paul v. Virginia (1868) — insurance is NOT interstate commerce → states regulate.
+
+  • U.S. v. SE Underwriters (1944) — reversed Paul; insurance IS interstate commerce → federal reach.
+
+  • McCarran-Ferguson Act (1945) — Congress’s response: reserves only antitrust/fair-labor to the feds; all other insurance regulation stays with the states.
+
+  • NAIC — model laws + accreditation (since 1989); the IRIS financial-ratio watchlist; cannot compel states.
+
+Grounded in the FP512 course textbook (Module 1, Principles of Insurance). The three landmark cases + McCarran-Ferguson are the tested chain for “who regulates insurance.”
+
+
+
+===== CONTRACT LAW =====
+
+-- Insurance Contract Characteristics --
+
+  • Aleatory: Outcome controlled by chance; dollars exchanged are often substantially unequal
+
+  • Adhesion: Prepared entirely by insurer; insured accepts or rejects as-is — no negotiation. Ambiguities construed against the drafter (insurer).
+
+  • Conditional: Insurer pays only if conditions are met and a covered loss occurs
+
+  • Unilateral: Only the insurer can be held legally liable; insured's only enforceable obligation is paying premiums
+
+  • Utmost Good Faith: Both parties must disclose all material facts
+
+  • Personal contract: Follows the person, not the property; cannot be assigned without insurer consent (except life insurance death benefit)
+
+  • Indemnity contract: Reimburses only up to actual amount of loss; no profit from insurance. Exception: life insurance pays stated face amount.
+
+-- Elements of an Enforceable Insurance Contract --
+
+-- Contract Dispute Doctrines & Good Faith --
+
+  • Waiver: Voluntary and intentional relinquishment of a known right by the insurer; cannot later deny coverage on that same basis
+
+  • Estoppel: Insurer legally prevented from asserting a right because its prior conduct misled the insured to their detriment
+
+  • Rescission: Contract voided from inception; both parties returned to pre-contract position; used for misrepresentation or fraud
+
+  • Reformation: Court rewrites contract to reflect true original intent of both parties
+
+  • Parol evidence rule: Written contract generally controls over prior oral agreements
+
+Doctrine: Misrepresentation · Definition: False statement of material fact on application · Effect on Policy: Insurer may void; life insurance contestable for 2 years
+
+Doctrine: Concealment · Definition: Intentional withholding of a material fact · Effect on Policy: Insurer may void policy
+
+Doctrine: Warranty · Definition: Statement guaranteed to be true; any breach may void policy · Effect on Policy: Stricter than misrepresentation
+
+Doctrine: Fraud · Definition: Intentional misrepresentation for gain · Effect on Policy: Voids policy; possible criminal liability
+
+Pair: Waiver vs. Estoppel · Distinction: Waiver = the insurer voluntarily gives up a known right. Estoppel = the insurer is barred from asserting a right because the insured detrimentally relied on its conduct. (Estoppel often follows a waiver.)
+
+Pair: Void vs. Voidable · Distinction: Void = never enforceable from the start (illegal object, no insurable interest). Voidable = valid, but one party may cancel — e.g., a minor’s contract is voidable by the minor while the insurer stays bound.
+
+The seven characteristics aren’t vocabulary for its own sake — each drives a real outcome:
+
+  • Adhesion → because the insurer drafted every word, any ambiguity is construed against the insurer (contra proferentem). This is the reason coverage disputes so often tilt to the insured.
+
+  • Utmost good faith → both sides must disclose material facts, which is what lets an insurer rescind for material concealment or misrepresentation.
+
+  • Aleatory → the dollars exchanged are deliberately unequal (a small premium can yield a huge benefit, or none) — a statement demanding “equal value” is wrong.
+
+  • Unilateral → only the insurer makes an enforceable promise; the insured’s sole real obligation is paying premiums (they can walk away anytime).
+
+  • Conditional → the insurer pays only if the insured has met policy conditions (notice, proof of loss) and a covered loss occurs.
+
+  • Personal → the contract follows the person, so it can’t be assigned without consent (the life-insurance death-benefit assignment is the exception).
+
+  • Indemnity → reimburses only up to the actual loss — no profit from insurance (life insurance is the exception; it pays a stated face).
+
+
+
+===== PROPERTY & CASUALTY =====
+
+-- Homeowners Policy Structure: Sections I & II --
+
+  • Coverage A: The dwelling (structure + attached structures)
+
+  • Coverage B: Other structures (detached garage, fence) ~10% of Cov A
+
+  • Coverage C: Personal property (contents) ~50-70% of Cov A
+
+  • Coverage D: Loss of use / additional living expenses
+
+  • Coverage E: Comprehensive personal liability (BI and PD to others)
+
+  • Coverage F: Medical payments to others; claim expenses; damage to others' property
+
+-- Homeowners Forms: HO-2 through HO-8 & HO-15 --
+
+Form: HO-2 · Name: Broad Form · Who: Homeowners · Dwelling: Broad (18 named perils) · Contents (Cov C): Broad (18 named perils)
+
+Form: HO-3 · Name: Special Form (most popular) · Who: Homeowners · Dwelling: Open perils · Contents (Cov C): Broad (named perils)
+
+Form: HO-4 · Name: Contents Broad / Renters · Who: Tenants · Dwelling: Not covered (landlord insures) · Contents (Cov C): Broad (named perils)
+
+Form: HO-5 · Name: Comprehensive Form · Who: Homeowners · Dwelling: Open perils · Contents (Cov C): Open perils
+
+Form: HO-6 · Name: Unit Owners / Condo · Who: Condo owners · Dwelling: Interior unit only · Contents (Cov C): Broad (named perils)
+
+Form: HO-8 · Name: Modified Form · Who: Older/historic homes · Dwelling: Functional replacement cost (basic perils only) · Contents (Cov C): Basic named perils
+
+Form: HO-15 · Name: Endorsement to HO-3 · Who: HO-3 policyholders · Dwelling: Open perils (already) · Contents (Cov C): Upgrades to open perils
+
+  • HO-3 is most popular — majority of all homeowners policies sold
+
+  • HO-8 Functional Replacement Cost: Pays only what it costs to make the home functionally equivalent; used when replacement cost exceeds market value (older/historic homes)
+
+  • HO-15 Endorsement: Upgrades HO-3 personal property (Coverage C) from named perils to open perils — effectively creates HO-5 level coverage for contents
+
+  • Open perils = covered against ALL perils EXCEPT those specifically excluded. Named perils = covered ONLY for specifically listed perils.
+
+Coverage levels: Basic (12 perils: fire, lightning, wind, hail, explosion, riot, aircraft, vehicles, smoke, vandalism, theft, volcanic eruption) → Broad (adds 6 more: falling objects, weight of ice/snow, accidental water discharge, freezing of plumbing, electrical damage, sudden bursting = 18 total) → Open perils (all perils except excluded).
+
+Standard exclusions: Flood, earthquake, neglect, war/nuclear hazards, power failure, intentional loss. Flood and earthquake require separate policies.
+
+: HO-3 (Special) · Dwelling (Cov A): Open perils · Contents (Cov C): Named perils
+
+: HO-5 (Comprehensive) · Dwelling (Cov A): Open perils · Contents (Cov C): Open perils
+
+The whole HO system is built on who carries the burden of proof:
+
+  • Named perils (Basic, Broad) — covered only if the loss matches a listed peril. The insured must prove the cause is on the list.
+
+  • Open perils (a.k.a. “all-risk”/special) — covered unless specifically excluded. The insurer must prove an exclusion applies. Far broader for the insured.
+
+The peril ladder: Basic = 12 perils (fire, lightning, windstorm, hail, explosion, riot, aircraft, vehicles, smoke, vandalism, theft, volcanic eruption) → Broad adds 6 more (falling objects, weight of ice/snow, accidental water discharge, freezing of plumbing, electrical damage, sudden bursting) = 18 → Open = everything except the exclusions.
+
+-- Key Property Insurance Concepts --
+
+  • Replacement Cost vs. ACV: Replacement cost pays full rebuild cost; ACV = Replacement Cost − Depreciation. Replacement cost requires insuring to at least 80% of replacement value.
+
+  • Coinsurance (80% Rule): If insured carries less than 80% of replacement cost, partial losses are paid proportionally. Formula: (Amount Carried ÷ Amount Required) × Loss = Insurer Payment Example: Home replacement cost $200K. Should carry $160K (80%). Insured carries only $100K. Loss = $20K. Payment = (100K/160K) × $20K = $12,500. Insured absorbs remaining $7,500.
+
+  • Subrogation: After paying claim, insurer recovers from at-fault third party; prevents insured from collecting twice
+
+  • Other Insurance Provision: Pro-rata or primary/excess coordination; insured cannot profit from a loss
+
+  • Pair or set clause: If one item of a pair/set is lost, insurer pays only the difference in value, not the full replacement cost of the pair
+
+Formula: ( amount carried ÷ amount required ) × loss − deductible, where amount required = 80% × replacement cost. On a partial loss when under-insured, the insurer pays the GREATER of this formula result or plain ACV.
+
+Facts: Zachary’s home has a $400,000 replacement cost. He carries $300,000. Deductible $1,000. A kitchen fire causes a $20,000 partial loss.
+
+  • Amount required = $400,000 × 80% = $320,000.
+
+  • Coinsurance fraction = $300,000 ÷ $320,000 = 0.9375.
+
+  • 0.9375 × $20,000 = $18,750, then − $1,000 deductible = $17,750 paid. Zachary eats the $2,250 shortfall for being under-insured.
+
+-- Personal Auto Policy (PAP) --
+
+  • Part A — Liability: Bodily injury and property damage to third parties; minimum state limits required in every state
+
+  • Part B — Medical Payments: Covers insured and passengers regardless of fault; no deductible or coinsurance
+
+  • Part C — UM/UIM: Protects you when other driver has no (UM) or insufficient (UIM) insurance
+
+  • Part D — Physical Damage: Collision (your fault or single-car) + Comprehensive (theft, weather, animals — other than collision)
+
+  • Umbrella/Excess: Additional liability layer above auto and homeowners limits; recommended for high-net-worth clients
+
+A personal liability umbrella (PLUP) sits above your auto and homeowners liability, but it will only do so if you carry the required underlying limits (commonly $250,000 or $500,000). If you don’t, the umbrella still measures its drop-down from the required underlying amount — not from what you actually bought — leaving you to fill the gap.
+
+Harry has a $1,000,000 umbrella that requires $300,000 of underlying auto liability, but he carries only $200,000. He’s sued for $1,000,000.
+
+  • His auto policy pays its actual limit: $200,000.
+
+  • The umbrella pays from the required $300,000 up to $1M = $700,000.
+
+  • Total available = $200,000 + $700,000 = $900,000.
+
+  • Harry personally owes the missing $100,000 — the gap between the $300k required and the $200k he actually carried.
+
+-- 📎 Primary sources for this module --
+
+  • ISO (Insurance Services Office) — publishes the standard HO forms (HO-1 through HO-8, HO-15) and the Personal Auto Policy.
+
+  • NFIP — National Flood Insurance Program (the federal flood carrier; flood is excluded from every HO form).
+
+  • CEA / state pools — earthquake coverage (also excluded from every HO form).
+
+  • State financial-responsibility laws — mandate minimum auto liability limits.
+
+Grounded in the FP512 course textbook (Module 2, Property & Casualty). Coverage percentages and special limits are ISO-standard illustrative amounts (they vary by policy); worked examples use the textbook’s own figures.
+
+
+
+===== LIFE INSURANCE =====
+
+-- Types of Life Insurance --
+
+Universal life lets the owner choose how the death benefit relates to the cash value. The exam tests this through the net amount at risk (NAR) — the pure-insurance slice the insurer is actually on the hook for ( NAR = death benefit − cash value ), because the mortality charge is levied on the NAR, not the whole face.
+
+: Death benefit · Option A (Type I): Level (stays at the face) · Option B (Type II): Face + cash value (rises)
+
+: Net amount at risk · Option A (Type I): Decreases as cash value grows · Option B (Type II): Stays level
+
+: Cost / funding · Option A (Type I): Cheaper — insurer’s risk shrinks · Option B (Type II): Costlier — needs more premium
+
+Face $300,000, cash value has grown to $75,000 at death.
+
+  • Option A: beneficiary gets the $300,000 face (the cash value is absorbed into it, not paid on top). NAR at death = $300,000 − $75,000 = $225,000.
+
+  • Option B: beneficiary gets $375,000 (face $300,000 + cash value $75,000). NAR stayed at $300,000 the whole time.
+
+-- EIUL / IUL: Indexed Universal Life Detail --
+
+  • Participation rate: % of index gain credited to policy. Example: S&P 500 gains 10%, participation rate 70% → 7% credited
+
+  • Rate cap: Upper limit on credited rate. Example: 12% cap with 18% S&P gain → only 12% credited
+
+  • Spread method: Fixed % subtracted from index gain. Example: 30% gain minus 2% spread = 28% credited
+
+  • Point-to-point (ratchet): Compares index at start and end of interval; mid-period fluctuations ignored; locks in gain each year
+
+  • High/low water mark: Uses highest (or lowest) value within credit period; protects against end-of-period downturns
+
+  • Downside protection: If index declines, account value stays unchanged (floor at 0% credited — never negative)
+
+-- Policy Provisions & Nonforfeiture Options --
+
+  • Grace period: Typically 30 days after missed premium before policy lapses
+
+  • Reinstatement: Right to restore lapsed policy (usually within 3-5 years) with evidence of insurability + back premiums + interest
+
+  • Free look: Right to cancel new policy within 10-30 days for full refund
+
+  • Incontestability: After 2 years, insurer cannot deny claim for misrepresentation (except fraud)
+
+  • Suicide clause: Within 2 years of issuance: insurer returns premiums only, no death benefit
+
+  • Misstatement of age: Benefit adjusted to what the actual premium would have purchased at the correct age
+
+  • Spendthrift clause: Prevents beneficiary from assigning/pledging death benefit before it is paid; protects from beneficiary's creditors
+
+-- Nonforfeiture Options (Permanent Life Only) --
+
+-- Settlement Options (How the Death Benefit Is Paid) --
+
+Instead of a lump sum, the owner or beneficiary can elect how the proceeds are distributed:
+
+  • Interest option: Insurer holds the proceeds and pays only the interest; principal stays intact for later withdrawal.
+
+  • Fixed-period: Proceeds plus interest paid out in equal installments over a chosen number of years (period is fixed, payment amount varies).
+
+  • Fixed-amount: A chosen dollar amount is paid each period until proceeds plus interest are exhausted (amount is fixed, number of payments varies).
+
+  • Life income: Proceeds annuitized over the beneficiary's lifetime (straight life, life with period certain, or joint-and-survivor) — guards against outliving the money.
+
+-- Beneficiary Designations --
+
+  • Primary vs. contingent: The primary beneficiary is first in line; the contingent (secondary) beneficiary receives the proceeds only if all primaries predecease the insured.
+
+  • Revocable vs. irrevocable: A revocable designation can be changed by the owner at any time (most designations are revocable). An irrevocable beneficiary cannot be removed and must consent to policy changes (loans, surrender, assignment).
+
+-- Dividend Options & Riders --
+
+Dividends are paid by mutual companies (not guaranteed; considered return of excess premium):
+
+  • Cash: Receive as check. Taxable to the extent it exceeds total premiums paid.
+
+  • Reduce premium: Apply to next premium due — popular choice
+
+  • Accumulate at interest: Leave with insurer; interest credited is taxable annually
+
+  • Paid-Up Additions (PUA): Buy small amounts of additional paid-up whole life — increases both DB and cash value. Most advantageous long-term.
+
+  • One-year term: Use dividend to buy additional one-year term coverage
+
+Key Riders:
+
+  • Waiver of Premium: Premiums waived during total disability (typically after 6-month elimination period)
+
+  • Accidental Death Benefit (ADB): Extra benefit if death is accidental (double or triple indemnity)
+
+  • Guaranteed Insurability (GI): Right to purchase additional coverage at future dates without evidence of insurability
+
+  • Accelerated Death Benefit: Advance on DB for terminal illness (≤12-24 months life expectancy), chronic illness, or critical illness
+
+  • Cost-of-Living Adjustment (COLA): Automatically increases DB to maintain purchasing power
+
+  • Return of Premium: Premiums returned if insured survives the policy term; higher cost
+
+-- Life Insurance Taxation --
+
+  • Death benefits: Generally income-tax-free (IRC §101)
+
+  • Cash value growth: Tax-deferred inside policy
+
+  • UL withdrawals: FIFO — basis out first (tax-free), then gains (taxable)
+
+  • Policy loans: Not taxable while policy in force. If policy lapses with outstanding loan, excess over basis is immediately taxable.
+
+  • MEC: Fails 7-pay test. Withdrawals: LIFO + 10% penalty before age 59½. A MEC can arise in any cash-value policy ( whole life, UL, or VUL ) but never in term insurance, which has no cash value to over-fund.
+
+  • Transfer for value rule: Sale/transfer of policy for consideration may make death proceeds taxable. Exceptions: transfer to insured, insured's partner, partnership where insured is partner, or corporation where insured is officer/shareholder.
+
+  • 1035 Exchange (IRC §1035): Tax-free, basis-carryover swap of a life policy into another life, endowment, annuity, or qualified LTC contract. Note: an annuity or LTC contract canNOT be exchanged back into life insurance.
+
+  • Group life $50K rule: First $50K employer-paid coverage is tax-free. Above $50K: imputed income using Table I rates, reported on W-2. (Full Table I + worked imputed-income calc: see Group Benefits tab.)
+
+Gain on a surrendered cash-value policy = cash received − basis, where basis = total premiums paid − prior dividends received − prior tax-free withdrawals. The gain is ordinary income (never capital gain).
+
+  • Susan paid $20,000 in premiums, later took a $15,000 tax-free withdrawal (basis now $5,000), then paid $10,000 more in premiums → basis = $15,000.
+
+  • She surrenders for $28,000.
+
+  • Taxable gain = $28,000 − $15,000 = $13,000 ordinary income.
+
+Congress created the Modified Endowment Contract to stop people from stuffing a life policy purely as a tax shelter. A policy is a MEC if cumulative premiums paid in the first 7 years exceed the cumulative net-level premium needed to pay it up in 7 years 7-pay test. Key mechanics:
+
+  • “Once a MEC, always a MEC” — the status never washes out, and it passes to any policy it’s §1035-exchanged into.
+
+  • All single-premium life is automatically a MEC (it blows past the 7-pay limit on day one).
+
+  • A material change (e.g., a face increase) restarts a fresh 7-year test.
+
+  • A MEC isn’t “bad” if intentional — a single-premium policy meant as a bequest never triggers the living-withdrawal rules because the owner never touches it.
+
+: Withdrawal ordering · Non-MEC (normal policy): FIFO — basis out first, tax-free · MEC: LIFO — gain out first, ordinary income
+
+: 10% penalty
+
+  • Multiple of Salary: 6x, 8x, or 10x salary. Simple but imprecise; varies by age and situation.
+
+  • Human Life Value: PV of future after-tax earnings; capital utilization (principal depleted) approach
+
+  • Capital Retention: Use interest only; preserve principal for heirs. Generates LARGER insurance need.
+
+  • Capital Utilization: Deplete principal over time. Generates SMALLER need. Risk: beneficiary outlives the fund.
+
+  • LIFE Method: Liquidation of debts + Income replacement + Final expenses + Education funding
+
+A 45-year-old needs to replace $50,000 of income growing 3% /yr to age 90 (N = 45), earning 6%. The engine of both methods is the inflation-adjusted (real) rate, entered in BEG mode because survivors draw at the start of each year.
+
+  • Real rate = [(1.06 ÷ 1.03) − 1] × 100 = 2.9126%.
+
+  • Capital utilization (fund is fully depleted at 90): N 45, I/YR 2.9126, PMT 50,000, BEG → PV = $1,281,305.
+
+  • Capital retention (principal preserved for heirs, live on earnings): $50,000 ÷ 0.029126 = $1,716,667.
+
+Churning: Repeatedly switching policies to generate commissions — unethical, may be illegal. Twisting: Misrepresenting a competitor policy to induce replacement. State replacement regulations require specific disclosure forms and comparisons before replacing an existing policy.
+
+The death benefit is income-tax-free IRC §101, but it is included in the gross estate of the policy owner. That single distinction bridges FP512 and FP516 (Estate):
+
+  • Move ownership to an ILIT (irrevocable life insurance trust) or another person and the proceeds escape the insured’s estate — but the 3-year lookback pulls a transferred existing policy back in if the insured dies within 3 years (buy the new policy inside the ILIT to avoid it).
+
+  • Keep any incident of ownership (right to change beneficiary, borrow, surrender) and the full death benefit stays in the estate.
+
+  • Second-to-die (survivorship) policies pair with the unlimited marital deduction — liquidity arrives exactly when the estate tax is finally due (second death).
+
+-- 📎 Primary sources for this module --
+
+  • IRC §101 — income-tax-free death benefit; §101(a)(2) transfer-for-value rule + its safe-harbor exceptions.
+
+  • IRC §1035(a) — tax-free exchange (life → life / endowment / annuity / qualified LTC; never into life; same insured for life-for-life).
+
+  • DEFRA 1984 — statutory definition of life insurance tying cash value to death benefit (the §7702 concept).
+
+  • TAMRA 1988 — created Modified Endowment Contracts / the 7-pay test (the §7702A concept).
+
+  • NAIC Life Insurance Disclosure Model Reg — policy illustrations & buyer’s guide (delivered ≥5 days before policy delivery).
+
+Grounded in the FP512 course textbook (Module 3, Life Insurance). The textbook cites only §1035(a) by number; other IRC section numbers come from the underlying tax code (the text names DEFRA 1984 for §7702 and TAMRA 1988 for §7702A). Figures are 2025-vintage.
+
+
+
+===== ANNUITIES =====
+
+-- Annuity Classification Framework --
+
+Dimension: How are premiums paid? · Options: Single premium · Fixed premium · Flexible premium (most common for deferred)
+
+Dimension: When do benefits begin? · Options: Immediate (within 1 year) · Deferred (1+ year) · Longevity/DIA (delayed to advanced age, up to 85)
+
+Dimension: Who is the annuitant? · Options: Individual life · Joint lives (income continues until second death)
+
+Dimension: Accumulation structure? · Options: Fixed interest · Variable (subaccounts) · Indexed (EIA/RILA)
+
+Dimension: Payment amount method? · Options: Fixed payment · Fixed with COLA · Variable
+
+Dimension: How long are benefits paid? · Options: Pure life · Life + period certain (5, 10, or 20 years) · Life with refund · Joint life
+
+Every deferred annuity lives two lives. Understanding the hand-off is what most classification questions are really testing:
+
+  • Accumulation phase — money goes in and grows tax-deferred (no 1099 each year, unlike a CD or brokerage account). The contract has an account value you can surrender (subject to surrender charges).
+
+  • Annuitization / payout phase — at annuitization the owner irrevocably trades the account value for a stream of income. The account value ceases to exist; you now own a promise to pay, not a balance. This is why annuitization is a one-way door and why liquidity disappears.
+
+Mortality credits — the reason a life annuity beats a bond ladder for pure income. The insurer pools thousands of annuitants. Those who die early “forfeit” their remaining principal, and that money subsidizes the payments of those who live long. This mortality credit is income you cannot manufacture on your own with a portfolio — it’s the payment for accepting that you get nothing back at death under a straight-life payout. The trade-off: you bear no market risk on the income, but you accept no liquidity and (on straight life) no residual for heirs.
+
+Authority: annuity taxation and the deferral inside the contract flow from IRC §72; the “annuity is a contract, not a security” line holds only for fixed/indexed products — variable and registered index-linked annuities are securities (see Product Types below).
+
+-- Annuity Product Types --
+
+An EIA/FIA never buys the index. The insurer buys mostly bonds, then spends a slice of the yield on index call options. How much of the index’s move you receive is throttled by three levers — and a given contract usually uses one, not all:
+
+Lever: Participation rate · How it limits you: You get a percentage of the index gain · Example (index +12%): 80% → credited 9.6%
+
+Lever: Cap rate · How it limits you: Credit is capped at a ceiling · Example (index +12%): 6% cap → credited 6%
+
+Lever: Spread / margin · How it limits you: A fixed % is subtracted off the top · Example (index +12%): 3% spread → credited 9%
+
+The floor is 0%: in a down year you’re credited nothing, but you never lose principal to market losses (surrender charges are separate). Crediting is measured over a term using a method — most commonly annual reset / ratchet (locks each year’s gain and never gives it back), or point-to-point (start vs. end of a multi-year term). Trap A high participation rate means little if paired with a low cap — always read the combination.
+
+: Who bears market risk · Equity-Indexed (EIA/FIA): Insurer (you have a 0% floor) · Variable (VA): Owner (subaccounts can lose value)
+
+: Regulated as a security? · Equity-Indexed (EIA/FIA): No — insurance product, state-regulated · Variable (VA): Yes — prospectus, FINRA-licensed rep
+
+: Upside · Equity-Indexed (EIA/FIA): Limited by cap/par/spread · Variable (VA): Uncapped (full subaccount return)
+
+: Downside · Equity-Indexed (EIA/FIA): Principal protected · Variable (VA): Full downside exposure
+
+QLAC, current figures: funded from an IRA/qualified plan; income (and the RMDs on that money) can defer to age 85. SECURE 2.0 (2022) removed the old 25%-of-balance limit and set a dollar cap of $200,000 indexed — $210,000 for 2025 verify each year. Variable annuities are securities under the Securities Act of 1933; RILAs are separately registered.
+
+-- Guaranteed Living Benefits (GLBs) --
+
+Rider: Guaranteed Lifetime Withdrawal Benefit · Acronym: GLWB · What It Guarantees: Withdraw stated % of a benefit base annually for life, even if account value hits zero. Most popular GLB.
+
+Rider: Guaranteed Minimum Income Benefit · Acronym: GMIB · What It Guarantees: Right to annuitize at a guaranteed rate regardless of actual account value — minimum income floor
+
+Rider: Guaranteed Minimum Withdrawal Benefit · Acronym: GMWB · What It Guarantees: Withdraw stated amount annually until total withdrawals equal initial premium (principal recovery)
+
+Rider: Guaranteed Minimum Accumulation Benefit · Acronym: GMAB · What It Guarantees: Guarantees account value equals at least initial premium after specified period (e.g., 10 years)
+
+Rider: Guaranteed Minimum Death Benefit · Acronym: GMDB · What It Guarantees: Death benefit guaranteed at least the initial premium or stepped-up amount, regardless of account value
+
+Every living-benefit rider runs on two separate numbers, and confusing them is the #1 GLB mistake:
+
+  • Account value — the real money. It’s what you can surrender or pass to heirs, and it rises and falls with the subaccounts.
+
+  • Benefit base (a.k.a. income base) — a bookkeeping figure used only to calculate the guaranteed benefit. You cannot withdraw it as a lump sum. It typically grows by the greater of a roll-up rate (e.g., a guaranteed 5%/yr in the deferral period) or an annual ratchet/step-up that locks in market highs.
+
+So a GLWB can keep paying you 5% of a $200,000 benefit base for life even after the account value has fallen to $0 — the insurer is now paying from its own pocket. That guarantee is exactly what the rider fee buys. Trap Excess withdrawals (above the guaranteed annual amount) usually reduce the benefit base proportionally, which can permanently cut the guarantee — a classic suitability landmine.
+
+Rider: GMIB · What it guarantees: A minimum income if you annuitize — a floor on the payout rate · Must you annuitize?: Yes — you give up the account value to turn it on
+
+Rider: GMWB · What it guarantees: Get your principal back via annual withdrawals (until total withdrawals = premium) · Must you annuitize?: No — keep control of the account
+
+Rider: GLWB · What it guarantees: Withdraw a % for life, even if the account hits $0 — and keep the account value · Must you annuitize?: No — this is why it’s the most popular
+
+-- Payout Options & Taxation --
+
+  • Straight Life (Pure Life): Maximum monthly income for life; nothing to beneficiary if annuitant dies early
+
+  • Life + Period Certain: Payments continue for guaranteed minimum period (5, 10, or 20 years) to beneficiary if annuitant dies early
+
+  • Life with Refund: If annuitant dies before recovering full investment, beneficiary receives remainder as cash refund or installment refund
+
+  • Joint & Survivor: 100%, 66.7%, or 50% continues to second annuitant; lower payout than single-life
+
+  • Fixed with COLA: Starts lower but increases with inflation; protects purchasing power
+
+  • Pre-annuitization withdrawals: LIFO — earnings come out first, taxed as ordinary income + 10% penalty before age 59½
+
+  • Penalty-free withdrawals: Most contracts allow 10% of account value per year without surrender charges (still subject to LIFO tax rules)
+
+  • Annuitization — Exclusion Ratio: Separates basis (tax-free) from earnings (taxable) in each payment
+
+  • 1035 Exchange (IRC §1035): Tax-free swap that preserves carryover basis. Permitted: life → life, endowment, annuity, or qualified LTC; endowment → endowment, annuity, or qualified LTC; annuity → annuity or qualified LTC. You CANNOT exchange an annuity or LTC contract INTO life insurance. Useful to move into a better-performing annuity without triggering gain.
+
+Facts: Diane, 65, annuitizes a nonqualified deferred annuity. Basis (investment in the contract) = $100,000. The contract pays $750/month. Her expected return is figured over the payout period.
+
+  • Find the expected return. For a fixed-period annuity it’s just payment × months: $750 × 240 = $180,000. For a life annuity you don’t guess — you multiply the annualized payment by the life-expectancy multiple from the IRS actuarial tables (Table V), so $9,000/yr × a ~20.0 multiple &asymp; $180,000.
+
+  • Exclusion ratio = basis ÷ expected return = $100,000 ÷ $180,000 = 0.5556 (55.6%).
+
+  • Tax-free per payment = 55.6% × $750 = $416.67. The rest, $333.33, is taxable ordinary income.
+
+-- Inherited / Beneficiary Annuity Taxation --
+
+  • No step-up in basis: Unlike appreciated stock, an annuity gets no step-up at the owner's death. The gain (value above basis) is income in respect of a decedent (IRD) — taxed to the beneficiary as ordinary income.
+
+  • Spouse as sole beneficiary: May elect spousal continuation — take over the contract as the new owner and keep deferring, rather than paying tax now.
+
+  • Non-spouse beneficiary: Generally must fully distribute under the 10-year rule (contract emptied by the end of the 10th year after death); a stretch/annuitized life-expectancy payout is available only to certain eligible designated beneficiaries.
+
+The exam loves to test annuity taxation against life insurance and retirement accounts in the same question. One matrix reconciles all three:
+
+Feature: Growth · Nonqualified annuity: Tax-deferred · Life insurance cash value: Tax-deferred · Traditional IRA / 401(k): Tax-deferred
+
+Feature: Living withdrawal ordering · Nonqualified annuity: LIFO (gain first, taxable) · Life insurance cash value: FIFO (basis first, tax-free) — unless a MEC, which is LIFO · Traditional IRA / 401(k): All taxable (pre-tax dollars)
+
+Feature: 10% early penalty · Nonqualified annuity: Yes
+
+  • Long-term retirement income / longevity risk protection
+
+  • Downside market protection (fixed/indexed)
+
+  • Maxed-out qualified retirement contributions
+
+  • Low risk tolerance / decumulation phase
+
+  • Short-term needs (surrender charges apply)
+
+  • Clients needing high uncapped growth
+
+  • Emergency fund purposes (LIFO taxation)
+
+  • Clients with insufficient savings needing max accumulation
+
+Feature: Lower fees · Traditional IRA: ✓ · Nonqualified Annuity: ✕
+
+Feature: Uncapped growth potential · Traditional IRA: ✓ · Nonqualified Annuity: ✕ (caps/fees)
+
+Feature: Liquidity · Traditional IRA: ✓ · Nonqualified Annuity: ✕ (surrender charges)
+
+Feature: Tax-deductible contributions · Traditional IRA: ✓ (traditional) · Nonqualified Annuity: ✕
+
+Feature: Tax-deferred growth · Traditional IRA: ✓ · Nonqualified Annuity: ✓
+
+Feature: Downside protection · Traditional IRA: ✕ · Nonqualified Annuity: ✓ (fixed/indexed)
+
+Feature: Longevity protection · Traditional IRA: ✕ · Nonqualified Annuity: ✓
+
+Feature: No RMDs (nonqualified) · Traditional IRA: ✕ · Nonqualified Annuity: ✓
+
+Feature: No contribution limits (§415) · Traditional IRA: ✕ · Nonqualified Annuity: ✓
+
+Suitability isn’t just a vibe check — most states have adopted the NAIC Model #275 (Suitability in Annuity Transactions Model Regulation, 2020 revision), which layers a best-interest standard on top of old suitability rules. It has four obligations the producer must satisfy:
+
+  • Care — have a reasonable basis that the annuity effectively addresses the client’s needs, based on their consumer profile (age, income, liquidity needs, risk tolerance, time horizon, existing holdings).
+
+  • Disclosure — describe the producer’s role, products offered, and how they’re compensated (cash and non-cash).
+
+  • Conflict of interest — identify and avoid or reasonably manage conflicts; sales contests based on a specific product are prohibited.
+
+  • Documentation — record the basis for the recommendation.
+
+This aligns state annuity rules with the direction of SEC Reg BI for securities. Exam link A variable annuity recommendation is also a securities recommendation, so it’s subject to FINRA suitability / Reg BI on top of the state annuity rule — a nonqualified fixed annuity is state-only.
+
+-- 📎 Primary sources for this module --
+
+  • IRC §72 — taxation of annuities: exclusion ratio §72(b), 10% penalty on nonqualified early distributions §72(q), LIFO ordering.
+
+  • IRC §1035 — tax-free exchanges (annuity → annuity or qualified LTC only; never into life insurance).
+
+  • IRC §101(a) — income-tax-free life insurance death benefit (the contrast used in the cross-module table).
+
+  • SECURE 2.0 Act (2022) — QLAC 25%-of-balance limit removed; dollar cap $200,000 indexed ( $210,000 for 2025 — verify annually).
+
+  • NAIC Model #275 — Suitability in Annuity Transactions (best-interest standard: Care, Disclosure, Conflict, Documentation).
+
+  • Securities Act of 1933 / FINRA — variable & registered index-linked annuities are securities (prospectus + licensed rep required).
+
+Grounded in the FP512 course textbook (Risk, Insurance & Benefits) and the audited card/MCQ bank; dollar figures reflect 2025 and should be re-checked each tax year.
+
+
+
+===== HEALTH & MEDICARE =====
+
+-- Key Federal Health Insurance Laws --
+
+  • Catastrophic: Lowest premium; only for those under 30 or with a hardship exemption. High deductible, 3 primary-care visits + preventive care before the deductible.
+
+  • Bronze (~60%) · Silver (~70%) · Gold (~80%) · Platinum (~90%) — as the metal rises, the plan pays more and the enrollee pays less.
+
+  • Silver is key for subsidies: cost-sharing reduction (CSR) subsidies apply only to Silver plans.
+
+-- COBRA Coverage Periods by Qualifying Event --
+
+Qualifying Event: Termination (voluntary or involuntary) or reduced hours · Duration: 18 months · Who is Eligible: Employee + dependents
+
+Qualifying Event: Disability (SSA-defined) at time of termination/hours reduction · Duration: 29 months · Who is Eligible: Employee + dependents
+
+Qualifying Event: Death of covered employee · Duration: 36 months · Who is Eligible: Spouse + dependents
+
+Qualifying Event: Divorce or legal separation · Duration: 36 months · Who is Eligible: Spouse + dependents
+
+Qualifying Event: Employee becomes eligible for Medicare · Duration: 36 months · Who is Eligible: Spouse + dependents ONLY
+
+Qualifying Event: Loss of dependent child status (e.g., age 26) · Duration: 36 months · Who is Eligible: Dependent child
+
+-- Health Plan Types & Key Provisions --
+
+Plan: Indemnity (FFS) · Network: None · Referral?: No · Out-of-Network?: Yes — full choice · Cost Control: Deductibles, coinsurance
+
+Plan: HMO · Network: Narrow (PCP gatekeeper) · Referral?: Yes · Out-of-Network?: No (emergencies only) · Cost Control: Capitation, copays
+
+Plan: PPO · Network: Broad · Referral?: No · Out-of-Network?: Yes (higher cost) · Cost Control: Negotiated fees
+
+Plan: POS · Network: Hybrid · Referral?: Yes (in-network) · Out-of-Network?: Yes (limited) · Cost Control: Copays, deductibles
+
+Plan: EPO · Network: Narrow · Referral?: No · Out-of-Network?: No (emergencies only) · Cost Control: Negotiated fees; no referrals
+
+Plan: HDHP + HSA · Network: Varies · Referral?: No · Out-of-Network?: Varies · Cost Control: High deductible; HSA offsets
+
+Capitation: PCP paid fixed monthly fee per enrolled patient regardless of services. Gatekeeper: PCP controls all specialist referrals.
+
+Telemedicine / direct-to-consumer (DTC): Virtual visits by phone, video, or app for non-emergency care. Increasingly bundled into group and Marketplace plans (often low or $0 copay) to cut cost and expand access; standalone DTC subscription services sell virtual-care access directly to consumers. Convenient for routine issues, but not a substitute for comprehensive major-medical coverage.
+
+  • HMO = gatekeeper yes, out-of-network no (capitation, copays, cheapest, most restrictive).
+
+  • PPO = gatekeeper no, out-of-network yes (e.g. 80% in / 50% out; most flexible, priciest).
+
+  • POS = the hybrid — gatekeeper yes like an HMO, but some out-of-network benefit like a PPO.
+
+  • EPO = gatekeeper no (no referrals), out-of-network no (emergencies only).
+
+Medical expense deductibility: Unreimbursed medical expenses exceeding 7.5% of AGI are deductible as an itemized deduction.
+
+-- Medicaid, CHIP & Triggering Events --
+
+Medicaid: joint federal-state program for low-income individuals. ACA expanded coverage to 133% of FPL for under age 65.
+
+  • Asset test: 60-month (5-year) lookback period for asset transfers; transfers within lookback create ineligibility period
+
+  • Excluded assets: Primary residence (with limits), one vehicle, personal property/household items, life insurance with face value under $1,500
+
+  • CHIP: Children's Health Insurance Program — for children in families above Medicaid but with limited income
+
+Triggering Event: Marriage · Action / Coverage Period: 60-day window to add spouse or change coverage
+
+Triggering Event: Birth / adoption · Action / Coverage Period: 30-day mandatory coverage; must actively enroll newborn
+
+Triggering Event: Divorce · Action / Coverage Period: COBRA 36 months for spouse; 60-day election deadline
+
+Triggering Event: Job loss / change · Action / Coverage Period: COBRA 18 months OR Marketplace SEP (60 days)
+
+Triggering Event: Age 26 · Action / Coverage Period: Loss of parent's plan; enroll in own coverage
+
+Triggering Event: Age 65 · Action / Coverage Period: Medicare Initial Enrollment Period (7 months: 3 before + month of + 3 after birthday month)
+
+-- Medicare Parts A, B, C & D (2025 Figures) --
+
+Part: Part A · Coverage: Hospital (inpatient), skilled nursing (up to 100 days), hospice, some home health · 2025 Cost Details: Premium-free for 40+ quarters. Deductible $1,676/benefit period. Days 1-60: $0. Days 61-90: $419/day. Days 91-150 (lifetime reserve): $838/day. Beyond 150: 100% patient responsibility.
+
+Part: Part B · Coverage: Physician, outpatient, preventive services, durable medical equipment · 2025 Cost Details: Monthly premium ~$185 (IRMAA surcharge for high income, based on 2-year prior MAGI). Annual deductible $257. 20% coinsurance after deductible.
+
+Part: Part C · Coverage: Medicare Advantage — private HMO, PPO, PFFS, or SNP replacing A+B. Often includes dental, vision, hearing, and Part D. · 2025 Cost Details: Varies by plan; may be $0 premium. Must cover at least the same benefits as Parts A+B.
+
+Part: Part D · Coverage: Prescription drugs. Three phases: deductible, initial coverage, catastrophic. Donut hole eliminated 2025. · 2025 Cost Details: Monthly premium + $590 annual deductible (2025). 25% coinsurance in initial coverage. At $2,000 MOOP: catastrophic phase begins; patient pays $0 for rest of year. Payment plan available to spread costs.
+
+Part D collapsed to three phases in 2025 (the donut hole is gone): pay the deductible, then 25% coinsurance until your true out-of-pocket hits the $2,000 cap, then $0 the rest of the year.
+
+  • John hits the $590 deductible first (pays $590).
+
+  • Then 25% of the next drug costs until his OOP reaches $2,000. On the next $1,410 of drugs he pays 25% × $1,410 = $352 (plan pays $1,058).
+
+  • Once his total OOP reaches $2,000, he pays $0 for covered drugs for the rest of the year.
+
+Window: Initial Enrollment (IEP) · When: 7 months: 3 before + birth month + 3 after turning 65 · Miss it →: Late-enrollment penalty
+
+Window: General Enrollment · When: Jan 1 – Mar 31 (coverage effective July 1) · Miss it →: Part A/B penalty: 10%/yr, permanent
+
+Window: Special Enrollment (SEP) · When: 8 months after employer coverage / employment ends (worked past 65) · Miss it →: No penalty if used in time
+
+Window: Part C / Advantage open enrollment · When: Oct 15 – Dec 7 · Miss it →: —
+
+Window: Medigap guaranteed-issue · When: 6 months from Part B enrollment · Miss it →: Insurer may medically underwrite / decline
+
+-- Medigap Plans & IRMAA --
+
+10 standardized plans (A through N). Same plan letter = identical benefits regardless of insurer; only premiums differ. Cannot have Medigap AND Medicare Advantage simultaneously.
+
+  • Plan F: Most comprehensive (covers all gaps including Part B deductible). Only available to those eligible for Medicare before January 1, 2020.
+
+  • Plan G: Same as F but does NOT cover Part B deductible. Now the most comprehensive plan available to new Medicare enrollees.
+
+  • Plan N: Covers most gaps; does NOT cover Part B deductible or excess charges; copays up to $20 office/$50 ER
+
+  • Plans K & L: 50%/75% cost-sharing on Part B coinsurance; lower premiums, more out-of-pocket exposure
+
+Pair: Medigap vs. Medicare Advantage (Part C) · How to tell them apart: Medigap supplements Original Medicare (fills the A/B gaps); Advantage replaces A+B with a private plan (often bundling Rx/dental/vision). You cannot have both — Medigap is useless with Advantage.
+
+Pair: Plan F vs. Plan G · How to tell them apart: Both are top-tier Medigap; the only difference is the Part B deductible — F pays it, G does not. F is closed to anyone who became Medicare-eligible on/after Jan 1, 2020, so G is the new go-to. (Only Plans C & F ever pay the Part B deductible.)
+
+Pair: Medicare vs. Medicaid on LTC · How to tell them apart: Medicare pays only skilled care (post-3-day hospital, up to 100 SNF days) — never custodial. Medicaid is the real long-term custodial-care payer (after a spend-down).
+
+-- 📎 Primary sources for this module --
+
+  • COBRA (1985) · HIPAA (1996) · ACA/PPACA (2010) · FMLA (1993) — the federal continuation/portability/leave framework.
+
+  • Inflation Reduction Act (2022) — Part D $2,000 OOP cap (2025); Medicare drug-price negotiation (2026). No Surprises Act (2022).
+
+  • CMS — administers Medicare (Parts A/B/C/D), Medicaid, and CHIP.
+
+Grounded in the FP512 course textbook (Module 5). All dollar figures are the textbook’s 2025 published values — 2026 Medicare figures were not available at publication; re-check each year.
+
+
+
+===== DISABILITY & LTC =====
+
+-- Disability Income Insurance — Definitions & Key Stats --
+
+Disability prevalence: A healthy 35-year-old has approximately a 21-24% chance of becoming disabled for 3+ months before retirement. DI insurance replaces approximately 2/3 (60-70%) of pre-disability income.
+
+Definition: Own Occupation · Description: Disabled if unable to perform duties of YOUR specific occupation. Can receive benefits while working in another field. Most favorable to insured. · Cost: Highest premium
+
+Definition: Modified Own Occupation · Description: Own occ definition UNLESS engaged in another gainful occupation. Middle ground. · Cost: Moderate
+
+Definition: Any Occupation · Description: Disabled only if unable to perform ANY gainful work for which reasonably suited by education, training, or experience. Hardest to qualify. · Cost: Lowest premium
+
+  • Own-occ — disabled if you can’t do your occupation, even if you work elsewhere. Broadest, most expensive (professionals).
+
+  • Modified own-occ / split — own-occ for a first period (e.g. 2–5 yrs), then converts to any-occ.
+
+  • Any-occ — disabled only if you can’t do any job you’re reasonably suited to. Narrowest private definition (group/blue-collar).
+
+  • Social Security — strictest of all: unable to do any substantial gainful activity, expected to last ≥12 months or result in death.
+
+-- Elimination Period, Benefit Period & Renewability --
+
+-- Renewability Provisions (Best to Worst for Insured) --
+
+  • Noncancelable: Insurer CANNOT cancel, change benefits, or raise premiums as long as premiums are paid. Best protection; most expensive.
+
+  • Guaranteed Renewable: Insurer must renew at insured's option to stated age, but MAY increase premiums for entire class (not individually)
+
+  • Conditionally Renewable: Insurer may refuse renewal under certain conditions specified in policy
+
+  • Optionally Renewable: Insurer has right to refuse renewal at any premium due date. Least favorable.
+
+-- Occupational Classifications, Riders & BOE --
+
+Occupational classification is the primary underwriting factor. As professional classification increases: definition of disability broadens, benefit period lengthens, more riders available. Note: Some occupations (chiropractors, some dentists) have been downgraded by many insurers due to claims history.
+
+  • Residual/Partial Disability Rider: Insured works at reduced capacity and receives proportional benefit. Formula: (Income Lost / Pre-disability Income) x Full Monthly Benefit. Typically available when income loss is 20-80%.
+
+  • COLA Rider: Increases benefit amount during disability to keep pace with inflation
+
+  • Guaranteed Purchase Option (GPO): Right to purchase additional coverage at future dates without new evidence of insurability
+
+  • Social Insurance Supplement (SIS): Provides extra benefit if Social Security Disability is denied
+
+  • Waiver of Premium: Premiums waived while receiving disability benefits
+
+  • Presumptive Disability: Automatically qualifies insured as totally disabled for loss of sight, hearing, speech, or limbs — no elimination period required
+
+-- Disability Insurance Taxation --
+
+Who Pays Premium?: Individual (after-tax) · Deductible to Payer?: No (personal expense) · Benefits Taxable to Recipient?: No — benefits are tax-free
+
+Who Pays Premium?: Employer (noncontributory) · Deductible to Payer?: Yes (business expense) · Benefits Taxable to Recipient?: Yes — benefits fully taxable
+
+Who Pays Premium?: Employer + employee (contributory) · Deductible to Payer?: Employer portion: yes · Benefits Taxable to Recipient?: Proportional: employee-paid portion = tax-free; employer-paid portion = taxable
+
+Who Pays Premium?: S-corp (2%+ shareholder) · Deductible to Payer?: Entity deducts; passed through as W-2 income · Benefits Taxable to Recipient?: No — since treated as taxable W-2 income, benefits are tax-free
+
+The whole table reduces to one idea: you either deduct the premium OR the benefit is tax-free — never both. Whoever bore the tax on the premium dollars determines the benefit’s taxability.
+
+  • Pure employer-paid: employer deducted the premium (nobody was taxed on it) → the whole benefit is taxable to the employee.
+
+  • Split premium (contributory): employer pays 60%, employee pays 40% with after-tax dollars → on a $3,000/mo benefit, 60% ($1,800) is taxable and 40% ($1,200) is tax-free.
+
+  • SIS rider offset: a $2,500/mo policy with a Social Insurance Supplement reduces dollar-for-dollar once SS disability pays — if SS pays $700, the policy pays $1,800 to keep the total at target.
+
+-- Long-Term Care Insurance (LTCI) --
+
+  • Coverage settings / levels: Home care (skilled, intermediate, or custodial care in the insured's residence), adult day care, respite care (temporary relief for an unpaid family caregiver), assisted living, and nursing home (skilled and custodial)
+
+  • Elimination period: Typically 30-90 days. Calendar-day EP (all days count) vs. Service-day EP (only days care is received count — less favorable; takes longer to satisfy).
+
+  • Benefit period: 2-5 years typical; unlimited available at higher premium. Average LTC claim: 2-3 years.
+
+  • Inflation protection: CPI-linked or compound 5% annual increase — critical for policies purchased years before need. Compound inflation protection preferred over simple.
+
+  • Hybrid Life/LTC policies: LTC benefit accelerates life insurance death benefit; remaining amount paid to beneficiary at death. Eliminates use-it-or-lose-it concern of traditional LTCI.
+
+  • PACE (Program of All-Inclusive Care for the Elderly): Federally funded; comprehensive medical and social services for frail elderly who qualify for both Medicare and Medicaid; alternative to nursing home placement.
+
+  • Qualified LTCI tax treatment: Individual premiums deductible as medical expenses above 7.5% AGI (age-based annual limits). Employer-paid LTCI: deductible to employer, not taxable to employee. Benefits: generally tax-free up to indexed limits.
+
+Age-based premium-deduction limits (2025, Schedule A medical expense): the older you are, the more of a qualified LTC premium counts as a deductible medical expense.
+
+Attained age: 40 or under · 2025 deductible limit: $480
+
+Attained age: 41–50 · 2025 deductible limit: $900
+
+Attained age: 51–60 · 2025 deductible limit: $1,800
+
+Attained age: 61–70 · 2025 deductible limit: $4,810
+
+Attained age: 71+ · 2025 deductible limit: $6,020
+
+Per-diem (indemnity) benefits are tax-free up to $420/day (2025); anything above that is taxable unless it matches actual qualified LTC costs. Reimbursement-basis benefits for qualified costs are fully tax-free.
+
+  • Transfer penalty: Medicaid has a 5-year (60-month) lookback. If Dylan gifts $100,000 during it, he must private-pay the first $100,000 of care before Medicaid starts (penalty = amount transferred ÷ average monthly nursing-home cost).
+
+  • Partnership offset: a Partnership LTC policy lets you keep assets equal to benefits paid. A $100,000 policy that grew to $140,000 with inflation and paid out fully lets the insured keep $140,000 + the ~$2,000 baseline Medicaid asset limit = $142,000 and still qualify.
+
+-- Veterans Benefits --
+
+Eligibility: Active military, naval, or air service without dishonorable discharge. If enlisted after September 7, 1980: must have 24 continuous months of active duty service. Reserves/National Guard qualify only if called to active duty by federal order and completed full period.
+
+  • VA Health Care: Serves 9+ million veterans annually; 1,200+ care locations. VA Medical Centers, CBOCs, Vet Centers, Community Living Centers. Care may be provided in veteran's home if approved.
+
+  • VA + Private Insurance: Non-service-connected conditions billed to outside carriers; service-connected covered by VA. Veterans encouraged to maintain Medicare and private coverage.
+
+  • Disability Compensation: Tax-free monthly payments for service-connected disabilities; rated 0-100% in 10% increments
+
+  • VA Pension + Aid & Attendance: Means-tested for wartime veterans with limited income; Aid & Attendance supplement for those needing LTC assistance (nursing home, assisted living, or home health)
+
+  • HSA/HRA for VA costs: Veterans may use HSA or HRA to pay for VA care for both service-connected and non-service-connected conditions
+
+  • VA Priority Groups (1–8): The VA assigns each enrolled veteran to one of 8 priority groups that determine access and cost-sharing. Group 1 (highest priority) = service-connected disabilities rated 50%+ or unemployable; Group 8 (lowest) = no service-connected disability with income above VA/geographic thresholds. Lower group numbers get care first and pay the least; higher groups may owe copays.
+
+  • TRICARE: Health program for active-duty and retired service members and their families (distinct from VA care for veterans). TRICARE for Life acts as secondary coverage that wraps around Medicare for Medicare-eligible retirees — the retiree must enroll in Medicare Part B to keep TRICARE for Life. CHAMPVA separately covers dependents/survivors of veterans permanently and totally disabled (or deceased) from a service-connected condition.
+
+-- 📎 Primary sources for this module --
+
+  • HIPAA — defines tax-qualified LTC: guaranteed-renewable, NAIC-model consumer protections, the 2-of-6-ADL / cognitive trigger, and premium deductibility (the §7702B framework; the textbook says “HIPAA-qualified”).
+
+  • IRC §1035 — funds annuity/LTC and life/LTC hybrid contracts tax-free.
+
+  • Long-Term Care Security Act (2000) — the Federal LTC Insurance Program. Social Security disability definition governs SIS-rider offsets.
+
+Grounded in the FP512 course textbook (Module 6). Deduction limits, per-diem cap, and cost-of-care figures are the textbook’s 2025 values (Genworth 2024 cost-of-care survey); re-check annually.
+
+
+
+===== GROUP BENEFITS =====
+
+-- Group Life Insurance & the $50K Rule --
+
+Table I is the IRS cost per $1,000 of coverage per month, by 5-year age band (2025):
+
+Age: $/mo ·
+
+  • John, age 52, has $250,000 of employer group-term life. Coverage above $50k = $200,000 = 200 units of $1,000.
+
+  • His age-52 Table I rate is $0.23 /mo.
+
+  • Imputed income = 200 × $0.23 × 12 = $552 added to his W-2 (offset by any after-tax premiums he pays).
+
+  • Discriminatory plan rule: If group term life plan discriminates in favor of key employees, those key employees must include the ENTIRE employer premium paid on their behalf as taxable compensation (not just the amount above $50,000)
+
+  • Carve-out plans: Selected employees (usually owners/key executives) are “carved out” of the group term plan above $50,000 and given more favorable coverage instead — e.g., a bonus (§162) plan on an individual permanent policy or group carve-out. Avoids Table I imputed income on large amounts and provides portable, cash-value coverage.
+
+  • Portability: Employee may convert to an individual policy within 31 days of leaving employment, without evidence of insurability
+
+  • No medical exam: Group life typically does not require individual medical underwriting for eligible employees
+
+  • ERISA: Group life is a welfare benefit plan subject to ERISA reporting, disclosure, and fiduciary requirements. Governmental, church, and fully voluntary (employee-paid) plans are exempt.
+
+-- Group Health Insurance: Funding Methods & Tax Treatment --
+
+  • Fully-Insured: Employer pays premium to carrier; carrier bears all risk; subject to state insurance regulations; most common for small employers
+
+  • Self-Funded (ASO): Employer bears all claims risk; uses TPA for administration; stop-loss insurance for catastrophic claims; exempt from most state insurance regulations under ERISA preemption; common for large employers
+
+  • Level-Funded (Hybrid): Fixed monthly payment; refund if claims are low; stop-loss protection; growing with mid-size employers
+
+  • VEBA (IRC §501(c)(9)): Voluntary Employees' Beneficiary Association — tax-exempt trust established by employer or through collective bargaining. Employer contributions deductible when made to the trust.
+
+Business Type: C Corporation · Employer Deduction: Fully deductible · Taxable to Employee?: No
+
+Business Type: S Corporation · Employer Deduction: Deductible; passed through as W-2 to >2% shareholder · Taxable to Employee?: Yes (income tax); No (FICA)
+
+Business Type: Partnership · Employer Deduction: Passed through; partner deducts on personal return · Taxable to Employee?: No (if properly structured)
+
+Business Type: Self-Employed (Sole Prop) · Employer Deduction: 100% above-the-line deduction from gross income · Taxable to Employee?: N/A
+
+-- ERISA Requirements --
+
+Requirement: Reporting & Disclosure · Group Health/Life Plans: Must comply — SPD, Form 5500, annual report · Government & Church Plans: Exempt
+
+Requirement: Fiduciary Responsibility · Group Health/Life Plans: Must comply — act solely in interests of participants · Government & Church Plans: Exempt
+
+Requirement: Participation, Vesting & Funding · Group Health/Life Plans: Exempt (welfare benefits, not pension) · Government & Church Plans: Exempt
+
+Requirement: Plan Termination Insurance (PBGC) · Group Health/Life Plans: Exempt · Government & Church Plans: Exempt
+
+  • SPD (Summary Plan Description): Must be provided to each participant and Department of Labor
+
+  • Form 5500: Annual return/report submitted to IRS
+
+  • ERISA preemption: Self-funded plans are exempt from most state insurance laws — key advantage for large employers
+
+-- Section 125 Cafeteria Plans, FSA, HSA & HRA --
+
+  • ICHRA (Individual Coverage HRA): Any-size employer reimburses employees tax-free for individual-market premiums and medical costs instead of offering a group plan; no dollar cap; can vary by employee class.
+
+  • QSEHRA (Qualified Small Employer HRA): For employers with fewer than 50 full-time employees that offer no group health plan; reimburses premiums/expenses up to annual IRS-indexed caps.
+
+  • EBHRA (Excepted Benefit HRA): A supplement offered alongside a group plan (employee need not enroll in it); capped annual amount for excepted benefits like dental, vision, and COBRA premiums.
+
+: HSA · Funded by: Employee &/or employer · Portable?: Yes (you own it, it invests) · Rollover?: Rolls over indefinitely
+
+: FSA · Funded by: Employee salary reduction · Portable?: No · Rollover?: Use-it-or-lose-it ($660 carryover, 2025)
+
+: HRA · Funded by: Employer only · Portable?: No (unless employer allows) · Rollover?: Employer sets terms
+
+Qualifying HDHP for 2025: minimum deductible $1,650 self / $3,300 family; out-of-pocket max $8,300 / $16,600. Contributions are above-the-line (deductible even without itemizing); you have until April 15 to contribute for the prior year. The triple tax benefit: deductible in, tax-free growth, tax-free out for qualified medical.
+
+-- Section 132 Nontaxable Fringe Benefits --
+
+IRC §132 lets employers provide certain fringe benefits that are excluded from the employee's taxable income:
+
+  • No-additional-cost services: Excess-capacity services the employer already sells (e.g., a standby airline seat)
+
+  • Qualified employee discounts: On goods up to the employer's gross-profit %; on services up to 20%
+
+  • De minimis fringes: So small that accounting for them is impractical (occasional snacks, small gifts)
+
+  • Working-condition fringes: Items that would be deductible if the employee paid for them (professional dues, business publications)
+
+  • Qualified transportation: $325/mo transit + $325/mo parking (2025)
+
+-- Group Disability, Workers' Comp & Other Benefits --
+
+  • Group STD: Benefit period up to 6 months; typically 60-70% of salary; short or no elimination period
+
+  • Group LTD: Begins after STD; benefit period to age 65 (or specified years). Employer-paid = taxable benefits. Employee-paid = tax-free benefits.
+
+  • Group LTD social security offset: Group LTD policies often reduce benefits by SSDI amount received
+
+  • Survivor income benefit: A group plan that pays a monthly income to a deceased employee's qualifying survivors (spouse/dependent children) instead of a lump sum. Employer-paid, so the benefits are taxable income to the recipient.
+
+-- Workers' Compensation (4 Benefit Types) --
+
+WC benefits are generally tax-free to the employee. Employer premiums are deductible. State-mandated program; no deductibles or coinsurance for injured employees.
+
+  • Unemployment Insurance: Joint federal-state; funded by employer payroll taxes (FUTA + SUTA). Benefits taxable to recipient. Typically up to 26 weeks.
+
+  • Educational Assistance (IRC §127): Up to $5,250/year excludable from employee income for undergraduate AND graduate education; no job-relation requirement
+
+  • Group LTCI: Generally less expensive than individual; premiums deductible to employer, not taxable to employee; benefits tax-free up to indexed limits
+
+-- 📎 Primary sources for this module --
+
+  • IRC §79 — group-term life $50k exclusion + Uniform Premium Table I (Reg §1.79-3); §416(i) key-employee definition.
+
+  • IRC §125 — cafeteria plans (LTC, educational assistance & commuter benefits are prohibited qualified benefits); §105/§106 employer health exclusion; §132 fringe benefits; §127 $5,250 educational assistance.
+
+  • IRC §223 — HSAs (created by the Medicare Modernization Act 2003); §501(c)(9) VEBA.
+
+  • ERISA (1974) — Form 5500 / SPD / fiduciary duty; self-funded plans are ERISA-preempt from state insurance mandates.
+
+Grounded in the FP512 course textbook (Module 7). Contribution/deduction figures are the textbook’s 2025 values; re-check annually.
+
+
+
+===== BUSINESS SOLUTIONS =====
+
+-- Business Risk Exposures & Key Coverages --
+
+  • BOP (Business Owner's Policy): Packages property + general liability + business income/interruption + extra expense. Cost-effective for small-to-mid-size businesses.
+
+  • BOP vs. CPP: Both combine property + liability from monoline forms at a discount. BOP targets smaller businesses; CPP (Commercial Package Policy) is for larger companies. Commercial auto can be added to either.
+
+  • CPP monoline categories: A CPP is assembled from standalone ( monoline ) coverage parts, chosen as needed: Commercial Property, Commercial General Liability (CGL), Commercial Auto, Commercial Crime, Inland Marine, Boiler & Machinery (Equipment Breakdown), and Farm. (Workers' comp is written separately.)
+
+  • General Liability: BI and PD to third parties from premises, operations, products, or completed operations
+
+  • Professional Liability (E&O / Malpractice): Claims from errors, omissions, or negligence in professional services
+
+  • EPLI (Employment Practices Liability): Covers wrongful termination, sexual harassment, and discrimination claims. Critical for employers. Government fines and penalties are generally NOT covered.
+
+  • D&O (Directors & Officers): Protects board members and officers from personal liability for management decisions
+
+  • Cyber Liability: Data breach response, ransomware, forensic investigation, business interruption. Growing critical importance.
+
+  • Fraud / Crime (Fidelity) Insurance: Covers loss from employee dishonesty — embezzlement, theft, forgery. A fidelity bond is the classic form. Distinct from cyber: fidelity/crime = internal dishonesty and theft of money/property; cyber = external data breach, ransomware, and the resulting business interruption. A business often needs both.
+
+  • Workers' Comp: State-mandated; no deductible for employees; benefits include medical, disability, death, rehabilitation
+
+  • PEO (Professional Employer Organization): A co-employment arrangement — the PEO becomes the employer of record for payroll, taxes, and benefits, letting small businesses access large-group health, workers' comp, and retirement plans at better rates while the client keeps day-to-day control.
+
+  • AHP (Association Health Plan): Small employers/self-employed band together through an association or industry group to buy health coverage as one larger group, gaining group-purchasing leverage and (potentially) large-group rules.
+
+-- Buy-Sell Agreements --
+
+  • Cross-purchase — owners buy on each other: N×(N−1) policies (2 owners = 2, but 4 owners = 12 — unwieldy fast). Survivors DO get a basis step-up (they paid for the shares).
+
+  • Entity redemption — the business buys on each owner: only N policies (simple to administer). Survivors get NO basis step-up, and a C-corp faces AMT exposure on the proceeds.
+
+  • Disability buy-sell: Triggered after 12-24 month total disability; funded with disability insurance; long EP confirms permanent disability
+
+  • Valuation: Agreed value (risk of being stale), book value formula, earnings multiple, or independent appraisal
+
+  • Life-funded buy-sell: Death benefit pays buyout — ensures liquidity. Premiums NOT deductible. Death benefit generally tax-free.
+
+-- Key Person Insurance & BOE Disability --
+
+  • Key Person Life Insurance: Company-owned, company-beneficiary policy on an essential employee. Replaces lost revenue; covers replacement costs. Premiums NOT deductible. Death benefit income-tax-free (COLI notice requirements apply).
+
+  • Business Overhead Expense (BOE) Disability: Covers FIXED operating costs (rent, utilities, employee salaries, loan payments) while owner is disabled. Benefit period: 1-2 years. Premiums are deductible. Benefits are taxable. For small professional practices only, NOT large corporations.
+
+  • Disability Buyout Insurance: Funds buy-sell agreement triggered by long-term disability. Elimination period typically 12-24 months.
+
+-- Non-Qualified Plans, Executive Bonus & LIRP --
+
+  • NQDC (Non-Qualified Deferred Compensation): Unfunded promise to pay future benefit. No immediate deduction for employer; taxable to employee when received. No contribution limits or nondiscrimination rules. Funded informally with COLI or annuities. Risk: employer insolvency means employee is an unsecured creditor.
+
+  • Executive Bonus Plan (IRC §162): Employer pays bonus equal to insurance premium on executive's personal policy. Bonus is deductible to employer; taxable to executive. Executive owns the policy and controls the cash value. Restriction agreement creates “golden handcuffs.”
+
+  • SERP (Supplemental Executive Retirement Plan): Employer-funded supplemental retirement for key executives; informally funded with COLI; no ERISA limits; highly customizable.
+
+  • LIRP (Life Insurance Retirement Plan): Permanent life insurance (whole, UL, VUL) accumulates tax-deferred cash value for retirement income. Tax-deferred growth; tax-free policy loans/withdrawals (up to basis). Must avoid MEC status. Not subject to ERISA or §415 limits. Death benefit provides succession liquidity.
+
+Business insurance questions almost always reduce to “is the premium deductible, and is the benefit taxable?” Line them up:
+
+Arrangement: Key person life · Premium deductible?: No · Benefit taxable?: No (income-tax-free; COLI notice rules apply)
+
+Arrangement: Life-funded buy-sell · Premium deductible?: No · Benefit taxable?: No (death benefit funds the buyout)
+
+Arrangement: BOE disability · Premium deductible?: Yes (business expense) · Benefit taxable?: Yes
+
+Arrangement: Executive bonus (§162) · Premium deductible?: Yes (deductible bonus) · Benefit taxable?: Yes to the executive (who owns the policy)
+
+Arrangement: NQDC / SERP · Premium deductible?: No (until paid) · Benefit taxable?: Yes when received (informal COLI funding)
+
+Arrangement: LIRP · Premium deductible?: No · Benefit taxable?: No (tax-free loans/withdrawals to basis; must avoid MEC)
+
+-- 📎 Primary sources for this module --
+
+  • IRC §162 — deductible executive bonus (“§162 plan”) on an employee-owned policy.
+
+  • COLI best-practices / notice rules — employer-owned life insurance requires employee consent + notice for the death benefit to stay income-tax-free.
+
+  • ERISA — NQDC/SERP are informally-funded top-hat plans; a LIRP is not ERISA-covered and has no §415 contribution limit.
+
+Grounded in the FP512 course textbook (Module 8). Note: the textbook’s commercial-lines detail (BOP/CPP, cyber, E&O, D&O, EPLI) is fully covered in the sections above; figures are 2025-vintage.
+
+
+
+===== REGULATION & SUITABILITY =====
+
+-- State vs. Federal Regulatory Framework --
+
+  • Insurance is primarily state-regulated under McCarran-Ferguson Act (1945): federal authority limited to antitrust and fair labor; states carry the major burden
+
+  • NAIC: All 50 state insurance commissioners. Develops model laws. Has NO enforcement power; cannot force adoption. Accreditation program incentivizes state consistency to maintain state-level regulation.
+
+  • Key Federal Laws: ERISA (employee benefit plans), COBRA (continuation), FMLA (family leave), HIPAA (portability/privacy), ACA (essential benefits), Dodd-Frank (financial reform, SEC/FINRA oversight)
+
+-- Regulatory Standards for Advisors --
+
+  • NAIC Suitability in Annuity Transactions Model Regulation: Producers must exercise reasonable diligence, care, and skill — act in consumer's best interest when recommending an annuity. Must assess financial situation, insurance needs, and objectives.
+
+  • SEC Regulation Best Interest (Reg BI): Applies to broker-dealers recommending variable annuities to retail customers. Best-interest standard at time of recommendation; conflict disclosure (Form CRS); documentation required. Reg BI does NOT apply to fixed or fixed-indexed annuities (not classified as securities).
+
+  • CFP Board Standards: Fiduciary duty (loyalty, care, follow client instructions). Full disclosure of material conflicts. Act in the client's best interest at all times.
+
+  • FINRA Rule 2111 (Suitability): Does not require lowest-cost product, but does require that costs are reasonable and necessary given the client's profile.
+
+Standard: NAIC Suitability / best-interest model · Applies to: Fixed & fixed-indexed annuities (insurance, state-regulated) · Bar: Best interest (Care/Disclosure/Conflict/Documentation)
+
+Standard: SEC Reg BI · Applies to: Variable annuities (securities) sold by broker-dealers · Bar: Best interest + Form CRS
+
+Standard: FINRA Rule 2111 · Applies to: Broker-dealer securities recommendations · Bar: Suitability (costs reasonable/necessary)
+
+Standard: CFP Board Code · Applies to: Any financial advice by a CFP® professional · Bar: Fiduciary — the highest bar
+
+The NAIC best-interest standard (adopted by most states) and SEC Reg BI both decompose “best interest” into four obligations a producer must satisfy:
+
+  • Care — a reasonable basis that the recommendation fits the client’s consumer profile (age, income, liquidity needs, risk tolerance, horizon, existing holdings).
+
+  • Disclosure — describe the producer’s role, products offered, and how they’re paid (cash and non-cash).
+
+  • Conflict of interest — identify and avoid or reasonably manage conflicts; product-specific sales contests are prohibited.
+
+  • Documentation — record the basis for the recommendation.
+
+-- Abusive Sales Practices --
+
+  • Churning: Repeatedly switching policies solely to generate commissions. Clients incur unnecessary fees, surrender charges, and coverage disruptions.
+
+  • Twisting: Misrepresenting a competitor's policy to induce replacement. A form of churning.
+
+  • Lack of transparency: Most common FINRA annuity complaint. Failure to fully explain all fees, restrictions, surrender charges, and disadvantages — not just collecting perfunctory disclosure signatures.
+
+  • Free look period: Stronger consumer protection than a signed disclosure form — 10-30 days to cancel any annuity for full refund without penalty.
+
+-- 📎 Primary sources for this module --
+
+  • McCarran-Ferguson Act (1945) — insurance is primarily state-regulated.
+
+  • NAIC Suitability in Annuity Transactions Model Reg — best-interest standard for fixed/indexed annuities (Care/Disclosure/Conflict/Documentation).
+
+  • SEC Reg BI + Form CRS — variable annuities (securities); FINRA Rule 2111 suitability.
+
+  • CFP Board Code of Ethics & Standards of Conduct — fiduciary duty owed on all financial advice (the controlling standard for a CFP® professional).
+
+Grounded in the FP512 course textbook (Module 8, Regulation & Suitability). Consistent with the standards cross-referenced in the Annuities tab.

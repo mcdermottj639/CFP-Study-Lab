@@ -163,8 +163,37 @@ ${body}
 </body></html>`;
 }
 
+// XHTML chapter body -> clean plain text (for the .txt siblings the X4 also reads natively)
+function xhtmlToText(body) {
+  let s = body;
+  s = s.replace(/<h1[^>]*>([\s\S]*?)<\/h1>/gi, (_, t) => `\n\n===== ${stripTags(t).toUpperCase()} =====\n`);
+  s = s.replace(/<h2[^>]*>([\s\S]*?)<\/h2>/gi, (_, t) => `\n\n## ${stripTags(t)}\n`);
+  s = s.replace(/<h3[^>]*>([\s\S]*?)<\/h3>/gi, (_, t) => `\n\n-- ${stripTags(t)} --\n`);
+  s = s.replace(/<li[^>]*>([\s\S]*?)<\/li>/gi, (_, t) => `\n  • ${stripTags(t)}`);
+  s = s.replace(/<br\s*\/?>/gi, '\n');
+  s = s.replace(/<p[^>]*class="tag"[^>]*>([\s\S]*?)<\/p>/gi, (_, t) => `\n[${stripTags(t)}]`);
+  s = s.replace(/<p[^>]*>([\s\S]*?)<\/p>/gi, (_, t) => `\n${stripTags(t)}`);
+  s = decodeEntities(s.replace(/<[^>]+>/g, ''));
+  // dividers between cards / questions for scannability
+  s = s.replace(/\n\[Card /g, '\n\n——————————\n[Card ');
+  s = s.replace(/\n\[Q \d/g, (m) => '\n\n——————————' + m);
+  return s.replace(/ +([,.;:!?])/g, '$1').replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim() + '\n';
+}
+function writeTxt(outName, meta, chapters) {
+  const txt =
+    meta.title +
+    '\n' +
+    '='.repeat(meta.title.length) +
+    '\n' +
+    (meta.desc ? meta.desc + '\n' : '') +
+    chapters.map((c) => xhtmlToText(c.xhtmlBody)).join('\n\n\n');
+  fs.mkdirSync(OUT, { recursive: true });
+  fs.writeFileSync(path.join(OUT, outName.replace(/\.epub$/, '.txt')), txt, 'utf8');
+}
+
 let UIDN = 0;
 function buildEpub(outName, meta, chapters) {
+  writeTxt(outName, meta, chapters);
   // chapters: [{id, title, xhtmlBody}]
   const uid = 'urn:cfp-study-lab:' + outName.replace(/\W+/g, '-') + ':' + (++UIDN);
   const manifestItems = chapters
