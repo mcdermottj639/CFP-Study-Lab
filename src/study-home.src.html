@@ -2254,8 +2254,12 @@ autoBackup();
    module you left, not the dashboard. */
 (function(){
   function openFromHash(){
-    var m=/^#m\/([A-Za-z0-9]+)\/(\d+)$/.exec(location.hash||'');
-    if(m && typeof openModule==='function') openModule(m[1], parseInt(m[2],10));
+    var h=location.hash||'';
+    var m=/^#m\/([A-Za-z0-9]+)\/(\d+)$/.exec(h);
+    if(m && typeof openModule==='function'){ openModule(m[1], parseInt(m[2],10)); return; }
+    // #modules -> the Modules tab (the module map). Used by the reader/deck
+    // "‹ Modules" back button when opened course-wide (no specific module context).
+    if(h==='#modules' && typeof go==='function') go('modules');
   }
   // Defer to `load`: module-content.js (READER_MAP/INFOGRAPHICS/SLIDES/VIDEO) loads
   // AFTER this inline script, so opening the hub earlier would drop the reader/media
