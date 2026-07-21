@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FP512 · The Wealth Protector's Dossier (AI Visual Deck)</title>
+<style>
+/* ---- Dancing Script title (vendored, offline) ---- */
+@font-face{font-family:'Dancing Script';src:url('../vendor/fonts/dancing-script-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap;}
+
+:root{
+  --canvas:#f4ecdf; --card:#fffdf8; --card2:#faf3e6;
+  --ink:#2c2118; --ink2:#5b4b3a; --muted:#897357;
+  --line:#e6d8c2; --line2:#d8c6aa;
+  --terra:#d0613a; --terra-d:#b34d2a;
+  --green:#1f4d3a; --green-l:#2f7355;
+  --gold:#c58a2e; --sky:#3a6ea5;
+  --trap:#b34d2a; --trap-bg:#fbe9e1; --tip:#2f7355; --tip-bg:#e6f2ea;
+  --key-bg:#efe4d0;
+  --radius:18px; --shadow:0 8px 26px -14px rgba(60,40,20,.55);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--canvas);}
+body{font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;color:var(--ink);-webkit-text-size-adjust:100%;}
+
+/* ---- App-synced dark mode: filter-invert the content wrapper (matches readers) ---- */
+html[data-theme="dark"]{background:#17120e;}
+html[data-theme="dark"] body{background:#17120e;}
+html[data-theme="dark"] #rdrWrap{filter:invert(.92) hue-rotate(180deg);}
+html[data-theme="dark"] #rdrWrap svg,
+html[data-theme="dark"] #rdrWrap img,
+html[data-theme="dark"] #rdrWrap canvas{filter:invert(1) hue-rotate(180deg);}
+
+#rdrWrap{max-width:820px;margin:0 auto;padding:18px 15px 90px;}
+
+/* ---- Header ---- */
+.deck-head{padding:26px 20px 22px;border-radius:var(--radius);color:#fff;
+  background:linear-gradient(135deg,#1f4d3a 0%,#2f7355 55%,#d0613a 160%);
+  box-shadow:var(--shadow);position:relative;overflow:hidden;}
+.deck-head .eyebrow{font:700 12px/1 system-ui;letter-spacing:.16em;text-transform:uppercase;opacity:.85;}
+.deck-head h1{font-family:'Dancing Script',cursive;font-size:clamp(34px,9vw,52px);margin:.15em 0 .1em;line-height:1;}
+.deck-head .sub{font-size:15px;opacity:.95;max-width:46ch;}
+.deck-head .pillrow{margin-top:14px;display:flex;flex-wrap:wrap;gap:7px;}
+.deck-head .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+  border-radius:999px;padding:5px 11px;font:600 12px/1 system-ui;}
+
+/* ---- Section divider ---- */
+.sect{margin:34px 2px 14px;display:flex;align-items:center;gap:12px;}
+.sect .n{flex:none;width:38px;height:38px;border-radius:11px;background:var(--green);color:#fff;
+  font:800 15px/38px system-ui;text-align:center;box-shadow:var(--shadow);}
+.sect h2{font-size:19px;margin:0;color:var(--green);letter-spacing:.01em;}
+.sect .lo{font:600 11px/1 system-ui;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
+
+/* ---- Slide card ---- */
+.slide{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 19px;margin:13px 0;box-shadow:var(--shadow);}
+.slide h3{margin:0 0 8px;font-size:18px;color:var(--ink);display:flex;gap:9px;align-items:baseline;}
+.slide h3 .ic{font-size:19px;}
+.slide p{margin:8px 0;color:var(--ink2);}
+.slide ul{margin:9px 0;padding-left:1.15em;}
+.slide li{margin:5px 0;color:var(--ink2);}
+.lead{font-size:16.5px;color:var(--ink)!important;}
+
+/* ---- Stat tiles ---- */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:11px;margin:14px 0 4px;}
+.tile{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:13px 14px;}
+.tile .v{font:800 24px/1.05 system-ui;color:var(--terra-d);letter-spacing:-.01em;}
+.tile .k{font-size:12.5px;color:var(--ink2);margin-top:5px;}
+
+/* ---- Callouts ---- */
+.callout{border-radius:13px;padding:12px 14px 12px 15px;margin:13px 0;border-left:5px solid;font-size:14.5px;}
+.callout.trap{background:var(--trap-bg);border-color:var(--trap);}
+.callout.tip{background:var(--tip-bg);border-color:var(--tip);}
+.callout b{color:var(--ink);}
+.callout .lab{display:block;font:800 11px/1 system-ui;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;}
+.callout.trap .lab{color:var(--trap);}
+.callout.tip .lab{color:var(--tip);}
+
+/* ---- Tables ---- */
+.tbl-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0 4px;
+  border:1px solid var(--line);border-radius:13px;}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:460px;}
+caption{caption-side:top;text-align:left;font:700 13px/1.4 system-ui;color:var(--muted);padding:2px 4px 9px;}
+th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
+thead th{background:var(--green);color:#fff;font-weight:700;font-size:12.5px;position:sticky;top:0;}
+tbody th{background:var(--card2);color:var(--ink);font-weight:700;white-space:nowrap;}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:none;}
+td.y{color:var(--tip);font-weight:700;} td.n{color:var(--trap);font-weight:700;}
+
+/* ---- Chart figure ---- */
+figure{margin:14px 0 4px;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:14px 14px 10px;}
+figure svg{width:100%;height:auto;display:block;}
+figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center;}
+.legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:9px;font:600 12.5px/1 system-ui;}
+.legend span{display:inline-flex;align-items:center;gap:6px;color:var(--ink2);}
+.legend i{width:14px;height:3px;border-radius:2px;display:inline-block;}
+
+/* ---- Three-up option groups ---- */
+.triad{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;margin:13px 0 4px;}
+.opt{background:var(--card2);border:1px solid var(--line);border-radius:13px;padding:12px 13px;}
+.opt .t{font:800 13.5px/1.2 system-ui;color:var(--green);margin-bottom:5px;}
+.opt .d{font-size:13px;color:var(--ink2);}
+
+/* ---- Worked example ---- */
+.calc{background:#1c2b24;color:#e9f3ee;border-radius:14px;padding:16px 16px 12px;margin:14px 0 4px;}
+.calc h4{margin:0 0 10px;color:#7fd3ac;font-size:14.5px;}
+.calc .step{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-top:1px solid rgba(255,255,255,.12);}
+.calc .step:first-of-type{border-top:none;}
+.calc .sn{flex:none;width:24px;height:24px;border-radius:8px;background:#2f7355;color:#fff;font:800 12px/24px system-ui;text-align:center;}
+.calc .sb{font-size:13.5px;}
+.calc .sb b{color:#fff;}
+.calc code{font:600 12.5px/1.5 ui-monospace,Menlo,monospace;color:#ffd9a8;background:rgba(255,255,255,.07);
+  padding:1px 6px;border-radius:6px;display:inline-block;margin-top:3px;}
+.calc .res{margin-top:11px;background:#d0613a;color:#fff;border-radius:10px;padding:10px 13px;font:700 15px/1.2 system-ui;}
+
+/* ---- Quiz (tap to reveal) ---- */
+.quiz{background:var(--card);border:1.5px solid var(--terra);border-radius:14px;padding:0;margin:13px 0;overflow:hidden;box-shadow:var(--shadow);}
+.quiz>summary{list-style:none;cursor:pointer;padding:15px 16px;font-size:15px;color:var(--ink);position:relative;}
+.quiz>summary::-webkit-details-marker{display:none;}
+.quiz>summary .qlab{display:inline-block;font:800 10.5px/1 system-ui;letter-spacing:.12em;color:var(--terra-d);
+  background:var(--trap-bg);border-radius:6px;padding:4px 7px;margin-bottom:8px;text-transform:uppercase;}
+.quiz>summary .opts{margin-top:9px;font-size:13.5px;color:var(--ink2);}
+.quiz>summary .tap{margin-top:10px;font:700 12.5px/1 system-ui;color:var(--terra);}
+.quiz[open]>summary .tap{display:none;}
+.quiz .ans{padding:0 16px 15px;border-top:1px dashed var(--line2);margin-top:2px;}
+.quiz .ans .correct{font:800 14px/1.4 system-ui;color:var(--tip);margin:12px 0 6px;}
+.quiz .ans p{font-size:13.5px;color:var(--ink2);margin:6px 0 0;}
+
+.foot{margin-top:34px;padding:16px;border-radius:var(--radius);background:var(--card2);border:1px solid var(--line);
+  font-size:12.5px;color:var(--muted);text-align:center;}
+
+/* ---- Floating theme toggle (standalone preview; injection can replace) ---- */
+#tgl{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:9999;
+  background:var(--terra);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:999px;
+  padding:10px 15px;font:700 13px/1 system-ui;cursor:pointer;box-shadow:0 8px 22px -8px rgba(0,0,0,.55);}
+
+/* ---- Sticky progress ---- */
+#prog{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--green),var(--terra));z-index:9999;transition:width .1s;}
+
+@media(min-width:560px){.slide{padding:22px 24px;} #rdrWrap{padding:22px 20px 90px;}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<div id="rdrWrap">
+
+  <header class="deck-head">
+    <div class="eyebrow">AI Study Deck · FP512 · Modules 1–8</div>
+    <h1>The Wealth Protector's Dossier</h1>
+    <div class="sub">Risk Management &amp; Insurance Architecture — a whole-course visual memorization engine spanning all eight FP512 modules. Rebuilt faithfully from an AI-generated NotebookLM slide deck (Blueprint v1.0).</div>
+    <div class="pillrow">
+      <span class="pill">🤖 AI-generated (NotebookLM) — NOT Kaplan</span>
+      <span class="pill">🛡️ Principles &amp; P&amp;C</span>
+      <span class="pill">📄 Life · Annuities</span>
+      <span class="pill">🏢 Business owner risk</span>
+    </div>
+  </header>
+
+  <div class="callout trap" style="margin-top:16px;"><span class="lab">Read me first — AI deck</span>This deck was generated by an AI (NotebookLM) and is reproduced here <b>as-is</b> for memorization. A few framings (noted inline where they appear) don't perfectly match the standard CFP® teaching. <b>Verify every figure and rule against your Kaplan course text before the exam.</b></div>
+
+  <!-- ============ MODULE 1 — Principles of Insurance ============ -->
+  <div class="sect"><div class="n">1</div><div><div class="lo">Module 1</div><h2>Principles of Insurance &amp; Risk Management</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🔥</span>The anatomy of a loss</h3>
+    <p class="lead">Three linked ideas the exam loves to separate:</p>
+    <figure>
+      <svg viewBox="0 0 460 130" role="img" aria-label="Hazard leads to peril leads to risk flow diagram">
+        <rect x="6" y="30" width="128" height="70" rx="9" fill="#e6d8c2" stroke="#d8c6aa"/>
+        <text x="70" y="55" font-size="13" font-weight="800" fill="#1f4d3a" text-anchor="middle">HAZARD</text>
+        <text x="70" y="74" font-size="10" fill="#5b4b3a" text-anchor="middle">The catalyst —</text>
+        <text x="70" y="88" font-size="10" fill="#5b4b3a" text-anchor="middle">raises loss potential</text>
+        <path d="M138,65 L164,65" stroke="#1f4d3a" stroke-width="3" marker-end="url(#ar)"/>
+        <rect x="166" y="30" width="128" height="70" rx="9" fill="#e6d8c2" stroke="#d8c6aa"/>
+        <text x="230" y="55" font-size="13" font-weight="800" fill="#1f4d3a" text-anchor="middle">PERIL</text>
+        <text x="230" y="74" font-size="10" fill="#5b4b3a" text-anchor="middle">The threat —</text>
+        <text x="230" y="88" font-size="10" fill="#5b4b3a" text-anchor="middle">direct cause of loss</text>
+        <path d="M298,65 L324,65" stroke="#1f4d3a" stroke-width="3" marker-end="url(#ar)"/>
+        <rect x="326" y="30" width="128" height="70" rx="9" fill="#d0613a" fill-opacity=".18" stroke="#d8c6aa"/>
+        <text x="390" y="55" font-size="13" font-weight="800" fill="#b34d2a" text-anchor="middle">RISK</text>
+        <text x="390" y="74" font-size="10" fill="#5b4b3a" text-anchor="middle">The outcome —</text>
+        <text x="390" y="88" font-size="10" fill="#5b4b3a" text-anchor="middle">negative deviation</text>
+        <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1f4d3a"/></marker></defs>
+      </svg>
+      <figcaption>Hazard (e.g., a space heater on carpet) → Peril (fire) → Risk (the chance of a bad outcome).</figcaption>
+    </figure>
+    <div class="callout tip"><span class="lab">Exam fact — insurability</span><b>Pure risk</b> (chance of loss / no-loss ONLY) = <b>insurable</b>. <b>Speculative risk</b> (chance of loss AND gain, e.g., gambling) = <b>NON-insurable</b>.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🎛️</span>The risk-management matrix</h3>
+    <p>Four responses, plotted by how <b>often</b> a loss happens (frequency) against how <b>bad</b> it is (severity):</p>
+    <figure>
+      <svg viewBox="0 0 440 300" role="img" aria-label="Two-by-two risk management matrix of frequency versus severity">
+        <line x1="60" y1="20" x2="60" y2="250" stroke="#1f4d3a" stroke-width="2.5" marker-end="url(#up)"/>
+        <line x1="60" y1="250" x2="420" y2="250" stroke="#1f4d3a" stroke-width="2.5" marker-end="url(#rt)"/>
+        <line x1="240" y1="40" x2="240" y2="250" stroke="#d8c6aa" stroke-width="1.5"/>
+        <line x1="60" y1="145" x2="410" y2="145" stroke="#d8c6aa" stroke-width="1.5"/>
+        <text x="150" y="90" font-size="13" font-weight="800" fill="#1f4d3a" text-anchor="middle">AVOID / REDUCE</text>
+        <text x="150" y="107" font-size="10" fill="#5b4b3a" text-anchor="middle">Do not engage</text>
+        <text x="325" y="90" font-size="13" font-weight="800" fill="#b34d2a" text-anchor="middle">TRANSFER</text>
+        <text x="325" y="107" font-size="10" fill="#5b4b3a" text-anchor="middle">Buy insurance — the</text>
+        <text x="325" y="120" font-size="10" fill="#5b4b3a" text-anchor="middle">"sweet spot"</text>
+        <text x="150" y="195" font-size="12.5" font-weight="800" fill="#1f4d3a" text-anchor="middle">RETAIN / REDUCE</text>
+        <text x="150" y="212" font-size="10" fill="#5b4b3a" text-anchor="middle">Pay out of pocket</text>
+        <text x="325" y="195" font-size="13" font-weight="800" fill="#1f4d3a" text-anchor="middle">RETAIN</text>
+        <text x="325" y="212" font-size="10" fill="#5b4b3a" text-anchor="middle">Self-insure</text>
+        <text x="34" y="150" font-size="10" fill="#897357" text-anchor="middle" transform="rotate(-90 34 150)">Frequency (low → high)</text>
+        <text x="240" y="278" font-size="10" fill="#897357" text-anchor="middle">Severity (low → high)</text>
+        <defs>
+          <marker id="up" markerWidth="8" markerHeight="8" refX="3" refY="6" orient="auto"><path d="M0,6 L3,0 L6,6 Z" fill="#1f4d3a"/></marker>
+          <marker id="rt" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1f4d3a"/></marker>
+        </defs>
+      </svg>
+      <figcaption>The deck's four-quadrant layout of frequency vs. severity.</figcaption>
+    </figure>
+    <div class="callout tip"><span class="lab">Exam fact (per the deck)</span>The average family should spend a <b>minimum of 10% of income on risk protection</b> (the deck ties this to "Quadrant 2").</div>
+    <div class="callout trap"><span class="lab">Note — verify placement</span>The standard CFP® matrix usually puts <b>Transfer/insurance at LOW frequency + HIGH severity</b> and <b>Avoid at high frequency + high severity</b>. This AI deck's quadrant placement (and its "Quadrant 2" numbering) differs — confirm the conventional layout in your course text.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">⚠️</span>Hazard diagnostics — intent vs. indifference</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Moral vs. Morale hazard</caption>
+      <thead><tr><th>Moral hazard</th><th>Morale hazard</th></tr></thead>
+      <tbody>
+        <tr><td><b>Definition:</b> intentional, unethical deceit to induce a claim payment</td><td><b>Definition:</b> indifference / carelessness <i>because</i> insurance is in place</td></tr>
+        <tr><td><b>Motivation:</b> active malice / greed</td><td><b>Motivation:</b> passive laziness</td></tr>
+        <tr><td><b>Example:</b> arson; faking a DUI record on an application</td><td><b>Example:</b> leaving a car unlocked with keys in the ignition ("it's insured, whatever")</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">Exam fact — trapdoor</span><b>MORAL = intentional fraud.</b> &nbsp;// &nbsp;<b>MORALE = careless indifference.</b></div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧱</span>The anatomy of an insurance policy (DICE)</h3>
+    <p>Every policy stacks four parts:</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Declarations</div><div class="d">Information provided by the applicant (who, what, how much).</div></div>
+      <div class="opt"><div class="t">Insuring agreement</div><div class="d">The core promise — what is covered and under what exact conditions.</div></div>
+      <div class="opt"><div class="t">Exclusions</div><div class="d">The boundaries — what the company explicitly will NOT cover.</div></div>
+      <div class="opt"><div class="t">Conditions</div><div class="d">Rules of engagement — duties of the insured (notice of loss, protecting property).</div></div>
+    </div>
+    <div class="callout tip"><span class="lab">Exam fact — subrogation</span><b>Subrogation</b> prevents the insured from double-collecting by transferring recovery rights to the insurer. It lives within the legal bounds of these contract sections.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">📜</span>Contract-law characteristics of insurance</h3>
+    <div class="tbl-scroll"><table>
+      <caption>The four legal characteristics</caption>
+      <thead><tr><th>Characteristic</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr><th>Aleatory</th><td>Outcome controlled by chance; dollars exchanged are substantially unequal (small premium vs. massive death benefit).</td></tr>
+        <tr><th>Adhesion</th><td>"Take it or leave it" — drafted by one party (the insurer); courts favor the insured in ambiguities.</td></tr>
+        <tr><th>Unilateral</th><td>Only ONE party makes a legally enforceable promise (the insurer). The insured can stop paying at any time.</td></tr>
+        <tr><th>Conditional</th><td>The insurer only pays IF a specific covered loss occurs.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">Voidable-minor exception</span>If a <b>14-year-old</b> buys life insurance, the contract is fully binding on the insurer but strictly <b>VOIDABLE at the option of the minor</b> until the age of majority.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🩺</span>Underwriting metrics — mortality vs. morbidity</h3>
+    <div class="tbl-scroll"><table>
+      <caption>The two core actuarial metrics</caption>
+      <thead><tr><th>Mortality (life insurance)</th><th>Morbidity (disability &amp; health)</th></tr></thead>
+      <tbody>
+        <tr><td><b>Metric:</b> incidence &amp; probability of death across a given group</td><td><b>Metric:</b> incidence rate of losing health or the ability to work</td></tr>
+        <tr><td><b>Pricing factors:</b> mortality rate + investment income + expenses</td><td><b>Application:</b> prices Disability Income (DI) and Waiver-of-Premium riders</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">Exam fact — adverse selection</span><b>Adverse selection</b> = the statistical phenomenon where high-risk individuals (those expecting loss) aggressively seek insurance, threatening the insurer's mortality/morbidity assumptions.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🏅</span>Credit-rating agencies matrix</h3>
+    <p>Carrier strength — who rates, and their top marks:</p>
+    <div class="tbl-scroll"><table>
+      <caption>Insurer financial-strength ratings</caption>
+      <thead><tr><th>Agency</th><th>How it rates</th><th>Top tier</th><th>Second tier</th></tr></thead>
+      <tbody>
+        <tr><th>A.M. Best</th><td>Evaluates at company request</td><td class="y">A++ and A+ (Superior)</td><td>—</td></tr>
+        <tr><th>Standard &amp; Poor's</th><td>Uses public info; publishes claims-paying ability</td><td class="y">AAA (Extremely Strong)</td><td>AA+ (Very Strong)</td></tr>
+        <tr><th>Moody's</th><td>Rates at request or via public info</td><td class="y">Aaa (Exceptional)</td><td>Aa1 (Excellent)</td></tr>
+        <tr><th>Fitch Ratings</th><td>Rates over 800 entities</td><td class="y">AAA (Exceptionally Strong)</td><td>AA+ (Very Strong)</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">Exam fact — insolvency</span>If an insurer fails, it enters <b>RECEIVERSHIP</b> controlled by the <b>state insurance commissioner</b> to liquidate or force-sell to protect policyholders.</div>
+  </div>
+
+  <!-- ============ MODULE 2 — Property & Casualty ============ -->
+  <div class="sect"><div class="n">2</div><div><div class="lo">Module 2</div><h2>Property &amp; Casualty Insurance</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🚨</span>Liability trapdoors in tort law</h3>
+    <div class="triad">
+      <div class="opt"><div class="t">Absolute / strict liability</div><div class="d">Responsible for damages even with <b>zero</b> negligence. Trigger: extra-hazardous activities like blasting or keeping wild animals.</div></div>
+      <div class="opt"><div class="t">Negligence per se</div><div class="d">Guilt is automatic because a law designed to protect a class of people was broken. Trigger: speeding in a school zone and hitting a child.</div></div>
+      <div class="opt"><div class="t">Vicarious liability</div><div class="d">One party is held responsible for the actions of another. Trigger: an employer liable for an employee driving a company car.</div></div>
+    </div>
+    <div class="callout trap"><span class="lab">Exam fact — collateral source rule</span>If a 3rd party causes a loss, they must pay you <b>IN FULL</b>, even if your insurance already paid you. (An <b>exception to the Principle of Indemnity</b>.)</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🏠</span>The coinsurance penalty seesaw</h3>
+    <p>To get full coverage for a <b>partial</b> loss, a home must be insured for at least <b>80% of its replacement cost</b>. Fall below 80% and the payout tips to the <b>GREATER of</b> ACV (Replacement Cost − Depreciation) <b>OR</b> the coinsurance formula result.</p>
+    <div class="tiles">
+      <div class="tile"><div class="v">80%</div><div class="k">Of replacement cost — the coinsurance threshold</div></div>
+      <div class="tile"><div class="v">Partial</div><div class="k">The penalty ONLY applies to partial losses</div></div>
+      <div class="tile"><div class="v">Greater of</div><div class="k">ACV or formula result is paid</div></div>
+    </div>
+    <div class="calc">
+      <h4>The formula breakdown — three steps</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Ratio</b> = Insurance Carried ÷ Insurance Required (80% of RC).<br><code>Carried ÷ (0.80 × Replacement Cost) = Ratio</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Unadjusted payout</b> = Ratio × Amount of Loss.<br><code>Ratio × Loss = Unadjusted Payout</code></div></div>
+      <div class="step"><div class="sn">3</div><div class="sb"><b>Final payout</b> = Unadjusted Payout − Deductible.<br><code>Unadjusted Payout − Deductible = Final Payout</code></div></div>
+      <div class="res">Pay the GREATER of this formula result or ACV — and only on partial losses.</div>
+    </div>
+  </div>
+
+  <!-- ============ MODULE 3 — Life Insurance ============ -->
+  <div class="sect"><div class="n">3</div><div><div class="lo">Module 3</div><h2>Life Insurance</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🏛️</span>Permanent life insurance architecture</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Whole Life vs. Universal Life vs. Variable Universal Life</caption>
+      <thead><tr><th>Feature</th><th>Whole Life (WL)</th><th>Universal Life (UL)</th><th>Variable UL (VUL)</th></tr></thead>
+      <tbody>
+        <tr><th>Premium structure</th><td>Fixed</td><td>Flexible / target</td><td>Flexible</td></tr>
+        <tr><th>Cash-value growth</th><td class="y">Guaranteed minimum</td><td>Current interest vs. guaranteed min</td><td class="n">No guarantee / market subaccounts</td></tr>
+        <tr><th>Investment risk holder</th><td>Insurer</td><td>Insurer</td><td class="n">Policyowner</td></tr>
+        <tr><th>Death benefit</th><td>Fixed / guaranteed</td><td>Adjustable</td><td>Adjustable / fluctuates with market</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">Exam fact — VUL regulation tie-in</span>Because the <b>policyowner holds the investment risk</b> in subaccounts, VUL is a <b>registered security</b> and MUST be sold with a <b>PROSPECTUS</b>.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">💵</span>Policy loans &amp; mechanics</h3>
+    <p><b>Loan interest math:</b></p>
+    <div class="triad">
+      <div class="opt"><div class="t">In arrears</div><div class="d">Interest paid at the <b>END</b> of the year (e.g., borrow $1,000 at 8% = $80 due at year-end).</div></div>
+      <div class="opt"><div class="t">In advance</div><div class="d">Interest discounted upfront (e.g., $80 paid on day 1 = an effectively <b>higher APR</b> than 8%).</div></div>
+    </div>
+    <div class="callout tip"><span class="lab">Direct recognition provision</span>When a policy loan is taken, the insurer removes those funds from its <b>general earning pool</b> — so it will explicitly <b>reduce the DIVIDENDS</b> paid on the borrowed portion of the cash value.</div>
+    <div class="callout trap"><span class="lab">Exam fact — guaranteed insurability rider</span>Allows purchase of more insurance at specific ages (usually into the 40s) with <b>ZERO evidence of insurability</b>. Issued at the <b>original</b> risk classification.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🏦</span>The LIRP strategy (Life Insurance Retirement Plan)</h3>
+    <p>Using a permanent policy as a substitute for a 401(k) to <b>mimic a Roth IRA</b>.</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Funding</div><div class="d">Contributions made with <b>after-tax</b> dollars (no income limits).</div></div>
+      <div class="opt"><div class="t">Growth</div><div class="d">Investment gains compound <b>tax-deferred</b>.</div></div>
+      <div class="opt"><div class="t">Withdrawal</div><div class="d">Life-insurance withdrawals are taxed <b>FIFO</b> (First In, First Out) — basis first.</div></div>
+    </div>
+    <div class="callout tip"><span class="lab">The tax trapdoor (in the client's favor)</span>The owner withdraws up to their total paid premiums (basis) completely <b>tax-free</b>; further income is accessed via <b>tax-free policy loans</b>. (Note: FIFO applies to <b>non-MEC</b> policies — a MEC would tax gains first, LIFO.)</div>
+    <div class="callout trap"><span class="lab">LIRP fatal flaw</span>If the policy is allowed to <b>lapse due to excess borrowing</b>, all prior deferred gains become <b>immediately taxable as ordinary income</b>.</div>
+  </div>
+
+  <!-- ============ MODULE 4 — Annuities ============ -->
+  <div class="sect"><div class="n">4</div><div><div class="lo">Module 4</div><h2>Annuities</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🏗️</span>Annuity architectures (accumulation phase)</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Four annuity types by who bears the risk</caption>
+      <thead><tr><th>Type</th><th>Risk holder</th><th>How it works</th></tr></thead>
+      <tbody>
+        <tr><th>Fixed</th><td>Insurer (all risk)</td><td>Guaranteed minimum interest rate (e.g., 2–4%) plus a current excess rate.</td></tr>
+        <tr><th>Variable (VA)</th><td class="n">Owner</td><td>Funds in subaccounts (mutual-fund equivalents); designed to outpace inflation.</td></tr>
+        <tr><th>Equity-Indexed (EIA)</th><td>Hybrid</td><td>Guarantees principal (usually 0% floor) while offering upside tied to an index, limited by caps / participation rates.</td></tr>
+        <tr><th>Registered Index-Linked (RILA)</th><td class="n">Buffer</td><td>Mirrors a stock index (e.g., S&amp;P 500) but with no guaranteed floor; owner CAN lose money but downside is buffered. Regulated as a security.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">Exam fact — RILA vs. EIA</span><b>RILAs do NOT offer the guaranteed minimum interest rate that EIAs provide.</b></div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">📈</span>Indexing math — EIA &amp; RILA crediting methods</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Four ways an indexed product credits gains</caption>
+      <thead><tr><th>Method</th><th>Mechanics</th></tr></thead>
+      <tbody>
+        <tr><th>Point-to-point (ratchet)</th><td>Locks in the gain at the end of each policy year; that end value becomes the new starting baseline (0% floor).</td></tr>
+        <tr><th>High-water mark</th><td>Uses the absolute highest value within a set period (e.g., 3–5 years) to calculate credit.</td></tr>
+        <tr><th>Percentage change</th><td>Calculates from absolute beginning to end, ignoring all wild swings in the middle.</td></tr>
+        <tr><th>Spread method</th><td>Subtracts a fixed percentage (e.g., 2%) from the total index gain before crediting.</td></tr>
+      </tbody>
+    </table></div>
+    <figure>
+      <svg viewBox="0 0 440 150" role="img" aria-label="Point-to-point ratchet locking gains at each period">
+        <line x1="30" y1="20" x2="30" y2="120" stroke="#d8c6aa" stroke-width="1.5"/>
+        <line x1="30" y1="120" x2="420" y2="120" stroke="#d8c6aa" stroke-width="1.5"/>
+        <polyline points="30,110 90,80 90,80 150,88 210,55 270,60 330,35 410,30" fill="none" stroke="#1f4d3a" stroke-width="2.5"/>
+        <line x1="90" y1="80" x2="90" y2="120" stroke="#d0613a" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="210" y1="55" x2="210" y2="120" stroke="#d0613a" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="330" y1="35" x2="330" y2="120" stroke="#d0613a" stroke-width="1" stroke-dasharray="3 3"/>
+        <text x="215" y="140" font-size="10" fill="#897357" text-anchor="middle">Each period's end value ratchets up the baseline — never resets below it (0% floor).</text>
+      </svg>
+      <figcaption>Point-to-point ratchet: gains lock in at each period and set a new floor.</figcaption>
+    </figure>
+    <div class="callout trap"><span class="lab">Exam fact</span>If an index <b>declines 10%</b> during a term, an EIA point-to-point credits <b>0%</b> (protecting principal) — but it also limits massive upswings via <b>cap rates</b>.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">⏱️</span>The annuity timeline</h3>
+    <figure>
+      <svg viewBox="0 0 460 170" role="img" aria-label="Annuity timeline accumulation, annuitization fulcrum, decumulation">
+        <line x1="20" y1="90" x2="440" y2="90" stroke="#1f4d3a" stroke-width="3" marker-end="url(#rt2)"/>
+        <line x1="230" y1="30" x2="230" y2="150" stroke="#d0613a" stroke-width="2.5"/>
+        <text x="120" y="45" font-size="12" font-weight="800" fill="#1f4d3a" text-anchor="middle">Phase 1: Accumulation</text>
+        <text x="120" y="62" font-size="9.5" fill="#5b4b3a" text-anchor="middle">Tax-deferred growth,</text>
+        <text x="120" y="75" font-size="9.5" fill="#5b4b3a" text-anchor="middle">flexible premiums · age 59½ rule</text>
+        <text x="230" y="20" font-size="10.5" font-weight="800" fill="#b34d2a" text-anchor="middle">ANNUITIZATION</text>
+        <text x="230" y="165" font-size="9" fill="#b34d2a" text-anchor="middle">irrevocable conversion to income</text>
+        <text x="340" y="120" font-size="12" font-weight="800" fill="#1f4d3a" text-anchor="middle">Phase 2: Decumulation</text>
+        <text x="340" y="137" font-size="9.5" fill="#5b4b3a" text-anchor="middle">Settlement options + exclusion</text>
+        <text x="340" y="150" font-size="9.5" fill="#5b4b3a" text-anchor="middle">ratio · superannuation risk</text>
+        <defs><marker id="rt2" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1f4d3a"/></marker></defs>
+      </svg>
+      <figcaption>The fulcrum — annuitization — is the irrevocable conversion of a lump sum into an income stream.</figcaption>
+    </figure>
+    <div class="callout tip"><span class="lab">Accumulation hazard</span>Surrender charges and the <b>age 59½ rule</b> (10% IRS penalty for early withdrawal).</div>
+    <div class="callout trap"><span class="lab">Decumulation hazards + exam fact</span><b>Opportunity cost</b> (locked in — can't access principal to invest elsewhere) and <b>superannuation risk</b> (outliving money — which lifetime annuities solve). <b>IRREVOCABLE:</b> once annuitized, you cannot reclaim the principal sum.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧮</span>Deconstructing the exclusion ratio</h3>
+    <p>How to separate the taxable gain from the tax-free return of principal in a fixed payout.</p>
+    <div class="callout tip" style="margin-top:8px;"><span class="lab">Baseline data</span>$100,000 annuity purchase · $750 monthly payout · 20-year life expectancy.</div>
+    <div class="calc">
+      <h4>Math breakdown</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Total expected return</b><br><code>$750 × 12 months × 20 years = $180,000</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Exclusion ratio</b> = Basis ÷ Expected Return<br><code>$100,000 ÷ $180,000 = 0.5556 (55.56%)</code></div></div>
+      <div class="step"><div class="sn">3</div><div class="sb"><b>Tax-free portion of each payout</b><br><code>$750 × 0.5556 = $416.67 tax-free</code> (the remaining $333.33 is taxable)</div></div>
+      <div class="res">$416.67 tax-free · $333.33 taxable per $750 payment.</div>
+    </div>
+    <div class="callout trap"><span class="lab">Exam fact</span>If the annuitant <b>lives beyond</b> the actuarial 20 years, all subsequent payments become <b>100% taxable</b> — the principal has been fully recovered.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🔀</span>Irrevocable settlement options</h3>
+    <div class="triad">
+      <div class="opt"><div class="t">Straight life</div><div class="d">Pays equally for the annuitant's life; STOPS at death; zero residual value for the estate. (Risk: dying early.)</div></div>
+      <div class="opt"><div class="t">Life with period certain</div><div class="d">Pays for life BUT guarantees a minimum timeline (e.g., 10 or 20 years). Die in year 2 of a 10-yr certain → beneficiaries get 8 more years.</div></div>
+      <div class="opt"><div class="t">Joint &amp; survivor</div><div class="d">Pays as long as <b>either</b> of two named annuitants is alive.</div></div>
+    </div>
+    <div class="callout trap"><span class="lab">Exam fact</span><b>Pure life / straight life</b> provides the absolute <b>maximum monthly income</b> guarantee against <b>superannuation</b> (outliving assets).</div>
+  </div>
+
+  <!-- ============ MODULE 5 — Health, Medicare & Medicaid ============ -->
+  <div class="sect"><div class="n">5</div><div><div class="lo">Module 5</div><h2>Health, Medicare &amp; Medicaid</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🏥</span>Where this deck touches health coverage</h3>
+    <p>This whole-course AI deck (Blueprint v1.0) concentrates on foundations, life, annuities, and business risk — it does <b>not</b> include dedicated Medicare/Medicaid slides. The health-relevant facts it <i>does</i> carry:</p>
+    <ul>
+      <li><b>Morbidity</b> is the metric that prices health and disability coverage — the incidence rate of losing health or the ability to work (see Module 1).</li>
+      <li><b>Adverse selection</b> threatens health pools when high-risk individuals aggressively seek coverage.</li>
+      <li><b>HIPAA</b> sets the objective trigger for tax-qualified health/LTC benefits: substantial assistance with <b>2 of 6 ADLs for at least 90 days</b> (detailed in Module 6).</li>
+    </ul>
+    <div class="callout trap"><span class="lab">Study gap</span>Medicare parts (A/B/C/D), Medigap, and Medicaid spend-down are <b>not in this AI deck</b>. Use your Kaplan text and the FP512 reader for full Module 5 coverage.</div>
+  </div>
+
+  <!-- ============ MODULE 6 — Disability, LTC & Veterans ============ -->
+  <div class="sect"><div class="n">6</div><div><div class="lo">Module 6</div><h2>Disability, Long-Term Care &amp; Veterans</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🦽</span>Disability triggers &amp; thresholds</h3>
+    <p><b>Trigger 1 — loss of duties</b> (the definition of "disabled"):</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Own occupation</div><div class="d"><b>Broadest</b> coverage — can't perform the specific duties of YOUR exact profession. <b>Highest premium.</b></div></div>
+      <div class="opt"><div class="t">Any occupation</div><div class="d"><b>Narrowest</b> coverage — can't perform the duties of ANY job suited by your education / training.</div></div>
+    </div>
+    <p style="margin-top:10px;"><b>Trigger 2 — Activities of Daily Living (ADLs) &amp; HIPAA:</b> tax-qualified policies use ADLs as objective triggers.</p>
+    <div class="tiles">
+      <div class="tile"><div class="v">2 of 6</div><div class="k">ADLs needing substantial assistance</div></div>
+      <div class="tile"><div class="v">90 days</div><div class="k">Minimum expected period</div></div>
+    </div>
+    <div class="callout trap"><span class="lab">Exam fact — two waiting periods</span><b>Probation period</b> = waiting time after policy issuance before sickness is covered. <b>Elimination period</b> = waiting time after the disability event before cash pays out.</div>
+  </div>
+
+  <!-- ============ MODULE 7 — Employee Group Benefits ============ -->
+  <div class="sect"><div class="n">7</div><div><div class="lo">Module 7</div><h2>Employee Group Benefits</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">👔</span>Group-benefits threads in this deck</h3>
+    <p>The AI deck has no standalone group-benefits slide, but two of its foundational facts apply directly to group underwriting and plan design:</p>
+    <ul>
+      <li><b>Adverse selection</b> is the central group-underwriting problem — pooling and participation requirements exist to counter high-risk individuals loading into a plan.</li>
+      <li><b>Mortality pricing</b> (mortality rate + investment income + expenses) drives group life premiums, just as it does individual life.</li>
+      <li><b>Waiver-of-premium</b> and <b>disability income</b> riders — priced on morbidity — commonly appear in group packages.</li>
+    </ul>
+    <div class="callout trap"><span class="lab">Study gap</span>Group life (Section 79 imputed income), cafeteria/Section 125 plans, and COBRA are <b>not in this AI deck</b>. Cover Module 7 fully from your Kaplan text and the FP512 reader.</div>
+  </div>
+
+  <!-- ============ MODULE 8 — Business Owner Risk ============ -->
+  <div class="sect"><div class="n">8</div><div><div class="lo">Module 8</div><h2>Business Owner Risk &amp; Succession</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🤝</span>Business succession — buy-sell architectures</h3>
+    <div class="triad">
+      <div class="opt"><div class="t">Model A — Cross-purchase</div><div class="d"><b>Mechanism:</b> individual owners buy policies on each other.<br><b>Pros:</b> step-up in basis for survivors; owners control the policies.<br><b>Cons:</b> the math gets exponentially messy with 3+ owners.</div></div>
+      <div class="opt"><div class="t">Model B — Entity-purchase</div><div class="d"><b>Mechanism:</b> the business itself buys one policy on each owner.<br><b>Pros:</b> simplicity; shifts the admin burden to the company.<br><b>Cons:</b> potential alternative tax treatments; loss of personal control.</div></div>
+    </div>
+    <figure>
+      <svg viewBox="0 0 440 160" role="img" aria-label="Cross-purchase fully connected owners versus entity-purchase hub">
+        <text x="110" y="18" font-size="11" font-weight="800" fill="#1f4d3a" text-anchor="middle">Cross-purchase (4 owners)</text>
+        <line x1="55" y1="45" x2="165" y2="45" stroke="#5b4b3a" stroke-width="1"/>
+        <line x1="55" y1="120" x2="165" y2="120" stroke="#5b4b3a" stroke-width="1"/>
+        <line x1="55" y1="45" x2="55" y2="120" stroke="#5b4b3a" stroke-width="1"/>
+        <line x1="165" y1="45" x2="165" y2="120" stroke="#5b4b3a" stroke-width="1"/>
+        <line x1="55" y1="45" x2="165" y2="120" stroke="#5b4b3a" stroke-width="1"/>
+        <line x1="165" y1="45" x2="55" y2="120" stroke="#5b4b3a" stroke-width="1"/>
+        <circle cx="55" cy="45" r="12" fill="#1f4d3a"/><text x="55" y="49" font-size="9" fill="#fff" text-anchor="middle">O1</text>
+        <circle cx="165" cy="45" r="12" fill="#1f4d3a"/><text x="165" y="49" font-size="9" fill="#fff" text-anchor="middle">O2</text>
+        <circle cx="55" cy="120" r="12" fill="#1f4d3a"/><text x="55" y="124" font-size="9" fill="#fff" text-anchor="middle">O3</text>
+        <circle cx="165" cy="120" r="12" fill="#1f4d3a"/><text x="165" y="124" font-size="9" fill="#fff" text-anchor="middle">O4</text>
+        <text x="110" y="150" font-size="9.5" fill="#897357" text-anchor="middle">4 owners = 12 policies</text>
+        <text x="330" y="18" font-size="11" font-weight="800" fill="#1f4d3a" text-anchor="middle">Entity-purchase (4 owners)</text>
+        <line x1="330" y1="82" x2="285" y2="45" stroke="#5b4b3a" stroke-width="1"/>
+        <line x1="330" y1="82" x2="375" y2="45" stroke="#5b4b3a" stroke-width="1"/>
+        <line x1="330" y1="82" x2="285" y2="120" stroke="#5b4b3a" stroke-width="1"/>
+        <line x1="330" y1="82" x2="375" y2="120" stroke="#5b4b3a" stroke-width="1"/>
+        <circle cx="330" cy="82" r="18" fill="#d0613a"/><text x="330" y="85" font-size="7.5" fill="#fff" text-anchor="middle">BIZ</text>
+        <circle cx="285" cy="45" r="11" fill="#1f4d3a"/><text x="285" y="49" font-size="8.5" fill="#fff" text-anchor="middle">O1</text>
+        <circle cx="375" cy="45" r="11" fill="#1f4d3a"/><text x="375" y="49" font-size="8.5" fill="#fff" text-anchor="middle">O2</text>
+        <circle cx="285" cy="120" r="11" fill="#1f4d3a"/><text x="285" y="124" font-size="8.5" fill="#fff" text-anchor="middle">O4</text>
+        <circle cx="375" cy="120" r="11" fill="#1f4d3a"/><text x="375" y="124" font-size="8.5" fill="#fff" text-anchor="middle">O3</text>
+        <text x="330" y="150" font-size="9.5" fill="#897357" text-anchor="middle">4 owners = 4 policies</text>
+      </svg>
+      <figcaption>Cross-purchase needs n(n−1) policies (4 owners → 12); entity-purchase needs one per owner (4 owners → 4).</figcaption>
+    </figure>
+    <div class="callout tip"><span class="lab">Exam fact</span>A <b>first-to-die joint life policy</b> is often used to efficiently fund <b>2-person cross-purchase</b> agreements without invading business capital.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧩</span>Synthesis — the fiduciary risk mandate</h3>
+    <p>The deck's capstone ties the whole course into three jobs of a planner:</p>
+    <div class="triad">
+      <div class="opt"><div class="t">The legal foundation</div><div class="d">Verify all 4 contract elements (Aleatory, Adhesion, Unilateral, Conditional); confirm subrogation / coinsurance thresholds (80% RC).</div></div>
+      <div class="opt"><div class="t">The personal shield</div><div class="d">Protect against mortality (Life/VUL/LIRP) and morbidity (HIPAA 2 ADLs / 90 days); defeat superannuation (straight-life annuitization + exclusion-ratio math).</div></div>
+      <div class="opt"><div class="t">The business fortress</div><div class="d">Shield the entity via entity / cross-purchase buy-sells; mandate Workers' Comp (absolute liability); verify carrier solvency (A.M. Best A++).</div></div>
+    </div>
+    <div class="callout tip"><span class="lab">Exam fact — the big idea</span>Insurance is the only asset class purchased with <b>pennies</b> to guarantee delivery of <b>exact dollars</b> at the precise moment of maximum liquidity crisis.</div>
+  </div>
+
+  <!-- ============ Self-check ============ -->
+  <div class="sect"><div class="n">?</div><div><div class="lo">Check yourself</div><h2>Self-check cards from this deck</h2></div></div>
+
+  <details class="quiz">
+    <summary><span class="qlab">Principles</span><div>Which type of risk is <b>insurable</b>, and why?</div><div class="opts">A. Speculative · B. Pure · C. Both · D. Neither</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — Pure risk</div><p>Pure risk has a chance of loss / no-loss ONLY, so it is insurable. Speculative risk (chance of loss AND gain, like gambling) is non-insurable.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Hazards</span><div>A homeowner leaves the front door unlocked because "insurance will cover it anyway." This is best described as:</div><div class="opts">A. Moral hazard · B. Peril · C. Morale hazard · D. Speculative risk</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — Morale hazard</div><p>Morale = careless indifference <i>because</i> insurance is in place. Moral hazard would be intentional fraud (e.g., arson).</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Life insurance</span><div>Which permanent policy MUST be sold with a prospectus, and why?</div><div class="opts">A. Whole life · B. Universal life · C. Variable universal life · D. Term</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — Variable universal life (VUL)</div><p>The policyowner holds the investment risk in the subaccounts, so VUL is a registered security and requires a prospectus.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Annuities</span><div>Using the deck's baseline ($100,000 basis, $750/mo, 20-yr life expectancy), what is the exclusion ratio?</div><div class="opts">A. 50.00% · B. 55.56% · C. 44.44% · D. 62.50%</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — 55.56%</div><p>Expected return = $750 × 12 × 20 = $180,000. Ratio = $100,000 ÷ $180,000 = 0.5556. So $416.67 of each $750 payment is tax-free; $333.33 is taxable. After year 20, payments are 100% taxable.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Disability</span><div>Under a tax-qualified (HIPAA) LTC/disability policy, the objective benefit trigger is substantial assistance with:</div><div class="opts">A. 1 of 6 ADLs, 30 days · B. 2 of 6 ADLs, 90 days · C. 3 of 5 ADLs, 60 days · D. Any ADL, indefinitely</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — 2 of 6 ADLs for at least 90 days</div><p>Don't confuse the <b>probation period</b> (after issuance, before sickness is covered) with the <b>elimination period</b> (after the disability event, before cash pays out).</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Business risk</span><div>Four owners want a buy-sell where each owns policies on the others. How many policies, and what's the drawback?</div><div class="opts">A. 4 policies, loss of control · B. 8 policies · C. 12 policies, math gets messy with 3+ owners · D. 16 policies</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — 12 policies (cross-purchase)</div><p>Cross-purchase needs n(n−1) = 4 × 3 = 12 policies and gets exponentially messy with 3+ owners — but it gives survivors a step-up in basis. An entity-purchase would need just 4 policies.</p></div>
+  </details>
+
+  <div class="foot">
+    AI-generated (NotebookLM) study deck for FP512 — verify all figures against your course text before the exam.<br>
+    Rebuilt from "The Wealth Protector's Dossier: Risk Management &amp; Insurance Architecture," a whole-course NotebookLM slide export (Modules 1–8, Blueprint v1.0). Not affiliated with Kaplan / the College for Financial Planning®.
+  </div>
+
+</div>
+
+<button id="tgl" aria-label="Toggle dark mode">🌙 Theme</button>
+<script>
+/* Progress bar */
+var prog=document.getElementById('prog');
+addEventListener('scroll',function(){
+  var h=document.documentElement,b=document.body;
+  var st=h.scrollTop||b.scrollTop, sh=(h.scrollHeight||b.scrollHeight)-h.clientHeight;
+  prog.style.width=(sh>0?(st/sh*100):0)+'%';
+},{passive:true});
+/* Theme — synced with the app via localStorage cfpTheme */
+var root=document.documentElement;
+function applyTheme(t){root.setAttribute('data-theme',t);}
+try{
+  var saved=localStorage.getItem('cfpTheme');
+  if(saved){applyTheme(saved);}
+  else if(matchMedia('(prefers-color-scheme:dark)').matches){applyTheme('dark');}
+}catch(e){}
+document.getElementById('tgl').addEventListener('click',function(){
+  var t=root.getAttribute('data-theme')==='dark'?'light':'dark';
+  applyTheme(t);try{localStorage.setItem('cfpTheme',t);}catch(e){}
+});
+</script>
+</body>
+</html>
