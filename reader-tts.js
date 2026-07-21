@@ -1,18 +1,38 @@
-/* Shared Interactive-Reader read-aloud ("audiobook mode") — fully offline.
- * Adds a floating 🎧 button that reads the ACTIVE tab aloud with the browser's
- * built-in Web Speech API (speechSynthesis) — the OS's own voices, so no vendored
- * asset, no CDN, no network (doesn't violate the offline rule).
+/* Shared Interactive-Reader read-aloud — "podcast mode" — fully offline.
+ * Adds a floating 🎙️ button that reads the WHOLE reader aloud, top to bottom,
+ * FLOWING automatically from one tab to the next (so you press play once and can
+ * put the phone down), with the browser's built-in Web Speech API
+ * (speechSynthesis) — the OS's own voices, so no vendored asset, no CDN, no
+ * network (doesn't violate the offline rule).
  *
- * Reads block-by-block (each heading / paragraph / list-item is its own
+ * Podcast qualities (v2.71.0):
+ *  - Whole-reader playlist. All tabs are pre-collected into ONE flat block list up
+ *    front. tab.click() switches tabs synchronously with no repaint (same trick
+ *    reader-search.js uses), so building the playlist across every tab causes no
+ *    visible flicker. Playback walks the flat list, auto-switching the active tab
+ *    only when it reaches a block that lives on a different tab.
+ *  - Resume where you left off. The current position is bookmarked in localStorage
+ *    per reader (`cfpPodcast:<file>`) on every block, on pause/stop, and when the
+ *    page is hidden. Pressing 🎧 Resume picks up at the same spot — even after you
+ *    close and reopen the app. Reaching the end clears the bookmark.
+ *  - Screen stays awake while playing (Wake Lock API where supported) so you can
+ *    listen hands-free without the screen sleeping mid-episode.
+ *  - Background recovery. If the OS stops speech when the screen locks / the tab is
+ *    hidden (iOS does), returning to the page re-speaks the current block so you
+ *    never lose your place. (True lock-screen playback isn't possible with the Web
+ *    Speech API without a vendored audio asset, which the offline rule forbids.)
+ *
+ * Reads block-by-block (each heading / paragraph / list-item / table row is its own
  * utterance) so it (a) sidesteps iOS Safari's long-utterance cut-off, (b) can
  * highlight + auto-scroll the current block, and (c) auto-expands a collapsed
- * section when it reaches text inside it. A control strip gives ⏮ ⏭ prev/next,
- * ⏸/▶ pause, and ⏹ stop.
+ * section when it reaches text inside it. A docked control bar gives ⏮ ⏭ prev/next,
+ * ⏸/▶ pause, ⏹ stop, a reading-speed button, and a ¶ position counter.
  *
- * Reader-agnostic: finds the current tab as the largest `.active` panel (same
- * convention reader-search.js relies on), so it works on FP511, FP512, and any
- * future reader with no per-reader code. Injected after reader-theme.js so its UI
- * sits on <body>, outside the dark-mode filter wrapper. Precached in sw.js. */
+ * Reader-agnostic: tabs are the `.tab-btn` elements and the reading root per tab is
+ * the largest `.active` panel (same conventions reader-search.js relies on), so it
+ * works on FP511, FP512, and any future reader with no per-reader code. Injected
+ * after reader-theme.js so its UI sits on <body>, outside the dark-mode filter
+ * wrapper. Precached in sw.js. */
 (function () {
   'use strict';
   if (window.__readerTTS) return; window.__readerTTS = true;
@@ -56,10 +76,19 @@
 
     injectStyles();
 
+    // Per-reader bookmark key so FP511 and FP512 keep independent positions.
+    var BM = 'cfpPodcast:' + ((location.pathname || '').split('/').pop() || 'reader');
+    function loadBookmark() { try { return JSON.parse(localStorage.getItem(BM) || 'null'); } catch (e) { return null; } }
+    function saveBookmark(i) {
+      try {
+        var it = playlist[i];
+        localStorage.setItem(BM, JSON.stringify({ pos: i, txt: (it && it.text || '').slice(0, 40), n: playlist.length }));
+      } catch (e) {}
+    }
+    function clearBookmark() { try { localStorage.removeItem(BM); } catch (e) {} }
+
     var fab = el('button', 'rtFab');
     fab.type = 'button';
-    fab.title = 'Read this tab aloud';
-    fab.innerHTML = '🎧 Listen';
     document.body.appendChild(fab);
 
     var bar = el('div', 'rtBar');
@@ -75,19 +104,45 @@
     var toggleBtn = bar.querySelector('[data-a="toggle"]');
     var speedBtn = bar.querySelector('[data-a="speed"]');
 
-    var blocks = [], pos = 0, playing = false, paused = false, gen = 0;
+    // playlist = flat [{el, text, tab, tabLabel}] across ALL tabs, in document order.
+    var playlist = [], pos = 0, playing = false, paused = false, gen = 0;
+    var autoSwitch = false;                            // true while WE switch tabs (so the tab-click listener doesn't stop us)
     var startOverride = null;                          // {index, text} one-shot: read a block from a double-clicked word
 
     var RATE_BASE = 0.95, GAP = 220;                   // unhurried base pace + a human breath between blocks
     function sentence(t) { return /[.!?…:;,)]$/.test(t) ? t : t + '.'; }   // sentence-final cadence so blocks don't run together
-    // Single source of truth for the player UI: docked control bar visible, 🎧 FAB +
+
+    // Keep the screen awake while playing so a hands-free listen isn't cut short by
+    // the display sleeping (offline, no asset; silently no-ops where unsupported).
+    var wake = null;
+    function requestWake() {
+      try {
+        if ('wakeLock' in navigator && navigator.wakeLock) {
+          navigator.wakeLock.request('screen').then(function (w) { wake = w; }).catch(function () {});
+        }
+      } catch (e) {}
+    }
+    function releaseWake() { try { if (wake) { wake.release(); wake = null; } } catch (e) {} }
+
+    // FAB reflects state: while playing it's the Stop button; otherwise it offers
+    // Resume when a bookmark exists, else a fresh Podcast start.
+    function reflectFab() {
+      if (playing) return;                             // showBar handles the playing label
+      var bm = loadBookmark();
+      var resume = bm && bm.pos > 0;
+      fab.innerHTML = resume ? '🎧 Resume' : '🎙️ Podcast';
+      fab.title = resume ? 'Resume the podcast where you left off' : 'Play the whole guide as a podcast';
+    }
+
+    // Single source of truth for the player UI: docked control bar visible, 🎙️ FAB +
     // search FAB hidden (they'd pile up), and body.rt-on lifts the Home/Theme buttons
     // above the bar (see injectStyles).
     function showBar(on) {
       bar.classList.toggle('on', on);
       document.body.classList.toggle('rt-on', on);
       fab.classList.toggle('playing', on);
-      fab.innerHTML = on ? '⏹ Stop' : '🎧 Listen';
+      if (on) { fab.innerHTML = '⏹ Stop'; fab.title = 'Stop'; }
+      else reflectFab();
     }
 
     // Reading speed — tap to cycle, persisted in localStorage 'cfpTtsRate'.
@@ -115,17 +170,27 @@
       else if (a === 'speed') cycleSpeed();
     });
 
-    // Stop cleanly on tab switch / navigation away / tab hidden.
-    tabs.forEach(function (t) { t.addEventListener('click', function () { if (playing) stop(); }); });
-    window.addEventListener('pagehide', function () { sp.cancel(); });
-    window.addEventListener('beforeunload', function () { sp.cancel(); });
-    document.addEventListener('visibilitychange', function () { if (document.hidden && playing) stop(); });
+    // A MANUAL tab tap stops the podcast; our own auto-advance switches (autoSwitch)
+    // don't. Navigation away / tab hidden save the bookmark so you can resume.
+    tabs.forEach(function (t) { t.addEventListener('click', function () { if (playing && !autoSwitch) stop(); }); });
+    window.addEventListener('pagehide', function () { if (playing) saveBookmark(pos); sp.cancel(); });
+    window.addEventListener('beforeunload', function () { if (playing) saveBookmark(pos); sp.cancel(); });
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { if (playing) saveBookmark(pos); return; }
+      // Back on screen: the OS may have killed speech while hidden (iOS on lock).
+      // Re-acquire the wake lock and, if we should be talking but aren't, resume
+      // the current block so we pick up exactly where we left off.
+      if (playing && !paused) {
+        requestWake();
+        if (!sp.speaking && !sp.pending) playIndex(pos, true);
+      }
+    });
 
     // ---- Double-click / double-tap a word → start reading from there ----
     function unitIndexForNode(node) {
       var elx = node && node.nodeType === 3 ? node.parentElement : node;
       while (elx) {
-        for (var i = 0; i < blocks.length; i++) { if (blocks[i].el === elx) return i; }
+        for (var i = 0; i < playlist.length; i++) { if (playlist[i].el === elx) return i; }
         elx = elx.parentElement;
       }
       return -1;
@@ -147,19 +212,19 @@
       } catch (e) { return null; }
     }
     function startFromNode(node, allowWordLevel) {
-      if (!playing) blocks = collect();               // need the block list before we can locate the click
-      if (!blocks.length) return;
+      if (!playlist.length) playlist = buildPlaylist();   // need the playlist before we can locate the click
+      if (!playlist.length) return;
       var idx = unitIndexForNode(node);
       if (idx < 0) return;                            // click wasn't on readable content
       startOverride = null;
-      if (allowWordLevel && blocks[idx].el && blocks[idx].el.tagName !== 'TR') {
-        var wt = wordLevelText(blocks[idx].el);
+      if (allowWordLevel && playlist[idx].el && playlist[idx].el.tagName !== 'TR') {
+        var wt = wordLevelText(playlist[idx].el);
         if (wt) startOverride = { index: idx, text: wt };
       }
       try { window.getSelection().removeAllRanges(); } catch (e) {}
       if (!playing) {
         playing = true; paused = false;
-        showBar(true);
+        showBar(true); requestWake();
         ensureVoices(function () { if (playing) playIndex(idx, true); });
       } else {
         jump(idx);
@@ -219,18 +284,20 @@
     }
     // Collapse/expand toggle glyphs many section headers carry as their first/last
     // char (hyphen, Unicode minus U+2212, dashes, triangles, chevrons). Stripped so
-    // "Course Scope & Module Map −" doesn't read as "…Map minus".
+    // "Course Scope & Module Map −" doesn't read "…Map minus".
     var TOGGLE = '[\\s\\u00a0+\\-\\u2212\\u2013\\u2014\\u25be\\u25b8\\u25bc\\u25b6\\u25bd\\u25b2\\u25b4\\u203a\\u00bb\\u2039\\u00ab]';
     function blockText(el) {
       var t = textOf(el);
       return t.replace(new RegExp('^' + TOGGLE + '+'), '').replace(new RegExp(TOGGLE + '+$'), '').trim();
     }
 
-    // ---- collect readable units from the active tab, in natural document order ----
+    // ---- collect readable units from ONE tab's panel, in natural document order ----
     // Returns [{el, text}] so each unit has an element to highlight/scroll and the
     // exact text to speak. Walks the DOM generically so NOTHING with text is skipped;
     // tables are expanded row-by-row (each row paired with its header labels) so a
-    // matrix reads as flowing sentences and highlights row-by-row.
+    // matrix reads as flowing sentences and highlights row-by-row. Collapsed sections
+    // are still collected (textOf falls back to textContent when innerText is empty
+    // for a hidden node); playback expands them cosmetically when it reaches them.
     function collect() {
       var panels = [].slice.call(document.querySelectorAll('.active')).filter(function (n) {
         return !n.matches('.tab-btn,.collapsible-header,.collapsible-content,.ch,.cc');
@@ -276,12 +343,48 @@
       return units;
     }
 
+    // ---- build the WHOLE-reader playlist across every tab ----
+    // tab.click() switches tabs synchronously and the browser doesn't repaint
+    // mid-loop, so clicking through all tabs to collect them causes no flicker; we
+    // restore the originally-active tab at the end. Guarded by autoSwitch so the
+    // tab-click stop-listener ignores these programmatic switches.
+    function buildPlaylist() {
+      var active = document.querySelector('.tab-btn.active') || tabs[0];
+      var list = [];
+      autoSwitch = true;
+      tabs.forEach(function (t) {
+        try { t.click(); } catch (e) {}
+        var label = (t.textContent || '').replace(/\s+/g, ' ').trim();
+        collect().forEach(function (u) { list.push({ el: u.el, text: u.text, tab: t, tabLabel: label }); });
+      });
+      try { active.click(); } catch (e) {}
+      autoSwitch = false;
+      return list;
+    }
+
     function start() {
-      blocks = collect();
-      if (!blocks.length) return;
+      playlist = buildPlaylist();
+      if (!playlist.length) return;
       playing = true; paused = false;
-      showBar(true);
-      ensureVoices(function () { if (playing) playIndex(0, true); });   // wait for the voice list before the 1st utterance
+      showBar(true); requestWake();
+      var startAt = 0;
+      var bm = loadBookmark();
+      // Resume only if the reader hasn't changed shape since the bookmark (same block
+      // count) and the block text still matches — otherwise fall back to the top.
+      if (bm && bm.pos > 0 && bm.pos < playlist.length && bm.n === playlist.length) {
+        if (!bm.txt || (playlist[bm.pos].text || '').slice(0, 40) === bm.txt) startAt = bm.pos;
+      }
+      ensureVoices(function () { if (playing) playIndex(startAt, true); });   // wait for the voice list before the 1st utterance
+    }
+
+    // Switch to the tab that owns this block, if it isn't already active.
+    function focusTab(unit) {
+      if (!unit.tab) return;
+      var cur = document.querySelector('.tab-btn.active');
+      if (cur === unit.tab) return;
+      autoSwitch = true;
+      try { unit.tab.click(); } catch (e) {}
+      autoSwitch = false;
     }
 
     // viaCancel: cancel the queue first (start / skip / resume). On natural advance
@@ -291,18 +394,23 @@
       gen++; var myGen = gen;
       if (i < 0) i = 0;
       pos = i;
-      if (i >= blocks.length) { finish(); return; }
-      var unit = blocks[i];
+      if (i >= playlist.length) { finish(); return; }
+      var unit = playlist[i];
+      focusTab(unit);
       reveal(unit.el);
       var txt = unit.text;
       if (startOverride && startOverride.index === i) { txt = startOverride.text; startOverride = null; }  // one-shot: start mid-block from a double-clicked word
       if (!txt) { playIndex(i + 1, viaCancel); return; }
+      saveBookmark(i);
       var u = new SpeechSynthesisUtterance(sentence(txt));
       u.rate = RATE_BASE * rate;
       var v = pickVoice(); if (v) { u.voice = v; u.lang = v.lang; }
       // Pause a beat between blocks (a human breath) instead of running them together.
       u.onend = function () { if (myGen === gen && playing && !paused) setTimeout(function () { if (myGen === gen && playing && !paused) playIndex(pos + 1, false); }, GAP); };
-      u.onerror = function () { if (myGen === gen && playing && !paused) playIndex(pos + 1, false); };
+      // Defer on error too (small delay) so a genuinely-erroring voice can't hammer,
+      // and — with a whole-reader playlist now hundreds of blocks long — a fast error
+      // chain can't recurse synchronously deep enough to blow the stack. gen-guarded.
+      u.onerror = function () { if (myGen === gen && playing && !paused) setTimeout(function () { if (myGen === gen && playing && !paused) playIndex(pos + 1, false); }, 60); };
       if (viaCancel) sp.cancel();
       sp.speak(u);
       updateBar();
@@ -312,22 +420,26 @@
 
     function togglePause() {
       if (!playing) return;
-      if (paused) { paused = false; try { sp.resume(); } catch (e) {} playIndex(pos, true); }  // resume by re-speaking current block (robust on iOS)
-      else { paused = true; gen++; try { sp.cancel(); } catch (e) {} }
+      if (paused) { paused = false; requestWake(); try { sp.resume(); } catch (e) {} playIndex(pos, true); }  // resume by re-speaking current block (robust on iOS)
+      else { paused = true; saveBookmark(pos); releaseWake(); gen++; try { sp.cancel(); } catch (e) {} }
       syncToggle();
     }
 
-    function finish() { stop(); }
+    function finish() { clearBookmark(); teardown(); }   // reached the end — start fresh next time
 
-    function stop() {
+    function stop() { if (playing) saveBookmark(pos); teardown(); }   // keep the bookmark so 🎧 Resume works
+
+    function teardown() {
       playing = false; paused = false; gen++;
       try { sp.cancel(); } catch (e) {}
+      releaseWake();
       clearHi();
+      syncToggle();
       showBar(false);
     }
 
     function reveal(node) {
-      if (node.offsetParent === null && node.closest) {           // block is inside a collapsed section — expand it
+      if (node.offsetParent === null && node.closest) {           // block is inside a collapsed section — expand it (cosmetic)
         var cc = node.closest('.collapsible-content,.cc');
         if (cc) { var h = cc.previousElementSibling; if (h && /collapsible-header|ch/.test(h.className || '')) { try { h.click(); } catch (e) {} } }
       }
@@ -337,7 +449,11 @@
     }
     function clearHi() { [].slice.call(document.querySelectorAll('.rt-hi')).forEach(function (n) { n.classList.remove('rt-hi'); }); }
 
-    function updateBar() { if (blocks.length) posEl.textContent = '¶ ' + (pos + 1) + '/' + blocks.length; }
+    function updateBar() {
+      if (!playlist.length) { posEl.textContent = ''; return; }
+      var lbl = playlist[pos] && playlist[pos].tabLabel ? playlist[pos].tabLabel + ' · ' : '';
+      posEl.textContent = lbl + '¶ ' + (pos + 1) + '/' + playlist.length;
+    }
     function syncToggle() { toggleBtn.textContent = paused ? '▶' : '⏸'; toggleBtn.title = paused ? 'Resume' : 'Pause'; }
 
     function injectStyles() {
@@ -345,7 +461,7 @@
         '#rtFab{position:fixed;right:max(14px,env(safe-area-inset-right));bottom:calc(74px + env(safe-area-inset-bottom));z-index:9000;height:50px;padding:0 16px;border:none;border-radius:25px;background:linear-gradient(135deg,#2f8f6b,#3cae86);color:#fff;font:600 14px system-ui,-apple-system,sans-serif;display:inline-flex;align-items:center;gap:7px;cursor:pointer;box-shadow:0 6px 18px -4px rgba(20,60,44,.55)}' +
         '#rtFab.playing{background:linear-gradient(135deg,#c0453d,#dc6b3a)}' +
         // Docked player bar across the bottom — a single strip so the controls never
-        // pile onto the corner buttons. While it's up, the 🎧 + 🔍 FABs hide and the
+        // pile onto the corner buttons. While it's up, the 🎙️ + 🔍 FABs hide and the
         // Home/Theme/Back pills lift above it (body.rt-on rules below).
         '#rtBar{position:fixed;left:0;right:0;bottom:0;z-index:9002;display:none;align-items:center;justify-content:center;gap:6px;padding:9px 12px calc(9px + env(safe-area-inset-bottom));background:rgba(255,253,248,.97);border-top:1px solid #e2d8c6;box-shadow:0 -8px 26px -12px rgba(0,0,0,.35);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}' +
         '#rtBar.on{display:flex}' +
@@ -353,7 +469,7 @@
         '#rtBar button:hover{background:#e7ddcd}' +
         '#rtBar button:active{transform:scale(.92)}' +
         '#rtBar button.rt-speed{width:auto;min-width:48px;border-radius:21px;padding:0 12px;font:700 13px system-ui,-apple-system,sans-serif;font-variant-numeric:tabular-nums}' +
-        '#rtBar .rt-pos{font:600 12.5px system-ui,-apple-system,sans-serif;color:#7a6f5f;padding:0 4px 0 8px;white-space:nowrap;min-width:52px;text-align:right}' +
+        '#rtBar .rt-pos{font:600 12.5px system-ui,-apple-system,sans-serif;color:#7a6f5f;padding:0 4px 0 8px;white-space:nowrap;max-width:44vw;overflow:hidden;text-overflow:ellipsis;text-align:right}' +
         'body.rt-on #rtFab{display:none}' +
         'body.rt-on #rsFab{display:none!important}' +
         'body.rt-on #fpslHome{bottom:calc(80px + env(safe-area-inset-bottom))!important}' +
@@ -369,5 +485,6 @@
     function el(tag, id) { var e = document.createElement(tag); if (id) e.id = id; return e; }
 
     syncToggle();
+    reflectFab();          // set the FAB label (Resume vs Podcast) on load
   });
 })();
