@@ -428,6 +428,16 @@ incl. an `@media print` block that hides everything but `#cheatPrint` (so "Save 
 Print" outputs only the sheet, full-width, color-exact). Case-study modules author only
 `mustKnow`+`tips` (no key-numbers/traps) so they render lighter. The hub shows the button
 when a module has cards OR `MODCHEAT` content.
+- **Visual upgrade (v2.64.0).** The `ck-*` styles were restyled to the warm visual-deck
+  aesthetic (same data, no content change): key numbers render as **accent-bordered stat
+  tiles** (responsive `auto-fit` grid, per-domain accent from `DOMAINS[].c`), must-know sits
+  in its own **gold `.ck-know` box** beside warm-red `.ck-traps` / green `.ck-tips`, and the
+  header gradient is green→domain-accent→terracotta. A `@media(max-width:560px)` rule
+  collapses the key-number/main grids and term columns to 1-up on phones. This was the
+  "option 2" chosen over building standalone per-module HTML visual guides — it upgrades the
+  look of **every** FP511/FP512 module's cheat sheet at once with one styling change, and the
+  static `INFOGRAPHICS` images were deliberately kept as-is (still surfaced on the "Visual
+  guide" card).
 
 **Global quick references** (the `KEYS` and `TIPS` data): `runKeys()` / `runTips()` render
 into the SAME printable overlay via `openRefOverlay(html)` (reuses `#cheatWrap`/`ensureCheatCSS`).
@@ -670,7 +680,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.63.0`) on every shippable change so installed apps auto-update
+  (current: `v2.64.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
