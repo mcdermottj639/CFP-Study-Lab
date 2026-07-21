@@ -990,7 +990,6 @@ function renderModuleHub(course,mod){
   const hasCheat=!!(((window.MODCHEAT||{})[course]||{})[mod]);
   const qref=(cards.length||hasCheat)?'<div class="card" style="margin-top:12px"><div class="flex"><div><h3>Exam cheat sheet</h3><div class="small muted">Key numbers, traps &amp; tips — printable / save as PDF.</div></div>'+
     '<button class="btn" onclick="openCheatSheet(\''+course+'\','+mod+')">📄 Open</button></div></div>':'';
-  const hasReader=!!((window.READER_MAP||{})[course]);
   const hasCalc=(typeof CALCGEN!=='undefined')&&CALCGEN.some(g=>g.m===course&&g.mods&&g.mods.indexOf(mod)>=0);
   const infos=((window.INFOGRAPHICS||{})[course]||{})[mod]||[];
   if(infos.length)ensureInfoCSS(); // thumbnail styles must exist before the card paints (not just on popup open)
@@ -1018,7 +1017,7 @@ function renderModuleHub(course,mod){
         (mcqs.length?'<button class="btn gray" onclick="studyScoped(\''+course+'\','+mod+',\'adaptive\')">🎯 Readiness check</button>':'')+
         (mcqs.length>=3?'<button class="btn gray" onclick="studyScoped(\''+course+'\','+mod+',\'exam\')">📝 Exam'+(mcqs.length<8?' <span style="opacity:.65;font-weight:400">· limited</span>':'')+'</button>':'')+
         (hasCalc?'<button class="btn gray" onclick="studyScoped(\''+course+'\','+mod+',\'calc\')">🧮 Calc drills</button>':'')+
-        (hasReader?'<button class="btn gray" onclick="openReaderTab(\''+course+'\','+mod+')">📖 Deep-dive reader</button>':'')+
+        ((cards.length||hasCheat)?'<button class="btn gray" onclick="openCheatSheet(\''+course+'\','+mod+')">📄 Cheat sheet</button>':'')+
         (infos.length?'<button class="btn gray" onclick="openInfographic(\''+course+'\','+mod+',0)">📊 Visual guide'+(infos.length>1?'s':'')+'</button>':'')+
         (decks.length?'<button class="btn gray" onclick="openDeck(\''+course+'\','+mod+',0)">📊 Slide deck'+(decks.length>1?'s':'')+'</button>':'')+
         (vids.length?'<button class="btn gray" onclick="openVideo(\''+course+'\','+mod+',0)">🎬 Video'+(vids.length>1?'s':'')+'</button>':'')+
