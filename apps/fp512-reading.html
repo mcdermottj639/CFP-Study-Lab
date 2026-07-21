@@ -91,6 +91,44 @@
   strong { color: #1e293b; }
   .badge { display: inline-block; padding: 0.15rem 0.55rem; border-radius: 6px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em; margin-left: 0.4rem; vertical-align: middle; }
   .badge.exam { background: #fef3c7; color: #92400e; }
+
+  /* ===== DEEP READER LAYER — depth stratification, worked mechanics, confused
+          pairs, cross-module synthesis, primary-source anchoring ===== */
+  /* 1 · Depth stratification — opt-in "Go deeper" (uses the existing [data-toggle] JS; starts collapsed) */
+  .deep-toggle { display:flex; justify-content:space-between; align-items:center; cursor:pointer; user-select:none;
+    margin:1rem 0 0; padding:0.5rem 0.9rem; background:#f5f3ff; border:1px solid #ddd6fe; border-left:4px solid #8b5cf6;
+    border-radius:10px; font-weight:700; color:#6d28d9; font-size:0.88rem; }
+  .deep-toggle:hover { background:#ede9fe; }
+  .deep-toggle .toggle-icon { background:#ede9fe; color:#7c3aed; width:24px; height:24px; font-size:1.1rem; }
+  .deep-body { border:1px solid #ede9fe; border-top:none; border-radius:0 0 10px 10px; background:#fbfaff; }
+  .deep-body .inner { padding:0.9rem 1.1rem; }
+  .deep-body .inner > *:first-child { margin-top:0; }
+
+  /* 2 · Worked mechanics */
+  .worked { border:1px solid #bbf7d0; border-left:4px solid #10b981; border-radius:12px; background:#f0fdf4; padding:1rem 1.2rem; margin:1.1rem 0; }
+  .worked-h { font-weight:800; color:#065f46; font-size:0.95rem; margin-bottom:0.5rem; }
+  .worked ol { margin:0.4rem 0 0.6rem 1.2rem; } .worked ol li { margin:0.3rem 0; }
+  .keys { font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; background:#052e16; color:#bbf7d0;
+    border-radius:8px; padding:0.7rem 0.9rem; margin:0.6rem 0; font-size:0.8rem; line-height:1.6; overflow-x:auto; white-space:pre; }
+  .worked .wrong { background:#fff1f2; border-left:4px solid #e11d48; border-radius:8px; padding:0.55rem 0.8rem; margin:0.6rem 0; font-size:0.86rem; }
+  .worked .tryit { background:#eff6ff; border-left:4px solid #1a56db; border-radius:8px; padding:0.55rem 0.8rem; margin:0.6rem 0; font-size:0.86rem; }
+
+  /* 3 · Confused pairs */
+  .confuse { border:1px solid #fde68a; border-left:4px solid #f59e0b; border-radius:12px; background:#fffbeb; padding:1rem 1.2rem; margin:1.1rem 0; }
+  .confuse-h { font-weight:800; color:#92400e; font-size:0.95rem; margin-bottom:0.5rem; }
+  .confuse .tell { margin-top:0.6rem; background:#fef9c3; border-radius:8px; padding:0.5rem 0.8rem; font-size:0.85rem; }
+  .confuse .tell strong { color:#854d0e; }
+
+  /* 4 · Cross-module synthesis */
+  .synth { border:1px solid #ddd6fe; border-left:4px solid #8b5cf6; border-radius:12px; background:#faf5ff; padding:1rem 1.2rem; margin:1.1rem 0; }
+  .synth-h { font-weight:800; color:#6d28d9; font-size:0.95rem; margin-bottom:0.5rem; }
+
+  /* 5 · Primary-source anchoring */
+  .srcref { display:inline-block; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:0.68rem;
+    font-weight:700; background:#e0e7ff; color:#3730a3; border-radius:5px; padding:0.06rem 0.4rem; margin:0 0.12rem; vertical-align:middle; white-space:nowrap; }
+  .sources { margin-top:1.4rem; padding-top:0.9rem; border-top:1px dashed #cbd5e1; font-size:0.78rem; color:#64748b; }
+  .sources h4 { font-size:0.82rem; color:#475569; margin-bottom:0.3rem; letter-spacing:0.02em; }
+  .sources ul { list-style:none; padding:0; } .sources li { margin:0.25rem 0; padding-left:1rem; text-indent:-1rem; }
 </style>
 </head>
 <body>
@@ -565,6 +603,18 @@
           </tbody>
         </table>
         <div class="highlight-box amber mt-1"><strong>Key distinction:</strong> Annuities are insurance contracts, NOT investment products. Primary purpose is hedging longevity risk (superannuation risk), not maximizing growth.</div>
+
+        <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; the two phases &amp; why an annuity can pay more than a CD<span class="toggle-icon">+</span></div>
+        <div class="collapsible-content deep-body collapsed"><div class="inner">
+          <p>Every deferred annuity lives <strong>two lives</strong>. Understanding the hand-off is what most classification questions are really testing:</p>
+          <ol>
+            <li><strong>Accumulation phase</strong> &mdash; money goes in and grows <em>tax-deferred</em> (no 1099 each year, unlike a CD or brokerage account). The contract has an <strong>account value</strong> you can surrender (subject to surrender charges).</li>
+            <li><strong>Annuitization / payout phase</strong> &mdash; at annuitization the owner <em>irrevocably</em> trades the account value for a stream of income. The account value ceases to exist; you now own a <em>promise to pay</em>, not a balance. This is why annuitization is a one-way door and why liquidity disappears.</li>
+          </ol>
+          <p><strong>Mortality credits &mdash; the reason a life annuity beats a bond ladder for pure income.</strong> The insurer pools thousands of annuitants. Those who die early &ldquo;forfeit&rdquo; their remaining principal, and that money subsidizes the payments of those who live long. This <em>mortality credit</em> is income you cannot manufacture on your own with a portfolio &mdash; it&rsquo;s the payment for accepting that you get <em>nothing back</em> at death under a straight-life payout. The trade-off: you bear <strong>no market risk</strong> on the income, but you accept <strong>no liquidity</strong> and (on straight life) <strong>no residual</strong> for heirs.</p>
+          <div class="highlight-box purple"><strong>Exam framing:</strong> A pure/straight-life annuity gives the <em>highest</em> monthly income precisely <em>because</em> it has no refund feature &mdash; the mortality credits are largest when nothing is promised to a beneficiary. Adding period-certain or refund features lowers the payout.</div>
+          <p class="text-sm">Authority: annuity taxation and the deferral inside the contract flow from <span class="srcref">IRC &sect;72</span>; the &ldquo;annuity is a contract, not a security&rdquo; line holds only for <em>fixed/indexed</em> products &mdash; variable and registered index-linked annuities <em>are</em> securities (see Product Types below).</p>
+        </div></div>
       </div>
     </div>
     <div class="section-card">
@@ -580,6 +630,36 @@
           <div class="stat-box"><div class="number" style="font-size:1rem;">DIA</div><div class="label">Deferred Income Annuity &mdash; premium paid now; income begins at a future date; can be nonqualified; addresses superannuation risk</div></div>
         </div>
         <div class="chart-wrap" style="max-width:420px;"><canvas id="chartAnnuityComparison"></canvas></div>
+
+        <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; how an indexed annuity actually credits interest (participation, cap, spread, floor)<span class="toggle-icon">+</span></div>
+        <div class="collapsible-content deep-body collapsed"><div class="inner">
+          <p>An EIA/FIA never buys the index. The insurer buys mostly bonds, then spends a slice of the yield on <strong>index call options</strong>. How much of the index&rsquo;s move you receive is throttled by <em>three levers</em> &mdash; and a given contract usually uses one, not all:</p>
+          <table>
+            <thead><tr><th>Lever</th><th>How it limits you</th><th>Example (index +12%)</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Participation rate</strong></td><td>You get a <em>percentage of</em> the index gain</td><td>80% &rarr; credited <strong>9.6%</strong></td></tr>
+              <tr><td><strong>Cap rate</strong></td><td>Credit is capped at a ceiling</td><td>6% cap &rarr; credited <strong>6%</strong></td></tr>
+              <tr><td><strong>Spread / margin</strong></td><td>A fixed % is subtracted off the top</td><td>3% spread &rarr; credited <strong>9%</strong></td></tr>
+            </tbody>
+          </table>
+          <p>The <strong>floor is 0%</strong>: in a down year you&rsquo;re credited nothing, but you never lose principal to market losses (surrender charges are separate). Crediting is measured over a <strong>term</strong> using a method &mdash; most commonly <em>annual reset / ratchet</em> (locks each year&rsquo;s gain and never gives it back), or <em>point-to-point</em> (start vs. end of a multi-year term). <span class="pill amber">Trap</span> A high participation rate means little if paired with a low cap &mdash; always read the <em>combination</em>.</p>
+
+          <div class="confuse">
+            <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; Equity-Indexed vs. Variable annuity</div>
+            <table>
+              <thead><tr><th></th><th>Equity-Indexed (EIA/FIA)</th><th>Variable (VA)</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Who bears market risk</strong></td><td>Insurer (you have a 0% floor)</td><td>Owner (subaccounts can lose value)</td></tr>
+                <tr><td><strong>Regulated as a security?</strong></td><td>No &mdash; insurance product, state-regulated</td><td>Yes &mdash; prospectus, FINRA-licensed rep</td></tr>
+                <tr><td><strong>Upside</strong></td><td>Limited by cap/par/spread</td><td>Uncapped (full subaccount return)</td></tr>
+                <tr><td><strong>Downside</strong></td><td>Principal protected</td><td>Full downside exposure</td></tr>
+              </tbody>
+            </table>
+            <div class="tell"><strong>How to tell them apart on the exam:</strong> if the question says <em>&ldquo;prospectus,&rdquo; &ldquo;subaccounts,&rdquo;</em> or <em>&ldquo;securities license,&rdquo;</em> it&rsquo;s a <strong>variable</strong> annuity. If it says <em>&ldquo;minimum guarantee,&rdquo; &ldquo;participation rate,&rdquo; &ldquo;cap,&rdquo;</em> or <em>&ldquo;principal protection,&rdquo;</em> it&rsquo;s <strong>indexed</strong>. A <strong>RILA</strong> is the hybrid &mdash; indexed <em>crediting</em> but a registered security with a buffer/floor that <em>can</em> lose value.</div>
+          </div>
+
+          <p class="text-sm"><strong>QLAC, current figures:</strong> funded from an IRA/qualified plan; income (and the RMDs on that money) can defer to age <strong>85</strong>. <span class="srcref">SECURE 2.0 (2022)</span> removed the old 25%-of-balance limit and set a dollar cap of $200,000 indexed &mdash; <strong>$210,000 for 2025</strong> <span class="pill amber">verify each year</span>. Variable annuities are securities under the <span class="srcref">Securities Act of 1933</span>; RILAs are separately registered.</p>
+        </div></div>
       </div>
     </div>
     <div class="section-card">
@@ -596,6 +676,29 @@
           </tbody>
         </table>
         <div class="highlight-box blue mt-1"><strong>Cost:</strong> GLB riders add 0.50%-1.50% annually on top of existing mortality and expense (M&amp;E) charges. Always weigh cost vs. value for each client.</div>
+
+        <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; benefit base vs. account value (the machinery behind every GLB)<span class="toggle-icon">+</span></div>
+        <div class="collapsible-content deep-body collapsed"><div class="inner">
+          <p>Every living-benefit rider runs on <strong>two separate numbers</strong>, and confusing them is the #1 GLB mistake:</p>
+          <ul class="key-list">
+            <li><strong>Account value</strong> &mdash; the real money. It&rsquo;s what you can surrender or pass to heirs, and it rises and falls with the subaccounts.</li>
+            <li><strong>Benefit base</strong> (a.k.a. income base) &mdash; a <em>bookkeeping</em> figure used <strong>only</strong> to calculate the guaranteed benefit. You cannot withdraw it as a lump sum. It typically grows by the greater of a <strong>roll-up rate</strong> (e.g., a guaranteed 5%/yr in the deferral period) or an annual <strong>ratchet/step-up</strong> that locks in market highs.</li>
+          </ul>
+          <p>So a GLWB can keep paying you 5% of a <em>$200,000 benefit base</em> for life even after the <em>account value</em> has fallen to $0 &mdash; the insurer is now paying from its own pocket. That guarantee is exactly what the rider fee buys. <span class="pill red">Trap</span> Excess withdrawals (above the guaranteed annual amount) usually reduce the benefit base <em>proportionally</em>, which can permanently cut the guarantee &mdash; a classic suitability landmine.</p>
+
+          <div class="confuse">
+            <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; GMIB vs. GMWB vs. GLWB</div>
+            <table>
+              <thead><tr><th>Rider</th><th>What it guarantees</th><th>Must you annuitize?</th></tr></thead>
+              <tbody>
+                <tr><td><strong>GMIB</strong></td><td>A minimum <em>income</em> if you <strong>annuitize</strong> &mdash; a floor on the payout rate</td><td><strong>Yes</strong> &mdash; you give up the account value to turn it on</td></tr>
+                <tr><td><strong>GMWB</strong></td><td>Get your <em>principal</em> back via annual <strong>withdrawals</strong> (until total withdrawals = premium)</td><td><strong>No</strong> &mdash; keep control of the account</td></tr>
+                <tr><td><strong>GLWB</strong></td><td>Withdraw a % <strong>for life</strong>, even if the account hits $0 &mdash; and keep the account value</td><td><strong>No</strong> &mdash; this is why it&rsquo;s the most popular</td></tr>
+              </tbody>
+            </table>
+            <div class="tell"><strong>How to tell them apart:</strong> <strong>GMIB</strong> = the word &ldquo;<em>income</em>&rdquo; and it forces <em>annuitization</em>. <strong>GMWB</strong> = &ldquo;<em>withdrawal</em>&rdquo; but it <em>ends</em> once you&rsquo;ve pulled out your premium. <strong>GLWB</strong> = the <em>&ldquo;L for Lifetime&rdquo;</em> &mdash; withdrawals continue for life <em>without</em> annuitizing. If the question stresses &ldquo;doesn&rsquo;t want to give up access to the money but wants lifetime income,&rdquo; the answer is <strong>GLWB</strong>.</div>
+          </div>
+        </div></div>
       </div>
     </div>
     <div class="section-card">
@@ -619,6 +722,23 @@
           <strong>Exclusion Ratio:</strong> Investment in Contract &divide; Total Expected Return &times; Payment = Tax-Free Portion per Payment<br>
           <em>Example: $100K invested, $750/mo for 20 years. Expected return = $180K. Ratio = 55.6%. Tax-free = $416.67/mo; taxable = $333.33/mo.</em>
         </div>
+
+        <div class="worked">
+          <div class="worked-h">&#129518; Worked mechanics &mdash; the exclusion ratio, start to finish <span class="srcref">IRC &sect;72(b)</span></div>
+          <p class="text-sm mb-1"><strong>Facts:</strong> Diane, 65, annuitizes a nonqualified deferred annuity. Basis (investment in the contract) = <strong>$100,000</strong>. The contract pays <strong>$750/month</strong>. Her expected return is figured over the payout period.</p>
+          <ol>
+            <li><strong>Find the expected return.</strong> For a <em>fixed-period</em> annuity it&rsquo;s just payment &times; months: $750 &times; 240 = <strong>$180,000</strong>. For a <em>life</em> annuity you don&rsquo;t guess &mdash; you multiply the annualized payment by the life-expectancy multiple from the <strong>IRS actuarial tables</strong> (Table V), so $9,000/yr &times; a ~20.0 multiple &asymp; $180,000.</li>
+            <li><strong>Exclusion ratio</strong> = basis &divide; expected return = $100,000 &divide; $180,000 = <strong>0.5556 (55.6%)</strong>.</li>
+            <li><strong>Tax-free per payment</strong> = 55.6% &times; $750 = <strong>$416.67</strong>. The rest, <strong>$333.33</strong>, is taxable ordinary income.</li>
+          </ol>
+          <div class="keys">HP-12C / BA II Plus (fixed-period expected return)
+  750  [&times;]  240  [=]   180,000   (expected return)
+  100,000 [&divide;] 180,000 [=]  0.5556   (exclusion ratio)
+  0.5556 [&times;] 750 [=]   416.67   (tax-free portion)</div>
+          <div class="wrong"><strong>&#9888;&#65039; Common wrong method:</strong> excluding $416.67 <em>forever</em>. Once Diane has recovered her full $100,000 of basis (here, at ~month 240), <strong>every later payment is 100% taxable</strong> <span class="srcref">&sect;72(b)(2)</span>. And the mirror trap: if she dies <em>before</em> recovering basis, the <strong>unrecovered basis is deductible on her final return</strong> <span class="srcref">&sect;72(b)(3)</span> &mdash; it is not simply lost.</div>
+          <div class="tryit"><strong>Try it:</strong> Same contract but $600/month for 20 years. Expected return $144,000; ratio = 100,000 &divide; 144,000 = 69.4%; tax-free = <strong>$416.67/mo</strong> (the dollar amount of returned basis is unchanged &mdash; only the <em>ratio</em> moved). That&rsquo;s the intuition: the exclusion ratio always returns the <em>same total basis</em>, just spread across whatever the payments are.</div>
+        </div>
+        <div class="highlight-box amber"><strong>Pre-annuitization is different:</strong> a withdrawal from a deferred annuity <em>before</em> annuitizing is <strong>LIFO</strong> &mdash; earnings first, fully taxable, plus a 10% penalty before 59&frac12; <span class="srcref">IRC &sect;72(q)</span>. The clean exclusion-ratio split above applies <em>only</em> once the contract is annuitized into a payment stream.</div>
         <hr>
         <h3 style="font-size:1rem;font-weight:600;margin:0.75rem 0 0.4rem;">Inherited / Beneficiary Annuity Taxation</h3>
         <ul class="key-list mt-1">
@@ -627,6 +747,22 @@
           <li><strong>Non-spouse beneficiary:</strong> Generally must fully distribute under the <strong>10-year rule</strong> (contract emptied by the end of the 10th year after death); a stretch/annuitized life-expectancy payout is available only to certain eligible designated beneficiaries.</li>
         </ul>
         <div class="highlight-box green mt-1"><strong>Roth annuity:</strong> An annuity held inside a <strong>Roth</strong> IRA/account grows and pays out <strong>tax-free</strong> when qualified. Note also that annuities have <strong>no contribution limits and no income phase-outs</strong> &mdash; a key reason high earners who have maxed out qualified plans use nonqualified annuities to keep deferring.</div>
+
+        <div class="synth">
+          <div class="synth-h">&#128279; Connects across the exam &mdash; how &ldquo;inside-the-contract&rdquo; taxation compares</div>
+          <p class="text-sm mb-1">The exam loves to test annuity taxation <em>against</em> life insurance and retirement accounts in the same question. One matrix reconciles all three:</p>
+          <table>
+            <thead><tr><th>Feature</th><th>Nonqualified annuity</th><th>Life insurance cash value</th><th>Traditional IRA / 401(k)</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Growth</strong></td><td>Tax-deferred</td><td>Tax-deferred</td><td>Tax-deferred</td></tr>
+              <tr><td><strong>Living withdrawal ordering</strong></td><td><strong>LIFO</strong> (gain first, taxable)</td><td><strong>FIFO</strong> (basis first, tax-free) &mdash; unless a MEC, which is LIFO</td><td>All taxable (pre-tax dollars)</td></tr>
+              <tr><td><strong>10% early penalty</strong></td><td>Yes &lt;59&frac12; <span class="srcref">&sect;72(q)</span></td><td>No (not a qualified plan)</td><td>Yes &lt;59&frac12; <span class="srcref">&sect;72(t)</span></td></tr>
+              <tr><td><strong>Death benefit to heir</strong></td><td>Gain = <strong>IRD, ordinary income</strong>; <em>no step-up</em></td><td><strong>Income-tax-free</strong> <span class="srcref">&sect;101(a)</span></td><td>Ordinary income; <em>no step-up</em>; 10-yr rule</td></tr>
+              <tr><td><strong>Tax-free swaps</strong></td><td>Annuity &rarr; annuity/LTC only <span class="srcref">&sect;1035</span></td><td>Life &rarr; life/annuity/LTC <span class="srcref">&sect;1035</span></td><td>Trustee-to-trustee rollover</td></tr>
+            </tbody>
+          </table>
+          <div class="tell" style="background:#ede9fe;border-radius:8px;padding:0.5rem 0.8rem;margin-top:0.6rem;font-size:0.85rem;"><strong>The one-line takeaway:</strong> annuities are the <em>worst</em> of the three at death (IRD, no step-up, ordinary income) but excellent for <em>living</em> longevity income. Life insurance is the mirror image &mdash; best at death (§101 tax-free), FIFO in life. That asymmetry is the whole point of matching product to goal.</div>
+        </div>
       </div>
     </div>
     <div class="section-card">
@@ -651,7 +787,33 @@
           </tbody>
         </table>
         <div class="highlight-box purple mt-1"><strong>State Guaranty Fund:</strong> Annuities and life insurance are protected by state guaranty associations if insurer enters receivership. Coverage limits vary by state (typically $100K-$500K). NOT federally backed like FDIC.</div>
+
+        <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; the &ldquo;best interest&rdquo; standard that now governs annuity sales<span class="toggle-icon">+</span></div>
+        <div class="collapsible-content deep-body collapsed"><div class="inner">
+          <p>Suitability isn&rsquo;t just a vibe check &mdash; most states have adopted the <span class="srcref">NAIC Model #275</span> (Suitability in Annuity Transactions Model Regulation, 2020 revision), which layers a <strong>best-interest</strong> standard on top of old suitability rules. It has <strong>four obligations</strong> the producer must satisfy:</p>
+          <ul class="key-list">
+            <li><strong>Care</strong> &mdash; have a reasonable basis that the annuity effectively addresses the client&rsquo;s needs, based on their <em>consumer profile</em> (age, income, liquidity needs, risk tolerance, time horizon, existing holdings).</li>
+            <li><strong>Disclosure</strong> &mdash; describe the producer&rsquo;s role, products offered, and how they&rsquo;re compensated (cash and non-cash).</li>
+            <li><strong>Conflict of interest</strong> &mdash; identify and avoid or reasonably manage conflicts; sales contests based on a specific product are prohibited.</li>
+            <li><strong>Documentation</strong> &mdash; record the basis for the recommendation.</li>
+          </ul>
+          <p>This aligns state annuity rules with the direction of <span class="srcref">SEC Reg BI</span> for securities. <span class="pill amber">Exam link</span> A <em>variable</em> annuity recommendation is <em>also</em> a securities recommendation, so it&rsquo;s subject to FINRA suitability / Reg BI <em>on top of</em> the state annuity rule &mdash; a nonqualified <em>fixed</em> annuity is state-only.</p>
+          <div class="synth"><div class="synth-h">&#128279; Connects to FP511</div>A CFP&reg; professional recommending any of these is <em>separately</em> held to the <strong>CFP Board&rsquo;s fiduciary duty</strong> (Duties Owed to Clients) whenever providing financial advice &mdash; a higher and broader bar than either the NAIC best-interest rule or Reg BI. See <em>Regulation &amp; Suitability</em> and the FP511 conduct material.</div>
+        </div></div>
       </div>
+    </div>
+
+    <div class="sources">
+      <h4>&#128206; Primary sources for this module</h4>
+      <ul>
+        <li><span class="srcref">IRC &sect;72</span> &mdash; taxation of annuities: exclusion ratio &sect;72(b), 10% penalty on nonqualified early distributions &sect;72(q), LIFO ordering.</li>
+        <li><span class="srcref">IRC &sect;1035</span> &mdash; tax-free exchanges (annuity &rarr; annuity or qualified LTC only; never <em>into</em> life insurance).</li>
+        <li><span class="srcref">IRC &sect;101(a)</span> &mdash; income-tax-free life insurance death benefit (the contrast used in the cross-module table).</li>
+        <li><span class="srcref">SECURE 2.0 Act (2022)</span> &mdash; QLAC 25%-of-balance limit removed; dollar cap $200,000 indexed (<strong>$210,000 for 2025</strong> &mdash; verify annually).</li>
+        <li><span class="srcref">NAIC Model #275</span> &mdash; Suitability in Annuity Transactions (best-interest standard: Care, Disclosure, Conflict, Documentation).</li>
+        <li><span class="srcref">Securities Act of 1933</span> / FINRA &mdash; variable &amp; registered index-linked annuities are securities (prospectus + licensed rep required).</li>
+      </ul>
+      <p style="margin-top:0.5rem;font-style:italic;">Grounded in the FP512 course textbook (Risk, Insurance &amp; Benefits) and the audited card/MCQ bank; dollar figures reflect 2025 and should be re-checked each tax year.</p>
     </div>
   </div>
 
