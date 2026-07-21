@@ -464,6 +464,41 @@ from the Study `#studyMode` dropdown in v2.13.1.
 > physical-hazard, 1035 exchange, Section 132 fringes, mutual-vs-stock, yield curve, financial
 > therapy, cultural humility, PTIN, mortgage points, written-disclosure list, BOP-vs-CPP, etc.)
 
+### Deep-knowledge layer — readers are the DEEP-understanding surface (v2.69.0)
+The readers were re-roled as the **deep-understanding / reference layer** (vs. the slide decks'
+visual first-pass). Rationale: the decks and readers had drifted to the *same altitude*; the
+reader's unique job is the "why," the full mechanics, the exceptions, and the cross-module
+picture a slide can't hold. Both readers now carry **five additive patterns** (existing content
+untouched — every original table/box/chart stays; the new depth sits *behind* toggles and in
+dedicated blocks). All content is **textbook-verified** (grounded via researcher passes over the
+FP511/FP512 Modules PDFs in `CFP → Textbooks`; worked examples reuse the textbooks' own numbers).
+- **1 · Depth stratification** — opt-in `🔬 Go deeper` expandables (`.deep-toggle` + a
+  collapsed body). FP512 reuses `data-toggle`/`.collapsible-content.collapsed`/`.toggle-icon`;
+  FP511 reuses its `data-t`/`.cc.closed`/`.tog`. Both start collapsed so the deep content is
+  read-on-demand and wires into each reader's existing collapsible JS with **no new script**.
+- **2 · Worked mechanics** (`.worked`) — a calc fully worked with formula, **calculator
+  keystrokes** (`.keys`, dark terminal block), a `.wrong` common-wrong-method callout, and a
+  `.tryit` variant. Examples use the textbook's framings: FP512 coinsurance (Zachary→$17,750),
+  HLV (2.9126%→$1,281,305), exclusion ratio (Clara), §79 imputed income (Table I, John→$552),
+  Part D, DI taxation; FP511 debt ratios (Grace), TVM keystrokes, 3-step education funding
+  (Mary→$29,391/$3,434), AOTC ($800 refund), money illusion.
+- **3 · Confused pairs** (`.confuse` + a `.tell` "how to tell them apart") — the two-plausible-
+  answer distinctions (HO-3 vs HO-5, GMIB/GMWB/GLWB, MEC vs non-MEC, own-occ vs any-occ,
+  cognitive vs emotional bias, fiduciary vs suitability, 529 vs Coverdell, AOTC vs LLC, …).
+- **4 · Cross-module synthesis** (`.synth`) — tables/callouts that span modules/courses
+  (annuity-vs-life-vs-IRA taxation; risk-process ↔ FP511 7-step planning process; life §101
+  income-free-but-estate-included → FP516).
+- **5 · Primary-source anchoring** — inline `.srcref` chips (`IRC §72`, `§1035`, `NAIC #275`,
+  `DEFRA 1984`, `SECURE 2.0`, CFP Board Standards, etc.) + a per-tab `.sources` footer. Where a
+  textbook names a concept but not the code number (e.g. FP512 names DEFRA 1984 / TAMRA 1988 for
+  the §7702 / §7702A concepts), the footer says so. **All FP512 dollar figures are 2025-vintage**
+  (the 2026 course text still prints 2025 limits; 2026 Medicare wasn't published at press time).
+- CSS lives in each reader's own `<style>` block (a `DEEP READER LAYER` comment section). Colors
+  use the readers' existing light-mode hues, so the **filter-based dark mode inverts them for
+  free** — no dark-mode-specific rules needed. Coverage: FP512 ~15 go-deeper / 10 worked / 16
+  confused / 5 synth / 9 sources; FP511 ~2 go-deeper / 5 worked / 12 confused / 1 synth / 6
+  sources. When adding a new course reader (FP513+), author these five patterns from the start.
+
 `apps/fp511-reading.html`, `apps/fp512-reading.html` — standalone long-form reading
 docs (their own styling). They have injected: a "Home" button (back to `../index.html`),
 SW registration, and the shared **reader theme** (`reader-theme.css` + `reader-theme.js`,
@@ -688,7 +723,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.68.0`) on every shippable change so installed apps auto-update
+  (current: `v2.69.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
