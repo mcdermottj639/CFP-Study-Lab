@@ -151,10 +151,14 @@ isn't. Same offline OS voice; different *words*. Built as a second mode inside t
   teach = `cfpTeach:<file>:<tabId>` (per tab). Each FAB reflects its own Resume state
   (`reflectFab`/`updateTeachFab`): 🎧 Resume / 👩‍🏫 Resume lesson. Reaching the end clears that mode's
   bookmark; a manual stop keeps it. Double-tap-to-start always forces `mode='read'`.
-- **STATUS: pilot.** Only **FP512 » Insurance Principles** (`principles` tab, 6 sections, ~1,350 words)
-  is authored so far — the style is being validated before rolling Teach narration out to the rest of
-  FP511 + FP512. Author future tabs the same way in `reader-teach.js`; the Teach FAB auto-appears where
-  content exists. **When adding a new course reader (FP513+), author Teach narration alongside it.**
+- **STATUS: complete for FP511 + FP512.** Every tab of both readers is authored — **FP511: 9 tabs / 42
+  sections; FP512: 11 tabs / 52 sections; ~24k words total** — each grounded strictly in that tab's own
+  extracted reader text and matching the pilot voice, with **every anchor runtime-verified** against a
+  real section header (`.collapsible-header`/`.ch`). Authored via a per-tab agent pass (one subagent per
+  tab; a shared brief + a `scratch_tabs.json` extraction of each tab's headers+text; assembled and
+  anchor-validated by a scratch harness). To revise a tab, edit its entries in `reader-teach.js`; the
+  Teach FAB auto-appears wherever content exists. **When adding a new course reader (FP513+), author
+  Teach narration for its tabs the same way.**
 **Docked player bar + no-clutter layout (v2.60.0).** `#rtBar` is a **full-width bar docked at the
 bottom** (not a centered pill — it was colliding with Home/Theme/search). `showBar(on)` toggles it,
 sets `body.rt-on`, and while playing **hides the 🎧 `#rtFab` + 🔍 `#rsFab`** (the bar has its own Stop,
