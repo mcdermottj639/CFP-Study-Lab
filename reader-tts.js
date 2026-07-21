@@ -76,20 +76,42 @@
 
     injectStyles();
 
-    // Per-reader bookmark key so FP511 and FP512 keep independent positions.
-    var BM = 'cfpPodcast:' + ((location.pathname || '').split('/').pop() || 'reader');
-    function loadBookmark() { try { return JSON.parse(localStorage.getItem(BM) || 'null'); } catch (e) { return null; } }
+    // Two modes share this player: 'read' = the whole-reader verbatim podcast;
+    // 'teach' = a teacher's narration (window.READER_TEACH) for the CURRENT tab.
+    var FILE = (location.pathname || '').split('/').pop() || 'reader';
+    var mode = 'read';
+    var teachTab = '';                                 // tab id captured when a teach lesson starts
+
+    // Bookmarks are per-reader (read = whole reader) / per-reader+tab (teach), so
+    // FP511, FP512, and each teachable tab keep independent positions.
+    function bmKey() { return mode === 'teach' ? ('cfpTeach:' + FILE + ':' + teachTab) : ('cfpPodcast:' + FILE); }
+    function readBookmark() { try { return JSON.parse(localStorage.getItem('cfpPodcast:' + FILE) || 'null'); } catch (e) { return null; } }
+    function teachBookmark(tab) { try { return JSON.parse(localStorage.getItem('cfpTeach:' + FILE + ':' + tab) || 'null'); } catch (e) { return null; } }
+    function loadBookmark() { try { return JSON.parse(localStorage.getItem(bmKey()) || 'null'); } catch (e) { return null; } }
     function saveBookmark(i) {
       try {
         var it = playlist[i];
-        localStorage.setItem(BM, JSON.stringify({ pos: i, txt: (it && it.text || '').slice(0, 40), n: playlist.length }));
+        localStorage.setItem(bmKey(), JSON.stringify({ pos: i, txt: (it && it.text || '').slice(0, 40), n: playlist.length }));
       } catch (e) {}
     }
-    function clearBookmark() { try { localStorage.removeItem(BM); } catch (e) {} }
+    function clearBookmark() { try { localStorage.removeItem(bmKey()); } catch (e) {} }
+
+    // Teach-content lookup for the currently-active tab.
+    function curTabId() { var a = document.querySelector('.tab-btn.active'); return a ? (a.getAttribute('data-tab') || '') : ''; }
+    function teachMap() { return (window.READER_TEACH && window.READER_TEACH[FILE]) || null; }
+    function hasTeach(tab) { var m = teachMap(); return !!(m && m[tab] && m[tab].length); }
 
     var fab = el('button', 'rtFab');
     fab.type = 'button';
     document.body.appendChild(fab);
+
+    // 👩‍🏫 Teach FAB (stacked above the Podcast FAB). Only shown on tabs that have
+    // authored teaching narration; playing it speaks the teacher's script for that
+    // tab instead of the page text verbatim.
+    var teachFab = el('button', 'rtTeachFab');
+    teachFab.type = 'button';
+    teachFab.style.display = 'none';
+    document.body.appendChild(teachFab);
 
     var bar = el('div', 'rtBar');
     bar.innerHTML =
@@ -104,8 +126,9 @@
     var toggleBtn = bar.querySelector('[data-a="toggle"]');
     var speedBtn = bar.querySelector('[data-a="speed"]');
 
-    // playlist = flat [{el, text, tab, tabLabel}] across ALL tabs, in document order.
-    var playlist = [], pos = 0, playing = false, paused = false, gen = 0;
+    // playlist = flat [{el, text, tab, tabLabel}] — across ALL tabs (read) or the
+    // current tab's authored sections (teach), in order.
+    var playlist = [], pos = 0, playing = false, paused = false, gen = 0, lastRevealEl = null;
     var autoSwitch = false;                            // true while WE switch tabs (so the tab-click listener doesn't stop us)
     var startOverride = null;                          // {index, text} one-shot: read a block from a double-clicked word
 
@@ -124,14 +147,24 @@
     }
     function releaseWake() { try { if (wake) { wake.release(); wake = null; } } catch (e) {} }
 
-    // FAB reflects state: while playing it's the Stop button; otherwise it offers
-    // Resume when a bookmark exists, else a fresh Podcast start.
+    // FABs reflect state: while playing they're hidden (the bar has its own Stop);
+    // otherwise each offers Resume when a bookmark exists, else a fresh start.
     function reflectFab() {
-      if (playing) return;                             // showBar handles the playing label
-      var bm = loadBookmark();
-      var resume = bm && bm.pos > 0;
+      if (playing) return;                             // showBar handles the playing state
+      var rb = readBookmark(), resume = rb && rb.pos > 0;
       fab.innerHTML = resume ? '🎧 Resume' : '🎙️ Podcast';
       fab.title = resume ? 'Resume the podcast where you left off' : 'Play the whole guide as a podcast';
+      updateTeachFab();
+    }
+    // Teach FAB appears only where the current tab has authored narration.
+    function updateTeachFab() {
+      if (playing) return;
+      var tab = curTabId();
+      if (!hasTeach(tab)) { teachFab.style.display = 'none'; return; }
+      teachFab.style.display = '';
+      var tb = teachBookmark(tab), resume = tb && tb.pos > 0;
+      teachFab.innerHTML = resume ? '👩‍🏫 Resume lesson' : '👩‍🏫 Teach';
+      teachFab.title = resume ? 'Resume the lesson for this tab' : 'Have a teacher walk you through this tab';
     }
 
     // Single source of truth for the player UI: docked control bar visible, 🎙️ FAB +
@@ -160,7 +193,8 @@
     }
     syncSpeed();
 
-    fab.onclick = function () { if (playing) stop(); else start(); };
+    fab.onclick = function () { if (playing) stop(); else start('read'); };
+    teachFab.onclick = function () { if (playing) stop(); else start('teach'); };
     bar.addEventListener('click', function (e) {
       var a = e.target && e.target.getAttribute && e.target.getAttribute('data-a');
       if (a === 'prev') jump(pos - 1);
@@ -172,7 +206,11 @@
 
     // A MANUAL tab tap stops the podcast; our own auto-advance switches (autoSwitch)
     // don't. Navigation away / tab hidden save the bookmark so you can resume.
-    tabs.forEach(function (t) { t.addEventListener('click', function () { if (playing && !autoSwitch) stop(); }); });
+    tabs.forEach(function (t) { t.addEventListener('click', function () {
+      if (autoSwitch) return;                          // our own auto-advance switch — ignore
+      if (playing) stop();                             // a manual tab tap stops playback
+      setTimeout(updateTeachFab, 0);                   // refresh the Teach FAB for the new tab (after the reader flips .active)
+    }); });
     window.addEventListener('pagehide', function () { if (playing) saveBookmark(pos); sp.cancel(); });
     window.addEventListener('beforeunload', function () { if (playing) saveBookmark(pos); sp.cancel(); });
     document.addEventListener('visibilitychange', function () {
@@ -212,7 +250,7 @@
       } catch (e) { return null; }
     }
     function startFromNode(node, allowWordLevel) {
-      if (!playlist.length) playlist = buildPlaylist();   // need the playlist before we can locate the click
+      if (!playing) { mode = 'read'; playlist = buildPlaylist(); }   // double-tap always starts the verbatim read from here
       if (!playlist.length) return;
       var idx = unitIndexForNode(node);
       if (idx < 0) return;                            // click wasn't on readable content
@@ -362,10 +400,47 @@
       return list;
     }
 
-    function start() {
-      playlist = buildPlaylist();
-      if (!playlist.length) return;
-      playing = true; paused = false;
+    // ---- build the TEACH playlist for the current tab ----
+    // Each authored {at, say} becomes: an anchor element (a section header matched by
+    // `at`) + one playlist entry per sentence of `say`, all sharing that anchor. So a
+    // teacher explains a section while the reader scrolls to + expands it. Current tab
+    // only (a teacher teaches what you're looking at), unlike the whole-reader podcast.
+    function splitSentences(t) {
+      return String(t).replace(/\s+/g, ' ').trim().match(/[^.!?]+[.!?]+["')\]]*|\S[^.!?]*$/g) || [String(t)];
+    }
+    function buildTeachPlaylist() {
+      var tab = curTabId();
+      var m = teachMap(), items = m && m[tab];
+      if (!items || !items.length) return [];
+      teachTab = tab;
+      var tabBtn = document.querySelector('.tab-btn.active');
+      var tabLabel = tabBtn ? (tabBtn.textContent || '').replace(/\s+/g, ' ').trim() : '';
+      var panels = [].slice.call(document.querySelectorAll('.active')).filter(function (n) {
+        return !n.matches('.tab-btn,.collapsible-header,.collapsible-content,.ch,.cc');
+      });
+      var root = null, max = -1;
+      panels.forEach(function (p) { var l = (p.textContent || '').length; if (l > max) { max = l; root = p; } });
+      var headers = root ? [].slice.call(root.querySelectorAll('.collapsible-header,.ch,h1,h2,h3,h4')) : [];
+      var list = [];
+      items.forEach(function (it) {
+        var anchor = null;
+        if (it.at) {
+          var needle = String(it.at).toLowerCase();
+          for (var i = 0; i < headers.length; i++) {
+            if ((headers[i].textContent || '').toLowerCase().indexOf(needle) >= 0) { anchor = headers[i]; break; }
+          }
+        }
+        if (!anchor) anchor = root;
+        splitSentences(it.say).forEach(function (s) { list.push({ el: anchor, text: s, tab: tabBtn, tabLabel: tabLabel }); });
+      });
+      return list;
+    }
+
+    function start(m) {
+      mode = (m === 'teach') ? 'teach' : 'read';
+      playlist = (mode === 'teach') ? buildTeachPlaylist() : buildPlaylist();
+      if (!playlist.length) { mode = 'read'; return; }
+      playing = true; paused = false; lastRevealEl = null;
       showBar(true); requestWake();
       var startAt = 0;
       var bm = loadBookmark();
@@ -430,7 +505,7 @@
     function stop() { if (playing) saveBookmark(pos); teardown(); }   // keep the bookmark so 🎧 Resume works
 
     function teardown() {
-      playing = false; paused = false; gen++;
+      playing = false; paused = false; gen++; lastRevealEl = null;
       try { sp.cancel(); } catch (e) {}
       releaseWake();
       clearHi();
@@ -439,10 +514,19 @@
     }
 
     function reveal(node) {
-      if (node.offsetParent === null && node.closest) {           // block is inside a collapsed section — expand it (cosmetic)
+      if (node.offsetParent === null && node.closest) {           // block is inside a collapsed section — expand it
         var cc = node.closest('.collapsible-content,.cc');
         if (cc) { var h = cc.previousElementSibling; if (h && /collapsible-header|ch/.test(h.className || '')) { try { h.click(); } catch (e) {} } }
       }
+      // Teach anchors a section HEADER — expand its body if collapsed so the content is
+      // on screen while the teacher talks (class-based collapse: FP512 '.collapsed',
+      // FP511 '.closed'; a header click toggles, so only click when actually collapsed).
+      if (node.matches && node.matches('.collapsible-header,.ch')) {
+        var body = node.nextElementSibling;
+        if (body && (body.offsetParent === null || /(^|\s)(collapsed|closed)(\s|$)/.test(body.className || ''))) { try { node.click(); } catch (e) {} }
+      }
+      if (node === lastRevealEl) return;                          // teach re-uses one anchor per section — don't re-scroll on every sentence
+      lastRevealEl = node;
       clearHi();
       node.classList.add('rt-hi');
       try { node.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) { try { node.scrollIntoView(); } catch (e2) {} }
@@ -460,6 +544,9 @@
       var css =
         '#rtFab{position:fixed;right:max(14px,env(safe-area-inset-right));bottom:calc(74px + env(safe-area-inset-bottom));z-index:9000;height:50px;padding:0 16px;border:none;border-radius:25px;background:linear-gradient(135deg,#2f8f6b,#3cae86);color:#fff;font:600 14px system-ui,-apple-system,sans-serif;display:inline-flex;align-items:center;gap:7px;cursor:pointer;box-shadow:0 6px 18px -4px rgba(20,60,44,.55)}' +
         '#rtFab.playing{background:linear-gradient(135deg,#c0453d,#dc6b3a)}' +
+        // 👩‍🏫 Teach FAB — stacked above the Podcast FAB, purple so the two are distinct.
+        '#rtTeachFab{position:fixed;right:max(14px,env(safe-area-inset-right));bottom:calc(134px + env(safe-area-inset-bottom));z-index:9000;height:50px;padding:0 16px;border:none;border-radius:25px;background:linear-gradient(135deg,#6d5ae0,#8a6ff0);color:#fff;font:600 14px system-ui,-apple-system,sans-serif;display:inline-flex;align-items:center;gap:7px;cursor:pointer;box-shadow:0 6px 18px -4px rgba(50,40,110,.5)}' +
+        'body.rt-on #rtTeachFab{display:none!important}' +
         // Docked player bar across the bottom — a single strip so the controls never
         // pile onto the corner buttons. While it's up, the 🎙️ + 🔍 FABs hide and the
         // Home/Theme/Back pills lift above it (body.rt-on rules below).
