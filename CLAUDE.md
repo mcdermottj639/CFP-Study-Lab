@@ -87,13 +87,40 @@ Content → Voices → English.
 - **Quick references** (`runKeys`/`runTips` via `openRefOverlay(html, readable)`) — pass a plain-text
   `readable` string to get a toolbar Listen (Key numbers and Exam tips & traps).
 
-### Reader read-aloud — "audiobook mode" (TTS, v2.53.0)
+### Reader read-aloud — "podcast mode" (TTS, v2.53.0; whole-reader flowing + resume v2.71.0)
 `reader-tts.js` (shared, injected after `reader-theme.js`/`reader-search.js` by
 `inject_reader_theme.mjs` with its own `reader-tts-injected` marker; precached in `sw.js`;
-in `CORE_ASSETS`) adds a floating **🎧 Listen** FAB (right side, stacked above the 🔍 search FAB)
-that reads the **active tab** aloud via `speechSynthesis` — fully offline, OS voices, no vendored
+in `CORE_ASSETS`) adds a floating **🎙️ Podcast** FAB (right side, stacked above the 🔍 search FAB)
+that reads the reader aloud via `speechSynthesis` — fully offline, OS voices, no vendored
 asset. It highlights (`.rt-hi`) + auto-scrolls each block and **auto-expands a collapsed section**
 when it reaches text inside it (clicks the `.collapsible-header`/`.ch`).
+
+**Podcast: whole-reader flowing + resume-where-you-left-off (v2.71.0).** The FAB was reworked from
+"read the active tab" into a **podcast that plays the whole reader top-to-bottom, flowing across every
+tab automatically** — press play once, put the phone down. `buildPlaylist()` clicks through **all**
+`.tab-btn`s and `collect()`s each into ONE flat `playlist` of `{el,text,tab,tabLabel}` in document
+order; because `tab.click()` switches tabs synchronously with no repaint (same trick
+`reader-search.js` uses) this pre-collect causes **no visible flicker** and restores the originally-
+active tab at the end. Playback walks the flat list; `focusTab(unit)` switches the active tab only
+when a block lives on a different tab. A manual tab tap **stops** the podcast, but our own auto-
+advance switches don't (guarded by an `autoSwitch` flag on the tab-click stop-listener).
+- **Resume.** Position is bookmarked in `localStorage['cfpPodcast:'+<reader file>]` (per reader) on
+  every block, on pause, on stop, and on `visibilitychange`-hidden — `{pos, txt(first 40 chars), n(playlist
+  length)}`. `start()` resumes from the bookmark only if `n` still matches the current playlist length
+  **and** the block text still matches (else falls back to the top). The FAB reads **🎧 Resume** when a
+  bookmark with `pos>0` exists, else **🎙️ Podcast** (`reflectFab()`); **⏹ Stop** while playing.
+  Reaching the end (`finish()`) **clears** the bookmark; a manual `stop()` **keeps** it so Resume works.
+- **Screen stays awake** while playing via the Wake Lock API (`requestWake()`/`releaseWake()`, silent
+  no-op where unsupported) so a hands-free listen isn't cut short by the display sleeping. Re-acquired
+  on `visibilitychange`-visible.
+- **Background recovery.** The OS may kill speech when the screen locks / tab is hidden (iOS does).
+  On `visibilitychange`-visible, if we should be talking but aren't (`!sp.speaking && !sp.pending`) it
+  **re-speaks the current block** so you never lose your place. (True lock-screen playback isn't
+  possible with the Web Speech API without a vendored audio asset, which the offline rule forbids.)
+- `onerror` advances via a 60 ms `setTimeout` (like `onend`'s `GAP`), `gen`-guarded — so a fast error
+  chain over the now-hundreds-of-blocks playlist can't recurse synchronously deep enough to blow the
+  stack. Double-tap-to-start and the ¶ counter operate over the whole-reader playlist (the counter
+  shows `<tab label> · ¶ pos/total`).
 **Docked player bar + no-clutter layout (v2.60.0).** `#rtBar` is a **full-width bar docked at the
 bottom** (not a centered pill — it was colliding with Home/Theme/search). `showBar(on)` toggles it,
 sets `body.rt-on`, and while playing **hides the 🎧 `#rtFab` + 🔍 `#rsFab`** (the bar has its own Stop,
@@ -108,7 +135,9 @@ inside `onend`, re-checking the `gen`/`paused` guard) — a human breath instead
 is the largest `.active` panel (same convention `reader-search.js` uses), so it works on FP511, FP512,
 and any future reader with **no per-reader code**. A **generation counter** (`gen`) guards the
 utterance `onend` chain so cancel/skip/pause never double-advance. Pause re-speaks the current block
-on resume (robust on iOS). Stops on tab switch, `pagehide`/`beforeunload`, and when the tab is hidden.
+on resume (robust on iOS). Stops on a **manual** tab switch and on `pagehide`/`beforeunload` (both
+save the bookmark first); when the tab is **hidden** it now saves the bookmark and keeps state so it
+can recover on return (see Podcast section above) rather than tearing down.
 **Double-click / double-tap a word → start reading from there (v2.59.0).** A `dblclick` listener
 (desktop) maps the click to its block via `unitIndexForNode()` and starts/jumps there; for leaf blocks
 it computes `wordLevelText()` (a Range from the block start to the double-click selection) so a long
@@ -531,7 +560,7 @@ mode on a content wrapper so fixed buttons/charts stay correct). Their Chart.js 
   Tab ids per module are in `TAB_MAP`. If you re-import a reader artifact, re-add the
   hash-open snippet near `activateTab('overview')` / the tab `go()` setup.
 - **In-reader search** (`reader-search.js`, shared; injected by `inject_reader_theme.mjs` with its own `reader-search-injected` marker, precached in `sw.js`): a floating 🔍 opens a search panel that indexes EVERY tab + collapsible section (even hidden ones — native find-in-page can't), lists hits as **Tab › Section** + snippet, and on tap switches tab, expands the section, scrolls, and highlights. Reader-agnostic: maps sections→tabs by probing which `.active` panel contains them, and drives navigation by clicking the existing `.tab-btn`/section headers — so it works on FP511, FP512, and future readers with no per-reader code.
-- **Reader read-aloud / "audiobook mode"** (`reader-tts.js`, shared; injected by `inject_reader_theme.mjs` with its own `reader-tts-injected` marker, precached in `sw.js`): a floating 🎧 Listen FAB reads the active tab aloud block-by-block via the offline Web Speech API, highlighting + auto-scrolling each block and auto-expanding collapsed sections as it reaches them, with a ⏮/⏸/⏭/⏹ control strip. Reader-agnostic (largest `.active` panel = reading root). See the "Reader read-aloud" subsection under the Study engine for the full mechanics.
+- **Reader read-aloud / "podcast mode"** (`reader-tts.js`, shared; injected by `inject_reader_theme.mjs` with its own `reader-tts-injected` marker, precached in `sw.js`): a floating 🎙️ Podcast FAB reads the **whole reader** aloud block-by-block via the offline Web Speech API, **flowing automatically across all tabs** (press play once, hands-free), highlighting + auto-scrolling each block and auto-expanding collapsed sections as it reaches them, with a ⏮/⏸/⏭/⏹ + speed control strip. **Resumes where you left off** (per-reader `localStorage` bookmark → FAB shows 🎧 Resume), keeps the screen awake (Wake Lock), and recovers if the OS stops speech while backgrounded. Reader-agnostic (tabs = `.tab-btn`, reading root = largest `.active` panel). See the "Reader read-aloud" subsection under the Study engine for the full mechanics.
 
 ### Visual slide decks — native HTML, Kaplan vs AI (v2.62.0)
 The **"Slide deck"** card no longer opens raw PDFs. Each course's slides are rebuilt as
