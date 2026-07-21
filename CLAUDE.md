@@ -400,9 +400,13 @@ intermediate list (v2.48.0; the old `<details>` module list was dropped since th
 own M1/M2/… `moduleSwitcher` chips navigate between modules faster than scrolling a list). A module is openable if it
 has tagged cards/MCQs **or** authored teaching content (then it shows a "guide" badge,
 e.g. FP511 M8 Case Study which has no cards). The hub assembles, all scoped to that one
-module: deep-dive reader link, learning-objectives self-check, "how it connects"
+module: learning-objectives self-check, "how it connects"
 synthesis, a worked example, an auto quick-reference cheat-sheet (the module's cards),
-module mastery %, item counts, and launch buttons (`studyScoped` → `window.MODF`-scoped):
+module mastery %, item counts, and launch buttons (`studyScoped` → `window.MODF`-scoped).
+(v2.66.0: the **📖 Deep-dive reader** button was REMOVED from the "Study this module"
+quick-nav row — the reader now lives only on the Modules-tab course card alongside the AI
+whole-course deck — and a **📄 Cheat sheet** button (`openCheatSheet`, shown when the module
+has cards or `MODCHEAT` content) was added in its place. The `hasReader` const was dropped.):
 **Flashcards**, **Readiness check** (`runAdaptive` — adaptive PRACTICE: instant feedback,
 pool tiered missed→unseen→rest, not scored), and **Exam** (`runModuleExam` — exam-style:
 answer all then a scored verdict + ⚠ weak-spot tags with reader/cheat-sheet links + a
@@ -680,7 +684,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.65.0`) on every shippable change so installed apps auto-update
+  (current: `v2.66.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
