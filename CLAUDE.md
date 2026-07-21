@@ -745,6 +745,35 @@ card when a module has none). All in `src/study-home.src.html`:
   (`build_index` + `add_content`), bump versions, deploy. Multiple files per module are
   supported.
 
+## E-reader exports — EPUB for the XTEINK X4 (`scripts/build_epub.mjs`)
+The user has an **XTEINK X4** pocket e-ink reader (4.3", 800×480, no backlight, physical
+page-turn buttons, native **EPUB/TXT**) for passive on-the-go review. The app's
+interactivity (SRS grading, TTS/Teach, adaptive quizzing) doesn't port to a page-turn
+device, so instead `scripts/build_epub.mjs` emits **reflowable EPUB study documents from
+the same sources the app already uses** — one source of truth, regenerate after content
+changes. These are **one-directional**: reading on the device does NOT sync progress back.
+- **Zero dependencies / offline-safe.** EPUB is written by a tiny **pure-JS ZIP writer**
+  (STORE method + CRC32, no `npm install`, no `zlib`); output is **EPUB 2.0 + toc.ncx** for
+  broad cheap-reader compatibility. All XHTML is emitted fresh (inline-whitelist sanitizer
+  `inlineXhtml()` — keeps `b/i/em/strong/sup/sub/br`, decodes entities, re-escapes) so every
+  file is guaranteed well-formed. There is **no package.json** (it's git-ignored) and none is
+  needed. Validate with: unzip + `xmllint --noout` over every `*.xhtml/*.opf/*.ncx`.
+- **Run:** `node scripts/build_epub.mjs` → writes **`dist/ereader/`** (committed, so they're
+  also downloadable from the live Pages URL and importable on the phone). 8 files, per course
+  (FP511/FP512): `*-Flashcards.epub` (one Q per screen, answer on page-turn via `page-break`),
+  `*-MCQ-Practice.epub` (Q+options, then answer + explanation + "why the others are wrong"
+  from `mcq-why.js`), `*-Exam-Cram.epub` (per-module `MODCHEAT` key-numbers/must-know/traps/
+  tips + `MODOBJ`/`MODSYN`), `*-Reader.epub` (each reader tab → a chapter, reflowed to plain
+  prose — scripts/svg/canvas/buttons/nav dropped, **tables linearized to bullet rows** since
+  480px can't hold them, collapsible/`.ch` headers → `<h3>`, trailing "EXAM" badge stripped).
+- **Data sources:** `content/*.{cards,mcqs}.json`, `mcq-why.js` (`window.MCQWHY`),
+  `module-content.js` (`MODCHEAT`/`MODOBJ`/`MODSYN`, loaded via a `window` shim), and
+  `apps/*-reading.html`. Grouping matches the Study tab by parsing **`MODMETA`/`TOPIC_MOD`**
+  out of `src/study-home.src.html` (`moduleOf`). **Adding a course (FP513+) needs no engine
+  change** — once its content JSON, reader, and `MODMETA`/`TOPIC_MOD`/`MODCHEAT` entries exist,
+  `build_epub.mjs` picks it up (extend the `['FP511','FP512']` course loop at the bottom).
+  NB the reader panel-id prefix differs per reader (`panel-` FP511 vs `tab-` FP512).
+
 ## Icons
 - App icon = cursive **"CFP"** (Dancing Script) on **deep green `#1f4d3a`**
   (green chosen so it's NOT confused with Claude's orange app icon).
