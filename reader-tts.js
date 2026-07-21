@@ -116,6 +116,7 @@
 
     var bar = el('div', 'rtBar');
     bar.innerHTML =
+      '<button data-a="toc" title="Contents — jump to a section">☰</button>' +
       '<button data-a="prev" title="Previous">⏮</button>' +
       '<button data-a="toggle" title="Pause / resume">⏸</button>' +
       '<button data-a="next" title="Next">⏭</button>' +
@@ -126,6 +127,24 @@
     var posEl = bar.querySelector('.rt-pos');
     var toggleBtn = bar.querySelector('[data-a="toggle"]');
     var speedBtn = bar.querySelector('[data-a="speed"]');
+
+    // Contents overlay — a tab-grouped section list you can jump from.
+    var toc = el('div', 'rtToc');
+    toc.innerHTML =
+      '<div class="rt-toc-panel">' +
+        '<div class="rt-toc-head"><b>Contents</b><button class="rt-toc-close" aria-label="Close">✕</button></div>' +
+        '<div class="rt-toc-list"></div>' +
+      '</div>';
+    document.body.appendChild(toc);
+    var tocList = toc.querySelector('.rt-toc-list');
+    toc.addEventListener('click', function (e) { if (e.target === toc || (e.target.closest && e.target.closest('.rt-toc-close'))) closeToc(); });
+    tocList.addEventListener('click', function (e) {
+      var row = e.target && e.target.closest ? e.target.closest('.rt-toc-sec') : null;
+      if (!row) return;
+      var i = parseInt(row.getAttribute('data-i'), 10);
+      if (i >= 0) { closeToc(); jump(i); }
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && toc.classList.contains('on')) closeToc(); });
 
     // playlist = flat [{el, text, tab, tabLabel}] — across ALL tabs (read) or the
     // current tab's authored sections (teach), in order.
@@ -205,6 +224,7 @@
       else if (a === 'toggle') togglePause();
       else if (a === 'stop') stop();
       else if (a === 'speed') cycleSpeed();
+      else if (a === 'toc') openToc();
     });
 
     // A MANUAL tab tap while playing NAVIGATES the audio to that tab (jumps to its first
@@ -220,6 +240,48 @@
     function jumpToTab(t) {
       for (var i = 0; i < playlist.length; i++) { if (playlist[i].tab === t) { jump(i); return; } }
     }
+
+    // ---- Contents (table of contents you can jump from) ----
+    // A clean label for a section header (strip toggle glyphs + a trailing EXAM marker).
+    function tocLabel(elx) {
+      var t = blockText(elx).replace(/\s*EXAM\s*$/i, '').trim();
+      return t;
+    }
+    // Build TOC rows from the current playlist: a group row per tab, then a jumpable row
+    // per section. In teach mode every distinct anchor (a section header) is a section; in
+    // read mode the sections are the collapsible-header blocks the walk collected.
+    function buildTOC() {
+      var rows = [], lastTab = null, lastSecEl = null;
+      for (var i = 0; i < playlist.length; i++) {
+        var u = playlist[i];
+        if (u.tab !== lastTab) { rows.push({ type: 'tab', label: u.tabLabel, index: i }); lastTab = u.tab; lastSecEl = null; }
+        var isHeader = u.el && u.el.matches && u.el.matches('.collapsible-header, .ch');
+        if ((mode === 'teach' || isHeader) && u.el !== lastSecEl) {
+          var lbl = tocLabel(u.el);
+          if (lbl && lbl.toLowerCase() !== (u.tabLabel || '').toLowerCase()) rows.push({ type: 'sec', label: lbl, index: i });
+          lastSecEl = u.el;
+        }
+      }
+      return rows;
+    }
+    function openToc() {
+      var rows = buildTOC();
+      // Which section are we in now? (last row whose index <= pos)
+      var curRow = -1;
+      for (var r = 0; r < rows.length; r++) { if (rows[r].index <= pos) curRow = r; else break; }
+      var html = '';
+      for (var i = 0; i < rows.length; i++) {
+        var row = rows[i], cur = (i === curRow) ? ' rt-toc-cur' : '';
+        if (row.type === 'tab') html += '<div class="rt-toc-tab">' + esc(row.label) + '</div>';
+        else html += '<button class="rt-toc-sec' + cur + '" data-i="' + row.index + '">' + esc(row.label) + (cur ? ' <span class="rt-toc-now">▶ now</span>' : '') + '</button>';
+      }
+      tocList.innerHTML = html || '<div class="rt-toc-tab">No sections</div>';
+      toc.classList.add('on');
+      var now = tocList.querySelector('.rt-toc-cur');
+      if (now) { try { now.scrollIntoView({ block: 'center' }); } catch (e) {} }
+    }
+    function closeToc() { toc.classList.remove('on'); }
+    function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
     window.addEventListener('pagehide', function () { if (playing) saveBookmark(pos); sp.cancel(); });
     window.addEventListener('beforeunload', function () { if (playing) saveBookmark(pos); sp.cancel(); });
     document.addEventListener('visibilitychange', function () {
@@ -566,6 +628,7 @@
       try { sp.cancel(); } catch (e) {}
       releaseWake();
       clearHi();
+      closeToc();
       syncToggle();
       showBar(false);
     }
@@ -620,10 +683,28 @@
         'body.rt-on #rdrTheme{bottom:calc(126px + env(safe-area-inset-bottom))!important}' +
         'body.rt-on #rdrBack{bottom:calc(172px + env(safe-area-inset-bottom))!important}' +
         '.rt-hi{background:#ffe9b8 !important;border-radius:3px;box-shadow:0 0 0 3px #ffe9b8;scroll-margin-top:80px;scroll-margin-bottom:96px}' +
+        // Contents overlay — a bottom sheet sitting above the docked bar.
+        '#rtToc{position:fixed;inset:0;z-index:9003;display:none;background:rgba(20,16,12,.5);align-items:flex-end;justify-content:center}' +
+        '#rtToc.on{display:flex}' +
+        '.rt-toc-panel{background:#fffdf8;color:#2a2018;width:100%;max-width:640px;max-height:70vh;display:flex;flex-direction:column;border-radius:16px 16px 0 0;box-shadow:0 -18px 50px -18px rgba(0,0,0,.5);margin-bottom:calc(64px + env(safe-area-inset-bottom))}' +
+        '.rt-toc-head{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid #eadfce;font-size:16px}' +
+        '.rt-toc-close{border:none;background:#f1ece3;color:#6b6256;width:30px;height:30px;border-radius:8px;font-size:15px;cursor:pointer}' +
+        '.rt-toc-list{overflow:auto;padding:6px 8px 12px;-webkit-overflow-scrolling:touch}' +
+        '.rt-toc-tab{font:700 12px system-ui,-apple-system,sans-serif;text-transform:uppercase;letter-spacing:.04em;color:#b0541f;padding:12px 10px 4px}' +
+        '.rt-toc-sec{display:flex;align-items:center;gap:8px;width:100%;text-align:left;border:none;background:none;color:#2a2018;border-radius:10px;padding:11px 12px;font:15px/1.35 system-ui,-apple-system,sans-serif;cursor:pointer}' +
+        '.rt-toc-sec:hover{background:#f6efe4}' +
+        '.rt-toc-sec.rt-toc-cur{background:#ffe9b8;font-weight:700}' +
+        '.rt-toc-now{margin-left:auto;font:700 11px system-ui;color:#b0541f;white-space:nowrap}' +
         'html[data-theme="dark"] #rtBar{background:rgba(23,18,14,.97);border-color:#3a2e25}' +
         'html[data-theme="dark"] #rtBar button{background:#2f251d;color:#e8dccb}' +
         'html[data-theme="dark"] #rtBar button:hover{background:#3a2e25}' +
-        'html[data-theme="dark"] #rtBar .rt-pos{color:#b7a996}';
+        'html[data-theme="dark"] #rtBar .rt-pos{color:#b7a996}' +
+        'html[data-theme="dark"] .rt-toc-panel{background:#241c16;color:#ece3d9}' +
+        'html[data-theme="dark"] .rt-toc-head{border-color:#3a2e25}' +
+        'html[data-theme="dark"] .rt-toc-close{background:#2f251d;color:#cdbfb0}' +
+        'html[data-theme="dark"] .rt-toc-sec{color:#ece3d9}' +
+        'html[data-theme="dark"] .rt-toc-sec:hover{background:#2f251d}' +
+        'html[data-theme="dark"] .rt-toc-sec.rt-toc-cur{background:#5a4a20;color:#fff}';
       var s = document.createElement('style'); s.id = 'rtCSS'; s.textContent = css; document.head.appendChild(s);
     }
     function el(tag, id) { var e = document.createElement(tag); if (id) e.id = id; return e; }
