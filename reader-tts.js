@@ -80,13 +80,12 @@
     // 'teach' = a teacher's narration (window.READER_TEACH) for the CURRENT tab.
     var FILE = (location.pathname || '').split('/').pop() || 'reader';
     var mode = 'read';
-    var teachTab = '';                                 // tab id captured when a teach lesson starts
 
-    // Bookmarks are per-reader (read = whole reader) / per-reader+tab (teach), so
-    // FP511, FP512, and each teachable tab keep independent positions.
-    function bmKey() { return mode === 'teach' ? ('cfpTeach:' + FILE + ':' + teachTab) : ('cfpPodcast:' + FILE); }
+    // Both modes now play the WHOLE reader start-to-finish, flowing tab to tab — read =
+    // verbatim, teach = the teacher's narration — so each keeps one per-reader bookmark.
+    function bmKey() { return mode === 'teach' ? ('cfpTeach:' + FILE) : ('cfpPodcast:' + FILE); }
     function readBookmark() { try { return JSON.parse(localStorage.getItem('cfpPodcast:' + FILE) || 'null'); } catch (e) { return null; } }
-    function teachBookmark(tab) { try { return JSON.parse(localStorage.getItem('cfpTeach:' + FILE + ':' + tab) || 'null'); } catch (e) { return null; } }
+    function teachBookmark() { try { return JSON.parse(localStorage.getItem('cfpTeach:' + FILE) || 'null'); } catch (e) { return null; } }
     function loadBookmark() { try { return JSON.parse(localStorage.getItem(bmKey()) || 'null'); } catch (e) { return null; } }
     function saveBookmark(i) {
       try {
@@ -96,10 +95,12 @@
     }
     function clearBookmark() { try { localStorage.removeItem(bmKey()); } catch (e) {} }
 
-    // Teach-content lookup for the currently-active tab.
     function curTabId() { var a = document.querySelector('.tab-btn.active'); return a ? (a.getAttribute('data-tab') || '') : ''; }
     function teachMap() { return (window.READER_TEACH && window.READER_TEACH[FILE]) || null; }
     function hasTeach(tab) { var m = teachMap(); return !!(m && m[tab] && m[tab].length); }
+    // Does this reader have ANY teacher narration? (teach now flows across the whole
+    // reader, so the Teach FAB shows regardless of which tab you're on.)
+    function readerHasTeach() { var m = teachMap(); return !!(m && Object.keys(m).length); }
 
     var fab = el('button', 'rtFab');
     fab.type = 'button';
@@ -159,15 +160,14 @@
       fab.title = resume ? 'Resume the podcast where you left off' : 'Play the whole guide as a podcast';
       updateTeachFab();
     }
-    // Teach FAB appears only where the current tab has authored narration.
+    // Teach FAB shows whenever the reader has any narration (teach flows across it all).
     function updateTeachFab() {
       if (playing) return;
-      var tab = curTabId();
-      if (!hasTeach(tab)) { teachFab.style.display = 'none'; return; }
+      if (!readerHasTeach()) { teachFab.style.display = 'none'; return; }
       teachFab.style.display = '';
-      var tb = teachBookmark(tab), resume = tb && tb.pos > 0;
+      var tb = teachBookmark(), resume = tb && tb.pos > 0;
       teachFab.innerHTML = resume ? '👩‍🏫 Resume lesson' : '👩‍🏫 Teach';
-      teachFab.title = resume ? 'Resume the lesson for this tab' : 'Have a teacher walk you through this tab';
+      teachFab.title = resume ? 'Resume the teacher walkthrough where you left off' : 'A teacher walks you through the whole guide';
     }
 
     // Single source of truth for the player UI: docked control bar visible, 🎙️ FAB +
@@ -426,31 +426,40 @@
       if (buf) out.push(buf);
       return out;
     }
+    // Whole-reader teacher walkthrough: every tab's authored sections, in tab order,
+    // flowing tab to tab (playback auto-switches tabs via focusTab). Synchronous tab
+    // clicks = no flicker; restore the originally-active tab (same trick as buildPlaylist).
     function buildTeachPlaylist() {
-      var tab = curTabId();
-      var m = teachMap(), items = m && m[tab];
-      if (!items || !items.length) return [];
-      teachTab = tab;
-      var tabBtn = document.querySelector('.tab-btn.active');
-      var tabLabel = tabBtn ? (tabBtn.textContent || '').replace(/\s+/g, ' ').trim() : '';
-      var panels = [].slice.call(document.querySelectorAll('.active')).filter(function (n) {
-        return !n.matches('.tab-btn,.collapsible-header,.collapsible-content,.ch,.cc');
-      });
-      var root = null, max = -1;
-      panels.forEach(function (p) { var l = (p.textContent || '').length; if (l > max) { max = l; root = p; } });
-      var headers = root ? [].slice.call(root.querySelectorAll('.collapsible-header,.ch,h1,h2,h3,h4')) : [];
+      var m = teachMap(); if (!m) return [];
+      var active = document.querySelector('.tab-btn.active') || tabs[0];
       var list = [];
-      items.forEach(function (it) {
-        var anchor = null;
-        if (it.at) {
-          var needle = String(it.at).toLowerCase();
-          for (var i = 0; i < headers.length; i++) {
-            if ((headers[i].textContent || '').toLowerCase().indexOf(needle) >= 0) { anchor = headers[i]; break; }
+      autoSwitch = true;
+      tabs.forEach(function (tabBtn) {
+        var id = tabBtn.getAttribute('data-tab') || '';
+        var items = m[id];
+        if (!items || !items.length) return;
+        try { tabBtn.click(); } catch (e) {}
+        var label = (tabBtn.textContent || '').replace(/\s+/g, ' ').trim();
+        var panels = [].slice.call(document.querySelectorAll('.active')).filter(function (n) {
+          return !n.matches('.tab-btn,.collapsible-header,.collapsible-content,.ch,.cc');
+        });
+        var root = null, max = -1;
+        panels.forEach(function (p) { var l = (p.textContent || '').length; if (l > max) { max = l; root = p; } });
+        var headers = root ? [].slice.call(root.querySelectorAll('.collapsible-header,.ch,h1,h2,h3,h4')) : [];
+        items.forEach(function (it) {
+          var anchor = null;
+          if (it.at) {
+            var needle = String(it.at).toLowerCase();
+            for (var i = 0; i < headers.length; i++) {
+              if ((headers[i].textContent || '').toLowerCase().indexOf(needle) >= 0) { anchor = headers[i]; break; }
+            }
           }
-        }
-        if (!anchor) anchor = root;
-        chunkSay(it.say).forEach(function (s) { list.push({ el: anchor, text: s, tab: tabBtn, tabLabel: tabLabel }); });
+          if (!anchor) anchor = root;
+          chunkSay(it.say).forEach(function (s) { list.push({ el: anchor, text: s, tab: tabBtn, tabLabel: label }); });
+        });
       });
+      try { active.click(); } catch (e) {}
+      autoSwitch = false;
       return list;
     }
 
@@ -466,6 +475,11 @@
       // count) and the block text still matches — otherwise fall back to the top.
       if (bm && bm.pos > 0 && bm.pos < playlist.length && bm.n === playlist.length) {
         if (!bm.txt || (playlist[bm.pos].text || '').slice(0, 40) === bm.txt) startAt = bm.pos;
+      } else if (mode === 'teach') {
+        // No resume → start the walkthrough at the tab you're currently on (so it plays
+        // from here to the end); from the first tab that's the whole reader start-to-finish.
+        var curBtn = document.querySelector('.tab-btn.active');
+        for (var i = 0; i < playlist.length; i++) { if (playlist[i].tab === curBtn) { startAt = i; break; } }
       }
       ensureVoices(function () { if (playing) playIndex(startAt, true); });   // wait for the voice list before the 1st utterance
     }
