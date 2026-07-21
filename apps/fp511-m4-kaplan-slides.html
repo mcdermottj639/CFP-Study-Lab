@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FP511 · Module 4 — Time Value of Money (Visual Deck)</title>
+<style>
+/* ---- Dancing Script title (vendored, offline) ---- */
+@font-face{font-family:'Dancing Script';src:url('../vendor/fonts/dancing-script-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap;}
+
+:root{
+  --canvas:#f4ecdf; --card:#fffdf8; --card2:#faf3e6;
+  --ink:#2c2118; --ink2:#5b4b3a; --muted:#897357;
+  --line:#e6d8c2; --line2:#d8c6aa;
+  --terra:#d0613a; --terra-d:#b34d2a;
+  --green:#1f4d3a; --green-l:#2f7355;
+  --gold:#c58a2e; --sky:#3a6ea5;
+  --trap:#b34d2a; --trap-bg:#fbe9e1; --tip:#2f7355; --tip-bg:#e6f2ea;
+  --key-bg:#efe4d0;
+  --radius:18px; --shadow:0 8px 26px -14px rgba(60,40,20,.55);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--canvas);}
+body{font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;color:var(--ink);-webkit-text-size-adjust:100%;}
+
+/* ---- App-synced dark mode: filter-invert the content wrapper (matches readers) ---- */
+html[data-theme="dark"]{background:#17120e;}
+html[data-theme="dark"] body{background:#17120e;}
+html[data-theme="dark"] #rdrWrap{filter:invert(.92) hue-rotate(180deg);}
+html[data-theme="dark"] #rdrWrap svg,
+html[data-theme="dark"] #rdrWrap img,
+html[data-theme="dark"] #rdrWrap canvas{filter:invert(1) hue-rotate(180deg);}
+
+#rdrWrap{max-width:820px;margin:0 auto;padding:18px 15px 90px;}
+
+/* ---- Header ---- */
+.deck-head{padding:26px 20px 22px;border-radius:var(--radius);color:#fff;
+  background:linear-gradient(135deg,#1f4d3a 0%,#2f7355 55%,#d0613a 160%);
+  box-shadow:var(--shadow);position:relative;overflow:hidden;}
+.deck-head .eyebrow{font:700 12px/1 system-ui;letter-spacing:.16em;text-transform:uppercase;opacity:.85;}
+.deck-head h1{font-family:'Dancing Script',cursive;font-size:clamp(34px,9vw,52px);margin:.15em 0 .1em;line-height:1;}
+.deck-head .sub{font-size:15px;opacity:.95;max-width:46ch;}
+.deck-head .pillrow{margin-top:14px;display:flex;flex-wrap:wrap;gap:7px;}
+.deck-head .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+  border-radius:999px;padding:5px 11px;font:600 12px/1 system-ui;}
+
+/* ---- Section divider ---- */
+.sect{margin:34px 2px 14px;display:flex;align-items:center;gap:12px;}
+.sect .n{flex:none;width:38px;height:38px;border-radius:11px;background:var(--green);color:#fff;
+  font:800 15px/38px system-ui;text-align:center;box-shadow:var(--shadow);}
+.sect h2{font-size:19px;margin:0;color:var(--green);letter-spacing:.01em;}
+.sect .lo{font:600 11px/1 system-ui;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
+
+/* ---- Slide card ---- */
+.slide{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 19px;margin:13px 0;box-shadow:var(--shadow);}
+.slide h3{margin:0 0 8px;font-size:18px;color:var(--ink);display:flex;gap:9px;align-items:baseline;}
+.slide h3 .ic{font-size:19px;}
+.slide p{margin:8px 0;color:var(--ink2);}
+.slide ul{margin:9px 0;padding-left:1.15em;}
+.slide li{margin:5px 0;color:var(--ink2);}
+.lead{font-size:16.5px;color:var(--ink)!important;}
+
+/* ---- Stat tiles ---- */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:11px;margin:14px 0 4px;}
+.tile{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:13px 14px;}
+.tile .v{font:800 24px/1.05 system-ui;color:var(--terra-d);letter-spacing:-.01em;}
+.tile .k{font-size:12.5px;color:var(--ink2);margin-top:5px;}
+
+/* ---- Callouts ---- */
+.callout{border-radius:13px;padding:12px 14px 12px 15px;margin:13px 0;border-left:5px solid;font-size:14.5px;}
+.callout.trap{background:var(--trap-bg);border-color:var(--trap);}
+.callout.tip{background:var(--tip-bg);border-color:var(--tip);}
+.callout b{color:var(--ink);}
+.callout .lab{display:block;font:800 11px/1 system-ui;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;}
+.callout.trap .lab{color:var(--trap);}
+.callout.tip .lab{color:var(--tip);}
+
+/* ---- Tables ---- */
+.tbl-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0 4px;
+  border:1px solid var(--line);border-radius:13px;}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:460px;}
+caption{caption-side:top;text-align:left;font:700 13px/1.4 system-ui;color:var(--muted);padding:2px 4px 9px;}
+th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
+thead th{background:var(--green);color:#fff;font-weight:700;font-size:12.5px;position:sticky;top:0;}
+tbody th{background:var(--card2);color:var(--ink);font-weight:700;white-space:nowrap;}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:none;}
+td.y{color:var(--tip);font-weight:700;} td.n{color:var(--trap);font-weight:700;}
+
+/* ---- Chart figure ---- */
+figure{margin:14px 0 4px;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:14px 14px 10px;}
+figure svg{width:100%;height:auto;display:block;}
+figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center;}
+.legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:9px;font:600 12.5px/1 system-ui;}
+.legend span{display:inline-flex;align-items:center;gap:6px;color:var(--ink2);}
+.legend i{width:14px;height:3px;border-radius:2px;display:inline-block;}
+
+/* ---- Three-up option groups ---- */
+.triad{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;margin:13px 0 4px;}
+.opt{background:var(--card2);border:1px solid var(--line);border-radius:13px;padding:12px 13px;}
+.opt .t{font:800 13.5px/1.2 system-ui;color:var(--green);margin-bottom:5px;}
+.opt .d{font-size:13px;color:var(--ink2);}
+
+/* ---- Worked example ---- */
+.calc{background:#1c2b24;color:#e9f3ee;border-radius:14px;padding:16px 16px 12px;margin:14px 0 4px;}
+.calc h4{margin:0 0 10px;color:#7fd3ac;font-size:14.5px;}
+.calc .step{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-top:1px solid rgba(255,255,255,.12);}
+.calc .step:first-of-type{border-top:none;}
+.calc .sn{flex:none;width:24px;height:24px;border-radius:8px;background:#2f7355;color:#fff;font:800 12px/24px system-ui;text-align:center;}
+.calc .sb{font-size:13.5px;}
+.calc .sb b{color:#fff;}
+.calc code{font:600 12.5px/1.5 ui-monospace,Menlo,monospace;color:#ffd9a8;background:rgba(255,255,255,.07);
+  padding:1px 6px;border-radius:6px;display:inline-block;margin-top:3px;}
+.calc .res{margin-top:11px;background:#d0613a;color:#fff;border-radius:10px;padding:10px 13px;font:700 15px/1.2 system-ui;}
+
+/* ---- Quiz (tap to reveal) ---- */
+.quiz{background:var(--card);border:1.5px solid var(--terra);border-radius:14px;padding:0;margin:13px 0;overflow:hidden;box-shadow:var(--shadow);}
+.quiz>summary{list-style:none;cursor:pointer;padding:15px 16px;font-size:15px;color:var(--ink);position:relative;}
+.quiz>summary::-webkit-details-marker{display:none;}
+.quiz>summary .qlab{display:inline-block;font:800 10.5px/1 system-ui;letter-spacing:.12em;color:var(--terra-d);
+  background:var(--trap-bg);border-radius:6px;padding:4px 7px;margin-bottom:8px;text-transform:uppercase;}
+.quiz>summary .opts{margin-top:9px;font-size:13.5px;color:var(--ink2);}
+.quiz>summary .tap{margin-top:10px;font:700 12.5px/1 system-ui;color:var(--terra);}
+.quiz[open]>summary .tap{display:none;}
+.quiz .ans{padding:0 16px 15px;border-top:1px dashed var(--line2);margin-top:2px;}
+.quiz .ans .correct{font:800 14px/1.4 system-ui;color:var(--tip);margin:12px 0 6px;}
+.quiz .ans p{font-size:13.5px;color:var(--ink2);margin:6px 0 0;}
+
+.foot{margin-top:34px;padding:16px;border-radius:var(--radius);background:var(--card2);border:1px solid var(--line);
+  font-size:12.5px;color:var(--muted);text-align:center;}
+
+/* ---- Floating theme toggle (standalone preview; injection can replace) ---- */
+#tgl{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:9999;
+  background:var(--terra);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:999px;
+  padding:10px 15px;font:700 13px/1 system-ui;cursor:pointer;box-shadow:0 8px 22px -8px rgba(0,0,0,.55);}
+
+/* ---- Sticky progress ---- */
+#prog{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--green),var(--terra));z-index:9999;transition:width .1s;}
+
+@media(min-width:560px){.slide{padding:22px 24px;} #rdrWrap{padding:22px 20px 90px;}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<div id="rdrWrap">
+
+  <header class="deck-head">
+    <div class="eyebrow">FP511 · General Financial Planning</div>
+    <h1>Time Value of Money</h1>
+    <div class="sub">Module 4 at a glance — the five TVM keys, single sums &amp; annuities, rate &amp; term, amortization, inflation-adjusted serial payments, NPV &amp; IRR. Built from the College for Financial Planning® (Kaplan) course deck.</div>
+    <div class="pillrow">
+      <span class="pill">🔢 PV · FV · PMT · N · I/YR</span>
+      <span class="pill">🎚️ BEG vs END</span>
+      <span class="pill">🏠 Amortization</span>
+      <span class="pill">📈 NPV &amp; IRR</span>
+    </div>
+  </header>
+
+  <!-- ============ LO 4.1.1 — Calculator basics ============ -->
+  <div class="sect"><div class="n">1</div><div><div class="lo">Learning Objective 4.1.1</div><h2>The calculator &amp; the five TVM keys</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">⚙️</span>Set up the HP 10bII/10bII+ before you start</h3>
+    <p class="lead">Four settings you configure once (and re-check on exam day):</p>
+    <div class="tiles">
+      <div class="tile"><div class="v">1 P/YR</div><div class="k">DOWNSHIFT → P/YR (shift of PMT). Display shows <b>1 P/YR</b>.</div></div>
+      <div class="tile"><div class="v">4 DISP</div><div class="k">DOWNSHIFT → 4 → DISP (shift of =). Display shows <b>0.0000</b>.</div></div>
+      <div class="tile"><div class="v">BEG / END</div><div class="k">DOWNSHIFT → BEG/END (shift of MAR). Calculator <b>defaults to END</b>.</div></div>
+      <div class="tile"><div class="v">C ALL</div><div class="k">DOWNSHIFT → C ALL (shift of C). Clears memory — do it before <b>each</b> problem.</div></div>
+    </div>
+    <div class="callout tip"><span class="lab">Habit</span>Clear memory (<b>DOWNSHIFT, C ALL</b>) before every new problem so old entries don't contaminate the next answer.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🔢</span>Five values — you need at least three to solve</h3>
+    <p>Every TVM problem is built from these five registers. Enter any three (sometimes four) and solve for the missing one.</p>
+    <div class="tbl-scroll"><table>
+      <caption>The five TVM registers</caption>
+      <thead><tr><th>Key</th><th>Register</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><th>PV</th><td>Present value</td><td>Usually a <b>negative</b> input when a FV is also in the problem</td></tr>
+        <tr><th>FV</th><td>Future value</td><td>Usually a <b>positive</b> input</td></tr>
+        <tr><th>PMT</th><td>Payment</td><td>Negative if a cash <b>outflow</b>, positive if a cash <b>inflow</b></td></tr>
+        <tr><th>N</th><td>Number of periods</td><td>Must match the compounding frequency</td></tr>
+        <tr><th>I/YR</th><td>Interest / rate of return</td><td>Annual rate; must match N's period</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">Exam trap — the sign key</span>The <b>+/−</b> key (above the blue key) makes a number negative — enter the number <em>then</em> press +/−. Do <b>not</b> mistake it for the subtraction <b>−</b> key (above +). Sign convention: outflows negative, inflows positive.</div>
+  </div>
+
+  <!-- ============ LO 4.1.2 — Future Value ============ -->
+  <div class="sect"><div class="n">2</div><div><div class="lo">Learning Objective 4.1.2</div><h2>Future value (FV)</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">📈</span>FV of a single amount</h3>
+    <p>FV is the value a lump sum grows to over a given period at a specified rate. <b>Compounding</b> = interest earned on an increasing balance of principal <em>and</em> prior interest.</p>
+    <p><b>Problem — Brenden.</b> He buys an antique chair today for $20,000; experts say it will grow 5% annually for the next five years. About what is it worth at the end of year 5?</p>
+    <div class="calc">
+      <h4>FV of a single amount — END mode</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Clear &amp; enter the lump sum as a negative PV.</b><br><code>DOWNSHIFT, C ALL → 20000, +/−, PV</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Enter the rate and term.</b><br><code>5, I/YR → 5, N</code></div></div>
+      <div class="step"><div class="sn">3</div><div class="sb"><b>Solve for FV.</b><br><code>FV</code></div></div>
+      <div class="res">FV = 25,525.6313, or ≈ $25,526</div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">💰</span>FV of an annuity</h3>
+    <p>Used when a <b>systematic savings program</b> accumulates funds toward a future goal. An <b>annuity</b> = equal, regular payments. <b>Annuity due</b> pays at the <em>beginning</em> of each period (e.g., a lease); an <b>ordinary annuity</b> pays at the <em>end</em> (e.g., a mortgage).</p>
+    <figure>
+      <svg viewBox="0 0 460 150" role="img" aria-label="Annuity-due deposits at the start of each period versus ordinary annuity at the end">
+        <line x1="30" y1="70" x2="440" y2="70" stroke="#d8c6aa" stroke-width="1.5"/>
+        <!-- period ticks -->
+        <g font-size="9" fill="#897357">
+          <line x1="70" y1="64" x2="70" y2="76" stroke="#d8c6aa"/><text x="60" y="90">Yr 1</text>
+          <line x1="170" y1="64" x2="170" y2="76" stroke="#d8c6aa"/><text x="160" y="90">Yr 2</text>
+          <line x1="270" y1="64" x2="270" y2="76" stroke="#d8c6aa"/><text x="260" y="90">Yr 3</text>
+          <line x1="370" y1="64" x2="370" y2="76" stroke="#d8c6aa"/><text x="360" y="90">Yr 4</text>
+        </g>
+        <!-- annuity due (BEG) - green arrows at start of each period -->
+        <g stroke="#1f4d3a" stroke-width="3" stroke-linecap="round">
+          <line x1="70" y1="70" x2="70" y2="34"/><line x1="170" y1="70" x2="170" y2="34"/>
+          <line x1="270" y1="70" x2="270" y2="34"/><line x1="370" y1="70" x2="370" y2="34"/>
+        </g>
+        <text x="30" y="24" font-size="10.5" font-weight="800" fill="#1f4d3a">Annuity due (BEG) — deposit at period start</text>
+        <!-- ordinary (END) - terracotta arrows at end of each period -->
+        <g stroke="#d0613a" stroke-width="3" stroke-linecap="round">
+          <line x1="120" y1="70" x2="120" y2="106"/><line x1="220" y1="70" x2="220" y2="106"/>
+          <line x1="320" y1="70" x2="320" y2="106"/><line x1="420" y1="70" x2="420" y2="106"/>
+        </g>
+        <text x="30" y="124" font-size="10.5" font-weight="800" fill="#b34d2a">Ordinary annuity (END) — payment at period end</text>
+      </svg>
+      <figcaption>Same deposits, different timing — BEG-mode payments earn one extra period of interest, so an annuity due always ends up worth more.</figcaption>
+    </figure>
+    <p><b>Problem — Jude.</b> At the <em>start</em> of each year for the past 10 years he deposited $1,000 earning 4% annually. How much is the account worth today?</p>
+    <div class="calc">
+      <h4>FV of an annuity due — BEG mode</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Clear, then switch to BEG mode.</b><br><code>DOWNSHIFT, C ALL → BEG mode</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Enter the deposit (outflow), rate, and term.</b><br><code>1000, +/−, PMT → 4, I/YR → 10, N</code></div></div>
+      <div class="step"><div class="sn">3</div><div class="sb"><b>Solve for FV.</b><br><code>FV</code></div></div>
+      <div class="res">FV = 12,486.3514, or $12,486.35</div>
+    </div>
+    <div class="callout trap"><span class="lab">Exam trap — BEG vs END</span>Deposits or payments at the <b>beginning</b> of the period require <b>BEG mode</b>. The calculator defaults to END — always confirm the mode matches the problem.</div>
+  </div>
+
+  <!-- ============ LO 4.1.3 — Present Value ============ -->
+  <div class="sect"><div class="n">3</div><div><div class="lo">Learning Objective 4.1.3</div><h2>Present value (PV)</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">📉</span>PV of a single amount</h3>
+    <p>PV is the value today of an amount to be received in the future, discounted over a number of periods at a given rate. The <b>further out</b> the dollar and/or the <b>higher the discount rate</b>, the <b>lower</b> the PV.</p>
+    <p><b>Problem — Christie.</b> She expects $40,000 in five years from her grandfather. What is that worth in today's dollars at a 4% after-tax rate, compounded annually?</p>
+    <div class="calc">
+      <h4>PV of a single amount — END mode</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Clear, then enter the future amount.</b><br><code>DOWNSHIFT, C ALL → 40000, FV</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Enter the rate and term.</b><br><code>4, I/YR → 5, N</code></div></div>
+      <div class="step"><div class="sn">3</div><div class="sb"><b>Solve for PV.</b><br><code>PV</code></div></div>
+      <div class="res">PV = −32,877.0843, or ≈ $32,877</div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🏦</span>PV of an annuity</h3>
+    <p>The PV of an annuity is what a series of equal future payments is worth today.</p>
+    <p><b>Problem — Nicholas.</b> He can receive $1,000 at the <em>end</em> of each year for 10 years. What will he pay for this stream if he wants a 10% annual return?</p>
+    <div class="calc">
+      <h4>PV of an ordinary annuity — END mode</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Clear; set FV to zero (annuity only).</b><br><code>DOWNSHIFT, C ALL → 0, FV</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Enter payment, rate, and term.</b><br><code>1000, PMT → 10, I/YR → 10, N</code></div></div>
+      <div class="step"><div class="sn">3</div><div class="sb"><b>Solve for PV.</b><br><code>PV</code></div></div>
+      <div class="res">PV = −6,144.5671, or $6,144.57</div>
+    </div>
+  </div>
+
+  <!-- ============ LO 4.1.4 — Rate of return ============ -->
+  <div class="sect"><div class="n">4</div><div><div class="lo">Learning Objective 4.1.4</div><h2>Rate of return (I/YR)</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">📊</span>Solving for the annual compound rate</h3>
+    <p>I/YR matters when comparing portfolio-manager performance, and it is required for uneven-cash-flow work — <b>net present value (NPV)</b> and <b>internal rate of return (IRR)</b>.</p>
+    <p><b>Problem — Abrianna.</b> Seven years ago she bought 100 shares of an aggressive-growth fund at $90/share (= $9,000). Today she sold all 100 for $45,000. What was her average annual compound rate of return, before tax?</p>
+    <div class="calc">
+      <h4>Solve for I/YR — END mode</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Clear; enter the cost as a negative PV.</b><br><code>DOWNSHIFT, C ALL → 9000, +/−, PV</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Enter the sale value and term.</b><br><code>45000, FV → 7, N</code></div></div>
+      <div class="step"><div class="sn">3</div><div class="sb"><b>Solve for I/YR.</b><br><code>I/YR</code></div></div>
+      <div class="res">I/YR = 25.8499, or 25.85%</div>
+    </div>
+  </div>
+
+  <!-- ============ LO 4.1.5 — Number of periods ============ -->
+  <div class="sect"><div class="n">5</div><div><div class="lo">Learning Objective 4.1.5</div><h2>Number of compounding periods (N) &amp; the Rule of 72</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">⏱️</span>Solving for N</h3>
+    <p>N can be the number of years for a PV to grow to a FV, or the number of years for payments to grow to a FV.</p>
+    <p><b>Problem — Connor.</b> He invested $8,000 several years ago; today it's worth $15,000, earning a 12% annual compound return. Approximately how many years was it invested?</p>
+    <div class="calc">
+      <h4>Solve for N — END mode</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Clear; enter the original amount as a negative PV.</b><br><code>DOWNSHIFT, C ALL → 8000, +/−, PV</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Enter today's value and the rate.</b><br><code>15000, FV → 12, I/YR</code></div></div>
+      <div class="step"><div class="sn">3</div><div class="sb"><b>Solve for N.</b><br><code>N</code></div></div>
+      <div class="res">N = 5.55 years</div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">✌️</span>The Rule of 72 — the doubling shortcut</h3>
+    <p>The Rule of 72 estimates <b>either</b> the number of years for a single amount to double, <b>or</b> the interest rate needed to double within a set number of years. To find the years to double, <b>divide 72 by the annual interest rate</b>.</p>
+    <p><b>Problem — Madelyn.</b> She puts all her cash into an account earning 10%, compounded annually, with no additions or withdrawals. In about how many years will she double her money?</p>
+    <div class="tbl-scroll"><table>
+      <caption>Exact TVM calculation vs. the Rule of 72</caption>
+      <thead><tr><th>Method</th><th>Setup</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><th>TVM calculation</th><td>PV = 1 · FV = 2 · i = 10 · PMT = 0 → solve N</td><td class="y">7.3 years</td></tr>
+        <tr><th>Rule of 72</th><td>72 ÷ 10</td><td>7.2 years</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">Exam trap</span>The Rule of 72 gives an <b>approximate</b> number of years only — the exact TVM answer (7.3) differs slightly from the shortcut (7.2).</div>
+  </div>
+
+  <!-- ============ LO 4.1.6 — Level payment ============ -->
+  <div class="sect"><div class="n">6</div><div><div class="lo">Learning Objective 4.1.6</div><h2>Level periodic payment (PMT)</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🎯</span>Fixed (equal) payments toward a goal</h3>
+    <p>Fixed, or equal, payments are unchanging over the entire period. This problem combines a <b>single sum today</b> (PV) with a stream of level end-of-year payments.</p>
+    <p><b>Problem — Shanice.</b> Goal: accumulate $90,000 in seven years. She can deposit $32,000 today at 11% and add a payment at the <em>end</em> of each year. What end-of-year payment meets the goal?</p>
+    <div class="calc">
+      <h4>Solve for PMT — END mode</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Clear; confirm END mode; enter the deposit as a negative PV.</b><br><code>DOWNSHIFT, C ALL → END mode → 32000, +/−, PV</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Enter the goal, term, and rate.</b><br><code>90000, FV → 7, N → 11, I/YR</code></div></div>
+      <div class="step"><div class="sn">3</div><div class="sb"><b>Solve for PMT.</b><br><code>PMT</code></div></div>
+      <div class="res">PMT = 2,408.49 per year</div>
+    </div>
+  </div>
+
+  <!-- ============ LO 4.2.1 — Amortization ============ -->
+  <div class="sect"><div class="n">7</div><div><div class="lo">Learning Objective 4.2.1</div><h2>Loan payment &amp; amortization</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🏠</span>How amortization works</h3>
+    <p><b>Amortization</b> = repayment of loan principal over time. An amortization schedule shows how much of each payment goes to principal vs. interest.</p>
+    <ul>
+      <li><b>Early payments</b> — more interest, less principal</li>
+      <li><b>Over time</b> — the principal portion rises and the interest portion falls</li>
+    </ul>
+    <div class="callout tip"><span class="lab">Matching the period</span>For monthly loans, set <b>12 P/YR</b> and enter years with the <b>xP/YR</b> key (DOWNSHIFT, N) so the calculator converts to the correct number of monthly periods.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧾</span>Worked example — Jake &amp; Jamie's mortgage</h3>
+    <p>A $150,000 mortgage at 3.25% annual interest over 15 years. They want a status check after 24 months: how much principal have they paid, and how much interest?</p>
+    <div class="calc">
+      <h4>Step 1 — the monthly payment (12 P/YR)</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Set 12 payments/yr; clear; confirm END.</b><br><code>END mode → 12, P/YR → DOWNSHIFT, C ALL</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Enter principal; enter years via xP/YR (180 appears); enter rate.</b><br><code>150000, PV → 15, DOWNSHIFT, N (shows 180) → 3.25, I/YR</code></div></div>
+      <div class="step"><div class="sn">3</div><div class="sb"><b>Solve for PMT.</b><br><code>PMT = −1,054.0032, or $1,054</code></div></div>
+      <div class="res">Monthly payment ≈ $1,054</div>
+    </div>
+    <div class="calc">
+      <h4>Step 2 — amortize periods 1 through 24 (do NOT clear)</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Set the range, then enter AMORT.</b><br><code>1, INPUT, 24 → DOWNSHIFT, AMORT (on the FV key)</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Press = to toggle the totals through month 24.</b><br><code>= 16,040.03 (principal) → = 9,256.05 (interest) → = 133,959.97 (remaining balance)</code></div></div>
+      <div class="res">Principal paid $16,040.03 · Interest paid $9,256.05 · Balance $133,959.97</div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">➖</span>Worked example — total interest over the life of a loan</h3>
+    <p><b>Rasheed &amp; Adi</b> (ages 35 and 33) bought a home for $175,000, put $40,000 down, and financed the remaining <b>$135,000</b> over 15 years at 3.85%. How much interest over the life of the loan?</p>
+    <div class="calc">
+      <h4>Monthly payment, then total interest</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Set 12 P/YR; clear; enter the financed amount.</b><br><code>END mode → 12, P/YR → DOWNSHIFT, C ALL → 135000, PV</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Enter years via xP/YR (180) and the rate; solve PMT.</b><br><code>15, DOWNSHIFT, N (shows 180) → 3.85, I/YR → PMT = −988.4614, or $988.46</code></div></div>
+      <div class="step"><div class="sn">3</div><div class="sb"><b>Total payments minus original principal = total interest.</b><br><code>$988.46 × 180 = $177,923.04 − $135,000.00 = $42,923.04</code></div></div>
+      <div class="res">Total interest paid ≈ $42,923.04</div>
+    </div>
+  </div>
+
+  <!-- ============ LO 4.2.2 — Inflation-adjusted rate ============ -->
+  <div class="sect"><div class="n">8</div><div><div class="lo">Learning Objective 4.2.2</div><h2>Inflation-adjusted interest rate</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🔥</span>The real (inflation-adjusted) rate</h3>
+    <p>It is <b>not</b> simply the difference between the rate of return and inflation — it discounts the return by the inflation rate. Used to calculate the amount needed when a payment is simultaneously compounding (serial payments); if not used, the result will be inaccurate, and the error grows as the number of payments and the return-vs-inflation gap increase.</p>
+    <div class="tiles">
+      <div class="tile"><div class="v">Formula</div><div class="k">[ (1 + rate of return) ÷ (1 + rate of inflation) − 1 ] × 100</div></div>
+    </div>
+    <p><b>Question.</b> What is the inflation-adjusted rate with a 7% rate of return and a 3% inflation rate?</p>
+    <div class="calc">
+      <h4>Apply the formula</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Divide the growth factors.</b><br><code>(1.07 ÷ 1.03) − 1</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Subtract 1, then multiply by 100.</b><br><code>(1.0388 − 1) × 100 = 0.03883 × 100</code></div></div>
+      <div class="res">Inflation-adjusted rate = 3.8835, or 3.88%</div>
+    </div>
+    <div class="callout trap"><span class="lab">Exam trap</span>The naïve subtraction (7% − 3% = 4%) is <b>wrong</b>. The real rate here is <b>3.88%</b>, not 4% — always use the ratio formula.</div>
+  </div>
+
+  <!-- ============ LO 4.2.3 — Serial payments ============ -->
+  <div class="sect"><div class="n">9</div><div><div class="lo">Learning Objective 4.2.3</div><h2>Serial (inflation-adjusted) payments</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">📶</span>Payments that rise with inflation</h3>
+    <p>Serial payments increase each year by inflation to keep a constant real (purchasing-power) amount.</p>
+    <ul>
+      <li>The <b>initial</b> serial payment is <b>less</b> than the equivalent fixed (equal) payment</li>
+      <li>The <b>last</b> serial payment is <b>greater</b> than the last fixed payment — but it holds the same purchasing power as the first serial payment</li>
+    </ul>
+    <p><b>Problem — Ty &amp; Skylar.</b> They want to buy a beach house five years from today and know they must accumulate at least <b>$150,000 in today's dollars</b>. They expect a 10% after-tax return and 4% inflation, making equal inflation-adjusted payments at the <em>end</em> of each year. What serial payments occur at the end of years 2 and 5?</p>
+    <div class="calc">
+      <h4>Step 1 — base payment at the inflation-adjusted rate (END mode)</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Clear; enter goal, PV, and the real rate.</b><br><code>DOWNSHIFT, C ALL → END mode → FV = 150000 → PV = 0</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Use the inflation-adjusted rate and term; solve PMT.</b><br><code>i = 5.7692 [((1.10 ÷ 1.04) − 1) × 100] → n = 5 → PMT = −$26,732.35</code></div></div>
+      <div class="res">Base serial payment = $26,732.35</div>
+    </div>
+    <div class="calc">
+      <h4>Step 2 — inflate each year by 4%</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Year 1:</b> $26,732.35 × 1.04 = <b>$27,801.64</b></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Year 2:</b> $27,801.64 × 1.04 = <b>$28,913.71</b></div></div>
+      <div class="step"><div class="sn">3</div><div class="sb"><b>Year 3:</b> $28,913.71 × 1.04 = <b>$30,070.26</b></div></div>
+      <div class="step"><div class="sn">4</div><div class="sb"><b>Year 4:</b> $30,070.26 × 1.04 = <b>$31,273.07</b></div></div>
+      <div class="step"><div class="sn">5</div><div class="sb"><b>Year 5:</b> $31,273.07 × 1.04 = <b>$32,523.99</b></div></div>
+      <div class="res">End of year 2 = $28,913.71 · End of year 5 = $32,523.99</div>
+    </div>
+  </div>
+
+  <!-- ============ LO 4.2.4 — Single sum + annuity ============ -->
+  <div class="sect"><div class="n">10</div><div><div class="lo">Learning Objective 4.2.4</div><h2>Single sum <em>and</em> annuity payment</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🧩</span>When a problem has both a lump sum and a stream</h3>
+    <p>A single calculation can carry both an initial single sum (PV) and a recurring annuity (PMT). Example: Brittany deposits <b>$2,000</b> today (treated as PV) and adds <b>$250</b> at the end of each year for 15 years (treated as an annuity PMT).</p>
+    <p><b>Problem — Raul.</b> He makes an initial $20,000 deposit into a mutual fund, then adds $2,500 at the end of each year. What is the account worth in eight years at 9% annually?</p>
+    <div class="calc">
+      <h4>Solve for FV — END mode, 1 P/YR</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Clear; confirm END mode and 1 P/YR.</b><br><code>DOWNSHIFT, C ALL → END mode, 1 P/YR</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Enter term and rate.</b><br><code>8, N → 9, I/YR</code></div></div>
+      <div class="step"><div class="sn">3</div><div class="sb"><b>Enter the lump sum and the payment (both outflows, negative).</b><br><code>20000, +/−, PV → 2500, +/−, PMT</code></div></div>
+      <div class="step"><div class="sn">4</div><div class="sb"><b>Solve for FV.</b><br><code>FV</code></div></div>
+      <div class="res">FV = $67,422.4373, or $67,422.44</div>
+    </div>
+  </div>
+
+  <!-- ============ LO 4.3.1 — IRR ============ -->
+  <div class="sect"><div class="n">11</div><div><div class="lo">Learning Objective 4.3.1</div><h2>Internal rate of return (IRR)</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🧮</span>Cash-flow keystroke rules</h3>
+    <ul>
+      <li>Cash <b>inflows</b> are positive; cash <b>outflows</b> are negative</li>
+      <li>Determine the <b>compounding period</b> first — it's the time between two consecutive cash flows (semiannual = two periods/yr)</li>
+      <li>Enter a cash flow — or a <b>zero</b> — for <b>every</b> compounding period in the holding period</li>
+      <li>The first outflow (usually the purchase) is <b>CF0</b> at N = 0; for an NPV it is entered as the initial outlay</li>
+      <li>Equal consecutive cash flows can be grouped with <b>Nj</b> (DOWNSHIFT on the CFj key)</li>
+    </ul>
+    <p><b>Problem — antique chair.</b> Bought six years ago for $1,000, repaired at the end of year 2 for $450, just sold for $2,850. What is the average compound rate earned (IRR)?</p>
+    <figure>
+      <svg viewBox="0 0 460 150" role="img" aria-label="Cash-flow timeline: 1000 out at year 0, 450 out at year 2, 2850 in at year 6">
+        <line x1="30" y1="80" x2="440" y2="80" stroke="#d8c6aa" stroke-width="1.5"/>
+        <g font-size="10" fill="#897357" text-anchor="middle">
+          <text x="40" y="100">0</text><text x="105" y="100">1</text><text x="170" y="100">2</text>
+          <text x="235" y="100">3</text><text x="300" y="100">4</text><text x="365" y="100">5</text><text x="430" y="100">6</text>
+        </g>
+        <g stroke="#d8c6aa"><line x1="40" y1="74" x2="40" y2="86"/><line x1="105" y1="74" x2="105" y2="86"/><line x1="170" y1="74" x2="170" y2="86"/><line x1="235" y1="74" x2="235" y2="86"/><line x1="300" y1="74" x2="300" y2="86"/><line x1="365" y1="74" x2="365" y2="86"/><line x1="430" y1="74" x2="430" y2="86"/></g>
+        <!-- outflows (down, terracotta) -->
+        <line x1="40" y1="80" x2="40" y2="120" stroke="#d0613a" stroke-width="3" stroke-linecap="round"/>
+        <text x="40" y="138" font-size="10.5" font-weight="800" fill="#b34d2a" text-anchor="middle">−$1,000</text>
+        <line x1="170" y1="80" x2="170" y2="120" stroke="#d0613a" stroke-width="3" stroke-linecap="round"/>
+        <text x="170" y="138" font-size="10.5" font-weight="800" fill="#b34d2a" text-anchor="middle">−$450</text>
+        <!-- inflow (up, green) -->
+        <line x1="430" y1="80" x2="430" y2="34" stroke="#1f4d3a" stroke-width="3" stroke-linecap="round"/>
+        <text x="430" y="26" font-size="10.5" font-weight="800" fill="#1f4d3a" text-anchor="middle">+$2,850</text>
+        <!-- zeros -->
+        <g font-size="9.5" fill="#897357" text-anchor="middle"><text x="105" y="66">$0</text><text x="235" y="66">$0</text><text x="300" y="66">$0</text><text x="365" y="66">$0</text></g>
+      </svg>
+      <figcaption>Every period gets an entry: outflows at years 0 and 2, zeros at years 1, 3, 4 and 5, and the sale inflow at year 6.</figcaption>
+    </figure>
+    <div class="calc">
+      <h4>Solve for IRR — END mode, 1 P/YR</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Clear; enter CF0 (purchase outflow).</b><br><code>DOWNSHIFT, C ALL → END mode, 1 P/YR → 1000, +/−, CFj</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Year 1 zero, year 2 repair outflow.</b><br><code>0, CFj → 450, +/−, CFj</code></div></div>
+      <div class="step"><div class="sn">3</div><div class="sb"><b>Group the three zero years, then the sale inflow.</b><br><code>0, CFj → 3, DOWNSHIFT, Nj → 2850, CFj</code></div></div>
+      <div class="step"><div class="sn">4</div><div class="sb"><b>Solve for IRR/YR.</b><br><code>DOWNSHIFT, IRR/YR</code></div></div>
+      <div class="res">IRR = 13.2502, or 13.25%</div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">📆</span>IRR with quarterly cash flows</h3>
+    <p><b>Problem.</b> A three-year mutual-fund investment pays quarterly distributions (not reinvested): four at $500, four at $570, and four at $600. The initial investment was $120,000, and the account's final value at the last quarterly distribution was $165,000. What IRR was earned?</p>
+    <div class="calc">
+      <h4>Solve for a quarterly IRR, then annualize — END mode, 1 P/YR</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Clear; enter the initial investment as CF0.</b><br><code>DOWNSHIFT, C ALL → END mode, 1 P/YR → 120000, +/−, CFj</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Group the equal quarterly distributions with Nj.</b><br><code>500, CFj → 4, DOWNSHIFT, Nj → 570, CFj → 4, DOWNSHIFT, Nj → 600, CFj → 3, DOWNSHIFT, Nj</code></div></div>
+      <div class="step"><div class="sn">3</div><div class="sb"><b>Final flow = last $600 distribution + $165,000 value.</b><br><code>165600, CFj</code></div></div>
+      <div class="step"><div class="sn">4</div><div class="sb"><b>Solve for the periodic IRR, then × 4 to annualize.</b><br><code>DOWNSHIFT, IRR/YR = 3.0894 × 4</code></div></div>
+      <div class="res">IRR = 3.0894 × 4 = 12.3577, or 12.36%</div>
+    </div>
+    <div class="callout tip"><span class="lab">Watch the last flow</span>The 12th distribution ($600) is folded into the final cash flow ($600 + $165,000 = $165,600), so only <b>three</b> $600 flows are grouped with Nj. The periodic (quarterly) IRR is multiplied by 4 to get the annual rate.</div>
+  </div>
+
+  <!-- ============ LO 4.3.2 — NPV ============ -->
+  <div class="sect"><div class="n">12</div><div><div class="lo">Learning Objective 4.3.2</div><h2>PV &amp; net present value (NPV) of uneven cash flows</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">📈</span>What NPV tells you</h3>
+    <p>NPV evaluates capital projects and long-term investments. It is the difference between the total PV of the cash flows and the initial outlay (cost).</p>
+    <div class="tbl-scroll"><table>
+      <caption>Reading the NPV result</caption>
+      <thead><tr><th>NPV</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td class="y">Positive</td><td>Investment earns <b>more</b> than the discount (required) rate</td></tr>
+        <tr><td class="n">Negative</td><td>Investment earns <b>less</b> than the discount rate</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:12.5px;color:var(--muted);margin-top:8px;">PV of cash flows − cost of investment = NPV of investment.</p>
+    <p><b>Problem — Abby.</b> Equipment costs $100,000; she can sell it for $40,000 at the end of year 5. Over five years it adds annual cash flows of $25,000, $30,000, $20,000, $15,000, and $10,000. At an 8% opportunity cost, what is the NPV?</p>
+    <div class="calc">
+      <h4>Solve for NPV</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Clear; enter the cost as CF0 (year 0).</b><br><code>DOWNSHIFT, C ALL → 100000, +/−, CFj</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Enter years 1–4 cash flows.</b><br><code>25000, CFj → 30000, CFj → 20000, CFj → 15000, CFj</code></div></div>
+      <div class="step"><div class="sn">3</div><div class="sb"><b>Year 5 = final $10,000 + $40,000 sale price.</b><br><code>50000, CFj</code></div></div>
+      <div class="step"><div class="sn">4</div><div class="sb"><b>Enter the discount rate and solve NPV.</b><br><code>8, I/YR → DOWNSHIFT, NPV</code></div></div>
+      <div class="res">NPV = 9,799.5652, or $9,799.57 (positive → beats the 8% hurdle)</div>
+    </div>
+  </div>
+
+  <!-- ============ Quiz ============ -->
+  <div class="sect"><div class="n">?</div><div><div class="lo">Check yourself</div><h2>Time-value problems from this module</h2></div></div>
+
+  <details class="quiz">
+    <summary><span class="qlab">Rule of 72</span><div>Madelyn invests a lump sum at 10%, compounded annually, with no additions or withdrawals. Using the <b>Rule of 72</b>, approximately how many years until her money doubles?</div><div class="opts">A. 6.5 · B. 7.2 · C. 7.3 · D. 10</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — 7.2 years</div><p>72 ÷ 10 = 7.2 years (approximate). The exact TVM calculation (PV = 1, FV = 2, i = 10) gives 7.3 years — the Rule of 72 is a close approximation only.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Inflation-adjusted rate</span><div>What is the inflation-adjusted (real) interest rate given a 7% rate of return and a 3% inflation rate?</div><div class="opts">A. 4.00% · B. 3.88% · C. 10.21% · D. 2.10%</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — 3.88%</div><p>[(1.07 ÷ 1.03) − 1] × 100 = 3.8835%. The naïve subtraction (7% − 3% = 4%) is the classic wrong answer — always use the ratio formula.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">FV of an annuity due</span><div>Jude deposits $1,000 at the <b>start</b> of each year for 10 years, earning 4% annually. What is the account worth today?</div><div class="opts">A. $12,006.11 · B. $12,486.35 · C. $10,000.00 · D. $14,486.35</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — $12,486.35</div><p>Beginning-of-year deposits require <b>BEG mode</b>: 1000 +/− PMT, 4 I/YR, 10 N → FV = 12,486.3514. Solving in END mode would understate it by one period of interest.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Rate of return</span><div>Abrianna bought 100 fund shares at $90 seven years ago and just sold all 100 for $45,000. What was her average annual compound return before tax?</div><div class="opts">A. 20.00% · B. 25.85% · C. 30.00% · D. 12.36%</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — 25.85%</div><p>Cost = 100 × $90 = $9,000. Enter 9000 +/− PV, 45000 FV, 7 N → I/YR = 25.8499%.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">NPV</span><div>Abby's equipment costs $100,000, throws off $25k/$30k/$20k/$15k/$10k over five years, and sells for $40,000 at the end of year 5. At an 8% opportunity cost, the NPV is $9,799.57. Should she invest?</div><div class="opts">A. No — NPV is negative · B. Yes — a positive NPV beats the 8% hurdle · C. Indifferent — NPV is zero · D. Only if the rate rises</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — Yes, positive NPV</div><p>Year-5 flow bundles the final $10,000 with the $40,000 sale = $50,000. A positive NPV ($9,799.57) means the return exceeds the 8% required rate.</p></div>
+  </details>
+
+  <div class="foot">
+    Visual deck rebuilt from the College for Financial Planning® (Kaplan) FP511 Module 4 course slides.<br>
+    Verify all figures against your current course materials before the exam.
+  </div>
+
+</div>
+
+<button id="tgl" aria-label="Toggle dark mode">🌙 Theme</button>
+<script>
+/* Progress bar */
+var prog=document.getElementById('prog');
+addEventListener('scroll',function(){
+  var h=document.documentElement,b=document.body;
+  var st=h.scrollTop||b.scrollTop, sh=(h.scrollHeight||b.scrollHeight)-h.clientHeight;
+  prog.style.width=(sh>0?(st/sh*100):0)+'%';
+},{passive:true});
+/* Theme — synced with the app via localStorage cfpTheme */
+var root=document.documentElement;
+function applyTheme(t){root.setAttribute('data-theme',t);}
+try{
+  var saved=localStorage.getItem('cfpTheme');
+  if(saved){applyTheme(saved);}
+  else if(matchMedia('(prefers-color-scheme:dark)').matches){applyTheme('dark');}
+}catch(e){}
+document.getElementById('tgl').addEventListener('click',function(){
+  var t=root.getAttribute('data-theme')==='dark'?'light':'dark';
+  applyTheme(t);try{localStorage.setItem('cfpTheme',t);}catch(e){}
+});
+</script>
+
+
+<!-- deck-chrome-injected -->
+<style>
+#dkHome{position:fixed;left:max(14px,env(safe-area-inset-left));bottom:calc(14px + env(safe-area-inset-bottom));z-index:9999;
+  background:#1f4d3a;color:#fff;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:10px 15px;
+  font:700 13px/1 system-ui,-apple-system,sans-serif;text-decoration:none;box-shadow:0 8px 22px -8px rgba(0,0,0,.55);}
+#dkBack{position:fixed;left:max(14px,env(safe-area-inset-left));bottom:calc(60px + env(safe-area-inset-bottom));z-index:9999;
+  background:#fffdf8;color:#1f4d3a;border:1.5px solid #1f4d3a;border-radius:999px;padding:9px 13px;
+  font:700 13px/1 system-ui,-apple-system,sans-serif;text-decoration:none;box-shadow:0 6px 20px -6px rgba(0,0,0,.5);}
+html[data-theme="dark"] #dkBack{background:#17120e;color:#7fd3ac;border-color:#7fd3ac;}
+</style>
+<a id="dkHome" href="../index.html">🏠 Home</a>
+<script>
+(function(){try{var r=sessionStorage.getItem('cfpReaderReturn');
+  if(r&&/^[A-Za-z0-9]+\/\d+$/.test(r)){var a=document.createElement('a');a.id='dkBack';
+    a.href='../index.html#m/'+r;a.textContent='‹ Module '+r.split('/')[1];document.body.appendChild(a);}}catch(e){}})();
+</script>
+
+</body>
+</html>

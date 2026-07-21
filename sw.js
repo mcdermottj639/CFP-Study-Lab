@@ -1,5 +1,5 @@
 /* FP Study Lab — service worker (offline support) */
-const VERSION = 'v2.62.0';
+const VERSION = 'v2.63.0';
 const CORE_CACHE = `fpsl-core-${VERSION}`;
 const RUNTIME_CACHE = `fpsl-runtime-${VERSION}`;
 /* Infographics live in an UNVERSIONED cache so large images aren't re-downloaded
@@ -47,6 +47,11 @@ const CORE_ASSETS = [
   './apps/fp512-m6-kaplan-slides.html',
   './apps/fp512-m7-kaplan-slides.html',
   './apps/fp512-m8-kaplan-slides.html',
+  './apps/fp511-m2-kaplan-slides.html',
+  './apps/fp511-m4-kaplan-slides.html',
+  './apps/fp511-m5-kaplan-slides.html',
+  './apps/fp511-m6-kaplan-slides.html',
+  './apps/fp511-m7-kaplan-slides.html',
   './apps/fp511-ai-slides.html',
   './apps/fp512-ai-slides.html',
   './apps/fp512-m1-ai-slides.html',

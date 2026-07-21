@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FP511 · Module 2 — Psychology of Financial Planning (Visual Deck)</title>
+<style>
+/* ---- Dancing Script title (vendored, offline) ---- */
+@font-face{font-family:'Dancing Script';src:url('../vendor/fonts/dancing-script-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap;}
+
+:root{
+  --canvas:#f4ecdf; --card:#fffdf8; --card2:#faf3e6;
+  --ink:#2c2118; --ink2:#5b4b3a; --muted:#897357;
+  --line:#e6d8c2; --line2:#d8c6aa;
+  --terra:#d0613a; --terra-d:#b34d2a;
+  --green:#1f4d3a; --green-l:#2f7355;
+  --gold:#c58a2e; --sky:#3a6ea5;
+  --trap:#b34d2a; --trap-bg:#fbe9e1; --tip:#2f7355; --tip-bg:#e6f2ea;
+  --key-bg:#efe4d0;
+  --radius:18px; --shadow:0 8px 26px -14px rgba(60,40,20,.55);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--canvas);}
+body{font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;color:var(--ink);-webkit-text-size-adjust:100%;}
+
+/* ---- App-synced dark mode: filter-invert the content wrapper (matches readers) ---- */
+html[data-theme="dark"]{background:#17120e;}
+html[data-theme="dark"] body{background:#17120e;}
+html[data-theme="dark"] #rdrWrap{filter:invert(.92) hue-rotate(180deg);}
+html[data-theme="dark"] #rdrWrap svg,
+html[data-theme="dark"] #rdrWrap img,
+html[data-theme="dark"] #rdrWrap canvas{filter:invert(1) hue-rotate(180deg);}
+
+#rdrWrap{max-width:820px;margin:0 auto;padding:18px 15px 90px;}
+
+/* ---- Header ---- */
+.deck-head{padding:26px 20px 22px;border-radius:var(--radius);color:#fff;
+  background:linear-gradient(135deg,#1f4d3a 0%,#2f7355 55%,#d0613a 160%);
+  box-shadow:var(--shadow);position:relative;overflow:hidden;}
+.deck-head .eyebrow{font:700 12px/1 system-ui;letter-spacing:.16em;text-transform:uppercase;opacity:.85;}
+.deck-head h1{font-family:'Dancing Script',cursive;font-size:clamp(34px,9vw,52px);margin:.15em 0 .1em;line-height:1;}
+.deck-head .sub{font-size:15px;opacity:.95;max-width:46ch;}
+.deck-head .pillrow{margin-top:14px;display:flex;flex-wrap:wrap;gap:7px;}
+.deck-head .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+  border-radius:999px;padding:5px 11px;font:600 12px/1 system-ui;}
+
+/* ---- Section divider ---- */
+.sect{margin:34px 2px 14px;display:flex;align-items:center;gap:12px;}
+.sect .n{flex:none;width:38px;height:38px;border-radius:11px;background:var(--green);color:#fff;
+  font:800 15px/38px system-ui;text-align:center;box-shadow:var(--shadow);}
+.sect h2{font-size:19px;margin:0;color:var(--green);letter-spacing:.01em;}
+.sect .lo{font:600 11px/1 system-ui;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
+
+/* ---- Slide card ---- */
+.slide{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 19px;margin:13px 0;box-shadow:var(--shadow);}
+.slide h3{margin:0 0 8px;font-size:18px;color:var(--ink);display:flex;gap:9px;align-items:baseline;}
+.slide h3 .ic{font-size:19px;}
+.slide p{margin:8px 0;color:var(--ink2);}
+.slide ul{margin:9px 0;padding-left:1.15em;}
+.slide li{margin:5px 0;color:var(--ink2);}
+.lead{font-size:16.5px;color:var(--ink)!important;}
+
+/* ---- Stat tiles ---- */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:11px;margin:14px 0 4px;}
+.tile{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:13px 14px;}
+.tile .v{font:800 24px/1.05 system-ui;color:var(--terra-d);letter-spacing:-.01em;}
+.tile .k{font-size:12.5px;color:var(--ink2);margin-top:5px;}
+
+/* ---- Callouts ---- */
+.callout{border-radius:13px;padding:12px 14px 12px 15px;margin:13px 0;border-left:5px solid;font-size:14.5px;}
+.callout.trap{background:var(--trap-bg);border-color:var(--trap);}
+.callout.tip{background:var(--tip-bg);border-color:var(--tip);}
+.callout b{color:var(--ink);}
+.callout .lab{display:block;font:800 11px/1 system-ui;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;}
+.callout.trap .lab{color:var(--trap);}
+.callout.tip .lab{color:var(--tip);}
+
+/* ---- Tables ---- */
+.tbl-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0 4px;
+  border:1px solid var(--line);border-radius:13px;}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:460px;}
+caption{caption-side:top;text-align:left;font:700 13px/1.4 system-ui;color:var(--muted);padding:2px 4px 9px;}
+th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
+thead th{background:var(--green);color:#fff;font-weight:700;font-size:12.5px;position:sticky;top:0;}
+tbody th{background:var(--card2);color:var(--ink);font-weight:700;white-space:nowrap;}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:none;}
+td.y{color:var(--tip);font-weight:700;} td.n{color:var(--trap);font-weight:700;}
+
+/* ---- Chart figure ---- */
+figure{margin:14px 0 4px;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:14px 14px 10px;}
+figure svg{width:100%;height:auto;display:block;}
+figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center;}
+.legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:9px;font:600 12.5px/1 system-ui;}
+.legend span{display:inline-flex;align-items:center;gap:6px;color:var(--ink2);}
+.legend i{width:14px;height:3px;border-radius:2px;display:inline-block;}
+
+/* ---- Three-up option groups ---- */
+.triad{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;margin:13px 0 4px;}
+.opt{background:var(--card2);border:1px solid var(--line);border-radius:13px;padding:12px 13px;}
+.opt .t{font:800 13.5px/1.2 system-ui;color:var(--green);margin-bottom:5px;}
+.opt .d{font-size:13px;color:var(--ink2);}
+
+/* ---- Worked example ---- */
+.calc{background:#1c2b24;color:#e9f3ee;border-radius:14px;padding:16px 16px 12px;margin:14px 0 4px;}
+.calc h4{margin:0 0 10px;color:#7fd3ac;font-size:14.5px;}
+.calc .step{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-top:1px solid rgba(255,255,255,.12);}
+.calc .step:first-of-type{border-top:none;}
+.calc .sn{flex:none;width:24px;height:24px;border-radius:8px;background:#2f7355;color:#fff;font:800 12px/24px system-ui;text-align:center;}
+.calc .sb{font-size:13.5px;}
+.calc .sb b{color:#fff;}
+.calc code{font:600 12.5px/1.5 ui-monospace,Menlo,monospace;color:#ffd9a8;background:rgba(255,255,255,.07);
+  padding:1px 6px;border-radius:6px;display:inline-block;margin-top:3px;}
+.calc .res{margin-top:11px;background:#d0613a;color:#fff;border-radius:10px;padding:10px 13px;font:700 15px/1.2 system-ui;}
+
+/* ---- Quiz (tap to reveal) ---- */
+.quiz{background:var(--card);border:1.5px solid var(--terra);border-radius:14px;padding:0;margin:13px 0;overflow:hidden;box-shadow:var(--shadow);}
+.quiz>summary{list-style:none;cursor:pointer;padding:15px 16px;font-size:15px;color:var(--ink);position:relative;}
+.quiz>summary::-webkit-details-marker{display:none;}
+.quiz>summary .qlab{display:inline-block;font:800 10.5px/1 system-ui;letter-spacing:.12em;color:var(--terra-d);
+  background:var(--trap-bg);border-radius:6px;padding:4px 7px;margin-bottom:8px;text-transform:uppercase;}
+.quiz>summary .opts{margin-top:9px;font-size:13.5px;color:var(--ink2);}
+.quiz>summary .tap{margin-top:10px;font:700 12.5px/1 system-ui;color:var(--terra);}
+.quiz[open]>summary .tap{display:none;}
+.quiz .ans{padding:0 16px 15px;border-top:1px dashed var(--line2);margin-top:2px;}
+.quiz .ans .correct{font:800 14px/1.4 system-ui;color:var(--tip);margin:12px 0 6px;}
+.quiz .ans p{font-size:13.5px;color:var(--ink2);margin:6px 0 0;}
+
+.foot{margin-top:34px;padding:16px;border-radius:var(--radius);background:var(--card2);border:1px solid var(--line);
+  font-size:12.5px;color:var(--muted);text-align:center;}
+
+/* ---- Floating theme toggle (standalone preview; injection can replace) ---- */
+#tgl{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:9999;
+  background:var(--terra);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:999px;
+  padding:10px 15px;font:700 13px/1 system-ui;cursor:pointer;box-shadow:0 8px 22px -8px rgba(0,0,0,.55);}
+
+/* ---- Sticky progress ---- */
+#prog{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--green),var(--terra));z-index:9999;transition:width .1s;}
+
+@media(min-width:560px){.slide{padding:22px 24px;} #rdrWrap{padding:22px 20px 90px;}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<div id="rdrWrap">
+
+  <header class="deck-head">
+    <div class="eyebrow">FP511 · General Financial Planning</div>
+    <h1>Psychology of Financial Planning</h1>
+    <div class="sub">Module 2 at a glance — risk perception, cognitive &amp; emotional biases, money scripts, financial conflict, counseling theory, and communication. Built from the College for Financial Planning® (Kaplan) course deck.</div>
+    <div class="pillrow">
+      <span class="pill">🧠 Cognitive &amp; emotional biases</span>
+      <span class="pill">💬 Money scripts &amp; disorders</span>
+      <span class="pill">🤝 Counseling &amp; communication</span>
+      <span class="pill">🌍 Cultural humility</span>
+    </div>
+  </header>
+
+  <div class="slide">
+    <h3><span class="ic">🧭</span>Behavioral finance — the frame for this module</h3>
+    <p class="lead">Behavioral finance relates <b>behavioral and cognitive psychology</b> to financial planning and economics. It helps a planner:</p>
+    <ul>
+      <li>Understand <b>why people act irrationally</b> during the financial planning process</li>
+      <li>Help clients <b>avoid self-destructive money management</b></li>
+    </ul>
+    <div class="callout tip"><span class="lab">Why it matters</span>When irrational behavior is held by a great number of people, those decisions can <b>affect the economy</b>, not just the individual.</div>
+    <div class="tiles">
+      <div class="tile"><div class="v">13</div><div class="k">Cognitive biases named</div></div>
+      <div class="tile"><div class="v">7</div><div class="k">Emotional biases named</div></div>
+      <div class="tile"><div class="v">5</div><div class="k">Money disorders</div></div>
+    </div>
+  </div>
+
+  <!-- ============ LO 2.1.1 ============ -->
+  <div class="sect"><div class="n">1</div><div><div class="lo">Learning Objective 2.1.1</div><h2>Risk tolerance &amp; loss aversion</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🎯</span>Matching recommendations to risk propensity</h3>
+    <p>Analyze a client's degrees of <b>risk tolerance and loss aversion</b>, and ensure recommendations are consistent with the client's <b>risk propensity, attitudes, composure, capacity, knowledge, and needs</b>.</p>
+    <div class="tbl-scroll"><table>
+      <caption>The five components of risk (Kaplan)</caption>
+      <thead><tr><th>Component</th><th>What it captures</th></tr></thead>
+      <tbody>
+        <tr><th>Risk tolerance</th><td>The client's willingness to accept uncertainty / volatility</td></tr>
+        <tr><th>Risk preference</th><td>The client's desire for, or aversion to, taking risk</td></tr>
+        <tr><th>Risk perception</th><td>The client's subjective judgment of how much risk is involved</td></tr>
+        <tr><th>Risk capacity</th><td>The client's financial ability to absorb a loss</td></tr>
+        <tr><th>Risk literacy</th><td>The client's ability to understand and use risk information</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout tip"><span class="lab">Don't blur them</span>Willingness (tolerance/preference) and <b>ability to bear loss (capacity)</b> are different — a recommendation must respect both.</div>
+  </div>
+
+  <!-- ============ LO 2.1.2 ============ -->
+  <div class="sect"><div class="n">2</div><div><div class="lo">Learning Objective 2.1.2</div><h2>Psychology, background &amp; learning style</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🔎</span>Understanding psychological profiles</h3>
+    <p>A profile helps <b>predict how a client will perceive and judge</b> recommendations. Two building blocks:</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Perception</div><div class="d">How people become aware of things, people, events, or ideas.</div></div>
+      <div class="opt"><div class="t">Judgment</div><div class="d">Making conclusions about what has been perceived.</div></div>
+    </div>
+    <p><b>Personality assessments</b> place clients along four dichotomies: introverted or extroverted · driven by <b>senses or intuition</b> · influenced by <b>thinking or feeling</b> · likely to <b>perceive or judge</b>.</p>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🎓</span>Three learning styles</h3>
+    <div class="tbl-scroll"><table>
+      <caption>How clients take in and retain information</caption>
+      <thead><tr><th>Style</th><th>How the client learns best</th></tr></thead>
+      <tbody>
+        <tr><th>Visual</th><td>Responds to visual objects — graphs, charts, and pictures</td></tr>
+        <tr><th>Auditory</th><td>Retains information by hearing or speaking</td></tr>
+        <tr><th>Kinesthetic</th><td>Understands concepts using a hands-on approach; enjoys physical activity and expresses with body language</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout tip"><span class="lab">Exam cue</span>Graphs, charts &amp; pictures = <b>visual</b>. Physical activity &amp; body language = <b>kinesthetic</b>. (See the Learning Styles question at the end.)</div>
+  </div>
+
+  <!-- ============ LO 2.1.3 ============ -->
+  <div class="sect"><div class="n">3</div><div><div class="lo">Learning Objective 2.1.3</div><h2>Values, culture &amp; the power of context</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">💭</span>Attitudes → beliefs → values</h3>
+    <p>How a client's values — including <b>cultural and religious</b> values — shape goals and the planning process:</p>
+    <div class="tbl-scroll"><table>
+      <caption>Three related but distinct ideas</caption>
+      <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+      <tbody>
+        <tr><th>Attitudes</th><td>Reflect a person's opinions, values, and wants</td></tr>
+        <tr><th>Beliefs</th><td>Reveal one's understanding of some aspect of life — a <i>type</i> of attitude</td></tr>
+        <tr><th>Values</th><td>Attitudes and beliefs about which a person <b>feels strongly</b></td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout tip"><span class="lab">Context greatly influences perspective</span>Includes past history and current conditions: <b>cultural influences, religious preferences, family circumstances, age,</b> and <b>current life-cycle stage</b>.</div>
+  </div>
+
+  <!-- ============ LO 2.2.1 ============ -->
+  <div class="sect"><div class="n">4</div><div><div class="lo">Learning Objective 2.2.1</div><h2>Cognitive &amp; emotional biases</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🧠</span>Cognitive vs. emotional — the master distinction</h3>
+    <p><b>Cognitive biases (errors)</b> come from faulty reasoning, information-processing mistakes, or a lack of proper statistical analysis — decision-making based on well-known concepts that may or may not be correct. <b>Emotional biases</b> are <b>not related to conscious thought</b>; they arise from feelings, impulses, or intuition.</p>
+    <figure>
+      <svg viewBox="0 0 460 176" role="img" aria-label="Cognitive biases can be corrected with coaching; emotional biases are harder and may be accommodated">
+        <rect x="16" y="24" width="200" height="122" rx="12" fill="#1f4d3a" fill-opacity=".10" stroke="#1f4d3a" stroke-width="1.5"/>
+        <rect x="244" y="24" width="200" height="122" rx="12" fill="#d0613a" fill-opacity=".12" stroke="#d0613a" stroke-width="1.5"/>
+        <text x="116" y="48" font-size="13" font-weight="800" fill="#1f4d3a" text-anchor="middle">Cognitive</text>
+        <text x="344" y="48" font-size="13" font-weight="800" fill="#b34d2a" text-anchor="middle">Emotional</text>
+        <text x="116" y="72" font-size="10.5" fill="#5b4b3a" text-anchor="middle">Conscious thought /</text>
+        <text x="116" y="86" font-size="10.5" fill="#5b4b3a" text-anchor="middle">faulty reasoning</text>
+        <text x="344" y="72" font-size="10.5" fill="#5b4b3a" text-anchor="middle">Feelings, impulses,</text>
+        <text x="344" y="86" font-size="10.5" fill="#5b4b3a" text-anchor="middle">intuition</text>
+        <text x="116" y="116" font-size="11" font-weight="700" fill="#1f4d3a" text-anchor="middle">✔ Correct / mitigate</text>
+        <text x="116" y="132" font-size="10" fill="#5b4b3a" text-anchor="middle">with coaching &amp; info</text>
+        <text x="344" y="116" font-size="11" font-weight="700" fill="#b34d2a" text-anchor="middle">Harder to overcome</text>
+        <text x="344" y="132" font-size="10" fill="#5b4b3a" text-anchor="middle">— may be accommodated</text>
+      </svg>
+      <figcaption>When a bias mixes both, success is more likely by <b>focusing on the cognitive issues</b>.</figcaption>
+    </figure>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">📋</span>The 13 cognitive biases (errors)</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Cognitive biases named in the module</caption>
+      <thead><tr><th>Bias</th><th>Short description</th></tr></thead>
+      <tbody>
+        <tr><th>Illusion of control</th><td>Believing you can control or influence outcomes you actually can't</td></tr>
+        <tr><th>Money illusion</th><td>Focusing on nominal dollars rather than real, inflation-adjusted value</td></tr>
+        <tr><th>Conservatism</th><td>Clinging to prior views and under-reacting to new information</td></tr>
+        <tr><th>Hindsight</th><td>Seeing past events as having been predictable ("I knew it all along")</td></tr>
+        <tr><th>Confirmation</th><td>Seeking information that confirms existing beliefs, ignoring the rest</td></tr>
+        <tr><th>Representativeness</th><td>Judging by stereotypes or how well something fits a category</td></tr>
+        <tr><th>Mental accounting</th><td>Treating money differently based on its source or intended purpose</td></tr>
+        <tr><th>Cognitive dissonance</th><td>Discomfort from conflicting beliefs; rationalizing to reduce it</td></tr>
+        <tr><th>Self-attribution</th><td>Crediting successes to skill but blaming failures on bad luck</td></tr>
+        <tr><th>Anchoring</th><td>Over-relying on an initial reference point when deciding</td></tr>
+        <tr><th>Outcome</th><td>Judging a decision by its result rather than the quality of the decision</td></tr>
+        <tr><th>Framing</th><td>Decisions swayed by how the information is presented</td></tr>
+        <tr><th>Recency</th><td>Overweighting recent events or experiences</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">❤️</span>The 7 emotional biases</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Emotional biases named in the module</caption>
+      <thead><tr><th>Bias</th><th>Short description</th></tr></thead>
+      <tbody>
+        <tr><th>Loss aversion</th><td>Losses hurt more than equivalent gains feel good</td></tr>
+        <tr><th>Overconfidence</th><td>Overestimating one's own knowledge or abilities</td></tr>
+        <tr><th>Self-control</th><td>Favoring short-term gratification over long-term goals</td></tr>
+        <tr><th>Status quo</th><td>Preferring things stay the same — inertia / doing nothing</td></tr>
+        <tr><th>Endowment</th><td>Valuing an owned asset more simply because you already own it</td></tr>
+        <tr><th>Regret-aversion</th><td>Avoiding action for fear of making a wrong decision</td></tr>
+        <tr><th>Affinity</th><td>Making decisions that reflect one's values or align with a group</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">Exam trap — endowment vs. status quo</span><b>Endowment</b> = won't sell because the asset feels special <i>because it's owned</i> (e.g., inherited, sentimental stock). <b>Status quo</b> = won't sell simply to avoid changing anything. (See the Emotional Biases question below.)</div>
+  </div>
+
+  <!-- ============ LO 2.2.2 ============ -->
+  <div class="sect"><div class="n">5</div><div><div class="lo">Learning Objective 2.2.2</div><h2>Money scripts, comfort zones &amp; disorders</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">📜</span>What drives day-to-day money behavior</h3>
+    <p>A client's psychology — their financial comfort zone, socialization, money beliefs, and past experiences — shapes their objectives, decision-making, and actions. Two core ideas:</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Money scripts</div><div class="d">A client's underlying <b>money beliefs</b>, often formed early and largely unconscious.</div></div>
+      <div class="opt"><div class="t">Financial comfort zones</div><div class="d">The range of financial behavior a client feels at ease with.</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">⚠️</span>Five money disorders</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Disordered money behaviors named in the module</caption>
+      <thead><tr><th>Disorder</th><th>Short description</th></tr></thead>
+      <tbody>
+        <tr><th>Gambling disorder</th><td>Compulsive gambling despite harmful consequences</td></tr>
+        <tr><th>Compulsive buying</th><td>An uncontrollable urge to shop and spend</td></tr>
+        <tr><th>Financial dependence ("affluenza")</th><td>Reliance on money one did not earn</td></tr>
+        <tr><th>Financial enabling</th><td>Giving money in a way that harms the recipient; difficulty saying no</td></tr>
+        <tr><th>Hoarding disorder</th><td>Persistent difficulty parting with possessions</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <!-- ============ LO 2.3.1 ============ -->
+  <div class="sect"><div class="n">6</div><div><div class="lo">Learning Objective 2.3.1</div><h2>Motivation &amp; financial wellbeing</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🌱</span>Toward financial wellbeing</h3>
+    <p>Identify a client's motivation for achieving their goals. Key concepts:</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Financial wellbeing</div><div class="d">The overarching aim — security and freedom in financial life.</div></div>
+      <div class="opt"><div class="t">Integrated financial planning</div><div class="d">Blends the technical plan with the client's inner life.</div></div>
+      <div class="opt"><div class="t">Exterior finance</div><div class="d">The objective, technical side — numbers, products, strategies.</div></div>
+      <div class="opt"><div class="t">Interior finance</div><div class="d">The client's feelings, beliefs, and psychology about money.</div></div>
+      <div class="opt"><div class="t">Financial therapy</div><div class="d">Blends financial and therapeutic/mental-health approaches.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ LO 2.3.2 ============ -->
+  <div class="sect"><div class="n">7</div><div><div class="lo">Learning Objective 2.3.2</div><h2>Financial transparency with family</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🔦</span>Why transparency matters</h3>
+    <ul>
+      <li>Fosters <b>honesty and trust</b> in relationships</li>
+      <li>Spouses and family members must be <b>clear and unambiguous</b> about financial matters</li>
+      <li>A lack of transparency can <b>sabotage attaining shared goals</b></li>
+      <li>If partners' goals differ, at the very least each should <b>respect the other's goals</b></li>
+    </ul>
+  </div>
+
+  <!-- ============ LO 2.3.3 ============ -->
+  <div class="sect"><div class="n">8</div><div><div class="lo">Learning Objective 2.3.3</div><h2>Spotting financial conflict</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🚩</span>Behaviors &amp; sources of conflict</h3>
+    <div class="tbl-scroll"><table>
+      <caption>What to watch for — and where it comes from</caption>
+      <thead><tr><th>Behaviors signaling conflict</th><th>Sources of financial conflict</th></tr></thead>
+      <tbody>
+        <tr><td>Arguing during sessions</td><td>Family-of-origin treatment of money</td></tr>
+        <tr><td>Discussing disagreements at home</td><td>Inadequate communication</td></tr>
+        <tr><td>One partner speaking far more than the other</td><td>Different risk-tolerance levels</td></tr>
+        <tr><td>Interrupting or speaking over the other</td><td>Adult children</td></tr>
+        <tr><td>Nonverbal behaviors tied to conflict</td><td>Blended families</td></tr>
+        <tr><td>Criticizing or speaking sarcastically</td><td>Cultural differences</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout tip"><span class="lab">Give equal weight</span>To identify conflict, weigh <b>what</b> partners say <b>and how</b> they say it equally — nonverbal behavior is <b>as important as</b> the spoken word.</div>
+  </div>
+
+  <!-- ============ LO 2.3.4 ============ -->
+  <div class="sect"><div class="n">9</div><div><div class="lo">Learning Objective 2.3.4</div><h2>Agreeing on goals together</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🤝</span>Goal incongruence</h3>
+    <ul>
+      <li>Results from <b>conflicting goals</b> or indecision when establishing them</li>
+      <li><b>Common for partners</b></li>
+      <li><b>Finding common ground is key</b></li>
+      <li>Encourage partners to <b>share</b> openly</li>
+    </ul>
+  </div>
+
+  <!-- ============ LO 2.3.5 ============ -->
+  <div class="sect"><div class="n">10</div><div><div class="lo">Learning Objective 2.3.5</div><h2>Money as undue influence &amp; abuse</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">⛔</span>Three forms of financial manipulation</h3>
+    <p>Situations where money is used for undue influence, control, or abuse — power imbalances, financial abuse, and financial enabling:</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Financial control</div><div class="d">One party dominates financial decisions to hold power over another.</div></div>
+      <div class="opt"><div class="t">Financial enabling<br>(financial enmeshment)</div><div class="d">Blurred boundaries; providing money in ways that foster unhealthy dependence.</div></div>
+      <div class="opt"><div class="t">Financial abuse</div><div class="d">Using money to control, coerce, or harm another person.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ LO 2.4.1 ============ -->
+  <div class="sect"><div class="n">11</div><div><div class="lo">Learning Objective 2.4.1</div><h2>Counseling theory in practice</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🗂️</span>Financial counseling approaches</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Approaches applied to financial planning practice</caption>
+      <thead><tr><th>Approach</th><th>Emphasis</th></tr></thead>
+      <tbody>
+        <tr><th>Economic &amp; resource<br><span style="font-weight:400;color:var(--muted)">(Classical economic)</span></th><td>Assumes rational, utility-maximizing financial decisions</td></tr>
+        <tr><th>Economic &amp; resource<br><span style="font-weight:400;color:var(--muted)">(Strategic management)</span></th><td>Managing resources strategically to reach goals</td></tr>
+        <tr><th>Cognitive-behavioral</th><td>Change unhelpful thoughts and behaviors around money</td></tr>
+        <tr><th>Psychoanalytic</th><td>Explore how the unconscious and past experiences shape money behavior</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <!-- ============ LO 2.4.2 ============ -->
+  <div class="sect"><div class="n">12</div><div><div class="lo">Learning Objective 2.4.2</div><h2>Building honesty &amp; trust</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🌍</span>Cultural competence vs. cultural humility</h3>
+    <p>To develop a relationship of honesty and trust, planners should first <b>understand their own identities</b>, then bring:</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Cultural competence</div><div class="d">Knowledge and skill to work effectively across cultures.</div></div>
+      <div class="opt"><div class="t">Cultural humility</div><div class="d">Ongoing self-reflection and openness — recognizing you can never fully "master" another's culture.</div></div>
+    </div>
+    <div class="callout tip"><span class="lab">Start with self</span>Trust begins when planners understand their <b>own</b> identity and biases before judging the client's.</div>
+  </div>
+
+  <!-- ============ LO 2.5.1–2.5.3 ============ -->
+  <div class="sect"><div class="n">13</div><div><div class="lo">Learning Objectives 2.5.1 – 2.5.3</div><h2>Communication, listening &amp; connection</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">💬</span>Components of communication</h3>
+    <p><b>Interpersonal communication</b> — communicating one-on-one — is important throughout the planning process and involves both oral and nonverbal skills.</p>
+    <div class="tbl-scroll"><table>
+      <caption>Verbal vs. non-verbal communication</caption>
+      <thead><tr><th>Verbal</th><th>Non-verbal</th></tr></thead>
+      <tbody>
+        <tr><td>Pitch</td><td>Body language</td></tr>
+        <tr><td>Tone</td><td>Eye contact</td></tr>
+        <tr><td></td><td>Spatial communication</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">👂</span>Active listening skills</h3>
+    <p>Active listening is <b>key to effective communication</b>. Core techniques:</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Leading responses</div><div class="d">Prompts that encourage the client to keep talking.</div></div>
+      <div class="opt"><div class="t">Mirroring</div><div class="d">Reflecting the client back — <b>physical</b> mirroring and <b>verbal</b> mirroring.</div></div>
+      <div class="opt"><div class="t">Emotional intelligence</div><div class="d">Reading and responding to the client's emotions.</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🪜</span>Social penetration theory</h3>
+    <p>As relationships develop they become <b>less superficial and more personal and private</b>. Relationships grow as participants <b>disclose information about themselves</b>, moving through four stages:</p>
+    <figure>
+      <svg viewBox="0 0 460 150" role="img" aria-label="Four stages of social penetration theory from orientation to stable exchange">
+        <defs><marker id="arw" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#897357"/></marker></defs>
+        <rect x="10" y="46" width="98" height="56" rx="10" fill="#1f4d3a" fill-opacity=".14" stroke="#1f4d3a" stroke-width="1.3"/>
+        <rect x="122" y="42" width="98" height="60" rx="10" fill="#2f7355" fill-opacity=".16" stroke="#2f7355" stroke-width="1.3"/>
+        <rect x="234" y="38" width="98" height="64" rx="10" fill="#d0613a" fill-opacity=".14" stroke="#d0613a" stroke-width="1.3"/>
+        <rect x="346" y="32" width="104" height="70" rx="10" fill="#d0613a" fill-opacity=".22" stroke="#b34d2a" stroke-width="1.5"/>
+        <text x="59" y="70" font-size="10.5" font-weight="700" fill="#1f4d3a" text-anchor="middle">Orientation</text>
+        <text x="171" y="70" font-size="10.5" font-weight="700" fill="#2f7355" text-anchor="middle">Exploration</text>
+        <text x="283" y="66" font-size="10" font-weight="700" fill="#b34d2a" text-anchor="middle">Affective</text>
+        <text x="283" y="79" font-size="10" font-weight="700" fill="#b34d2a" text-anchor="middle">exchange</text>
+        <text x="398" y="62" font-size="10" font-weight="800" fill="#b34d2a" text-anchor="middle">Stable</text>
+        <text x="398" y="75" font-size="10" font-weight="800" fill="#b34d2a" text-anchor="middle">exchange</text>
+        <line x1="110" y1="74" x2="120" y2="74" stroke="#897357" stroke-width="1.6" marker-end="url(#arw)"/>
+        <line x1="222" y1="72" x2="232" y2="72" stroke="#897357" stroke-width="1.6" marker-end="url(#arw)"/>
+        <line x1="334" y1="70" x2="344" y2="70" stroke="#897357" stroke-width="1.6" marker-end="url(#arw)"/>
+        <text x="230" y="128" font-size="10.5" fill="#897357" text-anchor="middle">More disclosure · deeper, more private relationship →</text>
+      </svg>
+      <figcaption>Disclosure deepens the relationship stage by stage — orientation → exploration → affective exchange → stable exchange.</figcaption>
+    </figure>
+  </div>
+
+  <!-- ============ Quiz ============ -->
+  <div class="sect"><div class="n">?</div><div><div class="lo">Check yourself</div><h2>Kaplan questions from this module</h2></div></div>
+
+  <details class="quiz">
+    <summary><span class="qlab">Learning styles</span><div>Brynlee has a <b>kinesthetic</b> learning style. Which statements about Brynlee are CORRECT?<br>I. She is likely to enjoy physical activities. II. She expresses herself with body language. III. Graphs, charts, and pictures are useful in presenting information to her.</div><div class="opts">A. II only · B. III only · C. I and II · D. I, II, and III</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — I and II</div><p>A kinesthetic learner enjoys physical activities and expresses herself with body language. Statement III (graphs, charts, and pictures) describes a <b>visual</b> learning style, not kinesthetic.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Emotional biases</span><div>Phan inherited ABC stock from his late father, who bought it the day Phan was born. His planner recommends selling it, but Phan won't because it is sentimental. This best describes which emotional bias?</div><div class="opts">A. Status quo bias · B. Overconfidence · C. Endowment bias · D. Regret-aversion bias</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — Endowment bias</div><p>Endowment bias occurs when an asset is considered special and more valuable <b>simply because it is already owned</b>.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Financial conflict</span><div>Which statement regarding financial conflict is CORRECT?</div><div class="opts">A. Nonverbal behaviors are not as important as spoken words · B. Emphasize what partners discuss over how they discuss it · C. Use general conversations about expectations for adult children · D. If partners have comparable retirement balances, each should invest per their own risk tolerance</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ D — each partner invests per their own risk tolerance</div><p>With comparable retirement balances, it's often good strategy for each partner to invest per their own risk tolerance. Nonverbal behavior is <b>equally</b> important as the spoken word (A wrong), planners give equal weight to <b>what</b> and <b>how</b> partners say things (B wrong), and adult-child conflict is best eased with <b>realistic, preferably written</b> guidelines — not just general conversations (C wrong).</p></div>
+  </details>
+
+  <div class="foot">
+    Visual deck rebuilt from the College for Financial Planning® (Kaplan) FP511 Module 2 course slides.<br>
+    Verify all figures against your current course materials before the exam.
+  </div>
+
+</div>
+
+<button id="tgl" aria-label="Toggle dark mode">🌙 Theme</button>
+<script>
+/* Progress bar */
+var prog=document.getElementById('prog');
+addEventListener('scroll',function(){
+  var h=document.documentElement,b=document.body;
+  var st=h.scrollTop||b.scrollTop, sh=(h.scrollHeight||b.scrollHeight)-h.clientHeight;
+  prog.style.width=(sh>0?(st/sh*100):0)+'%';
+},{passive:true});
+/* Theme — synced with the app via localStorage cfpTheme */
+var root=document.documentElement;
+function applyTheme(t){root.setAttribute('data-theme',t);}
+try{
+  var saved=localStorage.getItem('cfpTheme');
+  if(saved){applyTheme(saved);}
+  else if(matchMedia('(prefers-color-scheme:dark)').matches){applyTheme('dark');}
+}catch(e){}
+document.getElementById('tgl').addEventListener('click',function(){
+  var t=root.getAttribute('data-theme')==='dark'?'light':'dark';
+  applyTheme(t);try{localStorage.setItem('cfpTheme',t);}catch(e){}
+});
+</script>
+
+
+<!-- deck-chrome-injected -->
+<style>
+#dkHome{position:fixed;left:max(14px,env(safe-area-inset-left));bottom:calc(14px + env(safe-area-inset-bottom));z-index:9999;
+  background:#1f4d3a;color:#fff;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:10px 15px;
+  font:700 13px/1 system-ui,-apple-system,sans-serif;text-decoration:none;box-shadow:0 8px 22px -8px rgba(0,0,0,.55);}
+#dkBack{position:fixed;left:max(14px,env(safe-area-inset-left));bottom:calc(60px + env(safe-area-inset-bottom));z-index:9999;
+  background:#fffdf8;color:#1f4d3a;border:1.5px solid #1f4d3a;border-radius:999px;padding:9px 13px;
+  font:700 13px/1 system-ui,-apple-system,sans-serif;text-decoration:none;box-shadow:0 6px 20px -6px rgba(0,0,0,.5);}
+html[data-theme="dark"] #dkBack{background:#17120e;color:#7fd3ac;border-color:#7fd3ac;}
+</style>
+<a id="dkHome" href="../index.html">🏠 Home</a>
+<script>
+(function(){try{var r=sessionStorage.getItem('cfpReaderReturn');
+  if(r&&/^[A-Za-z0-9]+\/\d+$/.test(r)){var a=document.createElement('a');a.id='dkBack';
+    a.href='../index.html#m/'+r;a.textContent='‹ Module '+r.split('/')[1];document.body.appendChild(a);}}catch(e){}})();
+</script>
+
+</body>
+</html>

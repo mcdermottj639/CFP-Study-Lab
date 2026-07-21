@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FP511 · Module 7 — Education Planning (Visual Deck)</title>
+<style>
+/* ---- Dancing Script title (vendored, offline) ---- */
+@font-face{font-family:'Dancing Script';src:url('../vendor/fonts/dancing-script-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap;}
+
+:root{
+  --canvas:#f4ecdf; --card:#fffdf8; --card2:#faf3e6;
+  --ink:#2c2118; --ink2:#5b4b3a; --muted:#897357;
+  --line:#e6d8c2; --line2:#d8c6aa;
+  --terra:#d0613a; --terra-d:#b34d2a;
+  --green:#1f4d3a; --green-l:#2f7355;
+  --gold:#c58a2e; --sky:#3a6ea5;
+  --trap:#b34d2a; --trap-bg:#fbe9e1; --tip:#2f7355; --tip-bg:#e6f2ea;
+  --key-bg:#efe4d0;
+  --radius:18px; --shadow:0 8px 26px -14px rgba(60,40,20,.55);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--canvas);}
+body{font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;color:var(--ink);-webkit-text-size-adjust:100%;}
+
+/* ---- App-synced dark mode: filter-invert the content wrapper (matches readers) ---- */
+html[data-theme="dark"]{background:#17120e;}
+html[data-theme="dark"] body{background:#17120e;}
+html[data-theme="dark"] #rdrWrap{filter:invert(.92) hue-rotate(180deg);}
+html[data-theme="dark"] #rdrWrap svg,
+html[data-theme="dark"] #rdrWrap img,
+html[data-theme="dark"] #rdrWrap canvas{filter:invert(1) hue-rotate(180deg);}
+
+#rdrWrap{max-width:820px;margin:0 auto;padding:18px 15px 90px;}
+
+/* ---- Header ---- */
+.deck-head{padding:26px 20px 22px;border-radius:var(--radius);color:#fff;
+  background:linear-gradient(135deg,#1f4d3a 0%,#2f7355 55%,#d0613a 160%);
+  box-shadow:var(--shadow);position:relative;overflow:hidden;}
+.deck-head .eyebrow{font:700 12px/1 system-ui;letter-spacing:.16em;text-transform:uppercase;opacity:.85;}
+.deck-head h1{font-family:'Dancing Script',cursive;font-size:clamp(34px,9vw,52px);margin:.15em 0 .1em;line-height:1;}
+.deck-head .sub{font-size:15px;opacity:.95;max-width:46ch;}
+.deck-head .pillrow{margin-top:14px;display:flex;flex-wrap:wrap;gap:7px;}
+.deck-head .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+  border-radius:999px;padding:5px 11px;font:600 12px/1 system-ui;}
+
+/* ---- Section divider ---- */
+.sect{margin:34px 2px 14px;display:flex;align-items:center;gap:12px;}
+.sect .n{flex:none;width:38px;height:38px;border-radius:11px;background:var(--green);color:#fff;
+  font:800 15px/38px system-ui;text-align:center;box-shadow:var(--shadow);}
+.sect h2{font-size:19px;margin:0;color:var(--green);letter-spacing:.01em;}
+.sect .lo{font:600 11px/1 system-ui;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
+
+/* ---- Slide card ---- */
+.slide{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 19px;margin:13px 0;box-shadow:var(--shadow);}
+.slide h3{margin:0 0 8px;font-size:18px;color:var(--ink);display:flex;gap:9px;align-items:baseline;}
+.slide h3 .ic{font-size:19px;}
+.slide p{margin:8px 0;color:var(--ink2);}
+.slide ul{margin:9px 0;padding-left:1.15em;}
+.slide li{margin:5px 0;color:var(--ink2);}
+.lead{font-size:16.5px;color:var(--ink)!important;}
+
+/* ---- Stat tiles ---- */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:11px;margin:14px 0 4px;}
+.tile{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:13px 14px;}
+.tile .v{font:800 24px/1.05 system-ui;color:var(--terra-d);letter-spacing:-.01em;}
+.tile .k{font-size:12.5px;color:var(--ink2);margin-top:5px;}
+
+/* ---- Callouts ---- */
+.callout{border-radius:13px;padding:12px 14px 12px 15px;margin:13px 0;border-left:5px solid;font-size:14.5px;}
+.callout.trap{background:var(--trap-bg);border-color:var(--trap);}
+.callout.tip{background:var(--tip-bg);border-color:var(--tip);}
+.callout b{color:var(--ink);}
+.callout .lab{display:block;font:800 11px/1 system-ui;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;}
+.callout.trap .lab{color:var(--trap);}
+.callout.tip .lab{color:var(--tip);}
+
+/* ---- Tables ---- */
+.tbl-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0 4px;
+  border:1px solid var(--line);border-radius:13px;}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:460px;}
+caption{caption-side:top;text-align:left;font:700 13px/1.4 system-ui;color:var(--muted);padding:2px 4px 9px;}
+th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
+thead th{background:var(--green);color:#fff;font-weight:700;font-size:12.5px;position:sticky;top:0;}
+tbody th{background:var(--card2);color:var(--ink);font-weight:700;white-space:nowrap;}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:none;}
+td.y{color:var(--tip);font-weight:700;} td.n{color:var(--trap);font-weight:700;}
+
+/* ---- Chart figure ---- */
+figure{margin:14px 0 4px;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:14px 14px 10px;}
+figure svg{width:100%;height:auto;display:block;}
+figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center;}
+.legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:9px;font:600 12.5px/1 system-ui;}
+.legend span{display:inline-flex;align-items:center;gap:6px;color:var(--ink2);}
+.legend i{width:14px;height:3px;border-radius:2px;display:inline-block;}
+
+/* ---- Three-up option groups ---- */
+.triad{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;margin:13px 0 4px;}
+.opt{background:var(--card2);border:1px solid var(--line);border-radius:13px;padding:12px 13px;}
+.opt .t{font:800 13.5px/1.2 system-ui;color:var(--green);margin-bottom:5px;}
+.opt .d{font-size:13px;color:var(--ink2);}
+
+/* ---- Worked example ---- */
+.calc{background:#1c2b24;color:#e9f3ee;border-radius:14px;padding:16px 16px 12px;margin:14px 0 4px;}
+.calc h4{margin:0 0 10px;color:#7fd3ac;font-size:14.5px;}
+.calc .step{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-top:1px solid rgba(255,255,255,.12);}
+.calc .step:first-of-type{border-top:none;}
+.calc .sn{flex:none;width:24px;height:24px;border-radius:8px;background:#2f7355;color:#fff;font:800 12px/24px system-ui;text-align:center;}
+.calc .sb{font-size:13.5px;}
+.calc .sb b{color:#fff;}
+.calc code{font:600 12.5px/1.5 ui-monospace,Menlo,monospace;color:#ffd9a8;background:rgba(255,255,255,.07);
+  padding:1px 6px;border-radius:6px;display:inline-block;margin-top:3px;}
+.calc .res{margin-top:11px;background:#d0613a;color:#fff;border-radius:10px;padding:10px 13px;font:700 15px/1.2 system-ui;}
+
+/* ---- Quiz (tap to reveal) ---- */
+.quiz{background:var(--card);border:1.5px solid var(--terra);border-radius:14px;padding:0;margin:13px 0;overflow:hidden;box-shadow:var(--shadow);}
+.quiz>summary{list-style:none;cursor:pointer;padding:15px 16px;font-size:15px;color:var(--ink);position:relative;}
+.quiz>summary::-webkit-details-marker{display:none;}
+.quiz>summary .qlab{display:inline-block;font:800 10.5px/1 system-ui;letter-spacing:.12em;color:var(--terra-d);
+  background:var(--trap-bg);border-radius:6px;padding:4px 7px;margin-bottom:8px;text-transform:uppercase;}
+.quiz>summary .opts{margin-top:9px;font-size:13.5px;color:var(--ink2);}
+.quiz>summary .tap{margin-top:10px;font:700 12.5px/1 system-ui;color:var(--terra);}
+.quiz[open]>summary .tap{display:none;}
+.quiz .ans{padding:0 16px 15px;border-top:1px dashed var(--line2);margin-top:2px;}
+.quiz .ans .correct{font:800 14px/1.4 system-ui;color:var(--tip);margin:12px 0 6px;}
+.quiz .ans p{font-size:13.5px;color:var(--ink2);margin:6px 0 0;}
+
+.foot{margin-top:34px;padding:16px;border-radius:var(--radius);background:var(--card2);border:1px solid var(--line);
+  font-size:12.5px;color:var(--muted);text-align:center;}
+
+/* ---- Floating theme toggle (standalone preview; injection can replace) ---- */
+#tgl{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:9999;
+  background:var(--terra);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:999px;
+  padding:10px 15px;font:700 13px/1 system-ui;cursor:pointer;box-shadow:0 8px 22px -8px rgba(0,0,0,.55);}
+
+/* ---- Sticky progress ---- */
+#prog{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--green),var(--terra));z-index:9999;transition:width .1s;}
+
+@media(min-width:560px){.slide{padding:22px 24px;} #rdrWrap{padding:22px 20px 90px;}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<div id="rdrWrap">
+
+  <header class="deck-head">
+    <div class="eyebrow">FP511 · General Financial Planning</div>
+    <h1>Education Planning</h1>
+    <div class="sub">Module 7 at a glance — funding calculations, the Student Aid Index (SAI), savings vehicles, gift-tax rules, and education tax credits. Built from the College for Financial Planning® (Kaplan) course deck.</div>
+    <div class="pillrow">
+      <span class="pill">🧮 Funding calc (3- &amp; 4-step)</span>
+      <span class="pill">🎓 FAFSA · SAI</span>
+      <span class="pill">🏦 529 · Coverdell · UGMA/UTMA</span>
+      <span class="pill">💳 AOTC &amp; LLC credits</span>
+    </div>
+  </header>
+
+  <!-- ============ LO 7.1.1 — Funding calculation ============ -->
+  <div class="sect"><div class="n">1</div><div><div class="lo">Learning Objective 7.1.1</div><h2>Calculate the education funding goal</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🎯</span>The three-move education funding calculation</h3>
+    <p class="lead">Every education-funding lump-sum problem follows the same shape: <b>inflate → adjust → invest</b>.</p>
+    <figure>
+      <svg viewBox="0 0 460 150" role="img" aria-label="Education funding three-step timeline: inflate tuition to start of college, adjust to a lump sum, then discount back to today">
+        <line x1="30" y1="96" x2="430" y2="96" stroke="#d8c6aa" stroke-width="2"/>
+        <!-- node 1 -->
+        <circle cx="80" cy="96" r="15" fill="#1f4d3a"/><text x="80" y="101" font-size="13" font-weight="800" fill="#fff" text-anchor="middle">1</text>
+        <text x="80" y="46" font-size="11.5" font-weight="800" fill="#1f4d3a" text-anchor="middle">INFLATE</text>
+        <text x="80" y="62" font-size="9.5" fill="#5b4b3a" text-anchor="middle">tuition → 1st</text>
+        <text x="80" y="74" font-size="9.5" fill="#5b4b3a" text-anchor="middle">yr of college</text>
+        <text x="80" y="128" font-size="9.5" fill="#897357" text-anchor="middle">Solve FV</text>
+        <!-- node 2 -->
+        <circle cx="230" cy="96" r="15" fill="#2f7355"/><text x="230" y="101" font-size="13" font-weight="800" fill="#fff" text-anchor="middle">2</text>
+        <text x="230" y="46" font-size="11.5" font-weight="800" fill="#2f7355" text-anchor="middle">ADJUST</text>
+        <text x="230" y="62" font-size="9.5" fill="#5b4b3a" text-anchor="middle">lump sum for</text>
+        <text x="230" y="74" font-size="9.5" fill="#5b4b3a" text-anchor="middle">all college yrs</text>
+        <text x="230" y="128" font-size="9.5" fill="#897357" text-anchor="middle">Solve PV (BEG)</text>
+        <!-- node 3 -->
+        <circle cx="380" cy="96" r="15" fill="#d0613a"/><text x="380" y="101" font-size="13" font-weight="800" fill="#fff" text-anchor="middle">3</text>
+        <text x="380" y="46" font-size="11.5" font-weight="800" fill="#b34d2a" text-anchor="middle">INVEST</text>
+        <text x="380" y="62" font-size="9.5" fill="#5b4b3a" text-anchor="middle">discount to</text>
+        <text x="380" y="74" font-size="9.5" fill="#5b4b3a" text-anchor="middle">today</text>
+        <text x="380" y="128" font-size="9.5" fill="#897357" text-anchor="middle">Solve PV</text>
+      </svg>
+      <figcaption>Inflate today's cost to the first year of college, size the lump sum needed for all years, then discount that lump sum to today.</figcaption>
+    </figure>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧮</span>Worked example — Wayne &amp; Mark (lump sum today)</h3>
+    <p>Mark is <b>4</b>; college starts at <b>18</b> (14 years out) for a <b>4-year</b> program. Tuition today <b>$25,000</b>, college inflation <b>6%</b>, investment return <b>8%</b>. How much must Wayne set aside <b>today</b>?</p>
+    <div class="calc">
+      <h4>Serial-payment method — INFLATE · ADJUST · INVEST</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Inflate tuition to the first year of college</b> (14 years).<br><code>$25,000 (PV) · 14 N · 6 I/YR → FV = $56,522.60</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Lump sum to cover all 4 years</b> at the inflation-adjusted rate, payments needed at the start of each year (BEG).<br><code>[(1.08 ÷ 1.06) − 1] × 100 = 1.8868 I/YR · 4 N · PMT $56,522.60 (BEG) → PV = $219,887.28</code></div></div>
+      <div class="step"><div class="sn">3</div><div class="sb"><b>Discount that lump sum back to today</b> (14 years) at 8%.<br><code>$219,887.28 (FV) · 14 N · 8 I/YR → PV</code></div></div>
+      <div class="res">Wayne must invest ≈ $74,863.05 today to fund Mark's education.</div>
+    </div>
+    <div class="callout tip"><span class="lab">Why an inflation-adjusted rate?</span>The serial-payment method uses <b>[(1 + return) ÷ (1 + inflation) − 1]</b> as I/YR so a growing tuition stream and a growing investment are compared on the same footing.</div>
+  </div>
+
+  <!-- ============ LO 7.1.2 — SAI ============ -->
+  <div class="sect"><div class="n">2</div><div><div class="lo">Learning Objective 7.1.2</div><h2>Estimating the Student Aid Index (SAI)</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">📄</span>FAFSA and the move from EFC to SAI</h3>
+    <ul>
+      <li>The <b>FAFSA®</b> (Free Application for Federal Student Aid) is the common form completed for financial-aid consideration.</li>
+      <li>The old <b>Expected Family Contribution (EFC)</b> has transitioned to the <b>Student Aid Index (SAI)</b>.</li>
+      <li>The SAI calculation is <b>similar</b> to the old EFC calculation.</li>
+    </ul>
+    <div class="callout tip"><span class="lab">Key changes</span>Pell Grant eligibility <b>expanded</b>; FAFSA <b>simplified</b>; the <b>number of siblings in college no longer reduces the SAI</b>.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">📊</span>What drives the SAI — income &amp; assets</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Variables impacting the SAI (2025–2026)</caption>
+      <thead><tr><th>Source</th><th>Income counted</th><th>Assets counted</th></tr></thead>
+      <tbody>
+        <tr><th>Parents</th><td><b>22%–47%</b> of MAGI above the income protection allowance</td><td><b>5%–5.64%</b> of included assets<br><span style="color:var(--muted)">excludes home value &amp; retirement accounts</span></td></tr>
+        <tr><th>Students</th><td><b>50%</b> of income above the protected amount<br><span style="color:var(--muted)">protected amount = $11,510</span></td><td><b>20%</b> of student assets<br><span style="color:var(--muted)">bank, brokerage, CDs, UGMA/UTMA</span></td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">Exam trap — asset placement matters</span>A dollar in a <b>student's</b> name is assessed at <b>20%</b>; the same dollar as a <b>parent</b> asset is assessed at only <b>5%–5.64%</b>. Parent-owned 529 distributions are <b>NOT</b> counted as income in the SAI.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">⚖️</span>The asset-assessment gap, visualized</h3>
+    <figure>
+      <svg viewBox="0 0 460 150" role="img" aria-label="Parent assets assessed at up to 5.64 percent versus student assets assessed at 20 percent">
+        <line x1="120" y1="20" x2="120" y2="120" stroke="#d8c6aa" stroke-width="1.5"/>
+        <line x1="120" y1="120" x2="440" y2="120" stroke="#d8c6aa" stroke-width="1.5"/>
+        <!-- parent bar (5.64%) -->
+        <rect x="130" y="98" width="90" height="22" rx="4" fill="#1f4d3a"/>
+        <text x="112" y="113" font-size="10.5" font-weight="700" fill="#5b4b3a" text-anchor="end">Parent</text>
+        <text x="228" y="113" font-size="11" font-weight="800" fill="#1f4d3a">up to 5.64%</text>
+        <!-- student bar (20%) -->
+        <rect x="130" y="58" width="290" height="22" rx="4" fill="#d0613a"/>
+        <text x="112" y="73" font-size="10.5" font-weight="700" fill="#5b4b3a" text-anchor="end">Student</text>
+        <text x="330" y="73" font-size="11" font-weight="800" fill="#fff" text-anchor="middle">20%</text>
+      </svg>
+      <figcaption>Share of the account balance added to the SAI — student-owned assets hurt aid eligibility roughly 3.5× more than parent-owned assets.</figcaption>
+      <div class="legend"><span><i style="background:#1f4d3a"></i>Parent asset (5%–5.64%)</span><span><i style="background:#d0613a"></i>Student asset (20%)</span></div>
+    </figure>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧮</span>Worked example — estimating a financial-aid package</h3>
+    <p>Total annual college cost <b>$65,000</b>. Parent assets included at the maximum <b>5.64%</b>; student-income protected amount <b>$11,510</b>. Parent income <b>$150,000</b> (above the protected amount, counted at 22%), parent assets <b>$175,000</b>, student income <b>$12,200</b>, student assets <b>$30,000</b>.</p>
+    <div class="calc">
+      <h4>SAI = [22%–47% income (p) + 5%–5.64% assets (p)] + [50% income (s) + 20% assets (s)]</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Parent income</b> — 22% of $150,000.<br><code>0.22 × $150,000 = $33,000</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Parent assets</b> — 5.64% of $175,000.<br><code>0.0564 × $175,000 = $9,870</code></div></div>
+      <div class="step"><div class="sn">3</div><div class="sb"><b>Student income above protected</b> ($12,200 − $11,510).<br><code>$12,200 − $11,510 = $690</code></div></div>
+      <div class="step"><div class="sn">4</div><div class="sb"><b>Student assets</b> — 20% of $30,000.<br><code>0.20 × $30,000 = $6,000</code></div></div>
+      <div class="step"><div class="sn">5</div><div class="sb"><b>Sum to the SAI, then subtract from total cost.</b><br><code>($33,000 + $9,870) + ($690 + $6,000) = $49,560 SAI</code><br><code>$65,000 − $49,560 = $15,440 estimated aid</code></div></div>
+      <div class="res">Estimated financial-aid package ≈ $15,440.</div>
+    </div>
+    <div class="callout tip"><span class="lab">Reading the result</span>The <b>SAI is what the family is expected to contribute</b>; the aid package fills the gap between total cost and the SAI. A lower SAI → more potential aid.</div>
+  </div>
+
+  <!-- ============ LO 7.1.3 — Eligibility / grants ============ -->
+  <div class="sect"><div class="n">3</div><div><div class="lo">Learning Objective 7.1.3</div><h2>Financial-aid eligibility &amp; federal grants</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🏅</span>Federal grants (need-based, require the FAFSA)</h3>
+    <div class="triad">
+      <div class="opt"><div class="t">Federal Pell Grants</div><div class="d">Core need-based grant; eligibility expanded under the FAFSA changes.</div></div>
+      <div class="opt"><div class="t">FSEOG</div><div class="d">Federal Supplemental Educational Opportunity Grants.</div></div>
+      <div class="opt"><div class="t">TEACH Grants</div><div class="d">Teacher Education Assistance for College and Higher Education.</div></div>
+      <div class="opt"><div class="t">Iraq &amp; Afghanistan Service Grants</div><div class="d">For eligible surviving family of service members.</div></div>
+    </div>
+    <div class="callout tip"><span class="lab">Other aid sources</span>Beyond federal grants: <b>college</b>, <b>nonprofit</b>, <b>state government</b>, and <b>private organization</b> aid.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">✅</span>Federal grant eligibility — the checklist</h3>
+    <ul>
+      <li>Be a <b>citizen or eligible noncitizen</b> with a valid <b>Social Security number</b></li>
+      <li>Hold a <b>high school diploma or GED</b> (or approved homeschooling)</li>
+      <li>Be enrolled as a <b>regular student</b> in an eligible degree/certificate program</li>
+      <li>Maintain <b>satisfactory academic progress</b></li>
+      <li>Not owe a refund on a federal grant or be in default on a federal loan</li>
+      <li>Be <b>registered with Selective Service</b> (if required)</li>
+      <li>No drug conviction for an offense while receiving federal student aid</li>
+    </ul>
+  </div>
+
+  <details class="quiz">
+    <summary><span class="qlab">Financial aid</span><div>Which U.S. Department of Education program(s) are <b>need-based</b>, have eligibility requirements, and require completion of the FAFSA?<br>I. Pell Grant · II. FSEOG · III. Unsubsidized Stafford Loan · IV. TEACH Grants</div><div class="opts">A. III only · B. I and II · C. III and IV · D. I, II, and IV</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — I and II</div><p>Each federal grant requires a FAFSA and need-based eligibility. An <b>unsubsidized Stafford loan is not income-based / not need-based</b>, so it is excluded.</p></div>
+  </details>
+
+  <!-- ============ LO 7.2.1 — Funding strategy ============ -->
+  <div class="sect"><div class="n">4</div><div><div class="lo">Learning Objective 7.2.1</div><h2>Building the funding strategy</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🏦</span>Federally funded loans</h3>
+    <div class="triad">
+      <div class="opt"><div class="t">Stafford — Subsidized</div><div class="d">Need-based; the government pays interest while in school.</div></div>
+      <div class="opt"><div class="t">Stafford — Unsubsidized</div><div class="d">Not need-based; interest accrues from disbursement.</div></div>
+      <div class="opt"><div class="t">PLUS loans</div><div class="d">Parent Loans to Undergraduate Students.</div></div>
+      <div class="opt"><div class="t">Direct Consolidation</div><div class="d">Combines multiple federal loans into one.</div></div>
+    </div>
+    <div class="callout tip"><span class="lab">Round out the plan</span>Layer in <b>scholarships</b>, <b>college work study</b>, and <b>education tax credits</b> (LO 7.3.1) to reduce out-of-pocket cost efficiently.</div>
+  </div>
+
+  <!-- ============ LO 7.2.2 — Meeting savings requirements ============ -->
+  <div class="sect"><div class="n">5</div><div><div class="lo">Learning Objective 7.2.2</div><h2>Will the savings plan get there?</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🧮</span>Worked example — the Keaton family's 529 (4-step)</h3>
+    <p>The Keatons invest <b>$375/month</b> into a 529 for newborn Annie. Current tuition <b>$15,000/yr</b>, education inflation <b>5.25%</b>, 529 return <b>8%</b>, college begins at <b>18</b> for <b>5 years</b>. Will $375/month meet the goal?</p>
+    <div class="calc">
+      <h4>INFLATE · ADJUST · INVEST · COMPARE</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Future cost of the first year of college</b> (END mode, 1 P/YR).<br><code>$15,000 (PV) · 5.25 I/YR · 18 N → FV = $37,678.11</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Account balance needed to fund all 5 years</b> — money needed at start of college (BEG mode).<br><code>$37,678.11 PMT · [(1.08 ÷ 1.0525) − 1] × 100 = 2.6128 I/YR · 5 N → PV = $179,037.80</code></div></div>
+      <div class="step"><div class="sn">3</div><div class="sb"><b>Future value of the current $375 monthly payments</b> (END mode, 12 P/YR).<br><code>$375 PMT · 8 I/YR · 18 × 12 = 216 N → FV = $180,032.30</code></div></div>
+      <div class="step"><div class="sn">4</div><div class="sb"><b>Compare Step 3 to Step 2.</b><br><code>$180,032.30 − $179,037.80 = +$994.50</code></div></div>
+      <div class="res">Surplus of ≈ $994.50 — the $375/month plan meets the goal.</div>
+    </div>
+    <div class="callout trap"><span class="lab">Watch the mode &amp; P/YR</span>Step 1 is <b>END, 1 P/YR</b>; Step 2 switches to <b>BEG</b> (tuition is due at the start of each year); Step 3 is <b>END, 12 P/YR</b> with N = 216. Mixing these up is the classic error.</div>
+  </div>
+
+  <!-- ============ LO 7.2.3 — Compare vehicles ============ -->
+  <div class="sect"><div class="n">6</div><div><div class="lo">Learning Objective 7.2.3</div><h2>Comparing education savings vehicles</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">💰</span>Key numbers at a glance</h3>
+    <div class="tiles">
+      <div class="tile"><div class="v">$2,000</div><div class="k">Max annual Coverdell (CESA) contribution per beneficiary — all donors combined</div></div>
+      <div class="tile"><div class="v">$10,000</div><div class="k">Annual 529 limit for K–12 tuition (elementary &amp; secondary)</div></div>
+      <div class="tile"><div class="v">$190,000</div><div class="k">Accelerated 5-year 529 gift per couple, gift-tax-free (2025)</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧭</span>529 vs. Coverdell vs. UGMA/UTMA</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Education savings vehicle comparison</caption>
+      <thead><tr><th>Feature</th><th>§529 plan</th><th>Coverdell (CESA)</th><th>UGMA / UTMA</th></tr></thead>
+      <tbody>
+        <tr><th>Contribution limit</th><td>High (gift-tax driven; 5-yr accelerated allowed)</td><td class="n">$2,000 / yr per beneficiary (all donors)</td><td>No statutory limit (gift to the minor)</td></tr>
+        <tr><th>Federally tax deductible</th><td class="n">No</td><td class="n">No</td><td class="n">No</td></tr>
+        <tr><th>Tax-deferred growth</th><td class="y">Yes</td><td class="y">Yes</td><td class="n">No (kiddie tax may apply)</td></tr>
+        <tr><th>Tax-free qualified withdrawals</th><td class="y">Yes</td><td class="y">Yes</td><td class="n">No</td></tr>
+        <tr><th>Covers K–12</th><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes (any purpose for the minor)</td></tr>
+        <tr><th>College &amp; postgraduate</th><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><th>Financial-aid asset</th><td>Parent asset (5%–5.64%)</td><td>Parent asset (5%–5.64%)</td><td class="n">Student asset (20%)</td></tr>
+        <tr><th>Control of funds</th><td class="y">Owner keeps control</td><td>Responsible individual until majority</td><td class="n">Custodian → child at age of majority</td></tr>
+        <tr><th>Portable to another student</th><td class="y">Yes — change beneficiary</td><td class="y">Yes — change beneficiary</td><td class="n">No — irrevocable gift to the minor</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout tip"><span class="lab">CESA &amp; 529 together</span>Per the Kaplan grid, a Coverdell and a §529 can be <b>used simultaneously</b> for the same beneficiary — neither is federally deductible, but both grow tax-deferred with tax-free qualified withdrawals for K–12 and higher education.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🔁</span>Portability &amp; control at the age of majority</h3>
+    <p>If Student A no longer needs the funds, can the account be retitled for Student B?</p>
+    <ul>
+      <li><b>529s and Coverdell (CESA)</b> — beneficiary can generally be <b>changed</b> (portable).</li>
+      <li><b>UGMA/UTMA</b> — an <b>irrevocable gift to the child</b>; not retitled to another student.</li>
+      <li><b>Trusts</b> — governed by the trust terms (e.g., 2503(b), 2503(c), spendthrift provisions).</li>
+    </ul>
+    <div class="callout trap"><span class="lab">Who controls the money?</span>With <b>UGMA/UTMA</b>, the child <b>assumes control at the age of majority</b> (typically 18 or 21) even if education is no longer the goal. 529 owners keep control throughout.</div>
+  </div>
+
+  <details class="quiz">
+    <summary><span class="qlab">Coverdell (CESA)</span><div>Andy established a CESA for his grandson Luke (age 3) and contributed $2,000. Which is CORRECT?<br>I. Funds may be used for Luke's <b>school uniforms</b> at a private kindergarten (K-12).<br>II. Luke's aunt Debbie can open a <b>separate</b> CESA for Luke and add another $2,000.</div><div class="opts">A. I only · B. II only · C. Both I and II · D. Neither</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ A — I only</div><p>CESAs cover qualified <b>K–12</b> expenses including uniforms. But the <b>$2,000 maximum is per student, regardless of the number of donors</b> — so Debbie cannot contribute an additional $2,000 for Luke.</p></div>
+  </details>
+
+  <!-- ============ LO 7.2.4 — Tax / gift implications ============ -->
+  <div class="sect"><div class="n">7</div><div><div class="lo">Learning Objective 7.2.4</div><h2>Gift-tax &amp; planning implications</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🎁</span>Gift-tax rules and 529s</h3>
+    <ul>
+      <li>Contributions are <b>completed gifts</b> that can use the <b>annual gift-tax exclusion</b>.</li>
+      <li><b>Accelerated (5-year) contribution</b> — also called ratable, superfunding, or 5-year gift-tax averaging.</li>
+      <li>A couple can combine their five-year accelerated 529 contributions and deposit <b>$190,000 (2025)</b> without gift tax.</li>
+      <li>Favorable <b>estate-tax treatment</b> — the account generally leaves the donor's estate despite retained control.</li>
+    </ul>
+    <div class="tiles">
+      <div class="tile"><div class="v">5 yr</div><div class="k">Gift-tax averaging window for accelerated 529 funding</div></div>
+      <div class="tile"><div class="v">$190,000</div><div class="k">Couple's combined superfunded 529 contribution, gift-tax-free (2025)</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">⏱️</span>Why starting now matters</h3>
+    <p>Three forces drive the funding math:</p>
+    <ul>
+      <li>The <b>persistent education inflation rate</b> — costs keep climbing.</li>
+      <li>The <b>persistence of time</b> — compounding rewards an early start.</li>
+      <li><b>Changing the "N" value</b> — more years of savings dramatically lowers the required monthly deposit.</li>
+    </ul>
+  </div>
+
+  <!-- ============ LO 7.3.1 — Education tax credits ============ -->
+  <div class="sect"><div class="n">8</div><div><div class="lo">Learning Objective 7.3.1</div><h2>Education tax credits — AOTC &amp; LLC</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">💳</span>The two credits at a glance</h3>
+    <div class="tiles">
+      <div class="tile"><div class="v">$2,500</div><div class="k">American Opportunity Tax Credit — max per student (100% of first $2,000 + 25% of next $2,000)</div></div>
+      <div class="tile"><div class="v">40%</div><div class="k">Portion of the AOTC that may be refundable</div></div>
+      <div class="tile"><div class="v">$2,000</div><div class="k">Lifetime Learning Credit — max per family (20% of first $10,000 of expenses)</div></div>
+    </div>
+    <div class="callout tip"><span class="lab">Per student vs. per return</span>The <b>AOTC is claimed per student</b> (each eligible child), while the <b>LLC is a single per-family / per-return credit</b> no matter how many students.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">📋</span>AOTC vs. Lifetime Learning Credit</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Education tax credit comparison</caption>
+      <thead><tr><th>Feature</th><th>American Opportunity (AOTC)</th><th>Lifetime Learning (LLC)</th></tr></thead>
+      <tbody>
+        <tr><th>Maximum credit</th><td>Up to <b>$2,500 per student</b></td><td>Up to <b>$2,000 per return</b></td></tr>
+        <tr><th>Calculation</th><td>100% of first $2,000 + 25% of next $2,000</td><td>20% of first $10,000 of expenses</td></tr>
+        <tr><th>Years available</th><td class="n">First 4 years of postsecondary only</td><td class="y">All years / unlimited</td></tr>
+        <tr><th>Degree requirement</th><td>Must pursue an undergraduate degree/credential</td><td>No degree requirement</td></tr>
+        <tr><th>Enrollment</th><td>At least <b>half-time</b></td><td>One or more courses — any enrollment status</td></tr>
+        <tr><th>Refundable?</th><td class="y">Up to 40% refundable</td><td class="n">Nonrefundable</td></tr>
+        <tr><th>Felony drug conviction</th><td class="n">Disqualifies the student</td><td class="y">Rule does not apply</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">MAGI phaseouts</span>Both credits phase out at <b>$80,000–$90,000 single</b> and <b>$160,000–$180,000 MFJ</b>. No <b>double-dipping</b> — the same expense can't fund two benefits.</div>
+  </div>
+
+  <details class="quiz">
+    <summary><span class="qlab">AOTC &amp; LLC</span><div>Marshall and Rachel have three children in college full-time. Which is CORRECT?<br>I. They may claim a Lifetime Learning Credit for the <b>entire family</b>.<br>II. An American Opportunity Tax Credit may be claimed for <b>each child</b>.</div><div class="opts">A. I only · B. II only · C. Both I and II · D. Neither</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — Both I and II</div><p>The <b>LLC is per return</b> (one credit for the family), while the <b>AOTC is per student</b> (claimable for each of the three children). Both statements are true.</p></div>
+  </details>
+
+  <!-- ============ LO 7.3.2 — Employer assistance ============ -->
+  <div class="sect"><div class="n">9</div><div><div class="lo">Learning Objective 7.3.2</div><h2>Employer education assistance (§127)</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🏢</span>IRC Section 127 educational assistance</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Employer educational assistance program (§127)</caption>
+      <thead><tr><th>Question</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><th>Is the benefit taxed?</th><td class="y">No — benefits are not taxed to the employee</td></tr>
+        <tr><th>Annual limit</th><td><b>$5,250</b></td></tr>
+        <tr><th>Qualifying expenses</th><td>Tuition, books, supplies, equipment, and required enrollment fees</td></tr>
+        <tr><th>Education that qualifies</th><td>All undergraduate and graduate</td></tr>
+        <tr><th>Income phaseout</th><td class="y">None</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tiles">
+      <div class="tile"><div class="v">$5,250</div><div class="k">Annual §127 employer educational assistance excludable from income</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧾</span>Worked example — Jane's reimbursement (§127)</h3>
+    <p>Jane, a paraplanner, takes night classes in music composition; her employer reimburses under §127. Which expenses qualify?</p>
+    <div class="calc">
+      <h4>Total the QUALIFYING §127 expenses</h4>
+      <div class="step"><div class="sn">✓</div><div class="sb">Enrollment fees <b>$250</b> · Tuition <b>$3,000</b> · Books <b>$250</b> · Computer lab fee <b>$50</b> · Keyboard lab fee <b>$25</b></div></div>
+      <div class="step"><div class="sn">✗</div><div class="sb"><b>School apparel $175</b> — not a qualifying educational expense; excluded.</div></div>
+      <div class="step"><div class="sn">=</div><div class="sb"><code>$250 + $3,000 + $250 + $50 + $25 = $3,575</code></div></div>
+      <div class="res">Qualifying §127 reimbursement = $3,575 (school apparel excluded).</div>
+    </div>
+    <div class="callout trap"><span class="lab">Exam trap</span>Personal items like <b>school apparel</b> don't qualify even when the coursework does — only tuition, fees, books, supplies, and required equipment count under §127.</div>
+  </div>
+
+  <div class="foot">
+    Visual deck rebuilt from the College for Financial Planning® (Kaplan) FP511 Module 7 course slides.<br>
+    Verify all figures against your current course materials before the exam.
+  </div>
+
+</div>
+
+<button id="tgl" aria-label="Toggle dark mode">🌙 Theme</button>
+<script>
+/* Progress bar */
+var prog=document.getElementById('prog');
+addEventListener('scroll',function(){
+  var h=document.documentElement,b=document.body;
+  var st=h.scrollTop||b.scrollTop, sh=(h.scrollHeight||b.scrollHeight)-h.clientHeight;
+  prog.style.width=(sh>0?(st/sh*100):0)+'%';
+},{passive:true});
+/* Theme — synced with the app via localStorage cfpTheme */
+var root=document.documentElement;
+function applyTheme(t){root.setAttribute('data-theme',t);}
+try{
+  var saved=localStorage.getItem('cfpTheme');
+  if(saved){applyTheme(saved);}
+  else if(matchMedia('(prefers-color-scheme:dark)').matches){applyTheme('dark');}
+}catch(e){}
+document.getElementById('tgl').addEventListener('click',function(){
+  var t=root.getAttribute('data-theme')==='dark'?'light':'dark';
+  applyTheme(t);try{localStorage.setItem('cfpTheme',t);}catch(e){}
+});
+</script>
+
+
+<!-- deck-chrome-injected -->
+<style>
+#dkHome{position:fixed;left:max(14px,env(safe-area-inset-left));bottom:calc(14px + env(safe-area-inset-bottom));z-index:9999;
+  background:#1f4d3a;color:#fff;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:10px 15px;
+  font:700 13px/1 system-ui,-apple-system,sans-serif;text-decoration:none;box-shadow:0 8px 22px -8px rgba(0,0,0,.55);}
+#dkBack{position:fixed;left:max(14px,env(safe-area-inset-left));bottom:calc(60px + env(safe-area-inset-bottom));z-index:9999;
+  background:#fffdf8;color:#1f4d3a;border:1.5px solid #1f4d3a;border-radius:999px;padding:9px 13px;
+  font:700 13px/1 system-ui,-apple-system,sans-serif;text-decoration:none;box-shadow:0 6px 20px -6px rgba(0,0,0,.5);}
+html[data-theme="dark"] #dkBack{background:#17120e;color:#7fd3ac;border-color:#7fd3ac;}
+</style>
+<a id="dkHome" href="../index.html">🏠 Home</a>
+<script>
+(function(){try{var r=sessionStorage.getItem('cfpReaderReturn');
+  if(r&&/^[A-Za-z0-9]+\/\d+$/.test(r)){var a=document.createElement('a');a.id='dkBack';
+    a.href='../index.html#m/'+r;a.textContent='‹ Module '+r.split('/')[1];document.body.appendChild(a);}}catch(e){}})();
+</script>
+
+</body>
+</html>
