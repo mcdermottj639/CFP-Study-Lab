@@ -895,6 +895,10 @@ function openDeck(course,mod,idx){
   try{ if(mod) sessionStorage.setItem('cfpReaderReturn',course+'/'+mod); else sessionStorage.removeItem('cfpReaderReturn'); }catch(e){}
   location.href=d.src;
 }
+// Smooth-scroll the Module Hub down to a media section — used by the quick-nav
+// buttons when a module has MULTIPLE files, so we jump to the list instead of
+// guessing which one to open.
+function hubScroll(id){var e=document.getElementById(id); if(e)e.scrollIntoView({behavior:'smooth',block:'start'});}
 // launch a scoped study session for this module from the hub
 function studyScoped(course,mod,mode){
   window.MODF=String(mod);
@@ -993,13 +997,13 @@ function renderModuleHub(course,mod){
   const hasCalc=(typeof CALCGEN!=='undefined')&&CALCGEN.some(g=>g.m===course&&g.mods&&g.mods.indexOf(mod)>=0);
   const infos=((window.INFOGRAPHICS||{})[course]||{})[mod]||[];
   if(infos.length)ensureInfoCSS(); // thumbnail styles must exist before the card paints (not just on popup open)
-  const infoHtml=infos.length?'<div class="card" style="margin-top:12px"><div class="flex"><div><h3>Visual guide'+(infos.length>1?'s':'')+'</h3><div class="small muted">One-page infographic — opens fit-to-screen; tap the image to zoom in.</div></div></div>'+
+  const infoHtml=infos.length?'<div class="card" id="hubInfo" style="margin-top:12px"><div class="flex"><div><h3>Visual guide'+(infos.length>1?'s':'')+'</h3><div class="small muted">One-page infographic — opens fit-to-screen; tap the image to zoom in.</div></div></div>'+
     '<div class="row" style="flex-wrap:wrap;gap:10px;margin-top:10px">'+infos.map((g,i)=>'<div class="infothumb" onclick="openInfographic(\''+course+'\','+mod+','+i+')"><img src="'+g.src+'" alt="'+g.title.replace(/"/g,'&quot;')+'" loading="lazy"><div class="small">'+g.title+'</div></div>').join('')+'</div></div>':'';
   const decks=((window.DECKS||{})[course]||{})[mod]||[];
-  const deckHtml=decks.length?'<div class="card" style="margin-top:12px"><div class="flex"><div><h3>Slide deck'+(decks.length>1?'s':'')+'</h3><div class="small muted">Official Kaplan course slides &amp; AI study decks — tap to view full-screen.</div></div></div>'+
+  const deckHtml=decks.length?'<div class="card" id="hubDecks" style="margin-top:12px"><div class="flex"><div><h3>Slide deck'+(decks.length>1?'s':'')+'</h3><div class="small muted">Official Kaplan course slides &amp; AI study decks — tap to view full-screen.</div></div></div>'+
     '<div class="row" style="flex-wrap:wrap;gap:8px;margin-top:10px">'+decks.map((g,i)=>'<button class="btn gray" onclick="openDeck(\''+course+'\','+mod+','+i+')">📊 '+g.title+deckKindBadge(g.kind)+'</button>').join('')+'</div></div>':'';
   const vids=((window.VIDEO||{})[course]||{})[mod]||[];
-  const vidHtml=vids.length?'<div class="card" style="margin-top:12px"><div class="flex"><div><h3>Video'+(vids.length>1?'s':'')+'</h3><div class="small muted">NotebookLM video overview — tap to watch full-screen.</div></div></div>'+
+  const vidHtml=vids.length?'<div class="card" id="hubVideo" style="margin-top:12px"><div class="flex"><div><h3>Video'+(vids.length>1?'s':'')+'</h3><div class="small muted">NotebookLM video overview — tap to watch full-screen.</div></div></div>'+
     '<div class="row" style="flex-wrap:wrap;gap:8px;margin-top:10px">'+vids.map((g,i)=>'<button class="btn gray" onclick="openVideo(\''+course+'\','+mod+','+i+')">🎬 '+g.title+'</button>').join('')+'</div></div>':'';
   sec.innerHTML=
     '<div class="card" style="margin-bottom:12px;border-left:4px solid '+color+'">'+
@@ -1018,9 +1022,9 @@ function renderModuleHub(course,mod){
         (mcqs.length>=3?'<button class="btn gray" onclick="studyScoped(\''+course+'\','+mod+',\'exam\')">📝 Exam'+(mcqs.length<8?' <span style="opacity:.65;font-weight:400">· limited</span>':'')+'</button>':'')+
         (hasCalc?'<button class="btn gray" onclick="studyScoped(\''+course+'\','+mod+',\'calc\')">🧮 Calc drills</button>':'')+
         ((cards.length||hasCheat)?'<button class="btn gray" onclick="openCheatSheet(\''+course+'\','+mod+')">📄 Cheat sheet</button>':'')+
-        (infos.length?'<button class="btn gray" onclick="openInfographic(\''+course+'\','+mod+',0)">📊 Visual guide'+(infos.length>1?'s':'')+'</button>':'')+
-        (decks.length?'<button class="btn gray" onclick="openDeck(\''+course+'\','+mod+',0)">📊 Slide deck'+(decks.length>1?'s':'')+'</button>':'')+
-        (vids.length?'<button class="btn gray" onclick="openVideo(\''+course+'\','+mod+',0)">🎬 Video'+(vids.length>1?'s':'')+'</button>':'')+
+        (infos.length?'<button class="btn gray" onclick="'+(infos.length>1?'hubScroll(\'hubInfo\')':'openInfographic(\''+course+'\','+mod+',0)')+'">📊 Visual guide'+(infos.length>1?'s':'')+'</button>':'')+
+        (decks.length?'<button class="btn gray" onclick="'+(decks.length>1?'hubScroll(\'hubDecks\')':'openDeck(\''+course+'\','+mod+',0)')+'">📊 Slide deck'+(decks.length>1?'s':'')+'</button>':'')+
+        (vids.length?'<button class="btn gray" onclick="'+(vids.length>1?'hubScroll(\'hubVideo\')':'openVideo(\''+course+'\','+mod+',0)')+'">🎬 Video'+(vids.length>1?'s':'')+'</button>':'')+
       '</div></div>'+
     objHtml+synHtml+exHtml+infoHtml+deckHtml+vidHtml+qref;
 }
