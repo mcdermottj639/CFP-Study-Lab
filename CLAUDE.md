@@ -121,6 +121,38 @@ advance switches don't (guarded by an `autoSwitch` flag on the tab-click stop-li
   chain over the now-hundreds-of-blocks playlist can't recurse synchronously deep enough to blow the
   stack. Double-tap-to-start and the ¶ counter operate over the whole-reader playlist (the counter
   shows `<tab label> · ¶ pos/total`).
+
+### Reader "Teach mode" — a teacher talks you through it (TTS, v2.72.0)
+Distinct from the verbatim podcast: **Teach mode** speaks a **conversational teacher's script** (the
+"why," the plain-English version, the gotchas) while the reader **auto-scrolls to and expands the
+section being taught** — "a teacher walking you through it as you scan," which the literal read-aloud
+isn't. Same offline OS voice; different *words*. Built as a second mode inside the SAME player
+(`reader-tts.js`) so it reuses the docked bar, pause/resume, speed, wake lock, and background recovery.
+- **Content lives in `reader-teach.js`** (shared; injected BEFORE `reader-tts.js` by
+  `inject_reader_theme.mjs`'s pattern with its own `reader-teach-injected` marker — currently injected
+  via a one-off perl edit, add it to the injector if re-importing a reader; precached in `sw.js`, in
+  `CORE_ASSETS`): `window.READER_TEACH[<reader file>][<tab data-tab>] = [ {at, say}, … ]`. `at` = a
+  substring matched (case-insensitive) against a section header (`.collapsible-header`/`.ch`/`h1-4`) in
+  that tab's panel; `say` = the narration. **Grounded strictly in the reader's own textbook-verified
+  content** (the CLAUDE.md standing rule permits grounding from the audited reader). Add a tab/course =
+  add an entry here, **no engine change**.
+- **Player mechanics.** A second **👩‍🏫 Teach** FAB (`#rtTeachFab`, purple, stacked above the 🎙️ Podcast
+  FAB) is shown **only on tabs that have authored narration** (`hasTeach(curTabId())`; refreshed on every
+  manual tab switch via `updateTeachFab`, hidden while playing). `start('teach')` builds a **current-tab**
+  playlist (`buildTeachPlaylist`): each `{at,say}` → an anchor element + one entry per **sentence**
+  (`splitSentences`), all sharing the anchor. `reveal()` expands a collapsed section header
+  (class-based: FP512 `.collapsed`, FP511 `.closed`; clicks only when actually collapsed) and, via
+  `lastRevealEl`, **scrolls once per section** instead of re-yanking on every sentence. Teach is
+  current-tab only (a teacher teaches what you're looking at) — it does NOT flow across tabs like the
+  read podcast; a manual tab tap stops it.
+- **Two independent bookmarks.** `bmKey()` switches by mode: read = `cfpPodcast:<file>` (whole reader),
+  teach = `cfpTeach:<file>:<tabId>` (per tab). Each FAB reflects its own Resume state
+  (`reflectFab`/`updateTeachFab`): 🎧 Resume / 👩‍🏫 Resume lesson. Reaching the end clears that mode's
+  bookmark; a manual stop keeps it. Double-tap-to-start always forces `mode='read'`.
+- **STATUS: pilot.** Only **FP512 » Insurance Principles** (`principles` tab, 6 sections, ~1,350 words)
+  is authored so far — the style is being validated before rolling Teach narration out to the rest of
+  FP511 + FP512. Author future tabs the same way in `reader-teach.js`; the Teach FAB auto-appears where
+  content exists. **When adding a new course reader (FP513+), author Teach narration alongside it.**
 **Docked player bar + no-clutter layout (v2.60.0).** `#rtBar` is a **full-width bar docked at the
 bottom** (not a centered pill — it was colliding with Home/Theme/search). `showBar(on)` toggles it,
 sets `body.rt-on`, and while playing **hides the 🎧 `#rtFab` + 🔍 `#rsFab`** (the bar has its own Stop,
@@ -560,7 +592,7 @@ mode on a content wrapper so fixed buttons/charts stay correct). Their Chart.js 
   Tab ids per module are in `TAB_MAP`. If you re-import a reader artifact, re-add the
   hash-open snippet near `activateTab('overview')` / the tab `go()` setup.
 - **In-reader search** (`reader-search.js`, shared; injected by `inject_reader_theme.mjs` with its own `reader-search-injected` marker, precached in `sw.js`): a floating 🔍 opens a search panel that indexes EVERY tab + collapsible section (even hidden ones — native find-in-page can't), lists hits as **Tab › Section** + snippet, and on tap switches tab, expands the section, scrolls, and highlights. Reader-agnostic: maps sections→tabs by probing which `.active` panel contains them, and drives navigation by clicking the existing `.tab-btn`/section headers — so it works on FP511, FP512, and future readers with no per-reader code.
-- **Reader read-aloud / "podcast mode"** (`reader-tts.js`, shared; injected by `inject_reader_theme.mjs` with its own `reader-tts-injected` marker, precached in `sw.js`): a floating 🎙️ Podcast FAB reads the **whole reader** aloud block-by-block via the offline Web Speech API, **flowing automatically across all tabs** (press play once, hands-free), highlighting + auto-scrolling each block and auto-expanding collapsed sections as it reaches them, with a ⏮/⏸/⏭/⏹ + speed control strip. **Resumes where you left off** (per-reader `localStorage` bookmark → FAB shows 🎧 Resume), keeps the screen awake (Wake Lock), and recovers if the OS stops speech while backgrounded. Reader-agnostic (tabs = `.tab-btn`, reading root = largest `.active` panel). See the "Reader read-aloud" subsection under the Study engine for the full mechanics.
+- **Reader read-aloud / "podcast mode"** (`reader-tts.js`, shared; injected by `inject_reader_theme.mjs` with its own `reader-tts-injected` marker, precached in `sw.js`): a floating 🎙️ Podcast FAB reads the **whole reader** aloud block-by-block via the offline Web Speech API, **flowing automatically across all tabs** (press play once, hands-free), highlighting + auto-scrolling each block and auto-expanding collapsed sections as it reaches them, with a ⏮/⏸/⏭/⏹ + speed control strip. **Resumes where you left off** (per-reader `localStorage` bookmark → FAB shows 🎧 Resume), keeps the screen awake (Wake Lock), and recovers if the OS stops speech while backgrounded. Reader-agnostic (tabs = `.tab-btn`, reading root = largest `.active` panel). A separate **👩‍🏫 Teach** FAB (`reader-teach.js`) instead speaks a **teacher's explanation** of the current tab (not verbatim) while auto-scrolling/expanding each section — pilot: FP512 » Insurance Principles. See the "Reader read-aloud" + "Teach mode" subsections under the Study engine for the full mechanics.
 
 ### Visual slide decks — native HTML, Kaplan vs AI (v2.62.0)
 The **"Slide deck"** card no longer opens raw PDFs. Each course's slides are rebuilt as
