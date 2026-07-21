@@ -1,0 +1,760 @@
+FP511 Interactive Reader — CFP Study Lab
+========================================
+FP511 — General Financial Planning, Conduct & Psychology
+===== FP511 INTERACTIVE READER =====
+
+The full course reference, reflowed for e-ink. Charts and interactive bits are omitted; every concept the reader teaches is here as plain prose.
+  • Financial Planning
+  • Client Psychology
+  • Financial Statements
+  • Time Value of Money
+  • Prof. Conduct & Ethics
+  • Economics & Consumer Law
+  • Education Planning
+  • Case Study
+
+
+
+===== FINANCIAL PLANNING =====
+
+-- Step 1: Understanding the Client's Personal & Financial Circumstances --
+
+-- Steps 2–7: Goals Through Monitoring --
+
+  • Step 2 — Identify & Select Goals: Collaborate to identify, select, and prioritize goals. Discuss unrealistic goals openly. Establish personal assumptions (life expectancy, retirement age) and economic assumptions (inflation rate, expected returns).
+
+  • Step 3 — Analyze Current Course & Alternatives: Identify financial strengths (adequate savings, appropriate emergency fund, well-defined goals, proper insurance, valid estate documents) and weaknesses (insufficient savings, undefined goals, poor cash flow, misaligned investments, missing documents). Compare current course to alternatives.
+
+  • Step 4 — Develop Recommendations: Select the best course(s). Consider assumptions, basis, timing, priority, and interdependencies with other elements of the plan. Recommendations must maximize potential to achieve client's goals.
+
+  • Step 5 — Present Recommendations: Present clearly, including assumptions, risks, pros/cons, alternatives, anticipated effects, time sensitivity. Must be specific and actionable — vague recommendations violate the Standards.
+
+  • Step 6 — Implement: Unless excluded from scope, the planner IS responsible for implementation. Identify appropriate products and services. Disclose conflicts of interest at this stage.
+
+  • Step 7 — Monitor Progress & Update: Establish monitoring responsibilities. Communicate what is monitored, how often, and the client's duty to inform the planner of changes in circumstances. Review at least annually or when circumstances change materially.
+
+-- Disclosure Requirements --
+
+Required Disclosure: Privacy policy · Financial Advice: ✓ · Financial Planning: ✓ · Form: Written only
+
+Required Disclosure: Material conflicts of interest · Financial Advice: ✓ · Financial Planning: ✓ · Form: Verbal OR written
+
+Required Disclosure: Services & products, compensation · Financial Advice: ✓ · Financial Planning: ✓ · Form: Verbal OR written
+
+Required Disclosure: Referral arrangements · Financial Advice: ✓ · Financial Planning: ✓ · Form: Verbal OR written
+
+Required Disclosure: Terms of engagement (implementing, monitoring, updating) · Financial Advice: ✕ · Financial Planning: ✓ · Form: Written only
+
+  • Disclose a material conflict even if you believe you’re acting in the client’s best interest Std A.5. Belief is not a substitute for disclosure + informed consent + management of the conflict.
+
+  • Scope-creep violates Step 4: recommending outside the agreed scope (e.g., life insurance when the engagement was limited to retirement) breaches the Standards — the letter of engagement defines the scope.
+
+  • Competence / unauthorized practice Std A.3: a CFP® professional may not draft legal documents (needs an attorney) or prepare tax returns (needs a PTIN) — gain competence, partner with a pro, limit, terminate, or refer.
+
+  • Incomplete data (Step 1): the only two allowable responses are restrict the scope OR terminate — never proceed on inadequate information.
+
+-- CFP® Marks Usage Rules --
+
+  • Always capitalize: CFP® (never “cfp”)
+
+  • Never use periods: CFP® (never “C.F.P.”)
+
+  • Always use the ® symbol: CFP® (never “CFP” without ®)
+
+  • Use with approved nouns unless directly following certified individual's name: certificant, professional, practitioner, certification, mark, exam
+
+  • Correct: “Jane Doe, CFP®” or “Jane Doe is a CFP® professional”
+
+  • Incorrect: “C.F.P.” / “CFP” (no ®) / “Jane is a CFP” (no ®)
+
+  • CERTIFIED FINANCIAL PLANNER®: Always capital letters or small-cap font; always ® symbol; minimum 0.5 inch print or 50px screen; maintain clear space; must use with approved nouns unless following individual's name
+
+-- Planner, Client & Team Responsibilities --
+
+  • Identify financial goals and objectives
+
+  • Understand current financial status
+
+  • Analyze current course and alternatives
+
+  • Recommend appropriate tools and strategies
+
+  • Implement the plan (unless excluded from scope)
+
+  • Monitor whether client is following through
+
+  • Provide competence or refer (Standard A.3)
+
+  • Provide accurate, complete, timely information
+
+  • Inform planner of material changes in circumstances
+
+  • Follow through on agreed-upon implementation steps
+
+-- 📎 Primary sources for this module --
+
+  • CFP Board Code of Ethics & Standards of Conduct — governs all CFP® professional conduct; fiduciary whenever giving Financial Advice.
+
+  • Practice Standards for the Financial Planning Process — the 7 steps (tested by step number + name).
+
+  • Std A.3 Competence · Std A.5 Disclose & Manage Conflicts · Std A.10.b.ii Implementation default · Std A.13 Working with Additional Persons.
+
+Grounded in the FP511 course textbook (Module 1, Personal Financial Planning; 2026 edition).
+
+
+
+===== CLIENT PSYCHOLOGY =====
+
+-- Risk Assessment Framework --
+
+Term: Risk Tolerance · Definition: The tradeoff a client is willing to make between potential risks and rewards · Key Distinction: Willingness (subjective)
+
+Term: Risk Preference · Definition: A client's attitude toward risk — a more constant personal trait · Key Distinction: Stable over time
+
+Term: Risk Perception · Definition: The subjective judgment a client uses when evaluating the risk of a decision · Key Distinction: Can be distorted by biases
+
+Term: Risk Capacity · Definition: The degree to which a client's financial resources can mitigate (absorb) risk · Key Distinction: Ability (objective/financial)
+
+Term: Risk Literacy · Definition: The ability to comprehend and act on financial risk information · Key Distinction: Knowledge and skill
+
+  • Visual learners: Prefer graphs, charts, pictures; present financial data visually
+
+  • Auditory learners: Prefer hearing/speaking; discuss information before putting it in writing
+
+  • Kinesthetic learners: Hands-on; write goals and steps as they are formulated together
+
+-- Cognitive Biases (14) --
+
+Cognitive biases stem from faulty reasoning or information processing. They can be corrected with coaching and better information.
+
+Bias: Anchoring · Definition: Making decisions based on an irrelevant reference point · Consequence: Inadequate adjustment from the faulty anchor (e.g., using 2017 home prices to judge 2019 prices)
+
+Bias: Confirmation · Definition: Seeking info that supports existing beliefs; ignoring contrary info · Consequence: Hold investments too long; underdiversify
+
+Bias: Conservatism · Definition: Forming a rational view but failing to update as new info arrives · Consequence: Hold losing investments too long; slow to react
+
+Bias: Cognitive Dissonance · Definition: Discomfort when new info conflicts with existing beliefs · Consequence: Rationalize bad decisions; selective perception
+
+Bias: Framing · Definition: Processing info based on how it is presented · Consequence: Choose differently for identical options based on wording (e.g., “90% survival” vs. “10% mortality”)
+
+Bias: Herding · Definition: Trading in the same direction as the consensus crowd · Consequence: Follow the crowd; blame the group, not self
+
+Bias: Hindsight · Definition: Selectively remembering correct views; forgetting errors · Consequence: Overestimate predictive ability
+
+Bias: Illusion of Control · Definition: Believing you can control uncontrollable outcomes · Consequence: Over-trading; failure to diversify
+
+Bias: Mental Accounting · Definition: Separating money into mental “jars” by purpose · Consequence: Carry high-interest debt while holding “earmarked” savings (Arnie example)
+
+Bias: Money Illusion · Definition: Thinking $1 today equals $1 tomorrow regardless of inflation · Consequence: Poor decisions; ignoring real returns
+
+Bias: Outcome Bias · Definition: Taking action based on prior outcomes while ignoring current conditions · Consequence: Chase past winners
+
+Bias: Recency · Definition: Giving more weight to recent information · Consequence: Fear after a crash; ignore long-term history
+
+Bias: Representativeness · Definition: Using past experience to categorize new decisions · Consequence: Base-rate neglect; sample-size neglect
+
+Bias: Self-Attribution · Definition: Crediting successes to self; blaming failures on others · Consequence: Self-enhancing (credit wins) & self-protecting (blame losses)
+
+-- Emotional Biases (7) --
+
+Emotional biases stem from impulse, feeling, or intuition. They are harder to overcome and often must be accommodated rather than corrected.
+
+Bias: Loss Aversion · Definition: Fearing losses more than valuing equivalent gains; related to fear of regret · Consequence: Won't sell at a loss; “get-even-itis”; hold losers too long
+
+Bias: Overconfidence · Definition: Overestimating own abilities; believe knowledge can control random events · Consequence: Excessive trading; undue risk; underestimate downside
+
+Bias: Self-Control · Definition: Favoring immediate gratification over long-term goals · Consequence: Insufficient retirement savings; overspending
+
+Bias: Status Quo · Definition: Comfort with existing situation; resisting change · Consequence: Hold an inappropriate portfolio risk level indefinitely
+
+Bias: Endowment · Definition: Valuing owned assets more than their market value · Consequence: Overvalue what is already owned; reluctance to sell
+
+Bias: Regret Aversion · Definition: Inaction from fear of being wrong · Consequence: Paralysis; herding behavior; never pull the trigger
+
+Bias: Affinity · Definition: Investment decisions based on personal connection or identity · Consequence: Invest in a company for emotional reasons (Stuart and Collegiate Construction)
+
+  • Illusion of control (cognitive — you think you can control random outcomes) vs. overconfidence (emotional — you overrate your ability ). They co-occur but are graded differently.
+
+  • Conservatism (cognitive — ignore new info, fail to update) vs. confirmation (cognitive — actively hunt info that supports your view). Tell: conservatism is passive, confirmation is active.
+
+A client cheers a 5% return on $2,000 → $2,100 nominal. But with 6% inflation, real value = $2,100 ÷ 1.06 = $1,981 — a loss of purchasing power despite the nominal gain. That gap between the number on the statement and what it actually buys is money illusion, and it’s why planners frame goals in real (inflation-adjusted) terms.
+
+-- Client Psychology Obstacles & Money Conflict --
+
+  • Money scripts: Unconscious attitudes about money formed in childhood; resistant to change; often passed through generations
+
+  • Financial comfort zones: The financial range in which a client feels content — both floor (anxiety below) and ceiling (guilt above)
+
+  • Financial socialization: How family, culture, and religion shaped money beliefs from childhood forward
+
+-- Pathological Financial Behaviors --
+
+  • Affluenza (financial dependence): Fear that the supply of money will stop
+
+  • Financial enabling: Supporting another at one's own financial risk
+
+  • Hoarding disorder: Retaining goods beyond their useful life
+
+-- Financial Manipulation Types --
+
+Type: Financial Control · Definition: Inequality in goal-setting or decision-making between partners
+
+Type: Financial Enabling · Definition: Supporting an adult who should be independent (usually parent→adult child)
+
+Type: Financial Enmeshment · Definition: Involving children inappropriately in financial decisions
+
+Type: Financial Abuse · Definition: Controlling another person's ability to access or possess financial resources
+
+-- Goal Incongruence Steps (Couples) --
+
+When couples disagree on financial goals: (1) Normalize the disagreement, (2) find common ground, (3) encourage sharing of perspectives. Partners should have transparency about all income, assets, liabilities, and spending — even with separate accounts.
+
+-- Counseling Approaches & Communication --
+
+Approach: Economic / Resource · Focus: Planner = agent of change; quantitative data · Key Feature: Prescriptive; data-driven
+
+Approach: Classical Economics · Focus: Cost-benefit and risk-return tradeoffs · Key Feature: Rational actor model
+
+Approach: Strategic Management · Focus: Client goals drive the relationship · Key Feature: Uses SWOT analysis; goal-centered
+
+Approach: Cognitive-Behavioral · Focus: Substitute negative beliefs with positive attitudes · Key Feature: Address thought patterns; behavioral change
+
+Approach: Psychoanalytic · Focus: Freudian / Gestalt theory · Key Feature: NOT widely used by financial planners
+
+-- Communication Principles --
+
+  • Body language is the most impactful form of communication
+
+  • Lower pitch = confidence; higher pitch = uncertainty
+
+  • Physical mirroring: Copy body language to build rapport
+
+  • Verbal mirroring: Imitate client's word use and tone
+
+  • Open-ended questions elicit reliable psychological profiles; closed-ended questions are used to clarify or confirm specific facts
+
+  • Active listening: Give full, undivided attention. If distracted, apologize and ask client to begin again. Do NOT proceed on incomplete information.
+
+-- Social Penetration Theory (Altman & Taylor) — 4 Stages --
+
+-- 📎 Primary sources for this module --
+
+  • Financial Therapy Association — definition of financial therapy; CFPB financial well-being scale.
+
+  • Social Penetration Theory (Altman & Taylor) — the 4-stage trust model; counseling approaches (cognitive-behavioral, strategic/SWOT, economic).
+
+  • CFP Board — Psychology of Financial Planning domain (7% of the exam).
+
+Grounded in the FP511 course textbook (Module 2, Psychology of Financial Planning; 2026 edition).
+
+
+
+===== FINANCIAL STATEMENTS =====
+
+-- Statement of Financial Position (Balance Sheet) --
+
+  • Cash & cash equivalents: Checking, savings, money market accounts, CDs with maturity ≤90 days
+
+  • Invested assets: Stocks, bonds, mutual funds, IRAs, 401(k)s, investment real estate
+
+  • Personal-use assets: Primary residence, autos, boats, jewelry, furniture
+
+  • Assets: fair market value
+
+  • Liabilities: outstanding principal balance (not total future payments)
+
+  • Credit card purchases: recorded as a liability on the balance sheet — NOT as a cash outflow until actually paid
+
+-- Cash Flow Statement --
+
+  • Credit card purchase: NOT a cash outflow at purchase time; it is a liability on the balance sheet. The cash outflow occurs only when the credit card bill is actually paid.
+
+  • Savings ratio: Target 10–15% of gross income directed to savings and investments
+
+  • Surplus = positive net cash flow (income exceeds outflows); deficit = negative (outflows exceed income)
+
+-- Financial Ratios for Debt Management --
+
+Ratio: Consumer Debt (Non-Mortgage) · Formula: Monthly consumer debt payments ÷ Monthly income · Income Basis: Net (after-tax) · Benchmark: ≤ 20%
+
+Ratio: Housing Cost / Front-End · Formula: Monthly PITI + HOA fees ÷ Monthly income · Income Basis: Gross · Benchmark: ≤ 28%
+
+Ratio: Total Debt / Back-End · Formula: All monthly debt + alimony/child support ÷ Monthly income · Income Basis: Gross · Benchmark: ≤ 36%
+
+Ratio: Current Ratio · Formula: Current (liquid) assets ÷ Current liabilities · Income Basis: N/A · Benchmark: > 1.0 (higher = better)
+
+Ratio: Net Investment Assets to Net Worth · Formula: Net investment assets ÷ Net worth · Income Basis: N/A · Benchmark: ≥ 50% (increases near retirement)
+
+Grace earns $60,000/yr gross ($5,000/mo); after taxes + FICA her net is $4,000/mo. She pays $1,200/mo PITI and $800/mo consumer debt.
+
+  • Consumer debt ratio (uses net ): $800 ÷ $4,000 = 20% — right at the ≤20% limit.
+
+  • Housing / front-end (uses gross ): $1,200 ÷ $5,000 = 24% — under the 28% ceiling. ✓
+
+  • Total debt / back-end (uses gross ): ($1,200 + $800) ÷ $5,000 = 40% — exceeds 36%. ✗ Intervene.
+
+-- Emergency Funds, Budgeting & Savings Strategies --
+
+  • Appropriate emergency-fund investments: Checking, savings, money market deposit accounts, money market mutual funds, CDs ≤90 days
+
+  • NOT appropriate: Stocks, bonds, or IRAs (illiquid or volatile). Lines of credit are a backup only.
+
+  • Zero-based budgeting: Every dollar of income is assigned a purpose; total budget = total income. Forces deliberate spending decisions.
+
+  • Envelope method: Physical or digital envelopes for each spending category; spending stops when envelope is empty
+
+  • Pay yourself first: Savings are automatically deducted before discretionary spending is allocated; most effective savings strategy
+
+-- Debt Management Strategies --
+
+-- Credit Score (FICO) Components EXAM --
+
+  • Rate-shopping inquiries: Multiple mortgage or auto-loan inquiries in a short window are treated as a single inquiry to avoid penalizing consumers who shop for the best rate
+
+  • Do NOT close old accounts — closing reduces available credit (raises utilization ratio) and shortens length of credit history; both hurt the score
+
+  • Dispute process: Consumers may dispute errors; agencies must investigate within 30 days
+
+-- Mortgage Analysis --
+
+  • PMI required when down payment 80%). VA loans: no PMI, no down payment. FHA: 3.5% down minimum, PMI required.
+
+  • Mortgage point: One point = 1% of the amount borrowed, paid up front at closing in exchange for a lower interest rate (buying down the rate). Worthwhile only if the borrower stays long enough to recoup the cost through lower payments.
+
+  • Refinancing break-even: Total closing costs ÷ Monthly savings = months to break even. Only worthwhile if staying beyond break-even point.
+
+  • Negative amortization: Monthly payment is less than accruing interest; unpaid interest added to balance (ARMs, graduated-payment mortgages)
+
+  • Reverse mortgage: Lender pays the homeowner. Age 62+. Nonrecourse loan. If in nursing home >12 months, home is sold. Subject to HECM rules.
+
+  • Auto lease interest: NOT deductible for personal use; IS deductible for business use. Closed-end lease: walk away at end (possible mileage/damage charges). Open-end lease: may owe residual-value shortfall.
+
+-- FDIC Insurance & Financial Institutions --
+
+Ownership Category: Single / individual accounts · Coverage: $250,000 per owner
+
+Ownership Category: Joint accounts · Coverage: $250,000 per co-owner (couple gets $500,000 total)
+
+Ownership Category: IRA / retirement accounts · Coverage: $250,000 per owner
+
+Ownership Category: Revocable trust accounts · Coverage: $250,000 per beneficiary
+
+  • NCUSIF / NCUA: Credit union deposits insured at $250,000 per account — same limit as FDIC, different insurer
+
+  • OCC: Charters and supervises national banks
+
+  • Federal Reserve: Handles monetary policy; supervises bank holding companies and state-chartered member banks
+
+  • Brokers vs. dealers: Brokers = agents (earn commissions); dealers = principals (earn markups). Regulated by SEC / FINRA.
+
+  • S&L / Thrifts: Accept savings, provide home loans; no checking accounts; regulated by OCC
+
+-- 📎 Primary sources for this module --
+
+  • FDIC / NCUA (NCUSIF) — $250,000 per depositor, per institution, per ownership category.
+
+  • FICO — score composition (35/30/15/10/10); Fannie Mae / Freddie Mac conforming-loan limits; FHA / VA loan programs; PMI protects the lender.
+
+Grounded in the FP511 course textbook (Module 3, Financial Statements & Cash Flow; 2026 edition). Ratio benchmarks and FICO weights are textbook-stated.
+
+
+
+===== TIME VALUE OF MONEY =====
+
+-- Calculator Fundamentals & TVM Variables --
+
+-- Basic TVM Calculations with Examples --
+
+-- Rule of 72 --
+
+-- Compounding & Discounting --
+
+  • Compounding (FV): Earning interest on interest — money grows over time. The higher the rate or the more periods, the greater the growth.
+
+  • Discounting (PV): Finding today's value of a future amount. The higher the discount rate, the lower the present value.
+
+  • $150,000 at 7% for 5 years FV: N=5, I/YR=7, PV=−150,000, PMT=0 → FV = $210,383
+
+  • Ordinary annuity FV example: $2,000/yr at 10% for 18 years (END mode) = $91,198. Same in BEG mode (annuity due) = $100,318. Difference: $9,120 more for starting payments one period earlier.
+
+(A) Monthly auto loan — set P/YR = 12. Borrow $21,000 at 5.9% for 3 years:
+
+(B) Solve for a rate with non-annual compounding — set P/YR = 2. $1,000 grows to $1,500 in 5 years, compounded semiannually:
+
+  • Ordinary annuity (END) — payments at the end of each period: mortgages, car loans, most investment problems.
+
+  • Annuity due (BEG) — payments at the beginning: leases, insurance premiums, and retirement/education needs analysis (the client needs the money at the start of each year). Use BEG on those even when the problem doesn’t say “beginning.”
+
+  • An annuity due always yields a larger PV and FV than an ordinary annuity — each payment earns one extra period. The gap widens with N and the rate.
+
+  • Rule of 72: years to double = 72 ÷ rate (72 ÷ 9 = 8 yrs); required rate = 72 ÷ years.
+
+-- Loan Amortization --
+
+  • Early payments: Heavily weighted toward interest; little principal. This reverses over time.
+
+  • Late payments: Heavily weighted toward principal; little interest. This is why refinancing early in a mortgage maximizes savings.
+
+  • Auto loan example (Jack): $28,000 at 3.25% for 5 years → monthly payment = $506.24; total interest = $2,374.40
+
+-- Inflation-Adjusted Rate & Serial Payments --
+
+Return Rate: 7% · Inflation Rate: 2.5% · Inflation-Adjusted Rate: 4.39%
+
+Return Rate: 11% · Inflation Rate: 4% · Inflation-Adjusted Rate: 6.73%
+
+Return Rate: 4.5% · Inflation Rate: 2% · Inflation-Adjusted Rate: 2.45%
+
+-- Serial (Inflation-Adjusted) Payments Setup --
+
+  • Use the inflation-adjusted rate as I/YR
+
+  • Enter the desired goal amount in today's dollars as FV (not the inflated future amount)
+
+  • Solve for PMT (this is the first payment in today's dollars)
+
+  • Actual first payment = PMT × (1 + inflation rate)
+
+  • Each subsequent year's payment increases by the inflation rate
+
+  • Serial payments start LOWER than level payments but grow each year — same purchasing power throughout
+
+-- IRR, NPV & Uneven Cash Flows --
+
+  • Uneven cash flows: Enter each period's cash flow separately using the CF function. Different from annuity problems where PMT is the same every period.
+
+  • Step-by-step for IRR/NPV: CF0 = initial outflow (negative), then each subsequent period's cash flows, then compute IRR or enter discount rate and compute NPV.
+
+  • Reinvestment rate assumption: IRR assumes reinvestment at the IRR rate itself; NPV assumes reinvestment at the discount rate. NPV is generally the superior decision criterion.
+
+
+
+===== PROF. CONDUCT & ETHICS =====
+
+-- Financial Advice vs. Financial Planning --
+
+Aspect: Definition · Financial Advice: Specific recommendation to take or refrain from a financial action; OR exercise of discretionary authority over client assets · Financial Planning: Collaborative process integrating a client's personal and financial circumstances to maximize achievement of life goals
+
+Aspect: Fiduciary Duty · Financial Advice: Required · Financial Planning: Required
+
+Aspect: Practice Standards · Financial Advice: Not required · Financial Planning: Required (all 7 steps)
+
+Aspect: Client engagement form · Financial Advice: Oral or written · Financial Planning: Written engagement agreement
+
+Aspect: Terms of engagement disclosure · Financial Advice: Not required · Financial Planning: Required (in writing)
+
+-- Financial Planning is Triggered When ANY of Three Conditions Are Met --
+
+  • The planner agreed to provide financial planning
+
+  • The client has a reasonable basis to believe financial planning is being provided
+
+  • The financial advice requires integration of relevant elements of the client's personal and financial circumstances to act in the client's best interests
+
+-- 5 Integration Factors (more factors = more likely Financial Planning is required) --
+
+-- Code of Ethics — 6 Principles --
+
+The Code of Ethics comprises 6 principles that apply at all times to individuals holding the CFP® marks — not just when providing financial planning.
+
+  • 1. Honesty, integrity, competence & diligence: Provide services honestly and with candor; not subordinated to personal gain. Competence = relevant knowledge and skill. Diligence = timely, thorough responses.
+
+  • 2. Act in the client's best interests: The cornerstone of the fiduciary standard; all recommendations must prioritize client interests above personal or firm interests.
+
+  • 3. Exercise due care: Apply prudent professional judgment with the care, skill, and diligence expected of a professional in similar circumstances (prudent professional standard).
+
+  • 4. Avoid or disclose & manage conflicts: Material conflicts must be disclosed with sufficiently specific facts; followed by informed consent and ongoing management. Disclosure alone does NOT satisfy the duty — the conflict must also be managed.
+
+  • 5. Maintain confidentiality & privacy: Protect nonpublic personal information. Exceptions: (a) ordinary business purposes and (b) legal/compliance purposes.
+
+  • 6. Reflect positively on the profession: Conduct must enhance public trust in the CFP® marks and the financial planning profession.
+
+-- Standards of Conduct — 15 Duties Owed to Clients (A.1–A.15) --
+
+Standard: A.1 · Duty: Fiduciary Duty · Key Detail: Duty of Loyalty + Duty of Care + Duty to Follow Client Instructions
+
+Standard: A.2 · Duty: Integrity · Key Detail: No fraud, deceit, or misrepresentation
+
+Standard: A.3 · Duty: Competence · Key Detail: If not competent: gain competence, obtain assistance, limit scope, or refer/terminate. Never proceed without competence.
+
+Standard: A.4 · Duty: Diligence · Key Detail: Timely, thorough service; follow through on commitments
+
+Standard: A.5 · Duty: Disclose & Manage Conflicts · Key Detail: Specific facts; informed consent; ongoing management. Disclosure alone is insufficient.
+
+Standard: A.6 · Duty: Sound & Objective Judgment · Key Detail: Recommendations must not be influenced by personal benefit
+
+Standard: A.7 · Duty: Professionalism · Key Detail: Treat all with respect; maintain professional conduct at all times
+
+Standard: A.8 · Duty: Comply with Law · Key Detail: Obey all applicable laws and regulations
+
+Standard: A.9 · Duty: Confidentiality & Privacy · Key Detail: Two exceptions: ordinary business use and legal/compliance purposes
+
+Standard: A.10 · Duty: Provide Information to Client · Key Detail: Planner responsible for implementation unless specifically excluded from scope
+
+Standard: A.11 · Duty: Communicate with Client · Key Detail: Respond promptly; keep client informed of material developments
+
+Standard: A.12 · Duty: Compensation Representations · Key Detail: Fee-only = planning fees ONLY (no commissions). Fee-based = planning fees + commissions/sales compensation. Must accurately describe compensation.
+
+Standard: A.13 · Duty: Working with Additional Persons · Key Detail: Reasonable basis for referral; disclose any compensation arrangement; communicate roles
+
+Standard: A.14 · Duty: Technology · Key Detail: Reasonable basis for reliability, reasonable care, reasonable understanding. NOT required to be an expert. Must understand assumptions used.
+
+Standard: A.15 · Duty: Borrowing, Lending & Commingling · Key Detail: Prohibited. Exceptions: client is a family member, OR client is a business entity in the business of lending. Indirect borrowing also prohibited. No commingling of client funds.
+
+-- Fiduciary Duty & Standards Compared --
+
+Standard: Fiduciary (CFP®/RIA) · Key Features: Principle-based; solution-driven; best interest · Disclosure: Written (Form ADV Part 2) · Applies To: CFP® pros, RIAs, ERISA fiduciaries · Regulator: SEC, states
+
+Standard: Suitability · Key Features: Rules-based; product-driven; merely suitable · Disclosure: Verbal · Applies To: Registered reps, insurance agents · Regulator: FINRA, states
+
+Standard: DOL Fiduciary · Key Features: Highest standard for retirement accounts · Disclosure: Written · Applies To: Overturned 2018; partial reinstatement ongoing · Regulator: DOL
+
+-- Additional Fiduciary Duties --
+
+  • Duty to Disclose: All material facts and conflicts. Disclosure alone does NOT satisfy the full duty — must also manage the conflict.
+
+  • Duty to Diagnose (Know Your Customer): Fully understand client's goals, circumstances, risk tolerance, and suitability
+
+  • Duty to Consult: Bring in specialists when beyond competence; coordinate advice across the team
+
+  • Duty to Keep Current: Maintain competence through ongoing education and staying informed of developments
+
+  • The three fiduciary duties (Std A.1) are Loyalty, Care, and Follow Client Instructions — NOT a “duty to disclose” (a common distractor; disclosure lives under conflict management, A.5).
+
+  • Fiduciary vs. suitability: fiduciary is principle-based, best-interest (CFP®/RIA); suitability is rules-based, merely-suitable (registered reps/agents, FINRA).
+
+  • Fee-only vs. fee-based (A.12): fee- only = planning fees and nothing else (no commissions); fee- based = fees plus commissions/sales comp. Calling a fee-based practice “fee-only” is a misrepresentation.
+
+-- Fitness Standards & Procedural Rules --
+
+-- Disciplinary Sanctions (Escalating) --
+
+For current CFP® professionals: Private Censure → Public Censure → Suspension (90 days to 5 years) → Interim Suspension → Revocation (permanent). Bars (Temporary/Permanent) apply to NON-CFP® professionals (candidates).
+
+-- Key Disciplinary Timelines EXAM --
+
+Action Required: Acknowledge Notice of Investigation · Deadline: 30 days
+
+Action Required: Answer the Complaint · Deadline: 30 days
+
+Action Required: Respond to document/information requests · Deadline: 14 days
+
+Action Required: Comply with an Interim Suspension (evidence order) · Deadline: 45 days
+
+Action Required: Report adverse conduct to CFP Board · Deadline: 30 days
+
+-- Duties to Firms, Subordinates & CFP Board --
+
+  • Supervisory care — reasonable oversight of subordinates
+
+  • Firm compliance — support lawful objectives of the firm
+
+  • Disclosure — report any public discipline within 30 days
+
+  • No circumvention — cannot use third parties to violate Code
+
+  • Cooperation — cooperate with CFP Board investigations; respond within 14 days to document requests
+
+-- 📎 Primary sources for this module --
+
+  • CFP Board Code of Ethics & Standards of Conduct — the 6 principles, 15 Duties Owed to Clients (A.1–A.15), fiduciary at all times when giving Financial Advice.
+
+  • Fitness Standards (candidate eligibility) & Procedural Rules (discipline, sanctions, timelines, appeals).
+
+  • Uniform Prudent Investor Act (1994) — total-portfolio prudence (Harvard College v. Amory, 1830).
+
+Grounded in the FP511 course textbook (Professional Conduct & Fiduciary Responsibility module; 2026 edition).
+
+
+
+===== ECONOMICS & CONSUMER LAW =====
+
+-- Economic Concepts --
+
+-- Fiscal & Monetary Policy --
+
+-- Interest Rate Hierarchy --
+
+  • Discount rate: Rate banks borrow directly from the Fed — the Fed directly controls this rate
+
+  • Federal funds rate: Overnight inter-bank lending rate — the Fed targets and influences this rate through open-market operations
+
+  • Prime rate: Set by commercial banks; typically ~3% above the federal funds rate; used for best-customer lending
+
+-- Business Cycle & Economic Indicators --
+
+Type: Leading Indicators · Definition: Change BEFORE the economy changes · Examples: Housing starts, new unemployment claims, stock prices, orders for durable goods, bond yield spreads, investor sentiment. Don't wait for the economy to improve before investing — stocks are leading!
+
+Type: Coincident Indicators · Definition: Change WITH the economy (confirm current phase) · Examples: Industrial production, personal income level, corporate profits
+
+Type: Lagging Indicators · Definition: Change AFTER the economy has shifted · Examples: Prime interest rate, CPI for services, business/consumer loans outstanding, average duration of unemployment
+
+-- Bankruptcy & Consumer Protection Laws --
+
+Chapter: Ch. 7 · Type: Liquidation · Who: Individuals or businesses · Key Features: Most unsecured debts discharged. Must wait 8 years to refile Ch. 7. Income above state median usually disqualifies (means test). Credit counseling required before filing. Stays on credit report 10 years.
+
+Chapter: Ch. 11 · Type: Reorganization · Who: Businesses or high-debt individuals · Key Features: Debtor remains in possession and keeps operating. Creditors vote on reorganization plan. No debt limit. Can take years.
+
+Chapter: Ch. 13 · Type: Wage-Earner Repayment Plan · Who: Individuals with regular income · Key Features: Repayment plan over 3–5 years. Debtor generally keeps assets. Must have regular income. Debt limits apply.
+
+-- Consumer Protection Laws --
+
+  • Truth in Lending Act / Reg Z (CCPA): Standard APR disclosure; all credit terms disclosed before signing; 3-day right of rescission (can cancel within 3 business days); unauthorized credit card liability capped at $50
+
+  • Fair Credit Reporting Act (FCRA): If denied credit, consumer gets a free credit report within 30 days; adverse info stays 7 years; bankruptcy stays 10 years; consumers may dispute errors; agencies must investigate within 30 days
+
+  • Fair Credit Billing Act (FCBA): Notify creditor of billing errors within 60 days; creditor must respond within 30 days and resolve within 90 days
+
+  • Equal Credit Opportunity Act (ECOA): No credit discrimination based on race, color, religion, national origin, gender, marital status, age, sexual orientation, or public-assistance income
+
+  • Servicemembers Civil Relief Act (SCRA): Caps pre-service debt interest at 6% for active-duty servicemembers
+
+  • Identity theft: Report to the FTC (not SEC). Three major bureaus: Equifax, Experian, TransUnion. Consumer can place a fraud alert or credit freeze.
+
+-- 📎 Primary sources for this module --
+
+  • Truth in Lending Act / Reg Z · FCRA · FACTA · ECOA · Fair Credit Billing Act · SCRA — consumer-credit framework.
+
+  • Bankruptcy Abuse Prevention & Consumer Protection Act (2005) — means test; Chapters 7/11/13.
+
+  • Federal Reserve / FOMC — monetary policy (open-market operations, discount rate, reserve requirements).
+
+Grounded in the FP511 course textbook (Economic Environment & Consumer Protection module; 2026 edition).
+
+
+
+===== EDUCATION PLANNING =====
+
+-- Education Funding — 3-Step Process --
+
+Mary is age 3; college at 18 ( 15 years away), a 4-year program, tuition $10,000 today, education inflation 6%, expected return 8%.
+
+  • Inflate (END): PV −10,000, I/YR 6, N 15 → FV = $23,965.58 (first-year cost).
+
+  • Adjust (BEG): PMT −23,965.58, I/YR = [1.08 ÷ 1.06 − 1] = 1.8868, N 4 → PV = $93,232.21 (lump sum needed on day 1 of college).
+
+  • Invest (END): FV 93,232.21, N 15, I/YR 8 → PV = −$29,390.68 today — or solve PMT for a level annual save = −$3,433.70/yr.
+
+-- Student Aid Index (SAI) & Financial Need --
+
+-- SAI Asset & Income Assessment Rates --
+
+-- Key SAI Changes vs. Old EFC --
+
+  • Multiple siblings in college no longer reduces the SAI (eliminated under simplified FAFSA)
+
+  • Income protection allowance increased (more income shielded from assessment)
+
+  • Pell Grant eligibility expanded (up to 175% of federal poverty level)
+
+  • Grandparent-owned 529 distributions: now counted at 0% (major change from old EFC)
+
+  • FAFSA simplified and streamlined
+
+-- Federal Financial Aid Programs --
+
+Program: Pell Grant · Type: Grant (does not need to be repaid) · Need-Based?: Yes · Key Details: Undergraduates only. Max $7,395 (2025–26). Part-time eligible. For those with the most financial need.
+
+Program: Subsidized Stafford Loan · Type: Federal direct loan · Need-Based?: Yes · Key Details: Undergrad only. Government pays interest while in school and during 6-month grace period after graduation.
+
+Program: Unsubsidized Stafford Loan · Type: Federal direct loan · Need-Based?: No · Key Details: Undergrad AND graduate students. Interest accrues from disbursement; can be capitalized while in school.
+
+Program: PLUS Loan · Type: Federal direct loan · Need-Based?: No · Key Details: Parents of dependent undergrads AND graduate students. No borrowing limit (up to COA minus other aid). Repayment begins 60 days after disbursement.
+
+Program: Federal Work-Study · Type: Employment · Need-Based?: Yes · Key Details: Income earned does NOT reduce financial aid eligibility for next year.
+
+Program: Perkins Loan · Type: Campus-based loan · Need-Based?: Yes · Key Details: Discontinued in 2017; no new loans since then.
+
+-- Education Savings Vehicles --
+
+Vehicle: Section 529 Plan · Annual Limit: No annual limit (gift tax rules apply: $19K/yr or 5-yr superfunding $95K) · Age Limits: None · Eligible Expenses: K-12 (up to $10K/yr) + higher education · SAI Treatment: Parent asset (5%–5.64%) if owned by parent or dependent student · Key Features: Owner controls account; can change beneficiary; tax-free growth + distributions for qualified expenses; couple can superfund $190K per beneficiary every 5 years
+
+Vehicle: Coverdell ESA (CESA) · Annual Limit: $2,000/yr per beneficiary (all donors combined) · Age Limits: Contributor
+
+  • IRC §529 (QTPs) · §530 (Coverdell ESA) · §25A (AOTC & Lifetime Learning Credit) · §127 ($5,250 employer assistance) · §2503 (gift annual exclusion).
+
+  • FAFSA / Student Aid Index (SAI) — replaced EFC (2024–25); assessment rates & excluded assets.
+
+Grounded in the FP511 course textbook (Education Planning module; 2026 edition). Figures are 2025 values — the textbook defers kiddie-tax tiers and some phaseouts to the College’s current-year Annual Limits sheet; re-check annually.
+
+
+
+===== CASE STUDY =====
+
+-- Case Study Approach --
+
+-- Nicholas & Katie Madison — Case Summary --
+
+  • Nicholas: age 42, marketing executive; income $150,000
+
+  • Katie: age 40, dental hygienist (part-time); income $30,000
+
+  • Two children: Olivia (14) and Noah (12)
+
+  • Married 15 years; filing jointly; own primary residence
+
+  • Inflation: 2.5%
+
+  • Education inflation: 5%
+
+  • Expected portfolio return: 7%
+
+  • Nicholas plans to retire at 65; Katie at 62
+
+  • Term life: $500K on Nicholas; $0 on Katie
+
+  • HO-3 homeowners policy ($250K dwelling)
+
+  • Auto PAP (Parts A-D)
+
+  • No disability insurance on either
+
+  • Nicholas 401(k): $320,000
+
+  • Katie IRA: $85,000
+
+  • Joint taxable brokerage: $45,000
+
+  • 529 plan: $28,000 (both children)
+
+  • Target: 4-year public university for both
+
+  • Current cost: $22,000/yr
+
+  • Olivia starts college in 4 years
+
+  • Noah starts college in 6 years
+
+-- Key Strengths & Weaknesses Identified --
+
+  • Nicholas participating in 401(k) with employer match
+
+  • HO-3 policy with appropriate dwelling coverage
+
+  • 529 savings already started
+
+  • Emergency fund of 3 months expenses
+
+  • No life insurance on Katie — dual economic contribution not protected
+
+  • No disability insurance for either spouse
+
+  • 529 balance insufficient for projected education needs
+
+  • No estate planning documents (no wills, no POA)
+
+  • Under-saved for retirement based on current trajectory
+
+-- Domain-by-Domain Integration Summary --
+
+Domain: Insurance · Issue Identified: No life insurance on Katie; no DI on either · Recommendation: Add 20-year level term on Katie ($500K+); individual DI policies for both; review existing Nicholas policy adequacy
+
+Domain: Education · Issue Identified: 529 balance insufficient; education inflation increasing costs · Recommendation: Run 3-step TVM calculation; increase 529 contributions; consider superfunding; review AOTC/LLC eligibility when Olivia enrolls
+
+Domain: Retirement · Issue Identified: On track for Nicholas but Katie's retirement savings minimal · Recommendation: Maximize Katie's IRA or Roth IRA contributions; explore spousal IRA contribution strategy; evaluate Social Security filing strategies
+
+Domain: Cash Flow · Issue Identified: Emergency fund at 3 months; two earners = adequate · Recommendation: Maintain at current level; redirect surplus to education and retirement savings
+
+Domain: Estate · Issue Identified: No wills, no powers of attorney, no beneficiary review · Recommendation: Engage estate attorney immediately for wills, DPOA, healthcare directives; review all beneficiary designations; consider guardianship provisions for children
+
+Domain: Tax · Issue Identified: No tax planning in place beyond standard deductions · Recommendation: Review AOTC eligibility at Olivia's enrollment; evaluate Roth conversion ladder; maximize pre-tax retirement contributions to reduce current taxable income
