@@ -62,6 +62,25 @@
       }
       b.appendChild(back);
     } catch (e) {}
+
+    // Auto-hide the floating chrome (Home / Theme / Back pills + the reader-tts &
+    // search FABs) while the user scrolls, so they stop covering content. They slide
+    // back on scroll-up or when scrolling stops, and are always shown near the top.
+    // During audio playback the buttons are already handled by reader-tts (body.rt-on),
+    // so this only matters while reading. CSS lives in reader-theme.css.
+    (function () {
+      var last = window.pageYOffset || 0, timer = null;
+      function show() { document.body.classList.remove('rdr-hidechrome'); }
+      function hide() { document.body.classList.add('rdr-hidechrome'); }
+      window.addEventListener('scroll', function () {
+        var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+        var dy = y - last; last = y;
+        if (y < 140) show();                 // near the top of a tab — keep them visible
+        else if (dy > 6) hide();             // scrolling down into content — get out of the way
+        else if (dy < -6) show();            // scrolling back up — reveal
+        clearTimeout(timer); timer = setTimeout(show, 900);   // reveal when scrolling stops
+      }, { passive: true });
+    })();
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

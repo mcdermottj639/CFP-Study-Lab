@@ -173,9 +173,10 @@ isn't. Same offline OS voice; different *words*. Built as a second mode inside t
   (FP513+), author Teach narration for its tabs the same way (author pass, then coverage audit).**
 **Docked player bar + no-clutter layout (v2.60.0).** `#rtBar` is a **full-width bar docked at the
 bottom** (not a centered pill — it was colliding with Home/Theme/search). `showBar(on)` toggles it,
-sets `body.rt-on`, and while playing **hides the 🎧 `#rtFab` + 🔍 `#rsFab`** (the bar has its own Stop,
-so no redundant buttons) and **lifts `#fpslHome`/`#rdrTheme`/`#rdrBack` above the bar** via
-`body.rt-on` CSS overrides. The bar has a **☰ Contents** button (v2.72.6), ⏮ ⏭ prev/next, ⏸/▶ pause,
+sets `body.rt-on`, and while playing **hides the 🎧 `#rtFab` + 🔍 `#rsFab`** AND the
+`#fpslHome`/`#rdrTheme`/`#rdrBack` pills (v2.72.7 — they used to be *lifted above* the bar but covered
+content just above it; the bar has its own Stop, and nav returns after stopping). The bar has a
+**☰ Contents** button (v2.72.6), ⏮ ⏭ prev/next, ⏸/▶ pause,
 ⏹ stop, a **reading-speed button** (`.rt-speed`, v2.58.0 — taps cycle `RATES` = 0.8/1/1.25/1.5/1.75/2×,
 persisted in `localStorage.cfpTtsRate`), and a `¶ n/total` counter.
 **Contents / table of contents (v2.72.6).** The ☰ button opens `#rtToc`, a bottom-sheet overlay listing
@@ -611,6 +612,13 @@ mode on a content wrapper so fixed buttons/charts stay correct). Their Chart.js 
   (`overflow-wrap:break-word`); and `.key-list li` (which is `display:flex`, so mixed inline content
   became non-wrapping flex items) is overridden to `display:block` with a hanging ▸ marker. Verified
   headless at 390px: zero elements overflow the viewport outside a `.tbl-scroll` on either reader.
+- **Auto-hide floating chrome on scroll (v2.72.7, in `reader-theme.css`/`.js`).** The six fixed buttons
+  (Home/Theme/Back pills + the 🎙️ Podcast / 👩‍🏫 Teach / 🔍 search FABs) were covering reader content.
+  A `scroll` listener in `reader-theme.js` toggles `body.rdr-hidechrome` — **scrolling down hides** all of
+  them (fade + `translateY(30px)`, `pointer-events:none`), **scroll-up or a 900 ms scroll-stop reveals**
+  them, and they're always shown within 140 px of the top. CSS targets all six IDs by `body.rdr-hidechrome`.
+  Independent of playback (during playback they're already hidden by `body.rt-on`), so no flicker from the
+  audio's own auto-scroll. Reader-agnostic.
 - **Reader deep-linking:** both readers honor a URL hash (`…#annuities`) to open a
   specific tab — the Module Hub uses this. FP511 defers the initial hash open to the
   `load` event (its chart fns are defined late); FP512 opens it in `DOMContentLoaded`.

@@ -679,9 +679,9 @@
         '#rtBar .rt-pos{font:600 12.5px system-ui,-apple-system,sans-serif;color:#7a6f5f;padding:0 4px 0 8px;white-space:nowrap;max-width:44vw;overflow:hidden;text-overflow:ellipsis;text-align:right}' +
         'body.rt-on #rtFab{display:none}' +
         'body.rt-on #rsFab{display:none!important}' +
-        'body.rt-on #fpslHome{bottom:calc(80px + env(safe-area-inset-bottom))!important}' +
-        'body.rt-on #rdrTheme{bottom:calc(126px + env(safe-area-inset-bottom))!important}' +
-        'body.rt-on #rdrBack{bottom:calc(172px + env(safe-area-inset-bottom))!important}' +
+        // While the docked bar is up, hide the Home/Theme/Back pills too (they'd cover
+        // content just above the bar). The bar has Stop; navigation returns after stopping.
+        'body.rt-on #fpslHome,body.rt-on #rdrTheme,body.rt-on #rdrBack{opacity:0;transform:translateY(30px);pointer-events:none}' +
         '.rt-hi{background:#ffe9b8 !important;border-radius:3px;box-shadow:0 0 0 3px #ffe9b8;scroll-margin-top:80px;scroll-margin-bottom:96px}' +
         // Contents overlay — a bottom sheet sitting above the docked bar.
         '#rtToc{position:fixed;inset:0;z-index:9003;display:none;background:rgba(20,16,12,.5);align-items:flex-end;justify-content:center}' +
