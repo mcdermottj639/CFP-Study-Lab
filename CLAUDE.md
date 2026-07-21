@@ -139,8 +139,10 @@ isn't. Same offline OS voice; different *words*. Built as a second mode inside t
 - **Player mechanics.** A second **👩‍🏫 Teach** FAB (`#rtTeachFab`, purple, stacked above the 🎙️ Podcast
   FAB) is shown **only on tabs that have authored narration** (`hasTeach(curTabId())`; refreshed on every
   manual tab switch via `updateTeachFab`, hidden while playing). `start('teach')` builds a **current-tab**
-  playlist (`buildTeachPlaylist`): each `{at,say}` → an anchor element + one entry per **sentence**
-  (`splitSentences`), all sharing the anchor. `reveal()` expands a collapsed section header
+  playlist (`buildTeachPlaylist`): each `{at,say}` → an anchor element + entries for the script grouped
+  into **flowing multi-sentence chunks** (`chunkSay`, ≤260 chars — so the engine carries intonation
+  across a couple sentences instead of hard-stopping after each, the v2.72.1 "less stiff" fix; capped
+  under iOS's long-utterance cut-off), all sharing the anchor. `reveal()` expands a collapsed section header
   (class-based: FP512 `.collapsed`, FP511 `.closed`; clicks only when actually collapsed) and, via
   `lastRevealEl`, **scrolls once per section** instead of re-yanking on every sentence. Teach is
   current-tab only (a teacher teaches what you're looking at) — it does NOT flow across tabs like the
@@ -162,8 +164,9 @@ so no redundant buttons) and **lifts `#fpslHome`/`#rdrTheme`/`#rdrBack` above th
 `localStorage.cfpTtsRate`), and a `¶ n/total` counter.
 **Natural pacing (v2.60.0).** `u.rate = RATE_BASE(0.95) × rate` (so "1×" is an unhurried default, not
 the old rushed 1.0); each block's text gets a sentence-final period (`sentence()`) so blocks don't run
-together; and a **~220 ms gap** (`GAP`) is inserted between blocks on natural advance (a `setTimeout`
-inside `onend`, re-checking the `gen`/`paused` guard) — a human breath instead of a continuous rush. Reader-agnostic: the reading root
+together; and a **light gap** (`gapMs()` — 150 ms read / 70 ms teach, v2.72.1; was a fixed 220 ms that
+read halting/stiff) is inserted between blocks on natural advance (a `setTimeout` inside `onend`,
+re-checking the `gen`/`paused` guard) — a human breath instead of a continuous rush. Reader-agnostic: the reading root
 is the largest `.active` panel (same convention `reader-search.js` uses), so it works on FP511, FP512,
 and any future reader with **no per-reader code**. A **generation counter** (`gen`) guards the
 utterance `onend` chain so cancel/skip/pause never double-advance. Pause re-speaks the current block
