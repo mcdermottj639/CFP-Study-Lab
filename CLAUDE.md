@@ -506,12 +506,18 @@ injected by `scripts/inject_reader_theme.mjs`). Theme = warm canvas + dark mode 
 **syncs with the app** via the shared `cfpTheme` localStorage key (filter-based dark
 mode on a content wrapper so fixed buttons/charts stay correct). Their Chart.js and
 (FP512) MathJax are vendored locally (`vendor/chart.umd.js`, `vendor/mathjax/tex-mml-svg.js`).
-- **Back to Module (v2.46.0).** Opening a reader from a Module Hub (`openReaderTab`) stashes
-  `sessionStorage.cfpReaderReturn = "COURSE/mod"`; `reader-theme.js` then injects a **‹ Module N**
-  pill (`#rdrBack`, outlined so it reads distinct from the solid Home/Theme pills) that links to
-  `../index.html#m/COURSE/mod`. The app boot parses that hash and calls `openModule()`, dropping
-  you back on that exact hub (Home still → Dashboard). The Modules-tab course-card reader link
-  clears the flag on click so it doesn't show a stale button when opened course-wide.
+- **Back to Module / Modules (v2.46.0, always-shown v2.70.0).** Opening a reader from a Module Hub
+  (`openReaderTab`) stashes `sessionStorage.cfpReaderReturn = "COURSE/mod"`; `reader-theme.js`
+  injects a **`#rdrBack`** pill (outlined so it reads distinct from the solid Home/Theme pills).
+  As of **v2.70.0 the back pill is ALWAYS shown** (readers AND decks) so there's a one-tap path
+  back into the modules area regardless of how you opened it: with `cfpReaderReturn` set it reads
+  **‹ Module N** → `../index.html#m/COURSE/mod` (the exact hub); course-wide (flag cleared) it reads
+  **‹ Modules** → `../index.html#modules` (the Modules tab / module map). The app's hash handler
+  (`openFromHash`, next to `#m/` routing) now also recognizes **`#modules`** → `go('modules')`.
+  Home still → Dashboard. **Slide decks** carry the identical logic in their own inline chrome
+  script (`#dkBack`, baked into every `apps/*-slides.html` — no separate injector; update the block
+  in each deck file). The Modules-tab course-card reader link still clears the flag on click so a
+  course-wide open shows **‹ Modules**, not a stale module number.
 - **Portrait overflow fixes (v2.46.0, in `reader-theme.css`/`.js`, so every reader benefits).**
   Wide tables were clipped past the right edge in portrait (`.collapsible-content{overflow:hidden}`
   with no scroll — you had to rotate to landscape). `reader-theme.js` now wraps each `<table>` in a
@@ -723,7 +729,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.69.0`) on every shippable change so installed apps auto-update
+  (current: `v2.70.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
