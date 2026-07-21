@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FP512 · M4 Annuities — Exam Cheat Sheet</title>
+<style>
+@font-face{font-family:'Dancing Script';src:url('../vendor/fonts/dancing-script-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap;}
+:root{
+  --canvas:#f4ecdf; --card:#fffdf8; --card2:#faf3e6;
+  --ink:#2c2118; --ink2:#5b4b3a; --muted:#897357; --line:#e6d8c2;
+  --terra:#d0613a; --terra-d:#b34d2a; --green:#1f4d3a; --green-l:#2f7355; --gold:#c58a2e;
+  --trap-bg:#fbe9e1; --trap:#b34d2a; --tip-bg:#e6f2ea; --tip:#2f7355; --know-bg:#fdf4e3;
+  --shadow:0 6px 20px -12px rgba(60,40,20,.5);
+}
+:root[data-theme="dark"]{--canvas:#17120e;--card:#221a14;--card2:#1d1610;--ink:#f0e6d8;--ink2:#cbb89f;--muted:#a08a6d;--line:#3a2e22;--trap-bg:#3a2018;--tip-bg:#16261d;--know-bg:#241c0f;}
+*{box-sizing:border-box;}
+html,body{margin:0;background:var(--canvas);}
+body{font:14px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;color:var(--ink);-webkit-text-size-adjust:100%;}
+.wrap{max-width:900px;margin:0 auto;padding:14px 12px 34px;}
+
+.head{border-radius:16px;padding:16px 20px;color:#fff;background:linear-gradient(135deg,#1f4d3a 0%,#2f7355 55%,#d0613a 155%);box-shadow:var(--shadow);position:relative;}
+.head .ey{font:800 11px/1 system-ui;letter-spacing:.15em;text-transform:uppercase;opacity:.85;}
+.head h1{font-family:'Dancing Script',cursive;font-size:clamp(28px,7vw,44px);margin:.08em 0 0;line-height:1;}
+.head .pr{position:absolute;top:14px;right:16px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:999px;padding:7px 12px;font:700 12px/1 system-ui;cursor:pointer;}
+
+h2.sec{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:18px 2px 8px;display:flex;align-items:center;gap:7px;}
+
+/* key numbers as tiles */
+.keys{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:9px;}
+.key{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--terra);border-radius:12px;padding:10px 12px;box-shadow:var(--shadow);}
+.key .v{font:800 15px/1.15 system-ui;color:var(--terra-d);}
+:root[data-theme="dark"] .key .v{color:#e8895f;}
+.key .k{font-size:12px;color:var(--ink2);margin-top:3px;}
+
+/* rule columns */
+.cols{display:grid;grid-template-columns:1fr;gap:11px;}
+@media(min-width:640px){.cols{grid-template-columns:1.15fr 1fr;}}
+.box{border-radius:13px;padding:13px 15px;box-shadow:var(--shadow);border:1px solid var(--line);}
+.box h3{margin:0 0 9px;font-size:14px;display:flex;align-items:center;gap:7px;}
+.box.know{background:var(--know-bg);} .box.know h3{color:var(--gold);}
+.box.trap{background:var(--trap-bg);border-color:#eeccbe;} .box.trap h3{color:var(--trap);}
+.box.tip{background:var(--tip-bg);border-color:#cfe6d8;} .box.tip h3{color:var(--tip);}
+:root[data-theme="dark"] .box.trap{border-color:#5a3122;} :root[data-theme="dark"] .box.tip{border-color:#2b4a39;}
+.box ul{margin:0;padding-left:1.05em;} .box li{margin:6px 0;color:var(--ink2);font-size:13px;}
+.box li b{color:var(--ink);}
+.stack{display:flex;flex-direction:column;gap:11px;}
+
+/* term glossary */
+.terms{border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);}
+.terms table{border-collapse:collapse;width:100%;font-size:12.5px;}
+.terms th,.terms td{padding:8px 11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
+.terms tbody th{background:var(--card2);color:var(--ink);font-weight:700;white-space:nowrap;width:34%;}
+.terms td{color:var(--ink2);background:var(--card);}
+.terms tr:last-child th,.terms tr:last-child td{border-bottom:none;}
+
+.foot{margin-top:16px;text-align:center;font-size:11px;color:var(--muted);}
+#tgl{position:fixed;right:12px;bottom:12px;z-index:99;background:var(--terra);color:#fff;border:none;border-radius:999px;padding:9px 14px;font:700 12px/1 system-ui;cursor:pointer;box-shadow:var(--shadow);}
+
+@media print{
+  body{background:#fff;} #tgl,.head .pr{display:none;}
+  .wrap{max-width:100%;padding:0;} .box,.key,.terms{box-shadow:none;}
+  .head{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="head">
+    <div class="ey">FP512 · Module 4 · Exam Cheat Sheet</div>
+    <h1>Annuities</h1>
+    <button class="pr" onclick="window.print()">🖨 Save as PDF</button>
+  </header>
+
+  <h2 class="sec">★ Key numbers</h2>
+  <div class="keys">
+    <div class="key"><div class="v">10% penalty</div><div class="k">Early withdrawal before age 59½ (nonqualified gains)</div></div>
+    <div class="key"><div class="v">Exclusion ratio</div><div class="k">Investment (basis) ÷ Expected total return</div></div>
+    <div class="key"><div class="v">LIFO</div><div class="k">Nonqualified withdrawals taxed gains-first (ordinary income)</div></div>
+    <div class="key"><div class="v">1035 exchange</div><div class="k">Annuity→Annuity ✔ · Life→Annuity ✔ · Annuity→Life ✘</div></div>
+    <div class="key"><div class="v">RMDs</div><div class="k">Qualified annuities only; none for nonqualified in accumulation</div></div>
+    <div class="key"><div class="v">~70%</div><div class="k">of buyers choose the GLWB living-benefit rider</div></div>
+  </div>
+
+  <div class="cols" style="margin-top:16px">
+    <div class="box know">
+      <h3>✓ Must-know rules</h3>
+      <ul>
+        <li>Annuity = protection against <b>living too long</b> (longevity) — the mirror of life insurance.</li>
+        <li>Tax-<b>deferred</b> growth; premiums <b>not deductible</b> (after-tax basis if nonqualified).</li>
+        <li>Payouts: <b>life-only</b> = highest, nothing to heirs → period-certain → <b>joint &amp; survivor</b> = lowest.</li>
+        <li><b>Variable</b> = a security (prospectus + FINRA); <b>fixed</b> = insurance; <b>indexed/EIA</b> = NOT a security.</li>
+      </ul>
+    </div>
+    <div class="stack">
+      <div class="box trap">
+        <h3>⚠ Traps</h3>
+        <ul>
+          <li>1035 from an annuity <b>into life insurance</b> — <b>not allowed</b> (one-way toward annuities).</li>
+          <li>Mixing the <b>exclusion ratio</b> (annuitized) with <b>LIFO</b> (pre-annuitization withdrawals).</li>
+          <li>Annuity <b>death benefit is NOT income-tax-free</b> like life insurance — the gain is taxable.</li>
+          <li>Applying <b>RMDs</b> to a nonqualified annuity during accumulation.</li>
+        </ul>
+      </div>
+      <div class="box tip">
+        <h3>🎯 Exam tips</h3>
+        <ul>
+          <li>Client fears <b>outliving money</b> → annuity (longevity), never life insurance.</li>
+          <li>'Max monthly income, no heirs' → <b>straight life</b> annuity.</li>
+          <li>Spot the <b>tax wrapper first</b> (qualified vs nonqualified) — it drives RMD &amp; basis.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="sec">📘 Term reference</h2>
+  <div class="terms"><table><tbody>
+    <tr><th>Fixed annuity</th><td>Guaranteed minimum rate; the insurer bears market risk. An insurance product.</td></tr>
+    <tr><th>Variable annuity</th><td>Cash value in subaccounts; owner bears market risk. A security (prospectus/FINRA).</td></tr>
+    <tr><th>Indexed (EIA/RILA)</th><td>Return tied to an index via participation rate &amp; cap; EIA floor usually 0%; RILA uses buffers/floors.</td></tr>
+    <tr><th>QLAC</th><td>Deferred-income annuity in a qualified plan; up to $210,000 (2025); income can start as late as age 85.</td></tr>
+    <tr><th>Exclusion ratio</th><td>Portion of each annuitized payment that is tax-free return of basis.</td></tr>
+    <tr><th>GLWB</th><td>Guaranteed lifetime withdrawal benefit — income for life even if the account hits $0.</td></tr>
+    <tr><th>Surrender charge</th><td>Declining fee (≈5–25%) for early withdrawal during the surrender period (≈3–10 yrs).</td></tr>
+  </tbody></table></div>
+
+  <div class="foot">Same "Exam cheat sheet" content the app already stores (MODCHEAT), rendered visually — printable to PDF, theme-aware, and correctable.</div>
+</div>
+<button id="tgl" aria-label="Toggle theme">🌙 Theme</button>
+<script>
+var r=document.documentElement;
+try{var s=localStorage.getItem('cfpTheme');if(s)r.setAttribute('data-theme',s);}catch(e){}
+document.getElementById('tgl').onclick=function(){var t=r.getAttribute('data-theme')==='dark'?'light':'dark';r.setAttribute('data-theme',t);try{localStorage.setItem('cfpTheme',t);}catch(e){}};
+</script>
+</body>
+</html>
