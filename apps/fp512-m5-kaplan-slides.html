@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FP512 · Module 5 — Health Insurance, Medicare &amp; Medicaid (Visual Deck)</title>
+<style>
+/* ---- Dancing Script title (vendored, offline) ---- */
+@font-face{font-family:'Dancing Script';src:url('../vendor/fonts/dancing-script-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap;}
+
+:root{
+  --canvas:#f4ecdf; --card:#fffdf8; --card2:#faf3e6;
+  --ink:#2c2118; --ink2:#5b4b3a; --muted:#897357;
+  --line:#e6d8c2; --line2:#d8c6aa;
+  --terra:#d0613a; --terra-d:#b34d2a;
+  --green:#1f4d3a; --green-l:#2f7355;
+  --gold:#c58a2e; --sky:#3a6ea5;
+  --trap:#b34d2a; --trap-bg:#fbe9e1; --tip:#2f7355; --tip-bg:#e6f2ea;
+  --key-bg:#efe4d0;
+  --radius:18px; --shadow:0 8px 26px -14px rgba(60,40,20,.55);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--canvas);}
+body{font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;color:var(--ink);-webkit-text-size-adjust:100%;}
+
+/* ---- App-synced dark mode: filter-invert the content wrapper (matches readers) ---- */
+html[data-theme="dark"]{background:#17120e;}
+html[data-theme="dark"] body{background:#17120e;}
+html[data-theme="dark"] #rdrWrap{filter:invert(.92) hue-rotate(180deg);}
+html[data-theme="dark"] #rdrWrap svg,
+html[data-theme="dark"] #rdrWrap img,
+html[data-theme="dark"] #rdrWrap canvas{filter:invert(1) hue-rotate(180deg);}
+
+#rdrWrap{max-width:820px;margin:0 auto;padding:18px 15px 90px;}
+
+/* ---- Header ---- */
+.deck-head{padding:26px 20px 22px;border-radius:var(--radius);color:#fff;
+  background:linear-gradient(135deg,#1f4d3a 0%,#2f7355 55%,#d0613a 160%);
+  box-shadow:var(--shadow);position:relative;overflow:hidden;}
+.deck-head .eyebrow{font:700 12px/1 system-ui;letter-spacing:.16em;text-transform:uppercase;opacity:.85;}
+.deck-head h1{font-family:'Dancing Script',cursive;font-size:clamp(34px,9vw,52px);margin:.15em 0 .1em;line-height:1;}
+.deck-head .sub{font-size:15px;opacity:.95;max-width:46ch;}
+.deck-head .pillrow{margin-top:14px;display:flex;flex-wrap:wrap;gap:7px;}
+.deck-head .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+  border-radius:999px;padding:5px 11px;font:600 12px/1 system-ui;}
+
+/* ---- Section divider ---- */
+.sect{margin:34px 2px 14px;display:flex;align-items:center;gap:12px;}
+.sect .n{flex:none;width:38px;height:38px;border-radius:11px;background:var(--green);color:#fff;
+  font:800 15px/38px system-ui;text-align:center;box-shadow:var(--shadow);}
+.sect h2{font-size:19px;margin:0;color:var(--green);letter-spacing:.01em;}
+.sect .lo{font:600 11px/1 system-ui;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
+
+/* ---- Slide card ---- */
+.slide{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 19px;margin:13px 0;box-shadow:var(--shadow);}
+.slide h3{margin:0 0 8px;font-size:18px;color:var(--ink);display:flex;gap:9px;align-items:baseline;}
+.slide h3 .ic{font-size:19px;}
+.slide p{margin:8px 0;color:var(--ink2);}
+.slide ul{margin:9px 0;padding-left:1.15em;}
+.slide li{margin:5px 0;color:var(--ink2);}
+.lead{font-size:16.5px;color:var(--ink)!important;}
+
+/* ---- Stat tiles ---- */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:11px;margin:14px 0 4px;}
+.tile{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:13px 14px;}
+.tile .v{font:800 24px/1.05 system-ui;color:var(--terra-d);letter-spacing:-.01em;}
+.tile .k{font-size:12.5px;color:var(--ink2);margin-top:5px;}
+
+/* ---- Callouts ---- */
+.callout{border-radius:13px;padding:12px 14px 12px 15px;margin:13px 0;border-left:5px solid;font-size:14.5px;}
+.callout.trap{background:var(--trap-bg);border-color:var(--trap);}
+.callout.tip{background:var(--tip-bg);border-color:var(--tip);}
+.callout b{color:var(--ink);}
+.callout .lab{display:block;font:800 11px/1 system-ui;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;}
+.callout.trap .lab{color:var(--trap);}
+.callout.tip .lab{color:var(--tip);}
+
+/* ---- Tables ---- */
+.tbl-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0 4px;
+  border:1px solid var(--line);border-radius:13px;}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:460px;}
+caption{caption-side:top;text-align:left;font:700 13px/1.4 system-ui;color:var(--muted);padding:2px 4px 9px;}
+th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
+thead th{background:var(--green);color:#fff;font-weight:700;font-size:12.5px;position:sticky;top:0;}
+tbody th{background:var(--card2);color:var(--ink);font-weight:700;white-space:nowrap;}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:none;}
+td.y{color:var(--tip);font-weight:700;} td.n{color:var(--trap);font-weight:700;}
+
+/* ---- Chart figure ---- */
+figure{margin:14px 0 4px;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:14px 14px 10px;}
+figure svg{width:100%;height:auto;display:block;}
+figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center;}
+.legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:9px;font:600 12.5px/1 system-ui;}
+.legend span{display:inline-flex;align-items:center;gap:6px;color:var(--ink2);}
+.legend i{width:14px;height:3px;border-radius:2px;display:inline-block;}
+
+/* ---- Three-up option groups ---- */
+.triad{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;margin:13px 0 4px;}
+.opt{background:var(--card2);border:1px solid var(--line);border-radius:13px;padding:12px 13px;}
+.opt .t{font:800 13.5px/1.2 system-ui;color:var(--green);margin-bottom:5px;}
+.opt .d{font-size:13px;color:var(--ink2);}
+
+/* ---- Worked example ---- */
+.calc{background:#1c2b24;color:#e9f3ee;border-radius:14px;padding:16px 16px 12px;margin:14px 0 4px;}
+.calc h4{margin:0 0 10px;color:#7fd3ac;font-size:14.5px;}
+.calc .step{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-top:1px solid rgba(255,255,255,.12);}
+.calc .step:first-of-type{border-top:none;}
+.calc .sn{flex:none;width:24px;height:24px;border-radius:8px;background:#2f7355;color:#fff;font:800 12px/24px system-ui;text-align:center;}
+.calc .sb{font-size:13.5px;}
+.calc .sb b{color:#fff;}
+.calc code{font:600 12.5px/1.5 ui-monospace,Menlo,monospace;color:#ffd9a8;background:rgba(255,255,255,.07);
+  padding:1px 6px;border-radius:6px;display:inline-block;margin-top:3px;}
+.calc .res{margin-top:11px;background:#d0613a;color:#fff;border-radius:10px;padding:10px 13px;font:700 15px/1.2 system-ui;}
+
+/* ---- Quiz (tap to reveal) ---- */
+.quiz{background:var(--card);border:1.5px solid var(--terra);border-radius:14px;padding:0;margin:13px 0;overflow:hidden;box-shadow:var(--shadow);}
+.quiz>summary{list-style:none;cursor:pointer;padding:15px 16px;font-size:15px;color:var(--ink);position:relative;}
+.quiz>summary::-webkit-details-marker{display:none;}
+.quiz>summary .qlab{display:inline-block;font:800 10.5px/1 system-ui;letter-spacing:.12em;color:var(--terra-d);
+  background:var(--trap-bg);border-radius:6px;padding:4px 7px;margin-bottom:8px;text-transform:uppercase;}
+.quiz>summary .opts{margin-top:9px;font-size:13.5px;color:var(--ink2);}
+.quiz>summary .tap{margin-top:10px;font:700 12.5px/1 system-ui;color:var(--terra);}
+.quiz[open]>summary .tap{display:none;}
+.quiz .ans{padding:0 16px 15px;border-top:1px dashed var(--line2);margin-top:2px;}
+.quiz .ans .correct{font:800 14px/1.4 system-ui;color:var(--tip);margin:12px 0 6px;}
+.quiz .ans p{font-size:13.5px;color:var(--ink2);margin:6px 0 0;}
+
+.foot{margin-top:34px;padding:16px;border-radius:var(--radius);background:var(--card2);border:1px solid var(--line);
+  font-size:12.5px;color:var(--muted);text-align:center;}
+
+/* ---- Floating theme toggle (standalone preview; injection can replace) ---- */
+#tgl{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:9999;
+  background:var(--terra);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:999px;
+  padding:10px 15px;font:700 13px/1 system-ui;cursor:pointer;box-shadow:0 8px 22px -8px rgba(0,0,0,.55);}
+
+/* ---- Sticky progress ---- */
+#prog{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--green),var(--terra));z-index:9999;transition:width .1s;}
+
+@media(min-width:560px){.slide{padding:22px 24px;} #rdrWrap{padding:22px 20px 90px;}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<div id="rdrWrap">
+
+  <header class="deck-head">
+    <div class="eyebrow">FP512 · Risk, Insurance &amp; Benefits</div>
+    <h1>Health, Medicare &amp; Medicaid</h1>
+    <div class="sub">Module 5 at a glance — regulation of health plans, COBRA &amp; the ACA marketplace, managed care, cost math, and the four parts of Medicare. Built from the College for Financial Planning® (Kaplan) course deck.</div>
+    <div class="pillrow">
+      <span class="pill">🔁 COBRA 18 / 29 / 36 mo</span>
+      <span class="pill">🏛️ PPACA &amp; Marketplace</span>
+      <span class="pill">🩺 Managed care</span>
+      <span class="pill">👴 Medicare A · B · C · D</span>
+    </div>
+  </header>
+
+  <!-- ============ LO 5.1.1 — Regulation of individual health plans ============ -->
+  <div class="sect"><div class="n">1</div><div><div class="lo">Learning Objective 5.1.1</div><h2>Regulation &amp; features of individual health plans</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🔀</span>Transitions &amp; the planner's role</h3>
+    <p class="lead">Health-coverage needs change at predictable <b>triggering events</b>. Spotting them is the planner's job.</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Life events</div><div class="d">Marriage · divorce · birth · death · disability.</div></div>
+      <div class="opt"><div class="t">Work events</div><div class="d">Losing / changing jobs · dropping to part-time · big income change.</div></div>
+      <div class="opt"><div class="t">Other</div><div class="d">Moving · retiring.</div></div>
+    </div>
+    <p>Key transition <b>ages</b> to watch:</p>
+    <div class="tiles">
+      <div class="tile"><div class="v">30 days</div><div class="k">Window to add a newborn to coverage</div></div>
+      <div class="tile"><div class="v">Age 26</div><div class="k">Child can stay on a parent's plan</div></div>
+      <div class="tile"><div class="v">Age 55</div><div class="k">Retiree / early-transition planning</div></div>
+      <div class="tile"><div class="v">Age 65</div><div class="k">Medicare eligibility begins</div></div>
+    </div>
+    <div class="callout trap"><span class="lab">Exam trap — age 26</span>A child can stay on a parent's plan to <b>age 26 whether or not the child is claimed as a tax dependent</b>. Dependency for income-tax purposes is <b>not</b> required.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">📋</span>HIPAA — portability that fights "job lock"</h3>
+    <p>The <b>Health Insurance Portability and Accountability Act of 1996 (HIPAA)</b> sets major health-insurance-related provisions designed to <b>reduce job lock</b> — so workers aren't trapped in a job just to keep coverage.</p>
+    <div class="callout tip"><span class="lab">Remember</span>HIPAA is a <b>federal law</b> (not a program) that improves portability of coverage and limits how pre-existing conditions restrict people who change jobs or plans.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🔁</span>COBRA — continuation coverage &amp; durations</h3>
+    <p><b>Consolidated Omnibus Budget Reconciliation Act (COBRA)</b> lets qualified beneficiaries keep group coverage after a qualifying event. The <b>duration depends on the event</b>. A qualified beneficiary has a <b>60-day election window</b> from notice to enroll.</p>
+    <div class="tbl-scroll"><table>
+      <caption>COBRA qualifying events × maximum continuation period</caption>
+      <thead><tr><th>Qualifying event</th><th>Qualified beneficiary</th><th>Max length</th></tr></thead>
+      <tbody>
+        <tr><th>Voluntary or involuntary termination</th><td>Covered employee</td><td class="n">18 months</td></tr>
+        <tr><th>Change from full-time to part-time status</th><td>Covered employee</td><td class="n">18 months</td></tr>
+        <tr><th>Disability (Social Security definition)</th><td>Covered employee</td><td class="n">29 months</td></tr>
+        <tr><th>Employee's death</th><td>Spouse &amp; dependents</td><td class="n">36 months</td></tr>
+        <tr><th>Divorce</th><td>Spouse &amp; dependents</td><td class="n">36 months</td></tr>
+        <tr><th>Legal separation</th><td>Spouse &amp; dependents</td><td class="n">36 months</td></tr>
+        <tr><th>Employee's eligibility for Medicare</th><td>Spouse &amp; dependents</td><td class="n">36 months</td></tr>
+        <tr><th>Loss of dependent status</th><td>Child of employee</td><td class="n">36 months</td></tr>
+      </tbody>
+    </table></div>
+    <figure>
+      <svg viewBox="0 0 460 150" role="img" aria-label="COBRA continuation timeline showing 18-, 29-, and 36-month maximum coverage bars">
+        <line x1="46" y1="18" x2="46" y2="120" stroke="#d8c6aa" stroke-width="1.5"/>
+        <line x1="46" y1="120" x2="440" y2="120" stroke="#d8c6aa" stroke-width="1.5"/>
+        <text x="6" y="14" font-size="10" fill="#897357">Event</text>
+        <text x="392" y="137" font-size="10" fill="#897357">Months →</text>
+        <!-- 18 months -->
+        <rect x="46" y="26" width="180" height="18" rx="5" fill="#d0613a"/>
+        <text x="52" y="39" font-size="10.5" font-weight="700" fill="#fff">Termination / to part-time</text>
+        <text x="232" y="39" font-size="10.5" font-weight="700" fill="#b34d2a">18 mo</text>
+        <!-- 29 months -->
+        <rect x="46" y="56" width="290" height="18" rx="5" fill="#c58a2e"/>
+        <text x="52" y="69" font-size="10.5" font-weight="700" fill="#fff">Disability (SS)</text>
+        <text x="342" y="69" font-size="10.5" font-weight="700" fill="#c58a2e">29 mo</text>
+        <!-- 36 months -->
+        <rect x="46" y="86" width="360" height="18" rx="5" fill="#1f4d3a"/>
+        <text x="52" y="99" font-size="10.5" font-weight="700" fill="#fff">Death · divorce · separation · Medicare · loss of dep.</text>
+        <text x="412" y="99" font-size="10.5" font-weight="700" fill="#1f4d3a">36 mo</text>
+      </svg>
+      <figcaption>Longer bar = longer maximum continuation. 18 → 29 → 36 months by event type.</figcaption>
+    </figure>
+    <div class="callout tip"><span class="lab">Memory hook</span><b>18</b> = job-status loss (termination / part-time). <b>29</b> = disability. <b>36</b> = family-side events (death, divorce, separation, Medicare, loss of dependent status).</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🏛️</span>PPACA — the Affordable Care Act</h3>
+    <p>The <b>Patient Protection and Affordable Care Act (PPACA)</b> expands coverage, impacts affordability, and <b>sets standards</b> for comprehensive health plans, through two mandates:</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Individual mandate</div><div class="d">Standards applying to individuals obtaining coverage.</div></div>
+      <div class="opt"><div class="t">Employer mandate</div><div class="d">Standards applying to employers offering coverage.</div></div>
+      <div class="opt"><div class="t">Applies to…</div><div class="d">Comprehensive health care plans only.</div></div>
+    </div>
+    <div class="callout trap"><span class="lab">Exam trap — what PPACA eliminated</span>PPACA eliminated <b>maximum (lifetime / annual) policy limits</b> on comprehensive major-medical plans. It did <b>NOT</b> eliminate copayments, coinsurance splits, or deductibles — HSAs still require high-deductible plans.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🏷️</span>ACA Marketplace — the metal tiers</h3>
+    <p>Marketplace (exchange) plans are grouped into metal levels by how much of covered costs the plan pays — <b>higher metal = higher premium, lower out-of-pocket</b>. A separate <b>Catastrophic</b> tier is available to limited groups.</p>
+    <div class="tbl-scroll"><table>
+      <caption>ACA Marketplace metal tiers (lowest to highest coverage)</caption>
+      <thead><tr><th>Tier</th><th>Relative premium</th><th>Relative out-of-pocket</th></tr></thead>
+      <tbody>
+        <tr><th>Catastrophic</th><td class="y">Lowest</td><td class="n">Highest</td></tr>
+        <tr><th>Bronze</th><td>Low</td><td>High</td></tr>
+        <tr><th>Silver</th><td>Moderate</td><td>Moderate</td></tr>
+        <tr><th>Gold</th><td>High</td><td>Low</td></tr>
+        <tr><th>Platinum</th><td class="n">Highest</td><td class="y">Lowest</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout tip"><span class="lab">Order it</span><b>Catastrophic → Bronze → Silver → Gold → Platinum.</b> As coverage rises, premium rises and out-of-pocket cost falls.</div>
+  </div>
+
+  <details class="quiz">
+    <summary><span class="qlab">Transitions</span><div>Which of these is <b>NOT</b> accurate about transitions?</div><div class="opts">A. A parent has 30 days to list a newborn · B. A widow has 60 days from notice to enroll for COBRA and can remain 36 months · C. A child can stay on a parent's plan only if claimed as a tax dependent, to age 26 · D. Medicare enrollment runs 3 months before, the birth month, and 3 months after age 65</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — the tax-dependent condition is false</div><p>A child can stay on a parent's plan to age 26 <b>regardless of dependency status</b> for income-tax purposes. The other three statements are all true.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">PPACA</span><div>Under PPACA (2010), which has been <b>eliminated</b> for comprehensive major-medical plans?</div><div class="opts">A. Copayments · B. Maximum policy limits · C. Coinsurance below 80/20 · D. Deductibles above $1,000</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — maximum policy limits</div><p>Copayments, coinsurance splits, and deductibles were <b>not</b> impacted by PPACA (HSAs still require high-deductible plans). PPACA removed lifetime/annual maximum policy limits.</p></div>
+  </details>
+
+  <!-- ============ LO 5.1.2 — Medicaid & CHIP ============ -->
+  <div class="sect"><div class="n">2</div><div><div class="lo">Learning Objective 5.1.2</div><h2>Medicaid &amp; CHIP</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🤝</span>Medicaid &amp; CHIP — coverage for eligible persons</h3>
+    <div class="triad">
+      <div class="opt"><div class="t">Medicaid</div><div class="d">For those <b>unable to afford</b> health care. <b>Federally initiated</b>, but <b>administered &amp; partially funded at the state level</b> — each state sets its own qualification criteria.</div></div>
+      <div class="opt"><div class="t">CHIP</div><div class="d"><b>Children's Health Insurance Program</b> — a federal program <b>administered by states</b>, for children in families who <b>don't qualify for Medicaid</b>.</div></div>
+    </div>
+    <div class="callout tip"><span class="lab">Contrast</span>HIPAA and COBRA are federal <b>laws</b>. Medicare is a federal <b>program</b> (mainly age 65+). Medicaid is federally initiated but <b>state-administered welfare</b>.</div>
+  </div>
+
+  <details class="quiz">
+    <summary><span class="qlab">Medicaid</span><div>Which of these is a <b>federal program administered by the states</b>?</div><div class="opts">A. HIPAA · B. COBRA · C. Medicare · D. Medicaid</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ D — Medicaid</div><p>HIPAA and COBRA are federal laws; Medicare is a federal program primarily for those over 65. Medicaid is federally initiated but mostly administered — and at least partly funded — at the state level.</p></div>
+  </details>
+
+  <!-- ============ LO 5.2.1 — Types of individual health plans ============ -->
+  <div class="sect"><div class="n">3</div><div><div class="lo">Learning Objective 5.2.1</div><h2>Types of health plans &amp; managed care</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">⚖️</span>Traditional health insurance vs. managed care</h3>
+    <p>The classic tested contrast. Traditional indemnity insurance maximizes <b>flexibility</b>; managed care trades some flexibility for <b>lower, coordinated cost</b>.</p>
+    <div class="tbl-scroll"><table>
+      <caption>Health insurance vs. managed care</caption>
+      <thead><tr><th>Feature</th><th>Traditional health insurance</th><th>Managed care</th></tr></thead>
+      <tbody>
+        <tr><th>Who pays / provides</th><td>Insurance company reimburses</td><td>Care providers deliver &amp; coordinate</td></tr>
+        <tr><th>Cost sharing</th><td>Deductible</td><td>Copayment</td></tr>
+        <tr><th>Physician choice</th><td class="y">Wider selection</td><td>Limited selection</td></tr>
+        <tr><th>Orientation</th><td>Curative (now some prevention)</td><td>Preventive in nature</td></tr>
+        <tr><th>Cost approach</th><td>Maximum flexibility</td><td>Minimum cost (shifting)</td></tr>
+        <tr><th>Fees</th><td>Billed based on service</td><td>Pre-established fees</td></tr>
+        <tr><th>Geography</th><td>Few restrictions</td><td>Often geographically limited</td></tr>
+        <tr><th>Access</th><td class="y">No PCP / referral needed</td><td class="n">PCP referral needed</td></tr>
+      </tbody>
+    </table></div>
+    <p>Traditional plan forms include <b>fee-for-service</b>, <b>major medical</b>, and <b>comprehensive major medical</b> insurance.</p>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🩺</span>The managed-care plan types</h3>
+    <p>Four managed-care structures — the exam tests how much freedom each gives to use out-of-network providers and whether a referral is required.</p>
+    <div class="tbl-scroll"><table>
+      <caption>HMO · PPO · EPO · POS</caption>
+      <thead><tr><th>Plan</th><th>Out-of-network</th><th>PCP / referral</th><th>Feel</th></tr></thead>
+      <tbody>
+        <tr><th>HMO<br><span style="font-weight:400;color:var(--muted)">Health maintenance org.</span></th><td class="n">Generally none</td><td class="n">Yes — required</td><td>Most restrictive, lowest cost</td></tr>
+        <tr><th>PPO<br><span style="font-weight:400;color:var(--muted)">Preferred provider org.</span></th><td class="y">Yes (higher cost)</td><td class="y">No referral</td><td>Most flexible</td></tr>
+        <tr><th>EPO<br><span style="font-weight:400;color:var(--muted)">Exclusive provider org.</span></th><td class="n">Generally none</td><td>Usually no referral</td><td>In-network only, no PCP gate</td></tr>
+        <tr><th>POS<br><span style="font-weight:400;color:var(--muted)">Point of service</span></th><td class="y">Yes (higher cost)</td><td class="n">Yes — required</td><td>HMO/PPO hybrid</td></tr>
+      </tbody>
+    </table></div>
+    <p>Underlying payment concepts: <b>capitation</b> (fixed per-member payment to the provider) vs. <b>fee-for-service</b>.</p>
+    <div class="callout trap"><span class="lab">Exam trap</span><b>Medicaid is NOT a managed-care program</b> — it's welfare funded by the federal government and each state. HMOs, PPOs, EPOs, POS and provider-service networks are managed care.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">📖</span>Health-plan cost terminology</h3>
+    <ul>
+      <li><b>Covered charges</b> — expenses the policy will consider</li>
+      <li><b>Deductible</b> — what the insured pays before the plan pays</li>
+      <li><b>Copays</b> — flat per-visit / per-service charge</li>
+      <li><b>Coinsurance provision</b> — the insured's percentage share (e.g., 20%)</li>
+      <li><b>Maximum out-of-pocket (MOOP) limit</b> — cap on the insured's total spending; the plan pays 100% above it</li>
+    </ul>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">💻</span>Telemedicine &amp; direct-to-consumer (DTC)</h3>
+    <p><b>Telemedicine</b> delivers health care remotely via telecommunications. Demand grew dramatically <b>after 2020</b>, and most major medical plans — including <b>Medicare and Medicaid</b> — now cover it.</p>
+    <div class="callout tip"><span class="lab">DTC nuance</span>Standalone <b>direct-to-consumer (DTC)</b> plans are <b>technically not insurance</b> but cover basic services at a discount — an ideal <b>supplement to a high-deductible health plan (HDHP)</b>.</div>
+  </div>
+
+  <details class="quiz">
+    <summary><span class="qlab">Managed care</span><div>Which of these is <b>NOT</b> considered a managed-care program?</div><div class="opts">A. HMOs · B. PPOs · C. Provider service networks (PSNs) · D. Medicaid</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ D — Medicaid</div><p>Medicaid is a form of welfare funded by the federal government and each state — not a managed-care program. The rest are managed-care structures.</p></div>
+  </details>
+
+  <!-- ============ LO 5.3.1 — Cost of health care ============ -->
+  <div class="sect"><div class="n">4</div><div><div class="lo">Learning Objective 5.3.1</div><h2>Calculating the cost of health care</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🧮</span>How MOOP math works</h3>
+    <p>The insured pays the <b>deductible first</b>, then a <b>coinsurance percentage</b> of remaining covered charges, until total spending reaches the <b>MOOP limit</b> — after which the plan pays <b>100%</b>.</p>
+    <div class="callout tip"><span class="lab">HDHP / HSA context</span>High-deductible health plans (HDHPs) pair a large deductible with an HSA. The same deductible → coinsurance → MOOP mechanics apply.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🩹</span>Worked example — Kayla's reimbursement</h3>
+    <p>Kayla's major-medical policy: <b>$1,000 deductible · 20% coinsurance · $5,000 MOOP</b>. She has <b>$25,000</b> of eligible expenses (first claim of the year). What does she owe, and what does the insurer pay?</p>
+    <div class="calc">
+      <h4>Deductible → coinsurance → MOOP cap</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Kayla pays the deductible first.</b><br><code>Deductible = $1,000 (insured)</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Coinsurance runs until she hits the MOOP.</b> She still owes $5,000 − $1,000 = $4,000 of coinsurance.<br><code>$4,000 ÷ 20% = $20,000 of charges at 80/20</code></div></div>
+      <div class="step"><div class="sn">3</div><div class="sb"><b>Charges to reach the MOOP.</b><br><code>$1,000 deductible + $20,000 = $21,000 → MOOP reached</code></div></div>
+      <div class="step"><div class="sn">4</div><div class="sb"><b>Everything above the MOOP is paid 100% by the plan.</b><br><code>$25,000 − $21,000 = $4,000 paid fully by insurer</code></div></div>
+      <div class="res">Kayla pays $5,000 (her MOOP) · ABC Insurance pays $20,000.</div>
+    </div>
+    <p style="font-size:12.5px;color:var(--muted);margin-top:8px;">Insurer check: 80% × $20,000 = $16,000 coinsurance + $4,000 above MOOP = $20,000.</p>
+  </div>
+
+  <details class="quiz">
+    <summary><span class="qlab">MOOP calc</span><div>Richard's group plan: $1,000 deductible, then 20% coinsurance, $5,000 MOOP. First claim of the year is $1,500 of covered expenses. How much will his <b>insurer</b> pay?</div><div class="opts">A. $300 · B. $400 · C. $1,100 · D. $1,200</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — $400</div><p>Subtract the deductible: $1,500 − $1,000 = $500. The insurer pays 80%: $500 × 0.80 = <b>$400</b>. (Richard owes the $1,000 deductible + his $100 coinsurance = $1,100.)</p></div>
+  </details>
+
+  <!-- ============ LO 5.4.1 — Medicare provisions ============ -->
+  <div class="sect"><div class="n">5</div><div><div class="lo">Learning Objective 5.4.1</div><h2>Medicare — the four parts</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🏥</span>Parts A, B, C &amp; D at a glance</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Medicare parts</caption>
+      <thead><tr><th>Part</th><th>Covers</th><th>Premium / notes</th></tr></thead>
+      <tbody>
+        <tr><th>Part A</th><td>Inpatient hospital expenses</td><td class="y">Premium-free with 40 quarters of work; has a deductible</td></tr>
+        <tr><th>Part B</th><td>Physician &amp; outpatient expenses</td><td>Monthly premium; deductible &amp; coinsurance; late-enrollment penalty</td></tr>
+        <tr><th>Part C</th><td>Medicare Advantage — bundles A, B, and D</td><td>Private plans; may cost less than A+B+D+supplement; extra benefits</td></tr>
+        <tr><th>Part D</th><td>Prescription drug benefit</td><td>Monthly premium; <b>not needed with Advantage</b>; 1%/mo late penalty</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tiles">
+      <div class="tile"><div class="v">40 qtrs</div><div class="k">Work credits → Part A premium-free</div></div>
+      <div class="tile"><div class="v">1% / mo</div><div class="k">Part D late-enrollment penalty</div></div>
+      <div class="tile"><div class="v">Age 65</div><div class="k">Medicare eligibility</div></div>
+    </div>
+    <div class="callout trap"><span class="lab">Exam trap — Part A premium</span>"Most people pay a small Part A premium" is <b>FALSE</b>. With <b>40 quarters</b> of covered work, Part A is <b>premium-free</b>.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">📅</span>Initial Enrollment Period — the 7-month window</h3>
+    <p>Enrollment spans <b>3 months before</b> the month you turn 65, the <b>birth month</b>, and <b>3 months after</b> — a <b>7-month</b> Initial Enrollment Period (IEP). Miss it and penalties, additional lifelong premiums, and pre-existing-condition issues may apply.</p>
+    <figure>
+      <svg viewBox="0 0 460 140" role="img" aria-label="Medicare initial enrollment period: three months before, the birth month, and three months after age 65, totaling seven months">
+        <line x1="20" y1="88" x2="440" y2="88" stroke="#d8c6aa" stroke-width="2"/>
+        <!-- before months -->
+        <g fill="#2f7355">
+          <rect x="28" y="70" width="46" height="18" rx="4"/>
+          <rect x="80" y="70" width="46" height="18" rx="4"/>
+          <rect x="132" y="70" width="46" height="18" rx="4"/>
+        </g>
+        <!-- birth month -->
+        <rect x="184" y="62" width="70" height="26" rx="5" fill="#d0613a"/>
+        <!-- after months -->
+        <g fill="#2f7355">
+          <rect x="260" y="70" width="46" height="18" rx="4"/>
+          <rect x="312" y="70" width="46" height="18" rx="4"/>
+          <rect x="364" y="70" width="46" height="18" rx="4"/>
+        </g>
+        <text x="51" y="83" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">−3</text>
+        <text x="103" y="83" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">−2</text>
+        <text x="155" y="83" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">−1</text>
+        <text x="219" y="80" font-size="11" font-weight="800" fill="#fff" text-anchor="middle">65</text>
+        <text x="283" y="83" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">+1</text>
+        <text x="335" y="83" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">+2</text>
+        <text x="387" y="83" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">+3</text>
+        <text x="103" y="50" font-size="10.5" font-weight="700" fill="#1f4d3a" text-anchor="middle">3 months before</text>
+        <text x="219" y="50" font-size="10.5" font-weight="700" fill="#b34d2a" text-anchor="middle">birth month</text>
+        <text x="335" y="50" font-size="10.5" font-weight="700" fill="#1f4d3a" text-anchor="middle">3 months after</text>
+        <text x="230" y="120" font-size="12" font-weight="800" fill="#5b4b3a" text-anchor="middle">= 7-month Initial Enrollment Period</text>
+      </svg>
+      <figcaption>3 before + birth month + 3 after = 7 months around age 65.</figcaption>
+    </figure>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🅲</span>Part C — Medicare Advantage plan types</h3>
+    <p>Medicare Advantage (Part C) is delivered through private plans that combine Parts A, B, and D, often adding benefits not in original Medicare.</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Medicare HMOs / PPOs</div><div class="d">Managed-care Advantage plans.</div></div>
+      <div class="opt"><div class="t">Private fee-for-service (PFFS)</div><div class="d">Advantage plan paying on a fee basis.</div></div>
+      <div class="opt"><div class="t">Special needs plans</div><div class="d">Targeted to specific populations.</div></div>
+      <div class="opt"><div class="t">Medicare MSA (MMSA)</div><div class="d">Medical savings account Advantage plan.</div></div>
+    </div>
+    <div class="callout trap"><span class="lab">Practical limit</span>Advantage programs are <b>not always available in every geographic area</b>. Penalties &amp; pre-existing-condition issues apply if not enrolled at 65 or when creditable coverage ends.</div>
+  </div>
+
+  <details class="quiz">
+    <summary><span class="qlab">Medicare</span><div>Which is <b>NOT</b> a true statement about Medicare?</div><div class="opts">A. Part A covers hospitalization and most people pay a small premium · B. Part B has a late-enrollment premium penalty unless credible coverage was kept · C. With a Medicare Advantage plan, Part D drug coverage is incorporated · D. Medigap can help pay Medicare-approved expenses not reimbursed by Medicare</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ A — the "small Part A premium" claim is false</div><p>Most people do <b>not</b> pay a Part A premium: with 40 quarters of covered work, Part A is premium-free. The other statements are all true.</p></div>
+  </details>
+
+  <!-- ============ LO 5.4.2 — Medicare supplement (Medigap) ============ -->
+  <div class="sect"><div class="n">6</div><div><div class="lo">Learning Objective 5.4.2</div><h2>Medicare supplement (Medigap) plans</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">➕</span>Medigap — filling Medicare's gaps</h3>
+    <p>Sold by <b>private insurers</b> as an <b>alternative to Medicare Advantage</b>, standardized <b>Plans A–N</b> carry different benefit levels. Basic benefits include:</p>
+    <ul>
+      <li>Reimbursement for some costs not covered by Medicare <b>Part A</b></li>
+      <li>The insured's <b>Part B coinsurance</b> percentage</li>
+      <li>All hospital expenses for an <b>additional 365 days</b></li>
+      <li><b>Three pints of blood</b></li>
+    </ul>
+    <div class="callout tip"><span class="lab">Two rules to memorize</span>A senior may hold <b>only one</b> Medigap policy under current law, and insurers <b>must accept all applicants within the first 6 months of Medicare qualification</b>, regardless of pre-existing conditions.</div>
+    <div class="callout trap"><span class="lab">Least-coverage plan</span><b>Plan A</b> provides the <b>least coverage at the lowest cost</b>.</div>
+  </div>
+
+  <details class="quiz">
+    <summary><span class="qlab">Medigap</span><div>Which Medigap policy is the <b>least expensive</b> and provides the <b>least</b> coverage?</div><div class="opts">A. Plan A · B. Plan B · C. Plan C · D. Plan D</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ A — Medigap Plan A</div><p>Plan A has the least amount of coverage at the lowest cost among the standardized Medicare supplement plans.</p></div>
+  </details>
+
+  <div class="foot">
+    Visual deck rebuilt from the College for Financial Planning® (Kaplan) FP512 Module 5 course slides.<br>
+    Verify all figures against your current course materials before the exam.
+  </div>
+
+</div>
+
+<button id="tgl" aria-label="Toggle dark mode">🌙 Theme</button>
+<script>
+/* Progress bar */
+var prog=document.getElementById('prog');
+addEventListener('scroll',function(){
+  var h=document.documentElement,b=document.body;
+  var st=h.scrollTop||b.scrollTop, sh=(h.scrollHeight||b.scrollHeight)-h.clientHeight;
+  prog.style.width=(sh>0?(st/sh*100):0)+'%';
+},{passive:true});
+/* Theme — synced with the app via localStorage cfpTheme */
+var root=document.documentElement;
+function applyTheme(t){root.setAttribute('data-theme',t);}
+try{
+  var saved=localStorage.getItem('cfpTheme');
+  if(saved){applyTheme(saved);}
+  else if(matchMedia('(prefers-color-scheme:dark)').matches){applyTheme('dark');}
+}catch(e){}
+document.getElementById('tgl').addEventListener('click',function(){
+  var t=root.getAttribute('data-theme')==='dark'?'light':'dark';
+  applyTheme(t);try{localStorage.setItem('cfpTheme',t);}catch(e){}
+});
+</script>
+
+<!-- deck-chrome-injected -->
+<style>
+#dkHome{position:fixed;left:max(14px,env(safe-area-inset-left));bottom:calc(14px + env(safe-area-inset-bottom));z-index:9999;
+  background:#1f4d3a;color:#fff;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:10px 15px;
+  font:700 13px/1 system-ui,-apple-system,sans-serif;text-decoration:none;box-shadow:0 8px 22px -8px rgba(0,0,0,.55);}
+#dkBack{position:fixed;left:max(14px,env(safe-area-inset-left));bottom:calc(60px + env(safe-area-inset-bottom));z-index:9999;
+  background:#fffdf8;color:#1f4d3a;border:1.5px solid #1f4d3a;border-radius:999px;padding:9px 13px;
+  font:700 13px/1 system-ui,-apple-system,sans-serif;text-decoration:none;box-shadow:0 6px 20px -6px rgba(0,0,0,.5);}
+html[data-theme="dark"] #dkBack{background:#17120e;color:#7fd3ac;border-color:#7fd3ac;}
+</style>
+<a id="dkHome" href="../index.html">🏠 Home</a>
+<script>
+(function(){try{var r=sessionStorage.getItem('cfpReaderReturn');
+  if(r&&/^[A-Za-z0-9]+\/\d+$/.test(r)){var a=document.createElement('a');a.id='dkBack';
+    a.href='../index.html#m/'+r;a.textContent='‹ Module '+r.split('/')[1];document.body.appendChild(a);}}catch(e){}})();
+</script>
+
+</body>
+</html>

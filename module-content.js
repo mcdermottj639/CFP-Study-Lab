@@ -69,6 +69,33 @@
     };
   /* VIDEO-GEN-END */
 
+  // ---- Visual slide DECKS (native HTML, not PDF) -------------------------------
+  // Course -> module -> [{src, title, kind}] where kind is 'kaplan' (official
+  // College for Financial Planning / Kaplan course slides) or 'ai' (NotebookLM
+  // AI-generated decks). These are standalone responsive HTML pages in apps/,
+  // opened full-screen via openDeck() (like the Interactive Readers) — NOT the
+  // old PDF iframe viewer (window.SLIDES). Module 0 = whole-course deck, shown on
+  // the Modules-tab course card. HAND-AUTHORED (not generated) — add a course's
+  // module deck by dropping the apps/*.html file and adding an entry here.
+  window.DECKS = {
+    FP511: {
+      0: [ { src: 'apps/fp511-ai-slides.html', title: 'Full-course walkthrough', kind: 'ai' } ]
+    },
+    FP512: {
+      0: [ { src: 'apps/fp512-ai-slides.html', title: 'Full-course walkthrough', kind: 'ai' } ],
+      1: [ { src: 'apps/fp512-m1-kaplan-slides.html', title: 'Principles of Insurance & Risk Mgmt', kind: 'kaplan' },
+           { src: 'apps/fp512-m1-ai-slides.html',    title: 'AI deep-dive',                        kind: 'ai' } ],
+      2: [ { src: 'apps/fp512-m2-kaplan-slides.html', title: 'Property & Casualty Insurance',       kind: 'kaplan' },
+           { src: 'apps/fp512-m2-ai-slides.html',    title: 'AI deep-dive',                        kind: 'ai' } ],
+      3: [ { src: 'apps/fp512-m3-kaplan-slides.html', title: 'Life Insurance',                      kind: 'kaplan' } ],
+      4: [ { src: 'apps/fp512-m4-kaplan-slides.html', title: 'Annuities',                           kind: 'kaplan' } ],
+      5: [ { src: 'apps/fp512-m5-kaplan-slides.html', title: 'Health, Medicare & Medicaid',         kind: 'kaplan' } ],
+      6: [ { src: 'apps/fp512-m6-kaplan-slides.html', title: 'Disability, LTC & Veterans',          kind: 'kaplan' } ],
+      7: [ { src: 'apps/fp512-m7-kaplan-slides.html', title: 'Employee Group Benefits',             kind: 'kaplan' } ],
+      8: [ { src: 'apps/fp512-m8-kaplan-slides.html', title: 'Business Owner Risk',                 kind: 'kaplan' } ]
+    }
+  };
+
   window.MODOBJ = {
     FP511: {
       1: [
