@@ -1115,6 +1115,17 @@
         </table>
         <p class="text-sm mt-1"><strong>Capitation:</strong> PCP paid fixed monthly fee per enrolled patient regardless of services. <strong>Gatekeeper:</strong> PCP controls all specialist referrals.</p>
         <p class="text-sm mt-1"><strong>Telemedicine / direct-to-consumer (DTC):</strong> Virtual visits by phone, video, or app for non-emergency care. Increasingly bundled into group and Marketplace plans (often low or $0 copay) to cut cost and expand access; standalone <strong>DTC</strong> subscription services sell virtual-care access directly to consumers. Convenient for routine issues, but not a substitute for comprehensive major-medical coverage.</p>
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; HMO vs. PPO vs. POS vs. EPO</div>
+          <div class="tell" style="margin-top:0;">Sort them on <strong>two questions: is there a PCP gatekeeper, and is there out-of-network coverage?</strong>
+            <ul class="key-list mt-1">
+              <li><strong>HMO</strong> = gatekeeper <strong>yes</strong>, out-of-network <strong>no</strong> (capitation, copays, cheapest, most restrictive).</li>
+              <li><strong>PPO</strong> = gatekeeper <strong>no</strong>, out-of-network <strong>yes</strong> (e.g. 80% in / 50% out; most flexible, priciest).</li>
+              <li><strong>POS</strong> = the <strong>hybrid</strong> &mdash; gatekeeper <strong>yes</strong> like an HMO, but <em>some</em> out-of-network benefit like a PPO.</li>
+              <li><strong>EPO</strong> = gatekeeper <strong>no</strong> (no referrals), out-of-network <strong>no</strong> (emergencies only).</li>
+            </ul>
+            <em>Tell:</em> only the <strong>HMO and POS</strong> use a PCP gatekeeper; only the <strong>PPO and POS</strong> pay anything out-of-network.</div>
+        </div>
         <div class="chart-wrap" style="max-width:420px;"><canvas id="chartHealthPlanCosts"></canvas></div>
         <hr>
         <div class="highlight-box blue"><strong>Health Care Cost Example (Frank, $25K hospital stay):</strong><br>Policy: $1,000 deductible, 20% coinsurance, $5,000 MOOP<br>Step 1: Frank pays $1,000 deductible. Remaining = $24,000.<br>Step 2: 20% of $24,000 = $4,800, but MOOP caps Frank at $5,000 total.<br>Step 3: Insurer pays $20,000. Frank&#39;s total out-of-pocket: $5,000.<br><br>Simple formula: (Expense &minus; Deductible) &times; Insurer% = Insurer payment.<br><em>Example: $1,500 loss, $500 deductible, 80/20 plan &rarr; ($1,500-$500) &times; 80% = $800 insurer payment.</em></div>
@@ -1164,6 +1175,32 @@
         </table>
         <div class="highlight-box red mt-1"><strong>Critical distinctions:</strong> Medicare does NOT cover custodial care. Part A covers skilled nursing facility care ONLY (requires skilled care, not just custodial). Hospice coverage = life expectancy of 6 months or less. Outpatient hospital services are covered under Part B, NOT Part A.</div>
         <div class="highlight-box amber mt-1"><strong>Part B enrollment:</strong> General enrollment period is January 1-March 31 annually. If a beneficiary cancels Part B, they cannot re-enroll until January of the following year and may incur a lifetime late enrollment penalty. Veterans should sign up for Medicare as soon as eligible.</div>
+
+        <div class="worked">
+          <div class="worked-h">&#129518; Worked mechanics &mdash; a Part D year (2025)</div>
+          <p class="text-sm mb-1">Part D collapsed to <strong>three</strong> phases in 2025 (the donut hole is gone): pay the deductible, then 25% coinsurance until your true out-of-pocket hits the <strong>$2,000 cap</strong>, then $0 the rest of the year.</p>
+          <ol>
+            <li>John hits the <strong>$590</strong> deductible first (pays $590).</li>
+            <li>Then <strong>25%</strong> of the next drug costs until his OOP reaches $2,000. On the next $1,410 of drugs he pays 25% &times; $1,410 = <strong>$352</strong> (plan pays $1,058).</li>
+            <li>Once his total OOP reaches <strong>$2,000</strong>, he pays <strong>$0</strong> for covered drugs for the rest of the year.</li>
+          </ol>
+          <div class="wrong"><strong>&#9888;&#65039; Note:</strong> the $2,000 is a <em>true out-of-pocket</em> cap, not a spending cap &mdash; and IRMAA can add a surcharge on the Part D <em>premium</em> (based on MAGI from 2 years prior), separate from this cost-sharing.</div>
+        </div>
+
+        <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; every Medicare enrollment window &amp; the penalties for missing them<span class="toggle-icon">+</span></div>
+        <div class="collapsible-content deep-body collapsed"><div class="inner">
+          <table>
+            <thead><tr><th>Window</th><th>When</th><th>Miss it &rarr;</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Initial Enrollment (IEP)</strong></td><td>7 months: 3 before + birth month + 3 after turning 65</td><td>Late-enrollment penalty</td></tr>
+              <tr><td><strong>General Enrollment</strong></td><td>Jan 1 &ndash; Mar 31 (coverage effective July 1)</td><td><strong>Part A/B penalty: 10%/yr, permanent</strong></td></tr>
+              <tr><td><strong>Special Enrollment (SEP)</strong></td><td><strong>8 months</strong> after employer coverage / employment ends (worked past 65)</td><td>No penalty if used in time</td></tr>
+              <tr><td><strong>Part C / Advantage open enrollment</strong></td><td>Oct 15 &ndash; Dec 7</td><td>&mdash;</td></tr>
+              <tr><td><strong>Medigap guaranteed-issue</strong></td><td><strong>6 months</strong> from Part B enrollment</td><td>Insurer may medically underwrite / decline</td></tr>
+            </tbody>
+          </table>
+          <div class="highlight-box red"><strong>The two look-alikes:</strong> the <strong>6-month</strong> Medigap guaranteed-issue window is <em>not</em> the <strong>8-month</strong> Part B Special Enrollment for people who worked past 65 &mdash; a classic swapped-number trap.</div>
+        </div></div>
       </div>
     </div>
     <div class="section-card">
@@ -1179,7 +1216,29 @@
         </ul>
         <hr>
         <div class="highlight-box blue"><strong>IRMAA:</strong> Income-Related Monthly Adjustment Amount. Higher-income Medicare beneficiaries pay surcharge on Part B and Part D premiums. Based on MAGI from 2-year prior tax return (2025 premiums based on 2023 MAGI). Thresholds: $106,000+ single; $212,000+ MFJ (2025). Beneficiary may APPEAL IRMAA for qualifying life-changing events (retirement, death of spouse, divorce, work stoppage).</div>
+
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; three Medicare pairs the exam swaps</div>
+          <table>
+            <thead><tr><th>Pair</th><th>How to tell them apart</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Medigap vs. Medicare Advantage (Part C)</strong></td><td>Medigap <em>supplements</em> Original Medicare (fills the A/B gaps); Advantage <em>replaces</em> A+B with a private plan (often bundling Rx/dental/vision). <strong>You cannot have both</strong> &mdash; Medigap is useless with Advantage.</td></tr>
+              <tr><td><strong>Plan F vs. Plan G</strong></td><td>Both are top-tier Medigap; the <em>only</em> difference is the <strong>Part B deductible</strong> &mdash; <strong>F pays it, G does not</strong>. F is closed to anyone who became Medicare-eligible on/after Jan 1, 2020, so <strong>G is the new go-to</strong>. (Only Plans <strong>C &amp; F</strong> ever pay the Part B deductible.)</td></tr>
+              <tr><td><strong>Medicare vs. Medicaid on LTC</strong></td><td>Medicare pays only <strong>skilled</strong> care (post-3-day hospital, up to 100 SNF days) &mdash; <em>never custodial</em>. <strong>Medicaid</strong> is the real long-term custodial-care payer (after a spend-down).</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
+    </div>
+
+    <div class="sources">
+      <h4>&#128206; Primary sources for this module</h4>
+      <ul>
+        <li><span class="srcref">COBRA (1985)</span> &middot; <span class="srcref">HIPAA (1996)</span> &middot; <span class="srcref">ACA/PPACA (2010)</span> &middot; <span class="srcref">FMLA (1993)</span> &mdash; the federal continuation/portability/leave framework.</li>
+        <li><span class="srcref">Inflation Reduction Act (2022)</span> &mdash; Part D $2,000 OOP cap (2025); Medicare drug-price negotiation (2026). <span class="srcref">No Surprises Act (2022)</span>.</li>
+        <li><span class="srcref">CMS</span> &mdash; administers Medicare (Parts A/B/C/D), Medicaid, and CHIP.</li>
+      </ul>
+      <p style="margin-top:0.5rem;font-style:italic;">Grounded in the FP512 course textbook (Module 5). All dollar figures are the textbook&rsquo;s <strong>2025 published values</strong> &mdash; 2026 Medicare figures were not available at publication; re-check each year.</p>
     </div>
   </div>
 
@@ -1198,6 +1257,18 @@
           </tbody>
         </table>
         <div class="highlight-box amber mt-1"><strong>Test Tip:</strong> DI policies do NOT have deductibles or coinsurance. They have elimination periods (waiting periods) and benefit periods. No double-dipping from multiple DI policies &mdash; participation limits apply.</div>
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; the disability definitions, easiest to hardest to collect</div>
+          <div class="tell" style="margin-top:0;">Ranked from <em>most</em> favorable to the insured (broadest, priciest) to <em>least</em>:
+            <ul class="key-list mt-1">
+              <li><strong>Own-occ</strong> &mdash; disabled if you can&rsquo;t do <em>your</em> occupation, even if you work elsewhere. Broadest, most expensive (professionals).</li>
+              <li><strong>Modified own-occ / split</strong> &mdash; own-occ for a first period (e.g. 2&ndash;5 yrs), then converts to any-occ.</li>
+              <li><strong>Any-occ</strong> &mdash; disabled only if you can&rsquo;t do <em>any</em> job you&rsquo;re reasonably suited to. Narrowest private definition (group/blue-collar).</li>
+              <li><strong>Social Security</strong> &mdash; <strong>strictest of all</strong>: unable to do <em>any</em> substantial gainful activity, expected to last &ge;12 months or result in death.</li>
+            </ul>
+            <em>Tell:</em> &ldquo;can&rsquo;t do <strong>your</strong> job&rdquo; = own-occ; &ldquo;can&rsquo;t do <strong>any</strong> job&rdquo; = any-occ; Social Security is <em>always</em> the hardest bar.</div>
+        </div>
+        <div class="highlight-box blue mt-1"><strong>Elimination-period timing trap:</strong> the first monthly benefit is <em>received</em> about <strong>30 days AFTER the elimination period ends</strong> (benefits pay in arrears). So a 60-day EP means the first check arrives around <strong>day 90</strong>, not day 60.</div>
       </div>
     </div>
     <div class="section-card">
@@ -1248,6 +1319,16 @@
             <tr><td>S-corp (2%+ shareholder)</td><td>Entity deducts; passed through as W-2 income</td><td><strong>No</strong> &mdash; since treated as taxable W-2 income, benefits are tax-free</td></tr>
           </tbody>
         </table>
+        <div class="worked">
+          <div class="worked-h">&#129518; Worked mechanics &mdash; the one rule behind all of it, plus a split-premium case</div>
+          <p class="text-sm mb-1">The whole table reduces to one idea: <strong>you either deduct the premium OR the benefit is tax-free &mdash; never both.</strong> Whoever bore the tax on the premium dollars determines the benefit&rsquo;s taxability.</p>
+          <ol>
+            <li><strong>Pure employer-paid:</strong> employer deducted the premium (nobody was taxed on it) &rarr; the whole benefit is <strong>taxable</strong> to the employee.</li>
+            <li><strong>Split premium (contributory):</strong> employer pays 60%, employee pays 40% with after-tax dollars &rarr; on a $3,000/mo benefit, <strong>60% ($1,800) is taxable</strong> and <strong>40% ($1,200) is tax-free</strong>.</li>
+            <li><strong>SIS rider offset:</strong> a $2,500/mo policy with a Social Insurance Supplement reduces dollar-for-dollar once SS disability pays &mdash; if SS pays $700, the policy pays <strong>$1,800</strong> to keep the total at target.</li>
+          </ol>
+          <div class="wrong"><strong>&#9888;&#65039; The &gt;2% S-corp twist:</strong> a &gt;2% S-corp shareholder&rsquo;s premium is deducted by the entity <em>but added back to the owner&rsquo;s W-2 as income</em> &mdash; because the owner was effectively taxed on the premium, the <strong>benefit comes out tax-free</strong>.</div>
+        </div>
       </div>
     </div>
     <div class="section-card">
@@ -1268,6 +1349,33 @@
           <li><strong>PACE (Program of All-Inclusive Care for the Elderly):</strong> Federally funded; comprehensive medical and social services for frail elderly who qualify for both Medicare and Medicaid; alternative to nursing home placement.</li>
           <li><strong>Qualified LTCI tax treatment:</strong> Individual premiums deductible as medical expenses above 7.5% AGI (age-based annual limits). Employer-paid LTCI: deductible to employer, not taxable to employee. Benefits: generally tax-free up to indexed limits.</li>
         </ul>
+
+        <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; the LTC numbers: deduction limits, per-diem cap &amp; the Medicaid spend-down<span class="toggle-icon">+</span></div>
+        <div class="collapsible-content deep-body collapsed"><div class="inner">
+          <p><strong>Age-based premium-deduction limits (2025, Schedule A medical expense):</strong> the older you are, the more of a qualified LTC premium counts as a deductible medical expense.</p>
+          <table>
+            <thead><tr><th>Attained age</th><th>2025 deductible limit</th></tr></thead>
+            <tbody>
+              <tr><td>40 or under</td><td>$480</td></tr>
+              <tr><td>41&ndash;50</td><td>$900</td></tr>
+              <tr><td>51&ndash;60</td><td>$1,800</td></tr>
+              <tr><td>61&ndash;70</td><td>$4,810</td></tr>
+              <tr><td>71+</td><td>$6,020</td></tr>
+            </tbody>
+          </table>
+          <p class="text-sm">Per-diem (indemnity) benefits are tax-free up to <strong>$420/day (2025)</strong>; anything above that is taxable unless it matches actual qualified LTC costs. Reimbursement-basis benefits for qualified costs are fully tax-free.</p>
+          <div class="worked">
+            <div class="worked-h">&#129518; Worked &mdash; Medicaid transfer penalty &amp; the Partnership offset</div>
+            <ol>
+              <li><strong>Transfer penalty:</strong> Medicaid has a <strong>5-year (60-month) lookback</strong>. If Dylan gifts <strong>$100,000</strong> during it, he must private-pay the <em>first</em> $100,000 of care before Medicaid starts (penalty = amount transferred &divide; average monthly nursing-home cost).</li>
+              <li><strong>Partnership offset:</strong> a Partnership LTC policy lets you keep assets equal to benefits paid. A $100,000 policy that grew to <strong>$140,000</strong> with inflation and paid out fully lets the insured keep <strong>$140,000 + the ~$2,000</strong> baseline Medicaid asset limit = <strong>$142,000</strong> and still qualify.</li>
+            </ol>
+          </div>
+          <div class="confuse">
+            <div class="confuse-h">&#9878;&#65039; Confused &mdash; noncancelable vs. guaranteed renewable &middot; qualified vs. nonqualified LTC</div>
+            <div class="tell" style="margin-top:0;"><strong>Noncancelable</strong> = premium can <em>never</em> change; <strong>guaranteed renewable</strong> = insurer must renew but <em>can raise premiums for the whole class</em> (not you individually). &nbsp;|&nbsp; <strong>Qualified LTC</strong> gets the tax breaks and uses the 2-of-6-ADL trigger; <strong>nonqualified</strong> may add a looser <em>medical-necessity</em> trigger and return-of-premium but loses the tax advantages.</div>
+          </div>
+        </div></div>
       </div>
     </div>
     <div class="section-card">
@@ -1286,6 +1394,16 @@
         <div class="highlight-box amber mt-1"><strong>Important:</strong> If a veteran cancels Medicare Part B, they cannot re-enroll until January of the following year and may incur a lifetime late enrollment penalty.</div>
       </div>
     </div>
+
+    <div class="sources">
+      <h4>&#128206; Primary sources for this module</h4>
+      <ul>
+        <li><span class="srcref">HIPAA</span> &mdash; defines tax-qualified LTC: guaranteed-renewable, NAIC-model consumer protections, the 2-of-6-ADL / cognitive trigger, and premium deductibility (the <span class="srcref">&sect;7702B</span> framework; the textbook says &ldquo;HIPAA-qualified&rdquo;).</li>
+        <li><span class="srcref">IRC &sect;1035</span> &mdash; funds annuity/LTC and life/LTC hybrid contracts tax-free.</li>
+        <li><span class="srcref">Long-Term Care Security Act (2000)</span> &mdash; the Federal LTC Insurance Program. Social Security disability definition governs SIS-rider offsets.</li>
+      </ul>
+      <p style="margin-top:0.5rem;font-style:italic;">Grounded in the FP512 course textbook (Module 6). Deduction limits, per-diem cap, and cost-of-care figures are the textbook&rsquo;s <strong>2025 values</strong> (Genworth 2024 cost-of-care survey); re-check annually.</p>
+    </div>
   </div>
 
   <!-- GROUP BENEFITS -->
@@ -1297,6 +1415,21 @@
         <div class="formula-block mt-1">
           <strong>Imputed Income Formula:</strong> [(Coverage above $50K &divide; 1,000) &times; Table I monthly rate &times; 12] = Annual taxable income<br>
           <em>Example: $210,000 total coverage &rarr; $160,000 above threshold. Table I rate $0.06/month for age band: ($160K &divide; 1,000) &times; $0.06 &times; 12 = $115.20 taxable income per year.</em>
+        </div>
+
+        <div class="worked">
+          <div class="worked-h">&#129518; Worked mechanics &mdash; §79 imputed income, with the full Uniform Premium Table I</div>
+          <p class="text-sm mb-1">Table I is the IRS cost <em>per $1,000 of coverage per month</em>, by 5-year age band (2025):</p>
+          <table>
+            <thead><tr><th>Age</th><th>&lt;25</th><th>25&ndash;29</th><th>30&ndash;34</th><th>35&ndash;39</th><th>40&ndash;44</th><th>45&ndash;49</th><th>50&ndash;54</th><th>55&ndash;59</th><th>60&ndash;64</th><th>65&ndash;69</th><th>70+</th></tr></thead>
+            <tbody><tr><td><strong>$/mo</strong></td><td>.05</td><td>.06</td><td>.08</td><td>.09</td><td>.10</td><td>.15</td><td>.23</td><td>.43</td><td>.66</td><td>1.27</td><td>2.06</td></tr></tbody>
+          </table>
+          <ol>
+            <li>John, age <strong>52</strong>, has <strong>$250,000</strong> of employer group-term life. Coverage above $50k = <strong>$200,000</strong> = 200 units of $1,000.</li>
+            <li>His age-52 Table I rate is <strong>$0.23</strong>/mo.</li>
+            <li>Imputed income = 200 &times; $0.23 &times; 12 = <strong>$552</strong> added to his W-2 (offset by any after-tax premiums he pays).</li>
+          </ol>
+          <div class="wrong"><strong>&#9888;&#65039; The discriminatory-plan twist:</strong> if the plan <em>discriminates</em> in favor of key employees, a <strong>key employee</strong> must include the <em>greater of</em> actual premium or Table I cost on the <strong>entire</strong> coverage &mdash; the first $50,000 is no longer excluded for them. Rank-and-file employees keep the $50k exclusion regardless.</div>
         </div>
         <ul class="key-list mt-1">
           <li><strong>Discriminatory plan rule:</strong> If group term life plan discriminates in favor of key employees, those key employees must include the ENTIRE employer premium paid on their behalf as taxable compensation (not just the amount above $50,000)</li>
@@ -1375,6 +1508,30 @@
           </ul>
         </div>
         <div class="highlight-box amber mt-1"><strong>Self-employed deduction:</strong> Self-employed individuals deduct 100% of health insurance premiums (including qualified LTCI premiums within age-based limits) as an above-the-line deduction from gross income.</div>
+
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; HSA vs. FSA vs. HRA</div>
+          <table>
+            <thead><tr><th></th><th>Funded by</th><th>Portable?</th><th>Rollover?</th></tr></thead>
+            <tbody>
+              <tr><td><strong>HSA</strong></td><td>Employee &amp;/or employer</td><td><strong>Yes</strong> (you own it, it invests)</td><td>Rolls over indefinitely</td></tr>
+              <tr><td><strong>FSA</strong></td><td>Employee salary reduction</td><td>No</td><td><strong>Use-it-or-lose-it</strong> ($660 carryover, 2025)</td></tr>
+              <tr><td><strong>HRA</strong></td><td><strong>Employer only</strong></td><td>No (unless employer allows)</td><td>Employer sets terms</td></tr>
+            </tbody>
+          </table>
+          <div class="tell"><strong>Tells:</strong> only the <strong>HSA</strong> is <em>yours</em>, portable, and invests (needs an HDHP). Only the <strong>HRA</strong> is <em>employer-only</em> money (no employee dollars, so the self-employed can&rsquo;t use one). The <strong>FSA</strong> is the use-it-or-lose-it salary-reduction account.</div>
+        </div>
+
+        <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; the HSA numbers (2025) and its two sharpest traps<span class="toggle-icon">+</span></div>
+        <div class="collapsible-content deep-body collapsed"><div class="inner">
+          <div class="flex-grid">
+            <div class="stat-box"><div class="number">$4,300</div><div class="label">HSA contribution &mdash; self (2025)</div></div>
+            <div class="stat-box"><div class="number">$8,550</div><div class="label">HSA contribution &mdash; family (2025)</div></div>
+            <div class="stat-box"><div class="number">$1,000</div><div class="label">Age-55 catch-up (each spouse needs own HSA)</div></div>
+          </div>
+          <p class="text-sm">Qualifying HDHP for 2025: minimum deductible <strong>$1,650 self / $3,300 family</strong>; out-of-pocket max <strong>$8,300 / $16,600</strong>. Contributions are <strong>above-the-line</strong> (deductible even without itemizing); you have until <strong>April 15</strong> to contribute for the prior year. The triple tax benefit: deductible in, tax-free growth, tax-free out for qualified medical.</p>
+          <div class="highlight-box red"><strong>Trap 1 &mdash; the age-65 wall:</strong> once you enroll in Medicare you can <em>no longer contribute</em> to an HSA (and you can&rsquo;t <em>establish</em> one after 65) &mdash; though you can still <em>spend</em> an existing balance. After 65, a non-qualified withdrawal is just ordinary income (the <strong>20% penalty</strong> disappears at 65/disability/death). <strong>Trap 2 &mdash; the premium rule:</strong> HSA funds generally can&rsquo;t pay <em>insurance premiums</em> &mdash; but <strong>qualified LTC, COBRA, and Medicare premiums are the exceptions.</strong></div>
+        </div></div>
       </div>
     </div>
     <div class="section-card">
@@ -1414,7 +1571,22 @@
           <li><strong>Educational Assistance (IRC &sect;127):</strong> Up to <strong>$5,250/year</strong> excludable from employee income for undergraduate AND graduate education; no job-relation requirement</li>
           <li><strong>Group LTCI:</strong> Generally less expensive than individual; premiums deductible to employer, not taxable to employee; benefits tax-free up to indexed limits</li>
         </ul>
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; workers&rsquo; comp vs. unemployment (opposite tax treatment)</div>
+          <div class="tell" style="margin-top:0;"><strong>Workers&rsquo; comp</strong> is no-fault, <strong>employer-funded only</strong>, and its benefits are <strong>income-tax-FREE</strong>. <strong>Unemployment</strong> (FUTA/SUTA) benefits <strong>ARE taxable</strong> because they replace wages. Same &ldquo;government safety-net&rdquo; feel, opposite tax answer &mdash; a frequent trap. (Related: a &gt;2% S-corp shareholder&rsquo;s health premium lands in W-2 Box 1 wages but is <em>not</em> subject to FICA.)</div>
+        </div>
       </div>
+    </div>
+
+    <div class="sources">
+      <h4>&#128206; Primary sources for this module</h4>
+      <ul>
+        <li><span class="srcref">IRC &sect;79</span> &mdash; group-term life $50k exclusion + Uniform Premium Table I (<span class="srcref">Reg &sect;1.79-3</span>); <span class="srcref">&sect;416(i)</span> key-employee definition.</li>
+        <li><span class="srcref">IRC &sect;125</span> &mdash; cafeteria plans (LTC, educational assistance &amp; commuter benefits are <em>prohibited</em> qualified benefits); <span class="srcref">&sect;105</span>/<span class="srcref">&sect;106</span> employer health exclusion; <span class="srcref">&sect;132</span> fringe benefits; <span class="srcref">&sect;127</span> $5,250 educational assistance.</li>
+        <li><span class="srcref">IRC &sect;223</span> &mdash; HSAs (created by the Medicare Modernization Act 2003); <span class="srcref">&sect;501(c)(9)</span> VEBA.</li>
+        <li><span class="srcref">ERISA (1974)</span> &mdash; Form 5500 / SPD / fiduciary duty; self-funded plans are ERISA-preempt from state insurance mandates.</li>
+      </ul>
+      <p style="margin-top:0.5rem;font-style:italic;">Grounded in the FP512 course textbook (Module 7). Contribution/deduction figures are the textbook&rsquo;s <strong>2025 values</strong>; re-check annually.</p>
     </div>
   </div>
 
@@ -1451,6 +1623,15 @@
           <div class="stat-box"><div class="number" style="font-size:1rem;">Cross-Purchase</div><div class="label">Each owner buys policy on every other owner. Surviving owner gets <strong>stepped-up cost basis</strong>. Requires N&times;(N&minus;1) policies. Better for small number of owners.</div></div>
           <div class="stat-box"><div class="number" style="font-size:1rem;">Entity Redemption</div><div class="label">Company buys policy on each owner; redeems deceased&#39;s interest. N policies needed (simpler). Surviving owners get <strong>NO step-up in basis</strong>. C-corp: AMT risk on policy proceeds.</div></div>
         </div>
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; cross-purchase vs. entity redemption</div>
+          <div class="tell" style="margin-top:0;">Two levers decide it: <strong>policy count</strong> and <strong>basis step-up</strong>.
+            <ul class="key-list mt-1">
+              <li><strong>Cross-purchase</strong> &mdash; owners buy on each <em>other</em>: <strong>N&times;(N&minus;1)</strong> policies (2 owners = 2, but 4 owners = 12 &mdash; unwieldy fast). Survivors <strong>DO get a basis step-up</strong> (they paid for the shares).</li>
+              <li><strong>Entity redemption</strong> &mdash; the <em>business</em> buys on each owner: only <strong>N</strong> policies (simple to administer). Survivors get <strong>NO basis step-up</strong>, and a C-corp faces AMT exposure on the proceeds.</li>
+            </ul>
+            <em>Tell:</em> few owners who want the step-up &rarr; cross-purchase; many owners who want simplicity &rarr; entity. The number of policies is the fastest way to identify which the question describes.</div>
+        </div>
         <ul class="key-list mt-2">
           <li><strong>Disability buy-sell:</strong> Triggered after 12-24 month total disability; funded with disability insurance; long EP confirms permanent disability</li>
           <li><strong>Valuation:</strong> Agreed value (risk of being stale), book value formula, earnings multiple, or independent appraisal</li>
@@ -1478,7 +1659,34 @@
           <li><strong>LIRP (Life Insurance Retirement Plan):</strong> Permanent life insurance (whole, UL, VUL) accumulates tax-deferred cash value for retirement income. Tax-deferred growth; tax-free policy loans/withdrawals (up to basis). Must avoid MEC status. Not subject to ERISA or &sect;415 limits. Death benefit provides succession liquidity.</li>
         </ul>
         <div class="highlight-box amber mt-1"><strong>LIRP Example (Sara):</strong> Pays $200,000 in premiums by age 65; cash value grows to $650,000. Withdraws $20,000/year tax-free (up to basis), then takes policy loans for remainder &mdash; still tax-free if policy remains in force.</div>
+
+        <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; who deducts, who&rsquo;s taxed: every business-owned arrangement in one grid<span class="toggle-icon">+</span></div>
+        <div class="collapsible-content deep-body collapsed"><div class="inner">
+          <p>Business insurance questions almost always reduce to <strong>&ldquo;is the premium deductible, and is the benefit taxable?&rdquo;</strong> Line them up:</p>
+          <table>
+            <thead><tr><th>Arrangement</th><th>Premium deductible?</th><th>Benefit taxable?</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Key person life</strong></td><td>No</td><td>No (income-tax-free; COLI notice rules apply)</td></tr>
+              <tr><td><strong>Life-funded buy-sell</strong></td><td>No</td><td>No (death benefit funds the buyout)</td></tr>
+              <tr><td><strong>BOE disability</strong></td><td><strong>Yes</strong> (business expense)</td><td><strong>Yes</strong></td></tr>
+              <tr><td><strong>Executive bonus (&sect;162)</strong></td><td><strong>Yes</strong> (deductible bonus)</td><td><strong>Yes</strong> to the executive (who owns the policy)</td></tr>
+              <tr><td><strong>NQDC / SERP</strong></td><td>No (until paid)</td><td><strong>Yes</strong> when received (informal COLI funding)</td></tr>
+              <tr><td><strong>LIRP</strong></td><td>No</td><td>No (tax-free loans/withdrawals to basis; must avoid MEC)</td></tr>
+            </tbody>
+          </table>
+          <div class="tell"><strong>The pattern:</strong> when the business (or nobody) got a deduction on the premium, the benefit tends to come out <em>tax-free</em> (key person, buy-sell, LIRP). When someone <em>did</em> deduct it (BOE, §162 bonus), the benefit is <em>taxable</em> &mdash; the same &ldquo;deduct the premium OR the benefit is tax-free, never both&rdquo; logic from disability income.</div>
+        </div></div>
       </div>
+    </div>
+
+    <div class="sources">
+      <h4>&#128206; Primary sources for this module</h4>
+      <ul>
+        <li><span class="srcref">IRC &sect;162</span> &mdash; deductible executive bonus (&ldquo;§162 plan&rdquo;) on an employee-owned policy.</li>
+        <li><span class="srcref">COLI best-practices / notice rules</span> &mdash; employer-owned life insurance requires employee consent + notice for the death benefit to stay income-tax-free.</li>
+        <li><span class="srcref">ERISA</span> &mdash; NQDC/SERP are informally-funded top-hat plans; a <strong>LIRP is <em>not</em> ERISA-covered</strong> and has no &sect;415 contribution limit.</li>
+      </ul>
+      <p style="margin-top:0.5rem;font-style:italic;">Grounded in the FP512 course textbook (Module 8). Note: the textbook&rsquo;s commercial-lines detail (BOP/CPP, cyber, E&amp;O, D&amp;O, EPLI) is fully covered in the sections above; figures are 2025-vintage.</p>
     </div>
   </div>
 
@@ -1503,6 +1711,32 @@
           <li><strong>CFP Board Standards:</strong> Fiduciary duty (loyalty, care, follow client instructions). Full disclosure of material conflicts. Act in the client&#39;s best interest at all times.</li>
           <li><strong>FINRA Rule 2111 (Suitability):</strong> Does not require lowest-cost product, but does require that costs are reasonable and necessary given the client&#39;s profile.</li>
         </ul>
+
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; which standard governs which annuity sale</div>
+          <table>
+            <thead><tr><th>Standard</th><th>Applies to</th><th>Bar</th></tr></thead>
+            <tbody>
+              <tr><td><strong>NAIC Suitability / best-interest model</strong></td><td><strong>Fixed &amp; fixed-indexed</strong> annuities (insurance, state-regulated)</td><td>Best interest (Care/Disclosure/Conflict/Documentation)</td></tr>
+              <tr><td><strong>SEC Reg BI</strong></td><td><strong>Variable</strong> annuities (securities) sold by broker-dealers</td><td>Best interest + Form CRS</td></tr>
+              <tr><td><strong>FINRA Rule 2111</strong></td><td>Broker-dealer securities recommendations</td><td>Suitability (costs reasonable/necessary)</td></tr>
+              <tr><td><strong>CFP Board Code</strong></td><td><em>Any</em> financial advice by a CFP&reg; professional</td><td><strong>Fiduciary</strong> &mdash; the highest bar</td></tr>
+            </tbody>
+          </table>
+          <div class="tell"><strong>Tell:</strong> the <em>product</em> picks the regulator &mdash; a <strong>fixed</strong> annuity is insurance (state/NAIC), a <strong>variable</strong> annuity is a security (Reg BI/FINRA). But a <strong>CFP&reg; professional is always a fiduciary</strong> on top of whichever product rule applies &mdash; a broader, higher duty than either best-interest standard. (See the Annuities tab&rsquo;s suitability deep-dive.)</div>
+        </div>
+
+        <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; the four best-interest obligations &amp; how CFP fiduciary sits above them<span class="toggle-icon">+</span></div>
+        <div class="collapsible-content deep-body collapsed"><div class="inner">
+          <p>The NAIC best-interest standard (adopted by most states) and SEC Reg BI both decompose &ldquo;best interest&rdquo; into <strong>four obligations</strong> a producer must satisfy:</p>
+          <ul class="key-list">
+            <li><strong>Care</strong> &mdash; a reasonable basis that the recommendation fits the client&rsquo;s <em>consumer profile</em> (age, income, liquidity needs, risk tolerance, horizon, existing holdings).</li>
+            <li><strong>Disclosure</strong> &mdash; describe the producer&rsquo;s role, products offered, and how they&rsquo;re paid (cash and non-cash).</li>
+            <li><strong>Conflict of interest</strong> &mdash; identify and avoid or reasonably manage conflicts; product-specific sales contests are prohibited.</li>
+            <li><strong>Documentation</strong> &mdash; record the basis for the recommendation.</li>
+          </ul>
+          <div class="synth"><div class="synth-h">&#128279; Connects to FP511</div>The <strong>CFP Board&rsquo;s fiduciary duty</strong> (Duties of Loyalty, Care, and to Follow Client Instructions) applies to <em>all</em> financial advice a CFP&reg; professional gives &mdash; a broader and higher bar than either the insurance best-interest rule or Reg BI, both of which are transaction-specific. When they overlap, the fiduciary duty is the controlling standard.</div>
+        </div></div>
         <hr>
         <h3 style="font-size:1rem;font-weight:600;margin:0.75rem 0 0.4rem;">Abusive Sales Practices</h3>
         <ul class="key-list">
@@ -1515,6 +1749,17 @@
         <hr>
         <div class="highlight-box purple"><strong>Annuity Performance Context:</strong> Annuities underperform in sustained bull markets due to caps, participation rate limitations, and expense charges. EIAs average 80-90% participation rates; caps typically 3-7%. Annuities are designed for longevity risk protection, NOT growth maximization. Compare annuities to annuities, not to brokerage accounts. The right question is: does this client need guaranteed income they cannot outlive?</div>
       </div>
+    </div>
+
+    <div class="sources">
+      <h4>&#128206; Primary sources for this module</h4>
+      <ul>
+        <li><span class="srcref">McCarran-Ferguson Act (1945)</span> &mdash; insurance is primarily state-regulated.</li>
+        <li><span class="srcref">NAIC Suitability in Annuity Transactions Model Reg</span> &mdash; best-interest standard for fixed/indexed annuities (Care/Disclosure/Conflict/Documentation).</li>
+        <li><span class="srcref">SEC Reg BI</span> + <span class="srcref">Form CRS</span> &mdash; variable annuities (securities); <span class="srcref">FINRA Rule 2111</span> suitability.</li>
+        <li><span class="srcref">CFP Board Code of Ethics &amp; Standards of Conduct</span> &mdash; fiduciary duty owed on all financial advice (the controlling standard for a CFP&reg; professional).</li>
+      </ul>
+      <p style="margin-top:0.5rem;font-style:italic;">Grounded in the FP512 course textbook (Module 8, Regulation &amp; Suitability). Consistent with the standards cross-referenced in the Annuities tab.</p>
     </div>
   </div>
 
