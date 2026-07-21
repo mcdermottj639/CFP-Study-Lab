@@ -539,12 +539,16 @@ Each Module Hub can show, under "Study this module", a **"Visual guide"** card (
 **"Video"** card (NotebookLM/AI **video clips**), each scoped to that one module. All open a
 full-screen popup or page; `renderModuleHub` reads the data maps with a graceful empty-default (no
 card when a module has none). All in `src/study-home.src.html`:
-- **Quick-jump buttons (v2.41.0).** The **"Study this module"** launch row also gets a
-  **📊 Visual guide**, **📑 Slide deck**, and **🎬 Video** button (right after 📖 Deep-dive
-  reader) whenever that module has `INFOGRAPHICS`/`SLIDES`/`VIDEO` — they call
-  `openInfographic`/`openSlides`/`openVideo(course,mod,0)` to open the first/primary item
-  directly (label pluralizes when >1). The fuller preview cards below stay for multi-item
-  modules.
+- **Quick-jump buttons (v2.41.0).** The **"Study this module"** launch row gets a
+  **📊 Visual guide**, **📊 Slide deck**, and **🎬 Video** button whenever that module has
+  `INFOGRAPHICS`/`DECKS`/`VIDEO`. **Behavior (v2.67.0):** with exactly ONE item the button
+  opens it directly (`openInfographic`/`openDeck`/`openVideo(course,mod,0)`); with MORE THAN
+  ONE it instead **smooth-scrolls down to that section's card** via `hubScroll(id)` (the
+  `#hubInfo`/`#hubDecks`/`#hubVideo` cards) so you pick from the full list rather than getting
+  a guessed item-0 (label also pluralizes when >1). The fuller preview cards below list every
+  item. (The **📖 Deep-dive reader** button was removed from this row in v2.66.0 — see the
+  Module Hub section; the Slide-deck button uses `openDeck`/`window.DECKS`, not the dead PDF
+  `openSlides`/`SLIDES` path.)
 - **Infographics** — data `window.INFOGRAPHICS` (course → module → `[{src,title}]`).
   Thumbnail grid; `openInfographic`/`closeInfographic` show the image in `#infoWrap`
   (styles via `ensureInfoCSS`); tap backdrop or ✕ to close.
@@ -684,7 +688,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.66.0`) on every shippable change so installed apps auto-update
+  (current: `v2.67.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
