@@ -52,6 +52,23 @@ html[data-theme="dark"] #rdrWrap mjx-container {
 }
 html[data-theme="dark"] #rdrBack { background: #17120e; color: #7fd3ac; border-color: #7fd3ac; }
 
+/* ---- Auto-hide floating chrome while scrolling (see reader-theme.js) ----
+   The Home/Theme/Back pills and the podcast/teach/search FABs slide out of the
+   way as you read so they stop covering content, and slide back when you stop. */
+#fpslHome, #rdrTheme, #rdrBack, #rtFab, #rtTeachFab, #rsFab {
+  transition: opacity .25s ease, transform .25s ease;
+}
+body.rdr-hidechrome #fpslHome,
+body.rdr-hidechrome #rdrTheme,
+body.rdr-hidechrome #rdrBack,
+body.rdr-hidechrome #rtFab,
+body.rdr-hidechrome #rtTeachFab,
+body.rdr-hidechrome #rsFab {
+  opacity: 0;
+  transform: translateY(30px);
+  pointer-events: none;
+}
+
 /* ---- Portrait overflow fixes (apply to every reader) ---- */
 /* Wide tables scroll horizontally in their own box instead of being clipped. */
 .tbl-scroll { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
