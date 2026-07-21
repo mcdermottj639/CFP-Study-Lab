@@ -132,7 +132,10 @@
     var autoSwitch = false;                            // true while WE switch tabs (so the tab-click listener doesn't stop us)
     var startOverride = null;                          // {index, text} one-shot: read a block from a double-clicked word
 
-    var RATE_BASE = 0.95, GAP = 220;                   // unhurried base pace + a human breath between blocks
+    var RATE_BASE = 0.95;                              // unhurried base pace
+    // A lighter breath between blocks — the old fixed 220ms read halting/stiff. Teach
+    // flows tighter still (its blocks are multi-sentence chunks, so fewer, smaller gaps).
+    function gapMs() { return mode === 'teach' ? 70 : 150; }
     function sentence(t) { return /[.!?…:;,)]$/.test(t) ? t : t + '.'; }   // sentence-final cadence so blocks don't run together
 
     // Keep the screen awake while playing so a hands-free listen isn't cut short by
@@ -408,6 +411,21 @@
     function splitSentences(t) {
       return String(t).replace(/\s+/g, ' ').trim().match(/[^.!?]+[.!?]+["')\]]*|\S[^.!?]*$/g) || [String(t)];
     }
+    // Group sentences into ~flowing chunks so the engine carries intonation across a
+    // couple of sentences (natural, unhurried) instead of hard-stopping after each one
+    // (the "stiff/reciting" cadence). Capped so an utterance stays well under iOS
+    // Safari's long-utterance cut-off. One anchor still spans the whole section.
+    function chunkSay(t) {
+      var sents = splitSentences(t), out = [], buf = '';
+      for (var i = 0; i < sents.length; i++) {
+        var s = sents[i].trim(); if (!s) continue;
+        if (!buf) buf = s;
+        else if (buf.length + 1 + s.length <= 260) buf += ' ' + s;
+        else { out.push(buf); buf = s; }
+      }
+      if (buf) out.push(buf);
+      return out;
+    }
     function buildTeachPlaylist() {
       var tab = curTabId();
       var m = teachMap(), items = m && m[tab];
@@ -431,7 +449,7 @@
           }
         }
         if (!anchor) anchor = root;
-        splitSentences(it.say).forEach(function (s) { list.push({ el: anchor, text: s, tab: tabBtn, tabLabel: tabLabel }); });
+        chunkSay(it.say).forEach(function (s) { list.push({ el: anchor, text: s, tab: tabBtn, tabLabel: tabLabel }); });
       });
       return list;
     }
@@ -481,7 +499,7 @@
       u.rate = RATE_BASE * rate;
       var v = pickVoice(); if (v) { u.voice = v; u.lang = v.lang; }
       // Pause a beat between blocks (a human breath) instead of running them together.
-      u.onend = function () { if (myGen === gen && playing && !paused) setTimeout(function () { if (myGen === gen && playing && !paused) playIndex(pos + 1, false); }, GAP); };
+      u.onend = function () { if (myGen === gen && playing && !paused) setTimeout(function () { if (myGen === gen && playing && !paused) playIndex(pos + 1, false); }, gapMs()); };
       // Defer on error too (small delay) so a genuinely-erroring voice can't hammer,
       // and — with a whole-reader playlist now hundreds of blocks long — a fast error
       // chain can't recurse synchronously deep enough to blow the stack. gen-guarded.
