@@ -898,13 +898,46 @@ function deckKindBadge(kind){
     ? '<span style="background:#6d5ae0;'+s+'">AI</span>'
     : '<span style="background:#1f4d3a;'+s+'">KAPLAN</span>';
 }
+// Is the docked podcast mini-player currently open? If so we keep decks in-app
+// (iframe overlay) instead of a full navigation, so the audio keeps playing.
+function podcastOpen(){var m=document.getElementById('audioMini');return !!(m&&m.classList.contains('on'));}
 function openDeck(course,mod,idx){
   const d=(((window.DECKS||{})[course]||{})[mod]||[])[idx||0]; if(!d)return;
   // module deck -> remember the hub so the deck can show a "back to module" pill;
   // whole-course deck (mod 0) -> clear it (its Home button returns to the dashboard).
   try{ if(mod) sessionStorage.setItem('cfpReaderReturn',course+'/'+mod); else sessionStorage.removeItem('cfpReaderReturn'); }catch(e){}
+  // While a podcast is playing, open the deck (e.g. the full-course walkthrough) in an
+  // in-app iframe overlay so a page navigation doesn't unload the app and stop the audio.
+  if(podcastOpen()){ openDeckOverlay(d); return; }
   location.href=d.src;
 }
+function ensureDeckCSS(){
+  if(document.getElementById('deckCSS'))return;
+  const s=document.createElement('style'); s.id='deckCSS';
+  s.textContent=
+  '#deckWrap{position:fixed;inset:0;z-index:100002;background:#0d0b08;display:none}'+
+  '#deckWrap.on{display:block}'+
+  '#deckFrame{width:100%;height:100%;border:0;display:block}'+
+  '.dw-x{position:fixed;top:max(10px,env(safe-area-inset-top));right:max(10px,env(safe-area-inset-right));z-index:100006;width:38px;height:38px;border:none;border-radius:50%;background:rgba(13,11,8,.72);color:#fff;font-size:17px;line-height:1;cursor:pointer;box-shadow:0 4px 14px -4px rgba(0,0,0,.6)}';
+  document.head.appendChild(s);
+}
+function openDeckOverlay(d){
+  ensureDeckCSS();
+  let wrap=document.getElementById('deckWrap');
+  if(!wrap){wrap=document.createElement('div');wrap.id='deckWrap';document.body.appendChild(wrap);}
+  wrap.innerHTML='<button class="dw-x" aria-label="Close" onclick="closeDeckOverlay()">✕</button>'+
+    '<iframe id="deckFrame" src="'+d.src+'" title="'+d.title.replace(/"/g,'&quot;')+'"></iframe>';
+  wrap.classList.add('on');
+  // Same-origin: hide the deck's own Home/back pills inside the frame so the overlay ✕ is
+  // the single way out (its Home would otherwise navigate the app *inside* the frame).
+  const fr=document.getElementById('deckFrame');
+  fr.addEventListener('load',function(){
+    try{var doc=fr.contentDocument; if(!doc)return;
+      ['fpslHome','rdrTheme','rdrBack','dkBack','dkHome'].forEach(function(id){var e=doc.getElementById(id); if(e)e.style.display='none';});
+    }catch(e){}
+  });
+}
+function closeDeckOverlay(){var w=document.getElementById('deckWrap'); if(w){w.classList.remove('on'); w.innerHTML='';}}
 // Smooth-scroll the Module Hub down to a media section — used by the quick-nav
 // buttons when a module has MULTIPLE files, so we jump to the list instead of
 // guessing which one to open.
@@ -1161,6 +1194,13 @@ function ensureAudioCSS(){
   '#audioEl{width:100%;height:36px}';
   document.head.appendChild(s);
 }
+function audioPosKey(src){return 'cfpAudioPos:'+src;}
+function audioSaveCurrent(){ // save the playing episode's position (on nav-away/background)
+  try{var a=document.getElementById('audioEl'); if(!a)return; var src=a.getAttribute('src'); if(!src)return;
+    if(a.ended){localStorage.removeItem(audioPosKey(src));}
+    else if(a.currentTime>2){localStorage.setItem(audioPosKey(src),String(Math.floor(a.currentTime)));}
+  }catch(e){}
+}
 function openAudio(course,mod,idx){
   const auds=((window.AUDIO||{})[course]||{})[mod]||[];
   const g=auds[idx]; if(!g)return;
@@ -1173,8 +1213,19 @@ function openAudio(course,mod,idx){
     '<button class="am-x" aria-label="Close" onclick="closeAudio()">✕</button></div>'+
     '<audio id="audioEl" src="'+g.src+'" controls autoplay preload="metadata" title="'+g.title.replace(/"/g,'&quot;')+'"></audio>';
   wrap.classList.add('on');
+  // Resume where you left off, and keep the position saved as it plays / on pause / end.
+  const a=document.getElementById('audioEl'), PK=audioPosKey(g.src);
+  a.addEventListener('loadedmetadata',function(){try{var p=parseFloat(localStorage.getItem(PK)||'');if(p>0&&isFinite(a.duration)&&p<a.duration-2)a.currentTime=p;}catch(e){}});
+  let _last=0;
+  a.addEventListener('timeupdate',function(){var t=Date.now();if(t-_last>4000){_last=t;audioSaveCurrent();}});
+  a.addEventListener('pause',audioSaveCurrent);
+  a.addEventListener('ended',function(){try{localStorage.removeItem(PK);}catch(e){}});
+  if(!window._cfpAudioSaver){window._cfpAudioSaver=true; // save on leaving the page / backgrounding (once)
+    window.addEventListener('pagehide',audioSaveCurrent);
+    document.addEventListener('visibilitychange',function(){if(document.hidden)audioSaveCurrent();});
+  }
 }
-function closeAudio(){const w=document.getElementById('audioMini');if(w){const a=w.querySelector('audio');if(a){try{a.pause();}catch(e){}}w.classList.remove('on');w.innerHTML='';}}
+function closeAudio(){const w=document.getElementById('audioMini');if(w){const a=w.querySelector('audio');audioSaveCurrent();if(a){try{a.pause();}catch(e){}}w.classList.remove('on');w.innerHTML='';}}
 
 /* ====================== EXAM CHEAT SHEET (printable / save-as-PDF) ====================== */
 function ensureCheatCSS(){
