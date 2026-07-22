@@ -703,9 +703,13 @@ card when a module has none). All in `src/study-home.src.html`:
 - **Audio podcasts (v2.73.0)** — data `window.AUDIO` (course → module → `[{src,title}]`; module 0 =
   whole-course), for **NotebookLM Audio Overviews** (natural-voice "deep dive" episodes — the real human-
   sounding narration the offline TTS Teach/Podcast can't do). Surfaced as a **🎧 Podcast** card + quick-jump
-  button in the Module Hub. `openAudio`/`closeAudio` render a full-screen `<audio id="audioEl" controls
-  autoplay>` centered on a gradient sheet inside `#audioWrap` (styles via `ensureAudioCSS`), with a ⤢ Open
-  fallback; `closeAudio` pauses first. Files live in **`assets/audio/`** (`.m4a`/`.mp3`/`.aac`/`.ogg`),
+  button in the Module Hub (and a 🎧 link on the course card for whole-course/module-0 episodes via
+  `courseAudio`). `openAudio`/`closeAudio` render a **docked mini-player** (`#audioMini`, v2.73.4) — a
+  compact bar above the bottom tab bar (`bottom:calc(56px + safe-area)`, `z-index:100005` so it floats
+  over cheat-sheet/infographic overlays), NOT full-screen, so the podcast **keeps playing while you
+  browse** the module hub / a cheat sheet / flashcards (it lives on `<body>` and in-app navigation
+  doesn't remove it; opening a full *reader* is a separate page so playback pauses there). Title + ⤢-open
+  fallback + ✕, then `<audio id="audioEl" controls autoplay>`; `closeAudio` pauses first. Files live in **`assets/audio/`** (`.m4a`/`.mp3`/`.aac`/`.ogg`),
   **NOT precached** — runtime-cached on first play via the SW range branch below. **M4A (AAC) is the ideal
   format** (native iOS/Safari playback, already compressed). Watch file size: **GitHub caps files at 100 MB**,
   and a raw NotebookLM export can exceed that — transcode down first (e.g. `ffmpeg -i in.m4a -c:a aac -b:a

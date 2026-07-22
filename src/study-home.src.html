@@ -1142,41 +1142,39 @@ function openVideo(course,mod,idx){
 }
 function closeVideo(){const w=document.getElementById('videoWrap');if(w){const v=w.querySelector('video');if(v){try{v.pause();}catch(e){}}w.classList.remove('on');w.innerHTML='';}document.body.classList.remove('videoOpen');}
 
-/* ====================== AUDIO PODCAST PLAYER (full-screen HTML5 <audio>) ====================== */
+/* ====================== AUDIO PODCAST PLAYER (docked mini-player) ======================
+   A compact bar docked above the bottom tab bar (NOT full-screen) so the podcast keeps
+   playing while you browse the module hub, a cheat sheet, flashcards, etc. It lives on
+   <body> and isn't removed by in-app navigation, so audio continues across tabs. (Opening
+   a full reader is a separate page, so playback pauses there — a browser limitation.) */
 function ensureAudioCSS(){
   if(document.getElementById('audioCSS'))return;
   const s=document.createElement('style'); s.id='audioCSS';
   s.textContent=
-  '#audioWrap{position:fixed;inset:0;z-index:100002;background:linear-gradient(160deg,#1f4d3a,#0d0b08);display:none;flex-direction:column}'+
-  'body.audioOpen{overflow:hidden}'+
-  '#audioWrap.on{display:flex}'+
-  '.audioTools{flex:0 0 auto;display:flex;gap:10px;justify-content:space-between;align-items:center;padding:11px 14px;background:rgba(13,11,8,.5);color:#fff}'+
-  '.audioTools .at-t{font-weight:700;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}'+
-  '.audioTools .at-r{display:flex;gap:8px;flex:0 0 auto;align-items:center}'+
-  '.audioTools a.btn{text-decoration:none}'+
-  '.audioBody{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:24px;text-align:center;color:#fff}'+
-  '.audioArt{width:132px;height:132px;border-radius:26px;display:flex;align-items:center;justify-content:center;font-size:64px;background:rgba(255,255,255,.1);box-shadow:0 18px 50px -12px rgba(0,0,0,.6)}'+
-  '.audioTitle{font-weight:700;font-size:18px;max-width:520px;line-height:1.3}'+
-  '.audioHint{font-size:12.5px;opacity:.7;max-width:420px}'+
-  '#audioEl{width:min(560px,92vw)}';
+  '#audioMini{position:fixed;left:0;right:0;bottom:calc(56px + env(safe-area-inset-bottom));z-index:100005;max-width:560px;margin:0 auto;display:none;flex-direction:column;gap:7px;padding:10px 12px 11px;background:linear-gradient(160deg,#26694e,#1b1611);color:#fff;border-radius:16px 16px 0 0;box-shadow:0 -12px 34px -12px rgba(0,0,0,.55)}'+
+  '#audioMini.on{display:flex}'+
+  '.am-top{display:flex;align-items:center;gap:9px}'+
+  '.am-t{flex:1;min-width:0;font-weight:700;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}'+
+  '.am-x{flex:0 0 auto;border:none;background:rgba(255,255,255,.16);color:#fff;width:30px;height:30px;border-radius:9px;font-size:15px;line-height:1;cursor:pointer}'+
+  '.am-x:active{transform:scale(.92)}'+
+  '.am-open{flex:0 0 auto;color:#cdeadd;font-size:12px;text-decoration:none;font-weight:700;padding:0 4px}'+
+  '#audioEl{width:100%;height:36px}';
   document.head.appendChild(s);
 }
 function openAudio(course,mod,idx){
   const auds=((window.AUDIO||{})[course]||{})[mod]||[];
   const g=auds[idx]; if(!g)return;
   ensureAudioCSS();
-  let wrap=document.getElementById('audioWrap');
-  if(!wrap){wrap=document.createElement('div');wrap.id='audioWrap';document.body.appendChild(wrap);}
-  // ⤢ Open fallback opens the raw file if a browser can't play it inline.
-  wrap.innerHTML='<div class="audioTools"><span class="at-t">🎧 '+g.title+'</span>'+
-    '<span class="at-r"><a class="btn gray" href="'+g.src+'" target="_blank" rel="noopener">⤢ Open</a>'+
-    '<button class="btn gray" onclick="closeAudio()">✕ Close</button></span></div>'+
-    '<div class="audioBody"><div class="audioArt">🎧</div><div class="audioTitle">'+g.title+'</div>'+
-    '<audio id="audioEl" src="'+g.src+'" controls autoplay preload="metadata" title="'+g.title.replace(/"/g,'&quot;')+'"></audio>'+
-    '<div class="audioHint">Plays offline after the first listen · keep this open while you listen</div></div>';
-  wrap.classList.add('on'); document.body.classList.add('audioOpen');
+  let wrap=document.getElementById('audioMini');
+  if(!wrap){wrap=document.createElement('div');wrap.id='audioMini';document.body.appendChild(wrap);}
+  // ⤢ opens the raw file (fallback if a browser can't play it inline).
+  wrap.innerHTML='<div class="am-top"><span class="am-t">🎧 '+g.title+'</span>'+
+    '<a class="am-open" href="'+g.src+'" target="_blank" rel="noopener">⤢</a>'+
+    '<button class="am-x" aria-label="Close" onclick="closeAudio()">✕</button></div>'+
+    '<audio id="audioEl" src="'+g.src+'" controls autoplay preload="metadata" title="'+g.title.replace(/"/g,'&quot;')+'"></audio>';
+  wrap.classList.add('on');
 }
-function closeAudio(){const w=document.getElementById('audioWrap');if(w){const a=w.querySelector('audio');if(a){try{a.pause();}catch(e){}}w.classList.remove('on');w.innerHTML='';}document.body.classList.remove('audioOpen');}
+function closeAudio(){const w=document.getElementById('audioMini');if(w){const a=w.querySelector('audio');if(a){try{a.pause();}catch(e){}}w.classList.remove('on');w.innerHTML='';}}
 
 /* ====================== EXAM CHEAT SHEET (printable / save-as-PDF) ====================== */
 function ensureCheatCSS(){
