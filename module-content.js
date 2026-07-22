@@ -75,6 +75,9 @@
   // first play (not precached). Surfaced as a 🎧 Podcast card in the Module Hub.
   /* AUDIO-GEN-START */
   window.AUDIO = {
+      FP511: {
+        0: [ { src: 'assets/audio/FP511-General-Financial-Planning-and-Psychology.m4a', title: 'General Financial Planning and Psychology' } ]
+      },
       FP512: {
         0: [ { src: 'assets/audio/FP512-The-Mechanics-of-Financial-Risk-Management.m4a', title: 'The Mechanics of Financial Risk Management' } ]
       }
