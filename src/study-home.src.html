@@ -787,6 +787,7 @@ function renderModules(){
       <div class="small muted" style="margin:4px 0 10px">${mp}% exam-ready</div>
       <div class="small">${links}</div>
       ${courseSlides(m.id)}
+      ${courseAudio(m.id)}
       ${courseModuleList(m.id,color)}
     </div>`;
   }).join('');
@@ -813,6 +814,15 @@ function courseSlides(course){
   if(!decks.length)return '';
   return '<div class="small" style="margin:6px 0 2px">'+
     decks.map((g,i)=>'<a class="link" style="cursor:pointer" onclick="openDeck(\''+course+'\',0,'+i+')">📊 '+g.title+deckKindBadge(g.kind)+'</a>').join(' &nbsp;·&nbsp; ')+
+    '</div>';
+}
+// Whole-course audio podcast(s) — course-level NotebookLM Audio Overview (AUDIO[course][0]),
+// shown on the Modules-tab card for a hands-free deep-dive over the entire course.
+function courseAudio(course){
+  const auds=((window.AUDIO||{})[course]||{})[0]||[];
+  if(!auds.length)return '';
+  return '<div class="small" style="margin:6px 0 2px">'+
+    auds.map((g,i)=>'<a class="link" style="cursor:pointer" onclick="openAudio(\''+course+'\',0,'+i+')">🎧 '+g.title+'</a>').join(' &nbsp;·&nbsp; ')+
     '</div>';
 }
 function moduleLinks(id){
