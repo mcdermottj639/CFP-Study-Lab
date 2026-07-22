@@ -1005,6 +1005,9 @@ function renderModuleHub(course,mod){
   const vids=((window.VIDEO||{})[course]||{})[mod]||[];
   const vidHtml=vids.length?'<div class="card" id="hubVideo" style="margin-top:12px"><div class="flex"><div><h3>Video'+(vids.length>1?'s':'')+'</h3><div class="small muted">NotebookLM video overview — tap to watch full-screen.</div></div></div>'+
     '<div class="row" style="flex-wrap:wrap;gap:8px;margin-top:10px">'+vids.map((g,i)=>'<button class="btn gray" onclick="openVideo(\''+course+'\','+mod+','+i+')">🎬 '+g.title+'</button>').join('')+'</div></div>':'';
+  const auds=((window.AUDIO||{})[course]||{})[mod]||[];
+  const audHtml=auds.length?'<div class="card" id="hubAudio" style="margin-top:12px"><div class="flex"><div><h3>Podcast'+(auds.length>1?'s':'')+'</h3><div class="small muted">NotebookLM audio deep-dive — natural-voice walkthrough you can listen to hands-free.</div></div></div>'+
+    '<div class="row" style="flex-wrap:wrap;gap:8px;margin-top:10px">'+auds.map((g,i)=>'<button class="btn gray" onclick="openAudio(\''+course+'\','+mod+','+i+')">🎧 '+g.title+'</button>').join('')+'</div></div>':'';
   sec.innerHTML=
     '<div class="card" style="margin-bottom:12px;border-left:4px solid '+color+'">'+
       '<a class="link small" style="cursor:pointer" onclick="go(\'modules\')">← All modules</a>'+
@@ -1021,12 +1024,13 @@ function renderModuleHub(course,mod){
         (infos.length?'<button class="btn gray" onclick="'+(infos.length>1?'hubScroll(\'hubInfo\')':'openInfographic(\''+course+'\','+mod+',0)')+'">📊 Visual guide'+(infos.length>1?'s':'')+'</button>':'')+
         (decks.length?'<button class="btn gray" onclick="'+(decks.length>1?'hubScroll(\'hubDecks\')':'openDeck(\''+course+'\','+mod+',0)')+'">📊 Slide deck'+(decks.length>1?'s':'')+'</button>':'')+
         (vids.length?'<button class="btn gray" onclick="'+(vids.length>1?'hubScroll(\'hubVideo\')':'openVideo(\''+course+'\','+mod+',0)')+'">🎬 Video'+(vids.length>1?'s':'')+'</button>':'')+
+        (auds.length?'<button class="btn gray" onclick="'+(auds.length>1?'hubScroll(\'hubAudio\')':'openAudio(\''+course+'\','+mod+',0)')+'">🎧 Podcast'+(auds.length>1?'s':'')+'</button>':'')+
         ((cards.length||hasCheat)?'<button class="btn gray" onclick="openCheatSheet(\''+course+'\','+mod+')">📄 Cheat sheet</button>':'')+
         (hasCalc?'<button class="btn gray" onclick="studyScoped(\''+course+'\','+mod+',\'calc\')">🧮 Calc drills</button>':'')+
         (mcqs.length?'<button class="btn gray" onclick="studyScoped(\''+course+'\','+mod+',\'adaptive\')">🎯 Readiness check</button>':'')+
         (mcqs.length>=3?'<button class="btn gray" onclick="studyScoped(\''+course+'\','+mod+',\'exam\')">📝 Exam'+(mcqs.length<8?' <span style="opacity:.65;font-weight:400">· limited</span>':'')+'</button>':'')+
       '</div></div>'+
-    objHtml+synHtml+exHtml+infoHtml+deckHtml+vidHtml+qref;
+    objHtml+synHtml+exHtml+infoHtml+deckHtml+vidHtml+audHtml+qref;
 }
 
 /* ====================== INFOGRAPHIC VIEWER (full-screen popup) ====================== */
@@ -1127,6 +1131,42 @@ function openVideo(course,mod,idx){
   wrap.classList.add('on'); document.body.classList.add('videoOpen');
 }
 function closeVideo(){const w=document.getElementById('videoWrap');if(w){const v=w.querySelector('video');if(v){try{v.pause();}catch(e){}}w.classList.remove('on');w.innerHTML='';}document.body.classList.remove('videoOpen');}
+
+/* ====================== AUDIO PODCAST PLAYER (full-screen HTML5 <audio>) ====================== */
+function ensureAudioCSS(){
+  if(document.getElementById('audioCSS'))return;
+  const s=document.createElement('style'); s.id='audioCSS';
+  s.textContent=
+  '#audioWrap{position:fixed;inset:0;z-index:100002;background:linear-gradient(160deg,#1f4d3a,#0d0b08);display:none;flex-direction:column}'+
+  'body.audioOpen{overflow:hidden}'+
+  '#audioWrap.on{display:flex}'+
+  '.audioTools{flex:0 0 auto;display:flex;gap:10px;justify-content:space-between;align-items:center;padding:11px 14px;background:rgba(13,11,8,.5);color:#fff}'+
+  '.audioTools .at-t{font-weight:700;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}'+
+  '.audioTools .at-r{display:flex;gap:8px;flex:0 0 auto;align-items:center}'+
+  '.audioTools a.btn{text-decoration:none}'+
+  '.audioBody{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:24px;text-align:center;color:#fff}'+
+  '.audioArt{width:132px;height:132px;border-radius:26px;display:flex;align-items:center;justify-content:center;font-size:64px;background:rgba(255,255,255,.1);box-shadow:0 18px 50px -12px rgba(0,0,0,.6)}'+
+  '.audioTitle{font-weight:700;font-size:18px;max-width:520px;line-height:1.3}'+
+  '.audioHint{font-size:12.5px;opacity:.7;max-width:420px}'+
+  '#audioEl{width:min(560px,92vw)}';
+  document.head.appendChild(s);
+}
+function openAudio(course,mod,idx){
+  const auds=((window.AUDIO||{})[course]||{})[mod]||[];
+  const g=auds[idx]; if(!g)return;
+  ensureAudioCSS();
+  let wrap=document.getElementById('audioWrap');
+  if(!wrap){wrap=document.createElement('div');wrap.id='audioWrap';document.body.appendChild(wrap);}
+  // ⤢ Open fallback opens the raw file if a browser can't play it inline.
+  wrap.innerHTML='<div class="audioTools"><span class="at-t">🎧 '+g.title+'</span>'+
+    '<span class="at-r"><a class="btn gray" href="'+g.src+'" target="_blank" rel="noopener">⤢ Open</a>'+
+    '<button class="btn gray" onclick="closeAudio()">✕ Close</button></span></div>'+
+    '<div class="audioBody"><div class="audioArt">🎧</div><div class="audioTitle">'+g.title+'</div>'+
+    '<audio id="audioEl" src="'+g.src+'" controls autoplay preload="metadata" title="'+g.title.replace(/"/g,'&quot;')+'"></audio>'+
+    '<div class="audioHint">Plays offline after the first listen · keep this open while you listen</div></div>';
+  wrap.classList.add('on'); document.body.classList.add('audioOpen');
+}
+function closeAudio(){const w=document.getElementById('audioWrap');if(w){const a=w.querySelector('audio');if(a){try{a.pause();}catch(e){}}w.classList.remove('on');w.innerHTML='';}document.body.classList.remove('audioOpen');}
 
 /* ====================== EXAM CHEAT SHEET (printable / save-as-PDF) ====================== */
 function ensureCheatCSS(){
