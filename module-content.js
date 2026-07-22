@@ -74,7 +74,11 @@
   // by scripts/sync_media.mjs (same markers/rules as video). M4A/MP3 are runtime-cached on
   // first play (not precached). Surfaced as a 🎧 Podcast card in the Module Hub.
   /* AUDIO-GEN-START */
-  window.AUDIO = {};
+  window.AUDIO = {
+      FP512: {
+        0: [ { src: 'assets/audio/FP512-The-Mechanics-of-Financial-Risk-Management.m4a', title: 'The Mechanics of Financial Risk Management' } ]
+      }
+    };
   /* AUDIO-GEN-END */
 
   // ---- Visual slide DECKS (native HTML, not PDF) -------------------------------
