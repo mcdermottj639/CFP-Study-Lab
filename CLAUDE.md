@@ -709,7 +709,15 @@ card when a module has none). All in `src/study-home.src.html`:
   over cheat-sheet/infographic overlays), NOT full-screen, so the podcast **keeps playing while you
   browse** the module hub / a cheat sheet / flashcards (it lives on `<body>` and in-app navigation
   doesn't remove it; opening a full *reader* is a separate page so playback pauses there). Title + ⤢-open
-  fallback + ✕, then `<audio id="audioEl" controls autoplay>`; `closeAudio` pauses first. Files live in **`assets/audio/`** (`.m4a`/`.mp3`/`.aac`/`.ogg`),
+  fallback + ✕, then `<audio id="audioEl" controls autoplay>`; `closeAudio` pauses first. **Resume-where-
+  you-left-off (v2.73.5):** the position is saved to `localStorage['cfpAudioPos:'+src]` on timeupdate
+  (throttled), pause, close, and page-hide/background (`audioSaveCurrent`), and restored on
+  `loadedmetadata` when you reopen; clears at end. **Keeps playing into the full-course walkthrough
+  (v2.73.5):** while the mini-player is open (`podcastOpen()`), `openDeck` opens the deck in an in-app
+  iframe overlay (`#deckWrap` → `openDeckOverlay`/`closeDeckOverlay`, z-index 100002 under the mini-player's
+  100005) instead of a full navigation, so the audio doesn't stop; same-origin, so it hides the deck's own
+  Home/back pills inside the frame and exits via the overlay ✕. (Full *readers* are still a real navigation
+  → the podcast pauses+saves there; the readers have their own audio.) Files live in **`assets/audio/`** (`.m4a`/`.mp3`/`.aac`/`.ogg`),
   **NOT precached** — runtime-cached on first play via the SW range branch below. **M4A (AAC) is the ideal
   format** (native iOS/Safari playback, already compressed). Watch file size: **GitHub caps files at 100 MB**,
   and a raw NotebookLM export can exceed that — transcode down first (e.g. `ffmpeg -i in.m4a -c:a aac -b:a
