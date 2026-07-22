@@ -700,6 +700,18 @@ card when a module has none). All in `src/study-home.src.html`:
   transcode NotebookLM MP4s to WebM; that *loses* Safari support). NB open-source Chromium
   can't decode H.264, so headless-browser tests show `error:4` even though real Safari/Chrome
   play fine — verify the file *serves* + the element gets the right `src`, not pixels.
+- **Audio podcasts (v2.73.0)** — data `window.AUDIO` (course → module → `[{src,title}]`; module 0 =
+  whole-course), for **NotebookLM Audio Overviews** (natural-voice "deep dive" episodes — the real human-
+  sounding narration the offline TTS Teach/Podcast can't do). Surfaced as a **🎧 Podcast** card + quick-jump
+  button in the Module Hub. `openAudio`/`closeAudio` render a full-screen `<audio id="audioEl" controls
+  autoplay>` centered on a gradient sheet inside `#audioWrap` (styles via `ensureAudioCSS`), with a ⤢ Open
+  fallback; `closeAudio` pauses first. Files live in **`assets/audio/`** (`.m4a`/`.mp3`/`.aac`/`.ogg`),
+  **NOT precached** — runtime-cached on first play via the SW range branch below. **M4A (AAC) is the ideal
+  format** (native iOS/Safari playback, already compressed). Watch file size: **GitHub caps files at 100 MB**,
+  and a raw NotebookLM export can exceed that — transcode down first (e.g. `ffmpeg -i in.m4a -c:a aac -b:a
+  64k -ac 1 out.m4a`) so it fits the repo and caches well on a phone. Binary media can't be pulled through
+  the Drive MCP tool at size (base64 overflows context) — get files in by **uploading them into the chat**
+  (they land on disk) and copying into `assets/audio/`.
 - **SW range-safe media caching (v2.42.0).** `<video>`/`<audio>` fetch with a `Range` header,
   and the Cache API can't store/replay a `206`. So `sw.js`'s same-origin handler has a
   `req.headers.has('range')` branch that refetches the **full** file (no Range → `200`),
@@ -726,17 +738,19 @@ card when a module has none). All in `src/study-home.src.html`:
     tables. iOS Safari 14+/Chrome decode WebP fine. (v2.45.0 converted the original 9 PNGs; the
     old `.png` blobs may linger orphaned in existing devices' unversioned `fpsl-media` cache —
     harmless, browser-evictable.)
-  - `assets/slides/` PDFs (~20–25 MB each) and `assets/video/` clips (MP4) → **NOT precached**
-    (too big for install); they're **runtime-cached on first view** by the SW's same-origin
-    path (video via the Range-safe branch above), so they're offline after being opened once
-    online. Watch repo size as media piles up (GitHub: 100 MB/file hard limit, ~1 GB repo
-    soft) — compress or rehost if it grows. NotebookLM audio exports as WAV (~10 MB/min) — if
-    audio is added, transcode to MP3 first (a WAV overview blows past the 100 MB file limit).
+  - `assets/slides/` PDFs (~20–25 MB each), `assets/video/` clips (MP4), and `assets/audio/`
+    podcasts (M4A/MP3) → **NOT precached** (too big for install); they're **runtime-cached on
+    first view/play** by the SW's same-origin path (video/audio via the Range-safe branch above),
+    so they're offline after being opened once online. Watch repo size as media piles up (GitHub:
+    100 MB/file hard limit, ~1 GB repo soft) — compress or rehost if it grows. NotebookLM **video**
+    exports as MP4 (fine); NotebookLM **audio** exports as WAV or a hefty M4A — transcode/compress
+    down (target ~64 kbps: `ffmpeg -i in.m4a -c:a aac -b:a 64k -ac 1 out.m4a`) so it fits under the
+    100 MB file limit and caches well on a phone.
 - **Adding one is filename-driven, no engine change.** Name the file
   `FP<course>-M<module>[-Free Text Title].<ext>` (title optional → "Visual guide" /
-  "Slide deck" / "Video"; e.g. `FP512-M1-Insurance-and-Risk-Management-Guide.png`,
-  `FP512-M1-Principles-of-Insurance.pdf`, `FP512-M2-High-Yield-Property-and-Casualty-Rules.mp4`)
-  — or `FP<course>[-Title].<ext>` with no `-M#`
+  "Slide deck" / "Video" / "Podcast"; e.g. `FP512-M1-Insurance-and-Risk-Management-Guide.png`,
+  `FP512-M1-Principles-of-Insurance.pdf`, `FP512-M2-High-Yield-Property-and-Casualty-Rules.mp4`,
+  `FP512-M1-Mechanics-of-Financial-Risk.m4a`) — or `FP<course>[-Title].<ext>` with no `-M#`
   for a **whole-course** deck (→ module 0, shown on the course card; see above) — drop it in `assets/infographics/`,
   `assets/slides/`, or `assets/video/`, then run **`node scripts/sync_media.mjs`** — it regenerates the
   `window.INFOGRAPHICS` + `window.SLIDES` + `window.VIDEO` blocks in `module-content.js` and the

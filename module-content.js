@@ -69,6 +69,14 @@
     };
   /* VIDEO-GEN-END */
 
+  // Per-module audio "podcasts" (NotebookLM Audio Overviews — natural-voice deep dives).
+  // Course -> module -> [{src,title}]; module 0 = whole-course. GENERATED from assets/audio/
+  // by scripts/sync_media.mjs (same markers/rules as video). M4A/MP3 are runtime-cached on
+  // first play (not precached). Surfaced as a 🎧 Podcast card in the Module Hub.
+  /* AUDIO-GEN-START */
+  window.AUDIO = {};
+  /* AUDIO-GEN-END */
+
   // ---- Visual slide DECKS (native HTML, not PDF) -------------------------------
   // Course -> module -> [{src, title, kind}] where kind is 'kaplan' (official
   // College for Financial Planning / Kaplan course slides) or 'ai' (NotebookLM
