@@ -658,10 +658,23 @@ instead of the reader-theme bundle.
   surfaces them anymore (they can be deleted later). `INFOGRAPHICS`/`VIDEO` are unchanged.
 - The 13 Kaplan decks are grounded in the College for Financial Planning® (Kaplan) course
   slides (FP512 M1–M8; FP511 M2,4,5,6,7 — the user hadn't uploaded FP511 M1/M3/M8 as of
-  v2.63.0); the 4 AI decks in the NotebookLM PDFs (badged AI + a "verify figures" footer, since
-  NotebookLM numbers can be wrong — the M7 Kaplan deck also corrects a source HSA-limit typo
+  v2.63.0); the 4 AI decks in the NotebookLM PDFs (badged AI — the M7 Kaplan deck also corrects a source HSA-limit typo
   $8,500→$8,550; a few FP511 Kaplan decks reconstructed image-only source slides from the
-  published CFP Board Code, flagged inline). **The FP512 content pass is DONE** (v2.63.0): the
+  published CFP Board Code, flagged inline).
+- **Whole-course AI decks = audited "High-Yield Exam Review" decks (v2.74.0).** The two module-0
+  AI decks (`fp511-ai-slides.html`, `fp512-ai-slides.html`) were retitled from "Full-course
+  walkthrough" to **"High-yield exam review"** (DECKS titles + in-deck `<title>`/h1/`.sub`) and
+  **fully audited**: every figure/rule cross-checked against the textbook-audited repo sources
+  (MODCHEAT, `content/*.json`, the readers); wrong NotebookLM claims fixed (e.g. the FP512
+  risk-management matrix quadrants were flat-out wrong; collateral-source-vs-indemnity;
+  HIPAA LTC trigger) or removed when unverifiable (e.g. "spend 10% of income on risk
+  protection", 2503(b)/(c) trust rows); high-yield gaps filled from MODCHEAT/cards (FP511
+  gained a whole Domain A Code & Standards section; FP512's M2/M5/M7 placeholder sections got
+  real content: HO forms, PAP, COBRA/Medicare/HSA numbers, §79/§125). Sections now carry
+  exam-domain weights (FP511 = A 8% + B 15% + H 7% = 30%; FP512 = C 11%); the old "verify
+  figures" footer warning now states figures were cross-checked (AI provenance badge kept).
+  These decks are the exam-cram surface; the readers remain the complete deep-dive.
+  **The FP512 content pass is DONE** (v2.63.0): the
   genuinely-new facts were cross-checked into the flashcards (+24) and MCQs (+8) in
   `content/fp512-textbook.*.json` and into `apps/fp512-reading.html` (M3 settlement options,
   M7 group carve-out & §79 70/85 tests, inherited-annuity taxation, punitive-damages, ACA metal
@@ -712,7 +725,7 @@ card when a module has none). All in `src/study-home.src.html`:
   fallback + ✕, then `<audio id="audioEl" controls autoplay>`; `closeAudio` pauses first. **Resume-where-
   you-left-off (v2.73.5):** the position is saved to `localStorage['cfpAudioPos:'+src]` on timeupdate
   (throttled), pause, close, and page-hide/background (`audioSaveCurrent`), and restored on
-  `loadedmetadata` when you reopen; clears at end. **Keeps playing into the full-course walkthrough
+  `loadedmetadata` when you reopen; clears at end. **Keeps playing into the whole-course exam-review deck
   (v2.73.5):** while the mini-player is open (`podcastOpen()`), `openDeck` opens the deck in an in-app
   iframe overlay (`#deckWrap` → `openDeckOverlay`/`closeDeckOverlay`, z-index 100002 under the mini-player's
   100005) instead of a full navigation, so the audio doesn't stop; same-origin, so it hides the deck's own
@@ -878,7 +891,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.70.0`) on every shippable change so installed apps auto-update
+  (current: `v2.74.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
