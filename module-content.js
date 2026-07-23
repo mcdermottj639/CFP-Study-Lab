@@ -94,7 +94,7 @@
   // module deck by dropping the apps/*.html file and adding an entry here.
   window.DECKS = {
     FP511: {
-      0: [ { src: 'apps/fp511-ai-slides.html', title: 'Full-course walkthrough', kind: 'ai' } ],
+      0: [ { src: 'apps/fp511-ai-slides.html', title: 'High-yield exam review', kind: 'ai' } ],
       2: [ { src: 'apps/fp511-m2-kaplan-slides.html', title: 'Psychology of Financial Planning',     kind: 'kaplan' } ],
       4: [ { src: 'apps/fp511-m4-kaplan-slides.html', title: 'Time Value of Money',                  kind: 'kaplan' } ],
       5: [ { src: 'apps/fp511-m5-kaplan-slides.html', title: 'Professional Conduct & Fiduciary',     kind: 'kaplan' } ],
@@ -102,7 +102,7 @@
       7: [ { src: 'apps/fp511-m7-kaplan-slides.html', title: 'Education Planning',                   kind: 'kaplan' } ]
     },
     FP512: {
-      0: [ { src: 'apps/fp512-ai-slides.html', title: 'Full-course walkthrough', kind: 'ai' } ],
+      0: [ { src: 'apps/fp512-ai-slides.html', title: 'High-yield exam review', kind: 'ai' } ],
       1: [ { src: 'apps/fp512-m1-kaplan-slides.html', title: 'Principles of Insurance & Risk Mgmt', kind: 'kaplan' },
            { src: 'apps/fp512-m1-ai-slides.html',    title: 'AI deep-dive',                        kind: 'ai' } ],
       2: [ { src: 'apps/fp512-m2-kaplan-slides.html', title: 'Property & Casualty Insurance',       kind: 'kaplan' },
