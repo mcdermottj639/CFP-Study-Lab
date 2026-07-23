@@ -79,6 +79,31 @@ strong { color: #1e293b; }
 .bdg.exam { background: #fef3c7; color: #92400e; }
 .bdg.tip { background: #dbeafe; color: #1e40af; }
 @media (max-width: 640px) { .two, .three { grid-template-columns: 1fr; } .main { padding: 1rem 0.8rem 3rem; } }
+
+/* ===== DEEP READER LAYER — depth stratification, worked mechanics, confused pairs,
+        cross-module synthesis, primary-source anchoring (wires into FP511 [data-t]/.cc/.tog) ===== */
+.deep-toggle { display:flex; justify-content:space-between; align-items:center; cursor:pointer; user-select:none; margin:1rem 0 0; padding:0.5rem 0.9rem; background:#f5f3ff; border:1px solid #ddd6fe; border-left:4px solid #8b5cf6; border-radius:10px; font-weight:700; color:#6d28d9; font-size:0.88rem; }
+.deep-toggle:hover { background:#ede9fe; }
+.deep-toggle .tog { background:#ede9fe; color:#7c3aed; width:24px; height:24px; font-size:1.1rem; }
+.deep-body { border:1px solid #ede9fe; border-top:none; border-radius:0 0 10px 10px; background:#fbfaff; }
+.deep-body .inner { padding:0.9rem 1.1rem; }
+.deep-body .inner > *:first-child { margin-top:0; }
+.worked { border:1px solid #bbf7d0; border-left:4px solid #10b981; border-radius:12px; background:#f0fdf4; padding:1rem 1.2rem; margin:1.1rem 0; }
+.worked-h { font-weight:800; color:#065f46; font-size:0.95rem; margin-bottom:0.5rem; }
+.worked ol { margin:0.4rem 0 0.6rem 1.2rem; } .worked ol li { margin:0.3rem 0; }
+.keys { font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; background:#052e16; color:#bbf7d0; border-radius:8px; padding:0.7rem 0.9rem; margin:0.6rem 0; font-size:0.8rem; line-height:1.6; overflow-x:auto; white-space:pre; }
+.worked .wrong { background:#fff1f2; border-left:4px solid #e11d48; border-radius:8px; padding:0.55rem 0.8rem; margin:0.6rem 0; font-size:0.86rem; }
+.worked .tryit { background:#eff6ff; border-left:4px solid #1a56db; border-radius:8px; padding:0.55rem 0.8rem; margin:0.6rem 0; font-size:0.86rem; }
+.confuse { border:1px solid #fde68a; border-left:4px solid #f59e0b; border-radius:12px; background:#fffbeb; padding:1rem 1.2rem; margin:1.1rem 0; }
+.confuse-h { font-weight:800; color:#92400e; font-size:0.95rem; margin-bottom:0.5rem; }
+.confuse .tell { margin-top:0.6rem; background:#fef9c3; border-radius:8px; padding:0.5rem 0.8rem; font-size:0.85rem; }
+.confuse .tell strong { color:#854d0e; }
+.synth { border:1px solid #ddd6fe; border-left:4px solid #8b5cf6; border-radius:12px; background:#faf5ff; padding:1rem 1.2rem; margin:1.1rem 0; }
+.synth-h { font-weight:800; color:#6d28d9; font-size:0.95rem; margin-bottom:0.5rem; }
+.srcref { display:inline-block; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:0.68rem; font-weight:700; background:#e0e7ff; color:#3730a3; border-radius:5px; padding:0.06rem 0.4rem; margin:0 0.12rem; vertical-align:middle; white-space:nowrap; }
+.sources { margin-top:1.4rem; padding-top:0.9rem; border-top:1px dashed #cbd5e1; font-size:0.78rem; color:#64748b; }
+.sources h4 { font-size:0.82rem; color:#475569; margin-bottom:0.3rem; letter-spacing:0.02em; }
+.sources ul { list-style:none; padding:0; } .sources li { margin:0.25rem 0; padding-left:1rem; text-indent:-1rem; }
 </style>
 </head>
 <body>
@@ -168,6 +193,11 @@ strong { color: #1e293b; }
         </div>
         <div class="hb red"><strong>Incomplete information rule:</strong> If unable to obtain sufficient and relevant quantitative information, the planner must either (1) <strong>restrict the scope</strong> of the engagement to matters for which sufficient information is available, OR (2) <strong>terminate</strong> the engagement. The planner may NOT proceed with inadequate data.</div>
         <div class="hb amber mt1"><strong>Approved documentation methods:</strong> CRM software, handwritten notes, and emails. <strong>Voice memos are NOT approved.</strong></div>
+
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; qualitative vs. quantitative data</div>
+          <div class="tell" style="margin-top:0;"><strong>Quantitative = objective / measurable</strong> (age, income, assets, liabilities, tax returns, account balances). <strong>Qualitative = subjective</strong> (goals, values, risk tolerance, health, attitudes). <em>Tell:</em> if you can put a number on it, it&rsquo;s quantitative; feelings and goals are qualitative. The classic &ldquo;which is NOT quantitative&rdquo; answer is <strong>the client&rsquo;s personal goals</strong>. Note: <em>determining</em> strengths &amp; weaknesses (Step 3) is a <strong>subjective</strong> process.</div>
+        </div>
       </div>
     </div>
     <div class="card">
@@ -198,6 +228,21 @@ strong { color: #1e293b; }
         </table>
         <div class="hb amber"><strong>Key rule:</strong> The <em>privacy policy</em> must always be in writing. The <em>terms of engagement</em> (including implementing, monitoring, and updating responsibilities) are required ONLY for financial planning engagements, and must also be in writing.</div>
         <div class="hb red"><strong>Must be in WRITING in BOTH Financial Advice and Financial Planning engagements:</strong> (1) the firm&#39;s <strong>privacy policy</strong>; (2) <strong>how you, your firm, and any related parties are compensated</strong>; and (3) any <strong>public discipline and bankruptcy</strong>. (Other items such as conflicts and referral arrangements may be disclosed verbally or in writing.)</div>
+
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; Financial Advice vs. Financial Planning</div>
+          <div class="tell" style="margin-top:0;">Both require disclosing conflicts, compensation, and discipline. The difference: <strong>Financial Planning adds the &ldquo;terms of engagement&rdquo;</strong> &mdash; implementing, monitoring, and updating responsibilities &mdash; which must be in <strong>writing</strong> and are <em>not</em> required for a Financial Advice engagement. <em>Tell:</em> the more <strong>customized to the individual client</strong> the service is, the more likely it&rsquo;s &ldquo;Advice&rdquo; (an objective test, not the planner&rsquo;s label); a full plan triggers the extra written terms.</div>
+        </div>
+
+        <div class="deep-toggle" data-t>&#128300; Go deeper &mdash; two conduct rules the exam presses hard<span class="tog">+</span></div>
+        <div class="cc deep-body closed"><div class="inner">
+          <ul class="kl">
+            <li><strong>Disclose a material conflict even if you believe you&rsquo;re acting in the client&rsquo;s best interest</strong> <span class="srcref">Std A.5</span>. Belief is not a substitute for disclosure + informed consent + management of the conflict.</li>
+            <li><strong>Scope-creep violates Step 4</strong>: recommending outside the agreed scope (e.g., life insurance when the engagement was limited to retirement) breaches the Standards &mdash; the <em>letter of engagement defines the scope</em>.</li>
+            <li><strong>Competence / unauthorized practice</strong> <span class="srcref">Std A.3</span>: a CFP&reg; professional may not draft legal documents (needs an attorney) or prepare tax returns (needs a PTIN) &mdash; gain competence, partner with a pro, limit, terminate, or refer.</li>
+            <li><strong>Incomplete data</strong> (Step 1): the only two allowable responses are <strong>restrict the scope</strong> OR <strong>terminate</strong> &mdash; never proceed on inadequate information.</li>
+          </ul>
+        </div></div>
       </div>
     </div>
     <div class="card">
@@ -241,7 +286,22 @@ strong { color: #1e293b; }
           </div>
         </div>
         <div class="hb purple mt1"><strong>Standard A.13 &mdash; Working with additional persons:</strong> When engaging or recommending another professional, the CFP&reg; pro must (1) have a reasonable basis for the recommendation based on reputation, experience, and qualifications, and (2) disclose any arrangement by which someone other than the client will compensate the CFP&reg; pro for the engagement. Note: Unless a CFP&reg; certificant is also a licensed attorney, they may NOT draft legal documents or offer legal opinions.</div>
+
+        <div class="synth">
+          <div class="synth-h">&#128279; Connects across the exam &mdash; the 7-step process is everywhere</div>
+          <div class="tell" style="margin-top:0;background:#ede9fe;">This same 7-step spine drives the <strong>FP512 risk-management process</strong> (identify &rarr; gather &rarr; analyze &rarr; develop &rarr; communicate &rarr; implement &rarr; monitor) and every domain&rsquo;s case work. The exam references the Practice Standards <strong>by step number and name</strong>, so memorize both. Step 6 (Implement) and Step 7 (Monitor) are the planner&rsquo;s responsibility <em>unless specifically excluded</em> from the scope <span class="srcref">Std A.10.b.ii</span>.</div>
+        </div>
       </div>
+    </div>
+
+    <div class="sources">
+      <h4>&#128206; Primary sources for this module</h4>
+      <ul>
+        <li><span class="srcref">CFP Board Code of Ethics &amp; Standards of Conduct</span> &mdash; governs all CFP&reg; professional conduct; fiduciary whenever giving Financial Advice.</li>
+        <li><span class="srcref">Practice Standards for the Financial Planning Process</span> &mdash; the 7 steps (tested by step number + name).</li>
+        <li><span class="srcref">Std A.3</span> Competence &middot; <span class="srcref">Std A.5</span> Disclose &amp; Manage Conflicts &middot; <span class="srcref">Std A.10.b.ii</span> Implementation default &middot; <span class="srcref">Std A.13</span> Working with Additional Persons.</li>
+      </ul>
+      <p style="margin-top:0.5rem;font-style:italic;">Grounded in the FP511 course textbook (Module 1, Personal Financial Planning; 2026 edition).</p>
     </div>
   </div>
 
@@ -311,6 +371,21 @@ strong { color: #1e293b; }
           </tbody>
         </table>
         <div class="hb amber mt1"><strong>Key distinction:</strong> Cognitive biases can be corrected with data/education. Emotional biases are rooted in feeling &mdash; sometimes the best strategy is to work within them rather than fight them.</div>
+
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; the single most-tested split, plus two look-alike pairs</div>
+          <div class="tell" style="margin-top:0;"><strong>Cognitive = coachable</strong> (faulty <em>reasoning</em> &rarr; fix with education/data). <strong>Emotional = accommodate</strong> (rooted in <em>feeling</em> &rarr; build the plan <em>around</em> it). When a bias is both, work the cognitive side. Two pairs that look alike but sit on <em>opposite</em> sides:
+            <ul class="kl mt1">
+              <li><strong>Illusion of control</strong> (cognitive &mdash; you think you can control random outcomes) vs. <strong>overconfidence</strong> (emotional &mdash; you overrate your <em>ability</em>). They co-occur but are graded differently.</li>
+              <li><strong>Conservatism</strong> (cognitive &mdash; <em>ignore</em> new info, fail to update) vs. <strong>confirmation</strong> (cognitive &mdash; actively <em>hunt</em> info that supports your view). Tell: conservatism is passive, confirmation is active.</li>
+            </ul>
+            <em>And don&rsquo;t confuse</em> &ldquo;conservatism <strong>bias</strong>&rdquo; (failing to update) with a &ldquo;conservative <strong>risk tolerance</strong>&rdquo; (a willingness level).</div>
+        </div>
+
+        <div class="worked">
+          <div class="worked-h">&#129518; Worked &mdash; money illusion (why a &ldquo;gain&rdquo; can be a loss)</div>
+          <p class="text-sm">A client cheers a <strong>5%</strong> return on $2,000 &rarr; $2,100 nominal. But with <strong>6%</strong> inflation, real value = $2,100 &divide; 1.06 = <strong>$1,981</strong> &mdash; a <em>loss</em> of purchasing power despite the nominal gain. That gap between the number on the statement and what it actually buys is <strong>money illusion</strong>, and it&rsquo;s why planners frame goals in <em>real</em> (inflation-adjusted) terms.</p>
+        </div>
       </div>
     </div>
     <div class="card">
@@ -378,7 +453,21 @@ strong { color: #1e293b; }
           <div class="sbox"><div class="num" style="font-size:1rem;">3. Affective Exchange</div><div class="lbl">Significant trust. Open disclosure, sincerity, intimacy. Relationship may become friendship. Client shares true feelings without reservation.</div></div>
           <div class="sbox"><div class="num" style="font-size:1rem;">4. Stable Exchange</div><div class="lbl">Deep empathy; planner anticipates questions and feelings. Long-term relationship. Honesty, trust, and mutual benefit. Not all relationships reach this stage.</div></div>
         </div>
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; three money-relationship pairs</div>
+          <div class="tell" style="margin-top:0;"><strong>Enabling vs. enmeshment:</strong> enabling = <em>giving money</em> to a dependent adult who shouldn&rsquo;t need it; enmeshment = crossing the <em>boundary</em> by over-sharing finances / involving a child in adult decisions. &nbsp;|&nbsp; <strong>Control vs. abuse:</strong> control = inequality in decision-making; abuse = actively controlling another&rsquo;s <em>access</em> to resources. &nbsp;|&nbsp; <strong>Competency vs. humility:</strong> competency looks <em>outward</em> (learnable knowledge, can still bias); humility looks <em>inward</em> (lifelong self-examination). Refer serious cases to a <strong>financial therapist / licensed mental-health professional</strong> &mdash; the planner&rsquo;s emotional involvement stays general.</div>
+        </div>
       </div>
+    </div>
+
+    <div class="sources">
+      <h4>&#128206; Primary sources for this module</h4>
+      <ul>
+        <li><span class="srcref">Financial Therapy Association</span> &mdash; definition of financial therapy; <span class="srcref">CFPB</span> financial well-being scale.</li>
+        <li><span class="srcref">Social Penetration Theory</span> (Altman &amp; Taylor) &mdash; the 4-stage trust model; counseling approaches (cognitive-behavioral, strategic/SWOT, economic).</li>
+        <li><span class="srcref">CFP Board &mdash; Psychology of Financial Planning</span> domain (7% of the exam).</li>
+      </ul>
+      <p style="margin-top:0.5rem;font-style:italic;">Grounded in the FP511 course textbook (Module 2, Psychology of Financial Planning; 2026 edition).</p>
     </div>
   </div>
 
@@ -442,6 +531,17 @@ strong { color: #1e293b; }
           <strong>Total debt ratio uses minimum required payment</strong>, not actual payment made.<br>
           <strong>Home equity is NOT included</strong> in net investment assets for the net investment assets ratio.</div>
         <div class="hb red mt1"><strong>Consumer debt uses NET income; both mortgage ratios use GROSS income.</strong> This is the most commonly missed distinction on the exam.</div>
+
+        <div class="worked">
+          <div class="worked-h">&#129518; Worked mechanics &mdash; run all three ratios on one client</div>
+          <p class="text-sm mb-1">Grace earns <strong>$60,000/yr</strong> gross ($5,000/mo); after taxes + FICA her net is <strong>$4,000/mo</strong>. She pays <strong>$1,200/mo</strong> PITI and <strong>$800/mo</strong> consumer debt.</p>
+          <ol>
+            <li><strong>Consumer debt ratio</strong> (uses <em>net</em>): $800 &divide; $4,000 = <strong>20%</strong> &mdash; right at the &le;20% limit.</li>
+            <li><strong>Housing / front-end</strong> (uses <em>gross</em>): $1,200 &divide; $5,000 = <strong>24%</strong> &mdash; under the 28% ceiling. &#10003;</li>
+            <li><strong>Total debt / back-end</strong> (uses <em>gross</em>): ($1,200 + $800) &divide; $5,000 = <strong>40%</strong> &mdash; <strong>exceeds 36%</strong>. &#10007; Intervene.</li>
+          </ol>
+          <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> (1) using <em>gross</em> income for the consumer-debt ratio (it uses <strong>net</strong>) &mdash; that understates it; (2) using the client&rsquo;s <em>actual</em> (higher) payment instead of the <strong>minimum required</strong> payment in the back-end ratio; (3) forgetting the ratios are independent &mdash; breaching any <em>one</em> (here, 40% back-end) triggers review even when the others pass.</div>
+        </div>
       </div>
     </div>
     <div class="card">
@@ -514,7 +614,20 @@ strong { color: #1e293b; }
           <li><strong>Brokers vs. dealers:</strong> Brokers = agents (earn commissions); dealers = principals (earn markups). Regulated by SEC / FINRA.</li>
           <li><strong>S&amp;L / Thrifts:</strong> Accept savings, provide home loans; no checking accounts; regulated by OCC</li>
         </ul>
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; what FDIC does &amp; doesn&rsquo;t cover</div>
+          <div class="tell" style="margin-top:0;">FDIC covers <strong>deposits</strong>: checking, savings, <strong>CDs</strong>, and money-market <em>deposit</em> accounts. It does <strong>NOT</strong> cover <strong>securities, mutual funds, or money-market <em>mutual</em> funds</strong> &mdash; those are investment products, insured by SIPC (for broker failure), not deposit failure. <em>Tell:</em> the trap swaps &ldquo;money-market <strong>deposit</strong> account&rdquo; (covered) with &ldquo;money-market <strong>mutual</strong> fund&rdquo; (not). And a single person <em>can</em> insure &gt;$250,000 at one bank by spreading across <strong>ownership categories</strong> (single + joint + IRA + revocable-trust-per-beneficiary).</div>
+        </div>
       </div>
+    </div>
+
+    <div class="sources">
+      <h4>&#128206; Primary sources for this module</h4>
+      <ul>
+        <li><span class="srcref">FDIC</span> / <span class="srcref">NCUA (NCUSIF)</span> &mdash; $250,000 per depositor, per institution, per ownership category.</li>
+        <li><span class="srcref">FICO</span> &mdash; score composition (35/30/15/10/10); <span class="srcref">Fannie Mae / Freddie Mac</span> conforming-loan limits; <span class="srcref">FHA / VA</span> loan programs; PMI protects the lender.</li>
+      </ul>
+      <p style="margin-top:0.5rem;font-style:italic;">Grounded in the FP511 course textbook (Module 3, Financial Statements &amp; Cash Flow; 2026 edition). Ratio benchmarks and FICO weights are textbook-stated.</p>
     </div>
   </div>
 
@@ -553,6 +666,30 @@ strong { color: #1e293b; }
           <li><strong>$150,000 at 7% for 5 years FV:</strong> N=5, I/YR=7, PV=&minus;150,000, PMT=0 &rarr; FV = $210,383</li>
           <li><strong>Ordinary annuity FV example:</strong> $2,000/yr at 10% for 18 years (END mode) = $91,198. Same in BEG mode (annuity due) = $100,318. Difference: $9,120 more for starting payments one period earlier.</li>
         </ul>
+
+        <div class="worked">
+          <div class="worked-h">&#129518; Worked mechanics &mdash; the two calculator moves that trip people up</div>
+          <p class="text-sm mb-1"><strong>(A) Monthly auto loan &mdash; set P/YR = 12.</strong> Borrow $21,000 at 5.9% for 3 years:</p>
+          <div class="keys">P/YR = 12
+  N = 36   (3 yrs x 12)     I/YR = 5.9     PV = 21,000
+  [PMT] ->  -637.91 / month</div>
+          <p class="text-sm mb-1"><strong>(B) Solve for a rate with non-annual compounding &mdash; set P/YR = 2.</strong> $1,000 grows to $1,500 in 5 years, compounded semiannually:</p>
+          <div class="keys">P/YR = 2
+  N = 10   (5 yrs x 2)   PV = -1,000   FV = 1,500
+  [I/YR] ->  8.28%</div>
+          <div class="wrong"><strong>&#9888;&#65039; The #1 error:</strong> forgetting to set <strong>P/YR to the compounding frequency</strong> and <strong>N to total periods</strong> (years &times; periods/yr) &mdash; then <em>not resetting P/YR back to 1</em> afterward, which corrupts the next problem. Second most common: wrong <strong>sign</strong> (enter money you pay out as negative).</div>
+        </div>
+
+        <div class="deep-toggle" data-t>&#128300; Go deeper &mdash; BEG vs. END, and why retirement/education problems use BEG<span class="tog">+</span></div>
+        <div class="cc deep-body closed"><div class="inner">
+          <ul class="kl">
+            <li><strong>Ordinary annuity (END)</strong> &mdash; payments at the <em>end</em> of each period: mortgages, car loans, most investment problems.</li>
+            <li><strong>Annuity due (BEG)</strong> &mdash; payments at the <em>beginning</em>: leases, insurance premiums, and <strong>retirement/education needs analysis</strong> (the client needs the money at the <em>start</em> of each year). Use BEG on those even when the problem doesn&rsquo;t say &ldquo;beginning.&rdquo;</li>
+            <li>An annuity due always yields a <strong>larger</strong> PV and FV than an ordinary annuity &mdash; each payment earns one extra period. The gap widens with N and the rate.</li>
+            <li><strong>Rule of 72:</strong> years to double = 72 &divide; rate (72 &divide; 9 = 8 yrs); required rate = 72 &divide; years.</li>
+          </ul>
+          <div class="confuse"><div class="confuse-h">&#9878;&#65039; Nominal vs. real (inflation-adjusted) rate</div><div class="tell" style="margin-top:0;">Use the <strong>real rate</strong> = [(1 + return) &divide; (1 + inflation) &minus; 1] whenever a goal <em>grows with inflation</em> (retirement income, college costs). Using the plain <em>nominal</em> return there is the classic sizing error &mdash; it ignores that the need itself is rising.</div></div>
+        </div></div>
       </div>
     </div>
     <div class="card">
@@ -715,6 +852,15 @@ strong { color: #1e293b; }
           <li><strong>Duty to Consult:</strong> Bring in specialists when beyond competence; coordinate advice across the team</li>
           <li><strong>Duty to Keep Current:</strong> Maintain competence through ongoing education and staying informed of developments</li>
         </ul>
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; three traps buried in the Standards</div>
+          <div class="tell" style="margin-top:0;">
+            <ul class="kl mt1">
+              <li><strong>The three fiduciary duties (Std A.1)</strong> are Loyalty, Care, and <strong>Follow Client Instructions</strong> &mdash; <em>NOT</em> a &ldquo;duty to disclose&rdquo; (a common distractor; disclosure lives under conflict management, A.5).</li>
+              <li><strong>Fiduciary vs. suitability:</strong> fiduciary is <em>principle-based, best-interest</em> (CFP&reg;/RIA); suitability is <em>rules-based, merely-suitable</em> (registered reps/agents, FINRA).</li>
+              <li><strong>Fee-only vs. fee-based (A.12):</strong> <em>fee-<strong>only</strong></em> = planning fees and <strong>nothing else</strong> (no commissions); <em>fee-<strong>based</strong></em> = fees <strong>plus</strong> commissions/sales comp. Calling a fee-based practice &ldquo;fee-only&rdquo; is a misrepresentation.</li>
+            </ul></div>
+        </div>
       </div>
     </div>
     <div class="card">
@@ -752,7 +898,21 @@ strong { color: #1e293b; }
           <li>No circumvention &mdash; cannot use third parties to violate Code</li>
           <li>Cooperation &mdash; cooperate with CFP Board investigations; respond within 14 days to document requests</li>
         </ul>
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; sanctions vs. bars &middot; absolute bar vs. petition</div>
+          <div class="tell" style="margin-top:0;"><strong>Sanctions vs. bars:</strong> current CFP&reg; professionals face <em>Private Censure &rarr; Public Censure &rarr; Suspension (90 days&ndash;5 yrs) &rarr; Revocation</em>; <strong>&ldquo;Bars&rdquo; (Temporary/Permanent) apply to people who are NOT currently certified</strong> (candidates). If the answer says &ldquo;bar,&rdquo; the person isn&rsquo;t a current certificant. &nbsp;|&nbsp; <strong>Absolute bar vs. petition:</strong> an <em>absolute (always) bar</em> (felony fraud/theft/tax crime, etc.) can never be petitioned; a <em>presumptive</em> bar or petition-for-fitness item (2+ bankruptcies, some felonies) <em>can</em> be reviewed by the DEC. &nbsp;|&nbsp; <strong>Private Censure</strong> is the only sanction <em>not</em> publicly disseminated.</div>
+        </div>
       </div>
+    </div>
+
+    <div class="sources">
+      <h4>&#128206; Primary sources for this module</h4>
+      <ul>
+        <li><span class="srcref">CFP Board Code of Ethics &amp; Standards of Conduct</span> &mdash; the 6 principles, 15 Duties Owed to Clients (A.1&ndash;A.15), fiduciary at all times when giving Financial Advice.</li>
+        <li><span class="srcref">Fitness Standards</span> (candidate eligibility) &amp; <span class="srcref">Procedural Rules</span> (discipline, sanctions, timelines, appeals).</li>
+        <li><span class="srcref">Uniform Prudent Investor Act (1994)</span> &mdash; total-portfolio prudence (Harvard College v. Amory, 1830).</li>
+      </ul>
+      <p style="margin-top:0.5rem;font-style:italic;">Grounded in the FP511 course textbook (Professional Conduct &amp; Fiduciary Responsibility module; 2026 edition).</p>
     </div>
   </div>
 
@@ -805,6 +965,10 @@ strong { color: #1e293b; }
         <div class="hb amber"><strong>Stagflation:</strong> High inflation + high unemployment + slow growth (e.g., 1970s oil shock). Very difficult to treat because fiscal and monetary tools to fight inflation make unemployment worse and vice versa.</div>
         <div class="hb blue"><strong>Deflation investment strategy:</strong> Own <strong>U.S. Treasuries</strong>; avoid stocks, real estate, and gold (in severe deflation). Bond prices RISE as rates fall.</div>
         <div class="hb amber"><strong>Yield curve:</strong> A <strong>normal</strong> yield curve slopes UPWARD &mdash; longer maturities pay higher yields (investors demand more for tying up money longer). An <strong>inverted</strong> yield curve (short-term yields above long-term) is a classic warning sign that often <strong>precedes a recession</strong>. A flat curve signals a transition between the two.</div>
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; indicators &amp; the two Fed rates</div>
+          <div class="tell" style="margin-top:0;"><strong>Leading vs. lagging:</strong> <em>stocks &amp; housing starts LEAD</em> (they move <em>before</em> the economy &mdash; don&rsquo;t wait for good news to invest); <em>prime rate &amp; CPI-services LAG</em>. Coincident (industrial production, personal income) move <em>with</em> the economy. &nbsp;|&nbsp; <strong>Discount rate vs. federal funds rate:</strong> the Fed <strong>directly sets</strong> the discount rate; it only <strong>targets/influences</strong> the fed funds rate (via open-market operations). Prime is ~3% above fed funds. &nbsp;|&nbsp; <strong>Monetary (Fed) vs. fiscal (Congress + President):</strong> mnemonic &ldquo;fis<strong>CA</strong>l&rdquo; = Congress + Administration; the Fed controls the <em>money supply</em>.</div>
+        </div>
       </div>
     </div>
     <div class="card">
@@ -829,7 +993,21 @@ strong { color: #1e293b; }
           <li><strong>Servicemembers Civil Relief Act (SCRA):</strong> Caps pre-service debt interest at <strong>6%</strong> for active-duty servicemembers</li>
           <li><strong>Identity theft:</strong> Report to the <strong>FTC</strong> (not SEC). Three major bureaus: Equifax, Experian, TransUnion. Consumer can place a fraud alert or credit freeze.</li>
         </ul>
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; bankruptcy chapters &amp; the two credit laws</div>
+          <div class="tell" style="margin-top:0;"><strong>Ch. 7 vs. 13 vs. 11:</strong> <em>7 = liquidation</em> (discharge debts, wait 8 yrs to refile); <em>13 = wage-earner repayment</em> over 3&ndash;5 yrs (regular income, keeps assets); <em>11 = reorganization</em> (business keeps operating). &nbsp;|&nbsp; <strong>TILA vs. FCRA:</strong> Truth in Lending (Reg Z) governs the <em>credit terms</em> (APR, rescission, $50 card-liability cap); the Fair Credit Reporting Act governs the <em>credit report</em> (7-yr adverse info, 10-yr bankruptcy, free report within 30 days of denial). Tell: TILA = the <em>contract</em>; FCRA = the <em>report</em>.</div>
+        </div>
       </div>
+    </div>
+
+    <div class="sources">
+      <h4>&#128206; Primary sources for this module</h4>
+      <ul>
+        <li><span class="srcref">Truth in Lending Act / Reg Z</span> &middot; <span class="srcref">FCRA</span> &middot; <span class="srcref">FACTA</span> &middot; <span class="srcref">ECOA</span> &middot; <span class="srcref">Fair Credit Billing Act</span> &middot; <span class="srcref">SCRA</span> &mdash; consumer-credit framework.</li>
+        <li><span class="srcref">Bankruptcy Abuse Prevention &amp; Consumer Protection Act (2005)</span> &mdash; means test; Chapters 7/11/13.</li>
+        <li><span class="srcref">Federal Reserve / FOMC</span> &mdash; monetary policy (open-market operations, discount rate, reserve requirements).</li>
+      </ul>
+      <p style="margin-top:0.5rem;font-style:italic;">Grounded in the FP511 course textbook (Economic Environment &amp; Consumer Protection module; 2026 edition).</p>
     </div>
   </div>
 
@@ -845,6 +1023,22 @@ strong { color: #1e293b; }
         </div>
         <div class="hb amber mt1"><strong>Key distinctions:</strong> Step 2 uses BEG mode because tuition is due at the beginning of each semester/year. The inflation-adjusted rate = (1 + return) / (1 + education inflation) &minus; 1. Serial payments start LOWER than level payments but grow with inflation each year.</div>
         <div class="hb blue"><strong>Serial vs. level payments:</strong> Serial payments are preferred when cash flow is expected to increase over time (e.g., income is growing). Level payments are preferred for simplicity or when income is flat.</div>
+
+        <div class="worked">
+          <div class="worked-h">&#129518; Worked mechanics &mdash; the 3-step funding calc, start to finish</div>
+          <p class="text-sm mb-1">Mary is age 3; college at 18 (<strong>15 years</strong> away), a 4-year program, tuition <strong>$10,000</strong> today, education inflation <strong>6%</strong>, expected return <strong>8%</strong>.</p>
+          <ol>
+            <li><strong>Inflate (END):</strong> PV &minus;10,000, I/YR 6, N 15 &rarr; FV = <strong>$23,965.58</strong> (first-year cost).</li>
+            <li><strong>Adjust (BEG):</strong> PMT &minus;23,965.58, I/YR = [1.08 &divide; 1.06 &minus; 1] = <strong>1.8868</strong>, N 4 &rarr; PV = <strong>$93,232.21</strong> (lump sum needed on day 1 of college).</li>
+            <li><strong>Invest (END):</strong> FV 93,232.21, N 15, I/YR 8 &rarr; PV = <strong>&minus;$29,390.68</strong> today &mdash; <em>or</em> solve PMT for a level annual save = <strong>&minus;$3,433.70/yr</strong>.</li>
+          </ol>
+          <div class="keys">Step 1 (END):  PV -10000  I/YR 6   N 15   -> FV 23,965.58
+Step 2 (BEG):  PMT -23965.58  I/YR 1.8868  N 4  -> PV 93,232.21
+Step 3 (END):  FV 93232.21  N 15  I/YR 8  -> PV -29,390.68
+               (same, solve PMT)            -> PMT -3,433.70/yr</div>
+          <div class="wrong"><strong>&#9888;&#65039; The signature trap:</strong> in Step 2 use the <strong>education</strong> inflation rate (6%), NOT general inflation. Using a general-inflation figure that&rsquo;s handed to you in the problem is the most common wrong turn. Also: Step 2 is a <strong>BEG</strong> (annuity-due) calculation because tuition is due at the <em>start</em> of each year.</div>
+          <div class="tryit"><strong>Serial-payment alternative:</strong> discount the $93,232.21 at 6% to today&rsquo;s dollars ($38,902.54), solve PMT at 1.8868% over 15 yrs, then &times;1.06 &rarr; first-year payment &asymp; <strong>$2,404</strong> (rising 6%/yr). It starts <em>lower</em> than the $3,434 level payment but overtakes it later.</div>
+        </div>
       </div>
     </div>
     <div class="card">
@@ -922,6 +1116,15 @@ strong { color: #1e293b; }
         </table>
         <div class="hb red"><strong>Anti-double-dipping rule:</strong> Cannot claim BOTH the AOTC and LLC for the <em>same student</em> in the <em>same year</em>. 529/CESA distributions reduce expenses eligible for either credit (dollar-for-dollar).</div>
         <div class="hb blue mt1"><strong>Employer Education Assistance (IRC &sect;127):</strong> Up to <strong>$5,250/year</strong> excludable from employee income. Covers undergraduate AND graduate. No job-relation requirement (changed post-TCJA). Above $5,250 is taxable W-2 income.</div>
+
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; AOTC vs. LLC (and the §127 number)</div>
+          <div class="tell" style="margin-top:0;">The killer distinction: <strong>AOTC is $2,500 PER STUDENT; LLC is $2,000 PER RETURN (per family).</strong> With three kids in college you can claim AOTC <em>three times</em> but the LLC only <em>once</em>. AOTC is first-4-years/degree/half-time/40%-refundable; LLC is unlimited-years/any-courses/not-refundable. You can mix them across different students, but never both credits for the <em>same</em> student in the same year. &nbsp;|&nbsp; <strong>§127 is $5,250, not $7,250</strong> (a favorite wrong-answer number).</div>
+        </div>
+        <div class="worked">
+          <div class="worked-h">&#129518; Worked &mdash; AOTC with a refundable piece</div>
+          <p class="text-sm">Owen has two sons, $6,000 tuition each, MAGI $75,000 (under phaseout), tax liability $4,200. AOTC = $2,500 &times; 2 = <strong>$5,000</strong>. It first offsets the $4,200 liability to <strong>zero</strong>; then the <strong>40% refundable</strong> portion delivers a cash refund of the remainder &rarr; an <strong>$800 refund</strong>. (The nonrefundable LLC could never produce that refund.)</p>
+        </div>
       </div>
     </div>
     <div class="card">
@@ -932,7 +1135,21 @@ strong { color: #1e293b; }
           <div class="sbox"><div class="num">$95,000</div><div class="lbl">Single donor 5-year superfunding limit per beneficiary ($19K &times; 5). Couple: $190,000 per beneficiary every 5 years. File Form 709. No additional gifts to same beneficiary during 5-year period.</div></div>
         </div>
         <div class="hb amber mt1"><strong>Superfunding mechanics:</strong> Donor makes one large lump-sum contribution of up to $95,000 (single) or $190,000 (couple) per beneficiary, treated as if made ratably over 5 years. Must file Form 709 to elect the 5-year spreading. No additional annual exclusion gifts to the same beneficiary during that 5-year period. If donor dies within 5 years, pro-rated amount is pulled back into the estate.</div>
+
+        <div class="confuse">
+          <div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; 529 vs. Coverdell vs. UGMA/UTMA</div>
+          <div class="tell" style="margin-top:0;"><strong>529:</strong> no contribution cap (gift rules apply), no age limits, no income phaseout, owner keeps control (beneficiary never takes over), K-12 capped at $10k/yr; excluded from the owner&rsquo;s estate <em>unless</em> they die inside the 5-year superfund window (then prorated back). <strong>Coverdell:</strong> only <strong>$2,000/yr per beneficiary across ALL donors</strong> (grandma + dad can&rsquo;t each add $2,000), contributor income phaseout, use by age 30, K-12 uncapped. <strong>UGMA/UTMA:</strong> irrevocable gift, child takes control at majority, hit hardest for aid at <strong>20% (student asset)</strong> vs. a parent-owned 529 at &le;5.64%. <em>Tell:</em> titling drives both control and financial-aid impact.</div>
+        </div>
       </div>
+    </div>
+
+    <div class="sources">
+      <h4>&#128206; Primary sources for this module</h4>
+      <ul>
+        <li><span class="srcref">IRC &sect;529</span> (QTPs) &middot; <span class="srcref">&sect;530</span> (Coverdell ESA) &middot; <span class="srcref">&sect;25A</span> (AOTC &amp; Lifetime Learning Credit) &middot; <span class="srcref">&sect;127</span> ($5,250 employer assistance) &middot; <span class="srcref">&sect;2503</span> (gift annual exclusion).</li>
+        <li><span class="srcref">FAFSA / Student Aid Index (SAI)</span> &mdash; replaced EFC (2024&ndash;25); assessment rates &amp; excluded assets.</li>
+      </ul>
+      <p style="margin-top:0.5rem;font-style:italic;">Grounded in the FP511 course textbook (Education Planning module; 2026 edition). Figures are 2025 values &mdash; the textbook defers kiddie-tax tiers and some phaseouts to the College&rsquo;s current-year Annual Limits sheet; re-check annually.</p>
     </div>
   </div>
 
@@ -1213,5 +1430,6 @@ if('serviceWorker' in navigator){window.addEventListener('load',function(){navig
 </script>
 <script src="../reader-theme.js"></script>
 <!-- reader-search-injected --><script src="../reader-search.js"></script>
+<!-- reader-teach-injected --><script src="../reader-teach.js"></script><!-- reader-tts-injected --><script src="../reader-tts.js"></script>
 </body>
 </html>

@@ -1,0 +1,1173 @@
+FP512 MCQ Practice — CFP Study Lab
+==================================
+FP512 — Risk Management, Insurance & Employee Benefits
+===== FP512 MCQ PRACTICE =====
+
+Read the question and options, commit to an answer, then turn the page for the correct choice, the explanation, and why each wrong option is wrong.
+83 questions · 8 sections.
+
+
+
+===== FP512 · M1 PRINCIPLES OF INSURANCE =====
+
+[16 questions]
+
+——————————
+[Q 1 / 16 · Risk Principles]
+Which type of risk is generally insurable?
+A. Speculative risk
+B. Dynamic risk
+C. Pure risk
+D. Fundamental dynamic risk
+Answer: C. Pure risk
+Pure risk involves only the chance of loss or no loss (no chance of gain) and is insurable. Speculative and dynamic risks are not insurable.
+[Why the others are wrong:]
+✗ Speculative risk — Speculative risk has both loss AND gain potential (like gambling/investing), so it is uninsurable.
+✗ Dynamic risk — Dynamic risks arise from economy-wide changes and are not insurable; only pure risk is.
+✗ Fundamental dynamic risk — Combines two uninsurable categories; insurers cover pure, particular risks, not fundamental/dynamic ones.
+
+——————————
+[Q 2 / 16 · Risk Principles]
+A homeowner faces a low-frequency but high-severity exposure (e.g., a house fire). Per the risk management matrix, the most appropriate technique is to:
+A. Retain the risk
+B. Transfer the risk
+C. Avoid the activity
+D. Reduce the activity
+Answer: B. Transfer the risk
+Low frequency/high severity exposures are best transferred via insurance. High frequency/high severity calls for avoidance or reduction; low/low calls for retention.
+[Why the others are wrong:]
+✗ Retain the risk — Retention fits low-frequency/low-severity losses you can absorb, not a catastrophic house fire.
+✗ Avoid the activity — Avoidance is for high-frequency/high-severity exposures; you cannot practically 'avoid' owning a home.
+✗ Reduce the activity — Reduction suits high-frequency exposures; a rare but severe loss is best transferred to an insurer.
+
+——————————
+[Q 3 / 16 · Risk Principles]
+Which is NOT one of the four elements of an insurable risk from the insurer's perspective?
+A. A large number of homogeneous exposure units
+B. The loss must be definite and measurable
+C. The loss must be catastrophic to the insurer
+D. The loss must be fortuitous
+Answer: C. The loss must be catastrophic to the insurer
+An insurable loss must NOT be catastrophic to the insurer. The other three are required elements.
+[Why the others are wrong:]
+✗ A large number of homogeneous exposure units — This IS a required element (law of large numbers), so it is not the exception.
+✗ The loss must be definite and measurable — This IS a required element, so it is not the exception.
+✗ The loss must be fortuitous — A fortuitous (accidental/unexpected) loss IS required, so it is not the exception.
+
+——————————
+[Q 4 / 16 · Insurable Interest]
+For property and casualty insurance, when must insurable interest exist?
+A. Only when the policy is issued
+B. Only at the time of loss
+C. At both policy issue and at the time of loss
+D. Insurable interest is not required for P&C
+Answer: C. At both policy issue and at the time of loss
+P&C insurable interest must exist both at issue and at the time of loss. For life insurance it need exist only when the policy is issued.
+[Why the others are wrong:]
+✗ Only when the policy is issued — That is the LIFE insurance rule; for P&C, insurable interest must also exist at the time of loss.
+✗ Only at the time of loss — P&C requires insurable interest both at issue and at loss, not solely at loss.
+✗ Insurable interest is not required for P&C — P&C absolutely requires insurable interest to prevent wagering and enforce indemnity.
+
+——————————
+[Q 5 / 16 · Insurance Limits]
+A peril, the cause of a loss, is best illustrated by:
+A. A frayed electrical cord
+B. A fire
+C. An icy sidewalk
+D. Storing gasoline indoors
+Answer: B. A fire
+A peril is the cause of loss (fire). The frayed cord, icy sidewalk, and stored gasoline are hazards that increase the chance of loss.
+[Why the others are wrong:]
+✗ A frayed electrical cord — A frayed cord is a physical HAZARD that increases the chance of loss, not the peril itself.
+✗ An icy sidewalk — Icy conditions are a hazard raising the likelihood of a fall, not the direct cause (peril) of loss.
+✗ Storing gasoline indoors — Storing gasoline is a hazard that increases loss potential, not a peril.
+
+——————————
+[Q 6 / 16 · Insurance Regulation]
+The McCarran-Ferguson Act of 1945 established that insurance is primarily regulated by:
+A. The federal government
+B. The states
+C. The NAIC directly
+D. The courts only
+Answer: B. The states
+McCarran-Ferguson (Public Law 15) reserved most insurance regulation to the states, while reserving areas like antitrust to the federal government.
+[Why the others are wrong:]
+✗ The federal government — McCarran-Ferguson reserved most insurance regulation to the STATES, not the federal government.
+✗ The NAIC directly — The NAIC only develops model laws; it has no direct regulatory authority—states regulate.
+✗ The courts only — Regulation is legislative/administrative at the state level, not conducted solely by courts.
+
+——————————
+[Q 7 / 16 · Insurance Contract Law]
+An insurance contract drafted by the insurer that the insured must accept or reject without negotiation is characterized as a contract of:
+A. Adhesion
+B. Indemnity
+C. Aleatory exchange
+D. Subrogation
+Answer: A. Adhesion
+A contract of adhesion is prepared by one party (the insurer) on an accept-or-reject basis. Aleatory refers to chance; indemnity is a principle, not a characteristic.
+[Why the others are wrong:]
+✗ Indemnity — Indemnity is the principle of restoring pre-loss position, not the take-it-or-leave-it drafting characteristic.
+✗ Aleatory exchange — Aleatory refers to unequal exchange based on chance, not the one-sided drafting of the contract.
+✗ Subrogation — Subrogation is the insurer's right to pursue a third party after paying a claim, not a contract type.
+
+——————————
+[Q 8 / 16 · Insurance Contract Law]
+Which form of insurance is the principal exception to the principle of indemnity?
+A. Homeowners insurance
+B. Auto collision insurance
+C. Life insurance
+D. Commercial property insurance
+Answer: C. Life insurance
+Life insurance pays a stated face/death benefit rather than restoring a pre-loss financial position, making it the exception to indemnity.
+[Why the others are wrong:]
+✗ Homeowners insurance — Homeowners follows indemnity—it restores the insured's pre-loss position, subject to policy limits.
+✗ Auto collision insurance — Collision coverage is an indemnity contract, paying actual cash value or repair cost, not a set face amount.
+✗ Commercial property insurance — Commercial property is indemnity-based, reimbursing actual loss rather than a stated benefit.
+
+——————————
+[Q 9 / 16 · Liability & Torts]
+Which is NOT one of the four elements required to prove negligence?
+A. A duty is owed
+B. The duty was breached
+C. Actual damages occurred
+D. The act was intentional
+Answer: D. The act was intentional
+Negligence is an unintentional tort. Its four elements are duty owed, duty breached, actual damages, and proximate cause.
+[Why the others are wrong:]
+✗ A duty is owed — Duty owed IS one of the four elements, so it is not the exception.
+✗ The duty was breached — Breach of duty IS a required element, so it is not the exception.
+✗ Actual damages occurred — Actual damages IS a required element, so it is not the exception.
+
+——————————
+[Q 10 / 16 · Liability & Torts]
+Under a pure contributory negligence rule, an injured plaintiff who was partly at fault will:
+A. Recover damages reduced by their percentage of fault
+B. Be barred from any recovery
+C. Recover full damages
+D. Recover only medical costs
+Answer: B. Be barred from any recovery
+Under contributory negligence, ANY negligence by the injured party bars recovery. Comparative negligence instead reduces recovery by the plaintiff's share of fault.
+[Why the others are wrong:]
+✗ Recover damages reduced by their percentage of fault — That describes COMPARATIVE negligence; pure contributory bars recovery entirely for any plaintiff fault.
+✗ Recover full damages — Any fault by the plaintiff bars recovery under contributory negligence—no full recovery.
+✗ Recover only medical costs — Contributory negligence bars all recovery for a partly-at-fault plaintiff, not just non-medical damages.
+
+——————————
+[Q 11 / 16 · Agency]
+An agent's authority that arises because it is necessary to transact business (such as collecting premiums), though not expressly stated, is:
+A. Express authority
+B. Implied authority
+C. Apparent authority
+D. Ratified authority
+Answer: B. Implied authority
+Implied authority is assumed as necessary to carry out the business of the agency. Express is stated in the contract; apparent is based on appearances to the client.
+[Why the others are wrong:]
+✗ Express authority — Express authority is what is specifically WRITTEN in the agency contract, not what is merely necessary.
+✗ Apparent authority — Apparent authority is based on how things appear to a third party, not on business necessity.
+✗ Ratified authority — Ratification is after-the-fact approval of an unauthorized act, not authority necessary to do business.
+
+——————————
+[Q 12 / 16 · Agency]
+An insurance broker legally represents:
+A. The insurer
+B. The insurance buyer
+C. The NAIC
+D. Both parties equally
+Answer: B. The insurance buyer
+A broker represents the insurance buyer (prospective insured) and cannot bind the insurer.
+[Why the others are wrong:]
+✗ The insurer — That describes an agent; a broker represents the buyer and cannot bind the insurer.
+✗ The NAIC — The NAIC is a regulatory association; a broker represents the insurance buyer.
+✗ Both parties equally — A broker owes its duty to the buyer, not equally to both sides.
+
+——————————
+[Q 13 / 16 · Underwriting]
+A client who is careless because "it's insured anyway" exhibits a:
+A. Moral hazard
+B. Morale hazard
+C. Physical peril
+D. Speculative risk
+Answer: B. Morale hazard
+Morale hazard is indifference or carelessness because losses are insured. Moral hazard involves unethical conduct or misrepresentation.
+[Why the others are wrong:]
+✗ Moral hazard — Moral hazard involves dishonesty/fraud (e.g., faking a claim); mere carelessness because it's insured is a MORALE hazard.
+✗ Physical peril — Carelessness is an attitude, not a physical cause of loss; and 'peril' is a cause, not a hazard.
+✗ Speculative risk — Speculative risk involves chance of gain or loss; this is a hazard describing insured indifference.
+
+——————————
+[Q 14 / 16 · Insurer Ratings]
+Which rating agency is the oldest and specializes only in rating insurance companies?
+A. Standard & Poor's
+B. Moody's
+C. A.M. Best
+D. Fitch Ratings
+Answer: C. A.M. Best
+A.M. Best is the oldest agency and the only one specializing in insurance ratings; its top rating is A++ (Superior).
+[Why the others are wrong:]
+✗ Standard & Poor's — S&P rates many types of debt and firms broadly, not solely insurers, and is not the oldest insurance-specific rater.
+✗ Moody's — Moody's is a general credit-rating agency, not the insurance-only specialist; A.M. Best is.
+✗ Fitch Ratings — Fitch is a broad credit-rating agency and the youngest of the majors, not the insurance-only specialist.
+
+——————————
+[Q 15 / 16 · Liability & Torts]
+Which type of damages awarded in a liability lawsuit is generally NOT insurable?
+A. Special (economic) damages
+B. General (pain and suffering) damages
+C. Punitive damages
+D. Compensatory damages
+Answer: C. Punitive damages
+Punitive damages punish reckless or intentional wrongdoing; insuring them would defeat that purpose, so most states treat them as uninsurable. Special and general damages are compensatory and are covered by liability policies.
+
+——————————
+[Q 16 / 16 · Insurer Ratings]
+Which factor is a criterion for selecting an insurance COMPANY rather than an insurance agent?
+A. Competence
+B. Financial strength
+C. Inclination to service the account
+D. Experience and training
+Answer: B. Financial strength
+Financial strength (e.g., A.M. Best ratings) evaluates the insurance company. An agent is judged on competence, inclination to service, experience, training, and reputation.
+
+
+
+===== FP512 · M2 PROPERTY & CASUALTY =====
+
+[12 questions]
+
+——————————
+[Q 1 / 12 · Homeowners]
+Under a homeowners policy, Coverage D provides:
+A. Coverage for the dwelling
+B. Coverage for detached structures
+C. Loss-of-use coverage while the home is uninhabitable
+D. Medical payments to others
+Answer: C. Loss-of-use coverage while the home is uninhabitable
+Coverage D is loss of use, covering additional living expenses while the dwelling is uninhabitable due to a covered peril.
+[Why the others are wrong:]
+✗ Coverage for the dwelling — That is Coverage A (dwelling), not Coverage D.
+✗ Coverage for detached structures — Detached/other structures are Coverage B, not Coverage D.
+✗ Medical payments to others — Medical payments to others is Coverage F, not Coverage D (loss of use).
+
+——————————
+[Q 2 / 12 · Homeowners]
+Which homeowners form is the most widely purchased and provides open perils on the dwelling but named perils on personal property?
+A. HO-2
+B. HO-3
+C. HO-4
+D. HO-8
+Answer: B. HO-3
+HO-3 (Special Form) is the most popular: open perils on real property, named perils on personal property.
+[Why the others are wrong:]
+✗ HO-2 — HO-2 (Broad Form) is named-perils on BOTH dwelling and contents, not open-perils on the dwelling.
+✗ HO-4 — HO-4 is the renters/tenants form covering contents only, with no dwelling coverage.
+✗ HO-8 — HO-8 is the modified/older-home form using actual cash value, not the popular open-peril HO-3.
+
+——————————
+[Q 3 / 12 · Homeowners]
+A renter who wants coverage for personal property, liability, and loss of use (but not the building) should buy:
+A. HO-3
+B. HO-4
+C. HO-6
+D. HO-8
+Answer: B. HO-4
+HO-4 is the Contents Broad (Tenants/Renters) form, providing contents, liability, and loss of use with no Coverage A or B.
+[Why the others are wrong:]
+✗ HO-3 — HO-3 insures the dwelling (Coverages A/B), which a renter does not own and does not need.
+✗ HO-6 — HO-6 is for condo unit-owners (includes limited building/interior coverage), not renters.
+✗ HO-8 — HO-8 is the modified form for older homes the owner occupies, not a renters/tenants policy.
+
+——————————
+[Q 4 / 12 · Homeowners]
+Under standard homeowners policies, Coverage C (personal property) is typically what percentage of Coverage A?
+A. 10%
+B. 25%
+C. 50%
+D. 80%
+Answer: C. 50%
+Coverage C is generally 50% of the dwelling (Coverage A) limit; Coverage B (other structures) is generally 10%.
+[Why the others are wrong:]
+✗ 10% — 10% is the typical Coverage B (other structures) limit, not Coverage C.
+✗ 25% — 25%–30% is a common Coverage D (loss of use) figure, not Coverage C, which is 50%.
+✗ 80% — 80% is the coinsurance requirement for full replacement-cost recovery, not the Coverage C limit.
+
+——————————
+[Q 5 / 12 · Homeowners]
+To have partial losses paid in full, a homeowner must insure the dwelling for at least what percentage of replacement cost?
+A. 50%
+B. 70%
+C. 80%
+D. 100%
+Answer: C. 80%
+The 80% coinsurance rule requires insuring at least 80% of replacement cost; otherwise partial losses are paid at the greater of ACV or the coinsurance-penalty formula.
+[Why the others are wrong:]
+✗ 50% — Too low; the coinsurance requirement for full partial-loss payment is 80% of replacement cost.
+✗ 70% — Not the standard threshold; the 80% coinsurance rule governs partial-loss recovery.
+✗ 100% — Full replacement value isn't required for partial losses—80% satisfies the coinsurance rule (100% is needed to avoid any gap on total losses).
+
+——————————
+[Q 6 / 12 · Homeowners]
+A home costs $400,000 to rebuild but is insured for only $300,000, with a $1,000 deductible. A covered partial loss is $20,000. Using the coinsurance penalty formula, the insurer pays:
+A. $20,000
+B. $18,750
+C. $17,750
+D. $15,000
+Answer: C. $17,750
+Required insurance = 80% × $400,000 = $320,000. ($300,000 ÷ $320,000) × $20,000 = $18,750, minus the $1,000 deductible = $17,750.
+
+——————————
+[Q 7 / 12 · Flood Insurance]
+The predominant provider of residential flood insurance is:
+A. Private insurers through the HO-3
+B. The National Flood Insurance Program (NFIP)
+C. The California Earthquake Authority
+D. Lloyd's of London
+Answer: B. The National Flood Insurance Program (NFIP)
+Flood is excluded from standard HO policies; the federal government's NFIP is the predominant provider, often required by mortgage lenders in flood zones.
+[Why the others are wrong:]
+✗ Private insurers through the HO-3 — Flood is EXCLUDED from HO-3 and all standard homeowners forms, so it isn't provided this way.
+✗ The California Earthquake Authority — The CEA covers earthquakes in California, not flood insurance.
+✗ Lloyd's of London — Lloyd's writes specialty/surplus lines but is not the predominant U.S. residential flood provider; the NFIP is.
+
+——————————
+[Q 8 / 12 · Personal Liability]
+Coverage F (medical payments to others) under a homeowners policy:
+A. Requires proof of negligence by the insured
+B. Pays for injury to household members
+C. Pays for injury to a non-resident without requiring negligence
+D. Covers the insured's own medical bills
+Answer: C. Pays for injury to a non-resident without requiring negligence
+Coverage F pays for injury to a non-resident at the residence regardless of negligence. Household members cannot collect under it.
+[Why the others are wrong:]
+✗ Requires proof of negligence by the insured — Coverage F pays regardless of fault—no proof of negligence is needed (that's the Coverage E liability standard).
+✗ Pays for injury to household members — Coverage F excludes the insured's own household/resident family members; it covers non-residents.
+✗ Covers the insured's own medical bills — Coverage F pays medical bills of OTHERS, not the insured's own injuries.
+
+——————————
+[Q 9 / 12 · Umbrella Policy]
+A personal liability umbrella policy (PLUP) typically:
+A. Replaces the homeowners and auto policies
+B. Has a limit of at least $1 million and pays after underlying limits are exhausted
+C. Pays before the homeowners and auto policies
+D. Covers only the insured's medical bills
+Answer: B. Has a limit of at least $1 million and pays after underlying limits are exhausted
+A PLUP (catastrophe liability) typically has a limit of at least $1 million; the underlying HO/auto policy pays first, then the umbrella pays the difference.
+[Why the others are wrong:]
+✗ Replaces the homeowners and auto policies — An umbrella supplements, not replaces, the underlying HO/auto policies, which must stay in force.
+✗ Pays before the homeowners and auto policies — The umbrella pays only AFTER the underlying HO/auto limits are exhausted, not first.
+✗ Covers only the insured's medical bills — A PLUP provides broad excess LIABILITY coverage, not the insured's own medical costs.
+
+——————————
+[Q 10 / 12 · Auto Insurance]
+Which Personal Auto Policy coverage is mandatory in essentially all states?
+A. Medical payments (Part B)
+B. Liability (Part A)
+C. Uninsured motorist (Part C)
+D. Collision (Part D)
+Answer: B. Liability (Part A)
+Liability coverage (Part A) is the only mandatory part of the PAP; states have financial responsibility laws.
+[Why the others are wrong:]
+✗ Medical payments (Part B) — Med-pay is optional first-party coverage, not the mandatory part; liability is.
+✗ Uninsured motorist (Part C) — UM is required in some states but not essentially all; liability (Part A) is the universal requirement.
+✗ Collision (Part D) — Collision is optional (often lender-required), not state-mandated; liability is the mandatory coverage.
+
+——————————
+[Q 11 / 12 · Auto Insurance]
+In the auto split limit 25/50/10, the "50" represents:
+A. Bodily injury per person
+B. Bodily injury per accident
+C. Property damage per accident
+D. The deductible
+Answer: B. Bodily injury per accident
+25/50/10 means $25,000 bodily injury per person / $50,000 bodily injury per accident / $10,000 property damage.
+[Why the others are wrong:]
+✗ Bodily injury per person — That is the first number (25) — the per-person BI cap, not the middle number.
+✗ Property damage per accident — That is the last number (10), not the middle figure.
+✗ The deductible — Split limits express liability caps, not a deductible; the deductible applies to your own collision/comprehensive.
+
+——————————
+[Q 12 / 12 · Auto Insurance]
+Damage to your auto from hitting a deer would be covered under:
+A. Collision
+B. Comprehensive (other-than-collision)
+C. Liability
+D. Uninsured motorist
+Answer: B. Comprehensive (other-than-collision)
+Contact with a bird or animal falls under comprehensive (other-than-collision) coverage, along with fire, theft, vandalism, and glass breakage.
+[Why the others are wrong:]
+✗ Collision — Collision covers impact with another vehicle or object; contact with an animal is specifically classified as other-than-collision.
+✗ Liability — Liability pays others for damage you cause, not damage to your own auto.
+✗ Uninsured motorist — UM applies when an at-fault uninsured driver injures you, not an animal strike.
+
+
+
+===== FP512 · M3 LIFE INSURANCE =====
+
+[15 questions]
+
+——————————
+[Q 1 / 15 · Life Insurance Types]
+Which life insurance type guarantees the premium, death benefit, and cash value?
+A. Annually renewable term
+B. Universal life
+C. Whole life
+D. Variable life
+Answer: C. Whole life
+Whole life guarantees all three. Term has no cash value, UL's cash value is not guaranteed, and VL's cash value varies with the separate account.
+[Why the others are wrong:]
+✗ Annually renewable term — Term has no cash value and its premium rises each year, so it guarantees none of the three.
+✗ Universal life — UL's cash value is not guaranteed (interest-sensitive) and premiums are flexible.
+✗ Variable life — VL's cash value varies with the separate-account subaccounts, so it is not guaranteed.
+
+——————————
+[Q 2 / 15 · Life Insurance Types]
+A single-premium whole life policy is always classified as a:
+A. Term policy
+B. Modified endowment contract (MEC)
+C. Nonqualified annuity
+D. Group policy
+Answer: B. Modified endowment contract (MEC)
+A single premium exceeds the 7-pay limit, so single-premium life is always a MEC. Once a MEC, always a MEC.
+[Why the others are wrong:]
+✗ Term policy — Whole life is permanent with cash value; single-premium funding does not make it term.
+✗ Nonqualified annuity — It is life insurance, not an annuity — different tax and contract rules.
+✗ Group policy — Single-premium whole life is an individual contract, unrelated to group status.
+
+——————————
+[Q 3 / 15 · Universal Life]
+Under UL Option B (increasing death benefit), the death benefit equals:
+A. The cash value only
+B. The net amount at risk only
+C. The net amount at risk plus the cash value
+D. A level face amount
+Answer: C. The net amount at risk plus the cash value
+Option B pays NAR + cash value (an increasing benefit), keeping NAR level. Option A is level, with NAR decreasing as cash value grows.
+[Why the others are wrong:]
+✗ The cash value only — The death benefit is NAR plus cash value, not cash value alone.
+✗ The net amount at risk only — Option B adds the cash value on top of the NAR, not NAR by itself.
+✗ A level face amount — That describes Option A (level death benefit); Option B increases as cash value grows.
+
+——————————
+[Q 4 / 15 · Life Insurance Types]
+Which policy lets the owner direct cash value into subaccounts and requires a prospectus?
+A. Whole life
+B. Universal life
+C. Variable universal life
+D. Limited-pay life
+Answer: C. Variable universal life
+Variable universal life uses a separate account with policyowner-directed subaccounts and must be sold with a prospectus. UL does not let the owner direct investments.
+[Why the others are wrong:]
+✗ Whole life — Whole life has a fixed general-account cash value the owner cannot direct; no prospectus.
+✗ Universal life — UL is interest-sensitive but does not let the owner pick subaccounts and needs no prospectus.
+✗ Limited-pay life — Limited-pay is just whole life paid up early — no separate account, no prospectus.
+
+——————————
+[Q 5 / 15 · Equity-Indexed UL]
+An EIUL has a 70% participation rate and the index gains 10%. What interest is credited?
+A. 10%
+B. 7%
+C. 70%
+D. 3%
+Answer: B. 7%
+A 70% participation rate credits 70% of the 10% gain = 7%. A rate cap would separately limit the maximum credited amount.
+
+——————————
+[Q 6 / 15 · Life Policy Provisions]
+Under the incontestability clause, an insurer generally may not contest a policy after:
+A. 6 months
+B. 1 year in all states
+C. No more than 2 years
+D. 5 years
+Answer: C. No more than 2 years
+The incontestability period is no more than 2 years (1 year in some states). Fraud may have no statute of limitations.
+[Why the others are wrong:]
+✗ 6 months — Far too short; the standard period is up to 2 years.
+✗ 1 year in all states — One year applies in only some states, not all — the maximum standard is 2 years.
+✗ 5 years — Exceeds the maximum contestability window; 2 years is the ceiling.
+
+——————————
+[Q 7 / 15 · Life Policy Provisions]
+If a life insurance applicant understated their age, the death benefit will be:
+A. Denied entirely
+B. Paid in full as applied
+C. Adjusted to what the premium would have bought at the correct age
+D. Reduced by a 10% penalty
+Answer: C. Adjusted to what the premium would have bought at the correct age
+The misstatement of age provision adjusts the benefit to the amount the premium paid would have purchased at the correct age.
+[Why the others are wrong:]
+✗ Denied entirely — Age misstatement is not fraud grounds for denial; the benefit is adjusted, not voided.
+✗ Paid in full as applied — Because the premium bought less at the true age, the benefit is reduced accordingly.
+✗ Reduced by a 10% penalty — There is no flat 10% penalty; the benefit is recomputed from what the premium would have purchased.
+
+——————————
+[Q 8 / 15 · Nonforfeiture Options]
+Unless the owner elects otherwise, a lapsed whole life policy defaults to which nonforfeiture option?
+A. Cash surrender value
+B. Reduced paid-up insurance
+C. Extended term insurance
+D. Automatic premium loan
+Answer: C. Extended term insurance
+The default nonforfeiture option for a lapsed whole life policy is extended term insurance.
+[Why the others are wrong:]
+✗ Cash surrender value — Taking cash surrender must be elected; it is not the automatic default.
+✗ Reduced paid-up insurance — RPU is an available option but not the default; extended term is the default.
+✗ Automatic premium loan — APL is a policy rider that must be selected, not the standard nonforfeiture default.
+
+——————————
+[Q 9 / 15 · Dividend Options]
+Which dividend option generally produces the greatest long-term increase in death benefit and cash value?
+A. Cash
+B. Reduce premium
+C. Accumulate at interest
+D. Paid-up additions
+Answer: D. Paid-up additions
+Paid-up additions buy small fully paid-up insurance that grows tax-deferred and generates further dividends, usually producing the greatest long-term increase.
+[Why the others are wrong:]
+✗ Cash — Taking dividends in cash removes them from the policy, adding nothing to death benefit or cash value.
+✗ Reduce premium — Using dividends to lower premiums does not build additional coverage or cash value.
+✗ Accumulate at interest — Accumulating grows cash value modestly but buys no additional insurance, so it lags paid-up additions.
+
+——————————
+[Q 10 / 15 · Life Insurance Tax]
+How are MEC distributions (loans/withdrawals) generally taxed?
+A. Tax-free up to basis (FIFO)
+B. Ordinary income on a LIFO basis, with a 10% penalty before age 59½
+C. Long-term capital gains
+D. Always fully tax-free
+Answer: B. Ordinary income on a LIFO basis, with a 10% penalty before age 59½
+MEC distributions are taxed LIFO as ordinary income, with a 10% penalty if before age 59½. Non-MEC life insurance is taxed FIFO (tax-free up to basis).
+[Why the others are wrong:]
+✗ Tax-free up to basis (FIFO) — That is the treatment for non-MEC life insurance; MECs are taxed LIFO (gain first).
+✗ Long-term capital gains — MEC gains are ordinary income, not capital gains.
+✗ Always fully tax-free — Only basis is tax-free; MEC gain is taxable, plus a possible pre-59½ penalty.
+
+——————————
+[Q 11 / 15 · 1035 Exchange]
+Which of the following is a PERMITTED tax-free Section 1035 exchange?
+A. Annuity to life insurance
+B. Life insurance to an annuity
+C. Long-term care to life insurance
+D. Annuity to endowment
+Answer: B. Life insurance to an annuity
+Life insurance may be exchanged tax-free into an annuity, but you cannot exchange an annuity or LTC contract into life insurance.
+[Why the others are wrong:]
+✗ Annuity to life insurance — Not allowed — you cannot exchange an annuity into life insurance under 1035.
+✗ Long-term care to life insurance — Not permitted; LTC can go to LTC or annuity, but not into life insurance.
+✗ Annuity to endowment — Annuity cannot be exchanged into an endowment; the ladder only moves toward annuities/LTC.
+
+——————————
+[Q 12 / 15 · Joint Life]
+A second-to-die (survivorship) policy is especially useful for:
+A. Funding a buy-sell agreement at the first owner's death
+B. Estate planning using the unlimited marital deduction
+C. Covering a home mortgage
+D. Short-term income replacement
+Answer: B. Estate planning using the unlimited marital deduction
+Second-to-die pays at the last death and is used in estate planning with the unlimited marital deduction. First-to-die is used to fund buy-sell agreements.
+[Why the others are wrong:]
+✗ Funding a buy-sell agreement at the first owner's death — Buy-sell needs cash at the FIRST owner's death; that is first-to-die insurance. Survivorship pays only at the last death.
+✗ Covering a home mortgage — A mortgage needs coverage at the first death; second-to-die pays only when both insureds die.
+✗ Short-term income replacement — Survivorship pays at the last death, useless for immediate income needs — term fits that.
+
+——————————
+[Q 13 / 15 · Needs Analysis]
+In a life insurance needs analysis, the two broad ECONOMIC assumptions the planner must set are:
+A. Risk tolerance and current resources
+B. Rate of return and inflation
+C. Life expectancy and health status
+D. Marginal tax bracket and state of residence
+Answer: B. Rate of return and inflation
+Rate of return and inflation are the broad economic assumptions. Risk tolerance and current resources are client attributes, not economic assumptions.
+
+——————————
+[Q 14 / 15 · MEC]
+A modified endowment contract (MEC) can arise in each of the following EXCEPT:
+A. Whole life
+B. Universal life
+C. Variable universal life
+D. Term life
+Answer: D. Term life
+Only cash-value policies (whole life, UL, VUL) can become MECs. Term insurance has no cash-value capacity, so it can never be a MEC.
+
+——————————
+[Q 15 / 15 · Life Policy Provisions]
+Which statement about life insurance beneficiary designations is FALSE?
+A. A contingent beneficiary receives the proceeds only if the primary beneficiary predeceases the insured
+B. Most beneficiary designations are irrevocable
+C. There is no limit to the number of beneficiaries named in a class
+D. A revocable designation can be changed by the owner without the beneficiary's consent
+Answer: B. Most beneficiary designations are irrevocable
+Most designations are REVOCABLE, so the owner may change them freely. An irrevocable designation requires the beneficiary's consent to change, but that is the exception, not the norm.
+
+
+
+===== FP512 · M4 ANNUITIES =====
+
+[7 questions]
+
+——————————
+[Q 1 / 7 · Annuities]
+Which premium method most commonly funds a deferred annuity?
+A. Single premium
+B. Fixed premium
+C. Flexible premium
+D. Modal premium
+Answer: C. Flexible premium
+Flexible premium is the most common funding method for deferred annuities. Single premium most commonly funds immediate annuities.
+[Why the others are wrong:]
+✗ Single premium — Single premium most commonly funds immediate annuities, not deferred ones.
+✗ Fixed premium — Fixed scheduled premiums are not the common deferred-annuity structure; flexibility is the norm.
+✗ Modal premium — Modal refers only to payment frequency, not a funding method for deferred annuities.
+
+——————————
+[Q 2 / 7 · Annuity Payout]
+Which annuity payout option provides the maximum guaranteed monthly income for a given sum?
+A. Joint and survivor
+B. Life with 20-year period certain
+C. Straight (pure) life
+D. Refund annuity
+Answer: C. Straight (pure) life
+Straight (pure) life provides the maximum income but leaves nothing to a beneficiary. Joint and survivor provides the lowest income.
+[Why the others are wrong:]
+✗ Joint and survivor — J&S covers two lives longer, so it pays the lowest income, not the highest.
+✗ Life with 20-year period certain — Guaranteeing 20 years of payments lowers the monthly amount versus straight life.
+✗ Refund annuity — Guaranteeing a refund of principal reduces the payout below straight life.
+
+——————————
+[Q 3 / 7 · Annuity Tax]
+A nonqualified deferred annuity withdrawal is taxed:
+A. As return of principal first, then earnings
+B. As earnings (ordinary income) first on a LIFO basis
+C. As long-term capital gain
+D. Tax-free in all cases
+Answer: B. As earnings (ordinary income) first on a LIFO basis
+Nonqualified annuity withdrawals are taxed LIFO — earnings (ordinary income) come out first, then nontaxable return of principal. A 10% penalty applies to taxable amounts before age 59½.
+[Why the others are wrong:]
+✗ As return of principal first, then earnings — That is FIFO; nonqualified annuity withdrawals are LIFO (earnings out first).
+✗ As long-term capital gain — Annuity earnings are ordinary income, never capital gain.
+✗ Tax-free in all cases — Only the return-of-principal portion is tax-free; earnings are taxable.
+
+——————————
+[Q 4 / 7 · Annuity Tax]
+The exclusion ratio for an annuitized payment equals:
+A. Expected return divided by investment in the contract
+B. Investment in the contract divided by total expected return
+C. Investment in the contract divided by the annual payment
+D. Earnings divided by basis
+Answer: B. Investment in the contract divided by total expected return
+Exclusion ratio = investment in the contract ÷ total expected return; it determines the nontaxable portion of each payment until basis is recovered.
+[Why the others are wrong:]
+✗ Expected return divided by investment in the contract — The ratio is inverted — it is investment divided by expected return.
+✗ Investment in the contract divided by the annual payment — That yields a number of years, not the tax-exclusion fraction.
+✗ Earnings divided by basis — Wrong components entirely; the exclusion ratio uses basis over total expected return.
+
+——————————
+[Q 5 / 7 · Indexed Annuities]
+Compared with an equity-indexed annuity (EIA), a registered index-linked annuity (RILA):
+A. Has a higher guaranteed minimum rate
+B. Cannot lose value
+C. Has no guaranteed minimum rate, so the investor can lose money
+D. Is not regulated by FINRA or the SEC
+Answer: C. Has no guaranteed minimum rate, so the investor can lose money
+Unlike an EIA (which has a guaranteed minimum rate and cannot lose value), a RILA has no guaranteed minimum rate; it uses a floor or buffer, so investors can lose money.
+[Why the others are wrong:]
+✗ Has a higher guaranteed minimum rate — A RILA has NO guaranteed minimum rate; the EIA is the one with a floor guarantee.
+✗ Cannot lose value — The EIA cannot lose value; a RILA can, via its buffer or floor structure.
+✗ Is not regulated by FINRA or the SEC — RILAs are registered securities subject to SEC/FINRA oversight.
+
+——————————
+[Q 6 / 7 · Annuity Riders]
+The most popular annuity living-benefit rider, selected by nearly 70% of buyers, is the:
+A. Guaranteed Minimum Income Benefit (GMIB)
+B. Guaranteed Minimum Accumulation Benefit (GMAB)
+C. Guaranteed Lifetime Withdrawal Benefit (GLWB)
+D. Guaranteed Minimum Withdrawal Benefit (GMWB)
+Answer: C. Guaranteed Lifetime Withdrawal Benefit (GLWB)
+The GLWB is the most popular rider, guaranteeing the right to withdraw a specified percentage each year for life.
+[Why the others are wrong:]
+✗ Guaranteed Minimum Income Benefit (GMIB) — GMIB requires annuitization to access; it is far less popular than the GLWB.
+✗ Guaranteed Minimum Accumulation Benefit (GMAB) — GMAB guarantees principal, not lifetime withdrawals, and is not the top seller.
+✗ Guaranteed Minimum Withdrawal Benefit (GMWB) — GMWB guarantees withdrawals only until principal is recovered, not for life like the GLWB.
+
+——————————
+[Q 7 / 7 · Annuity Tax]
+When a nonqualified deferred annuity is inherited, the gain in the contract is:
+A. Stepped up to fair market value at the owner's death
+B. Received income-tax-free by the beneficiary
+C. Taxed as ordinary income to the beneficiary (income in respect of a decedent)
+D. Taxed as long-term capital gain
+Answer: C. Taxed as ordinary income to the beneficiary (income in respect of a decedent)
+A non-annuitized annuity gets NO step-up in basis at death; the untaxed gain is income in respect of a decedent (IRD), taxed as ordinary income. A spouse may instead continue the contract; a non-spouse is generally subject to the 10-year rule.
+
+
+
+===== FP512 · M5 HEALTH, MEDICARE & MEDICAID =====
+
+[10 questions]
+
+——————————
+[Q 1 / 10 · COBRA]
+How long must continuation coverage be offered after a divorce makes a spouse lose group health coverage?
+A. 18 months
+B. 29 months
+C. 36 months
+D. 12 months
+Answer: C. 36 months
+Divorce or legal separation is a 36-month COBRA qualifying event. Termination is 18 months; Social Security disability is 29 months.
+[Why the others are wrong:]
+✗ 18 months — 18 months is the COBRA period for employment termination or hour reduction, not divorce.
+✗ 29 months — 29 months applies to the Social Security disability extension, not divorce.
+✗ 12 months — Not a COBRA period; divorce qualifies for 36 months.
+
+——————————
+[Q 2 / 10 · COBRA]
+Which event is NOT a COBRA qualifying event?
+A. Voluntary termination of employment
+B. Reduction to part-time status
+C. Termination for gross misconduct
+D. Divorce from the covered employee
+Answer: C. Termination for gross misconduct
+Termination for gross misconduct is not a qualifying event; neither the employee nor dependents are eligible for COBRA.
+[Why the others are wrong:]
+✗ Voluntary termination of employment — Voluntary termination (not for gross misconduct) is a qualifying event — 18 months.
+✗ Reduction to part-time status — A reduction in hours causing loss of coverage is a qualifying event.
+✗ Divorce from the covered employee — Divorce is a qualifying event giving the ex-spouse 36 months.
+
+——————————
+[Q 3 / 10 · ACA]
+Under the ACA, dependent children may remain on a parent's health plan until age:
+A. 18
+B. 21
+C. 26
+D. 30
+Answer: C. 26
+The ACA requires dependent coverage to age 26, regardless of the child's tax-dependency or marital status.
+[Why the others are wrong:]
+✗ 18 — Too low; the ACA extends coverage well beyond the age of majority.
+✗ 21 — That is a common trust/support age, not the ACA dependent-coverage age.
+✗ 30 — Exceeds the ACA limit; coverage ends at 26 regardless of marital or tax status.
+
+——————————
+[Q 4 / 10 · Health Plans]
+Which managed care plan requires a primary care physician gatekeeper and generally provides no out-of-network coverage except emergencies?
+A. PPO
+B. HMO
+C. Indemnity plan
+D. POS plan
+Answer: B. HMO
+An HMO uses a PCP gatekeeper and covers only in-network care (except emergencies), typically with copays and no deductibles. A PPO allows out-of-network use at a lower rate.
+[Why the others are wrong:]
+✗ PPO — A PPO needs no gatekeeper and covers out-of-network care at a reduced rate.
+✗ Indemnity plan — Indemnity (fee-for-service) plans have no network restrictions or gatekeeper at all.
+✗ POS plan — A POS uses a gatekeeper but DOES allow out-of-network care (at higher cost), unlike an HMO.
+
+——————————
+[Q 5 / 10 · Medicaid]
+The Medicaid lookback period for asset transfers is:
+A. 12 months
+B. 36 months
+C. 60 months
+D. No lookback applies
+Answer: C. 60 months
+Medicaid uses a 60-month (5-year) lookback. The ineligibility period equals the amount transferred divided by the monthly regional cost of nursing home care.
+[Why the others are wrong:]
+✗ 12 months — Too short; Medicaid reviews transfers over a 60-month window.
+✗ 36 months — 36 months was the old rule; the current lookback is 60 months.
+✗ No lookback applies — A lookback definitely applies — five years for uncompensated transfers.
+
+——————————
+[Q 6 / 10 · Medicare]
+Inpatient hospital and skilled nursing facility care are covered under which part of Medicare?
+A. Part A
+B. Part B
+C. Part C
+D. Part D
+Answer: A. Part A
+Part A covers inpatient hospital, skilled nursing facility, home health, and hospice. Part B covers physician/outpatient services; Part D covers prescription drugs.
+[Why the others are wrong:]
+✗ Part B — Part B covers physician and outpatient services, not inpatient hospital/SNF stays.
+✗ Part C — Part C (Medicare Advantage) bundles A and B through a private plan; it is not the base inpatient benefit.
+✗ Part D — Part D covers prescription drugs only.
+
+——————————
+[Q 7 / 10 · Medicare]
+The Medicare Initial Enrollment Period spans how many months around the 65th birthday?
+A. 3 months
+B. 6 months
+C. 7 months
+D. 8 months
+Answer: C. 7 months
+The Initial Enrollment Period is 7 months: the 3 months before the birth month, the birth month, and the 3 months after.
+[Why the others are wrong:]
+✗ 3 months — Only the months before the birth month; the full IEP is longer.
+✗ 6 months — Undercounts; the IEP is 7 months, not 6.
+✗ 8 months — 8 months is the Special Enrollment Period after losing employer coverage, not the IEP.
+
+——————————
+[Q 8 / 10 · Medicare]
+Under 2025 rules, Medicare Part A skilled nursing facility coverage pays in full for the first:
+A. 100 days
+B. 60 days
+C. 20 days
+D. 30 days
+Answer: C. 20 days
+After a qualifying 3-day hospital stay, Part A pays the first 20 days in full; days 21-100 carry daily coinsurance ($209.50 in 2025); after 100 days the patient pays all costs.
+[Why the others are wrong:]
+✗ 100 days — 100 days is the maximum SNF benefit span, but days 21-100 require coinsurance — not paid in full.
+✗ 60 days — 60 days is the full-coverage period for inpatient hospital, not SNF.
+✗ 30 days — Incorrect figure; SNF full coverage is the first 20 days.
+
+——————————
+[Q 9 / 10 · Medicare]
+How many standardized Medicare Supplement (Medigap) plans exist?
+A. 4
+B. 6
+C. 10
+D. 12
+Answer: C. 10
+There are 10 standardized Medigap plans (A-N). Plans F and G are the most popular; Plan F is limited to those eligible before 1/1/2020.
+[Why the others are wrong:]
+✗ 4 — Too few; there are 10 lettered plans (A-N).
+✗ 6 — Undercounts the standardized plan set of 10.
+✗ 12 — Overcounts; only 10 standardized Medigap plans exist.
+
+——————————
+[Q 10 / 10 · Medicare Part D]
+Starting in 2025, the Inflation Reduction Act caps annual out-of-pocket Medicare Part D drug costs at:
+A. $590
+B. $2,000
+C. $8,000
+D. No cap
+Answer: B. $2,000
+Beginning 2025, Part D out-of-pocket costs are capped at $2,000 (replacing the prior ~$8,000 limit) and the donut hole is eliminated.
+[Why the others are wrong:]
+✗ $590 — That is roughly the 2025 Part D deductible, not the out-of-pocket cap.
+✗ $8,000 — $8,000 was the prior (pre-2025) threshold; the new cap is $2,000.
+✗ No cap — The IRA specifically created a hard $2,000 annual cap.
+
+
+
+===== FP512 · M6 DISABILITY, LTC & VETERANS BENEFITS =====
+
+[8 questions]
+
+——————————
+[Q 1 / 8 · Disability Income]
+Which definition of disability is the broadest and carries the highest premium?
+A. Any occupation
+B. Own occupation
+C. Social Security definition
+D. Loss of income
+Answer: B. Own occupation
+Own-occupation is the broadest definition (disabled if unable to perform one's own occupation) and has the highest premium. Any-occupation is the narrowest private definition.
+[Why the others are wrong:]
+✗ Any occupation — Any-occ is the narrowest, cheapest definition — disabled only if unable to do any job.
+✗ Social Security definition — The SSDI definition is very strict (any substantial gainful activity), the opposite of broad.
+✗ Loss of income — An income-loss (loss-of-earnings) definition pays on income drop but is not the broadest own-occ standard.
+
+——————————
+[Q 2 / 8 · Disability Income]
+If an employer pays the full premium for a group disability policy, the benefits received are:
+A. Tax-free to the employee
+B. Fully taxable to the employee
+C. Taxed as capital gains
+D. Tax-free up to 60% of income
+Answer: B. Fully taxable to the employee
+Employer-paid (or employee pretax-paid) disability benefits are taxable. If the employee pays with after-tax dollars, benefits are tax-free.
+[Why the others are wrong:]
+✗ Tax-free to the employee — Benefits are tax-free only when the employee paid premiums with after-tax dollars.
+✗ Taxed as capital gains — Disability benefits are ordinary income when taxable, not capital gains.
+✗ Tax-free up to 60% of income — There is no 60%-of-income exclusion; employer-paid benefits are fully taxable.
+
+——————————
+[Q 3 / 8 · Disability Income]
+A disability policy that is renewable for the full term AND whose premium cannot be changed is:
+A. Guaranteed renewable
+B. Conditionally renewable
+C. Noncancelable
+D. Optionally renewable
+Answer: C. Noncancelable
+Noncancelable policies guarantee both renewal and a fixed premium (most expensive). Guaranteed renewable allows premium changes for an entire class.
+[Why the others are wrong:]
+✗ Guaranteed renewable — Guaranteed renewable locks renewal but the insurer CAN raise premiums for the whole class.
+✗ Conditionally renewable — Renewal depends on stated conditions and premiums can change — weaker than noncancelable.
+✗ Optionally renewable — The insurer chooses whether to renew, so neither renewal nor premium is guaranteed.
+
+——————————
+[Q 4 / 8 · Disability Income]
+A residual disability benefit pays:
+A. 50% of the benefit regardless of income loss
+B. In proportion to the actual percentage of income lost
+C. Only a lump sum at recovery
+D. Nothing unless totally disabled
+Answer: B. In proportion to the actual percentage of income lost
+Residual benefits pay in proportion to actual income loss (40% income loss = 40% of benefit). A partial disability benefit instead pays a fixed portion regardless of income loss.
+[Why the others are wrong:]
+✗ 50% of the benefit regardless of income loss — Residual pays proportionally to income lost, not a fixed 50%.
+✗ Only a lump sum at recovery — Residual pays ongoing monthly benefits during partial disability, not a recovery lump sum.
+✗ Nothing unless totally disabled — Residual specifically covers partial disability with actual income loss, not just total disability.
+
+——————————
+[Q 5 / 8 · Long-Term Care]
+Under HIPAA, a tax-qualified LTC policy may pay benefits when the insured cannot perform at least how many ADLs?
+A. 1 of 6
+B. 2 of 6
+C. 3 of 6
+D. 4 of 6
+Answer: B. 2 of 6
+The HIPAA trigger is the inability to perform 2 or more of the 6 ADLs (for at least 90 days) OR cognitive impairment.
+[Why the others are wrong:]
+✗ 1 of 6 — Too few; the trigger requires an inability to perform at least 2 of the 6 ADLs.
+✗ 3 of 6 — Overstates the trigger — 2 ADLs, not 3, meets the HIPAA standard.
+✗ 4 of 6 — Far above the standard; 2 ADLs (or cognitive impairment) is the trigger.
+
+——————————
+[Q 6 / 8 · Long-Term Care]
+Which level of care does Medicare NOT cover?
+A. Skilled nursing care
+B. Intermediate care
+C. Custodial care
+D. Post-hospital home health
+Answer: C. Custodial care
+Medicare does not cover custodial (nonmedical, ADL-assistance) care, which is the most common type of LTC.
+[Why the others are wrong:]
+✗ Skilled nursing care — Medicare does cover skilled nursing (post-hospital, limited days).
+✗ Intermediate care — Intermediate skilled care can qualify; custodial care is the excluded type.
+✗ Post-hospital home health — Medicare covers medically necessary post-hospital home health care.
+
+——————————
+[Q 7 / 8 · Long-Term Care]
+The single most important LTC insurance rider is generally considered to be:
+A. Return of premium
+B. Inflation protection
+C. Nonforfeiture
+D. Restoration of benefits
+Answer: B. Inflation protection
+Inflation protection is the most important LTC rider and is required to be offered in many states; it may be compounding or simple.
+[Why the others are wrong:]
+✗ Return of premium — ROP refunds premiums to a beneficiary but does nothing to protect benefit purchasing power.
+✗ Nonforfeiture — Nonforfeiture preserves some value after lapse but is secondary to inflation protection.
+✗ Restoration of benefits — Restoration restores used benefits after recovery — useful but not the top-ranked rider.
+
+——————————
+[Q 8 / 8 · Long-Term Care]
+How are benefits from a tax-qualified LTC policy generally treated for income tax?
+A. Fully taxable as ordinary income
+B. Not taxable for qualified expenses, subject to a per diem limit
+C. Taxed as capital gains
+D. Taxed only above 7.5% of AGI
+Answer: B. Not taxable for qualified expenses, subject to a per diem limit
+Benefits for qualified expenses are not taxable, subject to a per diem limitation ($420 in 2025).
+[Why the others are wrong:]
+✗ Fully taxable as ordinary income — Qualified LTC benefits are generally tax-free, not fully taxable.
+✗ Taxed as capital gains — LTC benefits are not investment gains; qualified benefits are simply excluded.
+✗ Taxed only above 7.5% of AGI — The 7.5% AGI floor applies to the medical-expense deduction, not to LTC benefit taxation.
+
+
+
+===== FP512 · M7 EMPLOYEE GROUP BENEFITS =====
+
+[9 questions]
+
+——————————
+[Q 1 / 9 · Group Term Life]
+Under Section 79, employer-provided group term life is tax-free to the employee up to what amount of coverage?
+A. $25,000
+B. $50,000
+C. $100,000
+D. $2,000
+Answer: B. $50,000
+The first $50,000 of employer-provided group term life is tax-free. Coverage above $50,000 is taxed using the Table I uniform-premium cost.
+[Why the others are wrong:]
+✗ $25,000 — Understates the threshold; the tax-free amount is $50,000 of coverage.
+✗ $100,000 — Overstates it — coverage above $50,000 is taxed via Table I.
+✗ $2,000 — That is a de minimis figure (e.g., dependent group life), not the $50,000 employee exclusion.
+
+——————————
+[Q 2 / 9 · Group Term Life]
+A 52-year-old has $250,000 of employer-paid group term life. With a Table I rate of $0.23 per $1,000 per month, the annual imputed income is:
+A. $276
+B. $552
+C. $690
+D. $1,104
+Answer: B. $552
+[($250,000 - $50,000)/$1,000] × $0.23 × 12 = 200 × $0.23 × 12 = $552.
+
+——————————
+[Q 3 / 9 · Group Health]
+Employer-paid group health insurance premiums are:
+A. Taxable income to the employee and deductible to the employer
+B. Deductible to the employer and not taxable to the employee
+C. Nondeductible to the employer
+D. Taxable to both parties
+Answer: B. Deductible to the employer and not taxable to the employee
+Employer-paid health premiums are a deductible business expense and are not taxable income to the employee.
+[Why the others are wrong:]
+✗ Taxable income to the employee and deductible to the employer — Deductible to the employer is correct, but the premiums are NOT taxable to the employee.
+✗ Nondeductible to the employer — Employer health premiums are an ordinary, deductible business expense.
+✗ Taxable to both parties — Neither party is taxed — deductible to the employer, excluded for the employee.
+
+——————————
+[Q 4 / 9 · Self-Funded Plans]
+A major advantage of a self-funded (ERISA) health plan is:
+A. Guaranteed lower claims
+B. Exemption from state benefit mandates and the state premium tax
+C. No need for stop-loss insurance
+D. State guaranty fund protection
+Answer: B. Exemption from state benefit mandates and the state premium tax
+ERISA exempts self-funded plans from state regulation, avoiding state-mandated benefits and the ~2% state premium tax. Stop-loss insurance is still typically purchased.
+[Why the others are wrong:]
+✗ Guaranteed lower claims — Self-funding does not guarantee lower claims; the employer bears actual claim risk.
+✗ No need for stop-loss insurance — Self-funded plans typically still buy stop-loss to cap catastrophic claims.
+✗ State guaranty fund protection — ERISA plans are exempt from state regulation, so state guaranty funds do not protect them.
+
+——————————
+[Q 5 / 9 · HSA]
+What is the 2025 maximum HSA contribution for family coverage (before catch-up)?
+A. $4,300
+B. $6,350
+C. $8,300
+D. $8,550
+Answer: D. $8,550
+The 2025 family HSA limit is $8,550 ($4,300 single); those 55+ may add a $1,000 catch-up.
+[Why the others are wrong:]
+✗ $4,300 — That is the 2025 single (self-only) HSA limit, not family.
+✗ $6,350 — Not a current HSA figure; the 2025 family limit is $8,550.
+✗ $8,300 — That was the 2024 family limit; 2025 rose to $8,550.
+
+——————————
+[Q 6 / 9 · Cafeteria Plans]
+A Section 125 cafeteria plan must offer:
+A. Only nontaxable benefits
+B. A taxable cash option plus one or more qualified nontaxable benefits
+C. Long-term care insurance
+D. Educational assistance
+Answer: B. A taxable cash option plus one or more qualified nontaxable benefits
+A cafeteria plan must offer a taxable cash benefit plus at least one qualified nontaxable benefit. LTC insurance and educational assistance cannot be offered in it.
+[Why the others are wrong:]
+✗ Only nontaxable benefits — A cafeteria plan must include a taxable cash choice, not solely nontaxable benefits.
+✗ Long-term care insurance — LTC insurance is expressly prohibited inside a cafeteria plan.
+✗ Educational assistance — Educational assistance cannot be offered through a Section 125 plan.
+
+——————————
+[Q 7 / 9 · FSA]
+Regarding unused FSA balances, a plan may offer:
+A. Both a grace period and a carryover
+B. Either a grace period of up to 2½ months OR a carryover of up to $660 (2025), but not both
+C. An unlimited rollover
+D. A cash refund
+Answer: B. Either a grace period of up to 2½ months OR a carryover of up to $660 (2025), but not both
+A health FSA may offer either a grace period of up to 2½ months OR a carryover of up to $660 (2025) of unused funds, but not both.
+[Why the others are wrong:]
+✗ Both a grace period and a carryover — A plan may offer one or the other, never both simultaneously.
+✗ An unlimited rollover — Carryover is capped ($660 in 2025), not unlimited.
+✗ A cash refund — Unused FSA funds are forfeited (use-it-or-lose-it), not refunded in cash.
+
+——————————
+[Q 8 / 9 · Workers' Compensation]
+Workers' compensation insurance is funded by:
+A. The employee through payroll deduction
+B. The employer alone
+C. Equally split between employer and employee
+D. The state general fund
+Answer: B. The employer alone
+Workers' compensation is funded solely by the employer. Benefits for injury/sickness are excluded from the employee's income; it is a form of absolute liability.
+[Why the others are wrong:]
+✗ The employee through payroll deduction — Employees do not pay for workers' comp; the employer funds it entirely.
+✗ Equally split between employer and employee — It is not shared — the employer bears the full cost.
+✗ The state general fund — Employers (or their insurers/self-funding) pay, not the state general fund.
+
+——————————
+[Q 9 / 9 · Group Term Life]
+A group term life carve-out plan typically removes which employees from the group plan into individual coverage?
+A. Younger, lower-paid staff
+B. Older, higher-paid executives
+C. Part-time employees
+D. New hires in their first year
+Answer: B. Older, higher-paid executives
+A carve-out moves older, higher-paid executives out of the group term plan into individual coverage. Nondiscrimination rules don't apply to the carve-out, which can bring the base plan into compliance; the coverage is taxable to the employee.
+
+
+
+===== FP512 · M8 BUSINESS RISK SOLUTIONS =====
+
+[6 questions]
+
+——————————
+[Q 1 / 6 · Key Person Insurance]
+With key person life insurance, premiums and the death benefit are treated how?
+A. Premiums deductible; death benefit taxable
+B. Premiums not deductible; death benefit tax-free
+C. Both deductible and taxable
+D. Premiums deductible; death benefit tax-free
+Answer: B. Premiums not deductible; death benefit tax-free
+Premiums for key person insurance are not deductible, and the death benefit (received by the business) is income-tax free.
+[Why the others are wrong:]
+✗ Premiums deductible; death benefit taxable — Neither part is right — premiums are nondeductible and the benefit is tax-free.
+✗ Both deductible and taxable — Premiums are not deductible, and the death benefit is not taxable.
+✗ Premiums deductible; death benefit tax-free — The death benefit is tax-free, but the premiums are NOT deductible.
+
+——————————
+[Q 2 / 6 · Buy-Sell Agreements]
+A cross-purchase buy-sell agreement becomes inefficient primarily when:
+A. There is only one owner
+B. There are more than two owners
+C. The business is a corporation
+D. The owners are related
+Answer: B. There are more than two owners
+In a cross-purchase, each owner buys a policy on each other owner, which becomes inefficient with more than two owners. An entity-purchase agreement is easier to administer.
+[Why the others are wrong:]
+✗ There is only one owner — A single owner has no co-owner to buy from; cross-purchase presumes multiple owners.
+✗ The business is a corporation — Entity type does not drive cross-purchase inefficiency; the number of owners does.
+✗ The owners are related — Family relationship does not create the policy-count problem; having many owners does.
+
+——————————
+[Q 3 / 6 · Professional Liability]
+Errors and omissions (E&O) insurance is most appropriate for which professionals?
+A. Surgeons and dentists
+B. Accountants, lawyers, and financial planners
+C. Manufacturers
+D. Truck drivers
+Answer: B. Accountants, lawyers, and financial planners
+E&O insurance covers financial harm (accountants, lawyers, insurance agents, financial planners). Malpractice insurance covers physical harm (physicians, surgeons, dentists).
+[Why the others are wrong:]
+✗ Surgeons and dentists — Physicians and dentists need malpractice (physical-harm) coverage, not E&O.
+✗ Manufacturers — Manufacturers need product-liability coverage, not professional E&O.
+✗ Truck drivers — Truckers need commercial auto/liability coverage, not professional E&O.
+
+——————————
+[Q 4 / 6 · Commercial Insurance]
+The businessowners policy (BOP) is designed primarily for:
+A. Large corporations
+B. Smaller businesses
+C. Government entities
+D. Sole employees only
+Answer: B. Smaller businesses
+The BOP combines property and liability coverages for smaller businesses; the commercial package policy (CPP) serves larger companies.
+[Why the others are wrong:]
+✗ Large corporations — Large firms use the commercial package policy (CPP), not the BOP.
+✗ Government entities — The BOP targets small commercial businesses, not government bodies.
+✗ Sole employees only — The BOP is defined by business size, not headcount of one; it serves small businesses generally.
+
+——————————
+[Q 5 / 6 · LIRP]
+A Life Insurance Retirement Plan (LIRP) can be funded with all of the following EXCEPT:
+A. Whole life insurance
+B. Universal life insurance
+C. Term life insurance
+D. A cash value policy
+Answer: C. Term life insurance
+A LIRP requires a permanent (cash value) policy such as whole or universal life and cannot be funded with term life, which has no cash value.
+[Why the others are wrong:]
+✗ Whole life insurance — Whole life builds cash value and is a valid LIRP funding vehicle.
+✗ Universal life insurance — UL is permanent cash-value coverage, suitable for a LIRP.
+✗ A cash value policy — Any permanent cash-value policy works for a LIRP; that is exactly what is required.
+
+——————————
+[Q 6 / 6 · Business Risk]
+Employee embezzlement and forgery are covered by which type of commercial policy?
+A. Cyber liability insurance
+B. Fraud/crime (fidelity) insurance
+C. Commercial general liability
+D. Business interruption insurance
+Answer: B. Fraud/crime (fidelity) insurance
+Fraud/crime (fidelity) insurance covers employee or third-party dishonesty, embezzlement, and forgery. Cyber insurance is a distinct policy covering data breach, ransomware, and related business interruption.

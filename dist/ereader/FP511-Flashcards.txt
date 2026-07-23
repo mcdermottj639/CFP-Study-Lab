@@ -1,0 +1,1447 @@
+FP511 Flashcards — CFP Study Lab
+================================
+FP511 — General Financial Planning, Conduct & Psychology
+===== FP511 FLASHCARDS =====
+
+Self-quiz deck for e-ink page-turn. Read the question, predict the answer, then turn the page to check. One card per screen.
+233 cards · 7 sections. Grouped by module to match the app.
+
+
+
+===== FP511 · M1 PERSONAL FINANCIAL PLANNING =====
+
+[25 cards]
+
+——————————
+[Card 1 / 25]
+Q. List the seven steps of the Financial Planning Process in order.
+[Answer]
+1. Understanding the client's circumstances → 2. Identifying & selecting goals → 3. Analyzing current & alternative courses of action → 4. Developing recommendation(s) → 5. Presenting recommendation(s) → 6. Implementing → 7. Monitoring progress & updating.
+
+——————————
+[Card 2 / 25]
+Q. What does the planner do in Step 1 (Understanding the Client's Personal & Financial Circumstances)?
+[Answer]
+Gather quantitative & qualitative data to form a basis for recommendations.
+
+——————————
+[Card 3 / 25]
+Q. In Step 1, if a planner cannot obtain sufficient/relevant information to form a basis for recommendations, what two options exist?
+[Answer]
+Either (1) restrict (limit) the scope of the engagement to matters for which sufficient information is available, or (2) terminate the engagement. The planner must also communicate any scope limitations to the client.
+
+——————————
+[Card 4 / 25]
+Q. What does the planner do in Step 2 (Identifying and Selecting Goals)?
+[Answer]
+Help the client identify, prioritize, and select goals; discuss unrealistic goals; establish personal & economic assumptions.
+
+——————————
+[Card 5 / 25]
+Q. What does the planner do in Step 3 (Analyzing Current Course of Action & Alternatives)?
+[Answer]
+Analyze strengths and weaknesses; consider the advantages & disadvantages of the current course and of alternatives.
+
+——————————
+[Card 6 / 25]
+Q. In Step 4 (Developing the Recommendations), what must a CFP® professional consider for each recommendation?
+[Answer]
+(a) the assumptions/estimates used; (b) the basis (how it maximizes goal potential, its material effects, how it integrates relevant elements); (c) the timing and priority; (d) whether it is independent or must be implemented with another recommendation.
+
+——————————
+[Card 7 / 25]
+Q. What does the planner do in Step 5 (Presenting the Recommendations)?
+[Answer]
+Present clearly, including assumptions, risks, pros/cons, alternatives, and time sensitivity.
+
+——————————
+[Card 8 / 25]
+Q. Per Code & Standards A.10.b.ii, who is responsible for implementing financial planning recommendations?
+[Answer]
+The financial planner is responsible for implementing the recommendations unless specifically excluded from the Scope of Engagement. The client is responsible for accepting or rejecting recommendations.
+
+——————————
+[Card 9 / 25]
+Q. In Step 6, what else must the planner do when implementing recommendations?
+[Answer]
+Identify the products/services to implement recommendations and disclose conflicts of interest.
+
+——————————
+[Card 10 / 25]
+Q. What does the planner do in Step 7 (Monitoring Progress & Updating)?
+[Answer]
+Establish monitoring responsibilities; communicate what is monitored, how often, and the client's duty to inform the planner of changes.
+
+——————————
+[Card 11 / 25]
+Q. Are a client's financial goals, risk tolerance, and health status considered qualitative or quantitative data?
+[Answer]
+Qualitative (subjective) data. (A common exam trap places goals/risk tolerance in the quantitative column.)
+
+——————————
+[Card 12 / 25]
+Q. Give examples of quantitative (objective) client data.
+[Answer]
+Assets, liabilities, income, expenses, age, tax returns, insurance policies, investment statements, and wills — measurable items.
+
+——————————
+[Card 13 / 25]
+Q. Give examples of qualitative (subjective) client data.
+[Answer]
+Goals, health, risk tolerance, values, attitudes, and family circumstances.
+
+——————————
+[Card 14 / 25]
+Q. What documentation methods does the Code approve for the planning process?
+[Answer]
+CRM software, handwritten notes, and emails. NOT voice memos.
+
+——————————
+[Card 15 / 25]
+Q. When and how may required client disclosures be delivered to begin services?
+[Answer]
+Disclosures may be delivered verbally or in writing (depending on the item) and prior to or at the time of the engagement.
+
+——————————
+[Card 16 / 25]
+Q. Which disclosures must be provided in writing in both Financial Advice and Financial Planning engagements?
+[Answer]
+Privacy policy; how you, your firm, and related parties are compensated; and public discipline and bankruptcy.
+
+——————————
+[Card 17 / 25]
+Q. Name disclosures that may be delivered verbally OR in writing in both engagement types.
+[Answer]
+Material conflicts of interest; services and products; how the client pays; referral compensation arrangements; and other material information.
+
+——————————
+[Card 18 / 25]
+Q. What additional disclosure is required for Financial Planning engagements only?
+[Answer]
+Terms of engagement — implementing, monitoring, and updating are required unless excluded from scope.
+
+——————————
+[Card 19 / 25]
+Q. What are the three phases of the financial life cycle and their approximate ages?
+[Answer]
+(1) Asset Accumulation (until ~age 45); (2) Conservation/Protection (~45–60); (3) Distribution/Gifting (~60/retirement to death). A person can be in all three phases simultaneously.
+
+——————————
+[Card 20 / 25]
+Q. Describe the Asset Accumulation phase of the financial life cycle.
+[Answer]
+Approx. under age 45. Limited excess funds; high debt-to-net-worth; low net worth; less risk-aware.
+
+——————————
+[Card 21 / 25]
+Q. Describe the Conservation / Protection phase of the financial life cycle.
+[Answer]
+Approx. ages 45–60. Increased cash flow, assets, and net worth; more risk averse; aware of death/disability/unemployment risks.
+
+——————————
+[Card 22 / 25]
+Q. Describe the Distribution / Gifting phase of the financial life cycle.
+[Answer]
+Approx. age 60+. Estate planning; lifetime gifts; high net worth; low debt; distribution strategies.
+
+——————————
+[Card 23 / 25]
+Q. How must the CFP® mark be displayed?
+[Answer]
+Always capital letters, never with periods (not "C.F.P."), always with the ® symbol, and always paired with an approved noun unless directly following the certified individual's name (e.g., "John Doe, CFP®").
+
+——————————
+[Card 24 / 25]
+Q. Which approved nouns may follow the CFP® marks?
+[Answer]
+Certificant, professional, practitioner, certification, mark, exam. (The marks must be used as adjectives, not standalone nouns.)
+
+——————————
+[Card 25 / 25]
+Q. What are a planner's responsibilities when referring a client to another professional?
+[Answer]
+Have a reasonable basis for the referral; disclose any compensation arrangement; and communicate roles.
+
+
+
+===== FP511 · M2 PSYCHOLOGY OF FINANCIAL PLANNING =====
+
+[54 cards]
+
+——————————
+[Card 1 / 54]
+Q. How does the text define behavioral finance?
+[Answer]
+A field that relates behavioral and cognitive psychology to financial planning/economics to understand why people act irrationally during financial decision-making.
+
+——————————
+[Card 2 / 54]
+Q. Distinguish risk tolerance from risk capacity.
+[Answer]
+Risk tolerance = the tradeoff a client is willing to accept between risk and reward. Risk capacity = the degree to which a client’s financial resources can absorb/mitigate risk.
+
+——————————
+[Card 3 / 54]
+Q. Distinguish risk perception from risk preference.
+[Answer]
+Risk perception = a client’s subjective judgment when evaluating the risk of a decision. Risk preference = a client’s general attitude toward financial risk (a more constant personal trait).
+
+——————————
+[Card 4 / 54]
+Q. What is risk literacy?
+[Answer]
+The ability to comprehend and act on financial risk information.
+
+——————————
+[Card 5 / 54]
+Q. Describe the visual, auditory, and kinesthetic learning styles.
+[Answer]
+Visual: graphs, charts, pictures. Auditory: hearing/speaking, discuss before writing. Kinesthetic: hands-on, write goals as they are formulated.
+
+——————————
+[Card 6 / 54]
+Q. How do cognitive and emotional biases differ in how a planner addresses them?
+[Answer]
+Cognitive biases stem from faulty reasoning and can often be corrected with information/coaching. Emotional biases stem from feelings/impulses and are harder to overcome — the planner may need to accommodate them. For biases that are both, focus on the cognitive aspect.
+
+——————————
+[Card 7 / 54]
+Q. What is the illusion of control bias and its typical consequence?
+[Answer]
+Believing you can control uncontrollable outcomes → consequence: over-trading; failure to diversify. A cognitive bias.
+
+——————————
+[Card 8 / 54]
+Q. What is the money illusion bias?
+[Answer]
+Thinking $1 has the same value regardless of inflation → poor decisions; ignoring real returns. A cognitive bias.
+
+——————————
+[Card 9 / 54]
+Q. What is conservatism bias?
+[Answer]
+Forming a rational view but failing to update it as new information arrives → hold investments too long. A cognitive bias.
+
+——————————
+[Card 10 / 54]
+Q. What is hindsight bias?
+[Answer]
+Selectively remembering correct views and forgetting errors → overestimate prediction ability. A cognitive bias.
+
+——————————
+[Card 11 / 54]
+Q. What is confirmation bias and a common consequence?
+[Answer]
+Seeking or distorting information to support an existing view and ignoring contrary info. A common consequence is under-diversification, especially overweighting employer stock (also holding investments too long). A cognitive bias.
+
+——————————
+[Card 12 / 54]
+Q. What is representativeness bias?
+[Answer]
+Using past experience to categorize new decisions → base-rate neglect; sample-size neglect. A cognitive bias.
+
+——————————
+[Card 13 / 54]
+Q. What is mental accounting (money jar mentality)?
+[Answer]
+Mentally separating money into “jars”/accounts by purpose — e.g., refusing to use “vacation” money to fix the roof and paying penalties instead, or carrying high-interest debt while holding earmarked savings. A cognitive bias.
+
+——————————
+[Card 14 / 54]
+Q. What is cognitive dissonance?
+[Answer]
+Discomfort when new information conflicts with existing beliefs → rationalize bad decisions; selective perception. A cognitive bias.
+
+——————————
+[Card 15 / 54]
+Q. What is self-attribution bias?
+[Answer]
+Crediting successes to oneself and blaming failures on others → self- enhancing (credit) and self- protecting (blame). A cognitive bias.
+
+——————————
+[Card 16 / 54]
+Q. What is anchoring (and adjustment)?
+[Answer]
+Basing decisions on an irrelevant reference point (anchor), then adjusting improperly from that faulty starting point. A cognitive bias.
+
+——————————
+[Card 17 / 54]
+Q. What is outcome bias?
+[Answer]
+Taking action based on prior outcomes while ignoring current conditions → chase past winners. A cognitive bias.
+
+——————————
+[Card 18 / 54]
+Q. What is framing bias?
+[Answer]
+Processing information based on how it is presented rather than its substance — e.g., choosing guaranteed gains but gambling to avoid losses, or choosing differently for identical choices based on wording. A cognitive bias.
+
+——————————
+[Card 19 / 54]
+Q. What is recency bias?
+[Answer]
+Giving more weight to recent information than older information — e.g., fear after a crash while ignoring long-term history. Related to availability bias and herding. A cognitive bias.
+
+——————————
+[Card 20 / 54]
+Q. What is herding bias?
+[Answer]
+Trading in the same direction as the consensus → go with the crowd; blame the group, not self. A cognitive bias.
+
+——————————
+[Card 21 / 54]
+Q. What is loss aversion?
+[Answer]
+Fearing losses more than valuing equivalent gains, so investors refuse to sell at a loss (“get-even-itis”). An emotional bias related to fear of regret.
+
+——————————
+[Card 22 / 54]
+Q. What is overconfidence bias?
+[Answer]
+Overestimating one’s own abilities — e.g., thinking you can control random events by acquiring knowledge — leading to excessive trading; undue risk. An emotional bias and one of the most common planner biases.
+
+——————————
+[Card 23 / 54]
+Q. What is self-control bias?
+[Answer]
+Favoring immediate gratification over long-term goals → insufficient retirement savings. An emotional bias.
+
+——————————
+[Card 24 / 54]
+Q. What is status quo bias, and how can planners leverage it?
+[Answer]
+Comfort with the existing situation creates unwillingness to change even when beneficial (e.g., holding an inappropriate portfolio risk level). Planners can leverage it via defaults/automatic enrollment. An emotional bias.
+
+——————————
+[Card 25 / 54]
+Q. What is endowment bias?
+[Answer]
+Overvaluing an asset simply because you own it — the price you’d sell for exceeds the price you’d pay to buy it. An emotional bias.
+
+——————————
+[Card 26 / 54]
+Q. What is regret aversion bias?
+[Answer]
+Inaction from fear of being wrong → paralysis; herding behavior. An emotional bias.
+
+——————————
+[Card 27 / 54]
+Q. What is affinity bias?
+[Answer]
+Making decisions based on personal connection/identity → invest in a company for emotional reasons. An emotional bias.
+
+——————————
+[Card 28 / 54]
+Q. What are money scripts?
+[Answer]
+Unconscious attitudes/beliefs about money, often formed in childhood, that are resistant to change and drive financial behavior.
+
+——————————
+[Card 29 / 54]
+Q. What is a financial comfort zone?
+[Answer]
+The financial range in which a client feels content.
+
+——————————
+[Card 30 / 54]
+Q. As a money disorder, what is financial dependence?
+[Answer]
+Reliance on others for financial support rather than self-sufficiency. The dependent person often fears that the supply of money will stop and may lose financial autonomy.
+
+——————————
+[Card 31 / 54]
+Q. What is affluenza?
+[Answer]
+The negative psychological effects of affluence/wealth — e.g., guilt, lack of motivation, isolation, entitlement, or overspending that can stem from having (or expecting) abundant money.
+
+——————————
+[Card 32 / 54]
+Q. What is financial enabling as a pathological behavior?
+[Answer]
+Supporting others at one’s own financial risk.
+
+——————————
+[Card 33 / 54]
+Q. What is hoarding disorder?
+[Answer]
+Retaining goods beyond their useful life.
+
+——————————
+[Card 34 / 54]
+Q. What are the three steps for handling goal incongruence in couples?
+[Answer]
+(1) Normalize it, (2) find common ground, (3) encourage sharing.
+
+——————————
+[Card 35 / 54]
+Q. What is financial control as a manipulation type?
+[Answer]
+Inequality in goal-setting / decision-making between partners.
+
+——————————
+[Card 36 / 54]
+Q. Distinguish financial enmeshment from financial enabling.
+[Answer]
+Enmeshment = crossing the adult–child boundary by involving children inappropriately in financial decisions / oversharing financial information or burdens with them. Enabling = providing financial assistance that risks one’s own wellbeing or keeps an adult who should be independent improperly dependent (usually parent–child).
+
+——————————
+[Card 37 / 54]
+Q. What is financial abuse as a manipulation type?
+[Answer]
+Controlling another person’s ability to access or possess financial resources.
+
+——————————
+[Card 38 / 54]
+Q. What is the economic/resource counseling approach?
+[Answer]
+Planner = agent of change; focus on quantitative data.
+
+——————————
+[Card 39 / 54]
+Q. What is the classical economics counseling approach?
+[Answer]
+Focuses on cost-benefit and risk-return tradeoffs.
+
+——————————
+[Card 40 / 54]
+Q. What is the strategic management counseling approach?
+[Answer]
+Client goals drive the relationship; uses SWOT analysis.
+
+——————————
+[Card 41 / 54]
+Q. What is the cognitive-behavioral counseling approach?
+[Answer]
+Substitute negative beliefs with positive attitudes.
+
+——————————
+[Card 42 / 54]
+Q. What is the psychoanalytic counseling approach?
+[Answer]
+Freudian / Gestalt theory; NOT widely used by planners.
+
+——————————
+[Card 43 / 54]
+Q. What is financial therapy and to whom should serious cases be referred?
+[Answer]
+“A process informed by both therapeutic and financial expertise that helps clients think, feel and behave differently with money to improve overall wellbeing.” Refer serious cases to a financial therapist / licensed mental health professional.
+
+——————————
+[Card 44 / 54]
+Q. Which communication channel most strongly affects how a message is received?
+[Answer]
+Non-verbal communication / body language (facial expressions, eye contact, gestures, posture) impacts message reception more than any other type.
+
+——————————
+[Card 45 / 54]
+Q. What do lower and higher vocal pitch signal in communication?
+[Answer]
+Lower pitch = confidence; higher pitch = uncertainty.
+
+——————————
+[Card 46 / 54]
+Q. Distinguish physical mirroring from verbal mirroring.
+[Answer]
+Physical mirroring = copying body language; verbal mirroring = imitating word use/tone.
+
+——————————
+[Card 47 / 54]
+Q. What does active listening involve?
+[Answer]
+Giving full attention, paraphrasing, and using leading responses to reach a “meeting of the minds.” Mirroring (physical and verbal) and emotional intelligence support it.
+
+——————————
+[Card 48 / 54]
+Q. What type of questions should a planner use for psychological profiling and goal discovery?
+[Answer]
+Open-ended questions, which prompt clients to answer in their own words (closed-ended questions are the common trap).
+
+——————————
+[Card 49 / 54]
+Q. Distinguish cultural competency from cultural humility.
+[Answer]
+Cultural competency = learnable knowledge about other cultures (alone it can lead to cultural bias). Cultural humility = lifelong self-evaluation of one’s own beliefs and assumptions.
+
+——————————
+[Card 50 / 54]
+Q. Name, in order, the four stages of Social Penetration Theory (Altman & Taylor).
+[Answer]
+(1) Orientation, (2) Exploration, (3) Affective Exchange, (4) Stable Exchange. Not all relationships reach all four stages.
+
+——————————
+[Card 51 / 54]
+Q. In Social Penetration Theory, what happens in the Orientation stage?
+[Answer]
+The first meeting — general likeability and assessing the value of the relationship.
+
+——————————
+[Card 52 / 54]
+Q. In Social Penetration Theory, what happens in the Exploration stage?
+[Answer]
+Sharing more detail — learning the client’s beliefs and attitudes.
+
+——————————
+[Card 53 / 54]
+Q. In Social Penetration Theory, what happens in the Affective Exchange stage?
+[Answer]
+Significant trust with open disclosure; the relationship may become a friendship.
+
+——————————
+[Card 54 / 54]
+Q. In Social Penetration Theory, what happens in the Stable Exchange stage?
+[Answer]
+Deep empathy and an established long-term pattern in the relationship.
+
+
+
+===== FP511 · M3 FINANCIAL STATEMENTS & CASH FLOW =====
+
+[38 cards]
+
+——————————
+[Card 1 / 38]
+Q. What does the statement of financial position (personal balance sheet) show, and what is its equation?
+[Answer]
+A snapshot of assets, liabilities, and net worth at a point in time. Assets = Liabilities + Net Worth; therefore Net Worth = Assets − Liabilities.
+
+——————————
+[Card 2 / 38]
+Q. What are the three asset categories on a statement of financial position?
+[Answer]
+(1) Cash & cash equivalents (checking, savings, money market, CDs ≤90 days); (2) Invested assets (stocks, bonds, funds, IRAs, 401(k)s, business interests, investment real estate); (3) Personal-use assets (residence, autos, boats, personal effects).
+
+——————————
+[Card 3 / 38]
+Q. At what value are assets reported on the statement of financial position?
+[Answer]
+At fair market value (FMV) — the price a willing, knowledgeable buyer pays a willing, knowledgeable seller. FMV is used even for assets subject to early-withdrawal penalties (penalties are ignored).
+
+——————————
+[Card 4 / 38]
+Q. How are liabilities measured on the statement of financial position?
+[Answer]
+At the outstanding principal balance — not the original loan amount and not the payment amount. Current liabilities are due within one year; long-term are due in more than one year.
+
+——————————
+[Card 5 / 38]
+Q. What do the titling abbreviations S1, S2, JT, and CP mean on a statement of financial position?
+[Answer]
+S1 = Spouse 1; S2 = Spouse 2; JT = Joint tenancy; CP = Community property.
+
+——————————
+[Card 6 / 38]
+Q. What does the cash flow statement show, and in what order are outflows listed?
+[Answer]
+Cash inflows and outflows over a period. Outflows are listed: 1) Savings & investments (FIRST — "pay yourself first"), 2) Fixed outflows, 3) Variable outflows, 4) Taxes (income + FICA). Net cash flow = inflows − outflows (surplus or deficit).
+
+——————————
+[Card 7 / 38]
+Q. How is a credit-card purchase treated on the financial statements?
+[Answer]
+It is a liability on the balance sheet — not a cash outflow until it is actually paid.
+
+——————————
+[Card 8 / 38]
+Q. What is the consumer (non-mortgage) debt ratio, its benchmark, and why is net income used?
+[Answer]
+Monthly consumer debt payments ÷ monthly net (after-tax) income; benchmark ≤ 20%. Net income is used because consumer debt interest is not tax-favored.
+
+——————————
+[Card 9 / 38]
+Q. What is the housing cost (front-end) ratio and its benchmark?
+[Answer]
+Monthly housing costs ( PITI + association fees) ÷ monthly gross income; benchmark ≤ 28%.
+
+——————————
+[Card 10 / 38]
+Q. What is the total debt (back-end) ratio and its benchmark?
+[Answer]
+Total monthly debt payments ÷ monthly gross income; benchmark ≤ 36%. Includes housing + consumer debt + alimony/child support, using the minimum required payment.
+
+——————————
+[Card 11 / 38]
+Q. Which payment amount is used in the total debt ratio?
+[Answer]
+The minimum required payment, not the actual payment made.
+
+——————————
+[Card 12 / 38]
+Q. Which debt ratios use NET income vs. GROSS income?
+[Answer]
+Consumer debt uses net (after-tax) income; both the housing (front-end) and total debt (back-end) ratios use gross income.
+
+——————————
+[Card 13 / 38]
+Q. What does PITI stand for?
+[Answer]
+P rincipal + I nterest + T axes + I nsurance.
+
+——————————
+[Card 14 / 38]
+Q. What is the current ratio and what level is preferred?
+[Answer]
+Current assets ÷ current (short-term) liabilities. There is no fixed standard, but > 1.0 is preferred (the client can cover short-term liabilities with liquid assets).
+
+——————————
+[Card 15 / 38]
+Q. What is the net-investment-assets-to-net-worth ratio and its benchmark?
+[Answer]
+Net investment assets ÷ net worth; benchmark ≥ 50% and rising toward retirement (younger clients are often ≤ 20%). Home equity is NOT included.
+
+——————————
+[Card 16 / 38]
+Q. What savings rate do planners often recommend, and do employer contributions count?
+[Answer]
+At least 10% of gross income to savings, and employer contributions to qualified plans do count toward this ratio.
+
+——————————
+[Card 17 / 38]
+Q. What is the general emergency fund guideline, and when is 3 vs. 6 months appropriate?
+[Answer]
+3 to 6 months of fixed and variable expenses. 3 months: married/both employed (or a single with a second sizable income source). 6 months: single wage earner, or married with only one spouse employed.
+
+——————————
+[Card 18 / 38]
+Q. What are appropriate investments for an emergency fund?
+[Answer]
+Checking, savings, money market deposit accounts, money market mutual funds, and CDs ≤90 days. NOT stocks, bonds, or IRAs. Lines of credit are backup only.
+
+——————————
+[Card 19 / 38]
+Q. Contrast the debt snowball and avalanche techniques.
+[Answer]
+Snowball: pay off the smallest balances first → psychological wins/momentum. Avalanche: pay off the highest-interest debt first → saves the most money.
+
+——————————
+[Card 20 / 38]
+Q. What are the five FICO score categories and their weightings?
+[Answer]
+Payment history 35% (most heavily weighted); amounts owed/utilization 30%; length of credit history 15%; new credit 10%; credit mix 10%.
+
+——————————
+[Card 21 / 38]
+Q. How does FICO treat rate-shopping inquiries, and what should you avoid?
+[Answer]
+Multiple mortgage or auto-loan inquiries in a short window are treated as a single inquiry. Don't close old accounts (it hurts length of credit history).
+
+——————————
+[Card 22 / 38]
+Q. When is PMI required on a mortgage?
+[Answer]
+When the down payment is  80%).
+
+——————————
+[Card 23 / 38]
+Q. How do FHA and VA loan down-payment and PMI requirements differ?
+[Answer]
+FHA: government-guaranteed, minimum 3.5% down, PMI required, aimed at lower-income borrowers. VA: no down payment, no PMI, for service members, but charges a funding fee (0.5%–3.6%, ~2.3% for most veterans).
+
+——————————
+[Card 24 / 38]
+Q. What is a mortgage "point"?
+[Answer]
+A point equals 1% of the amount borrowed, paid up front in exchange for a lower interest rate.
+
+——————————
+[Card 25 / 38]
+Q. What are the key features of a reverse (home equity conversion) mortgage?
+[Answer]
+Borrower must be age 62 or older; the lender pays the homeowner; it is a nonrecourse loan (heirs never owe more than the home's value); the owner still pays taxes and insurance directly.
+
+——————————
+[Card 26 / 38]
+Q. What is the Medicaid/nursing-home note for a reverse mortgage?
+[Answer]
+If the homeowner is in a nursing home for more than 12 months, the home is sold.
+
+——————————
+[Card 27 / 38]
+Q. What is negative amortization?
+[Answer]
+When the monthly payment is less than the accruing interest, the unpaid interest is added to the loan balance, so the balance grows (occurs with ARMs and graduated-payment mortgages).
+
+——————————
+[Card 28 / 38]
+Q. As a guideline, when does buying a home make more sense than renting?
+[Answer]
+When the client intends to live there at least five years. Shorter time frames generally favor renting/leasing.
+
+——————————
+[Card 29 / 38]
+Q. What is the refinancing payback (break-even) formula?
+[Answer]
+Total closing costs ÷ monthly savings = number of months to break even.
+
+——————————
+[Card 30 / 38]
+Q. Is auto lease interest deductible?
+[Answer]
+NOT deductible for personal use; IS deductible for business use.
+
+——————————
+[Card 31 / 38]
+Q. Distinguish a closed-end from an open-end auto lease.
+[Answer]
+Closed-end (fixed-cost): walk away at the end; possible mileage/damage charges. Open-end (equity/finance): may owe the difference if there's a residual-value shortfall.
+
+——————————
+[Card 32 / 38]
+Q. What is the basic FDIC insurance limit?
+[Answer]
+$250,000 per depositor, per institution, per ownership category.
+
+——————————
+[Card 33 / 38]
+Q. What are the FDIC ownership categories, each insured separately?
+[Answer]
+Single/individual; joint (each co-owner up to $250K); retirement accounts (IRAs $250K); revocable trust ($250K per beneficiary ).
+
+——————————
+[Card 34 / 38]
+Q. What does FDIC insurance NOT cover?
+[Answer]
+Securities, mutual funds, and money market mutual funds (products of investment companies). It does cover cash/cash-equivalents, including CDs.
+
+——————————
+[Card 35 / 38]
+Q. Who insures credit union deposits, for how much, and through what fund?
+[Answer]
+The NCUA insures up to $250,000 per account through the NCUSIF, backed by the full faith and credit of the U.S. government (same limit as FDIC).
+
+——————————
+[Card 36 / 38]
+Q. Which three federal agencies regulate national banks, and what does each do?
+[Answer]
+OCC charters/supervises/regulates national banks; the Federal Reserve Board conducts monetary policy; the FDIC insures deposits.
+
+——————————
+[Card 37 / 38]
+Q. Distinguish brokers from dealers, and who regulates them?
+[Answer]
+Brokers = agents (earn commissions); dealers = principals (earn markups). Regulated by the SEC/FINRA.
+
+——————————
+[Card 38 / 38]
+Q. What are the key features of an S&L / thrift?
+[Answer]
+Accepts savings and provides home loans; no checking accounts; regulated by the OCC.
+
+
+
+===== FP511 · M4 TIME VALUE OF MONEY =====
+
+[16 cards]
+
+——————————
+[Card 1 / 16]
+Q. What are the 5 TVM variables?
+[Answer]
+PV (present value), FV (future value), PMT (payment), N (number of periods), I/YR (interest rate per period).
+
+——————————
+[Card 2 / 16]
+Q. What is the calculator sign convention for TVM problems?
+[Answer]
+Outflows are negative; inflows are positive. Clearing memory before every problem is the #1 way to avoid errors.
+
+——————————
+[Card 3 / 16]
+Q. What is the default calculator mode, and when do you switch it?
+[Answer]
+Default is END mode (ordinary annuity). Switch to BEG mode for an annuity due.
+
+——————————
+[Card 4 / 16]
+Q. Distinguish an ordinary annuity from an annuity due.
+[Answer]
+Ordinary annuity: payments at the END of each period (e.g., a mortgage) → END mode. Annuity due: payments at the BEGINNING (e.g., a lease, tuition, retirement/education funding) → BEG mode.
+
+——————————
+[Card 5 / 16]
+Q. Which has the larger future value — an ordinary annuity or an annuity due, and why?
+[Answer]
+The annuity due is larger because each payment earns one extra period of interest.
+
+——————————
+[Card 6 / 16]
+Q. Distinguish compounding from discounting.
+[Answer]
+Compounding = earning interest on interest (FV grows). Discounting = finding the PV of a future amount.
+
+——————————
+[Card 7 / 16]
+Q. What is the Rule of 72?
+[Answer]
+Years to double = 72 ÷ rate. Or the required rate = 72 ÷ desired years.
+
+——————————
+[Card 8 / 16]
+Q. What is the inflation-adjusted (real) rate formula?
+[Answer]
+[(1 + return rate) ÷ (1 + inflation rate) − 1] × 100. Example: 7% return, 3% inflation → (1.07/1.03) − 1 = 3.88%. It is always slightly less than the simple difference (return − inflation).
+
+——————————
+[Card 9 / 16]
+Q. When solving a serial-payment problem, which rate do you use as I/YR?
+[Answer]
+The inflation-adjusted (real) rate.
+
+——————————
+[Card 10 / 16]
+Q. What is a serial payment?
+[Answer]
+A payment that increases at a constant rate (usually inflation) to preserve purchasing power. The first serial payment is less than the equivalent fixed (level) annuity payment, and the last is greater.
+
+——————————
+[Card 11 / 16]
+Q. How do you set up a serial (inflation-adjusted) payment problem?
+[Answer]
+Use the inflation-adjusted rate as I/YR; enter the desired amount in today’s dollars as FV; solve for PMT. The first actual payment = PMT × (1 + inflation rate); increase each subsequent year by inflation.
+
+——————————
+[Card 12 / 16]
+Q. How does the payment pattern of serial payments compare to level payments?
+[Answer]
+Serial payments start LOWER than level payments but grow each year with inflation.
+
+——————————
+[Card 13 / 16]
+Q. In a loan amortization schedule, how does the interest/principal split change over time?
+[Answer]
+Early payments are more interest, less principal; this reverses over time. Always use END mode.
+
+——————————
+[Card 14 / 16]
+Q. What is NPV (net present value)?
+[Answer]
+The PV of all future cash flows at the required rate, minus the initial investment.
+
+——————————
+[Card 15 / 16]
+Q. What does a positive vs. negative NPV indicate about an investment's return?
+[Answer]
+Positive NPV → the return exceeds the discount (required) rate (good). Negative NPV → the return is less than the discount rate (not worth the price).
+
+——————————
+[Card 16 / 16]
+Q. What is the IRR (internal rate of return)?
+[Answer]
+The compound annual return at which NPV = 0. Outflows negative, inflows positive; CF0 is the initial investment.
+
+
+
+===== FP511 · M5 PROFESSIONAL CONDUCT & FIDUCIARY =====
+
+[40 cards]
+
+——————————
+[Card 1 / 40]
+Q. What is Financial Advice under the Code & Standards?
+[Answer]
+A specific recommendation to take or refrain from a course of action regarding financial matters; OR the exercise of discretionary authority over client assets.
+
+——————————
+[Card 2 / 40]
+Q. What does NOT count as Financial Advice?
+[Answer]
+Marketing materials, general financial education, and responses to directed orders.
+
+——————————
+[Card 3 / 40]
+Q. How does the CFP Board Code & Standards define Financial Planning?
+[Answer]
+"A collaborative process that helps maximize a Client's potential for meeting life goals through Financial Advice that integrates relevant elements of the Client's personal and financial circumstances."
+
+——————————
+[Card 4 / 40]
+Q. Financial Planning is triggered when ANY of which three conditions are true?
+[Answer]
+1) The planner agreed to provide Financial Planning; 2) the client has a reasonable basis to believe it is being provided; 3) the Financial Advice requires integration of relevant elements to act in the client’s best interests.
+
+——————————
+[Card 5 / 40]
+Q. Name the 5 Integration Factors used to decide whether Financial Planning is required.
+[Answer]
+1) Number of relevant elements affected; 2) portion/amount of assets affected; 3) length of time circumstances are affected; 4) effect on overall risk exposure; 5) barriers to modifying (surrender charges, tax). More factors → more likely Financial Planning is required.
+
+——————————
+[Card 6 / 40]
+Q. What extra written disclosure is required in a Financial Planning (vs. Financial Advice) engagement?
+[Answer]
+Terms of engagement — and implementing, monitoring, and updating is required unless explicitly excluded.
+
+——————————
+[Card 7 / 40]
+Q. What three purposes does CFP Board state for the Code of Ethics and Standards of Conduct?
+[Answer]
+(1) Benefit and protect the public; (2) provide standards for delivering financial planning; (3) advance financial planning as a distinct and valuable profession.
+
+——————————
+[Card 8 / 40]
+Q. What is the stated consequence of violating the Code and Standards?
+[Answer]
+Compliance is a requirement of CFP® certification critical to the integrity of the marks; violations may subject the CFP® professional to discipline.
+
+——————————
+[Card 9 / 40]
+Q. Name the 6 Principles of the Code of Ethics.
+[Answer]
+1) Honesty, integrity, competence, diligence; 2) Client’s best interests; 3) Due care; 4) Avoid/disclose/manage conflicts; 5) Confidentiality & privacy; 6) Reflect positively on the profession.
+
+——————————
+[Card 10 / 40]
+Q. What part of the Code and Standards divides the planning process into seven steps, and how does the exam reference them?
+[Answer]
+The Practice Standards for the Financial Planning Process. The CFP® exam references the steps specifically by step number and/or name.
+
+——————————
+[Card 11 / 40]
+Q. What three duties make up the Fiduciary Duty a CFP® professional owes when providing Financial Advice (Standard A.1)?
+[Answer]
+Duty of Loyalty + Duty of Care + Duty to Follow Client Instructions. The CFP® professional must act as a fiduciary whenever providing Financial Advice.
+
+——————————
+[Card 12 / 40]
+Q. What does the Duty of Loyalty require?
+[Answer]
+Place the client’s interests above the planner’s and the firm’s; manage conflicts; disclose material conflicts even when acting in the client’s best interest.
+
+——————————
+[Card 13 / 40]
+Q. What does the Duty of Care require?
+[Answer]
+Act with skill, prudence, and diligence, considering the client’s goals, risk tolerance, and circumstances (prudent-professional standard).
+
+——————————
+[Card 14 / 40]
+Q. What does Standard A.2 (Integrity) prohibit?
+[Answer]
+No false or misleading statements; no fraud or deceit. It embodies the Code's anti-fraud provisions.
+
+——————————
+[Card 15 / 40]
+Q. Under Standard A.3, what must a CFP® professional do if not competent to provide a needed service?
+[Answer]
+Provide services only with relevant knowledge/skill. If not competent → gain competence, obtain a competent professional's assistance, limit scope, refer the client, and/or terminate the engagement.
+
+——————————
+[Card 16 / 40]
+Q. May a non-attorney CFP® professional draft a client's will or power of attorney?
+[Answer]
+No. Under Competence (A.3), a non-attorney CFP® professional may not draft legal documents (wills, POAs) or offer legal opinions — doing so exceeds their competence and may be unauthorized practice of law.
+
+——————————
+[Card 17 / 40]
+Q. What does the Diligence standard (A.4) require?
+[Answer]
+Respond to client inquiries and provide services in a timely and thorough manner.
+
+——————————
+[Card 18 / 40]
+Q. What three actions does Standard A.5 require regarding material conflicts of interest?
+[Answer]
+(1) Avoid or fully disclose the material conflict with sufficiently specific facts; (2) obtain the client's informed consent; (3) manage the conflict. A conflict must be disclosed even if the CFP® professional believes they are acting in the client's best interest.
+
+——————————
+[Card 19 / 40]
+Q. What does Standard A.6 (Sound & Objective Professional Judgment) say about gifts?
+[Answer]
+Act objectively; do not solicit or accept gifts, gratuities, or other consideration that would compromise the CFP® professional's objectivity.
+
+——————————
+[Card 20 / 40]
+Q. What is the core requirement of Standard A.7 (Professionalism)?
+[Answer]
+Treat clients, prospective clients, fellow professionals, and others with dignity, courtesy, and respect.
+
+——————————
+[Card 21 / 40]
+Q. What does Standard A.8 (Comply With the Law) require?
+[Answer]
+Comply with all applicable laws, rules, and regulations governing professional services — and not assist others in violating the law.
+
+——————————
+[Card 22 / 40]
+Q. What are the two exceptions allowing a CFP® professional to use/disclose confidential client information?
+[Answer]
+(1) Ordinary business use and (2) legal/compliance purposes. Otherwise client information must be kept confidential and private.
+
+——————————
+[Card 23 / 40]
+Q. How does the Code distinguish Fee-Only from Fee-Based compensation?
+[Answer]
+Fee-Only = the firm/professional receives only planning fees (no commissions/sales-related compensation). Fee-Based = planning fees plus commissions/sales-related compensation.
+
+——————————
+[Card 24 / 40]
+Q. What must a CFP® professional do when recommending or working with another professional (A.13)?
+[Answer]
+Have a reasonable basis for the referral (other's reputation, experience, qualifications); disclose any compensation arrangement paid by someone other than the client; communicate roles/responsibilities; and timely inform the client if the other person did not perform per the scope.
+
+——————————
+[Card 25 / 40]
+Q. Under Standard A.14, is a CFP® professional required to be a technology expert to use technology in services?
+[Answer]
+No. They must have a reasonable basis for relying on the technology, exercise reasonable care, and have a reasonable understanding of it — but are not required to be an expert.
+
+——————————
+[Card 26 / 40]
+Q. Standard A.15 — what is the rule on borrowing, lending, and commingling with clients?
+[Answer]
+Do NOT borrow from or lend to clients, and no commingling. Exceptions: a family member, OR a business entity in the business of lending.
+
+——————————
+[Card 27 / 40]
+Q. Within how many days must a CFP® professional report adverse conduct to the CFP Board?
+[Answer]
+Within 30 days. The duty to CFP Board also requires avoiding adverse conduct and cooperating with investigations.
+
+——————————
+[Card 28 / 40]
+Q. Beyond the core fiduciary duties, name the four additional fiduciary duties (Disclose, Diagnose, Consult, Keep Current).
+[Answer]
+Disclose all material facts/conflicts (disclosure alone doesn’t satisfy the duty); Diagnose (know your customer/suitability); Consult specialists when beyond competence; Keep Current with developments.
+
+——————————
+[Card 29 / 40]
+Q. Distinguish the fiduciary standard from the suitability standard (approach & disclosure).
+[Answer]
+Fiduciary: principle-based, solution-driven, best interest, written disclosure (RIAs, CFP® pros, ERISA). Suitability: rules-based, product-driven, merely suitable, verbal disclosure (registered reps, insurance agents).
+
+——————————
+[Card 30 / 40]
+Q. Which regulators apply the fiduciary standard vs. the suitability standard?
+[Answer]
+Fiduciary: SEC, states, DOL (overturned). Suitability: FINRA, states.
+
+——————————
+[Card 31 / 40]
+Q. What conduct triggers the Fitness Standards' Absolute Bars (examples)?
+[Answer]
+Felony conviction for fraud, theft, embezzlement, tax crimes, perjury, etc.; or professional discipline based on intentional/reckless fraud, theft, or dishonest conduct involving clients. (Always bar from certification.)
+
+——————————
+[Card 32 / 40]
+Q. What conduct requires a candidate to file a Petition for Fitness (examples)?
+[Answer]
+A prior (no-longer-current) bar/suspension; a felony not rising to absolute bar; a relevant misdemeanor; two or more bankruptcies; civil fraud finding; certain client-dispute thresholds; an unsatisfied tax/judgment lien.
+
+——————————
+[Card 33 / 40]
+Q. What is the required composition of a Hearing Panel?
+[Answer]
+Minimum of 3 people; at least 2 must be CFP® professionals; at least 1 must be a DEC member.
+
+——————————
+[Card 34 / 40]
+Q. What are the four key disciplinary timelines (Notice of Investigation, Complaint, document requests, Interim Suspension evidence)?
+[Answer]
+Acknowledge Notice of Investigation: 30 days. Answer the Complaint: 30 days. Respond to document requests: 14 days. Comply with an Interim Suspension (evidence): 45 days.
+
+——————————
+[Card 35 / 40]
+Q. List the escalating sanctions for current CFP® professionals (and what applies to non-CFP® professionals).
+[Answer]
+Private Censure → Public Censure → Suspension (90 days–5 yrs) → Interim Suspension → Revocation (permanent). Bars (Temporary/Permanent) apply to non-CFP® professionals.
+
+——————————
+[Card 36 / 40]
+Q. Which sanction is NOT publicly disseminated?
+[Answer]
+A Private Censure — all other sanctions may be publicly disseminated.
+
+——————————
+[Card 37 / 40]
+Q. What must a planner have before preparing client tax returns for compensation?
+[Answer]
+An IRS PTIN (Preparer Tax Identification Number). A planner should not engage in unauthorized tax preparation.
+
+——————————
+[Card 38 / 40]
+Q. How does a broker's compensation differ from a dealer's?
+[Answer]
+A broker/agent arranges trades for clients and charges a commission. A dealer/principal trades from its own account (position trading) and charges a markup (difference between the interdealer offer price and the price charged to the client).
+
+——————————
+[Card 39 / 40]
+Q. Who is the primary securities regulator, and to whom is much oversight delegated?
+[Answer]
+The SEC is the primary securities regulator; much oversight of broker-dealers is delegated to FINRA.
+
+——————————
+[Card 40 / 40]
+Q. Who regulates insurance companies?
+[Answer]
+Each state's department of insurance regulates insurance companies.
+
+
+
+===== FP511 · M6 ECONOMIC ENVIRONMENT & CONSUMER PROTECTION =====
+
+[33 cards]
+
+——————————
+[Card 1 / 33]
+Q. Distinguish elastic from inelastic goods (with examples).
+[Answer]
+Elastic: demand responds strongly to price changes — luxuries (boats, jewelry, cars). Inelastic: demand responds little — necessities (prescription drugs, electricity, gasoline).
+
+——————————
+[Card 2 / 33]
+Q. Distinguish complementary goods from substitutes (with examples).
+[Answer]
+Complementary: demand for one affects the other (peanut butter & jelly). Substitutes: one can replace another when its price rises (pork/chicken).
+
+——————————
+[Card 3 / 33]
+Q. What is the formula for GDP, and what does each term mean?
+[Answer]
+GDP = C + I + G + NE. C = consumption, I = investment (incl. new housing), G = government spending, NE = net exports (exports − imports).
+
+——————————
+[Card 4 / 33]
+Q. Which component of GDP is the largest, and roughly what share?
+[Answer]
+Consumption (C) — about 2/3 of GDP.
+
+——————————
+[Card 5 / 33]
+Q. Distinguish GDP from GNP.
+[Answer]
+GDP: production within a country’s borders regardless of ownership. GNP: production by domestically owned entities anywhere.
+
+——————————
+[Card 6 / 33]
+Q. Who sets fiscal policy, and what are its tools?
+[Answer]
+Congress + President (“fis-CAl”). Tools: tax rates and government spending.
+
+——————————
+[Card 7 / 33]
+Q. Who sets monetary policy, and what are its tools?
+[Answer]
+The Federal Reserve (independent). Tools: reserve requirements, the discount rate, and open-market operations.
+
+——————————
+[Card 8 / 33]
+Q. What fiscal actions are expansionary?
+[Answer]
+Lower taxes and increase government spending.
+
+——————————
+[Card 9 / 33]
+Q. What monetary actions are expansionary?
+[Answer]
+Buy government securities, lower the discount rate, and lower reserve requirements.
+
+——————————
+[Card 10 / 33]
+Q. What fiscal actions are contractionary?
+[Answer]
+Raise taxes and decrease government spending.
+
+——————————
+[Card 11 / 33]
+Q. What monetary actions are contractionary?
+[Answer]
+Sell government securities, raise the discount rate, and raise reserve requirements.
+
+——————————
+[Card 12 / 33]
+Q. What is the discount rate, and who controls it?
+[Answer]
+The rate at which banks borrow from the Fed; the Fed directly controls it.
+
+——————————
+[Card 13 / 33]
+Q. What is the federal funds rate, and what is the Fed’s role?
+[Answer]
+The overnight inter-bank lending rate; the Fed targets/influences it (does not set it directly).
+
+——————————
+[Card 14 / 33]
+Q. What is the prime rate, and how does it relate to the fed funds rate?
+[Answer]
+A rate set by banks, typically about 3% above the fed funds rate.
+
+——————————
+[Card 15 / 33]
+Q. How do open-market operations work, and why are they the most important tool?
+[Answer]
+Fed buys securities → money flows to the public → expansionary (rates fall). Fed sells securities → money flows to the Fed → contractionary (rates rise). It is the Fed’s most important tool.
+
+——————————
+[Card 16 / 33]
+Q. What are the four phases of the business cycle, in order?
+[Answer]
+Expansion → Peak → Contraction → Trough (then repeat).
+
+——————————
+[Card 17 / 33]
+Q. Distinguish a recession from a depression (by GDP decline).
+[Answer]
+Recession: real GDP declines for 2 consecutive quarters (≥6 months). Depression: real GDP declines for 6 consecutive quarters (≥18 months).
+
+——————————
+[Card 18 / 33]
+Q. Name the leading economic indicators.
+[Answer]
+Housing starts, new unemployment claims, stock prices, orders for durable goods, bond yield spreads, and investor sentiment.
+
+——————————
+[Card 19 / 33]
+Q. Are stock prices a leading, coincident, or lagging indicator — and what is the planning takeaway?
+[Answer]
+Leading. Don’t wait for the economy to improve before investing — stocks move ahead of the economy.
+
+——————————
+[Card 20 / 33]
+Q. Name the coincident economic indicators, and what do they signal?
+[Answer]
+Industrial production, personal income level, and corporate profits — they confirm the current stage of the cycle.
+
+——————————
+[Card 21 / 33]
+Q. Name the lagging economic indicators, and what do they signal?
+[Answer]
+Prime interest rate, CPI for services, business/consumer loans outstanding, and average duration of unemployment — they change after the economy.
+
+——————————
+[Card 22 / 33]
+Q. What is stagflation, and why is it hard to fight?
+[Answer]
+High inflation + high unemployment + slow growth (e.g., the 1970s oil shock). Few effective tools exist because fiscal and monetary remedies conflict.
+
+——————————
+[Card 23 / 33]
+Q. During deflation, what are the investment implications?
+[Answer]
+Own U.S. Treasuries; avoid stocks (in severe cases), real estate, and gold. Bond prices rise as rates fall.
+
+——————————
+[Card 24 / 33]
+Q. What is Chapter 7 bankruptcy?
+[Answer]
+Liquidation; most debts are discharged. Credit counseling is required before filing, and income above the state median usually disqualifies the filer.
+
+——————————
+[Card 25 / 33]
+Q. After a Chapter 7 filing, how long until you can refile, and how long does it stay on your credit report?
+[Answer]
+Must wait 8 years to refile; it stays on the credit report 10 years.
+
+——————————
+[Card 26 / 33]
+Q. Distinguish Chapter 11 from Chapter 13 bankruptcy.
+[Answer]
+Ch. 11: reorganization (individuals or businesses); the debtor remains in possession and keeps operating. Ch. 13: wage-earner repayment plan over 3–5 years, requires regular income; the debtor generally keeps assets.
+
+——————————
+[Card 27 / 33]
+Q. Which debts are NOT dischargeable in bankruptcy?
+[Answer]
+Student/government loans (except extreme undue hardship), child support & alimony, recent federal income taxes (generally
+
+——————————
+[Card 28 / 33]
+Q. What does the Truth in Lending Act / Reg Z (Consumer Credit Protection Act) require?
+[Answer]
+Standard APR disclosure and disclosure of all credit terms; a 3-day right of rescission; and unauthorized credit-card charges capped at $50 of liability.
+
+——————————
+[Card 29 / 33]
+Q. What does the Fair Credit Reporting Act (FCRA) provide?
+[Answer]
+If denied credit, a free credit report within 30 days; adverse info stays 7 years and bankruptcy stays 10 years; consumers may dispute errors.
+
+——————————
+[Card 30 / 33]
+Q. What are the Fair Credit Billing Act timelines for billing errors?
+[Answer]
+Notify the creditor within 60 days; the creditor must respond within 30 days and resolve within 90 days.
+
+——————————
+[Card 31 / 33]
+Q. What does the Equal Credit Opportunity Act prohibit?
+[Answer]
+Credit discrimination based on race, color, religion, national origin, gender, marital status, age, sexual orientation, or public-assistance income.
+
+——————————
+[Card 32 / 33]
+Q. What does the Servicemembers Civil Relief Act (SCRA) provide?
+[Answer]
+Caps interest on pre-service debt at 6% for active-duty members.
+
+——————————
+[Card 33 / 33]
+Q. Where do you report identity theft, and what are the three credit bureaus?
+[Answer]
+Report identity theft to the FTC (not the SEC). The three bureaus: Equifax, Experian, TransUnion.
+
+
+
+===== FP511 · M7 EDUCATION PLANNING =====
+
+[27 cards]
+
+——————————
+[Card 1 / 27]
+Q. What are the 3 steps of the education funding process (and the calculator mode/rate for each)?
+[Answer]
+Inflate → Adjust → Invest. (1) Inflate — END mode, education inflation rate → first-year cost. (2) Adjust — BEG mode, inflation-adjusted rate → lump sum needed on Day 1. (3) Invest — END mode, investment return → PV today or annual PMT.
+
+——————————
+[Card 2 / 27]
+Q. In education funding Step 1 (Inflate), what mode and rate do you use, and what does it produce?
+[Answer]
+END mode; use the education inflation rate; inflate the current annual cost to get the first-year college cost.
+
+——————————
+[Card 3 / 27]
+Q. In education funding Step 2 (Adjust), what mode and rate do you use, and what does it produce?
+[Answer]
+BEG mode; use the inflation-adjusted rate; compute the PV of an annuity due for all college years → the lump sum needed on Day 1 of college.
+
+——————————
+[Card 4 / 27]
+Q. In education funding Step 3 (Invest), what mode and rate do you use, and what does it produce?
+[Answer]
+END mode; use the investment return rate; solve for the PV (lump sum today) or PMT (level annual savings) to accumulate the Step-2 amount.
+
+——————————
+[Card 5 / 27]
+Q. For the SAI, at what rate are parent assets assessed?
+[Answer]
+5%–5.64%. (Higher SAI = less aid.)
+
+——————————
+[Card 6 / 27]
+Q. For the SAI, at what rate are student assets assessed?
+[Answer]
+20%.
+
+——————————
+[Card 7 / 27]
+Q. For the SAI, at what rate is student income (above the allowance) assessed?
+[Answer]
+50%.
+
+——————————
+[Card 8 / 27]
+Q. Which assets are EXCLUDED from the SAI?
+[Answer]
+Primary residence (home equity), cars used for regular transportation, cash value of life insurance, and all retirement plan balances (pensions, IRAs, 401(k)s).
+
+——————————
+[Card 9 / 27]
+Q. How is a 529 plan (parent- or dependent-child-owned) counted for the SAI?
+[Answer]
+As a parent asset, assessed at 5%–5.64%.
+
+——————————
+[Card 10 / 27]
+Q. How are grandparent-owned 529 distributions counted for the SAI now?
+[Answer]
+At 0% — they are no longer counted as student income.
+
+——————————
+[Card 11 / 27]
+Q. What are the key SAI changes vs. the old EFC?
+[Answer]
+Multiple siblings in college no longer reduces the index; the income protection allowance increased; Pell eligibility expanded (up to 175% of the federal poverty level); FAFSA simplified.
+
+——————————
+[Card 12 / 27]
+Q. What is the Pell Grant, who qualifies, and what is the max?
+[Answer]
+Need-based grant; undergraduates only (those with the most financial need); part-time eligible; max $7,395 (2025–26).
+
+——————————
+[Card 13 / 27]
+Q. Distinguish Subsidized from Unsubsidized Stafford loans.
+[Answer]
+Subsidized: need-based, undergrad only, the government pays interest while in school + 6 months after. Unsubsidized: not need-based, undergrad + grad, interest accrues from disbursement.
+
+——————————
+[Card 14 / 27]
+Q. What is a PLUS Loan (who can borrow, limits, repayment)?
+[Answer]
+Not need-based; for parents + graduate students; no borrowing limit (up to cost of attendance); repayment begins 60 days after disbursement.
+
+——————————
+[Card 15 / 27]
+Q. What is Federal Work-Study, and how does its income affect aid?
+[Answer]
+Need-based employment; income earned does not reduce financial-aid eligibility.
+
+——————————
+[Card 16 / 27]
+Q. How many days delinquent constitutes default on a federal direct loan?
+[Answer]
+270 days.
+
+——————————
+[Card 17 / 27]
+Q. What are the key features of a Section 529 College Savings Plan?
+[Answer]
+No income limit; earnings/distributions tax-free for qualified higher-ed expenses; K-12 tuition limited to $10K/year; owner controls account and can change beneficiary; counts as a parent asset.
+
+——————————
+[Card 18 / 27]
+Q. What are the key features of a Coverdell ESA (CESA)?
+[Answer]
+$2,000/year per child (all donors combined); for K-12 AND higher ed; beneficiary must be
+
+——————————
+[Card 19 / 27]
+Q. How are UGMA/UTMA custodial accounts counted for the SAI, and when does the child gain control?
+[Answer]
+Counted as a student asset at 20%; the child gains control at the age of majority.
+
+——————————
+[Card 20 / 27]
+Q. Distinguish a UGMA from a UTMA account.
+[Answer]
+UGMA: no real estate; UTMA: can include real estate. (Both are custodial accounts.)
+
+——————————
+[Card 21 / 27]
+Q. When is Series EE/I Bond interest excluded from income for education?
+[Answer]
+When used for higher-ed tuition and fees ONLY (not room/board or books); owner must be 24+ when purchased; income phaseout applies.
+
+——————————
+[Card 22 / 27]
+Q. What is the Kiddie Tax, and how is it taxed?
+[Answer]
+Applies to a child’s unearned income (under 19, or under 24 if a full-time student); excess is taxed at the parent’s marginal rate → use growth (not income) investments in children’s accounts.
+
+——————————
+[Card 23 / 27]
+Q. What are the key features of the AOTC (American Opportunity Tax Credit)?
+[Answer]
+Up to $2,500 /student/year (100% of first $2K + 25% of next $2K); first 4 years only; must be pursuing a degree; 40% refundable (up to $1,000).
+
+——————————
+[Card 24 / 27]
+Q. What are the key features of the Lifetime Learning Credit (LLC)?
+[Answer]
+Up to $2,000 per tax return/year (20% of up to $10K); no year limit, no degree requirement; NOT refundable; graduate courses qualify.
+
+——————————
+[Card 25 / 27]
+Q. What is the anti-double-dipping rule for education credits?
+[Answer]
+You cannot claim the AOTC and LLC for the same student in the same year; 529/CESA distributions reduce expenses eligible for a credit.
+
+——————————
+[Card 26 / 27]
+Q. How much employer-provided education assistance is excludable, and what does it cover?
+[Answer]
+Up to $5,250/year excludable from employee income; covers undergraduate AND graduate, with no job-relation requirement.
+
+——————————
+[Card 27 / 27]
+Q. What is the annual gift tax exclusion for 529 contributions, and how does 5-year superfunding work?
+[Answer]
+Annual gift exclusion: $19,000 per donor per beneficiary (2025). Five-year superfunding: up to 5× ($95,000) as a lump sum treated as spread over 5 years (file Form 709).

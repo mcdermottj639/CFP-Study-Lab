@@ -25,12 +25,12 @@
   /* INFOGRAPHICS-GEN-START */
   window.INFOGRAPHICS = {
       FP512: {
-        1: [ { src: 'assets/infographics/FP512-M1-Insurance-and-Risk-Management-Guide.webp', title: 'Insurance and Risk Management Guide' } ],
-        2: [ { src: 'assets/infographics/FP512-M2-Insurance-Professional-Exam-Quick-Reference.webp', title: 'Insurance Professional Exam Quick Reference' }, { src: 'assets/infographics/FP512-M2-Property-and-Casualty-Exam-Guide.webp', title: 'Property and Casualty Exam Guide' } ],
-        3: [ { src: 'assets/infographics/FP512-M3-Life-Insurance-Reference-Guide.webp', title: 'Life Insurance Reference Guide' } ],
-        4: [ { src: 'assets/infographics/FP512-M4-Annuities-Exam-Quick-Reference.webp', title: 'Annuities Exam Quick Reference' } ],
-        5: [ { src: 'assets/infographics/FP512-M5-Health-Coverage-Exam-Quick-Reference.webp', title: 'Health Coverage Exam Quick Reference' } ],
-        6: [ { src: 'assets/infographics/FP512-M6-Disability-and-Long-Term-Care-Guide.webp', title: 'Disability and Long Term Care Guide' } ],
+        1: [ { src: 'assets/infographics/FP512-M1-Advanced-Risk-and-Legal-Principles.webp', title: 'Advanced Risk and Legal Principles' }, { src: 'assets/infographics/FP512-M1-Insurance-and-Risk-Management-Guide.webp', title: 'Insurance and Risk Management Guide' } ],
+        2: [ { src: 'assets/infographics/FP512-M2-Insurance-Professional-Exam-Quick-Reference.webp', title: 'Insurance Professional Exam Quick Reference' }, { src: 'assets/infographics/FP512-M2-Property-and-Casualty-Exam-Essentials.webp', title: 'Property and Casualty Exam Essentials' }, { src: 'assets/infographics/FP512-M2-Property-and-Casualty-Exam-Guide.webp', title: 'Property and Casualty Exam Guide' } ],
+        3: [ { src: 'assets/infographics/FP512-M3-Life-Insurance-Mastery.webp', title: 'Life Insurance Mastery' }, { src: 'assets/infographics/FP512-M3-Life-Insurance-Reference-Guide.webp', title: 'Life Insurance Reference Guide' } ],
+        4: [ { src: 'assets/infographics/FP512-M4-Advanced-Annuity-Nuances.webp', title: 'Advanced Annuity Nuances' }, { src: 'assets/infographics/FP512-M4-Annuities-Exam-Quick-Reference.webp', title: 'Annuities Exam Quick Reference' } ],
+        5: [ { src: 'assets/infographics/FP512-M5-Health-Coverage-Exam-Quick-Reference.webp', title: 'Health Coverage Exam Quick Reference' }, { src: 'assets/infographics/FP512-M5-Health-and-Government-Insurance-2025-Limits.webp', title: 'Health and Government Insurance 2025 Limits' } ],
+        6: [ { src: 'assets/infographics/FP512-M6-DI-LTC-and-Veterans-Rules.webp', title: 'DI LTC and Veterans Rules' }, { src: 'assets/infographics/FP512-M6-Disability-and-Long-Term-Care-Guide.webp', title: 'Disability and Long Term Care Guide' } ],
         7: [ { src: 'assets/infographics/FP512-M7-Employee-Benefits-Taxation-Study-Guide.webp', title: 'Employee Benefits Taxation Study Guide' } ],
         8: [ { src: 'assets/infographics/FP512-M8-Business-Risk-Management-Study-Guide.webp', title: 'Business Risk Management Study Guide' } ]
       }
@@ -61,10 +61,60 @@
       FP512: {
         1: [ { src: 'assets/video/FP512-M1-Top-4-Insurance-Exam-Traps.mp4', title: 'Top 4 Insurance Exam Traps' } ],
         2: [ { src: 'assets/video/FP512-M2-High-Yield-Property-and-Casualty-Rules.mp4', title: 'High Yield Property and Casualty Rules' } ],
-        3: [ { src: 'assets/video/FP512-M3-High-Yield-Life-Insurance-Review.mp4', title: 'High Yield Life Insurance Review' } ]
+        3: [ { src: 'assets/video/FP512-M3-High-Yield-Life-Insurance-Review.mp4', title: 'High Yield Life Insurance Review' } ],
+        4: [ { src: 'assets/video/FP512-M4-High-Yield-Annuities-Review.mp4', title: 'High Yield Annuities Review' } ],
+        5: [ { src: 'assets/video/FP512-M5-High-Yield-COBRA-Timelines.mp4', title: 'High Yield COBRA Timelines' } ],
+        6: [ { src: 'assets/video/FP512-M6-High-Yield-Disability-and-LTC-Rules.mp4', title: 'High Yield Disability and LTC Rules' } ]
       }
     };
   /* VIDEO-GEN-END */
+
+  // Per-module audio "podcasts" (NotebookLM Audio Overviews — natural-voice deep dives).
+  // Course -> module -> [{src,title}]; module 0 = whole-course. GENERATED from assets/audio/
+  // by scripts/sync_media.mjs (same markers/rules as video). M4A/MP3 are runtime-cached on
+  // first play (not precached). Surfaced as a 🎧 Podcast card in the Module Hub.
+  /* AUDIO-GEN-START */
+  window.AUDIO = {
+      FP511: {
+        0: [ { src: 'assets/audio/FP511-Full-Course-Exam-Review-(Recommended).m4a', title: 'Full Course Exam Review (Recommended)' }, { src: 'assets/audio/FP511-General-Financial-Planning-and-Psychology.m4a', title: 'General Financial Planning and Psychology' } ]
+      },
+      FP512: {
+        0: [ { src: 'assets/audio/FP512-Full-Course-Exam-Review-(Recommended).m4a', title: 'Full Course Exam Review (Recommended)' }, { src: 'assets/audio/FP512-The-Mechanics-of-Financial-Risk-Management.m4a', title: 'The Mechanics of Financial Risk Management' } ]
+      }
+    };
+  /* AUDIO-GEN-END */
+
+  // ---- Visual slide DECKS (native HTML, not PDF) -------------------------------
+  // Course -> module -> [{src, title, kind}] where kind is 'kaplan' (official
+  // College for Financial Planning / Kaplan course slides) or 'ai' (NotebookLM
+  // AI-generated decks). These are standalone responsive HTML pages in apps/,
+  // opened full-screen via openDeck() (like the Interactive Readers) — NOT the
+  // old PDF iframe viewer (window.SLIDES). Module 0 = whole-course deck, shown on
+  // the Modules-tab course card. HAND-AUTHORED (not generated) — add a course's
+  // module deck by dropping the apps/*.html file and adding an entry here.
+  window.DECKS = {
+    FP511: {
+      0: [ { src: 'apps/fp511-ai-slides.html', title: 'Full-course walkthrough', kind: 'ai' } ],
+      2: [ { src: 'apps/fp511-m2-kaplan-slides.html', title: 'Psychology of Financial Planning',     kind: 'kaplan' } ],
+      4: [ { src: 'apps/fp511-m4-kaplan-slides.html', title: 'Time Value of Money',                  kind: 'kaplan' } ],
+      5: [ { src: 'apps/fp511-m5-kaplan-slides.html', title: 'Professional Conduct & Fiduciary',     kind: 'kaplan' } ],
+      6: [ { src: 'apps/fp511-m6-kaplan-slides.html', title: 'Economic Environment & Consumer Protection', kind: 'kaplan' } ],
+      7: [ { src: 'apps/fp511-m7-kaplan-slides.html', title: 'Education Planning',                   kind: 'kaplan' } ]
+    },
+    FP512: {
+      0: [ { src: 'apps/fp512-ai-slides.html', title: 'Full-course walkthrough', kind: 'ai' } ],
+      1: [ { src: 'apps/fp512-m1-kaplan-slides.html', title: 'Principles of Insurance & Risk Mgmt', kind: 'kaplan' },
+           { src: 'apps/fp512-m1-ai-slides.html',    title: 'AI deep-dive',                        kind: 'ai' } ],
+      2: [ { src: 'apps/fp512-m2-kaplan-slides.html', title: 'Property & Casualty Insurance',       kind: 'kaplan' },
+           { src: 'apps/fp512-m2-ai-slides.html',    title: 'AI deep-dive',                        kind: 'ai' } ],
+      3: [ { src: 'apps/fp512-m3-kaplan-slides.html', title: 'Life Insurance',                      kind: 'kaplan' } ],
+      4: [ { src: 'apps/fp512-m4-kaplan-slides.html', title: 'Annuities',                           kind: 'kaplan' } ],
+      5: [ { src: 'apps/fp512-m5-kaplan-slides.html', title: 'Health, Medicare & Medicaid',         kind: 'kaplan' } ],
+      6: [ { src: 'apps/fp512-m6-kaplan-slides.html', title: 'Disability, LTC & Veterans',          kind: 'kaplan' } ],
+      7: [ { src: 'apps/fp512-m7-kaplan-slides.html', title: 'Employee Group Benefits',             kind: 'kaplan' } ],
+      8: [ { src: 'apps/fp512-m8-kaplan-slides.html', title: 'Business Owner Risk',                 kind: 'kaplan' } ]
+    }
+  };
 
   window.MODOBJ = {
     FP511: {

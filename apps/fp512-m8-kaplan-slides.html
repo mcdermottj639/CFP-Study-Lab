@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FP512 · Module 8 — Risk Management Solutions for Business Owners (Visual Deck)</title>
+<style>
+/* ---- Dancing Script title (vendored, offline) ---- */
+@font-face{font-family:'Dancing Script';src:url('../vendor/fonts/dancing-script-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap;}
+
+:root{
+  --canvas:#f4ecdf; --card:#fffdf8; --card2:#faf3e6;
+  --ink:#2c2118; --ink2:#5b4b3a; --muted:#897357;
+  --line:#e6d8c2; --line2:#d8c6aa;
+  --terra:#d0613a; --terra-d:#b34d2a;
+  --green:#1f4d3a; --green-l:#2f7355;
+  --gold:#c58a2e; --sky:#3a6ea5;
+  --trap:#b34d2a; --trap-bg:#fbe9e1; --tip:#2f7355; --tip-bg:#e6f2ea;
+  --key-bg:#efe4d0;
+  --radius:18px; --shadow:0 8px 26px -14px rgba(60,40,20,.55);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--canvas);}
+body{font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;color:var(--ink);-webkit-text-size-adjust:100%;}
+
+/* ---- App-synced dark mode: filter-invert the content wrapper (matches readers) ---- */
+html[data-theme="dark"]{background:#17120e;}
+html[data-theme="dark"] body{background:#17120e;}
+html[data-theme="dark"] #rdrWrap{filter:invert(.92) hue-rotate(180deg);}
+html[data-theme="dark"] #rdrWrap svg,
+html[data-theme="dark"] #rdrWrap img,
+html[data-theme="dark"] #rdrWrap canvas{filter:invert(1) hue-rotate(180deg);}
+
+#rdrWrap{max-width:820px;margin:0 auto;padding:18px 15px 90px;}
+
+/* ---- Header ---- */
+.deck-head{padding:26px 20px 22px;border-radius:var(--radius);color:#fff;
+  background:linear-gradient(135deg,#1f4d3a 0%,#2f7355 55%,#d0613a 160%);
+  box-shadow:var(--shadow);position:relative;overflow:hidden;}
+.deck-head .eyebrow{font:700 12px/1 system-ui;letter-spacing:.16em;text-transform:uppercase;opacity:.85;}
+.deck-head h1{font-family:'Dancing Script',cursive;font-size:clamp(34px,9vw,52px);margin:.15em 0 .1em;line-height:1;}
+.deck-head .sub{font-size:15px;opacity:.95;max-width:46ch;}
+.deck-head .pillrow{margin-top:14px;display:flex;flex-wrap:wrap;gap:7px;}
+.deck-head .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+  border-radius:999px;padding:5px 11px;font:600 12px/1 system-ui;}
+
+/* ---- Section divider ---- */
+.sect{margin:34px 2px 14px;display:flex;align-items:center;gap:12px;}
+.sect .n{flex:none;width:38px;height:38px;border-radius:11px;background:var(--green);color:#fff;
+  font:800 15px/38px system-ui;text-align:center;box-shadow:var(--shadow);}
+.sect h2{font-size:19px;margin:0;color:var(--green);letter-spacing:.01em;}
+.sect .lo{font:600 11px/1 system-ui;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
+
+/* ---- Slide card ---- */
+.slide{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 19px;margin:13px 0;box-shadow:var(--shadow);}
+.slide h3{margin:0 0 8px;font-size:18px;color:var(--ink);display:flex;gap:9px;align-items:baseline;}
+.slide h3 .ic{font-size:19px;}
+.slide p{margin:8px 0;color:var(--ink2);}
+.slide ul{margin:9px 0;padding-left:1.15em;}
+.slide li{margin:5px 0;color:var(--ink2);}
+.lead{font-size:16.5px;color:var(--ink)!important;}
+
+/* ---- Stat tiles ---- */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:11px;margin:14px 0 4px;}
+.tile{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:13px 14px;}
+.tile .v{font:800 24px/1.05 system-ui;color:var(--terra-d);letter-spacing:-.01em;}
+.tile .k{font-size:12.5px;color:var(--ink2);margin-top:5px;}
+
+/* ---- Callouts ---- */
+.callout{border-radius:13px;padding:12px 14px 12px 15px;margin:13px 0;border-left:5px solid;font-size:14.5px;}
+.callout.trap{background:var(--trap-bg);border-color:var(--trap);}
+.callout.tip{background:var(--tip-bg);border-color:var(--tip);}
+.callout b{color:var(--ink);}
+.callout .lab{display:block;font:800 11px/1 system-ui;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;}
+.callout.trap .lab{color:var(--trap);}
+.callout.tip .lab{color:var(--tip);}
+
+/* ---- Tables ---- */
+.tbl-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0 4px;
+  border:1px solid var(--line);border-radius:13px;}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:460px;}
+caption{caption-side:top;text-align:left;font:700 13px/1.4 system-ui;color:var(--muted);padding:2px 4px 9px;}
+th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
+thead th{background:var(--green);color:#fff;font-weight:700;font-size:12.5px;position:sticky;top:0;}
+tbody th{background:var(--card2);color:var(--ink);font-weight:700;white-space:nowrap;}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:none;}
+td.y{color:var(--tip);font-weight:700;} td.n{color:var(--trap);font-weight:700;}
+
+/* ---- Chart figure ---- */
+figure{margin:14px 0 4px;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:14px 14px 10px;}
+figure svg{width:100%;height:auto;display:block;}
+figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center;}
+.legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:9px;font:600 12.5px/1 system-ui;}
+.legend span{display:inline-flex;align-items:center;gap:6px;color:var(--ink2);}
+.legend i{width:14px;height:3px;border-radius:2px;display:inline-block;}
+
+/* ---- Three-up option groups ---- */
+.triad{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;margin:13px 0 4px;}
+.opt{background:var(--card2);border:1px solid var(--line);border-radius:13px;padding:12px 13px;}
+.opt .t{font:800 13.5px/1.2 system-ui;color:var(--green);margin-bottom:5px;}
+.opt .d{font-size:13px;color:var(--ink2);}
+
+/* ---- Worked example ---- */
+.calc{background:#1c2b24;color:#e9f3ee;border-radius:14px;padding:16px 16px 12px;margin:14px 0 4px;}
+.calc h4{margin:0 0 10px;color:#7fd3ac;font-size:14.5px;}
+.calc .step{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-top:1px solid rgba(255,255,255,.12);}
+.calc .step:first-of-type{border-top:none;}
+.calc .sn{flex:none;width:24px;height:24px;border-radius:8px;background:#2f7355;color:#fff;font:800 12px/24px system-ui;text-align:center;}
+.calc .sb{font-size:13.5px;}
+.calc .sb b{color:#fff;}
+.calc code{font:600 12.5px/1.5 ui-monospace,Menlo,monospace;color:#ffd9a8;background:rgba(255,255,255,.07);
+  padding:1px 6px;border-radius:6px;display:inline-block;margin-top:3px;}
+.calc .res{margin-top:11px;background:#d0613a;color:#fff;border-radius:10px;padding:10px 13px;font:700 15px/1.2 system-ui;}
+
+/* ---- Quiz (tap to reveal) ---- */
+.quiz{background:var(--card);border:1.5px solid var(--terra);border-radius:14px;padding:0;margin:13px 0;overflow:hidden;box-shadow:var(--shadow);}
+.quiz>summary{list-style:none;cursor:pointer;padding:15px 16px;font-size:15px;color:var(--ink);position:relative;}
+.quiz>summary::-webkit-details-marker{display:none;}
+.quiz>summary .qlab{display:inline-block;font:800 10.5px/1 system-ui;letter-spacing:.12em;color:var(--terra-d);
+  background:var(--trap-bg);border-radius:6px;padding:4px 7px;margin-bottom:8px;text-transform:uppercase;}
+.quiz>summary .opts{margin-top:9px;font-size:13.5px;color:var(--ink2);}
+.quiz>summary .tap{margin-top:10px;font:700 12.5px/1 system-ui;color:var(--terra);}
+.quiz[open]>summary .tap{display:none;}
+.quiz .ans{padding:0 16px 15px;border-top:1px dashed var(--line2);margin-top:2px;}
+.quiz .ans .correct{font:800 14px/1.4 system-ui;color:var(--tip);margin:12px 0 6px;}
+.quiz .ans p{font-size:13.5px;color:var(--ink2);margin:6px 0 0;}
+
+.foot{margin-top:34px;padding:16px;border-radius:var(--radius);background:var(--card2);border:1px solid var(--line);
+  font-size:12.5px;color:var(--muted);text-align:center;}
+
+/* ---- Floating theme toggle (standalone preview; injection can replace) ---- */
+#tgl{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:9999;
+  background:var(--terra);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:999px;
+  padding:10px 15px;font:700 13px/1 system-ui;cursor:pointer;box-shadow:0 8px 22px -8px rgba(0,0,0,.55);}
+
+/* ---- Sticky progress ---- */
+#prog{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--green),var(--terra));z-index:9999;transition:width .1s;}
+
+@media(min-width:560px){.slide{padding:22px 24px;} #rdrWrap{padding:22px 20px 90px;}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<div id="rdrWrap">
+
+  <header class="deck-head">
+    <div class="eyebrow">FP512 · Risk, Insurance &amp; Benefits</div>
+    <h1>Business Owner Risk</h1>
+    <div class="sub">Module 8 at a glance — how coverage scales with business size, the risk-management process, funding, buy-sell &amp; continuity, and the commercial policies (BOP, CPP, D&amp;O, cyber). Built from the College for Financial Planning® (Kaplan) course deck.</div>
+    <div class="pillrow">
+      <span class="pill">🏢 Size-driven needs</span>
+      <span class="pill">🧭 Risk assessment</span>
+      <span class="pill">📦 BOP vs CPP</span>
+      <span class="pill">🤝 Buy-sell</span>
+      <span class="pill">💻 Cyber vs fraud</span>
+    </div>
+  </header>
+
+  <!-- ============ LO 8.1.1 — Needs by business size ============ -->
+  <div class="sect"><div class="n">1</div><div><div class="lo">Learning Objective 8.1.1</div><h2>Insurance needs grow with business size</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">📈</span>What drives the premium</h3>
+    <p class="lead">As a business grows, its risk exposure grows — and so does the cost and breadth of coverage. Premiums depend on three factors:</p>
+    <div class="tiles">
+      <div class="tile"><div class="v">👥</div><div class="k">Number of employees — more workers' comp, employee liability &amp; PPACA health obligations</div></div>
+      <div class="tile"><div class="v">💵</div><div class="k">Revenue &amp; business operations — more complexity, broader scope of risk</div></div>
+      <div class="tile"><div class="v">⚠️</div><div class="k">Industry risk exposure — construction, manufacturing, etc. carry higher costs</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🏢</span>Coverage by size — the ladder</h3>
+    <div class="tbl-scroll"><table>
+      <caption>How business insurance needs scale</caption>
+      <thead><tr><th>Business size</th><th>Typical coverage needs</th></tr></thead>
+      <tbody>
+        <tr><th>Small</th><td>Basic coverage like <b>general liability</b> to protect against common risks; may need a <b>business owner's policy (BOP)</b> bundling general liability with property insurance</td></tr>
+        <tr><th>Medium</th><td>Added complexity &amp; more employees → <b>workers' compensation</b>, <b>professional liability</b>, and <b>health</b> coverage</td></tr>
+        <tr><th>Large</th><td>Comprehensive coverage: <b>directors &amp; officers (D&amp;O)</b>, extensive property and liability policies, <b>cyber</b>, plus customized industry-specific policies</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout tip"><span class="lab">Key idea</span>Even small businesses need more than liability alone — property damage and employee injury also require coverage. Large businesses can't simply self-insure: self-insuring can be <b>costly and unpredictable</b>.</div>
+  </div>
+
+  <!-- ============ LO 8.1.2 — Risk assessment ============ -->
+  <div class="sect"><div class="n">2</div><div><div class="lo">Learning Objective 8.1.2</div><h2>Conducting a business risk assessment</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🧭</span>Three fundamental steps</h3>
+    <div class="triad">
+      <div class="opt"><div class="t">1 · Risk identification</div><div class="d">Identify potential threats that could harm the business — financial, operational, legal, and environmental risks.</div></div>
+      <div class="opt"><div class="t">2 · Risk assessment</div><div class="d">Evaluate and prioritize the identified risks by likelihood, potential impact, and need for immediate attention.</div></div>
+      <div class="opt"><div class="t">3 · Risk control</div><div class="d">Implement strategies to prevent or mitigate risk — insurance coverage, safety protocols, or contingency plans.</div></div>
+    </div>
+    <div class="callout tip"><span class="lab">Order matters</span>Identify → assess → control. The owner must stay <b>actively involved</b> — they hold key insights into the business's unique risks and should collaborate with the agent so nothing is overlooked.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🗂️</span>Building a unique risk profile</h3>
+    <p>The assessment feeds a tailored risk profile for the business:</p>
+    <ul>
+      <li>Conduct a risk assessment</li>
+      <li>Analyze the information</li>
+      <li>Identify and categorize risks</li>
+      <li>Quantify potential losses</li>
+      <li>Build a <b>unique risk profile</b></li>
+    </ul>
+    <div class="callout trap"><span class="lab">Exam trap</span>Assessments are <b>not</b> a once-every-five-years exercise. Risks change rapidly with market conditions, technology, and regulation — review regularly. Focusing only on financial risk ignores critical threats like employee safety.</div>
+  </div>
+
+  <!-- ============ LO 8.1.3 — Company, agent, policy ============ -->
+  <div class="sect"><div class="n">3</div><div><div class="lo">Learning Objective 8.1.3</div><h2>Selecting the company, agent &amp; policy</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🏦</span>Optimizing the insurer</h3>
+    <p>Review the company's <b>rating</b>, which is based on:</p>
+    <ul>
+      <li>Cash in reserve</li>
+      <li>Debt-to-assets ratio</li>
+      <li>Ethics and risk management</li>
+      <li>Revenue streams</li>
+      <li>Quality of policies underwritten</li>
+    </ul>
+    <p>Then weigh overall <b>service quality</b>: coverage (amount of protection), claims expertise (how well it settles), price (vs. competitors), licensing (not every company is licensed in every state — do due diligence), and reputation (peer experiences).</p>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">⭐</span>Insurance-company financial-strength ratings</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Rating scales by agency (highest to lowest)</caption>
+      <thead><tr><th>Rating service</th><th>Highest</th><th>Lowest</th></tr></thead>
+      <tbody>
+        <tr><th>A.M. Best</th><td class="y">A++</td><td class="n">D</td></tr>
+        <tr><th>Standard &amp; Poor's</th><td class="y">AAA</td><td class="n">D</td></tr>
+        <tr><th>Moody's</th><td class="y">Aaa</td><td class="n">C</td></tr>
+        <tr><th>Fitch Ratings</th><td class="y">AAA</td><td class="n">D</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout tip"><span class="lab">Memory hook</span>Only <b>Moody's</b> uses the lowercase-style Aaa … <b>C</b> scale (and bottoms out at C, not D). A.M. Best is the one that tops out at <b>A++</b>; S&amp;P and Fitch both run <b>AAA … D</b>.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧑‍💼</span>Optimizing the agent &amp; the policy</h3>
+    <div class="triad">
+      <div class="opt"><div class="t">Industry expertise</div><div class="d">The agent should have experience in the specific industry needed.</div></div>
+      <div class="opt"><div class="t">Reputation &amp; reviews</div><div class="d">No disciplinary history; positive reviews; strong claims track record.</div></div>
+      <div class="opt"><div class="t">Communication</div><div class="d">Accessible, responsive, and clear in explaining options and coverage.</div></div>
+      <div class="opt"><div class="t">Licensing &amp; credentials</div><div class="d">Properly licensed with relevant, current certifications.</div></div>
+    </div>
+    <div class="callout trap"><span class="lab">Cost ≠ value</span>A low price may signal <b>inadequate coverage</b>; high premiums don't guarantee better protection. Prioritize coverage, reliability, price, and budget so comparisons are meaningful — then a thorough review.</div>
+  </div>
+
+  <!-- ============ LO 8.1.4 — Funding insurance needs ============ -->
+  <div class="sect"><div class="n">4</div><div><div class="lo">Learning Objective 8.1.4</div><h2>Funding the business's insurance needs</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">💰</span>Managing premium costs</h3>
+    <div class="triad">
+      <div class="opt"><div class="t">Bundle coverage</div><div class="d">Combine policies for package pricing.</div></div>
+      <div class="opt"><div class="t">Increase deductibles</div><div class="d">Retain more risk to lower premiums.</div></div>
+      <div class="opt"><div class="t">Compare quotes</div><div class="d">Shop the market before renewing.</div></div>
+      <div class="opt"><div class="t">Join professional associations</div><div class="d">Access group / pooled rates.</div></div>
+      <div class="opt"><div class="t">Reduce risk</div><div class="d">Implement risk-reduction strategies.</div></div>
+      <div class="opt"><div class="t">Accounting consultants</div><div class="d">Regularly review coverage &amp; optimize spend.</div></div>
+    </div>
+    <div class="callout tip"><span class="lab">Fund it wisely</span>Hire an experienced <b>accountant</b> to manage the books, capture tax credits/deductions, and set the optimal premium spend. Never allocate 100% of profits to insurance, insure only high-risk areas, or commingle personal funds (e.g., a home-equity draw) with the business.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧑‍🤝‍🧑</span>The business advisory board</h3>
+    <p>A business <b>advisory board</b> can deliver several insurance-related benefits:</p>
+    <ul>
+      <li><b>Expert risk assessment</b> — members bring risk-management expertise</li>
+      <li><b>Strategic guidance</b> — shape the insurance-portfolio plan</li>
+      <li><b>Negotiation leverage</b> — experienced pros boost reputation &amp; credibility</li>
+      <li><b>Compliance &amp; regulatory advice</b> — legal experts on requirements</li>
+      <li><b>Crisis-management support</b> — help handling a major claim or incident</li>
+    </ul>
+    <p style="font-size:12.5px;color:var(--muted);margin-top:8px;">Typical costs: <b>compensation</b> (a fixed honorarium per meeting, or equity in startups), <b>meeting costs</b> (venue, catering, travel reimbursement, technology), and <b>administrative costs</b> (staff time, legal contract review).</p>
+  </div>
+
+  <!-- ============ LO 8.2.1 — Owner's personal insurance ============ -->
+  <div class="sect"><div class="n">5</div><div><div class="lo">Learning Objective 8.2.1</div><h2>The owner's personal insurance needs</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🛡️</span>Personal essentials — kept separate from the business</h3>
+    <ul>
+      <li>Disability insurance</li>
+      <li>Health &amp; health savings accounts (HSAs)</li>
+      <li>Life insurance</li>
+      <li>Personal liability (consider an umbrella policy)</li>
+      <li>Maximize tax advantages</li>
+      <li><b>Key-person insurance</b> for business continuity</li>
+    </ul>
+    <div class="callout trap"><span class="lab">Exam trap</span>Owners often struggle to fund personal coverage due to <b>cash-flow limits, time constraints, and over-emphasis on business insurance</b>. Buy <b>distinct</b> business and personal policies — using business funds for personal insurance creates legal and tax problems, and a non-medical HSA withdrawal triggers a <b>20% penalty tax</b>.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🤝</span>Small-employer solutions — PEO &amp; AHP</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Pooling arrangements that give small employers large-group pricing</caption>
+      <thead><tr><th>Solution</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><th>PEO<br><span style="font-weight:400;color:var(--muted)">Professional Employer Organization</span></th><td>Comprehensive, cost-effective outsourcing of <b>health-insurance administration, payroll, and other tasks</b> — with turn-key regulatory compliance.</td></tr>
+        <tr><th>AHP<br><span style="font-weight:400;color:var(--muted)">Association Health Plan</span></th><td>Focuses primarily on <b>medical insurance</b>; lets smaller companies access the savings of large-group medical coverage.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout tip"><span class="lab">Common thread</span>Both let small employers enjoy the same low rates large corporations get, by <b>pooling coverage needs</b> with other businesses.</div>
+  </div>
+
+  <!-- ============ LO 8.2.2 — Competing goals & buy-sell ============ -->
+  <div class="sect"><div class="n">6</div><div><div class="lo">Learning Objective 8.2.2</div><h2>Competing goals, buy-sell &amp; continuation</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">⚖️</span>Three competing goals for life insurance</h3>
+    <div class="triad">
+      <div class="opt"><div class="t">Business continuity</div><div class="d">Without a life-insurance-funded buy-sell, an owner's death can spark disputes among partners, heirs, and creditors — jeopardizing the business.</div></div>
+      <div class="opt"><div class="t">Family financial security</div><div class="d">Without coverage the family faces immediate expenses, debts, and taxes — heirs may be forced to sell business assets.</div></div>
+      <div class="opt"><div class="t">Estate tax liabilities</div><div class="d">Insufficient insurance leaves the estate exposed to large estate taxes — possibly forcing a sale of the whole business to pay the IRS.</div></div>
+    </div>
+    <div class="callout tip"><span class="lab">Solutions</span>A <b>buy-sell agreement</b>, <b>life insurance for family protection</b>, and <b>permanent life insurance for estate tax</b>. Consider a <b>laddered approach</b> — multiple term policies of different durations and amounts to match evolving needs.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🤝</span>Buy-sell agreement structures &amp; business continuation</h3>
+    <p>A <b>buy-sell agreement</b> is the core business-continuation tool: it funds an orderly transfer of a deceased (or departing) owner's interest, so surviving owners keep control instead of ending up with heirs or creditors as partners.</p>
+    <div class="tbl-scroll"><table>
+      <caption>Three ways to structure a buy-sell</caption>
+      <thead><tr><th>Structure</th><th>Who buys / owns the policies</th><th>Policies needed</th></tr></thead>
+      <tbody>
+        <tr><th>Cross-purchase</th><td>Each owner buys a policy on <b>each other owner</b>; survivors purchase the deceased's interest directly</td><td>n × (n − 1)</td></tr>
+        <tr><th>Entity (stock redemption)</th><td>The <b>business entity</b> owns a policy on each owner and redeems the deceased's interest</td><td>n (one per owner)</td></tr>
+        <tr><th>Wait-and-see</th><td>Hybrid — <b>defers</b> the choice of who buys (owners or entity) until the triggering event, adding flexibility</td><td>varies</td></tr>
+      </tbody>
+    </table></div>
+    <figure>
+      <svg viewBox="0 0 460 210" role="img" aria-label="Cross-purchase has each owner insure the others directly; entity redemption has the business own all policies">
+        <!-- Cross-purchase -->
+        <text x="20" y="18" font-size="11.5" font-weight="800" fill="#1f4d3a">Cross-purchase</text>
+        <circle cx="55" cy="70" r="20" fill="#2f7355"/><text x="55" y="74" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">A</text>
+        <circle cx="175" cy="70" r="20" fill="#2f7355"/><text x="175" y="74" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">B</text>
+        <circle cx="115" cy="150" r="20" fill="#2f7355"/><text x="115" y="154" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">C</text>
+        <line x1="75" y1="70" x2="155" y2="70" stroke="#d0613a" stroke-width="2.5"/>
+        <line x1="66" y1="88" x2="104" y2="132" stroke="#d0613a" stroke-width="2.5"/>
+        <line x1="164" y1="88" x2="126" y2="132" stroke="#d0613a" stroke-width="2.5"/>
+        <text x="20" y="196" font-size="10" fill="#5b4b3a">Owners insure each other — n(n−1) policies</text>
+        <!-- Entity -->
+        <text x="260" y="18" font-size="11.5" font-weight="800" fill="#1f4d3a">Entity (redemption)</text>
+        <rect x="300" y="52" width="90" height="34" rx="7" fill="#d0613a"/><text x="345" y="74" font-size="10.5" font-weight="700" fill="#fff" text-anchor="middle">Business</text>
+        <circle cx="285" cy="150" r="18" fill="#2f7355"/><text x="285" y="154" font-size="10.5" font-weight="700" fill="#fff" text-anchor="middle">A</text>
+        <circle cx="345" cy="150" r="18" fill="#2f7355"/><text x="345" y="154" font-size="10.5" font-weight="700" fill="#fff" text-anchor="middle">B</text>
+        <circle cx="405" cy="150" r="18" fill="#2f7355"/><text x="405" y="154" font-size="10.5" font-weight="700" fill="#fff" text-anchor="middle">C</text>
+        <line x1="330" y1="86" x2="290" y2="132" stroke="#1f4d3a" stroke-width="2.5"/>
+        <line x1="345" y1="86" x2="345" y2="132" stroke="#1f4d3a" stroke-width="2.5"/>
+        <line x1="360" y1="86" x2="400" y2="132" stroke="#1f4d3a" stroke-width="2.5"/>
+        <text x="258" y="196" font-size="10" fill="#5b4b3a">Entity owns all policies — n policies</text>
+      </svg>
+      <figcaption>Cross-purchase: owners insure one another (policies grow fast). Entity redemption: the business owns one policy per owner.</figcaption>
+      <div class="legend"><span><i style="background:#d0613a"></i>Cross-purchase link</span><span><i style="background:#1f4d3a"></i>Entity-owned policy</span></div>
+    </figure>
+    <p style="font-size:12.5px;color:var(--muted);margin-top:8px;">Buy-sell structure detail is standard CFP planning material shown here to complete the module's continuity theme; verify against your current course text.</p>
+  </div>
+
+  <!-- ============ LO 8.2.3 — LIRP ============ -->
+  <div class="sect"><div class="n">7</div><div><div class="lo">Learning Objective 8.2.3</div><h2>Private retirement plan funded by life insurance</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🏖️</span>The LIRP — advantages vs. disadvantages</h3>
+    <p>A <b>life insurance retirement plan (LIRP)</b> uses a permanent policy's cash value as a supplemental retirement vehicle.</p>
+    <div class="tbl-scroll"><table>
+      <caption>Life insurance retirement plan trade-offs</caption>
+      <thead><tr><th>Advantages</th><th>Disadvantages</th></tr></thead>
+      <tbody>
+        <tr><td class="y">Tax-deferred growth</td><td class="n">Higher costs</td></tr>
+        <tr><td class="y">Access to cash value (withdrawals / tax-free loans)</td><td class="n">Slower cash-value growth</td></tr>
+        <tr><td class="y">Guaranteed death benefit</td><td class="n">Loans reduce the death benefit</td></tr>
+        <tr><td class="y">No contribution limits</td><td class="n">Surrender charges</td></tr>
+        <tr><td class="y">Protection from market volatility</td><td class="n">Taxes due on withdrawals above basis</td></tr>
+        <tr><td class="y">Ease of management</td><td class="n">Limited investment options</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">Exam trap</span>Cash value grows <b>tax-deferred</b> — the owner does <b>not</b> pay annual tax on it. The owner can access cash value in retirement, but <b>cannot withdraw the entire death benefit tax-free</b> — the death benefit is for the beneficiaries. A perk: emergency withdrawals before 59½ can avoid the tax penalty.</div>
+  </div>
+
+  <!-- ============ LO 8.3.1 — Remote employers: cyber vs fraud ============ -->
+  <div class="sect"><div class="n">8</div><div><div class="lo">Learning Objective 8.3.1</div><h2>Policies for remote employers — cyber vs fraud</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">💻</span>Cyber vs. fraud (fidelity) — a key tested distinction</h3>
+    <div class="tbl-scroll"><table>
+      <caption>What each policy covers</caption>
+      <thead><tr><th>Cyber insurance</th><th>Fraud / crime (fidelity) coverage</th></tr></thead>
+      <tbody>
+        <tr><td>Phishing and spoofing</td><td>Employee theft</td></tr>
+        <tr><td>Data-breach costs</td><td>Embezzlement</td></tr>
+        <tr><td>Ransomware attacks</td><td>Third-party (external) fraud</td></tr>
+        <tr><td>Business interruption</td><td>Fake invoices / vendor impersonation</td></tr>
+        <tr><td>Legal defense &amp; restoration costs</td><td>Dishonesty &amp; misrepresentation causing monetary loss</td></tr>
+      </tbody>
+    </table></div>
+    <figure>
+      <svg viewBox="0 0 460 150" role="img" aria-label="Cyber covers digital breach and interruption; fraud covers internal and external dishonesty; they do not overlap">
+        <rect x="20" y="30" width="190" height="90" rx="12" fill="#2f7355" fill-opacity=".16" stroke="#1f4d3a" stroke-width="2"/>
+        <text x="115" y="55" font-size="12.5" font-weight="800" fill="#1f4d3a" text-anchor="middle">CYBER</text>
+        <text x="115" y="78" font-size="10" fill="#5b4b3a" text-anchor="middle">Data breach · ransomware</text>
+        <text x="115" y="95" font-size="10" fill="#5b4b3a" text-anchor="middle">Business interruption</text>
+        <text x="115" y="112" font-size="10" fill="#5b4b3a" text-anchor="middle">System restoration</text>
+        <rect x="250" y="30" width="190" height="90" rx="12" fill="#d0613a" fill-opacity=".16" stroke="#b34d2a" stroke-width="2"/>
+        <text x="345" y="55" font-size="12.5" font-weight="800" fill="#b34d2a" text-anchor="middle">FRAUD (fidelity)</text>
+        <text x="345" y="78" font-size="10" fill="#5b4b3a" text-anchor="middle">Employee theft · embezzlement</text>
+        <text x="345" y="95" font-size="10" fill="#5b4b3a" text-anchor="middle">Fake invoices · impersonation</text>
+        <text x="345" y="112" font-size="10" fill="#5b4b3a" text-anchor="middle">Internal / external dishonesty</text>
+        <text x="230" y="20" font-size="11" font-weight="700" fill="#897357" text-anchor="middle">no overlap</text>
+        <line x1="230" y1="26" x2="230" y2="124" stroke="#897357" stroke-width="1.5" stroke-dasharray="3 4"/>
+      </svg>
+      <figcaption>Two distinct policies: cyber for the digital breach, fraud for the dishonest act. Neither covers the other.</figcaption>
+    </figure>
+    <div class="callout trap"><span class="lab">Exam trap — the key point</span>These are <b>DISTINCT</b>. Cyber does <b>not</b> cover employee acts of dishonesty; fraud does <b>not</b> cover a data breach. In a two-incident question, cyber pays the breach/interruption and fraud pays the embezzlement — neither fully indemnifies both.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🏠</span>Remote workers' compensation</h3>
+    <p>Remote-employer workers' comp covers on-the-job harm for a distributed workforce:</p>
+    <ul>
+      <li>Medical expenses</li>
+      <li>Lost wages</li>
+      <li>Disability benefits</li>
+      <li>Legal costs</li>
+    </ul>
+    <div class="callout tip"><span class="lab">Remote essentials</span>The two essential policies for remote employers are <b>cyber insurance</b> and <b>remote workers' compensation</b>.</div>
+  </div>
+
+  <!-- ============ LO 8.3.2 — Property & liability: BOP vs CPP ============ -->
+  <div class="sect"><div class="n">9</div><div><div class="lo">Learning Objective 8.3.2</div><h2>Property &amp; liability solutions — BOP vs CPP</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">📦</span>Two primary packages</h3>
+    <div class="triad">
+      <div class="opt"><div class="t">Business Owner's Policy (BOP)</div><div class="d">Combines <b>property and liability</b> for <b>smaller</b> businesses. Each insurer has its own BOP — a package of coverages, with add-ons to customize for the business.</div></div>
+      <div class="opt"><div class="t">Commercial Package Policy (CPP)</div><div class="d">For <b>larger</b> businesses. A <b>package of monoline forms</b> — business &amp; contents plus general liability — that is <b>less expensive than buying the individual policies</b> separately.</div></div>
+    </div>
+    <div class="callout trap"><span class="lab">Exam trap</span>A CPP's premium is <b>lower</b> than the combined premiums of several separate monoline policies each covering one risk. Both packages are built <b>mostly from monoline coverage</b>.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧱</span>The CPP monoline categories</h3>
+    <p>A CPP assembles individual "monoline" forms. The business-insurance package categories are:</p>
+    <div class="tbl-scroll"><table>
+      <caption>Business insurance package (monoline) categories</caption>
+      <thead><tr><th>Property-side forms</th><th>Liability / other forms</th></tr></thead>
+      <tbody>
+        <tr><td>Commercial property</td><td>Commercial liability</td></tr>
+        <tr><td>Boiler &amp; machinery</td><td>Commercial auto</td></tr>
+        <tr><td>Transportation</td><td>Workers' comp &amp; employer's liability</td></tr>
+        <tr><td>Crime</td><td></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">⚖️</span>Commercial liability insurance — the trio</h3>
+    <div class="triad">
+      <div class="opt"><div class="t">Employer's liability</div><div class="d">Protection from <b>employee lawsuits</b>.</div></div>
+      <div class="opt"><div class="t">Directors' &amp; officers' (D&amp;O) E&amp;O</div><div class="d">Protection from lawsuits against the <b>board of directors and officers</b>.</div></div>
+      <div class="opt"><div class="t">Employment practices (EPLI)</div><div class="d">Lawsuits due to <b>inappropriate employment practices</b>.</div></div>
+    </div>
+    <div class="callout tip"><span class="lab">Also for businesses</span>Professional liability &amp; malpractice, errors &amp; omissions (E&amp;O), commercial umbrella liability, and <b>social insurance</b> — workers' compensation and unemployment compensation.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🩺</span>E&amp;O vs. malpractice — who buys which</h3>
+    <p><b>Errors &amp; omissions (E&amp;O)</b> insurance is generally purchased by professionals positioned to cause their clients <b>financial harm</b> — financial planners, accountants, and attorneys.</p>
+    <div class="callout trap"><span class="lab">Exam trap</span><b>Physicians</b> generally purchase <b>malpractice</b> insurance rather than E&amp;O. (Malpractice addresses bodily harm to patients; E&amp;O addresses financial harm to clients.)</div>
+  </div>
+
+  <!-- ============ Quiz ============ -->
+  <div class="sect"><div class="n">?</div><div><div class="lo">Check yourself</div><h2>Kaplan questions from this module</h2></div></div>
+
+  <details class="quiz">
+    <summary><span class="qlab">Needs by size</span><div>How do the insurance needs of a business differ based on its size?</div><div class="opts">A. Small = basic liability; medium &amp; large = comprehensive packages incl. property, workers' comp, cyber · B. All businesses only need liability · C. Medium-sized need the least · D. Large businesses can ignore insurance</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ A</div><p>As businesses grow, risk exposure rises and coverage must become more comprehensive. Even small businesses need more than liability (property, employee injury); self-insuring is costly and unpredictable for large firms.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Risk assessment</span><div>What steps ensure a thorough risk assessment and proper coverage?</div><div class="opts">A. Focus only on financial risks · B. Identify all risks, prioritize by likelihood/impact, and review current policies for adequacy · C. Assess once every five years · D. Hand it entirely to an agent</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B</div><p>Identify various risk types, evaluate impact, and confirm policies cover them. Financial-only focus ignores employee safety; five-year cycles are too infrequent; and the owner must stay actively involved alongside the agent.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Company / agent / policy</span><div>Sarah owns Flour Power Bakery; John works for Sure Thing Insurance. To pick the optimal company, agent, and policy, Sarah should:</div><div class="opts">A. Choose the cheapest premium · B. Take the first agent to save time · C. Assess her bakery's unique risks, then compare agents by industry expertise · D. Only consider big national insurers</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C</div><p>A thorough risk assessment plus evaluation of agents/companies by industry expertise finds the best fit. Price or convenience alone can leave her underinsured; local agents may offer more personalized coverage.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Funding</span><div>Mike (Muffin Man bakery) wants property, liability, and employee-related coverage without straining cash flow. Best funding strategy?</div><div class="opts">A. Allocate 100% of profits to insurance · B. Hire an accountant to manage budget/cash flow and use tax credits/deductions · C. Insure only high-risk areas · D. Take a home-equity lump sum</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B</div><p>An accountant can offer tax advice, allocate finances efficiently, and set the optimal premium spend. 100% of profits is unsustainable; insuring only high-risk areas leaves gaps; personal savings/credit commingles personal and business finances.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Personal + business</span><div>Marcus (Couch Potato Creations LLC) — how should he protect both personal and business assets?</div><div class="opts">A. Rely solely on homeowner's insurance · B. Use an HSA for all risks · C. Use business funds for personal insurance · D. Buy distinct business and personal policies — business liability, life, disability, and an umbrella</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ D</div><p>Marcus needs separate personal and business coverage. Business funds for personal insurance creates legal/tax issues; an HSA isn't comprehensive (non-medical use = 20% penalty); disability alone doesn't cover business liability, property, or health.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Competing goals</span><div>Nico &amp; Zara own Yeast of Eden Microbrewery. Nico wants a buy-sell; Zara wants family security. Best resolution?</div><div class="opts">A. One first-to-die policy covering both equally · B. Individual policies — Nico's business-focused for the buy-sell, Zara's separate for her family · C. Nico compromises for Zara · D. Skip life insurance; save in a joint account</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B</div><p>Separate policies serve each distinct goal — the buy-sell can be a business expense; Zara funds her personal policy from her earnings. One policy rarely meets both goals, and a joint account lacks life insurance's guaranteed death protection.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">LIRP</span><div>Felix (Net Results, sole proprietor) funds a private retirement plan with permanent life insurance. How does it compare to conventional plans?</div><div class="opts">A. Requires annual tax on cash value · B. Lets him withdraw the entire death benefit tax-free · C. No tax benefits · D. Cash value grows tax-deferred, accessible in retirement, plus a death benefit for heirs</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ D</div><p>Cash value accumulates tax-deferred and can be accessed via withdrawals or tax-free loans, with a death benefit for heirs and no contribution limits. He cannot take the whole death benefit tax-free — it's for beneficiaries — and the cost of insurance must be weighed.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Cyber vs fraud</span><div>Zoom &amp; Gloom Entertainment: a hacker breaches the system (shutdown + refunds), then remote worker Benny embezzles via fake invoices. How are the claims handled?</div><div class="opts">A. Cyber covers both · B. Fraud covers the breach, cyber the embezzlement · C. Cyber covers the breach (recovery + interruption); fraud covers the embezzled funds · D. Both pay equally for both</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C</div><p>Cyber covers digital breaches — data theft, recovery, business interruption. Fraud covers dishonest acts like embezzlement. Cyber doesn't cover employee dishonesty and fraud doesn't cover a data breach, so neither indemnifies both incidents.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">CPP</span><div>Choose the CORRECT statement regarding a commercial package policy (CPP).</div><div class="opts">A. Provides liability insurance only · B. Does not provide comprehensive coverage · C. A BOP is often part of a CPP · D. Features lower premiums than the combined premiums of several single-risk policies</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ D</div><p>A CPP bundles monoline forms at a premium lower than buying each separately. It provides comprehensive (not liability-only) coverage, and the BOP — aimed at smaller businesses — is a distinct package, not part of a CPP.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Professional liability</span><div>All of these professionals are likely to purchase errors &amp; omissions insurance <b>except</b>:</div><div class="opts">A. Financial planners · B. Accountants · C. Physicians · D. Attorneys</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — physicians</div><p>Physicians generally buy <b>malpractice</b> insurance rather than E&amp;O. E&amp;O is for professionals positioned to cause clients <b>financial</b> harm — financial planners, accountants, and attorneys.</p></div>
+  </details>
+
+  <div class="foot">
+    Visual deck rebuilt from the College for Financial Planning® (Kaplan) FP512 Module 8 course slides — <i>Risk Management Solutions for Business Owners</i>.<br>
+    Verify all figures against your current course materials before the exam.
+  </div>
+
+</div>
+
+<button id="tgl" aria-label="Toggle dark mode">🌙 Theme</button>
+<script>
+/* Progress bar */
+var prog=document.getElementById('prog');
+addEventListener('scroll',function(){
+  var h=document.documentElement,b=document.body;
+  var st=h.scrollTop||b.scrollTop, sh=(h.scrollHeight||b.scrollHeight)-h.clientHeight;
+  prog.style.width=(sh>0?(st/sh*100):0)+'%';
+},{passive:true});
+/* Theme — synced with the app via localStorage cfpTheme */
+var root=document.documentElement;
+function applyTheme(t){root.setAttribute('data-theme',t);}
+try{
+  var saved=localStorage.getItem('cfpTheme');
+  if(saved){applyTheme(saved);}
+  else if(matchMedia('(prefers-color-scheme:dark)').matches){applyTheme('dark');}
+}catch(e){}
+document.getElementById('tgl').addEventListener('click',function(){
+  var t=root.getAttribute('data-theme')==='dark'?'light':'dark';
+  applyTheme(t);try{localStorage.setItem('cfpTheme',t);}catch(e){}
+});
+</script>
+
+<!-- deck-chrome-injected -->
+<style>
+#dkHome{position:fixed;left:max(14px,env(safe-area-inset-left));bottom:calc(14px + env(safe-area-inset-bottom));z-index:9999;
+  background:#1f4d3a;color:#fff;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:10px 15px;
+  font:700 13px/1 system-ui,-apple-system,sans-serif;text-decoration:none;box-shadow:0 8px 22px -8px rgba(0,0,0,.55);}
+#dkBack{position:fixed;left:max(14px,env(safe-area-inset-left));bottom:calc(60px + env(safe-area-inset-bottom));z-index:9999;
+  background:#fffdf8;color:#1f4d3a;border:1.5px solid #1f4d3a;border-radius:999px;padding:9px 13px;
+  font:700 13px/1 system-ui,-apple-system,sans-serif;text-decoration:none;box-shadow:0 6px 20px -6px rgba(0,0,0,.5);}
+html[data-theme="dark"] #dkBack{background:#17120e;color:#7fd3ac;border-color:#7fd3ac;}
+</style>
+<a id="dkHome" href="../index.html">🏠 Home</a>
+<script>
+(function(){try{var r=sessionStorage.getItem('cfpReaderReturn');var a=document.createElement('a');a.id='dkBack';
+  if(r&&/^[A-Za-z0-9]+\/\d+$/.test(r)){a.href='../index.html#m/'+r;a.textContent='‹ Module '+r.split('/')[1];}
+  else{a.href='../index.html#modules';a.textContent='‹ Modules';}
+  document.body.appendChild(a);}catch(e){}})();
+</script>
+
+</body>
+</html>

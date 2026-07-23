@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FP512 · Module 6 — Disability, LTC &amp; Veterans Benefits (Visual Deck)</title>
+<style>
+/* ---- Dancing Script title (vendored, offline) ---- */
+@font-face{font-family:'Dancing Script';src:url('../vendor/fonts/dancing-script-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap;}
+
+:root{
+  --canvas:#f4ecdf; --card:#fffdf8; --card2:#faf3e6;
+  --ink:#2c2118; --ink2:#5b4b3a; --muted:#897357;
+  --line:#e6d8c2; --line2:#d8c6aa;
+  --terra:#d0613a; --terra-d:#b34d2a;
+  --green:#1f4d3a; --green-l:#2f7355;
+  --gold:#c58a2e; --sky:#3a6ea5;
+  --trap:#b34d2a; --trap-bg:#fbe9e1; --tip:#2f7355; --tip-bg:#e6f2ea;
+  --key-bg:#efe4d0;
+  --radius:18px; --shadow:0 8px 26px -14px rgba(60,40,20,.55);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--canvas);}
+body{font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;color:var(--ink);-webkit-text-size-adjust:100%;}
+
+/* ---- App-synced dark mode: filter-invert the content wrapper (matches readers) ---- */
+html[data-theme="dark"]{background:#17120e;}
+html[data-theme="dark"] body{background:#17120e;}
+html[data-theme="dark"] #rdrWrap{filter:invert(.92) hue-rotate(180deg);}
+html[data-theme="dark"] #rdrWrap svg,
+html[data-theme="dark"] #rdrWrap img,
+html[data-theme="dark"] #rdrWrap canvas{filter:invert(1) hue-rotate(180deg);}
+
+#rdrWrap{max-width:820px;margin:0 auto;padding:18px 15px 90px;}
+
+/* ---- Header ---- */
+.deck-head{padding:26px 20px 22px;border-radius:var(--radius);color:#fff;
+  background:linear-gradient(135deg,#1f4d3a 0%,#2f7355 55%,#d0613a 160%);
+  box-shadow:var(--shadow);position:relative;overflow:hidden;}
+.deck-head .eyebrow{font:700 12px/1 system-ui;letter-spacing:.16em;text-transform:uppercase;opacity:.85;}
+.deck-head h1{font-family:'Dancing Script',cursive;font-size:clamp(34px,9vw,52px);margin:.15em 0 .1em;line-height:1;}
+.deck-head .sub{font-size:15px;opacity:.95;max-width:46ch;}
+.deck-head .pillrow{margin-top:14px;display:flex;flex-wrap:wrap;gap:7px;}
+.deck-head .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+  border-radius:999px;padding:5px 11px;font:600 12px/1 system-ui;}
+
+/* ---- Section divider ---- */
+.sect{margin:34px 2px 14px;display:flex;align-items:center;gap:12px;}
+.sect .n{flex:none;width:38px;height:38px;border-radius:11px;background:var(--green);color:#fff;
+  font:800 15px/38px system-ui;text-align:center;box-shadow:var(--shadow);}
+.sect h2{font-size:19px;margin:0;color:var(--green);letter-spacing:.01em;}
+.sect .lo{font:600 11px/1 system-ui;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
+
+/* ---- Slide card ---- */
+.slide{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 19px;margin:13px 0;box-shadow:var(--shadow);}
+.slide h3{margin:0 0 8px;font-size:18px;color:var(--ink);display:flex;gap:9px;align-items:baseline;}
+.slide h3 .ic{font-size:19px;}
+.slide p{margin:8px 0;color:var(--ink2);}
+.slide ul{margin:9px 0;padding-left:1.15em;}
+.slide li{margin:5px 0;color:var(--ink2);}
+.lead{font-size:16.5px;color:var(--ink)!important;}
+
+/* ---- Stat tiles ---- */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:11px;margin:14px 0 4px;}
+.tile{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:13px 14px;}
+.tile .v{font:800 24px/1.05 system-ui;color:var(--terra-d);letter-spacing:-.01em;}
+.tile .k{font-size:12.5px;color:var(--ink2);margin-top:5px;}
+
+/* ---- Callouts ---- */
+.callout{border-radius:13px;padding:12px 14px 12px 15px;margin:13px 0;border-left:5px solid;font-size:14.5px;}
+.callout.trap{background:var(--trap-bg);border-color:var(--trap);}
+.callout.tip{background:var(--tip-bg);border-color:var(--tip);}
+.callout b{color:var(--ink);}
+.callout .lab{display:block;font:800 11px/1 system-ui;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;}
+.callout.trap .lab{color:var(--trap);}
+.callout.tip .lab{color:var(--tip);}
+
+/* ---- Tables ---- */
+.tbl-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0 4px;
+  border:1px solid var(--line);border-radius:13px;}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:460px;}
+caption{caption-side:top;text-align:left;font:700 13px/1.4 system-ui;color:var(--muted);padding:2px 4px 9px;}
+th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
+thead th{background:var(--green);color:#fff;font-weight:700;font-size:12.5px;position:sticky;top:0;}
+tbody th{background:var(--card2);color:var(--ink);font-weight:700;white-space:nowrap;}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:none;}
+td.y{color:var(--tip);font-weight:700;} td.n{color:var(--trap);font-weight:700;}
+
+/* ---- Chart figure ---- */
+figure{margin:14px 0 4px;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:14px 14px 10px;}
+figure svg{width:100%;height:auto;display:block;}
+figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center;}
+.legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:9px;font:600 12.5px/1 system-ui;}
+.legend span{display:inline-flex;align-items:center;gap:6px;color:var(--ink2);}
+.legend i{width:14px;height:3px;border-radius:2px;display:inline-block;}
+
+/* ---- Three-up option groups ---- */
+.triad{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;margin:13px 0 4px;}
+.opt{background:var(--card2);border:1px solid var(--line);border-radius:13px;padding:12px 13px;}
+.opt .t{font:800 13.5px/1.2 system-ui;color:var(--green);margin-bottom:5px;}
+.opt .d{font-size:13px;color:var(--ink2);}
+
+/* ---- Worked example ---- */
+.calc{background:#1c2b24;color:#e9f3ee;border-radius:14px;padding:16px 16px 12px;margin:14px 0 4px;}
+.calc h4{margin:0 0 10px;color:#7fd3ac;font-size:14.5px;}
+.calc .step{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-top:1px solid rgba(255,255,255,.12);}
+.calc .step:first-of-type{border-top:none;}
+.calc .sn{flex:none;width:24px;height:24px;border-radius:8px;background:#2f7355;color:#fff;font:800 12px/24px system-ui;text-align:center;}
+.calc .sb{font-size:13.5px;}
+.calc .sb b{color:#fff;}
+.calc code{font:600 12.5px/1.5 ui-monospace,Menlo,monospace;color:#ffd9a8;background:rgba(255,255,255,.07);
+  padding:1px 6px;border-radius:6px;display:inline-block;margin-top:3px;}
+.calc .res{margin-top:11px;background:#d0613a;color:#fff;border-radius:10px;padding:10px 13px;font:700 15px/1.2 system-ui;}
+
+/* ---- Quiz (tap to reveal) ---- */
+.quiz{background:var(--card);border:1.5px solid var(--terra);border-radius:14px;padding:0;margin:13px 0;overflow:hidden;box-shadow:var(--shadow);}
+.quiz>summary{list-style:none;cursor:pointer;padding:15px 16px;font-size:15px;color:var(--ink);position:relative;}
+.quiz>summary::-webkit-details-marker{display:none;}
+.quiz>summary .qlab{display:inline-block;font:800 10.5px/1 system-ui;letter-spacing:.12em;color:var(--terra-d);
+  background:var(--trap-bg);border-radius:6px;padding:4px 7px;margin-bottom:8px;text-transform:uppercase;}
+.quiz>summary .opts{margin-top:9px;font-size:13.5px;color:var(--ink2);}
+.quiz>summary .tap{margin-top:10px;font:700 12.5px/1 system-ui;color:var(--terra);}
+.quiz[open]>summary .tap{display:none;}
+.quiz .ans{padding:0 16px 15px;border-top:1px dashed var(--line2);margin-top:2px;}
+.quiz .ans .correct{font:800 14px/1.4 system-ui;color:var(--tip);margin:12px 0 6px;}
+.quiz .ans p{font-size:13.5px;color:var(--ink2);margin:6px 0 0;}
+
+.foot{margin-top:34px;padding:16px;border-radius:var(--radius);background:var(--card2);border:1px solid var(--line);
+  font-size:12.5px;color:var(--muted);text-align:center;}
+
+/* ---- Floating theme toggle (standalone preview; injection can replace) ---- */
+#tgl{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:9999;
+  background:var(--terra);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:999px;
+  padding:10px 15px;font:700 13px/1 system-ui;cursor:pointer;box-shadow:0 8px 22px -8px rgba(0,0,0,.55);}
+
+/* ---- Sticky progress ---- */
+#prog{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--green),var(--terra));z-index:9999;transition:width .1s;}
+
+@media(min-width:560px){.slide{padding:22px 24px;} #rdrWrap{padding:22px 20px 90px;}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<div id="rdrWrap">
+
+  <header class="deck-head">
+    <div class="eyebrow">FP512 · Risk, Insurance &amp; Benefits</div>
+    <h1>Disability, LTC &amp; Veterans Benefits</h1>
+    <div class="sub">Module 6 at a glance — disability income insurance, long-term care, and Veterans (VA) health benefits: definitions, provisions, riders, taxation, and financing. Built from the College for Financial Planning® (Kaplan) course deck.</div>
+    <div class="pillrow">
+      <span class="pill">🦽 Disability income (DI)</span>
+      <span class="pill">🏥 Long-term care (LTC)</span>
+      <span class="pill">🧾 Benefit taxation</span>
+      <span class="pill">🎖️ Veterans (VA)</span>
+    </div>
+  </header>
+
+  <!-- ============ LO 6.1.1 — DI terms & riders ============ -->
+  <div class="sect"><div class="n">1</div><div><div class="lo">Learning Objective 6.1.1</div><h2>Disability insurance — terms &amp; riders</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🦽</span>What disability income (DI) insurance does</h3>
+    <p class="lead">DI replaces a portion of <b>earned income</b> lost when the insured cannot work due to illness or injury — protecting the client's largest asset, their ability to earn.</p>
+    <div class="tiles">
+      <div class="tile"><div class="v">30 days</div><div class="k">Once benefits become payable, insurers are given as much as 30 days to <b>process</b> DI payments</div></div>
+      <div class="tile"><div class="v">Elim.</div><div class="k">Elimination (waiting) period — from onset of disability until benefits begin</div></div>
+      <div class="tile"><div class="v">Benefit</div><div class="k">Benefit period — how long payments continue (e.g., 5 yrs, to age 65, lifetime)</div></div>
+    </div>
+    <div class="callout tip"><span class="lab">Two dials to set</span>A <b>longer elimination period</b> lowers premium (the insured self-insures the gap); a <b>longer benefit period</b> raises premium (more risk transferred).</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">📖</span>Definitions of disability — liberal to restrictive</h3>
+    <p>How a policy <b>defines "disabled"</b> is the single most important term — it decides whether a claim even qualifies.</p>
+    <figure>
+      <svg viewBox="0 0 460 210" role="img" aria-label="Ladder of disability definitions from own occupation, most liberal, down through modified any occupation, to any occupation, most restrictive">
+        <text x="12" y="16" font-size="10.5" font-weight="700" fill="#2f7355">Most liberal (easiest to claim)</text>
+        <!-- own occ -->
+        <rect x="30" y="24" width="400" height="46" rx="9" fill="#1f4d3a"/>
+        <text x="44" y="44" font-size="13" font-weight="800" fill="#fff">Own occupation</text>
+        <text x="44" y="61" font-size="10.5" fill="#d7e7de">Disabled if unable to do your OWN occupation (even a specialty, e.g., brain surgeon)</text>
+        <!-- modified any occ -->
+        <rect x="30" y="78" width="400" height="46" rx="9" fill="#2f7355"/>
+        <text x="44" y="98" font-size="13" font-weight="800" fill="#fff">Modified any occupation</text>
+        <text x="44" y="115" font-size="10.5" fill="#e2efe8">Disabled only if unable to do ANY occupation you're reasonably fitted for by education, training &amp; experience (often incorporates prior economic status)</text>
+        <!-- any occ -->
+        <rect x="30" y="132" width="400" height="46" rx="9" fill="#d0613a"/>
+        <text x="44" y="152" font-size="13" font-weight="800" fill="#fff">Any occupation</text>
+        <text x="44" y="169" font-size="10.5" fill="#fbe4d9">Disabled only if unable to engage in ANY occupation — most similar to the Social Security definition</text>
+        <text x="12" y="196" font-size="10.5" font-weight="700" fill="#b34d2a">Most restrictive (hardest to claim)</text>
+        <!-- arrow -->
+        <path d="M420,30 L420,172" stroke="#897357" stroke-width="1.5" marker-end="url(#ar)"/>
+        <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#897357"/></marker></defs>
+      </svg>
+      <figcaption>Own-occ pays the most claims (best for the insured); any-occ is the strictest and mirrors Social Security.</figcaption>
+    </figure>
+    <div class="callout trap"><span class="lab">Exam watch</span>The source ties <b>"most similar to Social Security"</b> to the <b>any-occupation</b> (most restrictive) definition. "Modified any-occupation" is the middle tier — reasonably fitted by education, training &amp; experience.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">📉</span>Loss-of-income (loss-of-time) definition</h3>
+    <p>A fourth approach ignores specific job duties and pays based on <b>income actually lost</b>:</p>
+    <ul>
+      <li>Benefit is based on the <b>percentage of income lost</b></li>
+      <li>Compares <b>post-disability</b> income with <b>pre-disability</b> income</li>
+      <li><b>Ignores specific job duties</b> — the dollar drop is what matters</li>
+    </ul>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🔄</span>Policy renewal (continuation) provisions</h3>
+    <p>From strongest guarantee to weakest — a favorite exam ranking.</p>
+    <div class="tbl-scroll"><table>
+      <caption>Disability policy renewal provisions</caption>
+      <thead><tr><th>Provision</th><th>Insurer can cancel?</th><th>Insurer can raise your premium?</th></tr></thead>
+      <tbody>
+        <tr><th>Noncancellable (noncan)</th><td class="y">No</td><td class="y">No — rate is guaranteed too</td></tr>
+        <tr><th>Guaranteed renewable</th><td class="y">No (must renew)</td><td class="n">Yes — by class, not individually</td></tr>
+        <tr><th>Conditionally renewable</th><td class="n">Only if a stated condition is met</td><td class="n">Yes</td></tr>
+        <tr><th>Nonguaranteed continuation</th><td class="n">Yes — insurer's discretion</td><td class="n">Yes</td></tr>
+        <tr><th>No stated provision</th><td class="n">Weakest — no renewal promise</td><td class="n">Yes</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout tip"><span class="lab">Best for the insured</span><b>Noncancellable</b> is the strongest: the insurer can neither cancel nor raise the premium. <b>Guaranteed renewable</b> must renew but may raise rates by class.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧩</span>Other disability policy provisions</h3>
+    <div class="triad">
+      <div class="opt"><div class="t">Residual disability</div><div class="d">Pays a partial benefit proportional to the income actually lost after a return to some work.</div></div>
+      <div class="opt"><div class="t">Partial disability</div><div class="d">A flat/partial benefit when the insured can work but not full duties or full time.</div></div>
+      <div class="opt"><div class="t">Presumptive disability</div><div class="d">Certain losses (e.g., sight, hearing, limbs) are <b>presumed</b> total — full benefits without the usual proof-of-loss.</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🏢</span>Business forms of DI insurance</h3>
+    <div class="triad">
+      <div class="opt"><div class="t">Business overhead expense (BOE)</div><div class="d">Reimburses the <b>fixed overhead</b> of a disabled owner's business — rent, utilities, staff salaries — so the practice survives.</div></div>
+      <div class="opt"><div class="t">Disability buyout</div><div class="d">Funds a buy-sell so a disabled owner's interest can be <b>bought out</b> by co-owners.</div></div>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="v">12–24 mo</div><div class="k">BOE benefit periods are generally limited to about 12 or 24 months</div></div>
+      <div class="tile"><div class="v">White-collar</div><div class="k">BOE is most valuable to small, white-collar businesses with a few owners</div></div>
+      <div class="tile"><div class="v">Rent · utilities · staff</div><div class="k">Covers overhead that exists whether or not the owner can work</div></div>
+    </div>
+  </div>
+
+  <details class="quiz">
+    <summary><span class="qlab">BOE</span><div>Which of these is <b>CORRECT</b> regarding business (disability) overhead expense insurance?</div><div class="opts">A. Most often purchased by large, publicly owned businesses · B. Benefits normally extend 10–15 years · C. Most often purchased to cover office rent, utilities, staff salaries, etc. · D. Usually purchased by blue-collar individuals</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — covers rent, utilities, staff salaries, etc.</div><p>BOE is most valuable to small, white-collar businesses with a few owners. Benefit periods are generally limited to about 12 or 24 months — it covers overhead that keeps running while the owner is disabled, not a decade of payments.</p></div>
+  </details>
+
+  <div class="slide">
+    <h3><span class="ic">➕</span>Disability riders</h3>
+    <div class="triad">
+      <div class="opt"><div class="t">Waiver of premium</div><div class="d">Premiums are waived while the insured is disabled — coverage stays in force.</div></div>
+      <div class="opt"><div class="t">Guaranteed purchase option (GPO)</div><div class="d">Buy additional coverage later without new medical underwriting.</div></div>
+      <div class="opt"><div class="t">Cost-of-living (COLA)</div><div class="d">Increases benefits during a claim to keep pace with inflation.</div></div>
+      <div class="opt"><div class="t">Social insurance supplement (SIS)</div><div class="d">Pays a benefit that is offset/coordinated with Social Security disability payments.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ LO 6.1.2 — Selecting a DI plan ============ -->
+  <div class="sect"><div class="n">2</div><div><div class="lo">Learning Objective 6.1.2</div><h2>Selecting a disability plan · underwriting · taxation</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🎯</span>Disability income exposures</h3>
+    <ul>
+      <li><b>Personal</b> loss of income — <b>partial or full</b></li>
+      <li><b>Short-term</b> vs. <b>long-term</b> exposure</li>
+      <li><b>Retirement &amp; Social Security impact</b> — a long disability also halts retirement saving and future benefit accrual</li>
+    </ul>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">📋</span>Underwriting — occupational classes</h3>
+    <ul>
+      <li>Insurers group applicants into <b>occupational classes</b> by risk</li>
+      <li><b>Limits on income replacement</b> (you can't insure 100% of income — moral hazard)</li>
+      <li>Benefit amount and available term can <b>vary by class</b></li>
+      <li>Earned income, taxation of income, and other income sources are all considered</li>
+    </ul>
+    <div class="callout tip"><span class="lab">Blue- vs. white-collar</span>Moving toward white-collar generally brings a <b>more liberal</b> definition (more own-occ policies), a <b>longer</b> benefit period, and <b>more riders</b> — but benefits track income, they don't fall.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧾</span>Taxation of DI benefits — who paid the premium?</h3>
+    <p>The rule turns entirely on <b>who paid the premium with what dollars</b>.</p>
+    <div class="tbl-scroll"><table>
+      <caption>Income-tax treatment of disability benefits received</caption>
+      <thead><tr><th>Who pays the premium</th><th>With what dollars</th><th>Are benefits taxable to the recipient?</th></tr></thead>
+      <tbody>
+        <tr><th>Employee (individual)</th><td>After-tax dollars</td><td class="y">No — benefits are tax-free</td></tr>
+        <tr><th>Employer</th><td>Employer's dollars</td><td class="n">Yes — benefits are taxable to the employee</td></tr>
+        <tr><th>Employee</th><td>Pretax dollars</td><td class="n">Yes — benefits are taxable to the employee</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">One-line memory hook</span><b>Pay tax on the premium → benefits are tax-free. Skip tax on the premium → benefits are taxed.</b> Employer-paid (or employee pretax) premiums produce taxable benefits.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">⏱️</span>The disability timeline</h3>
+    <figure>
+      <svg viewBox="0 0 460 150" role="img" aria-label="Timeline from date of disability through the elimination period to the start and end of the benefit period">
+        <line x1="30" y1="70" x2="430" y2="70" stroke="#d8c6aa" stroke-width="2"/>
+        <!-- date of disability -->
+        <circle cx="50" cy="70" r="7" fill="#1f4d3a"/>
+        <text x="50" y="52" font-size="10.5" font-weight="700" fill="#1f4d3a" text-anchor="middle">Disability</text>
+        <text x="50" y="94" font-size="9.5" fill="#897357" text-anchor="middle">onset</text>
+        <!-- elimination period bracket -->
+        <rect x="50" y="63" width="150" height="14" rx="4" fill="#d0613a" fill-opacity=".85"/>
+        <text x="125" y="73" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">Elimination period</text>
+        <text x="125" y="108" font-size="9.5" fill="#897357" text-anchor="middle">no benefits paid (self-insure)</text>
+        <!-- benefits begin -->
+        <circle cx="200" cy="70" r="7" fill="#c58a2e"/>
+        <text x="200" y="52" font-size="10.5" font-weight="700" fill="#b8811f" text-anchor="middle">Benefits</text>
+        <text x="200" y="126" font-size="9.5" fill="#897357" text-anchor="middle">insurer has ≤30 days to process</text>
+        <!-- benefit period bracket -->
+        <rect x="200" y="63" width="210" height="14" rx="4" fill="#2f7355" fill-opacity=".9"/>
+        <text x="305" y="73" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">Benefit period (payments continue)</text>
+        <!-- end -->
+        <circle cx="410" cy="70" r="7" fill="#1f4d3a"/>
+        <text x="410" y="52" font-size="10.5" font-weight="700" fill="#1f4d3a" text-anchor="middle">End</text>
+        <text x="410" y="94" font-size="9.5" fill="#897357" text-anchor="middle">e.g., age 65</text>
+      </svg>
+      <figcaption>Onset → elimination period (unpaid) → benefits begin (≤30 days to process) → benefit period → end.</figcaption>
+    </figure>
+  </div>
+
+  <details class="quiz">
+    <summary><span class="qlab">Blue vs. white collar</span><div>All of these are differences between blue-collar and white-collar disability coverage <b>except</b>:</div><div class="opts">A. Definition becomes more liberal toward white-collar · B. Benefit duration becomes longer toward white-collar · C. Benefit payments become lower toward white-collar · D. Availability of riders increases toward white-collar</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — benefits do NOT become lower toward white-collar</div><p>Benefit payments are driven by income, not classification, so they don't fall at white-collar levels. The other three are true: more liberal (own-occ) definitions, longer benefit periods (blue-collar often capped at ~5 years vs. lifetime for white-collar), and more riders available.</p></div>
+  </details>
+
+  <div class="slide">
+    <h3><span class="ic">🧮</span>Worked example — Marcus's group DI benefit</h3>
+    <p>Marcus (single, supporting his widowed mother) needs <b>$4,000/month</b> after-tax. His group coverage pays <b>60% of base salary</b>, premiums <b>paid by the employer</b>. He earns <b>$100,000</b>, of which <b>$10,000 is bonus</b>. Average tax rate <b>20%</b>. What will he live on if permanently disabled?</p>
+    <div class="calc">
+      <h4>Group DI: strip the bonus, apply 60%, then tax it</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Find base salary</b> — the benefit is on base, not bonus.<br><code>$100,000 − $10,000 bonus = $90,000 base</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Apply the 60% group benefit</b> to base salary.<br><code>0.60 × $90,000 = $54,000/yr = $4,500/mo (pre-tax)</code></div></div>
+      <div class="step"><div class="sn">3</div><div class="sb"><b>Tax the benefit</b> — employer paid the premium, so benefits are taxable.<br><code>$4,500 × (1 − 0.20) = $3,600/mo after tax</code></div></div>
+      <div class="res">Marcus lives on ≈ $3,600/mo — below his $4,000 need (answer D).</div>
+    </div>
+    <div class="callout trap"><span class="lab">Why the other answers fail</span>They forget to <b>subtract the bonus</b>, forget to <b>tax the employer-paid benefit</b>, or both. At $3,600 he can't meet current needs, can't save for retirement, and inflation widens the gap.</div>
+  </div>
+
+  <!-- ============ LO 6.2.1 — LTC types, terms, riders ============ -->
+  <div class="sect"><div class="n">3</div><div><div class="lo">Learning Objective 6.2.1</div><h2>Long-term care — types, terms &amp; riders</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🏥</span>Levels of care</h3>
+    <p>From most intensive (medical) to least — the exam loves ranking these.</p>
+    <div class="tbl-scroll"><table>
+      <caption>Levels of health care for long-term care</caption>
+      <thead><tr><th>Level</th><th>What it is</th></tr></thead>
+      <tbody>
+        <tr><th>Skilled care</th><td><b>Highest level.</b> 24-hour registered nurse available, under a doctor's supervision.</td></tr>
+        <tr><th>Intermediate care</th><td>Less intensive nursing or rehabilitative care.</td></tr>
+        <tr><th>Custodial care</th><td>Nonmedical assistance with daily activities (bathing, eating, etc.).</td></tr>
+        <tr><th>Home care</th><td>Care in the patient's own home — the first level that is <b>not institutional</b>.</td></tr>
+        <tr><th>Respite care</th><td>A temporary replacement caregiver so the primary caregiver gets a break.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🔑</span>Activities of Daily Living (ADLs) — the benefit trigger</h3>
+    <p>LTC benefits typically begin when the insured cannot perform a set number of <b>ADLs</b> — or has a cognitive impairment.</p>
+    <div class="triad">
+      <div class="opt"><div class="t">The six ADLs</div><div class="d"><b>Bathing · Dressing · Toileting · Transferring · Eating · Continence</b></div></div>
+      <div class="opt"><div class="t">Cognitive impairment</div><div class="d">Severe cognitive loss (e.g., dementia) is an alternate trigger, independent of ADLs.</div></div>
+      <div class="opt"><div class="t">Assistance standard</div><div class="d">Care must be necessary for the health and maintenance of the individual.</div></div>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="v">2 of 6</div><div class="k">Loss of 2 of the 6 ADLs (or cognitive impairment) triggers a HIPAA-qualified LTC benefit</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">📌</span>Important LTC policy provisions</h3>
+    <ul>
+      <li><b>Level of care required</b> for initial benefit payments to begin</li>
+      <li><b>Elimination period</b> — waiting period from eligibility until payments begin</li>
+      <li><b>Benefit period</b> and benefit amounts (daily benefit)</li>
+      <li><b>Renewability</b> and time of underwriting; <b>waiver of premium</b></li>
+      <li><b>Preexisting-condition</b> waiting period; nursing-facility &amp; home-health qualification rules</li>
+      <li><b>Inflation rider</b> availability</li>
+    </ul>
+    <div class="callout trap"><span class="lab">Avoid this policy</span>A <b>prior-hospitalization requirement</b> (benefits only after a hospital stay) is a red flag — such policies are to be <b>avoided</b>.</div>
+    <div class="tiles">
+      <div class="tile"><div class="v">$50–$500</div><div class="k">Daily benefit amounts range this wide — most fall between $50 and $150</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">✅</span>HIPAA-qualified LTC insurance</h3>
+    <p>A <b>tax-qualified</b> LTC contract meets federal standards, so benefits get favorable tax treatment.</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Benefit trigger</div><div class="d">Unable to do <b>2 of 6 ADLs</b> for ≥90 days, <b>or</b> cognitive impairment.</div></div>
+      <div class="opt"><div class="t">Conforms to NAIC</div><div class="d">Meets the <b>NAIC LTCI model regulation</b>; is <b>guaranteed renewable</b>.</div></div>
+      <div class="opt"><div class="t">Nonforfeiture</div><div class="d">Offers guaranteed <b>nonforfeiture</b> benefits.</div></div>
+    </div>
+    <div class="callout tip"><span class="lab">Per-diem taxation</span>Benefits from a HIPAA-qualified <b>per-diem (indemnity)</b> policy are received <b>income-tax-free up to the IRS daily limit</b>; amounts above that limit are tax-free only to the extent of actual qualified LTC costs.</div>
+  </div>
+
+  <details class="quiz">
+    <summary><span class="qlab">Levels of care</span><div>Which of these is considered the <b>highest</b> level of long-term care?</div><div class="opts">A. Custodial care · B. Respite care · C. Skilled nursing care · D. Home care</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — Skilled nursing care</div><p>Skilled care means 24-hour availability of a registered nurse under a doctor's supervision. Custodial care is nonmedical (bathing, eating), respite care simply relieves the caregiver, and home care is the least intense — none is under a physician like skilled care.</p></div>
+  </details>
+
+  <!-- ============ LO 6.2.2 — LTC financing ============ -->
+  <div class="sect"><div class="n">4</div><div><div class="lo">Learning Objective 6.2.2</div><h2>Financing long-term care</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🏛️</span>Medicare vs. Medicaid for LTC</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Government programs and long-term care</caption>
+      <thead><tr><th></th><th>Medicare</th><th>Medicaid</th></tr></thead>
+      <tbody>
+        <tr><th>Role in LTC</th><td>Only <b>limited</b> LTC benefits</td><td>LTC for the <b>impoverished</b></td></tr>
+        <tr><th>Key requirement</th><td>Care must be <b>skilled</b> and the patient's condition <b>expected to improve</b></td><td>Meet strict income/asset limits; <b>rules vary by state</b></td></tr>
+        <tr><th>Won't cover</th><td class="n">Custodial-only care, or when the patient isn't expected to improve</td><td class="n">Those with assets above the state limit (until spent down)</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">Medicare trap</span>Medicare will <b>not</b> cover LTC if the patient's health is <b>not expected to improve</b> — it is not a long-term custodial-care program.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🤝</span>Partnership plans &amp; the financing options</h3>
+    <p><b>State-approved Partnership plans</b> let the pool of LTC coverage purchased be <b>excluded from Medicaid spend-down</b> requirements — you can protect assets equal to the benefits used and still qualify for Medicaid.</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Self-pay</div><div class="d">Retain the risk; reverse mortgage or assets fund care.</div></div>
+      <div class="opt"><div class="t">Traditional / joint LTC policy</div><div class="d">Standalone LTC insurance (individual or shared).</div></div>
+      <div class="opt"><div class="t">Life or annuity + LTC rider</div><div class="d">A combo (hybrid) product with an LTC acceleration rider.</div></div>
+      <div class="opt"><div class="t">Spend down to Medicaid</div><div class="d">Deplete assets to qualify for Medicaid coverage.</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">⚖️</span>Factors influencing how much LTC to buy</h3>
+    <ul>
+      <li>Cost of LTC in the client's area; desired goals of the individual</li>
+      <li>Financial security of a healthy spouse; family support available</li>
+      <li>Available assets vs. Medicaid planning; premium cost</li>
+      <li>Daily benefit amount offered by the policy; marital status</li>
+    </ul>
+    <div class="callout tip"><span class="lab">Not a sizing factor</span><b>HIPAA qualification</b> affects a policy's <b>tax treatment</b>, not <b>how much</b> coverage to buy — don't confuse the two.</div>
+  </div>
+
+  <details class="quiz">
+    <summary><span class="qlab">Medicare &amp; LTC</span><div>Which stipulation must be met for <b>Medicare</b> to cover the cost of long-term care?</div><div class="opts">A. Care needed full- or part-time · B. Patient's condition must be expected to improve · C. Need for care can be determined by the family · D. Care can be skilled or unskilled</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — the condition must be expected to improve</div><p>Medicare will not cover LTC costs if the patient's health is not expected to improve. It covers only skilled care with an improving prognosis — not open-ended custodial care.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Sizing LTC</span><div>When determining <b>how much</b> LTC insurance to buy, all of these should be considered <b>except</b>:</div><div class="opts">A. Cost of LTC in the client's area · B. Marital status of the client · C. HIPAA qualification · D. Daily benefit amount offered by the policy</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — HIPAA qualification</div><p>Local cost, marital status (household expenses differ once one spouse enters a facility), and the daily benefit ($50–$500, most $50–$150) all drive the amount. HIPAA qualification governs tax treatment, not the amount of coverage.</p></div>
+  </details>
+
+  <!-- ============ LO 6.3.1 — Veterans benefits ============ -->
+  <div class="sect"><div class="n">5</div><div><div class="lo">Learning Objective 6.3.1</div><h2>Veterans benefits (VA) health provisions</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🎖️</span>The Veterans Benefits Administration (VBA)</h3>
+    <p>The <b>VBA</b> is an agency of the U.S. Department of Veterans Affairs. Its primary function is to administer benefit programs for <b>veterans, their dependents, and survivors</b>.</p>
+    <p><b>Major VA benefits include:</b></p>
+    <ul>
+      <li>Compensation and pensions; survivor benefits</li>
+      <li>Rehabilitation and employment service; education &amp; career assistance</li>
+      <li>Home loan guaranties; life insurance</li>
+      <li>Medical benefits (health, LTC, vision, dental)</li>
+    </ul>
+    <div class="callout trap"><span class="lab">Exam trap</span>The VBA does <b>not</b> provide general <b>financial and accounting assistance</b> — that's outside its benefit programs.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🩺</span>How VA coverage is determined</h3>
+    <p>Coverage primarily relies on:</p>
+    <ul>
+      <li><b>Priority group</b> — assigned by <b>severity of need</b></li>
+      <li>The advice of the VA primary care provider</li>
+      <li>Medical standards for treating the veteran's current condition</li>
+    </ul>
+    <div class="callout tip"><span class="lab">ACA note</span>VA health care is protected by the Affordable Care Act as qualifying <b>"minimum essential health coverage."</b></div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">📍</span>Where care is delivered</h3>
+    <div class="tiles">
+      <div class="tile"><div class="v">9M+</div><div class="k">Covered veterans</div></div>
+      <div class="tile"><div class="v">1,200+</div><div class="k">VA locations nationwide</div></div>
+      <div class="tile"><div class="v">1 site</div><div class="k">Care is normally provided at one VA location of choice</div></div>
+    </div>
+    <p><b>Care settings include:</b> VA Medical Centers · VA Community-Based Outpatient Clinics (CBOCs) · VA Centers · VA Community Living Centers and/or Assisted Living · the veteran's own home.</p>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">📝</span>VA eligibility</h3>
+    <p><b>General requirements:</b></p>
+    <ul>
+      <li>Military, naval, or air service; <b>not</b> a dishonorable discharge</li>
+      <li><b>24 months</b> of continuous service — or the full period for which active duty was required</li>
+    </ul>
+    <p><b>Minimum-duty requirements are waived if:</b></p>
+    <ul>
+      <li>Discharged for a disability caused (or worsened) by active-duty service</li>
+      <li>Discharged for "early out" or hardship, <b>or</b></li>
+      <li>Served prior to <b>September 7, 1980</b></li>
+    </ul>
+    <p style="font-size:12.5px;color:var(--muted);margin-top:6px;">Note: current/former Reserves or National Guard may qualify.</p>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🔗</span>Coordination &amp; cost</h3>
+    <p>VA health coverage can be <b>used alongside other coverage</b> — private insurance, Medicare/Medicaid, and TRICARE. What pays depends on the service:</p>
+    <div class="tbl-scroll"><table>
+      <caption>Which coverage responds</caption>
+      <thead><tr><th>Service connection</th><th>Who covers it</th></tr></thead>
+      <tbody>
+        <tr><th>Connected to prior/current active duty</th><td class="y">VA benefits</td></tr>
+        <tr><th>Not connected to active duty</th><td>Other coverage (private, Medicare/Medicaid, TRICARE)</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>Veterans <b>may drop</b> outside coverage — but doing so carries risks</li>
+      <li>Veterans may use an <b>HSA or HRA</b> to pay for VA/non-VA services</li>
+    </ul>
+  </div>
+
+  <details class="quiz">
+    <summary><span class="qlab">VA benefits</span><div>Which of the following is <b>not</b> a service typically provided by the VBA?</div><div class="opts">A. Compensation and pensions · B. Home loan guaranties · C. Financial and accounting assistance · D. Educational and career assistance</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — Financial and accounting assistance</div><p>The VBA administers compensation/pensions, survivor benefits, rehabilitation &amp; employment, education/career assistance, home loan guaranties, life insurance, and medical benefits — but not general financial and accounting assistance.</p></div>
+  </details>
+
+  <div class="foot">
+    Visual deck rebuilt from the College for Financial Planning® (Kaplan) FP512 Module 6 course slides — Disability, Long-Term Care, and Veterans Benefits Insurance.<br>
+    Verify all figures against your current course materials before the exam.
+  </div>
+
+</div>
+
+<button id="tgl" aria-label="Toggle dark mode">🌙 Theme</button>
+<script>
+/* Progress bar */
+var prog=document.getElementById('prog');
+addEventListener('scroll',function(){
+  var h=document.documentElement,b=document.body;
+  var st=h.scrollTop||b.scrollTop, sh=(h.scrollHeight||b.scrollHeight)-h.clientHeight;
+  prog.style.width=(sh>0?(st/sh*100):0)+'%';
+},{passive:true});
+/* Theme — synced with the app via localStorage cfpTheme */
+var root=document.documentElement;
+function applyTheme(t){root.setAttribute('data-theme',t);}
+try{
+  var saved=localStorage.getItem('cfpTheme');
+  if(saved){applyTheme(saved);}
+  else if(matchMedia('(prefers-color-scheme:dark)').matches){applyTheme('dark');}
+}catch(e){}
+document.getElementById('tgl').addEventListener('click',function(){
+  var t=root.getAttribute('data-theme')==='dark'?'light':'dark';
+  applyTheme(t);try{localStorage.setItem('cfpTheme',t);}catch(e){}
+});
+</script>
+
+<!-- deck-chrome-injected -->
+<style>
+#dkHome{position:fixed;left:max(14px,env(safe-area-inset-left));bottom:calc(14px + env(safe-area-inset-bottom));z-index:9999;
+  background:#1f4d3a;color:#fff;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:10px 15px;
+  font:700 13px/1 system-ui,-apple-system,sans-serif;text-decoration:none;box-shadow:0 8px 22px -8px rgba(0,0,0,.55);}
+#dkBack{position:fixed;left:max(14px,env(safe-area-inset-left));bottom:calc(60px + env(safe-area-inset-bottom));z-index:9999;
+  background:#fffdf8;color:#1f4d3a;border:1.5px solid #1f4d3a;border-radius:999px;padding:9px 13px;
+  font:700 13px/1 system-ui,-apple-system,sans-serif;text-decoration:none;box-shadow:0 6px 20px -6px rgba(0,0,0,.5);}
+html[data-theme="dark"] #dkBack{background:#17120e;color:#7fd3ac;border-color:#7fd3ac;}
+</style>
+<a id="dkHome" href="../index.html">🏠 Home</a>
+<script>
+(function(){try{var r=sessionStorage.getItem('cfpReaderReturn');var a=document.createElement('a');a.id='dkBack';
+  if(r&&/^[A-Za-z0-9]+\/\d+$/.test(r)){a.href='../index.html#m/'+r;a.textContent='‹ Module '+r.split('/')[1];}
+  else{a.href='../index.html#modules';a.textContent='‹ Modules';}
+  document.body.appendChild(a);}catch(e){}})();
+</script>
+
+</body>
+</html>

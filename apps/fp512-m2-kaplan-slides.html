@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FP512 · Module 2 — Property &amp; Casualty Insurance (Visual Deck)</title>
+<style>
+/* ---- Dancing Script title (vendored, offline) ---- */
+@font-face{font-family:'Dancing Script';src:url('../vendor/fonts/dancing-script-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap;}
+
+:root{
+  --canvas:#f4ecdf; --card:#fffdf8; --card2:#faf3e6;
+  --ink:#2c2118; --ink2:#5b4b3a; --muted:#897357;
+  --line:#e6d8c2; --line2:#d8c6aa;
+  --terra:#d0613a; --terra-d:#b34d2a;
+  --green:#1f4d3a; --green-l:#2f7355;
+  --gold:#c58a2e; --sky:#3a6ea5;
+  --trap:#b34d2a; --trap-bg:#fbe9e1; --tip:#2f7355; --tip-bg:#e6f2ea;
+  --key-bg:#efe4d0;
+  --radius:18px; --shadow:0 8px 26px -14px rgba(60,40,20,.55);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--canvas);}
+body{font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;color:var(--ink);-webkit-text-size-adjust:100%;}
+
+/* ---- App-synced dark mode: filter-invert the content wrapper (matches readers) ---- */
+html[data-theme="dark"]{background:#17120e;}
+html[data-theme="dark"] body{background:#17120e;}
+html[data-theme="dark"] #rdrWrap{filter:invert(.92) hue-rotate(180deg);}
+html[data-theme="dark"] #rdrWrap svg,
+html[data-theme="dark"] #rdrWrap img,
+html[data-theme="dark"] #rdrWrap canvas{filter:invert(1) hue-rotate(180deg);}
+
+#rdrWrap{max-width:820px;margin:0 auto;padding:18px 15px 90px;}
+
+/* ---- Header ---- */
+.deck-head{padding:26px 20px 22px;border-radius:var(--radius);color:#fff;
+  background:linear-gradient(135deg,#1f4d3a 0%,#2f7355 55%,#d0613a 160%);
+  box-shadow:var(--shadow);position:relative;overflow:hidden;}
+.deck-head .eyebrow{font:700 12px/1 system-ui;letter-spacing:.16em;text-transform:uppercase;opacity:.85;}
+.deck-head h1{font-family:'Dancing Script',cursive;font-size:clamp(34px,9vw,52px);margin:.15em 0 .1em;line-height:1;}
+.deck-head .sub{font-size:15px;opacity:.95;max-width:46ch;}
+.deck-head .pillrow{margin-top:14px;display:flex;flex-wrap:wrap;gap:7px;}
+.deck-head .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+  border-radius:999px;padding:5px 11px;font:600 12px/1 system-ui;}
+
+/* ---- Section divider ---- */
+.sect{margin:34px 2px 14px;display:flex;align-items:center;gap:12px;}
+.sect .n{flex:none;width:38px;height:38px;border-radius:11px;background:var(--green);color:#fff;
+  font:800 15px/38px system-ui;text-align:center;box-shadow:var(--shadow);}
+.sect h2{font-size:19px;margin:0;color:var(--green);letter-spacing:.01em;}
+.sect .lo{font:600 11px/1 system-ui;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
+
+/* ---- Slide card ---- */
+.slide{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 19px;margin:13px 0;box-shadow:var(--shadow);}
+.slide h3{margin:0 0 8px;font-size:18px;color:var(--ink);display:flex;gap:9px;align-items:baseline;}
+.slide h3 .ic{font-size:19px;}
+.slide p{margin:8px 0;color:var(--ink2);}
+.slide ul{margin:9px 0;padding-left:1.15em;}
+.slide li{margin:5px 0;color:var(--ink2);}
+.lead{font-size:16.5px;color:var(--ink)!important;}
+
+/* ---- Stat tiles ---- */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:11px;margin:14px 0 4px;}
+.tile{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:13px 14px;}
+.tile .v{font:800 24px/1.05 system-ui;color:var(--terra-d);letter-spacing:-.01em;}
+.tile .k{font-size:12.5px;color:var(--ink2);margin-top:5px;}
+
+/* ---- Callouts ---- */
+.callout{border-radius:13px;padding:12px 14px 12px 15px;margin:13px 0;border-left:5px solid;font-size:14.5px;}
+.callout.trap{background:var(--trap-bg);border-color:var(--trap);}
+.callout.tip{background:var(--tip-bg);border-color:var(--tip);}
+.callout b{color:var(--ink);}
+.callout .lab{display:block;font:800 11px/1 system-ui;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;}
+.callout.trap .lab{color:var(--trap);}
+.callout.tip .lab{color:var(--tip);}
+
+/* ---- Tables ---- */
+.tbl-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0 4px;
+  border:1px solid var(--line);border-radius:13px;}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:460px;}
+caption{caption-side:top;text-align:left;font:700 13px/1.4 system-ui;color:var(--muted);padding:2px 4px 9px;}
+th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
+thead th{background:var(--green);color:#fff;font-weight:700;font-size:12.5px;position:sticky;top:0;}
+tbody th{background:var(--card2);color:var(--ink);font-weight:700;white-space:nowrap;}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:none;}
+td.y{color:var(--tip);font-weight:700;} td.n{color:var(--trap);font-weight:700;}
+
+/* ---- Chart figure ---- */
+figure{margin:14px 0 4px;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:14px 14px 10px;}
+figure svg{width:100%;height:auto;display:block;}
+figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center;}
+.legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:9px;font:600 12.5px/1 system-ui;}
+.legend span{display:inline-flex;align-items:center;gap:6px;color:var(--ink2);}
+.legend i{width:14px;height:3px;border-radius:2px;display:inline-block;}
+
+/* ---- Three-up option groups ---- */
+.triad{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;margin:13px 0 4px;}
+.opt{background:var(--card2);border:1px solid var(--line);border-radius:13px;padding:12px 13px;}
+.opt .t{font:800 13.5px/1.2 system-ui;color:var(--green);margin-bottom:5px;}
+.opt .d{font-size:13px;color:var(--ink2);}
+
+/* ---- Worked example ---- */
+.calc{background:#1c2b24;color:#e9f3ee;border-radius:14px;padding:16px 16px 12px;margin:14px 0 4px;}
+.calc h4{margin:0 0 10px;color:#7fd3ac;font-size:14.5px;}
+.calc .step{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-top:1px solid rgba(255,255,255,.12);}
+.calc .step:first-of-type{border-top:none;}
+.calc .sn{flex:none;width:24px;height:24px;border-radius:8px;background:#2f7355;color:#fff;font:800 12px/24px system-ui;text-align:center;}
+.calc .sb{font-size:13.5px;}
+.calc .sb b{color:#fff;}
+.calc code{font:600 12.5px/1.5 ui-monospace,Menlo,monospace;color:#ffd9a8;background:rgba(255,255,255,.07);
+  padding:1px 6px;border-radius:6px;display:inline-block;margin-top:3px;}
+.calc .res{margin-top:11px;background:#d0613a;color:#fff;border-radius:10px;padding:10px 13px;font:700 15px/1.2 system-ui;}
+
+/* ---- Quiz (tap to reveal) ---- */
+.quiz{background:var(--card);border:1.5px solid var(--terra);border-radius:14px;padding:0;margin:13px 0;overflow:hidden;box-shadow:var(--shadow);}
+.quiz>summary{list-style:none;cursor:pointer;padding:15px 16px;font-size:15px;color:var(--ink);position:relative;}
+.quiz>summary::-webkit-details-marker{display:none;}
+.quiz>summary .qlab{display:inline-block;font:800 10.5px/1 system-ui;letter-spacing:.12em;color:var(--terra-d);
+  background:var(--trap-bg);border-radius:6px;padding:4px 7px;margin-bottom:8px;text-transform:uppercase;}
+.quiz>summary .opts{margin-top:9px;font-size:13.5px;color:var(--ink2);}
+.quiz>summary .tap{margin-top:10px;font:700 12.5px/1 system-ui;color:var(--terra);}
+.quiz[open]>summary .tap{display:none;}
+.quiz .ans{padding:0 16px 15px;border-top:1px dashed var(--line2);margin-top:2px;}
+.quiz .ans .correct{font:800 14px/1.4 system-ui;color:var(--tip);margin:12px 0 6px;}
+.quiz .ans p{font-size:13.5px;color:var(--ink2);margin:6px 0 0;}
+
+.foot{margin-top:34px;padding:16px;border-radius:var(--radius);background:var(--card2);border:1px solid var(--line);
+  font-size:12.5px;color:var(--muted);text-align:center;}
+
+/* ---- Floating theme toggle (standalone preview; injection can replace) ---- */
+#tgl{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:9999;
+  background:var(--terra);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:999px;
+  padding:10px 15px;font:700 13px/1 system-ui;cursor:pointer;box-shadow:0 8px 22px -8px rgba(0,0,0,.55);}
+
+/* ---- Sticky progress ---- */
+#prog{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--green),var(--terra));z-index:9999;transition:width .1s;}
+
+@media(min-width:560px){.slide{padding:22px 24px;} #rdrWrap{padding:22px 20px 90px;}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<div id="rdrWrap">
+
+  <header class="deck-head">
+    <div class="eyebrow">FP512 · Risk, Insurance &amp; Benefits</div>
+    <h1>Property &amp; Casualty</h1>
+    <div class="sub">Module 2 at a glance — homeowners forms &amp; perils, coinsurance, personal liability &amp; umbrella, and the Personal Auto Policy. Built from the College for Financial Planning® (Kaplan) course deck.</div>
+    <div class="pillrow">
+      <span class="pill">🏠 HO-2 · 3 · 4 · 5 · 6 · 8</span>
+      <span class="pill">🧮 Coinsurance penalty</span>
+      <span class="pill">⚖️ Liability &amp; umbrella</span>
+      <span class="pill">🚗 PAP Parts A–F</span>
+    </div>
+  </header>
+
+  <!-- ============ LO 2.1.1 — HO forms & features ============ -->
+  <div class="sect"><div class="n">1</div><div><div class="lo">Learning Objective 2.1.1</div><h2>Homeowners forms, perils &amp; other property coverage</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🏠</span>The standard homeowners policy — two sections</h3>
+    <p class="lead">Every HO policy has two primary sections:</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Section I — Property</div><div class="d">Protects the dwelling, structures, and belongings (Coverages A–D).</div></div>
+      <div class="opt"><div class="t">Section II — Liability</div><div class="d">Liability for acts occurring on the homeowner's property (Coverages E–F).</div></div>
+    </div>
+    <div class="tbl-scroll"><table>
+      <caption>Homeowners coverages — Sections I &amp; II</caption>
+      <thead><tr><th>Section</th><th>Coverage</th><th>What it protects</th></tr></thead>
+      <tbody>
+        <tr><th rowspan="4">I — Property</th><td><b>A</b> — Dwelling</td><td>The house itself</td></tr>
+        <tr><td><b>B</b> — Other Structures</td><td>Detached garage, fence, shed</td></tr>
+        <tr><td><b>C</b> — Personal Property</td><td>Belongings / contents</td></tr>
+        <tr><td><b>D</b> — Loss of Use</td><td>Additional living expenses while displaced</td></tr>
+        <tr><th rowspan="2">II — Liability</th><td><b>E</b> — Personal Liability</td><td>Comprehensive liability for others' injury/damage</td></tr>
+        <tr><td><b>F</b> — Medical Payments to Others</td><td>Med pay regardless of fault</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🔥</span>Perils — Basic vs. Broad vs. Open</h3>
+    <p>Forms differ by <b>which perils</b> they insure against. Basic is a named-peril list; Broad adds six more; Open peril (all risks) covers anything not specifically excluded.</p>
+    <div class="tbl-scroll"><table>
+      <caption>Perils insured against — by coverage tier</caption>
+      <thead><tr><th>Basic (named perils)</th><th>Broad (adds)</th><th>Open peril (all risks)</th><th>HO-15 rider</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Fire · Lightning · Windstorm · Hail · Explosion · Riot · Civil commotion · Vehicles · Aircraft · Smoke · Vandalism &amp; malicious mischief · Theft · Volcanic eruption</td>
+          <td>Falling object · Weight of ice, snow, or sleet · Collapse of buildings · Accidental discharge/overflow of water or steam · Explosion of steam/hot-water system · Freezing of plumbing · Damage from artificially generated electrical currents</td>
+          <td>Any peril <b>not specifically excluded</b> is covered</td>
+          <td>Added to <b>HO-3</b> → open-peril coverage for <b>personal property</b>; eliminates the earth-movement exclusion for personal property located away from premises</td>
+        </tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">Exam trap</span>"Open peril" (a.k.a. all-risk) does not mean everything is covered — it means everything <b>except the named exclusions</b>. Read the exclusions list.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🚫</span>Excluded perils</h3>
+    <p>Perils excluded from the standard homeowners policy:</p>
+    <div class="tiles">
+      <div class="tile"><div class="v">🌊</div><div class="k">Floods</div></div>
+      <div class="tile"><div class="v">🌎</div><div class="k">Earthquakes</div></div>
+      <div class="tile"><div class="v">⚔️</div><div class="k">War / nuclear hazard</div></div>
+      <div class="tile"><div class="v">🔌</div><div class="k">Power failure</div></div>
+      <div class="tile"><div class="v">🧹</div><div class="k">Neglect</div></div>
+      <div class="tile"><div class="v">🎯</div><div class="k">Intentional loss</div></div>
+    </div>
+    <div class="callout tip"><span class="lab">Cover the gaps separately</span><b>Flood</b> and <b>earthquake</b> are the two big excluded catastrophes — each requires its own separate policy or endorsement.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">📋</span>The HO forms coverage matrix</h3>
+    <p>The most tested table in the module. Note the <b>Coverage D (Loss of Use)</b> percentage differs by form — some are a % of Coverage A (dwelling), some a % of Coverage C (personal property).</p>
+    <div class="tbl-scroll"><table>
+      <caption>HO forms — coverage level for A / B / C / D</caption>
+      <thead><tr><th>Form</th><th>A — Dwelling</th><th>B — Other Structures</th><th>C — Personal Property</th><th>D — Loss of Use</th></tr></thead>
+      <tbody>
+        <tr><th>HO-2 <span style="font-weight:400;color:var(--muted)">Broad</span></th><td>Broad</td><td>Broad</td><td>Broad</td><td>20% of A</td></tr>
+        <tr><th>HO-3 <span style="font-weight:400;color:var(--muted)">Special</span></th><td class="y">Open peril</td><td class="y">Open peril</td><td>Broad</td><td>20% of A</td></tr>
+        <tr><th>HO-4 <span style="font-weight:400;color:var(--muted)">Renters</span></th><td>—</td><td>—</td><td>Broad</td><td>20% of C</td></tr>
+        <tr><th>HO-5 <span style="font-weight:400;color:var(--muted)">Comprehensive</span></th><td class="y">Open peril</td><td class="y">Open peril</td><td class="y">Open peril</td><td>30% of A</td></tr>
+        <tr><th>HO-6 <span style="font-weight:400;color:var(--muted)">Condo</span></th><td>Minimal</td><td>Included in A</td><td>Broad</td><td>40% of C</td></tr>
+        <tr><th>HO-8 <span style="font-weight:400;color:var(--muted)">Modified / historic</span></th><td class="n">Basic (ACV)</td><td class="n">Basic (ACV)</td><td>Basic</td><td>10% of A</td></tr>
+        <tr><th>HO-15 <span style="font-weight:400;color:var(--muted)">rider</span></th><td>—</td><td>—</td><td class="y">Open peril</td><td>—</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">Watch the Loss-of-Use base</span>HO-2/3/5/8 base Coverage D on <b>Coverage A</b> (20/20/30/10%); HO-4 (renters) &amp; HO-6 (condo) base it on <b>Coverage C</b> (20% / 40%).</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🏆</span>Which form is highest? — the coverage ladder</h3>
+    <p><b>HO-5</b> provides the highest level: open-peril coverage on <b>both buildings and personal property</b>. HO-3 gives open peril on buildings but only broad on personal property; the <b>HO-15 rider</b> (usually added to HO-3) upgrades personal property to open peril.</p>
+    <figure>
+      <svg viewBox="0 0 460 210" role="img" aria-label="Coverage ladder from HO-8 basic up to HO-5 open peril on buildings and personal property">
+        <!-- ladder bars -->
+        <rect x="40" y="164" width="120" height="30" rx="6" fill="#d0613a" fill-opacity=".35"/>
+        <text x="100" y="184" font-size="11" font-weight="700" fill="#b34d2a" text-anchor="middle">HO-8 · Basic/ACV</text>
+        <rect x="40" y="128" width="200" height="30" rx="6" fill="#c58a2e" fill-opacity=".35"/>
+        <text x="140" y="148" font-size="11" font-weight="700" fill="#8a5f1e" text-anchor="middle">HO-2/4/6 · Broad</text>
+        <rect x="40" y="92" width="300" height="30" rx="6" fill="#2f7355" fill-opacity=".35"/>
+        <text x="190" y="112" font-size="11" font-weight="700" fill="#1f4d3a" text-anchor="middle">HO-3 · Open bldg + Broad contents</text>
+        <rect x="40" y="56" width="380" height="30" rx="6" fill="#1f4d3a"/>
+        <text x="230" y="76" font-size="11.5" font-weight="800" fill="#fff" text-anchor="middle">HO-5 · Open peril — buildings AND contents</text>
+        <!-- arrow -->
+        <line x1="24" y1="196" x2="24" y2="52" stroke="#5b4b3a" stroke-width="2"/>
+        <path d="M24,48 l-4,8 l8,0 Z" fill="#5b4b3a"/>
+        <text x="12" y="130" font-size="10" fill="#897357" transform="rotate(-90 12 130)">more coverage →</text>
+      </svg>
+      <figcaption>The higher the rung, the broader the perils covered — HO-5 sits at the top with open peril on everything.</figcaption>
+    </figure>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">💎</span>Other personal property insurance</h3>
+    <p>Coverage for items excluded or limited on the homeowners policy:</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Inland marine / personal property floater</div><div class="d">Open-peril-level coverage for high-value articles: <b>jewelry, furs, silverware, art</b>. Covers items excluded or limited on the HO policy.</div></div>
+      <div class="opt"><div class="t">Flood insurance</div><div class="d">Separate policy — flood is excluded on the HO form.</div></div>
+      <div class="opt"><div class="t">Earthquake insurance</div><div class="d">Separate policy or endorsement — earthquake is excluded on the HO form.</div></div>
+    </div>
+    <div class="callout tip"><span class="lab">Why a floater</span>Homeowners policies cap payouts on categories like jewelry and silverware. A <b>personal property floater</b> schedules those items for open-peril coverage at full value.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🏢</span>Businessowners Policy (BOP)</h3>
+    <p>The commercial cousin of the homeowners policy: a <b>package policy</b> that bundles <b>property and liability</b> coverage for small-to-medium businesses in one contract — analogous to how an HO policy packages Section I (property) and Section II (liability) for a home.</p>
+  </div>
+
+  <!-- ============ LO 2.1.2 — Coverage amounts & costs ============ -->
+  <div class="sect"><div class="n">2</div><div><div class="lo">Learning Objective 2.1.2</div><h2>Coverage amounts &amp; costs — coinsurance</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🧮</span>The coinsurance penalty formula</h3>
+    <p>To recover in full on a <b>partial loss</b>, the owner must carry insurance equal to at least the coinsurance requirement — usually <b>80% of replacement cost</b>. Carry less, and recovery is reduced by the shortfall ratio.</p>
+    <figure>
+      <svg viewBox="0 0 460 220" role="img" aria-label="Coinsurance penalty formula: carried divided by required, times loss, minus deductible">
+        <!-- required insurance box -->
+        <rect x="20" y="18" width="420" height="46" rx="9" fill="#1f4d3a" fill-opacity=".1" stroke="#1f4d3a"/>
+        <text x="230" y="38" font-size="12" font-weight="800" fill="#1f4d3a" text-anchor="middle">Required insurance</text>
+        <text x="230" y="55" font-size="11.5" fill="#2c2118" text-anchor="middle">= replacement cost × coinsurance % (usually 80%)</text>
+        <!-- fraction -->
+        <text x="230" y="102" font-size="13" font-weight="800" fill="#b34d2a" text-anchor="middle">insurance carried</text>
+        <line x1="120" y1="112" x2="340" y2="112" stroke="#5b4b3a" stroke-width="2"/>
+        <text x="230" y="130" font-size="13" font-weight="800" fill="#1f4d3a" text-anchor="middle">insurance required</text>
+        <!-- times loss -->
+        <text x="230" y="164" font-size="13" fill="#2c2118" text-anchor="middle">× loss − deductible = recovery</text>
+        <!-- note -->
+        <rect x="40" y="182" width="380" height="26" rx="7" fill="#d0613a" fill-opacity=".14"/>
+        <text x="230" y="199" font-size="11" fill="#b34d2a" text-anchor="middle">Primarily a concern on a PARTIAL loss</text>
+      </svg>
+      <figcaption>Recovery = (carried ÷ required) × loss − deductible. The ratio caps to 1 — no bonus for over-insuring.</figcaption>
+    </figure>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">✏️</span>Worked example 1 — the $400,000 home</h3>
+    <p>Replacement cost <b>$400,000</b> · coinsurance <b>80%</b> · carried <b>$300,000</b> with a <b>$1,500</b> deductible · loss <b>$100,000</b>.</p>
+    <div class="calc">
+      <h4>Coinsurance penalty — step by step</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Required insurance</b> = replacement cost × 80%.<br><code>$400,000 × 0.80 = $320,000</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Shortfall ratio</b> = carried ÷ required.<br><code>$300,000 ÷ $320,000 = 0.9375</code></div></div>
+      <div class="step"><div class="sn">3</div><div class="sb"><b>Apply ratio to the loss.</b><br><code>0.9375 × $100,000 = $93,750</code></div></div>
+      <div class="step"><div class="sn">4</div><div class="sb"><b>Subtract the deductible.</b><br><code>$93,750 − $1,500 = $92,250</code></div></div>
+      <div class="res">Insurer pays $92,250.</div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">✏️</span>Worked example 2 — Teresa's residence</h3>
+    <p>Insured 10 years ago for <b>$300,000</b> (replacement-value policy, <b>$1,000</b> deductible). Today market value <b>$550,000</b>, replacement cost <b>$500,000</b>. Damage of <b>$100,000</b> — how much does the insurer pay?</p>
+    <div class="calc">
+      <h4>Use replacement cost, not market value</h4>
+      <div class="step"><div class="sn">1</div><div class="sb"><b>Required insurance</b> = 80% of <u>replacement cost</u> ($500,000).<br><code>0.80 × $500,000 = $400,000</code></div></div>
+      <div class="step"><div class="sn">2</div><div class="sb"><b>Shortfall ratio</b> = carried ÷ required.<br><code>$300,000 ÷ $400,000 = 0.75 (75%)</code></div></div>
+      <div class="step"><div class="sn">3</div><div class="sb"><b>Apply ratio, then deductible.</b><br><code>0.75 × $100,000 = $75,000 − $1,000 = $74,000</code></div></div>
+      <div class="res">Insurer pays $74,000 (answer C).</div>
+    </div>
+    <div class="callout trap"><span class="lab">Exam trap</span>Coinsurance is figured on <b>replacement cost</b> ($500,000), NOT market value ($550,000). Using $550,000 gives the wrong required amount.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">💵</span>Replacement cost vs. actual cash value &amp; cost factors</h3>
+    <div class="triad">
+      <div class="opt"><div class="t">Replacement cost</div><div class="d">Pays to rebuild/replace with like kind &amp; quality — no deduction for depreciation.</div></div>
+      <div class="opt"><div class="t">Actual cash value (ACV)</div><div class="d">Replacement cost <b>minus depreciation</b> — the HO-8 valuation basis.</div></div>
+    </div>
+    <p style="margin-top:12px;"><b>Factors affecting the cost of HO coverage:</b></p>
+    <div class="tiles">
+      <div class="tile"><div class="v">🧱</div><div class="k">Construction</div></div>
+      <div class="tile"><div class="v">📍</div><div class="k">Location</div></div>
+      <div class="tile"><div class="v">🧾</div><div class="k">Deductible</div></div>
+      <div class="tile"><div class="v">📄</div><div class="k">Policy type</div></div>
+    </div>
+  </div>
+
+  <!-- ============ LO 2.2.1 — Liability coverage ============ -->
+  <div class="sect"><div class="n">3</div><div><div class="lo">Learning Objective 2.2.1</div><h2>Personal liability &amp; umbrella coverage</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">⚖️</span>Section II — liability coverages</h3>
+    <ul>
+      <li><b>Coverage E — Personal Liability:</b> non-business, non-automobile personal liability plus medical payments to others; claim &amp; first-aid expense; damage to property of others; loss-assessment coverage.</li>
+      <li><b>Coverage F — Medical Payments to Others:</b> a separate additional coverage.</li>
+    </ul>
+    <div class="callout tip"><span class="lab">Med pay is NOT liability</span><b>Medical Payments to Others</b> pays for bodily injuries to others <b>regardless of fault</b> — typically up to $1,000 per person. It is not liability coverage and does not require negligence.</div>
+    <div class="callout trap"><span class="lab">Dog-bite scenario</span>Jackson's dog bites a pedestrian. <b>Coverage E</b> (Personal Liability) responds if he's found legally liable up to policy limits; <b>Coverage F</b> (Med Pay) can pay the injured person's medical bills regardless of fault. Both apply on OR off the insured property.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">☂️</span>Umbrella (excess) liability</h3>
+    <div class="triad">
+      <div class="opt"><div class="t">Sits on top</div><div class="d">Takes over <b>after</b> the underlying base coverage (auto and/or homeowners) is exhausted.</div></div>
+      <div class="opt"><div class="t">Requires a base</div><div class="d">Must maintain required underlying limits on auto, home, boat, etc. first.</div></div>
+      <div class="opt"><div class="t">Catastrophic &amp; cheap</div><div class="d">A relatively low rate for a large amount of catastrophic liability coverage.</div></div>
+    </div>
+    <div class="callout trap"><span class="lab">Sequence matters</span>You must raise the <b>underlying (base) auto/home limits to the umbrella's required floor BEFORE</b> the umbrella will pay — you can't skip straight to umbrella on thin base limits.</div>
+  </div>
+
+  <!-- ============ LO 2.3.1 — Personal Auto Policy ============ -->
+  <div class="sect"><div class="n">4</div><div><div class="lo">Learning Objective 2.3.1</div><h2>The Personal Auto Policy (PAP)</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🚗</span>Who &amp; what is covered</h3>
+    <p><b>Who is an insured:</b> named insured, spouse, and resident relatives; anyone allowed to drive the covered auto; and a person/organization legally responsible for an insured's use of a covered auto.</p>
+    <p><b>Covered auto:</b> any vehicle listed in the declarations; a newly acquired vehicle meeting PAP eligibility; a utility-type trailer owned by the insured (excludes mobile homes / large trailers); and a substitute for a covered vehicle.</p>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🔤</span>PAP structure — Parts A through F</h3>
+    <div class="tbl-scroll"><table>
+      <caption>The six parts of the Personal Auto Policy</caption>
+      <thead><tr><th>Part</th><th>Coverage</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><th>A</th><td>Liability</td><td>The biggest risk — bodily injury &amp; property damage you cause to others</td></tr>
+        <tr><th>B</th><td>Medical Payments</td><td>Med costs for covered persons after an accident; funeral expenses; pedestrian/cyclist struck by a licensed vehicle</td></tr>
+        <tr><th>C</th><td>Uninsured / Underinsured Motorist</td><td>Protects the insured when the at-fault driver has no / too little insurance, or in a hit-and-run</td></tr>
+        <tr><th>D</th><td>Damage to Auto</td><td>Collision (at fault or not) + Comprehensive / other-than-collision (fire, wind, hail, vandalism, theft)</td></tr>
+        <tr><th>E</th><td><b>Duties after a loss</b></td><td>Insured's obligations after an accident (prompt notice, cooperation, proof of loss, etc.)</td></tr>
+        <tr><th>F</th><td><b>General Provisions</b></td><td>Bankruptcy, policy changes, fraud, subrogation, policy period/territory, termination, etc.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout tip"><span class="lab">Memory hook</span><b>E = duties after loss, F = general provisions.</b> Parts A–D are the coverages; E–F are the administrative "rules of the road."</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🔢</span>Split-limit auto liability — reading 25/50/10</h3>
+    <p>Part A liability limits are usually quoted as three numbers (a <b>split limit</b>). Example <b>25/50/10</b>:</p>
+    <div class="tiles">
+      <div class="tile"><div class="v">$25k</div><div class="k">Bodily injury — per person</div></div>
+      <div class="tile"><div class="v">$50k</div><div class="k">Bodily injury — per accident</div></div>
+      <div class="tile"><div class="v">$10k</div><div class="k">Property damage — per accident</div></div>
+    </div>
+    <p>State minimums can be as low as <b>20/40/10</b> or <b>25/50/15</b>. A <b>single-limit</b> policy instead states one combined dollar cap for all liability in an accident.</p>
+    <div class="callout trap"><span class="lab">Don't minimize to save premium</span>State minimums rarely protect real assets. If a client has assets to protect, <b>raise base limits (e.g., to 250/500/100) BEFORE</b> adding an umbrella — you can't buy umbrella on state-minimum limits.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧾</span>Part D detail &amp; auto endorsements</h3>
+    <div class="triad">
+      <div class="opt"><div class="t">Collision</div><div class="d">Pays for damage to the covered auto whether or not the insured is at fault (e.g., backing into a fence post).</div></div>
+      <div class="opt"><div class="t">Comprehensive (other-than-collision)</div><div class="d">Non-collision causes — fire, wind, hail, vandalism, theft; pays when insured is not at fault.</div></div>
+      <div class="opt"><div class="t">Endorsements</div><div class="d">Extended liability, named non-owner, miscellaneous vehicles, motor homes, snowmobiles, antique/classic autos.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ Quiz ============ -->
+  <div class="sect"><div class="n">?</div><div><div class="lo">Check yourself</div><h2>Kaplan questions from this module</h2></div></div>
+
+  <details class="quiz">
+    <summary><span class="qlab">HO forms</span><div>Which HO policy form provides the <b>highest level</b> of building and personal property coverage?</div><div class="opts">A. HO-2 · B. HO-3 · C. HO-5 · D. HO-15</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — HO-5</div><p>HO-5 provides open-peril coverage on <b>both</b> buildings and personal property. HO-3 gives open peril only on buildings (broad on personal property); the HO-15 endorsement (added to HO-3) upgrades personal property to open peril; HO-2 is broad-form only.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Coinsurance</span><div>Teresa's residence was insured 10 years ago for $300,000 (replacement-value policy, $1,000 deductible). Today market value is $550,000 and replacement cost is $500,000. On a $100,000 loss, how much does the insurer pay?</div><div class="opts">A. $59,000 · B. $60,000 · C. $74,000 · D. $75,000</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — $74,000</div><p>Required = 80% × $500,000 (replacement cost) = $400,000. Carried $300,000 → $300,000 ÷ $400,000 = 75%. 75% × $100,000 = $75,000 − $1,000 deductible = <b>$74,000</b>. Use replacement cost, not the $550,000 market value.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Liability</span><div>Samantha, golfing on vacation, slices into an adjacent fairway and injures another golfer (several thousand dollars of medical bills). Which coverages protect her?<br>I. Liability coverage &nbsp; II. Medical Payments to Others</div><div class="opts">A. Both I and II · B. Neither · C. I only · D. II only</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ A — Both I and II</div><p>Med Pay would be quickly used up on several-thousand-dollar bills but is still available; liability coverage clearly applies too. Both respond, on or off the insured premises.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Auto policy</span><div>Raylan lives comfortably with assets to protect, in a state whose minimum auto liability is 25/50/15. His policy carries 50/100/50. Best recommendation?</div><div class="opts">A. Keep as-is, add umbrella · B. Raise limits to at least 250/500/100 · C. Do nothing — it's double the minimum · D. Cut to state minimums to save premium</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — Increase to at least 250/500/100</div><p>It makes no economic sense to minimize coverage with assets at stake — one injured party can exceed $50,000, multiple claimants can exceed $100,000, and $50,000 property damage is low for today's vehicles. Umbrella may help, but base limits must be increased <b>before</b> buying umbrella coverage.</p></div>
+  </details>
+
+  <div class="foot">
+    Visual deck rebuilt from the College for Financial Planning® (Kaplan) FP512 Module 2 course slides.<br>
+    Verify all figures against your current course materials before the exam.
+  </div>
+
+</div>
+
+<button id="tgl" aria-label="Toggle dark mode">🌙 Theme</button>
+<script>
+/* Progress bar */
+var prog=document.getElementById('prog');
+addEventListener('scroll',function(){
+  var h=document.documentElement,b=document.body;
+  var st=h.scrollTop||b.scrollTop, sh=(h.scrollHeight||b.scrollHeight)-h.clientHeight;
+  prog.style.width=(sh>0?(st/sh*100):0)+'%';
+},{passive:true});
+/* Theme — synced with the app via localStorage cfpTheme */
+var root=document.documentElement;
+function applyTheme(t){root.setAttribute('data-theme',t);}
+try{
+  var saved=localStorage.getItem('cfpTheme');
+  if(saved){applyTheme(saved);}
+  else if(matchMedia('(prefers-color-scheme:dark)').matches){applyTheme('dark');}
+}catch(e){}
+document.getElementById('tgl').addEventListener('click',function(){
+  var t=root.getAttribute('data-theme')==='dark'?'light':'dark';
+  applyTheme(t);try{localStorage.setItem('cfpTheme',t);}catch(e){}
+});
+</script>
+
+<!-- deck-chrome-injected -->
+<style>
+#dkHome{position:fixed;left:max(14px,env(safe-area-inset-left));bottom:calc(14px + env(safe-area-inset-bottom));z-index:9999;
+  background:#1f4d3a;color:#fff;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:10px 15px;
+  font:700 13px/1 system-ui,-apple-system,sans-serif;text-decoration:none;box-shadow:0 8px 22px -8px rgba(0,0,0,.55);}
+#dkBack{position:fixed;left:max(14px,env(safe-area-inset-left));bottom:calc(60px + env(safe-area-inset-bottom));z-index:9999;
+  background:#fffdf8;color:#1f4d3a;border:1.5px solid #1f4d3a;border-radius:999px;padding:9px 13px;
+  font:700 13px/1 system-ui,-apple-system,sans-serif;text-decoration:none;box-shadow:0 6px 20px -6px rgba(0,0,0,.5);}
+html[data-theme="dark"] #dkBack{background:#17120e;color:#7fd3ac;border-color:#7fd3ac;}
+</style>
+<a id="dkHome" href="../index.html">🏠 Home</a>
+<script>
+(function(){try{var r=sessionStorage.getItem('cfpReaderReturn');var a=document.createElement('a');a.id='dkBack';
+  if(r&&/^[A-Za-z0-9]+\/\d+$/.test(r)){a.href='../index.html#m/'+r;a.textContent='‹ Module '+r.split('/')[1];}
+  else{a.href='../index.html#modules';a.textContent='‹ Modules';}
+  document.body.appendChild(a);}catch(e){}})();
+</script>
+
+</body>
+</html>

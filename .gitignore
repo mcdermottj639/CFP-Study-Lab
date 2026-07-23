@@ -1,3 +1,7 @@
 node_modules/
 package.json
 package-lock.json
+
+# Session scratch/working files (teacher-narration authoring pipeline) — not part of the app
+scratch_*
+scratch_teach/

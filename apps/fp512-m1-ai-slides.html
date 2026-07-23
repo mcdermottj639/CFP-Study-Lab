@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FP512 · Module 1 — Principles of Insurance &amp; Risk Management (AI Deck)</title>
+<style>
+/* ---- Dancing Script title (vendored, offline) ---- */
+@font-face{font-family:'Dancing Script';src:url('../vendor/fonts/dancing-script-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap;}
+
+:root{
+  --canvas:#f4ecdf; --card:#fffdf8; --card2:#faf3e6;
+  --ink:#2c2118; --ink2:#5b4b3a; --muted:#897357;
+  --line:#e6d8c2; --line2:#d8c6aa;
+  --terra:#d0613a; --terra-d:#b34d2a;
+  --green:#1f4d3a; --green-l:#2f7355;
+  --gold:#c58a2e; --sky:#3a6ea5;
+  --trap:#b34d2a; --trap-bg:#fbe9e1; --tip:#2f7355; --tip-bg:#e6f2ea;
+  --key-bg:#efe4d0;
+  --radius:18px; --shadow:0 8px 26px -14px rgba(60,40,20,.55);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--canvas);}
+body{font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;color:var(--ink);-webkit-text-size-adjust:100%;}
+
+/* ---- App-synced dark mode: filter-invert the content wrapper (matches readers) ---- */
+html[data-theme="dark"]{background:#17120e;}
+html[data-theme="dark"] body{background:#17120e;}
+html[data-theme="dark"] #rdrWrap{filter:invert(.92) hue-rotate(180deg);}
+html[data-theme="dark"] #rdrWrap svg,
+html[data-theme="dark"] #rdrWrap img,
+html[data-theme="dark"] #rdrWrap canvas{filter:invert(1) hue-rotate(180deg);}
+
+#rdrWrap{max-width:820px;margin:0 auto;padding:18px 15px 90px;}
+
+/* ---- Header ---- */
+.deck-head{padding:26px 20px 22px;border-radius:var(--radius);color:#fff;
+  background:linear-gradient(135deg,#1f4d3a 0%,#2f7355 55%,#d0613a 160%);
+  box-shadow:var(--shadow);position:relative;overflow:hidden;}
+.deck-head .eyebrow{font:700 12px/1 system-ui;letter-spacing:.16em;text-transform:uppercase;opacity:.85;}
+.deck-head h1{font-family:'Dancing Script',cursive;font-size:clamp(34px,9vw,52px);margin:.15em 0 .1em;line-height:1;}
+.deck-head .sub{font-size:15px;opacity:.95;max-width:46ch;}
+.deck-head .pillrow{margin-top:14px;display:flex;flex-wrap:wrap;gap:7px;}
+.deck-head .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+  border-radius:999px;padding:5px 11px;font:600 12px/1 system-ui;}
+
+/* ---- Section divider ---- */
+.sect{margin:34px 2px 14px;display:flex;align-items:center;gap:12px;}
+.sect .n{flex:none;width:38px;height:38px;border-radius:11px;background:var(--green);color:#fff;
+  font:800 15px/38px system-ui;text-align:center;box-shadow:var(--shadow);}
+.sect h2{font-size:19px;margin:0;color:var(--green);letter-spacing:.01em;}
+.sect .lo{font:600 11px/1 system-ui;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
+
+/* ---- Slide card ---- */
+.slide{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 19px;margin:13px 0;box-shadow:var(--shadow);}
+.slide h3{margin:0 0 8px;font-size:18px;color:var(--ink);display:flex;gap:9px;align-items:baseline;}
+.slide h3 .ic{font-size:19px;}
+.slide p{margin:8px 0;color:var(--ink2);}
+.slide ul{margin:9px 0;padding-left:1.15em;}
+.slide li{margin:5px 0;color:var(--ink2);}
+.lead{font-size:16.5px;color:var(--ink)!important;}
+
+/* ---- Stat tiles ---- */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:11px;margin:14px 0 4px;}
+.tile{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:13px 14px;}
+.tile .v{font:800 24px/1.05 system-ui;color:var(--terra-d);letter-spacing:-.01em;}
+.tile .k{font-size:12.5px;color:var(--ink2);margin-top:5px;}
+
+/* ---- Callouts ---- */
+.callout{border-radius:13px;padding:12px 14px 12px 15px;margin:13px 0;border-left:5px solid;font-size:14.5px;}
+.callout.trap{background:var(--trap-bg);border-color:var(--trap);}
+.callout.tip{background:var(--tip-bg);border-color:var(--tip);}
+.callout b{color:var(--ink);}
+.callout .lab{display:block;font:800 11px/1 system-ui;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;}
+.callout.trap .lab{color:var(--trap);}
+.callout.tip .lab{color:var(--tip);}
+
+/* ---- Tables ---- */
+.tbl-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0 4px;
+  border:1px solid var(--line);border-radius:13px;}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:460px;}
+caption{caption-side:top;text-align:left;font:700 13px/1.4 system-ui;color:var(--muted);padding:2px 4px 9px;}
+th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
+thead th{background:var(--green);color:#fff;font-weight:700;font-size:12.5px;position:sticky;top:0;}
+tbody th{background:var(--card2);color:var(--ink);font-weight:700;white-space:nowrap;}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:none;}
+td.y{color:var(--tip);font-weight:700;} td.n{color:var(--trap);font-weight:700;}
+
+/* ---- Chart figure ---- */
+figure{margin:14px 0 4px;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:14px 14px 10px;}
+figure svg{width:100%;height:auto;display:block;}
+figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center;}
+.legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:9px;font:600 12.5px/1 system-ui;}
+.legend span{display:inline-flex;align-items:center;gap:6px;color:var(--ink2);}
+.legend i{width:14px;height:3px;border-radius:2px;display:inline-block;}
+
+/* ---- Three-up option groups ---- */
+.triad{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;margin:13px 0 4px;}
+.opt{background:var(--card2);border:1px solid var(--line);border-radius:13px;padding:12px 13px;}
+.opt .t{font:800 13.5px/1.2 system-ui;color:var(--green);margin-bottom:5px;}
+.opt .d{font-size:13px;color:var(--ink2);}
+
+/* ---- Worked example ---- */
+.calc{background:#1c2b24;color:#e9f3ee;border-radius:14px;padding:16px 16px 12px;margin:14px 0 4px;}
+.calc h4{margin:0 0 10px;color:#7fd3ac;font-size:14.5px;}
+.calc .step{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-top:1px solid rgba(255,255,255,.12);}
+.calc .step:first-of-type{border-top:none;}
+.calc .sn{flex:none;width:24px;height:24px;border-radius:8px;background:#2f7355;color:#fff;font:800 12px/24px system-ui;text-align:center;}
+.calc .sb{font-size:13.5px;}
+.calc .sb b{color:#fff;}
+.calc code{font:600 12.5px/1.5 ui-monospace,Menlo,monospace;color:#ffd9a8;background:rgba(255,255,255,.07);
+  padding:1px 6px;border-radius:6px;display:inline-block;margin-top:3px;}
+.calc .res{margin-top:11px;background:#d0613a;color:#fff;border-radius:10px;padding:10px 13px;font:700 15px/1.2 system-ui;}
+
+/* ---- Quiz (tap to reveal) ---- */
+.quiz{background:var(--card);border:1.5px solid var(--terra);border-radius:14px;padding:0;margin:13px 0;overflow:hidden;box-shadow:var(--shadow);}
+.quiz>summary{list-style:none;cursor:pointer;padding:15px 16px;font-size:15px;color:var(--ink);position:relative;}
+.quiz>summary::-webkit-details-marker{display:none;}
+.quiz>summary .qlab{display:inline-block;font:800 10.5px/1 system-ui;letter-spacing:.12em;color:var(--terra-d);
+  background:var(--trap-bg);border-radius:6px;padding:4px 7px;margin-bottom:8px;text-transform:uppercase;}
+.quiz>summary .opts{margin-top:9px;font-size:13.5px;color:var(--ink2);}
+.quiz>summary .tap{margin-top:10px;font:700 12.5px/1 system-ui;color:var(--terra);}
+.quiz[open]>summary .tap{display:none;}
+.quiz .ans{padding:0 16px 15px;border-top:1px dashed var(--line2);margin-top:2px;}
+.quiz .ans .correct{font:800 14px/1.4 system-ui;color:var(--tip);margin:12px 0 6px;}
+.quiz .ans p{font-size:13.5px;color:var(--ink2);margin:6px 0 0;}
+
+.foot{margin-top:34px;padding:16px;border-radius:var(--radius);background:var(--card2);border:1px solid var(--line);
+  font-size:12.5px;color:var(--muted);text-align:center;}
+
+/* ---- Floating theme toggle (standalone preview; injection can replace) ---- */
+#tgl{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:9999;
+  background:var(--terra);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:999px;
+  padding:10px 15px;font:700 13px/1 system-ui;cursor:pointer;box-shadow:0 8px 22px -8px rgba(0,0,0,.55);}
+
+/* ---- Sticky progress ---- */
+#prog{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--green),var(--terra));z-index:9999;transition:width .1s;}
+
+@media(min-width:560px){.slide{padding:22px 24px;} #rdrWrap{padding:22px 20px 90px;}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<div id="rdrWrap">
+
+  <header class="deck-head">
+    <div class="eyebrow">🤖 AI Study Deck · FP512 Module 1</div>
+    <h1>Insurance &amp; Risk</h1>
+    <div class="sub">Principles of Insurance &amp; Risk Management — the exam blueprint for CFP® professionals. An AI-generated (NotebookLM) visual walk-through of Module 1: risk anatomy, the RM process, agency law, contract law, indemnity, torts, underwriting &amp; claims.</div>
+    <div class="pillrow">
+      <span class="pill">🤖 AI-generated · verify figures</span>
+      <span class="pill">⚠️ Hazard · Peril · Risk · Loss</span>
+      <span class="pill">🔄 7-step RM process</span>
+      <span class="pill">📜 Contract &amp; agency law</span>
+      <span class="pill">⚖️ Tort &amp; indemnity</span>
+    </div>
+  </header>
+
+  <div class="callout tip"><span class="lab">About this deck</span>This is an <b>AI-generated study aid</b> (Google NotebookLM), not the official Kaplan/College for Financial Planning® course slides. It is reproduced faithfully here — including any AI quirks, which are flagged inline. Use it to reinforce the module, then confirm every definition and figure against your course text.</div>
+
+  <!-- ============ 1 · Risk fundamentals ============ -->
+  <div class="sect"><div class="n">1</div><div><div class="lo">Risk fundamentals</div><h2>The anatomy &amp; nature of risk</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🧩</span>The anatomy of a loss</h3>
+    <p class="lead">Four linked terms the exam constantly tests. Read the chain left to right:</p>
+    <figure>
+      <svg viewBox="0 0 640 150" role="img" aria-label="Hazard plus Peril plus Risk equals Loss flow chain">
+        <g font-family="system-ui" text-anchor="middle">
+          <rect x="6" y="30" width="130" height="66" rx="10" fill="#e6f2ea" stroke="#1f4d3a" stroke-width="2"/>
+          <text x="71" y="56" font-size="14" font-weight="800" fill="#1f4d3a">Hazard</text>
+          <text x="71" y="76" font-size="10.5" fill="#5b4b3a">increases chance</text>
+          <text x="71" y="89" font-size="10.5" fill="#5b4b3a">of a peril</text>
+          <text x="152" y="70" font-size="26" font-weight="800" fill="#897357">+</text>
+          <rect x="176" y="30" width="130" height="66" rx="10" fill="#faf3e6" stroke="#d0613a" stroke-width="2"/>
+          <text x="241" y="56" font-size="14" font-weight="800" fill="#b34d2a">Peril</text>
+          <text x="241" y="76" font-size="10.5" fill="#5b4b3a">direct CAUSE</text>
+          <text x="241" y="89" font-size="10.5" fill="#5b4b3a">(fire, flood)</text>
+          <text x="322" y="70" font-size="26" font-weight="800" fill="#897357">+</text>
+          <rect x="346" y="30" width="130" height="66" rx="10" fill="#faf3e6" stroke="#3a6ea5" stroke-width="2"/>
+          <text x="411" y="56" font-size="14" font-weight="800" fill="#3a6ea5">Risk</text>
+          <text x="411" y="76" font-size="10.5" fill="#5b4b3a">possibility of a</text>
+          <text x="411" y="89" font-size="10.5" fill="#5b4b3a">negative outcome</text>
+          <text x="492" y="70" font-size="26" font-weight="800" fill="#897357">=</text>
+          <rect x="512" y="30" width="122" height="66" rx="10" fill="#1f4d3a"/>
+          <text x="573" y="56" font-size="14" font-weight="800" fill="#fff">Loss</text>
+          <text x="573" y="76" font-size="10.5" fill="#e9f3ee">actual financial /</text>
+          <text x="573" y="89" font-size="10.5" fill="#e9f3ee">physical damage</text>
+        </g>
+      </svg>
+      <figcaption>Hazard → raises the odds of a Peril → which, given Risk, produces the Loss.</figcaption>
+    </figure>
+    <ul>
+      <li><b>Hazard</b> — a condition that increases the potential for loss (e.g., oily rags next to a heater)</li>
+      <li><b>Peril</b> — the direct cause of the loss (e.g., fire, flood, hurricane)</li>
+      <li><b>Risk</b> — the possibility of a loss, or a negative deviation from a desired outcome</li>
+      <li><b>Loss</b> — the actual financial or physical damage suffered</li>
+    </ul>
+    <div class="callout trap"><span class="lab">Exam trap · Peril vs. Hazard</span>Never confuse the two. The <b>peril causes</b> the loss; the <b>hazard increases the chance</b> of the peril happening.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🗂️</span>Categorizing the nature of risk</h3>
+    <p>Risk is sorted three ways — by its source of change, its scope of impact, and its potential for gain. <b>Only pure risk is insurable.</b></p>
+    <div class="tbl-scroll"><table>
+      <caption>Three lenses for classifying risk</caption>
+      <thead><tr><th>Lens</th><th>Type</th><th>Meaning &amp; example</th><th>Insurable?</th></tr></thead>
+      <tbody>
+        <tr><th rowspan="2">Source of change</th><td><b>Static</b></td><td>Occurs regularly, unrelated to economic shifts (e.g., earthquakes)</td><td class="y">Yes</td></tr>
+        <tr><td><b>Dynamic</b></td><td>Caused by economic changes (e.g., inflation, recessions)</td><td class="n">No</td></tr>
+        <tr><th rowspan="2">Scope of impact</th><td><b>Fundamental</b></td><td>Affects large groups or society (e.g., war, severe recessions)</td><td>Generally not</td></tr>
+        <tr><td><b>Particular</b></td><td>Affects individuals or small, specific groups (e.g., a single house fire)</td><td class="y">Yes</td></tr>
+        <tr><th rowspan="2">Potential for gain</th><td><b>Pure</b></td><td>Only the chance of loss or no loss — no chance of gain</td><td class="y">Insurable</td></tr>
+        <tr><td><b>Speculative</b></td><td>Chance of loss AND gain (e.g., gambling, investing)</td><td class="n">Uninsurable</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout tip"><span class="lab">Remember</span><b>Pure risk</b> (loss or no-loss only) is the insurable one. Speculative risk — where gain is possible — is not insurable.</div>
+  </div>
+
+  <!-- ============ 2 · The risk management process ============ -->
+  <div class="sect"><div class="n">2</div><div><div class="lo">The RM process</div><h2>Managing &amp; treating risk</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🔄</span>The 7-step risk management loop</h3>
+    <p>A continuous loop — after monitoring you cycle back to re-establish goals.</p>
+    <div class="tbl-scroll"><table>
+      <caption>The 7-step risk management process</caption>
+      <thead><tr><th>#</th><th>Step</th><th>What happens</th></tr></thead>
+      <tbody>
+        <tr><th>1</th><td>Identify &amp; Establish Goals</td><td>Determine tolerance for loss and available capital</td></tr>
+        <tr><th>2</th><td>Gather Data</td><td>Collect policies, inventories, and liability exposures</td></tr>
+        <tr><th>3</th><td>Analyze &amp; Evaluate</td><td>Assess asset, contract, and tort liability exposures</td></tr>
+        <tr><th>4</th><td>Develop a Plan</td><td>Select appropriate risk treatment alternatives</td></tr>
+        <tr><th>5</th><td>Communicate</td><td>Present recommendations clearly</td></tr>
+        <tr><th>6</th><td>Implement</td><td>Assist the client in taking action</td></tr>
+        <tr><th>7</th><td>Monitor</td><td>Continually review for life changes and policy updates</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🎛️</span>The risk management matrix</h3>
+    <p>Match the treatment to the loss's <b>frequency</b> (how often) and <b>severity</b> (how costly). The classic 2×2:</p>
+    <figure>
+      <svg viewBox="0 0 460 300" role="img" aria-label="Two by two risk management matrix of frequency versus severity">
+        <g font-family="system-ui">
+          <!-- axes labels -->
+          <text x="16" y="150" font-size="12" font-weight="700" fill="#5b4b3a" transform="rotate(-90 16 150)" text-anchor="middle">Frequency (low → high)</text>
+          <text x="270" y="292" font-size="12" font-weight="700" fill="#5b4b3a" text-anchor="middle">Severity (low → high)</text>
+          <!-- quadrants -->
+          <rect x="46" y="30" width="205" height="110" rx="8" fill="#e6f2ea" stroke="#1f4d3a" stroke-width="1.5"/>
+          <rect x="261" y="30" width="205" height="110" rx="8" fill="#fbe9e1" stroke="#d0613a" stroke-width="2.5"/>
+          <rect x="46" y="150" width="205" height="110" rx="8" fill="#faf3e6" stroke="#c58a2e" stroke-width="1.5"/>
+          <rect x="261" y="150" width="205" height="110" rx="8" fill="#faf3e6" stroke="#3a6ea5" stroke-width="1.5"/>
+          <!-- top-left: high freq / low sev -->
+          <text x="60" y="58" font-size="12.5" font-weight="800" fill="#1f4d3a">Avoidance /</text>
+          <text x="60" y="74" font-size="12.5" font-weight="800" fill="#1f4d3a">Reduction</text>
+          <text x="60" y="96" font-size="10" fill="#5b4b3a">Don't own the aggressive</text>
+          <text x="60" y="110" font-size="10" fill="#5b4b3a">dog; install security.</text>
+          <!-- top-right: high freq / high sev -->
+          <text x="276" y="58" font-size="12.5" font-weight="800" fill="#b34d2a">Risk Transfer</text>
+          <text x="276" y="80" font-size="10" fill="#5b4b3a">Primary domain of insurance</text>
+          <text x="276" y="94" font-size="10" fill="#5b4b3a">(life, health, property).</text>
+          <text x="276" y="112" font-size="9.5" font-weight="700" fill="#b34d2a">← insure this quadrant</text>
+          <!-- bottom-left: low freq / low sev -->
+          <text x="60" y="178" font-size="12.5" font-weight="800" fill="#a06a1f">Retention /</text>
+          <text x="60" y="194" font-size="12.5" font-weight="800" fill="#a06a1f">Reduction</text>
+          <text x="60" y="216" font-size="10" fill="#5b4b3a">Small, predictable losses</text>
+          <text x="60" y="230" font-size="10" fill="#5b4b3a">funded out-of-pocket.</text>
+          <!-- bottom-right: low freq / high sev -->
+          <text x="276" y="178" font-size="12.5" font-weight="800" fill="#3a6ea5">Risk Retention</text>
+          <text x="276" y="200" font-size="10" fill="#5b4b3a">Acceptance of the risk.</text>
+        </g>
+      </svg>
+      <figcaption>Frequency on the vertical axis, severity on the horizontal — high-frequency, high-severity risk is where insurance (transfer) belongs.</figcaption>
+    </figure>
+    <div class="callout tip"><span class="lab">Test tip · self-insurance</span><b>Self-insurance is a form of Risk Retention</b> used by large businesses with predictable, homogeneous exposure units.</div>
+  </div>
+
+  <!-- ============ 3 · Insurable risk & underwriting ============ -->
+  <div class="sect"><div class="n">3</div><div><div class="lo">Insurability &amp; underwriting</div><h2>What can be insured — and how it's priced</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">✅</span>The elements of an insurable risk</h3>
+    <p>Actuaries price risk on predictable losses. From the insurer's perspective, a risk must meet these criteria:</p>
+    <div class="tbl-scroll"><table>
+      <caption>Criteria an insurer requires before writing a risk</caption>
+      <thead><tr><th>Criterion</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr><th>Definite &amp; Measurable</th><td>The financial loss must be quantifiable to set limits and pay claims</td></tr>
+        <tr><th>Law of Large Numbers</th><td>Must have a sufficiently large number of homogeneous exposure units to make losses predictable</td></tr>
+        <tr><th>Fortuitous</th><td>The loss must be accidental — not planned or intentional (e.g., arson is excluded)</td></tr>
+        <tr><th>Non-Catastrophic</th><td>Cannot threaten the solvency of the insurance company itself (e.g., a widespread nuclear disaster)</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">Note · AI deck quirk</span>The AI slide's left column labeled two criteria <b>“Definite &amp; Measurable”</b> — a duplicate. The four <b>distinct</b> insurable-risk elements are those listed above (Definite &amp; Measurable, Law of Large Numbers, Fortuitous, Non-Catastrophic). Verify against your course text.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🚪</span>The underwriting gateway</h3>
+    <p>Underwriting's core goal is to <b>control adverse selection</b> — the tendency for high-risk individuals to seek insurance more than average-risk individuals.</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Mortality</div><div class="d">Incidence of death — drives <b>life insurance</b> premiums.</div></div>
+      <div class="opt"><div class="t">Morbidity</div><div class="d">Incidence of illness/injury — drives <b>disability &amp; health</b> premiums.</div></div>
+      <div class="opt"><div class="t">Adverse selection</div><div class="d">Why underwriting exists — high-risk applicants self-select in.</div></div>
+    </div>
+    <div class="callout trap"><span class="lab">Exam trap · Moral vs. Morale hazard</span><b>Moral hazard</b> = unethical <i>intent</i> or misrepresentation to induce a claim (e.g., arson, hiding a DUI). <b>Morale hazard</b> = apathetic indifference <i>because</i> insurance exists (e.g., leaving a car unlocked with keys inside).</div>
+  </div>
+
+  <!-- ============ 4 · Distribution & agency law ============ -->
+  <div class="sect"><div class="n">4</div><div><div class="lo">Distribution &amp; agency</div><h2>Producers, agents &amp; authority</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🧑‍💼</span>The distribution channel &amp; producer types</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Producer types grid</caption>
+      <thead><tr><th>Producer</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><th>Independent</th><td>Represents multiple companies (American agency system)</td></tr>
+        <tr><th>Captive</th><td>Represents only one company (direct writers)</td></tr>
+        <tr><th>Career</th><td>Life insurance agents — often captive but may have multiple contracts</td></tr>
+        <tr><th>PGA</th><td>Producing General Agent; primarily sells, no specified territory</td></tr>
+        <tr><th>Surplus-Line</th><td>Accesses non-admitted (out-of-state) insurers for hard-to-place risks</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">Exam trap · Agent vs. Broker</span>An <b>agent represents the insurer</b> — legally binds the principal (insurer), and the agent's knowledge is imputed to the insurer. A <b>broker represents the insured (client)</b> and <b>cannot legally bind the insurer</b>.</div>
+    <p style="font-size:12.5px;color:var(--muted);margin-top:8px;">Deck note: the "Surplus-Line" tile reads "insurers for uninsurable risks." In practice surplus-line carriers cover hard-to-place / non-admitted risks — the standard admitted market declined them, not that they are truly uninsurable. Verify wording with your text.</p>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🏛️</span>The three tiers of agent authority</h3>
+    <div class="triad">
+      <div class="opt"><div class="t">Express (the foundation)</div><div class="d">Explicitly written in the agent's contract with the insurer. <i>Example:</i> written authority to write up to $1M in coverage.</div></div>
+      <div class="opt"><div class="t">Implied (the structure)</div><div class="d">Not expressly written, but reasonably necessary to carry out expected duties; from the insurer–agent relationship. <i>Example:</i> authority to collect premiums.</div></div>
+      <div class="opt"><div class="t">Apparent (the facade)</div><div class="d">From the client–agent relationship; the client reasonably believes authority exists based on actions/materials. <i>Example:</i> a terminated agent who still has company applications and binds a policy.</div></div>
+    </div>
+    <div class="callout tip"><span class="lab">Test tip · ratification</span>If an insurer <b>accepts premiums on a prohibited risk</b>, it has <b>“ratified”</b> the agent's act, legally modifying the agency agreement.</div>
+  </div>
+
+  <!-- ============ 5 · Regulation ============ -->
+  <div class="sect"><div class="n">5</div><div><div class="lo">Regulation</div><h2>The regulatory ecosystem</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">⚖️</span>Who regulates insurance</h3>
+    <div class="triad">
+      <div class="opt"><div class="t">State regulation (primary)</div><div class="d">Backed by <b>Paul v. Virginia</b>. Operates via the Legislature (laws), Commissioner (executive enforcement), and Courts (interpretation).</div></div>
+      <div class="opt"><div class="t">Federal regulation (indirect)</div><div class="d">Triggered by <b>U.S. v. SEUA</b>, leading to the <b>McCarran-Ferguson Act (1945)</b>, which reserved most insurance regulation for the states — leaving federal control only for antitrust and labor laws.</div></div>
+      <div class="opt"><div class="t">The NAIC</div><div class="d">National Association of Insurance Commissioners — all 50 state commissioners. Fosters coordination and introduces model laws for accreditation, but <b>has no legal authority to force state adoption</b>.</div></div>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="v">1945</div><div class="k">McCarran-Ferguson Act — states keep primary regulation</div></div>
+      <div class="tile"><div class="v">50</div><div class="k">State commissioners compose the NAIC</div></div>
+      <div class="tile"><div class="v">Paul v. VA</div><div class="k">Case backing state regulatory primacy</div></div>
+    </div>
+  </div>
+
+  <!-- ============ 6 · Contract law ============ -->
+  <div class="sect"><div class="n">6</div><div><div class="lo">Contract law</div><h2>Building &amp; enforcing the insurance contract</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🧷</span>Legal requirements of an enforceable contract</h3>
+    <p>Five pieces must interlock (the exam's "puzzle"):</p>
+    <div class="tbl-scroll"><table>
+      <caption>The five elements of a valid contract</caption>
+      <thead><tr><th>#</th><th>Element</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><th>1</th><td>Offer &amp; Acceptance</td><td>Insurer offers to insure; client acknowledges and accepts</td></tr>
+        <tr><th>2</th><td>Consideration</td><td>The exchange of value — insured pays a premium; insurer binds coverage</td></tr>
+        <tr><th>3</th><td>Legal Object</td><td>The contract purpose cannot be illegal (e.g., insuring a counterfeiting operation is unenforceable)</td></tr>
+        <tr><th>4</th><td>Competent Parties</td><td>Parties must be legally capable; minors can enter contracts but the contract is voidable by the minor</td></tr>
+        <tr><th>5</th><td>Legal Form</td><td>Must meet state-prescribed formatting, usually a written document</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout tip"><span class="lab">Test tip · minors</span>While a minor can void a contract, the <b>insurer is generally bound</b>. Competency primarily protects the minor.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">📜</span>Unique characteristics of insurance contracts</h3>
+    <div class="tbl-scroll"><table>
+      <caption>The five distinguishing characteristics</caption>
+      <thead><tr><th>Characteristic</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr><th>Aleatory</th><td>Controlled by chance; dollars changing hands are substantially unequal (e.g., $1,000 premium for a $1M payout)</td></tr>
+        <tr><th>Adhesion</th><td>Prepared by one party (insurer) with no negotiation — "take it or leave it"</td></tr>
+        <tr><th>Conditional</th><td>The insurer only pays if a covered loss occurs and specific duties are met</td></tr>
+        <tr><th>Unilateral</th><td>Only one party (the insurer) makes a legally enforceable promise; the insurer cannot sue the client for unpaid premiums</td></tr>
+        <tr><th>Personal</th><td>Ties the risk to the individual; cannot be transferred without written permission</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">Exam trap · utmost good faith</span><b>Utmost Good Faith</b> is required. A material <b>“Misrepresentation”</b> or <b>“Concealment”</b> can void the contract.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🛠️</span>Resolving contract disputes</h3>
+    <p><b>Waiver &amp; Estoppel</b> often work as a chain reaction:</p>
+    <ul>
+      <li><b>Waiver</b> — voluntary relinquishment of a known right (e.g., an agent accepts an application that fails criteria)</li>
+      <li><b>Estoppel</b> — a legal block preventing a party from asserting a right because of their prior actions (e.g., the insurer is estopped from denying the claim because the agent waived the criteria)</li>
+    </ul>
+    <p><b>Equitable remedies</b> (the court's fix):</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Rescission</div><div class="d">Contract is deemed null from the beginning due to fraud, concealment, or mutual mistake. Premiums are returned.</div></div>
+      <div class="opt"><div class="t">Reformation</div><div class="d">The written document is rewritten to express the parties' original true intentions (e.g., fixing a misprinted $1M benefit to the intended $100k).</div></div>
+    </div>
+  </div>
+
+  <!-- ============ 7 · Indemnity, torts & liability ============ -->
+  <div class="sect"><div class="n">7</div><div><div class="lo">Indemnity &amp; liability</div><h2>Indemnity, torts &amp; civil liability</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🎯</span>Indemnity &amp; insurer liability limits</h3>
+    <p>The <b>Principle of Indemnity</b>: make the insured <b>whole, not wealthy</b>. Four mechanisms enforce it:</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Actual Cash Value (ACV)</div><div class="d">Replacement Cost minus Depreciation.</div></div>
+      <div class="opt"><div class="t">Deductibles &amp; Coinsurance</div><div class="d">Risk-retention mechanisms that share costs and discourage morale hazard.</div></div>
+      <div class="opt"><div class="t">Insurable Interest</div><div class="d">Must suffer financial/emotional loss. <b>Property:</b> at time of issue AND loss. <b>Life:</b> ONLY at time of issue.</div></div>
+      <div class="opt"><div class="t">Subrogation</div><div class="d">Insurer pays the claim, then assumes the right to sue the at-fault third party to recoup costs — prevents double recovery.</div></div>
+    </div>
+    <div class="callout trap"><span class="lab">Exam trap · insurable interest timing</span>For <b>property</b>, insurable interest must exist at issue <b>and</b> at the time of loss. For <b>life</b>, it need only exist at the time of issue.</div>
+    <div class="callout tip"><span class="lab">The exception · Collateral Source Rule</span>If others cause your loss, they cannot reduce their liability simply because you have insurance.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">⚖️</span>The anatomy of a tort &amp; civil liability</h3>
+    <p>The <b>four elements of negligence</b> (an unintentional tort) — all must be present:</p>
+    <div class="tbl-scroll"><table>
+      <caption>The four elements of negligence</caption>
+      <thead><tr><th>#</th><th>Element</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><th>1</th><td>Duty Owed</td><td>An obligation to act safely</td></tr>
+        <tr><th>2</th><td>Duty Breached</td><td>Failure to meet that obligation</td></tr>
+        <tr><th>3</th><td>Actual Damages</td><td>Physical, emotional, or financial harm</td></tr>
+        <tr><th>4</th><td>Proximate Cause</td><td>An uninterrupted sequence of events linking the breach to the damages</td></tr>
+      </tbody>
+    </table></div>
+    <p><b>Specialized liability</b> concepts:</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Attractive Nuisance</div><div class="d">A property feature likely to attract/injure children (e.g., an unfenced pool); requires a high degree of care.</div></div>
+      <div class="opt"><div class="t">Negligence Per Se</div><div class="d">Duty of care established by statute (e.g., speeding in a school zone).</div></div>
+      <div class="opt"><div class="t">Absolute / Strict Liability</div><div class="d">Liability without fault for extra-hazardous activities (e.g., keeping wild animals).</div></div>
+      <div class="opt"><div class="t">Vicarious Liability</div><div class="d">Held liable for the acts of another (e.g., a parent for a child, an employer for an employee).</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🛡️</span>Defenses against liability claims</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Three negligence defenses and their outcomes</caption>
+      <thead><tr><th>Defense</th><th>Concept</th><th>Outcome</th></tr></thead>
+      <tbody>
+        <tr><th>Assumption of Risk</th><td>Party recognizes the danger and voluntarily engages anyway (e.g., injuries from voluntarily riding a horse)</td><td class="n">Total bar to recovery</td></tr>
+        <tr><th>Contributory Negligence</th><td>The strictest approach — if the injured party is even <b>1%</b> at fault, they cannot recover any damages</td><td class="n">Total bar to recovery</td></tr>
+        <tr><th>Comparative Negligence</th><td>The most common approach — liability reduced proportionally by the injured party's contribution</td><td class="y">Partial recovery</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tiles">
+      <div class="tile"><div class="v">1%</div><div class="k">Under contributory negligence, 1% fault bars ALL recovery</div></div>
+      <div class="tile"><div class="v">20%</div><div class="k">Comparative: a 20%-at-fault plaintiff's award is cut by 20%</div></div>
+    </div>
+    <div class="callout tip"><span class="lab">Modifier · Last Clear Chance</span>Softens contributory negligence — allows recovery if the defendant had a final opportunity to avoid the accident but failed.</div>
+  </div>
+
+  <!-- ============ 8 · Claims & insurer selection ============ -->
+  <div class="sect"><div class="n">8</div><div><div class="lo">Claims &amp; market</div><h2>Settling claims &amp; choosing an insurer</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">📝</span>Loss adjustment &amp; claims settlement</h3>
+    <div class="tbl-scroll"><table>
+      <caption>The adjustment timeline — parallel duties</caption>
+      <thead><tr><th>Insured duties</th><th>Adjuster duties</th></tr></thead>
+      <tbody>
+        <tr><td>Give notice of loss</td><td>Investigate relevant info</td></tr>
+        <tr><td>Protect property from further damage</td><td>Assist with Proof of Loss</td></tr>
+        <tr><td>Submit inventory / Proof of Loss</td><td>Pay or deny the claim</td></tr>
+        <tr><td>Cooperate with investigation</td><td>&mdash;</td></tr>
+      </tbody>
+    </table></div>
+    <p><b>Insurer settlement options:</b></p>
+    <div class="triad">
+      <div class="opt"><div class="t">Replacement</div><div class="d">Repair/replace with like kind &amp; quality instead of paying ACV.</div></div>
+      <div class="opt"><div class="t">Abandonment &amp; Salvage</div><div class="d">Insurer takes ownership of totaled property and sells it to reduce losses. The insured cannot force abandonment.</div></div>
+      <div class="opt"><div class="t">Pair or Set Option</div><div class="d">Repair part of the set, or pay the difference in ACV before and after the loss (losing one earring is not a total loss of the set).</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🏢</span>Evaluating the market — selecting an insurer</h3>
+    <p><b>Rating agencies</b> gauge insurer financial strength:</p>
+    <div class="tbl-scroll"><table>
+      <caption>Insurer financial-strength rating agencies</caption>
+      <thead><tr><th>Agency</th><th>Niche</th></tr></thead>
+      <tbody>
+        <tr><th>A.M. Best</th><td>The oldest, and the only agency that specializes exclusively in the insurance industry</td></tr>
+        <tr><th>Demotech</th><td>Specializes in P&amp;C and title insurers</td></tr>
+        <tr><th>Moody's &amp; S&amp;P</th><td>Broad financial rating agencies (S&amp;P offers free qualified solvency ratings)</td></tr>
+        <tr><th>TheStreet.com</th><td>Uses public info only; never charges the rated companies</td></tr>
+      </tbody>
+    </table></div>
+    <p><b>Corporate structure</b> — who owns the insurer:</p>
+    <div class="tbl-scroll"><table>
+      <caption>Stock vs. Mutual companies</caption>
+      <thead><tr><th></th><th>Stock companies</th><th>Mutual companies</th></tr></thead>
+      <tbody>
+        <tr><th>Owned by</th><td>Stockholders</td><td>Policyholders</td></tr>
+        <tr><th>Profit</th><td>Profit driven</td><td>Profits paid as dividends</td></tr>
+        <tr><th>Goal / oversight</th><td>Outside oversight</td><td>Goal is lower net cost for policies</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <!-- ============ 9 · Synthesis ============ -->
+  <div class="sect"><div class="n">9</div><div><div class="lo">Synthesis</div><h2>The risk manager's lifecycle checklist</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">📈</span>Risk focus shifts as net worth rises &amp; debt falls</h3>
+    <figure>
+      <svg viewBox="0 0 480 240" role="img" aria-label="Net worth rising and debt falling across life phases from age 25 to 65 plus">
+        <g font-family="system-ui">
+          <line x1="44" y1="20" x2="44" y2="200" stroke="#d8c6aa" stroke-width="1.5"/>
+          <line x1="44" y1="200" x2="460" y2="200" stroke="#d8c6aa" stroke-width="1.5"/>
+          <!-- phase dividers -->
+          <line x1="180" y1="24" x2="180" y2="200" stroke="#e6d8c2" stroke-dasharray="3 4"/>
+          <line x1="330" y1="24" x2="330" y2="200" stroke="#e6d8c2" stroke-dasharray="3 4"/>
+          <!-- debt curve (starts high, falls) -->
+          <path d="M44,60 C130,70 150,150 250,170 C340,186 400,194 456,197" fill="none" stroke="#1f4d3a" stroke-width="3"/>
+          <!-- net worth curve (starts low, rises) -->
+          <path d="M44,196 C130,190 150,110 250,90 C340,72 400,62 456,58" fill="none" stroke="#2f9fbf" stroke-width="3"/>
+          <!-- crossover marker ~ age 45 -->
+          <circle cx="180" cy="150" r="4.5" fill="#d0613a"/>
+          <text x="188" y="146" font-size="9.5" fill="#b34d2a" font-weight="700">crossover ≈ age 45</text>
+          <!-- labels -->
+          <text x="360" y="52" font-size="11" font-weight="800" fill="#2f9fbf">Net Worth ↑</text>
+          <text x="360" y="188" font-size="11" font-weight="800" fill="#1f4d3a">Debt ↓</text>
+          <!-- x ticks -->
+          <text x="44" y="216" font-size="10" fill="#5b4b3a" text-anchor="middle">25</text>
+          <text x="180" y="216" font-size="10" fill="#5b4b3a" text-anchor="middle">45</text>
+          <text x="330" y="216" font-size="10" fill="#5b4b3a" text-anchor="middle">60</text>
+          <text x="456" y="216" font-size="10" fill="#5b4b3a" text-anchor="middle">65+</text>
+          <!-- phase captions -->
+          <text x="112" y="36" font-size="9" fill="#897357" text-anchor="middle">Accumulation</text>
+          <text x="255" y="36" font-size="9" fill="#897357" text-anchor="middle">Conservation</text>
+          <text x="393" y="36" font-size="9" fill="#897357" text-anchor="middle">Distribution</text>
+        </g>
+      </svg>
+      <div class="legend"><span><i style="background:#2f9fbf"></i>Net worth</span><span><i style="background:#1f4d3a"></i>Debt</span></div>
+      <figcaption>As debt falls and net worth rises, the protection focus migrates across three life phases.</figcaption>
+    </figure>
+    <div class="tbl-scroll"><table>
+      <caption>Protection focus by life phase</caption>
+      <thead><tr><th>Phase</th><th>Situation</th><th>Primary focus</th></tr></thead>
+      <tbody>
+        <tr><th>Accumulation<br><span style="font-weight:400;color:var(--muted)">(age &lt;45)</span></th><td>High debt, low cash flow</td><td>Protect future income; heavy reliance on Life &amp; Disability; basic Health &amp; P&amp;C</td></tr>
+        <tr><th>Conservation<br><span style="font-weight:400;color:var(--muted)">(age 45–60)</span></th><td>Net worth rising, debt falling</td><td>Protect accumulated wealth; Life/Disability still needed; begin LTC exploration to lock in low premiums</td></tr>
+        <tr><th>Distribution<br><span style="font-weight:400;color:var(--muted)">(age 60+)</span></th><td>Retirement phase</td><td>Healthcare &amp; longevity; disability no longer needed; Medicare transitions; heavy focus on Health, LTC &amp; maintaining P&amp;C</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout tip"><span class="lab">Test tip · the big theme</span>As a client ages, their risk profile shifts from protecting <b>Human Capital</b> (Disability/Life) to protecting <b>Financial Capital</b> (LTC/Health/Liability).</div>
+  </div>
+
+  <!-- ============ Quiz ============ -->
+  <div class="sect"><div class="n">?</div><div><div class="lo">Check yourself</div><h2>Self-check questions</h2></div></div>
+
+  <p style="font-size:12.5px;color:var(--muted);margin:0 2px 4px;">These practice items are drawn from this AI deck's own emphasis (the deck ships no formal question bank). Confirm against your course materials.</p>
+
+  <details class="quiz">
+    <summary><span class="qlab">Peril vs. Hazard</span><div>Oily rags stored next to a heater represent which term in the anatomy of a loss?</div><div class="opts">A. Peril · B. Hazard · C. Risk · D. Loss</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — Hazard</div><p>A hazard is a condition that increases the potential for loss. The <b>peril</b> would be the resulting fire; the hazard just raises its odds.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Insurability</span><div>Which type of risk is insurable?</div><div class="opts">A. Speculative · B. Dynamic · C. Pure · D. Fundamental</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — Pure risk</div><p>Pure risk offers only the chance of loss or no loss — no chance of gain — so it is insurable. Speculative and dynamic risks are not, and fundamental risk is generally uninsurable.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Agency law</span><div>A terminated agent still holds company applications and binds a new policy. This illustrates which authority?</div><div class="opts">A. Express · B. Implied · C. Apparent · D. Ratified</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — Apparent authority</div><p>The client reasonably believes authority exists based on the agent's materials/actions — even though actual authority ended. Express is written; implied is what's necessary to do the job.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Insurable interest</span><div>For which contract must insurable interest exist ONLY at the time of issue (not also at loss)?</div><div class="opts">A. Property · B. Life · C. Both · D. Neither</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — Life insurance</div><p>Life requires insurable interest only at issue. <b>Property</b> requires it at the time of issue AND at the time of loss.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Negligence defenses</span><div>Under which defense does being just 1% at fault completely bar the injured party's recovery?</div><div class="opts">A. Comparative negligence · B. Assumption of risk · C. Contributory negligence · D. Last clear chance</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — Contributory negligence</div><p>Contributory negligence is the strictest rule — 1% fault bars all recovery. Comparative negligence instead reduces the award proportionally. Last Clear Chance is a modifier that can restore recovery.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Regulation</span><div>The McCarran-Ferguson Act (1945) is best described as:</div><div class="opts">A. Making insurance a federal function · B. Reserving most insurance regulation to the states · C. Creating the NAIC with binding authority · D. Overturning Paul v. Virginia</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — Reserved most regulation to the states</div><p>Following U.S. v. SEUA, McCarran-Ferguson left insurance regulation primarily to the states, with federal reach only over antitrust and labor. The NAIC coordinates but cannot force adoption.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Contract characteristics</span><div>A $1,000 premium that may pay a $1M benefit reflects which characteristic of insurance contracts?</div><div class="opts">A. Adhesion · B. Unilateral · C. Aleatory · D. Conditional</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — Aleatory</div><p>Aleatory contracts are controlled by chance, with substantially unequal dollar exchange. Adhesion = take-it-or-leave-it; unilateral = only the insurer's promise is enforceable; conditional = pays only if duties are met.</p></div>
+  </details>
+
+  <div class="foot">
+    AI-generated (NotebookLM) study deck for FP512 Module 1 — verify all figures against your course text before the exam.<br>
+    Rebuilt as a native visual deck from the source NotebookLM slides (19 pages). AI quirks noted inline are reproduced faithfully, not silently corrected.
+  </div>
+
+</div>
+
+<button id="tgl" aria-label="Toggle dark mode">🌙 Theme</button>
+<script>
+/* Progress bar */
+var prog=document.getElementById('prog');
+addEventListener('scroll',function(){
+  var h=document.documentElement,b=document.body;
+  var st=h.scrollTop||b.scrollTop, sh=(h.scrollHeight||b.scrollHeight)-h.clientHeight;
+  prog.style.width=(sh>0?(st/sh*100):0)+'%';
+},{passive:true});
+/* Theme — synced with the app via localStorage cfpTheme */
+var root=document.documentElement;
+function applyTheme(t){root.setAttribute('data-theme',t);}
+try{
+  var saved=localStorage.getItem('cfpTheme');
+  if(saved){applyTheme(saved);}
+  else if(matchMedia('(prefers-color-scheme:dark)').matches){applyTheme('dark');}
+}catch(e){}
+document.getElementById('tgl').addEventListener('click',function(){
+  var t=root.getAttribute('data-theme')==='dark'?'light':'dark';
+  applyTheme(t);try{localStorage.setItem('cfpTheme',t);}catch(e){}
+});
+</script>
+
+<!-- deck-chrome-injected -->
+<style>
+#dkHome{position:fixed;left:max(14px,env(safe-area-inset-left));bottom:calc(14px + env(safe-area-inset-bottom));z-index:9999;
+  background:#1f4d3a;color:#fff;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:10px 15px;
+  font:700 13px/1 system-ui,-apple-system,sans-serif;text-decoration:none;box-shadow:0 8px 22px -8px rgba(0,0,0,.55);}
+#dkBack{position:fixed;left:max(14px,env(safe-area-inset-left));bottom:calc(60px + env(safe-area-inset-bottom));z-index:9999;
+  background:#fffdf8;color:#1f4d3a;border:1.5px solid #1f4d3a;border-radius:999px;padding:9px 13px;
+  font:700 13px/1 system-ui,-apple-system,sans-serif;text-decoration:none;box-shadow:0 6px 20px -6px rgba(0,0,0,.5);}
+html[data-theme="dark"] #dkBack{background:#17120e;color:#7fd3ac;border-color:#7fd3ac;}
+</style>
+<a id="dkHome" href="../index.html">🏠 Home</a>
+<script>
+(function(){try{var r=sessionStorage.getItem('cfpReaderReturn');var a=document.createElement('a');a.id='dkBack';
+  if(r&&/^[A-Za-z0-9]+\/\d+$/.test(r)){a.href='../index.html#m/'+r;a.textContent='‹ Module '+r.split('/')[1];}
+  else{a.href='../index.html#modules';a.textContent='‹ Modules';}
+  document.body.appendChild(a);}catch(e){}})();
+</script>
+
+</body>
+</html>

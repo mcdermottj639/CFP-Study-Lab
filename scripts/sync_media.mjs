@@ -7,6 +7,7 @@
  *     assets/infographics/   images (png/jpg/webp/gif/svg/avif)  -> window.INFOGRAPHICS
  *     assets/slides/         slide-deck PDFs                     -> window.SLIDES
  *     assets/video/          video clips (mp4/webm/mov/m4v)      -> window.VIDEO
+ *     assets/audio/          audio podcasts (m4a/mp3/aac/ogg)    -> window.AUDIO
  *   e.g.  assets/infographics/FP512-M1-Insurance-and-Risk-Management-Guide.png
  *         assets/slides/FP512-M1-Principles-of-Insurance.pdf
  *         assets/slides/FP513-M4.pdf            (no title -> default below)
@@ -39,6 +40,7 @@ const KINDS = [
   { dir: 'infographics', ext: /\.(png|jpe?g|webp|gif|svg|avif)$/i, deft: 'Visual guide', global: 'INFOGRAPHICS', precache: true },
   { dir: 'slides',       ext: /\.pdf$/i,                            deft: 'Slide deck',   global: 'SLIDES',       precache: false },
   { dir: 'video',        ext: /\.(mp4|webm|mov|m4v)$/i,             deft: 'Video',        global: 'VIDEO',        precache: false },
+  { dir: 'audio',        ext: /\.(m4a|mp3|aac|ogg)$/i,              deft: 'Podcast',      global: 'AUDIO',        precache: false },
 ];
 
 function scan(kind) {

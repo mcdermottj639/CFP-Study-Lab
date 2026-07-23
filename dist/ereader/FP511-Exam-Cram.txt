@@ -1,0 +1,300 @@
+FP511 Exam Cram — CFP Study Lab
+===============================
+FP511 — General Financial Planning, Conduct & Psychology
+===== FP511 EXAM CRAM =====
+
+Pocket cram sheet — key numbers, must-know rules, traps and tips per module. Skim before the exam or between sittings.
+
+
+
+===== FP511 · M1 PERSONAL FINANCIAL PLANNING =====
+
+This module is the skeleton every other topic hangs on: the 7-step process (Understand circumstances → Identify goals → Analyze → Develop recommendations → Present → Implement → Monitor) is the order the exam expects, and the duties you take on at each step come straight from the fiduciary standard you'll study in Module 5. Get the process and disclosure rules cold — they recur in scenario questions across all domains.
+
+-- Learning objectives --
+
+  • Recite the 7-step financial planning process in order and what happens in each step
+  • Distinguish the planner's responsibilities at engagement, data-gathering, and implementation
+  • Identify required disclosures and which must be in writing
+  • Place a client in the correct financial life-cycle phase and adjust advice accordingly
+  • Explain what to do when client information is incomplete
+
+-- ★ Key numbers --
+
+  • 7 steps: Understand → Identify goals → Analyze → Recommend → Present → Implement → Monitor
+  • Fiduciary: Duty of Loyalty + Care + Follow client instructions — at all times when advising
+  • Written disclosures: Material conflicts, compensation, and the scope of engagement
+  • Life-cycle: Accumulation → Conservation → Distribution
+
+-- Must know --
+
+  • Know the 7-step process in order — it frames nearly every scenario question.
+  • A CFP® professional is a fiduciary at all times when providing financial advice.
+  • Define the scope of engagement and disclose conflicts before proceeding.
+  • If information is incomplete, you may continue with the client's permission, noting the limitation.
+
+-- ⚠ Traps --
+
+  • Re-ordering the steps — Analyze comes before developing recommendations.
+  • Thinking fiduciary duty applies only to investments — it covers all financial advice.
+  • Skipping monitoring (Step 7) — the process is ongoing, not one-and-done.
+
+-- ✓ Tips --
+
+  • 'What is the planner's NEXT step?' → locate where you are in the 7-step process.
+  • Conflict-of-interest language → disclosure + fiduciary duty is the answer.
+
+
+
+===== FP511 · M2 PSYCHOLOGY OF FINANCIAL PLANNING =====
+
+Psychology is the 'why clients don't act' layer over the technical plan. Biases and money scripts explain resistance you'll see in case studies, and the communication techniques here are how you implement the recommendations from Module 1. Small weight on the blueprint, but it shows up inside cross-domain scenarios.
+
+-- Learning objectives --
+
+  • Recognize common behavioral biases (anchoring, overconfidence, recency, loss aversion, framing)
+  • Explain money scripts and how upbringing shapes financial behavior
+  • Apply counseling/communication techniques and active listening to client meetings
+  • Adapt planning around life transitions, crisis events, and client resistance
+
+-- ★ Key numbers --
+
+  • Biases: Anchoring, overconfidence, recency, loss aversion, framing, herding
+  • Money scripts: Avoidance, worship, status, vigilance (Klontz)
+  • Loss aversion: Losses feel ~2× as painful as equivalent gains
+  • Tolerance vs capacity: Willingness to take risk vs ability to absorb loss
+
+-- Must know --
+
+  • Behavioral biases explain why clients act against their own plan.
+  • Money scripts are money beliefs formed early in life.
+  • Use active listening, open-ended questions, and empathy in counseling.
+  • Loss aversion makes clients hold losers and sell winners.
+
+-- ⚠ Traps --
+
+  • Confusing risk tolerance (willingness) with risk capacity (ability).
+  • Mislabeling a bias — anchoring (fixating on a reference) vs recency (overweighting recent events).
+
+-- ✓ Tips --
+
+  • Emotional/irrational money decision in the stem → name the bias.
+  • 'Won't sell a losing stock' → loss aversion / anchoring.
+
+
+
+===== FP511 · M3 FINANCIAL STATEMENTS & CASH FLOW =====
+
+Financial statements turn a client's situation into numbers you can plan with. The position statement and cash-flow statement feed every later recommendation — emergency fund sizing, debt ratios, and how much is available to save (which becomes the PMT in your Module 4 TVM work). Master the ratios; they're quick points.
+
+-- Learning objectives --
+
+  • Build a statement of financial position and classify assets vs. liabilities correctly
+  • Construct a cash-flow statement and separate fixed vs. variable (discretionary) outflows
+  • Compute and interpret the core ratios (emergency fund, savings rate, debt, housing)
+  • Recommend an appropriate emergency-fund target from the client's expenses
+
+-- ★ Key numbers --
+
+  • Emergency fund: 3–6 months of nondiscretionary (fixed) expenses
+  • Housing ratio: ≤ 28% of gross income (PITI)
+  • Total debt ratio: ≤ 36% of gross income (PITI + other debt)
+  • Savings rate: Target ~10–20% of gross income
+  • Net worth: Assets − Liabilities (statement of financial position)
+
+-- Must know --
+
+  • Statement of financial position = assets vs liabilities at a point in time.
+  • Cash-flow statement = inflows vs outflows over a period; split fixed vs discretionary.
+  • Emergency fund uses fixed expenses; debt ratios use gross income.
+  • Assets are shown at fair market value, liabilities at outstanding balance.
+
+-- ⚠ Traps --
+
+  • Emergency fund off total expenses instead of fixed/nondiscretionary.
+  • Using net income for the 28/36 ratios — they use gross.
+  • Listing an asset's original cost instead of current FMV.
+
+-- ✓ Tips --
+
+  • Ratio question → check the denominator (gross income vs fixed expenses).
+
+
+
+===== FP511 · M4 TIME VALUE OF MONEY =====
+
+Time value of money is the engine of the entire CFP exam — education funding, retirement need, bond pricing, and lump-sum vs. annuity decisions are all TVM in disguise. The two things that trip people up are BEG vs. END mode and using the real (inflation-adjusted) rate; nail those and a huge share of calculation questions fall.
+
+-- Learning objectives --
+
+  • Solve FV/PV problems for single sums and for ordinary annuities vs. annuities due
+  • Convert a nominal return and inflation into the real (inflation-adjusted) rate
+  • Evaluate cash flows with NPV and IRR and apply the NPV decision rule
+  • Set the calculator to the right payment mode (BEG vs. END) for the fact pattern
+  • Compute a serial payment that keeps pace with inflation
+
+-- ★ Key numbers --
+
+  • Real rate: [(1+nominal) ÷ (1+inflation) − 1] — don't just subtract
+  • BEG vs END: Annuity due (BEG) = payments at start; ordinary (END) = at end
+  • Rule of 72: Years to double ≈ 72 ÷ rate
+  • NPV rule: Accept if NPV ≥ 0 (IRR ≥ required return)
+  • Serial payment: Grows with inflation; first payment = PMT × (1+inflation)
+
+-- Must know --
+
+  • Education & retirement 'need' problems use the real (inflation-adjusted) rate.
+  • Set BEG mode when the first cash flow is today (annuity due).
+  • NPV discounts at the required return; IRR solves the rate where NPV = 0.
+  • More frequent compounding → higher effective rate.
+
+-- ⚠ Traps --
+
+  • Subtracting inflation from return instead of the real-rate formula.
+  • Leaving the calculator in END mode for an annuity-due problem.
+  • Confusing nominal vs effective rate with non-annual compounding.
+
+-- ✓ Tips --
+
+  • 'In today's dollars' / 'inflation-adjusted' → use the real rate.
+  • First payment due immediately → BEG mode.
+
+
+
+===== FP511 · M5 PROFESSIONAL CONDUCT & FIDUCIARY =====
+
+Conduct and fiduciary duty is non-negotiable exam material and the ethical backbone of Module 1's process. Know the duties owed, the Standards, and the discipline process verbatim — these questions reward precise recall, not estimation, and they appear in every form of the exam.
+
+-- Learning objectives --
+
+  • State the duties owed to clients, firms, the public, and CFP Board
+  • Apply the fiduciary duty (duty of loyalty, care, and to follow client instructions)
+  • Match a fact pattern to the Standard of Conduct it violates
+  • Trace the CFP Board enforcement/discipline process and possible sanctions
+
+-- ★ Key numbers --
+
+  • Duties owed: Client, Firm, Public, and CFP Board
+  • Fiduciary: Loyalty + Care + Follow Client Instructions
+  • Material conflict: Disclose AND manage; obtain client consent (often written)
+  • Discipline: Private censure → public letter → suspension → revocation
+
+-- Must know --
+
+  • A CFP® professional is a fiduciary at all times when giving financial advice.
+  • Duty of Loyalty: client first, avoid/disclose/manage conflicts, no misuse of info.
+  • Know the Standards of Conduct and the duties owed to each party.
+  • Sanctions escalate from private censure to revocation of the marks.
+
+-- ⚠ Traps --
+
+  • Thinking disclosure alone cures a conflict — it must also be managed + consented.
+  • Applying fiduciary duty only to investment advice — it's all financial advice.
+  • Confusing the three fiduciary duties (loyalty / care / instructions).
+
+-- ✓ Tips --
+
+  • Conflict scenario → usually disclose, obtain consent, manage.
+  • When unsure, the most client-protective answer is typically correct.
+
+
+
+===== FP511 · M6 ECONOMIC ENVIRONMENT & CONSUMER PROTECTION =====
+
+The economic environment sets the backdrop for investment and retirement planning: where we are in the business cycle and what the Fed is doing drives interest rates and asset returns. Pair this with the consumer-protection laws, which are recall-style points.
+
+-- Learning objectives --
+
+  • Identify the phases of the business cycle and where the economy sits
+  • Distinguish monetary policy (the Fed) from fiscal policy (Congress) and their tools
+  • Explain how interest rates, inflation, and the yield curve relate
+  • Recognize the major consumer-protection laws and what each covers
+
+-- ★ Key numbers --
+
+  • Business cycle: Expansion → Peak → Contraction → Trough
+  • Monetary policy: The Fed: open-market ops, discount rate, reserve requirements
+  • Fiscal policy: Congress: taxing & spending
+  • Yield curve: Normal = upward; inverted often precedes recession
+  • Key laws: TILA, FCRA, ECOA, Fair Debt Collection
+
+-- Must know --
+
+  • Monetary policy = the Fed (rates/money supply); fiscal = Congress (tax/spend).
+  • The Fed raises rates to fight inflation, lowers to stimulate.
+  • An inverted yield curve is a classic recession signal.
+  • Consumer laws: FCRA (credit reports), ECOA (no discrimination), TILA (disclosure).
+
+-- ⚠ Traps --
+
+  • Attributing open-market operations to Congress (it's the Fed).
+  • Mixing up which consumer-protection law covers what.
+
+-- ✓ Tips --
+
+  • 'Fed' in the stem → monetary policy; 'Congress/tax' → fiscal.
+
+
+
+===== FP511 · M7 EDUCATION PLANNING =====
+
+Education planning is the cleanest application of Module 4's TVM: solve for the lump sum needed today (PV in BEG mode at the inflation-adjusted rate), then for the savings required to get there. Layer on the 529/Coverdell/credit rules and financial-aid asset treatment — a frequently tested, high-yield combination.
+
+-- Learning objectives --
+
+  • Run the two-step education funding calc: PV of the need today, then required savings
+  • Compare 529 plans, Coverdell ESAs, UTMA/UGMA, and savings bonds on tax & control
+  • Apply the American Opportunity and Lifetime Learning credits and their phaseouts
+  • Account for financial-aid treatment of parent- vs. student-owned assets
+
+-- ★ Key numbers --
+
+  • Two-step: Step 1: PV of need (BEG, real rate) · Step 2: solve required savings (PMT)
+  • 529 plan: Tax-free growth for qualified education; owner-controlled; high limits
+  • Coverdell ESA: $2,000/yr; K-12 + college; income phaseouts
+  • AOTC: Up to $2,500/yr, first 4 years, 40% refundable; phaseouts
+  • LLC: Up to $2,000/yr; unlimited years; nonrefundable
+  • Aid impact: Parent-owned assets assessed lighter than student-owned
+
+-- Must know --
+
+  • Step 1 solves a PRESENT VALUE (lump sum at matriculation), not a future value.
+  • Use BEG mode + the inflation-adjusted rate for the funding annuity.
+  • 529: owner keeps control; UTMA/UGMA: irrevocable gift to the child.
+  • AOTC (4 yrs, partly refundable) vs LLC (unlimited yrs, nonrefundable) — no double-dipping.
+
+-- ⚠ Traps --
+
+  • Solving Step 1 as a future value — it's a PV (one of the most-missed items).
+  • Claiming AOTC and LLC for the same student in the same year.
+  • Forgetting student-owned assets hurt financial aid more than parent-owned.
+
+-- ✓ Tips --
+
+  • Education funding → PV in BEG mode at the real rate, then solve the savings PMT.
+
+
+
+===== FP511 · M8 CASE STUDY =====
+
+The case study is where the other seven modules meet. The skill being tested is triage: read the fact pattern, name the domains it touches, and prioritize. Practice identifying overlaps (tax + estate, insurance + retirement) rather than memorizing new material.
+
+-- Learning objectives --
+
+  • Integrate insurance, tax, investment, retirement, and estate issues in one case
+  • Identify which domains a fact pattern touches before answering
+  • Prioritize recommendations by client goal and risk exposure
+
+-- Must know --
+
+  • Read the full fact pattern first and note which domains it touches.
+  • Identify cross-domain overlaps: estate+tax, insurance+retirement, investment+tax.
+  • Prioritize by the client's stated goals and biggest risk exposures.
+  • Translate concepts into actions — the exam asks 'what should the planner DO?'
+
+-- ✓ Tips --
+
+  • List the domains in play before answering — it narrows the options fast.
+  • Form your own answer before reading the choices; distractors are designed to mislead.
+  • No guessing penalty — flag, guess, move on, and manage your time.
+  • Ethics and the 7-step process show up inside cases — apply them explicitly.

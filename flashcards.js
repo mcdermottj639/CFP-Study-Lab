@@ -26,6 +26,11 @@
 
   function ymdNow() { return new Date().toISOString().slice(0, 10); }
 
+  // Read-aloud helpers reuse the app's global TTS (defined in the source next to
+  // mcqRunner). Return '' when unavailable so the deck degrades gracefully.
+  function ttsB(html, label) { return (typeof window.ttsBtn === 'function') ? window.ttsBtn(html, label || '🔊 Listen') : ''; }
+  function ttsHalt() { if (typeof window.ttsStop === 'function') window.ttsStop(); }
+
   window.runFlash = function (mod) {
     var hardOnly = !!window._hardOnly;
     window._hardOnly = false; // one-shot flag set by runHard()
@@ -122,6 +127,7 @@
 
     function draw() {
       clearTimer();
+      ttsHalt();                       // stop any read-aloud when the card changes
       flipped = false;
       if (idx >= deck.length) {
         clearSession();
@@ -156,11 +162,15 @@
           (auto ? '(auto-flip preview — not graded)' : '(tap or press Space to flip)') + '</span></div></div>' +
         '<div id="flashctrl" class="center"></div></div>';
       document.getElementById('flashface').onclick = flip;
+      // Listen button lives OUTSIDE #flashface so tapping it doesn't also flip the card.
+      var fc = document.getElementById('flashctrl');
+      if (fc) fc.innerHTML = ttsB(front, '🔊 Listen');
       if (auto) timer = setTimeout(flip, AUTO_MS);
     }
 
     function flip() {
       clearTimer();
+      ttsHalt();                       // stop the question read-aloud before revealing the answer
       flipped = true;
       var c = deck[idx].c;
       var f = faces(c);
@@ -174,6 +184,7 @@
         return;
       }
       document.getElementById('flashctrl').innerHTML =
+        (ttsB(f[1], '🔊 Read answer') ? '<div style="margin-top:10px">' + ttsB(f[1], '🔊 Read answer') + '</div>' : '') +
         '<div class="confbtns" style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap;justify-content:center">' +
         GRADES.map(function (x) {
           return '<button class="btn" style="background:' + x.bg + ';flex:1;min-width:70px" ' +

@@ -18,6 +18,9 @@ const BODY = `<script src="../reader-theme.js"></script>`;
 // In-reader search (loads AFTER reader-theme so its UI sits on <body>, outside the wrapper)
 const SEARCH_MARK = 'reader-search-injected';
 const SEARCH = `<!-- ${SEARCH_MARK} --><script src="../reader-search.js"></script>`;
+// Read-aloud "audiobook mode" (same reasoning — UI on <body>, outside the wrapper)
+const TTS_MARK = 'reader-tts-injected';
+const TTS = `<!-- ${TTS_MARK} --><script src="../reader-tts.js"></script>`;
 
 for (const f of files) {
   let html = readFileSync(f, 'utf8');
@@ -43,6 +46,13 @@ for (const f of files) {
   if (!html.includes(SEARCH_MARK)) {
     const idx = html.lastIndexOf('</body>');
     html = idx !== -1 ? html.slice(0, idx) + SEARCH + '\n' + html.slice(idx) : html + SEARCH;
+    changed = true;
+  }
+
+  // read-aloud script (separate marker so it lands on already-themed readers too)
+  if (!html.includes(TTS_MARK)) {
+    const idx = html.lastIndexOf('</body>');
+    html = idx !== -1 ? html.slice(0, idx) + TTS + '\n' + html.slice(idx) : html + TTS;
     changed = true;
   }
 
