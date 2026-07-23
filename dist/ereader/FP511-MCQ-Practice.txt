@@ -1,0 +1,737 @@
+FP511 MCQ Practice — CFP Study Lab
+==================================
+FP511 — General Financial Planning, Conduct & Psychology
+===== FP511 MCQ PRACTICE =====
+
+Read the question and options, commit to an answer, then turn the page for the correct choice, the explanation, and why each wrong option is wrong.
+50 questions · 5 sections.
+
+
+
+===== FP511 · M1 PERSONAL FINANCIAL PLANNING =====
+
+[9 questions]
+
+——————————
+[Q 1 / 9 · Disclosure method]
+Which disclosure may be delivered either verbally OR in writing in both Financial Advice and Financial Planning engagements?
+A. Privacy policy
+B. Public discipline and bankruptcy
+C. How the firm and related parties are compensated
+D. Material conflicts of interest
+Answer: D. Material conflicts of interest
+Material conflicts of interest may be delivered verbally or in writing. Privacy policy, compensation, and public discipline/bankruptcy must be in writing.
+[Why the others are wrong:]
+✗ Privacy policy — The privacy policy must be delivered in writing, not verbally.
+✗ Public discipline and bankruptcy — Public discipline and bankruptcy disclosures must be in writing.
+✗ How the firm and related parties are compensated — Compensation disclosure must be in writing, not merely verbal.
+
+——————————
+[Q 2 / 9 · Documentation methods]
+According to the Practice Standards, all of the following are approved documentation methods EXCEPT:
+A. CRM software
+B. Voice memos
+C. Handwritten notes
+D. Emails
+Answer: B. Voice memos
+Approved methods are CRM software, handwritten notes, and emails. Voice memos are not listed as an approved method.
+[Why the others are wrong:]
+✗ CRM software — CRM software is an approved documentation method, so it is not the exception.
+✗ Handwritten notes — Handwritten notes are an approved documentation method.
+✗ Emails — Emails are an approved documentation method; voice memos are the one not listed.
+
+——————————
+[Q 3 / 9 · Qualitative data]
+In data gathering, which of the following is QUALITATIVE (subjective) rather than quantitative data?
+A. Section 401(k) account statement
+B. Income tax return
+C. Personal goals and objectives
+D. Liability/debt statement
+Answer: C. Personal goals and objectives
+Personal goals and objectives are qualitative (subjective) data. Account statements, tax returns, and debt statements are quantitative (objective) data.
+[Why the others are wrong:]
+✗ Section 401(k) account statement — An account statement is hard, objective (quantitative) data, not subjective.
+✗ Income tax return — A tax return is objective quantitative data — numbers and facts, not subjective.
+✗ Liability/debt statement — A debt statement is quantitative (objective) data, not qualitative.
+
+——————————
+[Q 4 / 9 · Incomplete information]
+If a planner cannot obtain sufficient and relevant quantitative information to form a basis for recommendations, the planner must:
+A. Proceed using reasonable assumptions for the missing data
+B. Either restrict the scope of the engagement or terminate it
+C. Report the client to CFP Board
+D. Obtain the information from a third party without client consent
+Answer: B. Either restrict the scope of the engagement or terminate it
+Per Step 1, the planner must either restrict the scope to matters with sufficient information or terminate the engagement, and communicate any scope limitations to the client.
+[Why the others are wrong:]
+✗ Proceed using reasonable assumptions for the missing data — You can't fabricate a basis with assumptions for missing core data; you must restrict scope or terminate.
+✗ Report the client to CFP Board — A client withholding information is not a reportable violation; the planner restricts scope or terminates.
+✗ Obtain the information from a third party without client consent — Gathering data without client consent breaches confidentiality; the fix is to limit scope or terminate.
+
+——————————
+[Q 5 / 9 · Implementation responsibility]
+Under Code & Standards A.10.b.ii, who is responsible for implementing Financial Planning recommendations?
+A. The client, always
+B. The planner, unless specifically excluded from the Scope of Engagement
+C. A third-party custodian
+D. CFP Board
+Answer: B. The planner, unless specifically excluded from the Scope of Engagement
+The planner is responsible for implementing the recommendations unless specifically excluded from the Scope of Engagement; the client accepts or rejects the recommendations.
+[Why the others are wrong:]
+✗ The client, always — Not always the client — the planner is responsible unless specifically excluded from the Scope of Engagement.
+✗ A third-party custodian — A custodian merely holds assets; implementation responsibility rests with the planner unless scoped out.
+✗ CFP Board — The CFP Board sets standards; it never implements client recommendations.
+
+——————————
+[Q 6 / 9 · Fee-only]
+A firm receives only financial planning fees and no commissions or sales-related compensation. Under Standard A.12, this firm is:
+A. Fee-based
+B. Fee-only
+C. Commission-based
+D. Fee-offset
+Answer: B. Fee-only
+Fee-only means the firm receives only planning fees. Fee-based means planning fees plus commissions/sales-related compensation.
+[Why the others are wrong:]
+✗ Fee-based — Fee-based requires commissions/sales compensation ADDED to fees; this firm takes fees only, so it's fee-only.
+✗ Commission-based — The firm earns no commissions at all, so it cannot be commission-based.
+✗ Fee-offset — Fee-offset reduces fees by commissions earned — but this firm earns no commissions, so the term doesn't apply.
+
+——————————
+[Q 7 / 9 · 7-step order]
+Which correctly orders steps 4 through 6 of the Financial Planning Process?
+A. Developing → Implementing → Presenting
+B. Developing → Presenting → Implementing
+C. Presenting → Developing → Implementing
+D. Implementing → Developing → Presenting
+Answer: B. Developing → Presenting → Implementing
+Step 4 Developing, Step 5 Presenting, Step 6 Implementing recommendations (then Step 7 Monitoring).
+[Why the others are wrong:]
+✗ Developing → Implementing → Presenting — Presenting (Step 5) comes before Implementing (Step 6), not after.
+✗ Presenting → Developing → Implementing — Developing (Step 4) precedes Presenting (Step 5); this reverses the first two.
+✗ Implementing → Developing → Presenting — Implementing is Step 6, not first — order is Develop, Present, Implement.
+
+——————————
+[Q 8 / 9 · Marks usage]
+Which is a CORRECT use of the CFP® marks?
+A. John Doe, C.F.P.
+B. John Doe, a CFP
+C. John Doe, CFP®
+D. John Doe, cfp
+Answer: C. John Doe, CFP®
+The marks use capital letters, no periods, and the ® symbol. "John Doe, CFP®" is correct; periods and a missing ® are incorrect.
+[Why the others are wrong:]
+✗ John Doe, C.F.P. — Periods are not permitted — the marks use no periods and require the ® symbol.
+✗ John Doe, a CFP — The marks may not be used as a noun and must include the ® symbol.
+✗ John Doe, cfp — Lowercase is incorrect — the marks require capital letters and the ® symbol.
+
+——————————
+[Q 9 / 9 · Life cycle phase]
+A 70-year-old retiree making lifetime gifts to heirs and executing estate strategies is primarily in which financial life-cycle phase?
+A. Asset accumulation
+B. Conservation/protection
+C. Distribution/gifting
+D. Liquidation
+Answer: C. Distribution/gifting
+The distribution/gifting phase runs roughly from retirement (~age 60) to death and features gifting and estate planning.
+[Why the others are wrong:]
+✗ Asset accumulation — Accumulation is the early wealth-building phase, not the retiree gifting/estate stage.
+✗ Conservation/protection — The conservation phase focuses on protecting and growing assets pre-retirement, before active gifting.
+✗ Liquidation — Liquidation is not a standard named life-cycle phase; retirement gifting is the distribution/gifting phase.
+
+
+
+===== FP511 · M2 PSYCHOLOGY OF FINANCIAL PLANNING =====
+
+[12 questions]
+
+——————————
+[Q 1 / 12 · Loss aversion]
+An investor refuses to sell a losing stock, waiting to "get even," even though better opportunities exist. This best illustrates:
+A. Anchoring
+B. Loss aversion
+C. Confirmation bias
+D. Mental accounting
+Answer: B. Loss aversion
+Loss aversion is the tendency to fear losses more than valuing equivalent gains, causing reluctance to realize losses ("get-even-itis").
+[Why the others are wrong:]
+✗ Anchoring — That's fixating on a reference price generally; the core driver here is fearing the loss (loss aversion).
+✗ Confirmation bias — That's seeking info that supports a belief, not the emotional refusal to realize a loss.
+✗ Mental accounting — That's siloing money by purpose, not the aversion to taking a loss on this position.
+
+——————————
+[Q 2 / 12 · Cognitive vs emotional]
+How should a planner generally handle a purely EMOTIONAL bias, as compared with a cognitive bias?
+A. Correct it with more information and education
+B. Ignore it
+C. Accommodate it, since it is harder to overcome
+D. Report it to a compliance officer
+Answer: C. Accommodate it, since it is harder to overcome
+Cognitive biases can often be corrected with information; emotional biases are harder to overcome and may need to be accommodated.
+[Why the others are wrong:]
+✗ Correct it with more information and education — That's how you handle a cognitive bias; emotional biases resist information and usually must be accommodated.
+✗ Ignore it — Biases affecting decisions can't be ignored; emotional ones should be accommodated in the plan.
+✗ Report it to a compliance officer — A behavioral bias isn't a compliance violation; it's addressed through counseling, not reporting.
+
+——————————
+[Q 3 / 12 · Confirmation bias]
+A client overloads on employer stock and only reads news supporting that decision. This reflects:
+A. Recency bias
+B. Confirmation bias
+C. Status quo bias
+D. Endowment bias
+Answer: B. Confirmation bias
+Confirmation bias is seeking or distorting information to support an existing view, often leading to under-diversification in employer stock.
+[Why the others are wrong:]
+✗ Recency bias — That's overweighting recent events, not selectively seeking info that supports holding employer stock.
+✗ Status quo bias — That's preferring the existing state/inaction, not actively filtering for confirming information.
+✗ Endowment bias — That's overvaluing what you own; here the tell is seeking only supportive news (confirmation bias).
+
+——————————
+[Q 4 / 12 · Mental accounting]
+A client refuses to use money set aside in a "vacation fund" to repair a leaking roof and instead pays penalties to borrow elsewhere. This is:
+A. Mental accounting
+B. Framing bias
+C. Self-control bias
+D. Affinity bias
+Answer: A. Mental accounting
+Mental accounting (money jar mentality) treats funds differently by purpose, sometimes irrationally.
+[Why the others are wrong:]
+✗ Framing bias — That's deciding differently based on how a choice is worded, not siloing money into purpose-based jars.
+✗ Self-control bias — That's failing to act in one's long-term interest from lack of discipline, not compartmentalizing funds.
+✗ Affinity bias — That's investing to reflect one's identity/values, not treating earmarked funds as untouchable.
+
+——————————
+[Q 5 / 12 · Status quo / defaults]
+Automatic enrollment in a retirement plan leverages which behavioral tendency to improve participation?
+A. Overconfidence
+B. Status quo bias
+C. Loss aversion
+D. Representativeness
+Answer: B. Status quo bias
+Status quo bias is comfort with the existing situation; defaults and automatic enrollment use this tendency to keep participants saving.
+[Why the others are wrong:]
+✗ Overconfidence — That's overrating one's own judgment; defaults work by exploiting inertia, not confidence.
+✗ Loss aversion — That's fearing losses more than valuing gains; auto-enrollment works via inertia/status quo, not loss framing.
+✗ Representativeness — That's judging by stereotypes/resemblance, not the tendency to stick with a default option.
+
+——————————
+[Q 6 / 12 · Risk capacity]
+The degree to which a client's financial resources can absorb and mitigate risk is the client's:
+A. Risk tolerance
+B. Risk perception
+C. Risk capacity
+D. Risk preference
+Answer: C. Risk capacity
+Risk capacity refers to financial resources' ability to mitigate risk; risk tolerance is the willingness to accept risk.
+[Why the others are wrong:]
+✗ Risk tolerance — That's the willingness (subjective) to accept risk, not the objective resource ability to absorb it.
+✗ Risk perception — That's how risky the client feels something is, not the financial ability to absorb risk.
+✗ Risk preference — That's a stated liking for more or less risk, not the resources available to absorb it.
+
+——————————
+[Q 7 / 12 · Money scripts]
+Unconscious money beliefs formed in childhood that are resistant to change are called:
+A. Money scripts
+B. Mental accounts
+C. Money illusions
+D. Financial comfort zones
+Answer: A. Money scripts
+Money scripts are unconscious, often childhood-formed attitudes about money that resist change.
+[Why the others are wrong:]
+✗ Mental accounts — Those are purpose-based mental “jars” for money, not deep-seated childhood money beliefs.
+✗ Money illusions — That's confusing nominal and real dollars, not unconscious childhood-formed money attitudes.
+✗ Financial comfort zones — Not the standard term; the childhood-rooted, resistant beliefs are money scripts.
+
+——————————
+[Q 8 / 12 · Financial therapy referral]
+A client shows signs of a compulsive-buying disorder affecting their finances. The CFP® professional should:
+A. Provide therapy personally
+B. Refer the client to a financial therapist / licensed mental health professional
+C. Terminate the relationship immediately
+D. Ignore it as outside financial planning
+Answer: B. Refer the client to a financial therapist / licensed mental health professional
+Serious psychological/pathological money issues should be referred to a financial therapist or licensed mental health professional; planner involvement in feelings should stay general and limited.
+[Why the others are wrong:]
+✗ Provide therapy personally — Planners aren't licensed therapists; providing therapy exceeds their competence and role.
+✗ Terminate the relationship immediately — Abandoning the client isn't appropriate; the proper step is referral to a mental health professional.
+✗ Ignore it as outside financial planning — It materially affects finances and can't be ignored; refer to a financial therapist/mental health professional.
+
+——————————
+[Q 9 / 12 · Social Penetration]
+In Social Penetration Theory, the stage marked by significant trust, open disclosure, and intimacy is:
+A. Orientation
+B. Exploration
+C. Affective Exchange
+D. Stable Exchange
+Answer: C. Affective Exchange
+Affective Exchange features significant trust and open disclosure. Stable Exchange is the deepest, established long-term pattern.
+[Why the others are wrong:]
+✗ Orientation — That's the first-meeting, general-conversation stage — well before significant trust develops.
+✗ Exploration — That's a middle stage of increasing but still limited sharing, not deep trust and open disclosure.
+✗ Stable Exchange — That's the deepest, established long-term pattern; the stage first marked by significant trust/open disclosure is Affective Exchange.
+
+——————————
+[Q 10 / 12 · Profiling questions]
+For effective psychological profiling and goal discovery, a planner should primarily use:
+A. Closed-ended yes/no questions
+B. Open-ended questions
+C. Leading multiple-choice prompts
+D. Standardized forms only
+Answer: B. Open-ended questions
+Open-ended questions prompt clients to answer in their own words, yielding richer profiling information.
+[Why the others are wrong:]
+✗ Closed-ended yes/no questions — These limit answers to yes/no and yield thin information, poor for rich profiling.
+✗ Leading multiple-choice prompts — Leading prompts steer the client and bias answers, undermining genuine discovery.
+✗ Standardized forms only — Forms alone can't capture the client's own words and nuance needed for profiling.
+
+——————————
+[Q 11 / 12 · Cultural humility]
+A planner's lifelong process of self-evaluating their own beliefs and assumptions about other cultures is:
+A. Cultural competency
+B. Cultural humility
+C. Cultural framing
+D. Affinity awareness
+Answer: B. Cultural humility
+Cultural humility is the ongoing self-evaluation of one's beliefs; cultural competency alone (learned knowledge) can lead to cultural bias.
+[Why the others are wrong:]
+✗ Cultural competency — That's acquired knowledge about cultures; relied on alone it can breed cultural bias. The ongoing self-evaluation is cultural humility.
+✗ Cultural framing — Not the standard term; the lifelong self-reflection process is cultural humility.
+✗ Affinity awareness — Not the standard term; the ongoing self-examination of one's own cultural assumptions is cultural humility.
+
+——————————
+[Q 12 / 12 · Endowment bias]
+A client demands far more to sell an inherited stock than she would ever pay to buy it. This best illustrates:
+A. Endowment bias
+B. Anchoring
+C. Recency bias
+D. Framing bias
+Answer: A. Endowment bias
+Endowment bias is overvaluing an asset simply because one owns it, so the selling price exceeds the buying price.
+[Why the others are wrong:]
+✗ Anchoring — That's fixating on a reference number; the gap here comes from overvaluing what she owns (endowment).
+✗ Recency bias — That's overweighting recent events, not valuing an asset more simply because she owns it.
+✗ Framing bias — That's deciding differently based on wording, not the ownership-driven sell-vs-buy price gap.
+
+
+
+===== FP511 · M3 FINANCIAL STATEMENTS & CASH FLOW =====
+
+[17 questions]
+
+——————————
+[Q 1 / 17 · FDIC limit]
+What is the basic FDIC insured amount, per depositor, per ownership category, per institution?
+A. $100,000
+B. $250,000
+C. $500,000
+D. Unlimited
+Answer: B. $250,000
+FDIC insurance covers $250,000 per depositor, per ownership category, per insured institution; credit unions are insured to the same limit by the NCUA.
+[Why the others are wrong:]
+✗ $100,000 — $100,000 was the old pre-2008 limit; the current FDIC limit is $250,000.
+✗ $500,000 — $500,000 is the SIPC securities limit, not the FDIC deposit limit of $250,000.
+✗ Unlimited — FDIC coverage is capped at $250,000 per depositor, per ownership category, per institution — not unlimited.
+
+——————————
+[Q 2 / 17 · FDIC coverage scope]
+Which of the following is NOT covered by FDIC insurance?
+A. A certificate of deposit (CD)
+B. A savings account
+C. Shares in a money market mutual fund
+D. A money market deposit account
+Answer: C. Shares in a money market mutual fund
+FDIC covers cash and cash-equivalents including CDs and deposit accounts, but not securities or money market mutual funds.
+[Why the others are wrong:]
+✗ A certificate of deposit (CD) — A CD is a deposit product fully covered by FDIC insurance.
+✗ A savings account — A savings account is a deposit account covered by FDIC insurance.
+✗ A money market deposit account — A money market DEPOSIT account is FDIC-insured; a money market MUTUAL FUND (a security) is not.
+
+——————————
+[Q 3 / 17 · Bank regulators]
+Which agency conducts monetary policy?
+A. OCC
+B. FDIC
+C. Federal Reserve Board
+D. NCUA
+Answer: C. Federal Reserve Board
+The Federal Reserve Board conducts monetary policy. The OCC charters national banks and the FDIC insures deposits.
+[Why the others are wrong:]
+✗ OCC — The OCC charters and supervises national banks; it does not conduct monetary policy.
+✗ FDIC — The FDIC insures bank deposits; monetary policy is the Federal Reserve's role.
+✗ NCUA — The NCUA insures/regulates credit unions; it does not set monetary policy.
+
+——————————
+[Q 4 / 17 · Net worth equation]
+On the statement of financial position, net worth equals:
+A. Assets + Liabilities
+B. Assets − Liabilities
+C. Income − Expenses
+D. Liabilities − Assets
+Answer: B. Assets − Liabilities
+Assets = Liabilities + Net Worth, so Net Worth = Assets − Liabilities.
+[Why the others are wrong:]
+✗ Assets + Liabilities — Confuses the accounting identity; assets equal liabilities PLUS net worth, so you subtract liabilities.
+✗ Income − Expenses — That is net cash flow from the cash flow statement, not net worth from the balance sheet.
+✗ Liabilities − Assets — Reversed; subtracting assets from liabilities gives a negative of net worth. It is Assets minus Liabilities.
+
+——————————
+[Q 5 / 17 · Asset valuation]
+At what value are assets reported on a personal statement of financial position?
+A. Original purchase cost
+B. Fair market value (FMV)
+C. FMV net of any early-withdrawal penalties
+D. Tax basis
+Answer: B. Fair market value (FMV)
+Assets are reported at fair market value. FMV is used even when an asset is subject to an early-withdrawal penalty; the penalty is ignored.
+[Why the others are wrong:]
+✗ Original purchase cost — That is historical cost/basis; personal balance sheets use current fair market value.
+✗ FMV net of any early-withdrawal penalties — FMV is used and penalties are ignored; you do not net them out.
+✗ Tax basis — Tax basis is used for gain/loss calculations, not for reporting asset value on the statement of financial position.
+
+——————————
+[Q 6 / 17 · Liability measurement]
+How is a mortgage reported on the statement of financial position?
+A. At its original loan amount
+B. At the monthly payment amount
+C. At the outstanding principal balance
+D. At principal plus all remaining interest
+Answer: C. At the outstanding principal balance
+Liabilities are listed at the outstanding principal balance — not the original amount, the payment, or principal plus future interest.
+[Why the others are wrong:]
+✗ At its original loan amount — The original amount ignores principal already repaid; report the current outstanding balance.
+✗ At the monthly payment amount — The payment is a cash-flow item, not the balance-sheet liability value.
+✗ At principal plus all remaining interest — Future interest is not yet owed as a liability; only the outstanding principal is listed.
+
+——————————
+[Q 7 / 17 · Housing ratio]
+A client's monthly PITI is $2,000 and gross monthly income is $8,000. The housing (front-end) ratio is and:
+A. 25%, within the 28% benchmark
+B. 25%, exceeds the 28% benchmark
+C. 16.7%, uses net income
+D. 40%, exceeds the benchmark
+Answer: A. 25%, within the 28% benchmark
+$2,000 / $8,000 = 25% of gross income, within the ≤ 28% benchmark. The housing ratio uses gross income.
+[Why the others are wrong:]
+✗ 25%, exceeds the 28% benchmark — 25% is within, not above, the 28% front-end benchmark.
+✗ 16.7%, uses net income — The ratio uses gross income; $2,000/$8,000 = 25%, not 16.7%.
+✗ 40%, exceeds the benchmark — Miscalculated; $2,000/$8,000 is 25%, and it does not exceed 28%.
+
+——————————
+[Q 8 / 17 · Total debt ratio]
+The total (back-end) debt ratio benchmark is and is measured against income.
+A. 28%; net
+B. 36%; gross
+C. 20%; net
+D. 43%; gross
+Answer: B. 36%; gross
+The total debt ratio should be ≤ 36% of gross monthly income, including housing plus consumer debt and support obligations.
+[Why the others are wrong:]
+✗ 28%; net — 28% is the front-end (housing) benchmark, and the debt ratios use gross, not net, income.
+✗ 20%; net — 20% net is the consumer-debt benchmark, not the total back-end ratio.
+✗ 43%; gross — 43% is a qualified-mortgage lending threshold, not the standard 36% back-end planning benchmark.
+
+——————————
+[Q 9 / 17 · Consumer debt ratio]
+The consumer (non-mortgage) debt ratio benchmark of 20% is measured against which income figure?
+A. Gross monthly income
+B. Net monthly income (gross minus taxes)
+C. Adjusted gross income
+D. Taxable income
+Answer: B. Net monthly income (gross minus taxes)
+Consumer debt payments should be ≤ 20% of net monthly income; net is used because consumer debt interest is not tax-favored.
+[Why the others are wrong:]
+✗ Gross monthly income — The housing and total-debt ratios use gross; the consumer-debt ratio uses net monthly income.
+✗ Adjusted gross income — AGI is a tax concept; the consumer-debt ratio is measured against net monthly income.
+✗ Taxable income — Taxable income is a tax figure; the 20% consumer-debt benchmark uses net monthly income.
+
+——————————
+[Q 10 / 17 · Emergency fund 6 months]
+For which client is a 6-month emergency fund most appropriate?
+A. Married couple, both employed at stable jobs
+B. Single wage earner with no other income source
+C. Married couple with a large second income available
+D. Dual-income household with substantial liquid assets
+Answer: B. Single wage earner with no other income source
+Six months is appropriate for a single wage earner or a married couple with only one spouse employed; three months suits dual-income or second-income situations.
+[Why the others are wrong:]
+✗ Married couple, both employed at stable jobs — Dual stable incomes support a 3-month fund; six months is for single-earner situations.
+✗ Married couple with a large second income available — A second income cushions job loss, so three months suffices, not six.
+✗ Dual-income household with substantial liquid assets — Two incomes plus ample liquidity call for three months, not six.
+
+——————————
+[Q 11 / 17 · Net investment ratio]
+The net-investment-assets-to-net-worth ratio is generally considered adequate when it is at least:
+A. 10%
+B. 20%
+C. 50%
+D. 100%
+Answer: C. 50%
+This ratio (excluding home equity) should be ≥ 50% and rising toward retirement; younger clients are often around 20% or less.
+[Why the others are wrong:]
+✗ 10% — Too low; the target is at least 50%, though younger clients may start near 20% or less.
+✗ 20% — 20% is typical for younger clients, not the 'adequate' benchmark, which is at least 50%.
+✗ 100% — Overstated; the ratio need only reach at least 50% and rise toward retirement, not 100%.
+
+——————————
+[Q 12 / 17 · Savings ratio]
+Regarding the recommended savings ratio of at least 10% of gross income, employer qualified-plan contributions:
+A. Do not count at all
+B. Count toward the savings ratio
+C. Count only if vested
+D. Are counted as income, not savings
+Answer: B. Count toward the savings ratio
+Employer contributions to qualified plans count toward the recommended savings ratio of at least 10% of gross income.
+[Why the others are wrong:]
+✗ Do not count at all — Employer qualified-plan contributions DO count toward the 10% savings ratio.
+✗ Count only if vested — Vesting is irrelevant here; employer contributions count toward the savings ratio regardless.
+✗ Are counted as income, not savings — Employer plan contributions are treated as savings, not as current income, for this ratio.
+
+——————————
+[Q 13 / 17 · Debt payoff]
+A client paying off the smallest balances first to build motivation is using the:
+A. Avalanche technique
+B. Snowball technique
+C. Refinancing technique
+D. Amortization technique
+Answer: B. Snowball technique
+The snowball technique targets the smallest balances first for motivation; the avalanche technique targets the highest-interest debt first to save money.
+[Why the others are wrong:]
+✗ Avalanche technique — The avalanche targets the highest-interest debt first to minimize interest, not the smallest balance.
+✗ Refinancing technique — Refinancing replaces a loan with better terms; it is not a debt-payoff ordering method.
+✗ Amortization technique — Amortization is the scheduled paydown of a loan, not a motivational payoff strategy.
+
+——————————
+[Q 14 / 17 · FICO weighting]
+Which factor carries the greatest weight in a FICO score?
+A. Length of credit history (15%)
+B. Amounts owed / utilization (30%)
+C. Payment history (35%)
+D. New credit (10%)
+Answer: C. Payment history (35%)
+Payment history is the most heavily weighted factor at 35%, followed by amounts owed at 30%.
+[Why the others are wrong:]
+✗ Length of credit history (15%) — At 15% it is a minor factor; payment history (35%) carries the greatest weight.
+✗ Amounts owed / utilization (30%) — At 30% it is the second-largest factor, behind payment history at 35%.
+✗ New credit (10%) — At only 10%, new credit is among the smallest FICO factors.
+
+——————————
+[Q 15 / 17 · Mortgage point]
+One mortgage point equals:
+A. 1% of the home's value
+B. 1% of the amount borrowed
+C. $1,000 regardless of loan size
+D. 1% of the monthly payment
+Answer: B. 1% of the amount borrowed
+A point equals 1% of the amount borrowed, paid up front to obtain a lower interest rate.
+[Why the others are wrong:]
+✗ 1% of the home's value — A point is based on the loan amount borrowed, not the home's value or price.
+✗ $1,000 regardless of loan size — A point is 1% of the loan, so its dollar amount varies with loan size, not a flat $1,000.
+✗ 1% of the monthly payment — A point is 1% of the amount borrowed, not of the monthly payment.
+
+——————————
+[Q 16 / 17 · VA loan]
+Which is true of a VA loan?
+A. Requires at least 3.5% down
+B. Requires PMI when down payment is under 20%
+C. Can be obtained with no down payment and no PMI
+D. Is only available for jumbo amounts
+Answer: C. Can be obtained with no down payment and no PMI
+VA loans can be obtained with no down payment and require no PMI, though they charge a funding fee. FHA loans require a 3.5% minimum down payment.
+[Why the others are wrong:]
+✗ Requires at least 3.5% down — The 3.5% minimum down payment applies to FHA loans; VA loans allow zero down.
+✗ Requires PMI when down payment is under 20% — VA loans never require PMI; they charge a funding fee instead.
+✗ Is only available for jumbo amounts — VA loans are for eligible veterans and are not restricted to jumbo loan amounts.
+
+——————————
+[Q 17 / 17 · Reverse mortgage age]
+What is the minimum age to obtain a reverse (home equity conversion) mortgage?
+A. 55
+B. 59½
+C. 62
+D. 65
+Answer: C. 62
+A borrower must be age 62 or older. The lender pays the homeowner, and the loan is nonrecourse.
+[Why the others are wrong:]
+✗ 55 — Too young; the HECM minimum is age 62.
+✗ 59½ — 59½ is the retirement-account penalty age, not the reverse-mortgage minimum of 62.
+✗ 65 — The minimum is 62, not 65.
+
+
+
+===== FP511 · M4 TIME VALUE OF MONEY =====
+
+[4 questions]
+
+——————————
+[Q 1 / 4 · Ordinary vs due]
+Lease payments and education/retirement funding contributions made at the beginning of each period are an example of a(n):
+A. Ordinary annuity
+B. Annuity due
+C. Perpetuity
+D. Lump sum
+Answer: B. Annuity due
+Payments at the beginning of each period form an annuity due (leases, funding goals). Ordinary annuities (e.g., mortgages) pay at period-end.
+[Why the others are wrong:]
+✗ Ordinary annuity — Ordinary annuities pay at period-END (e.g., mortgages); beginning-of-period payments are an annuity due.
+✗ Perpetuity — A perpetuity pays forever with no end; these are finite, timing-specific payments.
+✗ Lump sum — A lump sum is a single payment, not a series of beginning-of-period payments.
+
+——————————
+[Q 2 / 4 · Real rate]
+Compared with simply subtracting inflation from the rate of return, the correctly computed inflation-adjusted (real) rate is:
+A. Always slightly higher
+B. Always slightly lower
+C. Exactly equal
+D. Unrelated
+Answer: B. Always slightly lower
+The inflation-adjusted rate from [(1+return)/(1+inflation) − 1] × 100 is always slightly less than (return − inflation).
+[Why the others are wrong:]
+✗ Always slightly higher — The correct real rate from the Fisher formula is slightly LOWER than return minus inflation, not higher.
+✗ Exactly equal — Only approximately equal; the compounding in the true formula makes it slightly lower.
+✗ Unrelated — They are closely related; the correct method just yields a slightly lower figure.
+
+——————————
+[Q 3 / 4 · NPV rule]
+If an investment has a negative net present value (NPV), then its return is:
+A. Greater than the discount rate
+B. Equal to the discount rate
+C. Less than the discount rate
+D. Equal to zero
+Answer: C. Less than the discount rate
+A negative NPV means the return is less than the discount (required) rate; a positive NPV means the return exceeds it.
+[Why the others are wrong:]
+✗ Greater than the discount rate — A return above the discount rate produces a POSITIVE NPV, not a negative one.
+✗ Equal to the discount rate — When return equals the discount rate, NPV is zero, not negative.
+✗ Equal to zero — A zero return is unrelated to NPV sign; negative NPV means return is below the discount rate.
+
+——————————
+[Q 4 / 4 · Serial payment]
+Compared with a level (fixed) annuity payment funding the same goal, the FIRST serial payment is:
+A. Larger than the fixed payment
+B. Smaller than the fixed payment
+C. Identical to the fixed payment
+D. Zero
+Answer: B. Smaller than the fixed payment
+A serial payment grows with inflation, so the first serial payment is smaller than the equivalent fixed payment and the last is larger.
+[Why the others are wrong:]
+✗ Larger than the fixed payment — Reversed; serial payments start smaller and grow, so the first is smaller, not larger.
+✗ Identical to the fixed payment — Serial payments rise with inflation, so they are not equal to the level payment.
+✗ Zero — The first serial payment is a real, positive amount, just smaller than the fixed one, not zero.
+
+
+
+===== FP511 · M5 PROFESSIONAL CONDUCT & FIDUCIARY =====
+
+[8 questions]
+
+——————————
+[Q 1 / 8 · Fiduciary Duty]
+Under Standard A.1, the Fiduciary Duty owed when providing Financial Advice consists of which three duties?
+A. Loyalty, Care, and Follow Client Instructions
+B. Integrity, Competence, and Diligence
+C. Disclosure, Consent, and Management
+D. Loyalty, Confidentiality, and Professionalism
+Answer: A. Loyalty, Care, and Follow Client Instructions
+The Fiduciary Duty is composed of the Duty of Loyalty, the Duty of Care, and the Duty to Follow Client Instructions.
+[Why the others are wrong:]
+✗ Integrity, Competence, and Diligence — These are separate standalone standards (A.2–A.4 area), not the three A.1 fiduciary duties.
+✗ Disclosure, Consent, and Management — That's the conflict-of-interest process (A.5), not the fiduciary duty's three components.
+✗ Loyalty, Confidentiality, and Professionalism — Only Loyalty belongs; Confidentiality (A.9) and Professionalism are separate standards, not fiduciary duties.
+
+——————————
+[Q 2 / 8 · Conflicts of interest]
+A CFP® professional sincerely believes a recommendation is in the client's best interest despite a related compensation conflict. Under Standard A.5, the conflict must be:
+A. Disclosed only if the client asks
+B. Ignored because the planner is acting in the client's best interest
+C. Disclosed even though the planner believes she is acting in the client's best interest
+D. Disclosed only after implementation
+Answer: C. Disclosed even though the planner believes she is acting in the client's best interest
+A material conflict of interest must be disclosed even if the CFP® professional believes she is acting in the client's best interest; she must also obtain informed consent and manage the conflict.
+[Why the others are wrong:]
+✗ Disclosed only if the client asks — Disclosure is mandatory and proactive; it is not contingent on the client asking.
+✗ Ignored because the planner is acting in the client's best interest — A sincere best-interest belief does NOT excuse disclosure — material conflicts must still be disclosed and managed.
+✗ Disclosed only after implementation — Disclosure and informed consent must come before/at recommendation, not after implementation.
+
+——————————
+[Q 3 / 8 · Competence]
+A CFP® professional is asked to provide a service for which she lacks sufficient competence. Standard A.3 permits all of the following responses EXCEPT:
+A. Gain the necessary competence
+B. Limit the scope of the engagement
+C. Refer the client to a competent professional
+D. Proceed and disclaim liability in the engagement letter
+Answer: D. Proceed and disclaim liability in the engagement letter
+Under Competence, the planner must gain competence, get a competent professional's help, limit scope, refer, and/or terminate — not simply proceed with a disclaimer.
+[Why the others are wrong:]
+✗ Gain the necessary competence — Gaining competence is an explicitly permitted A.3 response, so it isn't the exception.
+✗ Limit the scope of the engagement — Limiting scope to competent areas is a permitted A.3 response.
+✗ Refer the client to a competent professional — Referring to a competent professional is permitted under A.3; proceeding with a disclaimer is not.
+
+——————————
+[Q 4 / 8 · Technology standard]
+Under Standard A.14, when relying on technology to provide services, a CFP® professional must:
+A. Be a technology expert
+B. Have a reasonable basis for reliability, exercise reasonable care, and have a reasonable understanding
+C. Avoid all third-party software
+D. Personally audit the source code
+Answer: B. Have a reasonable basis for reliability, exercise reasonable care, and have a reasonable understanding
+Standard A.14 requires a reasonable basis for reliability, reasonable care, and a reasonable understanding — the professional is not required to be an expert.
+[Why the others are wrong:]
+✗ Be a technology expert — A.14 requires only reasonable understanding, not expert-level technical mastery.
+✗ Avoid all third-party software — A.14 permits reliance on technology; it doesn't ban third-party software.
+✗ Personally audit the source code — Reasonable diligence is required, not a personal source-code audit.
+
+——————————
+[Q 5 / 8 · Recommending others]
+When recommending another professional to a client, Standard A.13 requires the CFP® professional to do all of the following EXCEPT:
+A. Have a reasonable basis for the referral
+B. Disclose compensation paid by anyone other than the client
+C. Guarantee the other professional's performance
+D. Communicate the respective roles and inform the client of non-performance
+Answer: C. Guarantee the other professional's performance
+A.13 requires a reasonable basis, disclosure of referral compensation, communication of roles, and informing the client of non-performance — not a guarantee of the other party's work.
+[Why the others are wrong:]
+✗ Have a reasonable basis for the referral — A reasonable basis IS required by A.13, so it is not the exception.
+✗ Disclose compensation paid by anyone other than the client — Disclosing third-party referral compensation is required by A.13.
+✗ Communicate the respective roles and inform the client of non-performance — Communicating roles and reporting non-performance are A.13 requirements; guaranteeing performance is not.
+
+——————————
+[Q 6 / 8 · Purpose of Code]
+Which is NOT one of the three stated purposes of the Code of Ethics and Standards of Conduct?
+A. Benefit and protect the public
+B. Provide standards for delivering financial planning
+C. Advance financial planning as a distinct and valuable profession
+D. Maximize CFP® professionals' compensation
+Answer: D. Maximize CFP® professionals' compensation
+The three purposes are to benefit/protect the public, provide standards, and advance the profession. Maximizing compensation is not a stated purpose.
+[Why the others are wrong:]
+✗ Benefit and protect the public — This IS one of the three stated purposes, so it isn't the exception.
+✗ Provide standards for delivering financial planning — Providing delivery standards is a stated purpose of the Code.
+✗ Advance financial planning as a distinct and valuable profession — Advancing the profession is a stated purpose; maximizing compensation is not.
+
+——————————
+[Q 7 / 8 · Confidentiality exceptions]
+Standard A.9 permits use or disclosure of confidential client information for which two purposes?
+A. Marketing and recruiting
+B. Ordinary business use and legal/compliance purposes
+C. Tax filing and social media
+D. Referral solicitation and advertising
+Answer: B. Ordinary business use and legal/compliance purposes
+The two exceptions to confidentiality are ordinary business use and legal/compliance purposes.
+[Why the others are wrong:]
+✗ Marketing and recruiting — Marketing and recruiting are not A.9 confidentiality exceptions — only ordinary business and legal/compliance use.
+✗ Tax filing and social media — Social media disclosure is never permitted; the exceptions are ordinary business and legal/compliance use.
+✗ Referral solicitation and advertising — Advertising/solicitation are not confidentiality exceptions under A.9.
+
+——————————
+[Q 8 / 8 · Dealer markup]
+A securities firm trades from its own account and charges clients the difference between the interdealer offer price and the price it charges. This compensation is a:
+A. Commission
+B. Markup
+C. Advisory fee
+D. Loaded sales charge
+Answer: B. Markup
+A dealer/principal trading from its own account (position trading) charges a markup. A broker/agent arranging trades charges a commission.
+[Why the others are wrong:]
+✗ Commission — A commission is charged by a broker/agent ARRANGING a trade, not a dealer trading from its own inventory.
+✗ Advisory fee — An advisory fee compensates ongoing advice, not a principal trade spread.
+✗ Loaded sales charge — A sales load applies to mutual fund purchases, not to a dealer's principal-trade markup.

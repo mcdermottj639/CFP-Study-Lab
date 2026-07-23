@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FP511 · Module 6 — Economic Environment &amp; Consumer Protection (Visual Deck)</title>
+<style>
+/* ---- Dancing Script title (vendored, offline) ---- */
+@font-face{font-family:'Dancing Script';src:url('../vendor/fonts/dancing-script-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap;}
+
+:root{
+  --canvas:#f4ecdf; --card:#fffdf8; --card2:#faf3e6;
+  --ink:#2c2118; --ink2:#5b4b3a; --muted:#897357;
+  --line:#e6d8c2; --line2:#d8c6aa;
+  --terra:#d0613a; --terra-d:#b34d2a;
+  --green:#1f4d3a; --green-l:#2f7355;
+  --gold:#c58a2e; --sky:#3a6ea5;
+  --trap:#b34d2a; --trap-bg:#fbe9e1; --tip:#2f7355; --tip-bg:#e6f2ea;
+  --key-bg:#efe4d0;
+  --radius:18px; --shadow:0 8px 26px -14px rgba(60,40,20,.55);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--canvas);}
+body{font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;color:var(--ink);-webkit-text-size-adjust:100%;}
+
+/* ---- App-synced dark mode: filter-invert the content wrapper (matches readers) ---- */
+html[data-theme="dark"]{background:#17120e;}
+html[data-theme="dark"] body{background:#17120e;}
+html[data-theme="dark"] #rdrWrap{filter:invert(.92) hue-rotate(180deg);}
+html[data-theme="dark"] #rdrWrap svg,
+html[data-theme="dark"] #rdrWrap img,
+html[data-theme="dark"] #rdrWrap canvas{filter:invert(1) hue-rotate(180deg);}
+
+#rdrWrap{max-width:820px;margin:0 auto;padding:18px 15px 90px;}
+
+/* ---- Header ---- */
+.deck-head{padding:26px 20px 22px;border-radius:var(--radius);color:#fff;
+  background:linear-gradient(135deg,#1f4d3a 0%,#2f7355 55%,#d0613a 160%);
+  box-shadow:var(--shadow);position:relative;overflow:hidden;}
+.deck-head .eyebrow{font:700 12px/1 system-ui;letter-spacing:.16em;text-transform:uppercase;opacity:.85;}
+.deck-head h1{font-family:'Dancing Script',cursive;font-size:clamp(34px,9vw,52px);margin:.15em 0 .1em;line-height:1;}
+.deck-head .sub{font-size:15px;opacity:.95;max-width:46ch;}
+.deck-head .pillrow{margin-top:14px;display:flex;flex-wrap:wrap;gap:7px;}
+.deck-head .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+  border-radius:999px;padding:5px 11px;font:600 12px/1 system-ui;}
+
+/* ---- Section divider ---- */
+.sect{margin:34px 2px 14px;display:flex;align-items:center;gap:12px;}
+.sect .n{flex:none;width:38px;height:38px;border-radius:11px;background:var(--green);color:#fff;
+  font:800 15px/38px system-ui;text-align:center;box-shadow:var(--shadow);}
+.sect h2{font-size:19px;margin:0;color:var(--green);letter-spacing:.01em;}
+.sect .lo{font:600 11px/1 system-ui;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
+
+/* ---- Slide card ---- */
+.slide{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 19px;margin:13px 0;box-shadow:var(--shadow);}
+.slide h3{margin:0 0 8px;font-size:18px;color:var(--ink);display:flex;gap:9px;align-items:baseline;}
+.slide h3 .ic{font-size:19px;}
+.slide p{margin:8px 0;color:var(--ink2);}
+.slide ul{margin:9px 0;padding-left:1.15em;}
+.slide li{margin:5px 0;color:var(--ink2);}
+.lead{font-size:16.5px;color:var(--ink)!important;}
+
+/* ---- Stat tiles ---- */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:11px;margin:14px 0 4px;}
+.tile{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:13px 14px;}
+.tile .v{font:800 24px/1.05 system-ui;color:var(--terra-d);letter-spacing:-.01em;}
+.tile .k{font-size:12.5px;color:var(--ink2);margin-top:5px;}
+
+/* ---- Callouts ---- */
+.callout{border-radius:13px;padding:12px 14px 12px 15px;margin:13px 0;border-left:5px solid;font-size:14.5px;}
+.callout.trap{background:var(--trap-bg);border-color:var(--trap);}
+.callout.tip{background:var(--tip-bg);border-color:var(--tip);}
+.callout b{color:var(--ink);}
+.callout .lab{display:block;font:800 11px/1 system-ui;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;}
+.callout.trap .lab{color:var(--trap);}
+.callout.tip .lab{color:var(--tip);}
+
+/* ---- Tables ---- */
+.tbl-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0 4px;
+  border:1px solid var(--line);border-radius:13px;}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:460px;}
+caption{caption-side:top;text-align:left;font:700 13px/1.4 system-ui;color:var(--muted);padding:2px 4px 9px;}
+th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
+thead th{background:var(--green);color:#fff;font-weight:700;font-size:12.5px;position:sticky;top:0;}
+tbody th{background:var(--card2);color:var(--ink);font-weight:700;white-space:nowrap;}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:none;}
+td.y{color:var(--tip);font-weight:700;} td.n{color:var(--trap);font-weight:700;}
+
+/* ---- Chart figure ---- */
+figure{margin:14px 0 4px;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:14px 14px 10px;}
+figure svg{width:100%;height:auto;display:block;}
+figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center;}
+.legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:9px;font:600 12.5px/1 system-ui;}
+.legend span{display:inline-flex;align-items:center;gap:6px;color:var(--ink2);}
+.legend i{width:14px;height:3px;border-radius:2px;display:inline-block;}
+
+/* ---- Three-up option groups ---- */
+.triad{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;margin:13px 0 4px;}
+.opt{background:var(--card2);border:1px solid var(--line);border-radius:13px;padding:12px 13px;}
+.opt .t{font:800 13.5px/1.2 system-ui;color:var(--green);margin-bottom:5px;}
+.opt .d{font-size:13px;color:var(--ink2);}
+
+/* ---- Worked example ---- */
+.calc{background:#1c2b24;color:#e9f3ee;border-radius:14px;padding:16px 16px 12px;margin:14px 0 4px;}
+.calc h4{margin:0 0 10px;color:#7fd3ac;font-size:14.5px;}
+.calc .step{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-top:1px solid rgba(255,255,255,.12);}
+.calc .step:first-of-type{border-top:none;}
+.calc .sn{flex:none;width:24px;height:24px;border-radius:8px;background:#2f7355;color:#fff;font:800 12px/24px system-ui;text-align:center;}
+.calc .sb{font-size:13.5px;}
+.calc .sb b{color:#fff;}
+.calc code{font:600 12.5px/1.5 ui-monospace,Menlo,monospace;color:#ffd9a8;background:rgba(255,255,255,.07);
+  padding:1px 6px;border-radius:6px;display:inline-block;margin-top:3px;}
+.calc .res{margin-top:11px;background:#d0613a;color:#fff;border-radius:10px;padding:10px 13px;font:700 15px/1.2 system-ui;}
+
+/* ---- Quiz (tap to reveal) ---- */
+.quiz{background:var(--card);border:1.5px solid var(--terra);border-radius:14px;padding:0;margin:13px 0;overflow:hidden;box-shadow:var(--shadow);}
+.quiz>summary{list-style:none;cursor:pointer;padding:15px 16px;font-size:15px;color:var(--ink);position:relative;}
+.quiz>summary::-webkit-details-marker{display:none;}
+.quiz>summary .qlab{display:inline-block;font:800 10.5px/1 system-ui;letter-spacing:.12em;color:var(--terra-d);
+  background:var(--trap-bg);border-radius:6px;padding:4px 7px;margin-bottom:8px;text-transform:uppercase;}
+.quiz>summary .opts{margin-top:9px;font-size:13.5px;color:var(--ink2);}
+.quiz>summary .tap{margin-top:10px;font:700 12.5px/1 system-ui;color:var(--terra);}
+.quiz[open]>summary .tap{display:none;}
+.quiz .ans{padding:0 16px 15px;border-top:1px dashed var(--line2);margin-top:2px;}
+.quiz .ans .correct{font:800 14px/1.4 system-ui;color:var(--tip);margin:12px 0 6px;}
+.quiz .ans p{font-size:13.5px;color:var(--ink2);margin:6px 0 0;}
+
+.foot{margin-top:34px;padding:16px;border-radius:var(--radius);background:var(--card2);border:1px solid var(--line);
+  font-size:12.5px;color:var(--muted);text-align:center;}
+
+/* ---- Floating theme toggle (standalone preview; injection can replace) ---- */
+#tgl{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:9999;
+  background:var(--terra);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:999px;
+  padding:10px 15px;font:700 13px/1 system-ui;cursor:pointer;box-shadow:0 8px 22px -8px rgba(0,0,0,.55);}
+
+/* ---- Sticky progress ---- */
+#prog{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--green),var(--terra));z-index:9999;transition:width .1s;}
+
+@media(min-width:560px){.slide{padding:22px 24px;} #rdrWrap{padding:22px 20px 90px;}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<div id="rdrWrap">
+
+  <header class="deck-head">
+    <div class="eyebrow">FP511 · General Financial Planning</div>
+    <h1>Economic Environment</h1>
+    <div class="sub">Module 6 at a glance — supply &amp; demand, monetary vs. fiscal policy, the business cycle, inflation flavors, bankruptcy, and consumer-credit protection laws. Built from the College for Financial Planning® (Kaplan) course deck.</div>
+    <div class="pillrow">
+      <span class="pill">📈 Supply · demand · GDP</span>
+      <span class="pill">🏛️ Monetary vs. fiscal</span>
+      <span class="pill">🔄 Business cycle</span>
+      <span class="pill">⚖️ Bankruptcy &amp; credit laws</span>
+    </div>
+  </header>
+
+  <!-- ============ LO 6.1.1 — Supply & demand ============ -->
+  <div class="sect"><div class="n">1</div><div><div class="lo">Learning Objective 6.1.1</div><h2>Supply, demand &amp; the price mechanism</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🧭</span>Economics — the study of scarce choices</h3>
+    <p class="lead">Economics is the study of the <b>production, distribution, and consumption</b> of goods — i.e., how choices are made when resources are scarce.</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Microeconomics</div><div class="d">How individuals &amp; companies decide to allocate scarce resources, prioritizing their respective wants.</div></div>
+      <div class="opt"><div class="t">Macroeconomics</div><div class="d">The economy as a whole — e.g., the factors that affect a country's economic growth.</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">📈</span>Supply &amp; demand curves</h3>
+    <p><b>Supply</b> = the amount of a good available for purchase at a given price. The higher the price obtainable, the higher the quantity supplied — so the curve <b>slopes upward</b> left to right.</p>
+    <p><b>Demand</b> = the quantity consumers want to purchase at a given price. If price increases, consumers tend to buy less — the curve <b>slopes downward</b>.</p>
+    <div class="callout tip"><span class="lab">Movement vs. shift</span>A change in <b>price</b> is a movement <b>along</b> the curve. A change in factors <b>other than price</b> <b>shifts</b> the whole curve (S₀→S₁ or D₀→D₁).</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">⚖️</span>Equilibrium — where the curves cross</h3>
+    <p>Supply and demand are the <b>two key determinants of price</b>. Equilibrium is the <b>intersection</b> of the supply and demand curves. Prices should always move toward equilibrium unless restricted by outside sources.</p>
+    <figure>
+      <svg viewBox="0 0 460 220" role="img" aria-label="Supply and demand curves crossing at the equilibrium price and quantity">
+        <line x1="52" y1="20" x2="52" y2="180" stroke="#d8c6aa" stroke-width="1.5"/>
+        <line x1="52" y1="180" x2="430" y2="180" stroke="#d8c6aa" stroke-width="1.5"/>
+        <text x="14" y="30" font-size="10" fill="#897357">Price</text>
+        <text x="378" y="197" font-size="10" fill="#897357">Quantity →</text>
+        <!-- supply upward -->
+        <line x1="72" y1="170" x2="410" y2="40" stroke="#1f4d3a" stroke-width="3" stroke-linecap="round"/>
+        <text x="360" y="52" font-size="11" font-weight="700" fill="#1f4d3a">Supply</text>
+        <!-- demand downward -->
+        <line x1="72" y1="40" x2="410" y2="170" stroke="#d0613a" stroke-width="3" stroke-linecap="round"/>
+        <text x="360" y="164" font-size="11" font-weight="700" fill="#b34d2a">Demand</text>
+        <!-- equilibrium point ~ center (241,105) -->
+        <circle cx="241" cy="105" r="5" fill="#c58a2e"/>
+        <line x1="52" y1="105" x2="241" y2="105" stroke="#c58a2e" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="241" y1="105" x2="241" y2="180" stroke="#c58a2e" stroke-width="1" stroke-dasharray="3 3"/>
+        <text x="120" y="99" font-size="10" font-weight="700" fill="#8a6a1f">Equilibrium price</text>
+        <text x="205" y="196" font-size="10" font-weight="700" fill="#8a6a1f">Eq. quantity</text>
+      </svg>
+      <figcaption>Equilibrium: the single price/quantity where the quantity demanded equals the quantity supplied.</figcaption>
+    </figure>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🎚️</span>Price elasticity — how much quantity responds</h3>
+    <p>Elasticity is the <b>degree of movement in quantity demanded in response to a price change</b>.</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Inelastic</div><div class="d">Demand for <b>necessities</b> (food, medicine, gasoline) responds <b>relatively little</b> to price changes.</div></div>
+      <div class="opt"><div class="t">Elastic</div><div class="d">Demand for <b>luxuries</b> (new automobiles) responds <b>relatively more</b> to price changes.</div></div>
+    </div>
+    <div class="callout tip"><span class="lab">Memory hook</span>Necessities = <b>in</b>elastic (you buy them almost regardless of price). Luxuries = elastic (easy to skip when prices rise).</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🏭</span>Gross Domestic Product (GDP)</h3>
+    <p>Total monetary value of all goods and services produced <b>within the domestic United States</b> over a given year.</p>
+    <ul>
+      <li><b>Includes</b> income generated domestically by a <b>foreign</b> firm</li>
+      <li>Measured in <b>constant dollars</b>, which translates into <b>real GDP</b> after accounting for inflation (relative to a predetermined base/index year)</li>
+    </ul>
+    <div class="callout trap"><span class="lab">Exam trap</span>GDP is location-based — it counts what is produced <b>inside U.S. borders</b>, including output of foreign-owned firms operating domestically.</div>
+  </div>
+
+  <!-- ============ LO 6.1.2 — Monetary vs fiscal policy ============ -->
+  <div class="sect"><div class="n">2</div><div><div class="lo">Learning Objective 6.1.2</div><h2>Monetary vs. fiscal policy</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🏛️</span>Two levers, two different drivers</h3>
+    <div class="triad">
+      <div class="opt"><div class="t">Monetary policy</div><div class="d">Conducted by the <b>Federal Reserve Board (the Fed)</b>. Raises/lowers <b>short-term interest rates</b> because they affect consumer spending (demand).</div></div>
+      <div class="opt"><div class="t">Fiscal policy</div><div class="d">Conducted by <b>Congress and the current administration (president)</b>. Influences consumer demand through governmental policies (tax &amp; spend).</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🛠️</span>The Fed's three monetary tools</h3>
+    <p>The Fed seeks to control the overall <b>money supply</b>, thereby affecting future economic behavior, using:</p>
+    <div class="triad">
+      <div class="opt"><div class="t">Reserve requirements</div><div class="d">Lower or raise the required reserves member banks must hold.</div></div>
+      <div class="opt"><div class="t">Open-market operations</div><div class="d">Buy/sell government securities — the <b>most frequently used</b> tool.</div></div>
+      <div class="opt"><div class="t">Discount rate</div><div class="d">Raise or lower the rate at which banks borrow from the Fed.</div></div>
+    </div>
+    <div class="callout tip"><span class="lab">Open-market operations</span><b>Buy</b> securities → <b>increases</b> money supply, drives interest rates <b>down</b>, <b>expands</b> the economy. <b>Sell</b> securities → decreases money supply, drives rates <b>up</b>, <b>contracts</b> the economy.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">💵</span>The Fed &amp; three key interest rates</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Who sets what</caption>
+      <thead><tr><th>Rate</th><th>What it is</th><th>Set / controlled by</th></tr></thead>
+      <tbody>
+        <tr><th>Discount rate</th><td>Rate banks pay to borrow from a Federal Reserve Bank</td><td class="y">Directly controlled by the Fed</td></tr>
+        <tr><th>Federal funds rate</th><td>Charged on short-term borrowing <b>between banks</b></td><td>Fed sets a <b>target</b> (strongly influences)</td></tr>
+        <tr><th>Prime rate</th><td>Charged by commercial banks to their <b>best customers</b></td><td>Set by <b>commercial banks</b> — about <b>3 percentage points</b> above the federal funds rate</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">Exam trap</span>The Fed <b>directly controls</b> only the <b>discount rate</b>. It <b>targets</b> (but does not set) the federal funds rate, and it does <b>not</b> set the prime rate — banks do.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🏦</span>Congress's fiscal tools: tax &amp; spend</h3>
+    <ul>
+      <li><b>Power to tax</b> — changes in tax rates affect corporate earnings, consumer disposable income, and worker incentives to produce</li>
+      <li><b>Power to spend</b> — changes in government spending affect corporate earnings and consumer demand</li>
+    </ul>
+    <div class="tbl-scroll"><table>
+      <caption>Monetary vs. fiscal policy — side by side</caption>
+      <thead><tr><th></th><th>Fiscal policy</th><th>Monetary policy</th></tr></thead>
+      <tbody>
+        <tr><th>Responsible party</th><td>Congress and the president</td><td>Federal Reserve Board (Fed)</td></tr>
+        <tr><th>Authority</th><td>Congress passes legislation; the president signs it into law</td><td>Fed independently makes &amp; implements decisions</td></tr>
+        <tr><th>Tools</th><td>Change tax laws · raise/cut government spending · finance deficits by issuing new government securities</td><td>Change bank reserve requirements · change the federal funds rate · change the discount rate · conduct open-market operations</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <details class="quiz">
+    <summary><span class="qlab">Fed · Q1</span><div>Interest rates will tend to move <b>downward</b> when the Federal Reserve</div><div class="opts">A. is selling government securities · B. increases the discount rate · C. decreases the reserve requirements for member banks · D. approves lower personal income tax rates</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — decreases reserve requirements for member banks</div><p>Lower reserve requirements free up more money to lend, expanding the money supply and pushing rates down. Selling securities and raising the discount rate push rates <b>up</b>; income-tax rates are <b>fiscal</b>, not a Fed (monetary) lever.</p></div>
+  </details>
+
+  <details class="quiz">
+    <summary><span class="qlab">Fed · Q2</span><div>Which of the following practices would the Fed conduct if it wanted to <b>contract</b> the overall economy?</div><div class="opts">A. Decrease the federal government's budget · B. Increase the prime rate · C. Decrease the reserve requirements for member banks · D. Increase the target federal funds rate</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ D — increase the target federal funds rate</div><p>Raising the target federal funds rate is a Fed action that contracts the economy. The federal budget is <b>fiscal</b> (Congress), the Fed doesn't set the <b>prime rate</b>, and <b>lower</b> reserve requirements would <b>expand</b> — not contract.</p></div>
+  </details>
+
+  <!-- ============ LO 6.1.3 — Business cycle ============ -->
+  <div class="sect"><div class="n">3</div><div><div class="lo">Learning Objective 6.1.3</div><h2>The business cycle &amp; indicators</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🔄</span>Business cycles — expansion &amp; contraction</h3>
+    <p>Business cycles reflect movements in economic activity. The economy is usually in an <b>expansion</b> or a <b>contraction</b> phase.</p>
+    <ul>
+      <li>The <b>peak</b> is the top of an expansion — its maximum</li>
+      <li>The <b>trough</b> is the bottom of a contraction</li>
+      <li>A cycle eventually <b>reverses itself</b> whenever a peak or trough is reached</li>
+    </ul>
+    <figure>
+      <svg viewBox="0 0 460 200" role="img" aria-label="Business cycle wave oscillating around long-run average GDP through peak, contraction, trough, and expansion">
+        <line x1="40" y1="20" x2="40" y2="170" stroke="#d8c6aa" stroke-width="1.5"/>
+        <line x1="40" y1="170" x2="440" y2="170" stroke="#d8c6aa" stroke-width="1.5"/>
+        <text x="10" y="30" font-size="9.5" fill="#897357">GDP</text>
+        <text x="392" y="187" font-size="10" fill="#897357">Time →</text>
+        <!-- long run average -->
+        <line x1="40" y1="95" x2="440" y2="95" stroke="#3a6ea5" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <text x="300" y="90" font-size="9.5" font-weight="700" fill="#3a6ea5">Long-run average GDP</text>
+        <!-- wave -->
+        <path d="M40,120 C90,120 110,55 150,55 C190,55 210,140 250,140 C290,140 310,55 350,55 C390,55 410,120 440,120"
+              fill="none" stroke="#1f4d3a" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="150" cy="55" r="4" fill="#2f7355"/><text x="130" y="46" font-size="9.5" font-weight="700" fill="#1f4d3a">Peak</text>
+        <circle cx="250" cy="140" r="4" fill="#d0613a"/><text x="228" y="159" font-size="9.5" font-weight="700" fill="#b34d2a">Trough</text>
+        <circle cx="350" cy="55" r="4" fill="#2f7355"/><text x="332" y="46" font-size="9.5" font-weight="700" fill="#1f4d3a">Peak</text>
+        <text x="185" y="108" font-size="9" fill="#5b4b3a">Contraction</text>
+        <text x="288" y="108" font-size="9" fill="#5b4b3a">Expansion</text>
+      </svg>
+      <figcaption>For CFP® exam purposes, know what is happening within each phase — peak, contraction, trough, expansion.</figcaption>
+    </figure>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">↕️</span>Expansion vs. contraction — what moves</h3>
+    <div class="tbl-scroll"><table>
+      <caption>General economic factors by phase</caption>
+      <thead><tr><th>Factor</th><th>Expansion</th><th>Contraction</th></tr></thead>
+      <tbody>
+        <tr><th>Income</th><td class="y">↑</td><td class="n">↓</td></tr>
+        <tr><th>Demand</th><td class="y">↑</td><td class="n">↓</td></tr>
+        <tr><th>Sentiment</th><td class="y">↑</td><td class="n">↓</td></tr>
+        <tr><th>Consumer credit</th><td class="y">↑</td><td class="n">↓</td></tr>
+        <tr><th>Retail &amp; auto sales</th><td class="y">↑</td><td class="n">↓</td></tr>
+        <tr><th>Mortgage debt · housing starts</th><td class="y">↑</td><td class="n">↓</td></tr>
+        <tr><th>Inflation · CPI</th><td class="n">↓</td><td class="y">↑</td></tr>
+        <tr><th>Unemployment</th><td class="n">↓</td><td class="y">↑</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout tip"><span class="lab">The flip</span>Most factors rise in expansion. The exceptions — <b>inflation, CPI, and unemployment</b> — move the <b>opposite</b> way (rising in contraction).</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">⛰️</span>Peak vs. trough — what moves</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Economic factors approaching a peak vs. a trough</caption>
+      <thead><tr><th>Factor</th><th>Peak</th><th>Trough</th></tr></thead>
+      <tbody>
+        <tr><th>GDP</th><td class="y">↑</td><td class="n">↓</td></tr>
+        <tr><th>Producer price index (PPI)</th><td class="y">↑</td><td class="n">↓</td></tr>
+        <tr><th>Inflation</th><td class="y">↑</td><td class="n">↓</td></tr>
+        <tr><th>Output · industrial production</th><td class="y">↑</td><td class="n">↓</td></tr>
+        <tr><th>Capacity utilization</th><td class="y">↑</td><td class="n">↓</td></tr>
+        <tr><th>Labor productivity</th><td class="n">↓</td><td class="y">↑</td></tr>
+        <tr><th>Efficiency</th><td class="n">↓</td><td class="y">↑</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">Exam trap</span>At the <b>peak</b>, <b>labor productivity and efficiency actually fall</b> (the economy is running hot). They rise toward the trough.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">📉</span>Recession vs. depression</h3>
+    <div class="tiles">
+      <div class="tile"><div class="v">2 qtrs</div><div class="k"><b>Recession</b> — real GDP falls for two consecutive quarters (min. 6 months)</div></div>
+      <div class="tile"><div class="v">6 qtrs</div><div class="k"><b>Depression</b> — real GDP falls for six consecutive quarters (min. 18 months)</div></div>
+    </div>
+    <div class="callout trap"><span class="lab">Nail the numbers</span>Recession = <b>2 quarters / 6 months</b>. Depression = <b>6 quarters / 18 months</b> — both measured as a decline in <b>real GDP</b> from a baseline of zero.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🔎</span>Three types of economic indicators</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Leading, coincident &amp; lagging indicators</caption>
+      <thead><tr><th>Leading (precede change)</th><th>Coincident (move with the cycle)</th><th>Lagging / confirming (change after)</th></tr></thead>
+      <tbody>
+        <tr><td>Housing starts</td><td>Industrial production</td><td>Prime interest rate</td></tr>
+        <tr><td>New claims for unemployment</td><td>Level of personal income</td><td>Change in CPI (esp. services)</td></tr>
+        <tr><td>Bond yields</td><td>Amount of corporate profits</td><td>Business &amp; consumer loans outstanding</td></tr>
+        <tr><td>New orders for durable goods</td><td></td><td>Average duration of unemployment</td></tr>
+        <tr><td>Changes in investor sentiment</td><td></td><td></td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout tip"><span class="lab">Don't confuse them</span><b>Leading</b> indicators come <b>before</b> the change; <b>coincident</b> move <b>with</b> it; <b>lagging</b> (confirming) change <b>after</b> the economy has moved into a new cycle.</div>
+  </div>
+
+  <!-- ============ LO 6.1.4 — Inflation flavors ============ -->
+  <div class="sect"><div class="n">4</div><div><div class="lo">Learning Objective 6.1.4</div><h2>Inflation, deflation, disinflation &amp; stagflation</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🔥</span>Four price-level conditions</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Distinguishing the four terms</caption>
+      <thead><tr><th>Term</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr><th>Inflation</th><td>Continued <b>rise</b> in the average level of prices of goods &amp; services (the <b>inflation rate</b> is the rate of change in the general price level)</td></tr>
+        <tr><th>Deflation</th><td>A <b>decline</b> in the general price level — the opposite of inflation</td></tr>
+        <tr><th>Disinflation</th><td>Prices are <b>still rising, but at a declining rate</b> — a decline in the inflation rate</td></tr>
+        <tr><th>Stagflation</th><td>A combination of <b>stagnation</b> and <b>inflation</b></td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">Classic confusion</span><b>Disinflation is NOT deflation.</b> With disinflation prices still <b>rise</b> — just more slowly. Deflation is prices actually <b>falling</b>.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">📊</span>Inflation &amp; deflation — the effects</h3>
+    <div class="triad">
+      <div class="opt"><div class="t">Inflation</div><div class="d">Each dollar buys <b>fewer</b> goods; raises the cost of homes, durables &amp; consumption. If it outpaces wage growth → <b>loss of purchasing power</b>. Hits <b>retirees on fixed incomes</b> hardest.</div></div>
+      <div class="opt"><div class="t">Deflation</div><div class="d">Decline in the general price level, often from a <b>reduced money supply &amp; consumer demand</b>. A surplus of goods, a shortage of cash. Buying power rises initially — but is outweighed by <b>rising unemployment &amp; falling production</b>.</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🛢️</span>Stagflation — the 1970s special case</h3>
+    <p>Stagflation = <b>stagnation + inflation</b>. It occurs when <b>inflation and unemployment rise together</b> while overall economic growth is slow as business output falls.</p>
+    <p>It took place for a relatively short period in the <b>1970s</b>, when rapidly rising <b>oil prices</b> caused consumer prices to jump sharply and businesses to cut back production.</p>
+    <div class="callout tip"><span class="lab">Test tip</span>Focus on the <b>typical causes and effects</b> of inflation, disinflation, and deflation. Don't overanalyze — for the CFP® exam, just focus on what typically <b>should</b> happen.</div>
+  </div>
+
+  <details class="quiz">
+    <summary><span class="qlab">Stagflation</span><div>Which of the following best describes <b>stagflation</b>?</div><div class="opts">A. An increase in the general level of prices · B. A decline in the general price level often caused by a reduction in the money supply &amp; consumer demand · C. A situation when inflation and unemployment rise, and economic growth is slow as business output falls · D. A decline in the rate of inflation</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — inflation + unemployment rising, output falling</div><p>A describes plain inflation, B describes deflation, and D describes disinflation. Stagflation is the combination of stagnation and inflation seen in the 1970s oil-price shock.</p></div>
+  </details>
+
+  <!-- ============ LO 6.2.1 — Bankruptcy ============ -->
+  <div class="sect"><div class="n">5</div><div><div class="lo">Learning Objective 6.2.1</div><h2>Bankruptcy &amp; the 2005 Act</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">⚖️</span>The three bankruptcy chapters</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Chapter 13 vs. Chapter 7 vs. Chapter 11</caption>
+      <thead><tr><th>Chapter</th><th>Who / what</th><th>How it works</th></tr></thead>
+      <tbody>
+        <tr><th>Chapter 13</th><td>Individuals with <b>regular income</b></td><td><b>Adjustment of debts</b> — payments restructured (sometimes reduced) to be manageable. Debtor generally <b>keeps their assets</b>.</td></tr>
+        <tr><th>Chapter 7</th><td>Individuals (liquidation)</td><td>Personal <b>unsecured</b> debts are generally <b>canceled</b>. The 2005 Act significantly restricted its availability.</td></tr>
+        <tr><th>Chapter 11</th><td>Individuals, businesses &amp; corporate debtors (reorganization)</td><td>Anyone eligible for Ch. 7 is eligible; debtors <b>remain in possession</b> and keep operating. <b>Exceptions:</b> stockbrokers, commodities brokers &amp; railroads.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout tip"><span class="lab">Quick contrast</span>Ch. 13 = <b>reorganize &amp; keep assets</b> · Ch. 7 = <b>liquidate &amp; cancel unsecured debt</b> · Ch. 11 = business <b>reorganization</b>, debtor stays in control.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🛡️</span>Chapter 7 — protected assets (exemptions)</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Assets generally exempt from creditors in Chapter 7</caption>
+      <thead><tr><th>State-law exemptions</th><th>Federal-law exemptions</th></tr></thead>
+      <tbody>
+        <tr><td>Homestead exemption</td><td>Federal Civil Service retirement benefits</td></tr>
+        <tr><td>Limited amount of personal property</td><td>Railroad pensions</td></tr>
+        <tr><td>Pension &amp; retirement plan rights (<b>ERISA</b> plans)</td><td>Veterans' benefits</td></tr>
+        <tr><td>Existing <b>cash value of life insurance</b></td><td></td></tr>
+        <tr><td>Proceeds of annuity contracts</td><td></td></tr>
+        <tr><td>Disability income benefits</td><td></td></tr>
+        <tr><td>Property held as tenants by the entirety</td><td></td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout trap"><span class="lab">Generally NOT dischargeable</span>Student &amp; government loans (undue-hardship exception), <b>child support / alimony</b>, and <b>recent federal income taxes</b> due are <b>not</b> wiped out in bankruptcy.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">📜</span>Bankruptcy Abuse Prevention &amp; Consumer Protection Act of 2005</h3>
+    <ul>
+      <li>Individuals with the <b>ability to pay</b> (as defined in the Act) must file under <b>Chapter 13</b> instead of having debts canceled under Chapter 7</li>
+      <li>Consumer <b>Chapter 7</b> use is limited to liquidating credit-card bills or loans <b>not secured</b> by a house or other asset</li>
+      <li>Ch. 7 filers must have their debt situation analyzed for eligibility and complete a <b>credit counseling program</b> before approval</li>
+      <li>Lenders must warn consumers about the dangers of paying only <b>minimum balances</b> on credit-card debt</li>
+    </ul>
+    <div class="tiles">
+      <div class="tile"><div class="v">$1,000,000</div><div class="k">Asset protection initially established in 2005 — adjusted every <b>3 years</b></div></div>
+    </div>
+  </div>
+
+  <details class="quiz">
+    <summary><span class="qlab">Bankruptcy</span><div>Which assets are generally <b>protected</b> from creditor claims in bankruptcy?<br>I. IRA accounts II. Existing cash value of life insurance III. A vacation property received through a family inheritance IV. A profit-sharing retirement plan (an ERISA plan)</div><div class="opts">A. II only · B. I and IV · C. I, II, and IV · D. I, II, III, and IV</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — I, II, and IV</div><p>IRAs, life-insurance cash value, and ERISA plans are protected. An <b>inherited vacation property (III) is not</b> — it's a reachable asset, so the full set (D) is wrong.</p></div>
+  </details>
+
+  <!-- ============ LO 6.2.2 — Consumer credit protection ============ -->
+  <div class="sect"><div class="n">6</div><div><div class="lo">Learning Objective 6.2.2</div><h2>Consumer credit protection laws</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">💳</span>Consumer Credit Protection Act (Truth in Lending)</h3>
+    <p>Before extending credit, lenders must disclose:</p>
+    <ul>
+      <li>The <b>dollar amount of finance charges</b></li>
+      <li>The <b>annual percentage rate (APR)</b></li>
+      <li>Other loan terms and conditions</li>
+    </ul>
+    <div class="tiles">
+      <div class="tile"><div class="v">$50</div><div class="k">Max consumer liability per card for a <b>lost or stolen credit card</b> (less any amount charged)</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">📇</span>The credit-reporting statutes</h3>
+    <div class="tbl-scroll"><table>
+      <caption>Key consumer credit &amp; reporting laws</caption>
+      <thead><tr><th>Law</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><th>Fair Credit Reporting Act</th><td>Consumers denied credit must be told <b>which agency</b> supplied the info; they then have <b>30 days</b> to request a <b>free</b> copy of their credit file.</td></tr>
+        <tr><th>Fair Credit Billing Act</th><td>Consumer must notify creditor <b>in writing within 60 days</b> of a billing error. Creditor has <b>30 days to respond</b> and <b>90 days to resolve</b>.</td></tr>
+        <tr><th>Consumer Credit Reporting Reform Act</th><td>Credit reports must be accurate, relevant &amp; recent; restricts file access to <b>bona fide users</b>; denied applicants must be told <b>why</b> and given the agency's name &amp; address.</td></tr>
+        <tr><th>Equal Credit Opportunity Act</th><td>Prohibits credit discrimination (race, color, religion, national origin, gender, marital status, age, sexual orientation, or public-assistance income).</td></tr>
+        <tr><th>Fair Debt Collection Practices Act</th><td>Bars abusive collector practices (contacting at work if the employer objects, harassment, misleading practices). Courts may still <b>garnish wages</b> for a legal judgment.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">⏱️</span>How long info stays in a credit file</h3>
+    <div class="tiles">
+      <div class="tile"><div class="v">7 yrs</div><div class="k"><b>Adverse information</b> remains on file up to seven years (FCRA)</div></div>
+      <div class="tile"><div class="v">10 yrs</div><div class="k"><b>Bankruptcy information</b> remains on file up to ten years (FCRA)</div></div>
+      <div class="tile"><div class="v">30 days</div><div class="k">Window to request a free credit file after a credit denial</div></div>
+    </div>
+    <div class="callout tip"><span class="lab">Billing-error clock</span>Under the Fair Credit Billing Act: consumer notifies within <b>60 days</b> → creditor responds within <b>30 days</b> → resolves within <b>90 days</b>.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🕵️</span>Identity theft — FACTA &amp; common scams</h3>
+    <p>The <b>Fair and Accurate Credit Transaction Act of 2003 (FACTA)</b>:</p>
+    <ul>
+      <li>Consumers can get a <b>free credit report every 12 months</b> from each of the three national credit-reporting agencies</li>
+      <li>Individuals can place <b>alerts</b> on their file if identity theft is suspected or if deploying overseas in the military</li>
+      <li>Consumer information must be <b>disposed of safely and securely</b></li>
+    </ul>
+    <div class="triad">
+      <div class="opt"><div class="t">Phishing</div><div class="d">Pretending to be a financial institution and sending spam / pop-ups to entice you to give up personal information.</div></div>
+      <div class="opt"><div class="t">Skimming</div><div class="d">Stealing credit/debit card data with a special storage device when the card is processed.</div></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    Visual deck rebuilt from the College for Financial Planning® (Kaplan) FP511 Module 6 course slides.<br>
+    Verify all figures against your current course materials before the exam.
+  </div>
+
+</div>
+
+<button id="tgl" aria-label="Toggle dark mode">🌙 Theme</button>
+<script>
+/* Progress bar */
+var prog=document.getElementById('prog');
+addEventListener('scroll',function(){
+  var h=document.documentElement,b=document.body;
+  var st=h.scrollTop||b.scrollTop, sh=(h.scrollHeight||b.scrollHeight)-h.clientHeight;
+  prog.style.width=(sh>0?(st/sh*100):0)+'%';
+},{passive:true});
+/* Theme — synced with the app via localStorage cfpTheme */
+var root=document.documentElement;
+function applyTheme(t){root.setAttribute('data-theme',t);}
+try{
+  var saved=localStorage.getItem('cfpTheme');
+  if(saved){applyTheme(saved);}
+  else if(matchMedia('(prefers-color-scheme:dark)').matches){applyTheme('dark');}
+}catch(e){}
+document.getElementById('tgl').addEventListener('click',function(){
+  var t=root.getAttribute('data-theme')==='dark'?'light':'dark';
+  applyTheme(t);try{localStorage.setItem('cfpTheme',t);}catch(e){}
+});
+</script>
+
+
+<!-- deck-chrome-injected -->
+<style>
+#dkHome{position:fixed;left:max(14px,env(safe-area-inset-left));bottom:calc(14px + env(safe-area-inset-bottom));z-index:9999;
+  background:#1f4d3a;color:#fff;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:10px 15px;
+  font:700 13px/1 system-ui,-apple-system,sans-serif;text-decoration:none;box-shadow:0 8px 22px -8px rgba(0,0,0,.55);}
+#dkBack{position:fixed;left:max(14px,env(safe-area-inset-left));bottom:calc(60px + env(safe-area-inset-bottom));z-index:9999;
+  background:#fffdf8;color:#1f4d3a;border:1.5px solid #1f4d3a;border-radius:999px;padding:9px 13px;
+  font:700 13px/1 system-ui,-apple-system,sans-serif;text-decoration:none;box-shadow:0 6px 20px -6px rgba(0,0,0,.5);}
+html[data-theme="dark"] #dkBack{background:#17120e;color:#7fd3ac;border-color:#7fd3ac;}
+</style>
+<a id="dkHome" href="../index.html">🏠 Home</a>
+<script>
+(function(){try{var r=sessionStorage.getItem('cfpReaderReturn');var a=document.createElement('a');a.id='dkBack';
+  if(r&&/^[A-Za-z0-9]+\/\d+$/.test(r)){a.href='../index.html#m/'+r;a.textContent='‹ Module '+r.split('/')[1];}
+  else{a.href='../index.html#modules';a.textContent='‹ Modules';}
+  document.body.appendChild(a);}catch(e){}})();
+</script>
+
+</body>
+</html>

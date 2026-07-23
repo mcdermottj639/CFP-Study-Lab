@@ -1,0 +1,2131 @@
+FP512 Flashcards — CFP Study Lab
+================================
+FP512 — Risk Management, Insurance & Employee Benefits
+===== FP512 FLASHCARDS =====
+
+Self-quiz deck for e-ink page-turn. Read the question, predict the answer, then turn the page to check. One card per screen.
+346 cards · 8 sections. Grouped by module to match the app.
+
+
+
+===== FP512 · M1 PRINCIPLES OF INSURANCE =====
+
+[71 cards]
+
+——————————
+[Card 1 / 71]
+Q. Distinguish risk, peril, and hazard.
+[Answer]
+Risk = the possibility of a loss. Peril = the cause of a loss (e.g., fire, flood). Hazard = a condition that increases the likelihood or severity of a loss.
+
+——————————
+[Card 2 / 71]
+Q. What distinguishes pure risk from speculative risk, and which is insurable?
+[Answer]
+Pure risk = chance of loss or no loss only (no chance of gain) — insurable. Speculative risk = chance of both loss and gain (e.g., gambling) — NOT insurable.
+
+——————————
+[Card 3 / 71]
+Q. Distinguish static from dynamic risk — which is insurable?
+[Answer]
+Static risks (earthquakes, floods) arise from factors other than economic change, occur with regularity, and CAN be insured. Dynamic risks arise from economic change (business cycle, inflation) and are NOT typically insured.
+
+——————————
+[Card 4 / 71]
+Q. Distinguish fundamental from particular risk.
+[Answer]
+Fundamental risk affects a large group (recessions, earthquakes) and often requires social insurance. Particular risk affects individuals or small groups.
+
+——————————
+[Card 5 / 71]
+Q. Name the four methods of handling risk (two control, two financing).
+[Answer]
+Risk control: avoidance, reduction. Risk financing: retention, transfer. Insurance is the primary means of transfer.
+
+——————————
+[Card 6 / 71]
+Q. Risk handling — what is avoidance?
+[Answer]
+Eliminating the activity or exposure entirely so the loss cannot occur (a risk-control method).
+
+——————————
+[Card 7 / 71]
+Q. Risk handling — what is reduction?
+[Answer]
+Lowering the frequency or severity of potential losses (e.g., sprinklers, safety programs) — a risk-control method.
+
+——————————
+[Card 8 / 71]
+Q. Risk handling — what is retention?
+[Answer]
+Absorbing the loss yourself / self-insuring (e.g., deductibles, choosing no coverage) — a risk-financing method.
+
+——————————
+[Card 9 / 71]
+Q. Risk handling — what is transfer?
+[Answer]
+Shifting the financial consequences of a loss to another party, usually by buying insurance (also waivers and hold-harmless agreements) — a risk-financing method.
+
+——————————
+[Card 10 / 71]
+Q. Per the risk-management matrix, how do you handle each frequency/severity combination?
+[Answer]
+Low frequency / high severity → transfer (insure). High / high → avoid. High frequency / low severity → retain or reduce. Low / low → retain.
+
+——————————
+[Card 11 / 71]
+Q. List the four elements of an insurable risk (insurer’s perspective).
+[Answer]
+(1) Large number of homogeneous exposure units (law of large numbers), (2) loss definite and measurable, (3) loss fortuitous/accidental, (4) loss not catastrophic to the insurer.
+
+——————————
+[Card 12 / 71]
+Q. Why is self-insurance not truly insurance?
+[Answer]
+There is no sharing or transfer of risk — it is a form of retention. It requires enough homogeneous exposure units, adequate funds, administrative ability, and competent fund management.
+
+——————————
+[Card 13 / 71]
+Q. List the seven steps of the risk-management process.
+[Answer]
+(1) Identify goals, (2) gather data, (3) analyze and identify exposures, (4) develop a plan, (5) communicate recommendations, (6) implement, (7) monitor and update.
+
+——————————
+[Card 14 / 71]
+Q. Distinguish moral hazard from morale hazard.
+[Answer]
+Moral hazard = unethical conduct intended to obtain insurance or induce a claim (e.g., arson). Morale hazard = carelessness/indifference because one is insured (e.g., leaving a car unlocked).
+
+——————————
+[Card 15 / 71]
+Q. What is a physical hazard?
+[Answer]
+A tangible condition that increases the chance or severity of a loss (e.g., icy steps, oily rags near a heater, faulty wiring).
+
+——————————
+[Card 16 / 71]
+Q. What is adverse selection, and what controls it?
+[Answer]
+The tendency for higher-than-average risks to seek insurance more than lower risks. Underwriting is the process designed to control it.
+
+——————————
+[Card 17 / 71]
+Q. Distinguish morbidity from mortality tables.
+[Answer]
+Morbidity = probability of sickness/disability (prices health and disability products). Mortality = probability of death (prices life insurance).
+
+——————————
+[Card 18 / 71]
+Q. When must insurable interest exist — property/casualty vs. life?
+[Answer]
+P&C: at BOTH policy issue AND time of loss. Life: only at policy issue (not at death). A person has UNLIMITED insurable interest in their own life.
+
+——————————
+[Card 19 / 71]
+Q. Name the seven devices insurers use to limit their liability.
+[Answer]
+Insurable interest, actual cash value, policy limits/face value, other insurance, coinsurance, deductibles, and subrogation.
+
+——————————
+[Card 20 / 71]
+Q. How is actual cash value (ACV) calculated?
+[Answer]
+ACV = replacement cost − depreciation. It is used for property/casualty losses and limits how much the insurer pays.
+
+——————————
+[Card 21 / 71]
+Q. What is subrogation?
+[Answer]
+After paying a loss, the insurer’s right to recover the payment from the responsible third party. It prevents the insured from collecting twice for the same loss.
+
+——————————
+[Card 22 / 71]
+Q. What is coinsurance as a property-insurance device?
+[Answer]
+It requires insuring property to a stated percentage of replacement cost (commonly 80%). Under-insuring triggers a penalty: (carried ÷ required) × loss − deductible.
+
+——————————
+[Card 23 / 71]
+Q. What is a deductible, and why do insurers use it?
+[Answer]
+An amount the insured pays before coverage applies. It eliminates small claims, lowers premiums, and reduces morale hazard.
+
+——————————
+[Card 24 / 71]
+Q. Name the four characteristics of an insurance contract.
+[Answer]
+Aleatory, adhesion, unilateral, and conditional.
+
+——————————
+[Card 25 / 71]
+Q. What makes an insurance contract aleatory?
+[Answer]
+The outcome depends on chance, so the dollars exchanged are unequal — one party may pay far more than the other depending on whether a loss occurs.
+
+——————————
+[Card 26 / 71]
+Q. What is a contract of adhesion?
+[Answer]
+A take-it-or-leave-it contract drafted entirely by the insurer; the insured can only accept or reject it. Ambiguities are construed against the insurer (the drafter).
+
+——————————
+[Card 27 / 71]
+Q. What makes an insurance contract conditional?
+[Answer]
+The insurer pays only if certain conditions are met — a covered loss occurs and the insured has met policy obligations (paid premiums, given notice, etc.).
+
+——————————
+[Card 28 / 71]
+Q. What makes an insurance contract unilateral?
+[Answer]
+Only one party — the insurer — makes a legally enforceable promise (to pay covered losses). The insured promises nothing enforceable and may simply stop paying premiums.
+
+——————————
+[Card 29 / 71]
+Q. State the principle of indemnity and its main exception.
+[Answer]
+Indemnity restores the insured to their pre-loss financial position — no profit from a loss. The main exception is life insurance, which pays a stated face amount.
+
+——————————
+[Card 30 / 71]
+Q. List the five legal requirements of an enforceable contract.
+[Answer]
+(1) Offer and acceptance, (2) consideration, (3) legal object, (4) competent parties, (5) legal form.
+
+——————————
+[Card 31 / 71]
+Q. Name the four basic sections of an insurance policy.
+[Answer]
+Declarations, insuring agreement, exclusions, and conditions.
+
+——————————
+[Card 32 / 71]
+Q. Under utmost good faith, what three claims may an insurer assert?
+[Answer]
+Misrepresentation, warranty, and concealment.
+
+——————————
+[Card 33 / 71]
+Q. Utmost good faith — what is misrepresentation?
+[Answer]
+A material false statement that induced the insurer to issue the policy; it can make the contract voidable.
+
+——————————
+[Card 34 / 71]
+Q. Utmost good faith — what is a warranty?
+[Answer]
+The applicant’s pledge that the information provided is absolutely true; an untrue warranty can void coverage.
+
+——————————
+[Card 35 / 71]
+Q. Utmost good faith — what is concealment?
+[Answer]
+The deliberate withholding of a material fact the applicant knew should have been disclosed.
+
+——————————
+[Card 36 / 71]
+Q. Name the four contract-dispute doctrines.
+[Answer]
+Waiver, estoppel, rescission, and reformation.
+
+——————————
+[Card 37 / 71]
+Q. Contract disputes — what is waiver?
+[Answer]
+The insurer’s voluntary surrender of a known right; it cannot later deny coverage on that basis.
+
+——————————
+[Card 38 / 71]
+Q. Contract disputes — what is estoppel?
+[Answer]
+The insurer is barred from asserting a right because its prior conduct misled the insured (often follows a waiver).
+
+——————————
+[Card 39 / 71]
+Q. Contract disputes — what is rescission?
+[Answer]
+Voiding the contract from its inception, typically for fraud or material misrepresentation; premiums are usually returned.
+
+——————————
+[Card 40 / 71]
+Q. Contract disputes — what is reformation?
+[Answer]
+A court rewrites the contract to reflect the parties’ true intent when the written policy contains an error.
+
+——————————
+[Card 41 / 71]
+Q. What is salvage in insurance?
+[Answer]
+The insurer’s right to take (and sell) damaged property after paying a full claim — e.g., keeping a totaled vehicle — which offsets the payout.
+
+——————————
+[Card 42 / 71]
+Q. What is abandonment in insurance?
+[Answer]
+The insured may NOT dump damaged property on the insurer and demand full value; the insurer is not obligated to take it.
+
+——————————
+[Card 43 / 71]
+Q. Name the four elements of negligence (all required).
+[Answer]
+(1) A duty is owed, (2) the duty was breached, (3) actual damages occurred, (4) proximate cause (an unbroken sequence links the breach to the damages).
+
+——————————
+[Card 44 / 71]
+Q. Contrast contributory and comparative negligence.
+[Answer]
+Contributory: ANY fault by the injured party bars all recovery (strictest, largely abandoned). Comparative: recovery is reduced by the injured party’s percentage of fault (used by most states).
+
+——————————
+[Card 45 / 71]
+Q. Name the four common negligence defenses.
+[Answer]
+Contributory negligence, comparative negligence, last clear chance, and assumption of risk.
+
+——————————
+[Card 46 / 71]
+Q. Negligence defense — what is last clear chance?
+[Answer]
+Even if the plaintiff was negligent, a defendant who had the final opportunity to avoid the harm may still be liable (protects the plaintiff).
+
+——————————
+[Card 47 / 71]
+Q. Negligence defense — what is assumption of risk?
+[Answer]
+The plaintiff knowingly and voluntarily engaged in a dangerous activity, which may bar recovery.
+
+——————————
+[Card 48 / 71]
+Q. What is strict (absolute) liability?
+[Answer]
+Liability for damages WITHOUT any showing of negligence, imposed for inherently dangerous activities (blasting, keeping wild animals) and for workers’ compensation.
+
+——————————
+[Card 49 / 71]
+Q. What is vicarious liability?
+[Answer]
+Being held liable for another person’s acts because of a relationship (employer/employee, parent/child).
+
+——————————
+[Card 50 / 71]
+Q. What is an attractive nuisance?
+[Answer]
+A property feature likely to attract and injure children (e.g., a swimming pool); the owner must take special care to safeguard it.
+
+——————————
+[Card 51 / 71]
+Q. What is negligence per se?
+[Answer]
+Negligence established automatically because the defendant violated a statute meant to protect that class of plaintiff.
+
+——————————
+[Card 52 / 71]
+Q. What is the collateral source rule?
+[Answer]
+Damages owed by a defendant are not reduced even if the plaintiff was compensated from another source (e.g., the plaintiff’s own health insurance).
+
+——————————
+[Card 53 / 71]
+Q. Name the four types of insurance producers.
+[Answer]
+Captive agent, independent agent, broker, and personal-producing general agent (PGA).
+
+——————————
+[Card 54 / 71]
+Q. What is a captive (exclusive) agent?
+[Answer]
+An agent who represents a single insurance company.
+
+——————————
+[Card 55 / 71]
+Q. What is an independent agent?
+[Answer]
+An agent who represents several insurance companies and places business among them.
+
+——————————
+[Card 56 / 71]
+Q. Whom does an insurance broker represent?
+[Answer]
+The buyer (prospective insured), NOT the insurer — a broker cannot bind the insurer.
+
+——————————
+[Card 57 / 71]
+Q. What is a PGA (personal-producing general agent)?
+[Answer]
+A producer who sells personally and may also recruit, hire, and supervise other agents.
+
+——————————
+[Card 58 / 71]
+Q. Name the three sources of an agent’s authority to bind an insurer.
+[Answer]
+Express, implied, and apparent authority.
+
+——————————
+[Card 59 / 71]
+Q. Agent authority — what is express authority?
+[Answer]
+Authority specifically granted to the agent in the agency contract.
+
+——————————
+[Card 60 / 71]
+Q. Agent authority — what is implied authority?
+[Answer]
+Authority not written but reasonably necessary to carry out express duties (e.g., collecting premiums).
+
+——————————
+[Card 61 / 71]
+Q. Agent authority — what is apparent authority?
+[Answer]
+Authority the public reasonably believes the agent has, based on the insurer’s words or conduct, even if not actually granted.
+
+——————————
+[Card 62 / 71]
+Q. What did the McCarran-Ferguson Act (1945) establish?
+[Answer]
+Public Law 15 reserved insurance regulation primarily to the states (the federal government keeps antitrust and fair-labor authority). It followed U.S. v. Southeastern Underwriters (1944).
+
+——————————
+[Card 63 / 71]
+Q. Contrast Paul v. Virginia (1868) and U.S. v. Southeastern Underwriters (1944).
+[Answer]
+Paul v. Virginia: insurance is NOT interstate commerce — states regulate. SE Underwriters reversed this: insurance IS interstate commerce, opening federal oversight — which McCarran-Ferguson (1945) then returned to the states.
+
+——————————
+[Card 64 / 71]
+Q. What is the NAIC and what power does it have over states?
+[Answer]
+The National Association of Insurance Commissioners (the state insurance commissioners). It has NO power to force states to adopt its model laws; it coordinates regulation and runs an accreditation program.
+
+——————————
+[Card 65 / 71]
+Q. Distinguish social, public, and private insurance.
+[Answer]
+Social: mandatory, government-run (Social Security, Medicare, Medicaid, workers’ comp). Public: bolsters trust in financial institutions (FDIC, PBGC, SIPC). Private: voluntary, marketed by insurers.
+
+——————————
+[Card 66 / 71]
+Q. Who rates insurers’ financial strength — and who does NOT?
+[Answer]
+Rating agencies: A.M. Best, Moody’s, S&P, and Fitch. The NAIC does NOT assign financial-strength ratings (it keeps a regulatory watch list).
+
+——————————
+[Card 67 / 71]
+Q. Which rating agency specializes only in insurers, and what is its top rating?
+[Answer]
+A.M. Best — the oldest and the only one specializing in insurers; top rating A++ (Superior). (S&P and Fitch top = AAA; Moody’s top = Aaa.)
+
+——————————
+[Card 68 / 71]
+Q. Contrast mutual and stock insurance companies.
+[Answer]
+Mutual: owned by policyowners (profits returned as dividends; often lower net cost). Stock: owned by shareholders (profits to stockholders).
+
+——————————
+[Card 69 / 71]
+Q. Name the three types of damages a court may award in a liability case and what each covers.
+[Answer]
+Special (economic) — specific out-of-pocket losses (medical bills, lost wages). General — non-economic losses (pain & suffering). Punitive — punish reckless or intentional conduct.
+
+——————————
+[Card 70 / 71]
+Q. Which type of liability damages is NOT insurable, and why?
+[Answer]
+Punitive damages. They are meant to punish reckless or intentional wrongdoing; letting insurance pay them would defeat that purpose, so most states bar coverage on public-policy grounds.
+
+——————————
+[Card 71 / 71]
+Q. What criteria select an insurance agent, and which criterion instead applies to the insurance company?
+[Answer]
+Agent: competence, inclination to service, experience, training, and reputation. Company: financial strength (e.g., A.M. Best ratings) — financial strength rates the insurer, not the agent.
+
+
+
+===== FP512 · M2 PROPERTY & CASUALTY =====
+
+[35 cards]
+
+——————————
+[Card 1 / 35]
+Q. Name the six HO policy forms (HO-2, 3, 4, 5, 6, 8) and what each covers.
+[Answer]
+HO-2: Broad form (named perils). HO-3: Special form (open perils on dwelling, named on personal property). HO-4: Renters/tenants. HO-5: Comprehensive (open perils on all). HO-6: Condo/unit owners. HO-8: Older/modified homes (ACV, basic perils).
+
+——————————
+[Card 2 / 35]
+Q. Which HO form is the most popular, and how does it treat real vs. personal property?
+[Answer]
+HO-3 (Special Form) — open perils on real property (dwelling/other structures), named perils on personal property. It is the most widely purchased form.
+
+——————————
+[Card 3 / 35]
+Q. What does the HO-4 (renters) form cover, and what does it exclude?
+[Answer]
+HO-4 = Contents Broad (Tenants/Renters): covers personal liability, contents, and loss of use only; no Coverage A (dwelling) or Coverage B (other structures).
+
+——————————
+[Card 4 / 35]
+Q. What is the standard dwelling coverage amount under the HO-6 (condo) form?
+[Answer]
+HO-6 = Unit (Condo) Owners. Standard dwelling coverage is $1,000 (may be increased).
+
+——————————
+[Card 5 / 35]
+Q. What does HO-5 add over HO-3?
+[Answer]
+HO-5 (Comprehensive) writes Coverage C (personal property) on an open-perils basis, rather than the named-perils basis HO-3 uses for personal property.
+
+——————————
+[Card 6 / 35]
+Q. When is the HO-8 form used, and how does it settle losses?
+[Answer]
+HO-8 is the Modified Form for older/historic homes where replacement cost exceeds market value. It settles on an ACV basis using functional replacement cost.
+
+——————————
+[Card 7 / 35]
+Q. How many named perils does Basic HO coverage insure, and name examples.
+[Answer]
+Basic: 12 named perils — fire, lightning, windstorm, hail, riot, aircraft, vehicles, smoke, vandalism, explosion, theft, and volcanic eruption.
+
+——————————
+[Card 8 / 35]
+Q. How many perils does Broad HO coverage insure relative to Basic?
+[Answer]
+Broad: 18 perils — adds 6 more to the 12 covered under Basic coverage.
+
+——————————
+[Card 9 / 35]
+Q. What does Open perils HO coverage insure?
+[Answer]
+Open perils: all perils except those specifically excluded.
+
+——————————
+[Card 10 / 35]
+Q. Match each homeowners coverage letter (A–F) to what it insures.
+[Answer]
+A = dwelling; B = other (detached) structures; C = personal property; D = loss of use; E = personal liability; F = medical payments to others. (A–D are Section I; E–F are Section II.)
+
+——————————
+[Card 11 / 35]
+Q. Under standard HO policies, what percentage of Coverage A applies to Coverage B (other structures)?
+[Answer]
+Coverage B (other structures) is generally 10% of the Coverage A dwelling limit.
+
+——————————
+[Card 12 / 35]
+Q. Under standard HO policies, what percentage of Coverage A applies to Coverage C (personal property)?
+[Answer]
+Coverage C (personal property) is generally 50% of the Coverage A dwelling limit.
+
+——————————
+[Card 13 / 35]
+Q. Name the eight general HO exclusions.
+[Answer]
+Ordinance or law; earth movement; water damage (external/ground water); power failure; neglect; war; nuclear hazard; intentional loss. (Mold is also commonly excluded.)
+
+——————————
+[Card 14 / 35]
+Q. Are internal pipe bursts and ground flooding covered under a standard HO policy?
+[Answer]
+Internal pipe bursts ARE covered; ground/external flood water is NOT covered (it falls under the water-damage exclusion).
+
+——————————
+[Card 15 / 35]
+Q. State the homeowners 80% coinsurance rule.
+[Answer]
+A home must be insured for at least 80% of its replacement cost for partial losses to be paid in full. If under-insured, the partial loss is paid at the greater of ACV or the coinsurance-penalty formula.
+
+——————————
+[Card 16 / 35]
+Q. State the homeowners coinsurance penalty formula.
+[Answer]
+(amount of insurance carried ÷ amount of insurance required) × loss − deductible. The insurer never pays more than the policy limit.
+
+——————————
+[Card 17 / 35]
+Q. List the standard HO personal-property special sublimits.
+[Answer]
+Money/coins/bullion $200; securities/stamps/watercraft $1,500 each; jewelry/furs/cameras (theft) $1,500; firearms (theft) $2,500; silverware/goldware (theft) $2,500; business property at home $2,500. High-value items need a floater/endorsement for scheduled value.
+
+——————————
+[Card 18 / 35]
+Q. What is an Inland Marine / Personal Articles Floater and how is it written?
+[Answer]
+It covers high-value items (jewelry, art, instruments) exceeding HO sublimits. Written on an open-perils basis at stated/appraised value (not ACV or replacement cost), and it overcomes the “pair or set” limitation.
+
+——————————
+[Card 19 / 35]
+Q. What does the Pair or Set clause limit the insurer to paying?
+[Answer]
+If one item of a matched pair or set is lost or damaged, the insurer pays only the difference in value between the full set and the remaining piece(s) — NOT the full replacement cost of the entire pair or set.
+
+——————————
+[Card 20 / 35]
+Q. What does the HO-15 endorsement do?
+[Answer]
+Added to an HO-3 policy, it upgrades personal property (Coverage C) from named perils to open perils — effectively giving HO-5-level coverage on contents while keeping the HO-3 base form.
+
+——————————
+[Card 21 / 35]
+Q. Distinguish a home's market value, assessed value, and replacement cost value.
+[Answer]
+Market value: willing buyer/seller price. Assessed value: tax authority value (~60%–80% of market). Replacement cost value: cost to rebuild — this is what you should insure for (ideally 100%).
+
+——————————
+[Card 22 / 35]
+Q. How do Coverage E and Coverage F differ on the need to prove negligence?
+[Answer]
+Coverage E (personal liability) requires legal liability/negligence. Coverage F (medical payments to others) pays for injury to a non-resident at the residence WITHOUT requiring negligence; household members cannot collect.
+
+——————————
+[Card 23 / 35]
+Q. How does a personal liability umbrella policy (PLUP) work?
+[Answer]
+Also called catastrophe liability insurance, it provides excess liability above auto and HO limits with a limit typically at least $1 million. The underlying HO/auto policy pays first (like a deductible), then the PLUP pays the difference.
+
+——————————
+[Card 24 / 35]
+Q. What underlying coverage does a PLUP require, and how does it broaden coverage?
+[Answer]
+Insureds must carry minimum required underlying limits (e.g., $300K on HO). A PLUP also broadens coverage (e.g., personal injury is standard). Clients should have at least as much coverage as their net worth.
+
+——————————
+[Card 25 / 35]
+Q. Name the six coverage parts of the Personal Auto Policy (PAP).
+[Answer]
+A: Liability (mandatory); B: Medical payments; C: Uninsured/underinsured motorist; D: Damage to your auto (collision + comprehensive); E: Duties after an accident; F: General provisions. Only liability is mandatory.
+
+——————————
+[Card 26 / 35]
+Q. Interpret the auto liability split limit 25/50/10.
+[Answer]
+$25,000 bodily injury per person / $50,000 bodily injury per accident / $10,000 property damage. Some states instead permit a single combined limit (e.g., $300,000).
+
+——————————
+[Card 27 / 35]
+Q. Distinguish PAP collision from comprehensive (other-than-collision).
+[Answer]
+Collision: the insured's auto hits something or overturns (pays whether or not at fault). Comprehensive: fire, wind, hail, theft, vandalism, glass breakage, flood, animal contact. Damage is paid on an ACV basis; the comprehensive deductible is typically lower.
+
+——————————
+[Card 28 / 35]
+Q. Distinguish uninsured from underinsured motorist coverage.
+[Answer]
+Uninsured: the at-fault driver has NO insurance or is a hit-and-run. Underinsured: the at-fault driver has insurance but with inadequate limits to cover your loss (added by endorsement).
+
+——————————
+[Card 29 / 35]
+Q. How long does an insured have to report a newly acquired vehicle under a PAP?
+[Answer]
+The insurer generally must be notified within 14 days (30 days in some states).
+
+——————————
+[Card 30 / 35]
+Q. Besides owned autos, what substitute vehicles count as a covered auto under a PAP?
+[Answer]
+A covered auto also includes substitute vehicles for one out of use due to breakdown, repair, servicing, loss, or destruction.
+
+——————————
+[Card 31 / 35]
+Q. How are flood and earthquake losses covered relative to a standard HO policy?
+[Answer]
+Both are EXCLUDED from standard HO policies. Flood: covered primarily through the National Flood Insurance Program (NFIP). Earthquake: a separate policy (e.g., California — CEA).
+
+——————————
+[Card 32 / 35]
+Q. Who is the predominant provider of residential flood insurance, and when is it required?
+[Answer]
+The federal government, through the National Flood Insurance Program (NFIP). Mortgage companies usually require it in nonpreferred flood zones.
+
+——————————
+[Card 33 / 35]
+Q. How high can earthquake insurance deductibles be?
+[Answer]
+Earthquake deductibles can be as high as 10% of the face amount.
+
+——————————
+[Card 34 / 35]
+Q. What does title insurance protect against, and how do lender's vs. owner's policies differ?
+[Answer]
+It protects against defects in title discovered after purchase (e.g., liens, fraud). A lender's policy protects the lender; an owner's policy protects the buyer. It carries a one-time premium and protects as long as the insured owns the property.
+
+——————————
+[Card 35 / 35]
+Q. What is professional liability (E&O / malpractice) insurance and how is it usually written?
+[Answer]
+It covers professionals (doctors, lawyers, CFP® pros) for errors or omissions in professional services — NOT covered by personal liability or HO policies. Most are written on a claims-made basis.
+
+
+
+===== FP512 · M3 LIFE INSURANCE =====
+
+[50 cards]
+
+——————————
+[Card 1 / 50]
+Q. What are the three key characteristics of term life insurance?
+[Answer]
+Guaranteed premium for the term, guaranteed death benefit, and no cash value. Lowest initial premium; best for temporary/short-term needs. Most policies expire before death (lapse or convert).
+
+——————————
+[Card 2 / 50]
+Q. What are the three guaranteed components of whole life insurance?
+[Answer]
+Guaranteed premium, guaranteed death benefit, and guaranteed cash value. Cash value grows tax-deferred in the insurer’s general account. If a client wants guarantees → recommend whole life.
+
+——————————
+[Card 3 / 50]
+Q. Why is single-premium whole life always a MEC?
+[Answer]
+It is funded with a single lump-sum payment, which exceeds the 7-pay limit. "Once a MEC, always a MEC." It carries substantial early-year surrender charges.
+
+——————————
+[Card 4 / 50]
+Q. What are the three key characteristics of universal life (UL)?
+[Answer]
+Flexible premiums, flexible death benefit, and non-guaranteed cash value. Cash earns credited interest (not subaccount investments). The policy lapses if the cash value can’t cover monthly mortality and expense charges. If a client wants flexibility → UL.
+
+——————————
+[Card 5 / 50]
+Q. What are the key characteristics of variable life (VL)?
+[Answer]
+Fixed premiums; cash value is invested in separate-account subaccounts (market risk borne by the owner). Death benefit is guaranteed at a minimum of the face amount. Regulated as a security and requires a prospectus.
+
+——————————
+[Card 6 / 50]
+Q. What are the key characteristics of variable universal life (VUL)?
+[Answer]
+Combines UL flexibility with VL investing: flexible premiums + subaccount investing. NO guaranteed death benefit — if subaccounts fall to zero, the policy lapses. Requires a prospectus. Suited for moderate-to-high risk tolerance.
+
+——————————
+[Card 7 / 50]
+Q. Contrast UL Option A and Option B death benefits.
+[Answer]
+Option A (level): death benefit stays level; net amount at risk (NAR) = death benefit − cash value, so NAR decreases as cash value grows → cheaper. Option B (increasing): death benefit = face amount + cash value; NAR stays level, so it requires greater funding/higher premiums.
+
+——————————
+[Card 8 / 50]
+Q. What is EIUL (equity-indexed universal life)?
+[Answer]
+Fixed UL with returns tied to a market index (e.g., S&P 500), with a floor (0% minimum) and a cap. In a down year no gain is credited but the account does not lose value. It is not a variable product — there is no direct index investment.
+
+——————————
+[Card 9 / 50]
+Q. In an EIUL, what does the participation rate do?
+[Answer]
+It limits how much of the index gain is credited — e.g., a 70% participation rate on a 10% index gain credits 7%.
+
+——————————
+[Card 10 / 50]
+Q. In an EIUL, what does the rate cap do?
+[Answer]
+It sets the maximum credited rate regardless of index gain — e.g., a 12% cap on an 18% index gain credits 12%.
+
+——————————
+[Card 11 / 50]
+Q. In an EIUL, what is the spread crediting method?
+[Answer]
+A fixed percentage subtracted from the index gain before crediting.
+
+——————————
+[Card 12 / 50]
+Q. In an EIUL, what is the point-to-point (ratchet) crediting method?
+[Answer]
+It compares the index value at the start and end of the period, ignoring mid-period swings.
+
+——————————
+[Card 13 / 50]
+Q. In an EIUL, what is the high/low water mark crediting method?
+[Answer]
+It uses the best (high water mark) or worst (low water mark) index value reached during the period.
+
+——————————
+[Card 14 / 50]
+Q. What is a Modified Endowment Contract (MEC)?
+[Answer]
+A life insurance policy overfunded beyond IRS limits (it fails the 7-pay test). The death benefit is still income-tax-free.
+
+——————————
+[Card 15 / 50]
+Q. What is the 7-pay test for a MEC?
+[Answer]
+Per TAMRA 1988, a policy is a MEC if cumulative deposits exceed the net level annual premium during the first 7 years.
+
+——————————
+[Card 16 / 50]
+Q. How are MEC distributions (loans and withdrawals) taxed?
+[Answer]
+Taxed LIFO (gains first) as ordinary income, plus a 10% penalty if taken before age 59½.
+
+——————————
+[Card 17 / 50]
+Q. How is the life insurance death benefit taxed?
+[Answer]
+Received income-tax-free by beneficiaries, but it is included in the owner’s estate.
+
+——————————
+[Card 18 / 50]
+Q. How is life insurance cash value taxed during life?
+[Answer]
+It grows tax-deferred. Withdrawals are tax-free up to basis (premiums paid minus prior dividends/withdrawals); amounts above basis are taxable.
+
+——————————
+[Card 19 / 50]
+Q. How are policy loans taxed while a life policy stays in force?
+[Answer]
+Policy loans are generally not taxable while the policy remains in force.
+
+——————————
+[Card 20 / 50]
+Q. What happens to a policy loan if the policy lapses or is surrendered?
+[Answer]
+If the policy lapses or is surrendered with an outstanding loan, any loan amount in excess of basis becomes immediately taxable.
+
+——————————
+[Card 21 / 50]
+Q. How are life insurance dividends taxed?
+[Answer]
+Treated as a nontaxable return of premium; however, interest earned on dividends left to accumulate is taxable.
+
+——————————
+[Card 22 / 50]
+Q. What is the transfer-for-value rule?
+[Answer]
+Selling or transferring a life policy for consideration can make the death proceeds taxable to the new owner. Exceptions: transfer to the insured, the insured’s business partner, a partnership in which the insured is a partner, or a corporation where the insured is an officer/shareholder.
+
+——————————
+[Card 23 / 50]
+Q. What tax-free swaps are permitted under IRC Section 1035?
+[Answer]
+Life → life, endowment, annuity, or qualified LTC; endowment → endowment, annuity, or qualified LTC; annuity → annuity or qualified LTC. You cannot exchange an annuity or LTC into life insurance. Basis carries over and tax-deferred status is preserved.
+
+——————————
+[Card 24 / 50]
+Q. Name some common life insurance riders.
+[Answer]
+Waiver of premium (insurer pays premiums if disabled), accidental death benefit (ADB), guaranteed insurability (buy more coverage without evidence of insurability), LTC rider (access death benefit for long-term care), and critical illness rider (accelerate benefit for listed illnesses).
+
+——————————
+[Card 25 / 50]
+Q. What does the disability waiver of premium rider do?
+[Answer]
+It waives premiums (and generally riders) if the policyowner is disabled, usually after the disability lasts 6 months. Waived premiums are never repaid.
+
+——————————
+[Card 26 / 50]
+Q. What does the guaranteed insurability (guaranteed purchase) option provide?
+[Answer]
+It lets the owner buy additional insurance at specified times/amounts without evidence of insurability, up to a specified age (most often the insured’s 40s). New policies are issued at the original classification.
+
+——————————
+[Card 27 / 50]
+Q. Contrast first-to-die and second-to-die (survivorship) policies.
+[Answer]
+First-to-die pays on the death of the first of two (or more) insureds — used to fund buy-sell agreements or mortgage payoff. Second-to-die (survivorship) pays on the last death — primarily for estate tax planning (paired with the unlimited marital deduction). Both cost less than two separate policies.
+
+——————————
+[Card 28 / 50]
+Q. Contrast the capital utilization and capital retention approaches to life insurance needs.
+[Answer]
+Capital utilization: invests the death benefit so that principal is fully depleted at the end of the income period. Capital retention: uses only interest and preserves principal for heirs. Capital retention produces a larger need / requires a larger death benefit.
+
+——————————
+[Card 29 / 50]
+Q. What does the LIFE method of needs analysis stand for?
+[Answer]
+L iquidation of debts + I ncome replacement + F inal expenses + E ducation funding — a simple checklist for estimating total life insurance need.
+
+——————————
+[Card 30 / 50]
+Q. Name the three nonforfeiture options for a whole life policy.
+[Answer]
+(1) Cash surrender value (most common), (2) reduced paid-up insurance (a smaller, fully paid-up permanent policy), and (3) extended term insurance (same face amount, term until the value is exhausted).
+
+——————————
+[Card 31 / 50]
+Q. What is the default nonforfeiture option for a lapsed whole life policy?
+[Answer]
+Unless the owner requests otherwise, a lapsed whole life policy defaults to extended term insurance.
+
+——————————
+[Card 32 / 50]
+Q. Name the five dividend options for participating whole life.
+[Answer]
+(1) Cash, (2) reduce premium, (3) accumulate at interest, (4) paid-up additions, and (5) one-year term (the "fifth dividend option").
+
+——————————
+[Card 33 / 50]
+Q. Which dividend option usually grows the death benefit most, and why?
+[Answer]
+Paid-up additions — each dividend buys a small amount of paid-up insurance, usually providing the greatest long-term increase in coverage.
+
+——————————
+[Card 34 / 50]
+Q. What does the one-year term (fifth) dividend option do?
+[Answer]
+It uses the dividend to buy one-year term insurance, typically equal to the policy’s cash value.
+
+——————————
+[Card 35 / 50]
+Q. How are accelerated/viatical benefits taxed for a terminally ill insured?
+[Answer]
+A terminally ill insured (physician-certified, under 2 years to live) receives benefits income-tax-free for any purpose.
+
+——————————
+[Card 36 / 50]
+Q. How are accelerated benefits taxed for a chronically ill insured?
+[Answer]
+Chronically ill (cognitive impairment, or unable to perform 2 or more ADLs): benefits are tax-free only if used for necessary care, up to the IRS per diem limit.
+
+——————————
+[Card 37 / 50]
+Q. What is a viatical settlement?
+[Answer]
+A terminally ill insured sells their life insurance policy to a third party for more than cash surrender value but less than face value. Proceeds are generally income-tax-free for the terminally ill insured.
+
+——————————
+[Card 38 / 50]
+Q. What is the incontestability period?
+[Answer]
+The insurer may not contest the policy after no more than 2 years (1 year in some states); fraud may have no limit.
+
+——————————
+[Card 39 / 50]
+Q. What does the suicide clause provide, and for how long?
+[Answer]
+If death is by suicide within 1–2 years of issuance, the insurer returns premiums only (no death benefit). Missouri is the only state with no suicide clause.
+
+——————————
+[Card 40 / 50]
+Q. How is a misstatement of age handled?
+[Answer]
+The death benefit is adjusted to what the premium actually paid would have purchased at the correct age.
+
+——————————
+[Card 41 / 50]
+Q. What is the grace period on a life policy?
+[Answer]
+Premiums received within 30 (or 31) days of the due date are treated as on time; otherwise the policy lapses.
+
+——————————
+[Card 42 / 50]
+Q. What is the reinstatement provision?
+[Answer]
+The right to restore a lapsed policy (usually within 3–5 years ) by providing evidence of insurability and paying back premiums plus interest.
+
+——————————
+[Card 43 / 50]
+Q. What is the free-look provision?
+[Answer]
+A 10–30 day window to cancel a newly issued policy for a full refund.
+
+——————————
+[Card 44 / 50]
+Q. What does a spendthrift clause do?
+[Answer]
+It prevents a beneficiary from assigning or pledging the death benefit before it is paid, and protects the proceeds from the beneficiary’s own creditors.
+
+——————————
+[Card 45 / 50]
+Q. Distinguish churning from twisting.
+[Answer]
+Churning: repeatedly switching policies solely to generate commissions — unethical and may be illegal. Twisting: misrepresenting a competitor’s policy to induce replacement — a specific form of churning.
+
+——————————
+[Card 46 / 50]
+Q. Name the four life insurance settlement options for paying the death benefit to a beneficiary.
+[Answer]
+Interest option (insurer holds proceeds, pays interest only), fixed-period (equal payments over a set number of years), fixed-amount (set dollar payments until funds are exhausted), and life-income (payments for the beneficiary's lifetime).
+
+——————————
+[Card 47 / 50]
+Q. In which life insurance policy types can a MEC arise, and which type can never be a MEC?
+[Answer]
+A MEC can arise in whole life, universal life, and variable universal life (cash-value policies). Term life can never be a MEC because it has no cash-value capacity.
+
+——————————
+[Card 48 / 50]
+Q. In a life insurance needs analysis, what are the two broad economic assumptions, and how do they differ from client attributes?
+[Answer]
+The economic assumptions are rate of return and inflation. Risk tolerance and current resources are client attributes, not assumptions.
+
+——————————
+[Card 49 / 50]
+Q. Distinguish a revocable from an irrevocable beneficiary designation — which is the norm?
+[Answer]
+A revocable designation can be changed by the owner at any time without the beneficiary's consent; an irrevocable one requires the beneficiary's consent to change. Most designations are revocable.
+
+——————————
+[Card 50 / 50]
+Q. What factors argue AGAINST replacing an existing life insurance policy?
+[Answer]
+New acquisition (front-end) costs; the contestability and suicide periods restart; lower initial dividends/cash values; and the new policy may not fit the client's needs. To upgrade term, using the existing policy's own conversion clause is usually best and cheapest.
+
+
+
+===== FP512 · M4 ANNUITIES =====
+
+[37 cards]
+
+——————————
+[Card 1 / 37]
+Q. What key risk does an annuity protect against, and how does that differ from life insurance?
+[Answer]
+Annuity: protects against living too long (longevity risk) by providing income that cannot be outlived. Life insurance: protects against dying too soon (mortality risk).
+
+——————————
+[Card 2 / 37]
+Q. What are the three classification questions for annuities?
+[Answer]
+(1) HOW premiums are paid (single / fixed / flexible), (2) WHEN benefits begin (immediate / deferred / longevity), (3) the accumulation structure (fixed / variable / indexed).
+
+——————————
+[Card 3 / 37]
+Q. Distinguish an immediate annuity from a deferred annuity, including how each is funded and when payments begin.
+[Answer]
+Immediate: a single premium most commonly funds it; income begins within one period (within a year). Deferred: accumulation phase first, then annuitization or surrender; a flexible premium most commonly funds it and payments begin a year or more later. Most annuities are deferred. (A longevity annuity may delay payments to age 85.)
+
+——————————
+[Card 4 / 37]
+Q. Distinguish a fixed annuity from a variable annuity, and who bears the investment risk in each.
+[Answer]
+Fixed: insurer credits a guaranteed interest rate to the accumulation account; the insurer bears investment risk. Variable: premiums invested in subaccounts; the owner bears investment risk; requires a prospectus.
+
+——————————
+[Card 5 / 37]
+Q. How does an equity-indexed annuity (EIA) credit returns?
+[Answer]
+Returns are tied to a market index (e.g., S&P 500) with a floor (usually 0%) and a cap, using a participation rate. It is NOT a variable product and is not registered as a security. The insurer does not invest directly in the index, so the contract cannot lose value.
+
+——————————
+[Card 6 / 37]
+Q. Distinguish an equity-indexed annuity (EIA) from a registered index-linked annuity (RILA).
+[Answer]
+An EIA has a guaranteed minimum interest rate (usually 0%) and cannot lose value. A RILA has NO guaranteed minimum rate — it uses a floor or buffer, so investors can lose money. A RILA with a buffer has the greatest gain/loss potential.
+
+——————————
+[Card 7 / 37]
+Q. How is an annuity taxed during the accumulation phase?
+[Answer]
+Growth is tax-deferred. Premiums are NOT deductible (paid with after-tax dollars in a nonqualified annuity).
+
+——————————
+[Card 8 / 37]
+Q. How are nonqualified annuity withdrawals (before annuitization) taxed?
+[Answer]
+LIFO rule: gains come out first as ordinary income (no capital-gains treatment), then nontaxable return of basis. A 10% penalty applies to the taxable amount withdrawn before age 59½ unless an exception applies.
+
+——————————
+[Card 9 / 37]
+Q. What is the exclusion ratio, and what does it determine?
+[Answer]
+Exclusion ratio = investment in the contract ÷ total expected return. It determines the nontaxable portion of each annuitized payment.
+
+——————————
+[Card 10 / 37]
+Q. In the exclusion ratio, how is each payment treated once basis is fully recovered, and what happens to unrecovered basis at death?
+[Answer]
+Once basis is fully recovered, the entire payment becomes taxable. Unrecovered basis at death is deductible on the final return.
+
+——————————
+[Card 11 / 37]
+Q. Walk through an exclusion-ratio calculation: $100K invested, $180K total expected return, $750/month payment.
+[Answer]
+Exclusion ratio = $100K ÷ $180K = 55.6%. Tax-free portion = 55.6% × $750 = $416.67/month; taxable portion = $333.33/month.
+
+——————————
+[Card 12 / 37]
+Q. Which annuity payout option provides the maximum income, and what is its drawback?
+[Answer]
+Straight (pure) life provides the MAXIMUM guaranteed income but leaves nothing to a beneficiary (no guarantee).
+
+——————————
+[Card 13 / 37]
+Q. Which annuity payout option provides the lowest income for a given sum?
+[Answer]
+Joint and survivor provides the LOWEST income for a given sum; it continues paying the survivor after the first death.
+
+——————————
+[Card 14 / 37]
+Q. What does a 'life with period certain' annuity payout option provide?
+[Answer]
+Payments are guaranteed for a minimum period (and for life). It pays less than straight life, since refund/period-certain features add a beneficiary guarantee.
+
+——————————
+[Card 15 / 37]
+Q. What does a 'period certain only' annuity payout option provide?
+[Answer]
+Payments for a fixed period regardless of death (not tied to the annuitant's life).
+
+——————————
+[Card 16 / 37]
+Q. Under a joint & survivor annuity, what continuation percentages are available and how do they affect the initial payout?
+[Answer]
+It can continue paying 100%, 66.7%, or 50% of the original payment to the surviving annuitant after the first death. The lower the continuation percentage, the higher the initial payout (compared to single-life).
+
+——————————
+[Card 17 / 37]
+Q. How do annuity surrender charges typically work?
+[Answer]
+Surrender charges apply to withdrawals in early years (e.g., 10%, 9%, 8%... declining). Most contracts allow 10% free withdrawals per year without charge. After the surrender charge period, there is no penalty.
+
+——————————
+[Card 18 / 37]
+Q. What death benefit do deferred variable annuities typically provide, and how is the gain taxed at death?
+[Answer]
+A guaranteed minimum death benefit equal to the greater of account value OR premiums paid (less withdrawals). The gain at death is income-taxable to the beneficiary (unlike life insurance).
+
+——————————
+[Card 19 / 37]
+Q. What are the 1035 exchange rules for annuities?
+[Answer]
+Annuity → Annuity: allowed. Life → Annuity: allowed. Annuity → Life: NOT allowed (one-way rule). It preserves tax-deferred status and transfers the cost basis.
+
+——————————
+[Card 20 / 37]
+Q. Distinguish a qualified annuity from a non-qualified annuity.
+[Answer]
+Qualified: funded with pre-tax dollars (IRA, 403(b)); the entire distribution is taxable; subject to RMDs. Non-qualified: funded with after-tax dollars; only the gain is taxable; NOT subject to RMDs during accumulation.
+
+——————————
+[Card 21 / 37]
+Q. What are SEPP (72(t)) distributions and how long must they continue?
+[Answer]
+Substantially Equal Periodic Payments allow penalty-free withdrawals from annuities/IRAs before age 59½. They must continue for the later of 5 years or reaching age 59½, using one of three IRS-approved calculation methods.
+
+——————————
+[Card 22 / 37]
+Q. What is a SPIA?
+[Answer]
+Single Premium Immediate Annuity — funded with a lump sum, income starts within 1 year.
+
+——————————
+[Card 23 / 37]
+Q. What is a DIA?
+[Answer]
+Deferred Income Annuity — premium paid now, income begins at a future date.
+
+——————————
+[Card 24 / 37]
+Q. What is a RILA?
+[Answer]
+Registered Index-Linked Annuity — a registered security with a customizable floor/buffer, offering higher upside than a standard EIA.
+
+——————————
+[Card 25 / 37]
+Q. What is a QLAC?
+[Answer]
+Qualified Longevity Annuity Contract — a deferred income annuity funded from an IRA/qualified plan; payments must begin no later than the month after age 85, and it is exempt from RMD timing.
+
+——————————
+[Card 26 / 37]
+Q. How did SECURE 2.0 change QLAC rules?
+[Answer]
+It raised the contribution cap to $210,000 (2025) and removed the 25%-of-balance limit.
+
+——————————
+[Card 27 / 37]
+Q. What is the most popular annuity living-benefit rider, and what does it guarantee?
+[Answer]
+The Guaranteed Lifetime Withdrawal Benefit (GLWB), chosen by nearly 70% of annuity buyers; it guarantees the right to withdraw a specified percentage each year for life, even if the account value hits zero.
+
+——————————
+[Card 28 / 37]
+Q. What does the GMIB (Guaranteed Minimum Income Benefit) rider provide?
+[Answer]
+The right to annuitize at a guaranteed rate.
+
+——————————
+[Card 29 / 37]
+Q. What does the GMWB (Guaranteed Minimum Withdrawal Benefit) rider provide?
+[Answer]
+The right to withdraw a stated amount until total withdrawals equal premiums paid.
+
+——————————
+[Card 30 / 37]
+Q. What does the GMAB (Guaranteed Minimum Accumulation Benefit) rider provide?
+[Answer]
+It guarantees the account value reaches at least the initial premium after a specified period.
+
+——————————
+[Card 31 / 37]
+Q. What does the GMDB (Guaranteed Minimum Death Benefit) rider provide?
+[Answer]
+It guarantees a minimum death benefit.
+
+——————————
+[Card 32 / 37]
+Q. What do guaranteed living benefit (GLB) riders typically cost annually?
+[Answer]
+Typically 0.50%–1.50% per year.
+
+——————————
+[Card 33 / 37]
+Q. How are annuity policyholders protected if an insurer becomes insolvent?
+[Answer]
+State guaranty associations protect annuity and life insurance policyholders up to state-specific limits (typically $100,000–$500,000 ) if an insurer enters receivership. This is NOT federally backed like FDIC — coverage and limits vary by state.
+
+——————————
+[Card 34 / 37]
+Q. Does a nonqualified deferred annuity receive a step-up in basis at the owner's death?
+[Answer]
+No. A non-annuitized annuity gets no step-up; the untaxed gain is income in respect of a decedent (IRD), taxed as ordinary income to the beneficiary.
+
+——————————
+[Card 35 / 37]
+Q. How is an inherited nonqualified annuity handled for a spouse vs. a non-spouse beneficiary?
+[Answer]
+A spouse named as sole beneficiary may continue the contract (spousal continuation), keeping tax deferral. A non-spouse beneficiary is generally subject to the 10-year rule.
+
+——————————
+[Card 36 / 37]
+Q. How is growth in a Roth-funded annuity taxed?
+[Answer]
+It grows tax-free (qualified distributions are untaxed), not merely tax-deferred, because it is funded with after-tax Roth money.
+
+——————————
+[Card 37 / 37]
+Q. What is a chief tax advantage of a nonqualified annuity over an IRA, 401(k), or Roth?
+[Answer]
+It has no contribution limits and no income phase-outs — you can contribute unlimited after-tax dollars and grow them tax-deferred.
+
+
+
+===== FP512 · M5 HEALTH, MEDICARE & MEDICAID =====
+
+[57 cards]
+
+——————————
+[Card 1 / 57]
+Q. COBRA continuation coverage applies to employers of what size?
+[Answer]
+Employers with 20+ employees.
+
+——————————
+[Card 2 / 57]
+Q. Under COBRA, how long does continuation coverage last after termination or reduction to part-time?
+[Answer]
+18 months.
+
+——————————
+[Card 3 / 57]
+Q. Under COBRA, how long does continuation coverage last for a qualifying disability (Social Security definition)?
+[Answer]
+29 months.
+
+——————————
+[Card 4 / 57]
+Q. Under COBRA, how long does continuation coverage last for dependents on death, divorce/legal separation, loss of dependent status, or the employee becoming Medicare-eligible?
+[Answer]
+36 months.
+
+——————————
+[Card 5 / 57]
+Q. Within how many days must an employee elect COBRA continuation coverage?
+[Answer]
+60 days.
+
+——————————
+[Card 6 / 57]
+Q. What is the maximum premium an employer may charge for COBRA coverage?
+[Answer]
+Up to 102% of the group premium cost.
+
+——————————
+[Card 7 / 57]
+Q. Which type of termination is NOT a COBRA qualifying event?
+[Answer]
+Termination for gross misconduct — neither the employee nor dependents are eligible for continuation coverage.
+
+——————————
+[Card 8 / 57]
+Q. Does COBRA continue ancillary benefits like disability coverage?
+[Answer]
+No — COBRA covers only core health coverage, not ancillary benefits such as disability.
+
+——————————
+[Card 9 / 57]
+Q. What did HIPAA (1996) do regarding pre-existing condition exclusions?
+[Answer]
+It eliminated pre-existing condition exclusions when switching jobs if: (1) the person was covered by the prior plan for at least 12 months, and (2) fewer than 63 days have elapsed since loss of coverage. Largely superseded by the ACA for most plans.
+
+——————————
+[Card 10 / 57]
+Q. Under the ACA, until what age may children remain on a parent's plan?
+[Answer]
+Until age 26, regardless of tax status (marriage does not disqualify).
+
+——————————
+[Card 11 / 57]
+Q. Name several key provisions of the ACA (PPACA).
+[Answer]
+No pre-existing condition exclusions (including no denial for children); dependents covered to age 26; no lifetime limits; required essential health benefits; no cost-sharing for preventive care; MOOP limits; premiums cannot be based on gender or health; health exchanges (SHOP for small businesses).
+
+——————————
+[Card 12 / 57]
+Q. Under the ACA, can premiums be based on gender or health status?
+[Answer]
+No — premiums cannot be based on gender or health.
+
+——————————
+[Card 13 / 57]
+Q. Distinguish HMO, PPO, and POS health plans.
+[Answer]
+HMO: in-network only, PCP gatekeeper, typically no deductibles/coinsurance (just copays), capitation-based. PPO: discounted fee-for-service, no PCP/referral needed, has deductibles/coinsurance, covers out-of-network at a lower rate. POS: hybrid — requires a PCP but allows some out-of-network benefits at reduced rates.
+
+——————————
+[Card 14 / 57]
+Q. What is an EPO (Exclusive Provider Organization)?
+[Answer]
+A narrow-network plan like an HMO but typically without a PCP referral requirement. Out-of-network care is NOT covered except emergencies; cost control via negotiated fees.
+
+——————————
+[Card 15 / 57]
+Q. What is capitation in a managed-care plan?
+[Answer]
+The PCP is paid a fixed monthly fee per enrolled patient, regardless of services rendered (used by HMOs).
+
+——————————
+[Card 16 / 57]
+Q. What is the gatekeeper role in a managed-care plan?
+[Answer]
+The PCP controls and must approve all specialist referrals.
+
+——————————
+[Card 17 / 57]
+Q. In health insurance cost-sharing, what is a deductible?
+[Answer]
+The amount the insured pays before insurance begins to pay.
+
+——————————
+[Card 18 / 57]
+Q. In health insurance cost-sharing, what is a copay?
+[Answer]
+A fixed fee per visit.
+
+——————————
+[Card 19 / 57]
+Q. In health insurance cost-sharing, what is coinsurance?
+[Answer]
+A percentage shared between insurer and insured after the deductible is met (e.g., 80/20).
+
+——————————
+[Card 20 / 57]
+Q. In health insurance cost-sharing, what is the MOOP (maximum out-of-pocket)?
+[Answer]
+A cap on total out-of-pocket spending (deductible + copay + coinsurance). After the MOOP is reached, the insurer pays 100%.
+
+——————————
+[Card 21 / 57]
+Q. What plan must you have to contribute to an HSA, and what is its triple tax benefit?
+[Answer]
+You must have a High-Deductible Health Plan (HDHP). Triple tax benefit: contributions are pre-tax, growth is tax-deferred, and distributions are tax-free for qualified medical expenses.
+
+——————————
+[Card 22 / 57]
+Q. What happens to unused HSA funds, and how can they be used after age 65?
+[Answer]
+Funds roll over year to year. After age 65, the account holder can withdraw for any purpose (taxable, but no penalty).
+
+——————————
+[Card 23 / 57]
+Q. To what extent are unreimbursed medical expenses deductible as an itemized deduction?
+[Answer]
+Only to the extent they exceed 7.5% of AGI.
+
+——————————
+[Card 24 / 57]
+Q. Who is eligible for Medicare?
+[Answer]
+Persons age 65+; disabled persons qualifying for SSDI after 24 months; or those with end-stage renal disease at any age.
+
+——————————
+[Card 25 / 57]
+Q. How many quarters of covered employment are needed for premium-free Medicare Part A?
+[Answer]
+40 quarters (10 years) of Social Security-covered work.
+
+——————————
+[Card 26 / 57]
+Q. What does Medicare Part A cover?
+[Answer]
+Inpatient hospital, skilled nursing facility, home health, and hospice.
+
+——————————
+[Card 27 / 57]
+Q. What is the Medicare Part A hospital deductible per benefit period (2025)?
+[Answer]
+$1,676 per benefit period.
+
+——————————
+[Card 28 / 57]
+Q. What are the Medicare Part A hospital daily copays by day range (2025)?
+[Answer]
+Days 1–60: $0. Days 61–90: $419/day. Days 91–150 (lifetime reserve): $838/day. After 150 days: patient pays all.
+
+——————————
+[Card 29 / 57]
+Q. What are the requirements for Medicare Part A skilled nursing facility coverage?
+[Answer]
+A prior hospital stay of at least 3 days and admission to a Medicare-approved facility within 30 days.
+
+——————————
+[Card 30 / 57]
+Q. How does Medicare Part A pay for skilled nursing facility days (2025)?
+[Answer]
+Up to 100 days: first 20 days fully paid; days 21–100 carry daily coinsurance ( $209.50 in 2025); after 100 days the patient pays all.
+
+——————————
+[Card 31 / 57]
+Q. What does Medicare Part B cover?
+[Answer]
+Physician and outpatient services, durable medical equipment (DME), and preventive care. It carries a small annual deductible that is adjusted yearly.
+
+——————————
+[Card 32 / 57]
+Q. How is the Medicare Part B premium affected by income?
+[Answer]
+It varies by income; higher-income earners pay an IRMAA surcharge based on MAGI from 2 years prior.
+
+——————————
+[Card 33 / 57]
+Q. What is Medicare Part C (Medicare Advantage)?
+[Answer]
+Private plans that replace Original Medicare (A+B), often bundling Part D drug coverage.
+
+——————————
+[Card 34 / 57]
+Q. Name the types of Medicare Advantage (Part C) plans.
+[Answer]
+HMO (requires PCP, gatekeeper), PPO (more flexibility), PFFS (private insurer sets terms), and Special Needs Plans (dual-eligible).
+
+——————————
+[Card 35 / 57]
+Q. When is the Medicare Advantage / annual open enrollment period?
+[Answer]
+Oct 15 – Dec 7.
+
+——————————
+[Card 36 / 57]
+Q. What does Medicare Part D cover, and how is it obtained?
+[Answer]
+Prescription drugs. It can be standalone or included in a Part C (Medicare Advantage) plan.
+
+——————————
+[Card 37 / 57]
+Q. What is the Medicare Part D late enrollment penalty?
+[Answer]
+1% per month for each month without creditable coverage after becoming eligible. (An IRMAA surcharge also applies at higher incomes.)
+
+——————————
+[Card 38 / 57]
+Q. Describe the Medicare Initial Enrollment Period.
+[Answer]
+A 7-month window around the 65th birthday: the 3 months before the birth month, the birth month, and the 3 months after.
+
+——————————
+[Card 39 / 57]
+Q. What is the Medicare Special Enrollment Period after employer coverage ends?
+[Answer]
+8 months after employer coverage ends.
+
+——————————
+[Card 40 / 57]
+Q. When is the Medicare General Enrollment Period?
+[Answer]
+Jan 1 – Mar 31 (subject to a late penalty).
+
+——————————
+[Card 41 / 57]
+Q. What is the penalty for late Medicare Part B enrollment?
+[Answer]
+10% per year of delay, and it is permanent.
+
+——————————
+[Card 42 / 57]
+Q. How many standardized Medigap (Medicare Supplement) plans exist, and what do they do?
+[Answer]
+10 standardized plans (A–N) that fill the gaps in Original Medicare. They do NOT work with Medicare Advantage.
+
+——————————
+[Card 43 / 57]
+Q. Distinguish Medigap Plan F from Plan G.
+[Answer]
+Plan F is the most comprehensive but is available only to those eligible for Medicare before 1/1/2020. Plan G is nearly identical except it does not cover the Part B deductible. F and G are the most popular.
+
+——————————
+[Card 44 / 57]
+Q. How do Medigap Plans K and L share Part B coinsurance costs?
+[Answer]
+Plan K cost-shares 50% and Plan L cost-shares 75% of Part B coinsurance — lower premiums but more out-of-pocket exposure.
+
+——————————
+[Card 45 / 57]
+Q. What does Medigap Plan N cover and what copays does it carry?
+[Answer]
+It covers most gaps but NOT the Part B deductible or excess charges; copays up to $20 office / $50 ER.
+
+——————————
+[Card 46 / 57]
+Q. What are the 2025 IRMAA MAGI thresholds, and from which year is income measured?
+[Answer]
+IRMAA surcharges on Part B/D apply above $106,000 (single) / $212,000 (MFJ) MAGI, measured from 2 years prior.
+
+——————————
+[Card 47 / 57]
+Q. For which life-changing events may a beneficiary appeal IRMAA?
+[Answer]
+Retirement, death of a spouse, divorce, or work stoppage.
+
+——————————
+[Card 48 / 57]
+Q. What is Medicaid and who does it serve?
+[Answer]
+A joint federal-state program for low-income individuals. It requires "spending down" assets to qualify and covers nursing home / long-term care costs (unlike Medicare).
+
+——————————
+[Card 49 / 57]
+Q. What is CHIP?
+[Answer]
+The Children's Health Insurance Program — covers children in families that earn too much to qualify for Medicaid.
+
+——————————
+[Card 50 / 57]
+Q. What is the Medicaid lookback period for asset transfers?
+[Answer]
+60 months (5 years); transfers within the lookback create an ineligibility period.
+
+——————————
+[Card 51 / 57]
+Q. How is the Medicaid ineligibility period calculated for transferred assets?
+[Answer]
+Ineligibility period = amount transferred ÷ the monthly regional cost of nursing home care.
+
+——————————
+[Card 52 / 57]
+Q. Which assets are excluded when qualifying for Medicaid?
+[Answer]
+Primary residence (with limits), one vehicle, household items, and life insurance with face value under $1,500.
+
+——————————
+[Card 53 / 57]
+Q. What did the No Surprises Act (2022) do?
+[Answer]
+It bans surprise out-of-network emergency billing.
+
+——————————
+[Card 54 / 57]
+Q. What did the Inflation Reduction Act change for Medicare Part D starting in 2025?
+[Answer]
+It caps annual out-of-pocket drug costs at $2,000 (replacing the prior ~$8,000 limit), eliminates the "donut hole" coverage gap, and reduces the structure to three phases.
+
+——————————
+[Card 55 / 57]
+Q. When can Medicare begin negotiating prescription drug prices under the Inflation Reduction Act?
+[Answer]
+Starting 2026, for certain high-cost drugs.
+
+——————————
+[Card 56 / 57]
+Q. Name the ACA Marketplace metal tiers and how premium and cost-sharing change across them.
+[Answer]
+Catastrophic, Bronze, Silver, Gold, Platinum. Moving up the tiers, the premium rises while cost-sharing (deductibles/copays) falls.
+
+——————————
+[Card 57 / 57]
+Q. What is telemedicine / a direct-to-consumer (DTC) plan, and is DTC technically insurance?
+[Answer]
+Telemedicine delivers care remotely. DTC plans are not technically insurance — they discount basic services — and pair well with HDHPs.
+
+
+
+===== FP512 · M6 DISABILITY, LTC & VETERANS BENEFITS =====
+
+[42 cards]
+
+——————————
+[Card 1 / 42]
+Q. Name the four definitions of disability, broadest to narrowest.
+[Answer]
+1) Own occupation (broadest, highest premium). 2) Modified own occupation. 3) Any occupation. 4) Social Security (narrowest).
+
+——————————
+[Card 2 / 42]
+Q. Under the own-occupation definition, when is the insured disabled?
+[Answer]
+When the insured can’t perform the principal duties of their OWN job/occupation. This is the broadest definition and carries the highest premium.
+
+——————————
+[Card 3 / 42]
+Q. Under the modified own-occupation definition, when is the insured disabled?
+[Answer]
+When the insured can’t do their own job AND doesn’t work elsewhere.
+
+——————————
+[Card 4 / 42]
+Q. Under the any-occupation definition, when is the insured disabled?
+[Answer]
+Only when the insured can’t perform ANY gainful occupation for which they are reasonably qualified. This is the narrowest private definition.
+
+——————————
+[Card 5 / 42]
+Q. Under the Social Security definition, when is a person disabled?
+[Answer]
+When they can’t do ANY substantial gainful work in the national economy. This is the narrowest definition of disability.
+
+——————————
+[Card 6 / 42]
+Q. What is a split definition of disability?
+[Answer]
+Common in group plans: it uses the own-occupation definition for the first 2–5 years, then switches to modified-own or any-occupation for the remainder of the benefit period — designed to encourage return to work.
+
+——————————
+[Card 7 / 42]
+Q. Distinguish the elimination (waiting) period from the probation period in a DI policy.
+[Answer]
+Elimination period: time after disability before benefits BEGIN (the “time deductible”) — common: 30, 60, 90, 180, or 365 days; longer = lower premium. Probation period: time before the policy covers pre-existing conditions.
+
+——————————
+[Card 8 / 42]
+Q. To what percentage of pre-disability income is the DI benefit amount typically limited, and why?
+[Answer]
+Typically 60%–80% of pre-disability income (often replacing about 60%–70%), to preserve the incentive to return to work.
+
+——————————
+[Card 9 / 42]
+Q. How is disability income taxed based on who pays the premium?
+[Answer]
+If premiums are paid by the individual with after-tax dollars → benefits are tax-free. If the employer pays (or the employee pays pretax) → benefits are taxable. Split premiums → benefits taxable in proportion to the employer-paid share.
+
+——————————
+[Card 10 / 42]
+Q. How is DI taxed for a 2%+ S-corp shareholder-employee when the S-corp pays the premium?
+[Answer]
+The premium is deducted by the entity and passed through as W-2 taxable income to the shareholder. Because the premium was effectively taxed to the shareholder, the disability benefits received are tax-free.
+
+——————————
+[Card 11 / 42]
+Q. Name the DI policy renewal provisions from most to least favorable to the insured.
+[Answer]
+1) Noncancelable (best). 2) Guaranteed renewable. 3) Conditionally renewable. 4) Cancelable (worst).
+
+——————————
+[Card 12 / 42]
+Q. Distinguish a noncancelable from a guaranteed renewable DI policy.
+[Answer]
+Noncancelable: insurer can’t cancel AND the premium is locked in / cannot change (most favorable, most expensive). Guaranteed renewable: insurer can’t cancel but can raise rates for the entire policy class (not an individual).
+
+——————————
+[Card 13 / 42]
+Q. In a DI policy, what is a conditionally renewable provision?
+[Answer]
+The policy can be renewed subject to specified conditions.
+
+——————————
+[Card 14 / 42]
+Q. In a DI policy, what does a cancelable provision allow?
+[Answer]
+The insurer can cancel the policy at any time — the least favorable renewal provision.
+
+——————————
+[Card 15 / 42]
+Q. Distinguish partial from residual disability benefits.
+[Answer]
+Partial: pays a fixed % of benefit (often 50%) regardless of actual income loss, for a limited period (3–6 months), usually after total disability. Residual: pays a benefit proportional to actual income loss (e.g., 40% income loss = 40% benefit) and can last the entire benefit period.
+
+——————————
+[Card 16 / 42]
+Q. What is the formula for a residual disability benefit, and at what income-loss range does it typically apply?
+[Answer]
+Benefit = (Income Lost ÷ Pre-disability Income) × Full Monthly Benefit. Typically available when income loss falls between 20% and 80%; can last the entire benefit period.
+
+——————————
+[Card 17 / 42]
+Q. What does Business Overhead Expense (BOE) insurance cover, and for how long?
+[Answer]
+Reimburses a disabled business owner’s overhead expenses (rent, staff, utilities) — but NOT the owner’s salary. Maximum benefit period: 2 years.
+
+——————————
+[Card 18 / 42]
+Q. How are BOE insurance premiums and proceeds taxed?
+[Answer]
+Premiums are a deductible business expense; proceeds are taxable income to the business.
+
+——————————
+[Card 19 / 42]
+Q. What does Disability Buyout insurance fund, and what is its elimination period and benefit cap?
+[Answer]
+Funds the purchase of a disabled business owner’s share of the business. Elimination period: minimum 18 months (typically 2–3 years). Benefit limited to ~ 80% of the owner’s share value. Proceeds are tax-free if premiums were paid with after-tax dollars.
+
+——————————
+[Card 20 / 42]
+Q. What does a SIS rider (Social Insurance Supplement) do?
+[Answer]
+A DI policy rider where the benefit is reduced by any Social Security disability benefit received, which lowers the DI premium. Example: if SS pays $700/month and the policy says $2,500/month, the policy pays $1,800/month.
+
+——————————
+[Card 21 / 42]
+Q. What is presumptive disability?
+[Answer]
+It automatically qualifies the insured as totally disabled for loss of sight, hearing, speech, or limbs — with no elimination period, regardless of whether the insured could still work.
+
+——————————
+[Card 22 / 42]
+Q. What is the approximate chance a healthy 35-year-old becomes disabled for 3+ months before retirement?
+[Answer]
+Roughly a 21%–24% chance of becoming disabled for 3+ months before retirement.
+
+——————————
+[Card 23 / 42]
+Q. Name the six ADLs used as LTC benefit triggers.
+[Answer]
+Bathing, dressing, eating, continence, toileting, transferring.
+
+——————————
+[Card 24 / 42]
+Q. What are the HIPAA benefit triggers for a tax-qualified LTC policy?
+[Answer]
+Inability to perform 2 of 6 ADLs (expected to last at least 90 days), OR a cognitive impairment. Note: “medical necessity” may NOT be a trigger in a qualified policy.
+
+——————————
+[Card 25 / 42]
+Q. Name the three levels of care and identify which one Medicare does NOT cover.
+[Answer]
+Skilled (24-hour RN under physician supervision), intermediate, and custodial (nonmedical ADL assistance). Most LTC is custodial care, which Medicare does NOT cover.
+
+——————————
+[Card 26 / 42]
+Q. What are the typical elimination period and benefit period for LTC insurance?
+[Answer]
+Elimination period: 30–180 days (90 days most common). Benefit period: 2 years to lifetime.
+
+——————————
+[Card 27 / 42]
+Q. What is the most important LTC rider, and what choices does it offer?
+[Answer]
+The inflation protection rider (required to be offered in many states; critical for LTC). It can be compounding or simple (commonly 3%–5% compound) and may be called a COLA or CPI rider.
+
+——————————
+[Card 28 / 42]
+Q. What is the preferred renewability for an LTC policy?
+[Answer]
+Noncancelable, guaranteed renewable.
+
+——————————
+[Card 29 / 42]
+Q. Distinguish a calendar-day from a service-day LTC elimination period.
+[Answer]
+Calendar-day EP: every day counts toward satisfying the period, whether or not care is received. Service-day EP: only days on which care is actually received count — less favorable to the insured and takes longer to satisfy.
+
+——————————
+[Card 30 / 42]
+Q. How are tax-qualified LTC premiums taxed?
+[Answer]
+Premiums are deductible on Schedule A up to age-based limits (e.g., $4,810 for ages 61–70 in 2025; $6,020 for 71+).
+
+——————————
+[Card 31 / 42]
+Q. How are tax-qualified LTC benefits taxed?
+[Answer]
+Benefits for qualified expenses are not taxable, subject to a per diem limit ($420 in 2025).
+
+——————————
+[Card 32 / 42]
+Q. Name the main LTC financing alternatives to a standalone private policy.
+[Answer]
+Life + LTC hybrid policies; Medicaid (requires spending down assets; government-funded); Continuing Care Retirement Communities (CCRCs); and Veterans (VA) benefits for eligible veterans.
+
+——————————
+[Card 33 / 42]
+Q. How does a hybrid life/LTC policy work, and what concern does it eliminate?
+[Answer]
+The LTC benefit accelerates the life insurance death benefit; any remainder pays the beneficiary at death. This eliminates the “use it or lose it” concern of standalone LTCI.
+
+——————————
+[Card 34 / 42]
+Q. How do LTC Partnership programs protect assets?
+[Answer]
+They let clients keep assets equal to the policy benefits paid (plus about $2,000) when later applying for Medicaid — dollar-for-dollar asset protection. Policies must offer comprehensive benefits, consumer protections, and inflation protection (e.g., a $140,000 policy protects $142,000 in assets).
+
+——————————
+[Card 35 / 42]
+Q. What is PACE?
+[Answer]
+Program of All-Inclusive Care for the Elderly: federally funded; comprehensive medical/social services for frail elderly who are dually eligible for Medicare and Medicaid; an alternative to nursing home placement.
+
+——————————
+[Card 36 / 42]
+Q. What active-service eligibility requirement applies to recent enlistees for VA benefits?
+[Answer]
+Requires active military, naval, or air service without dishonorable discharge. Those enlisting after 9/7/1980 (or entering active duty after 10/16/1981) must serve 24 continuous months (or the full called period). VA health care qualifies as ACA minimum essential coverage.
+
+——————————
+[Card 37 / 42]
+Q. When do Reserves / National Guard members qualify for VA benefits?
+[Answer]
+Only if called to active duty under federal order and the full called period was completed.
+
+——————————
+[Card 38 / 42]
+Q. What is VA disability compensation and how is it rated and taxed?
+[Answer]
+Tax-free monthly payments for service-connected disabilities, rated 0%–100% in 10% increments.
+
+——————————
+[Card 39 / 42]
+Q. What is the VA Pension with Aid & Attendance?
+[Answer]
+A means-tested benefit for wartime veterans with limited income; the Aid & Attendance supplement helps those needing LTC assistance (nursing home, assisted living, or home health).
+
+——————————
+[Card 40 / 42]
+Q. What features must a HIPAA (tax-qualified) LTC policy have?
+[Answer]
+It must be guaranteed renewable, conform to the NAIC LTC model regulation, and offer nonforfeiture. Per-diem benefits are income-tax-free up to the IRS daily limit.
+
+——————————
+[Card 41 / 42]
+Q. Beyond skilled, intermediate, and custodial care, what two additional levels of care may an LTC policy cover?
+[Answer]
+Respite care (temporary relief for the family caregiver) and home care (the least intensive level, delivered in the insured's home).
+
+——————————
+[Card 42 / 42]
+Q. How is a veteran's VA health eligibility and coverage determined, and how does it coordinate with other coverage?
+[Answer]
+By priority group (based on service-connected disability severity and need). VA can coordinate with Medicare, Medicaid, TRICARE, and private plans — service-connected conditions go to the VA, non-service-connected to other coverage.
+
+
+
+===== FP512 · M7 EMPLOYEE GROUP BENEFITS =====
+
+[36 cards]
+
+——————————
+[Card 1 / 36]
+Q. How is employer-provided group term life insurance taxed under Section 79?
+[Answer]
+The first $50,000 of coverage is tax-free to the employee. The cost of coverage above $50,000 generates taxable imputed income, calculated using IRS Table I (uniform premium) rates per $1,000/month. Employer-paid premiums are fully deductible.
+
+——————————
+[Card 2 / 36]
+Q. What is the formula for Section 79 Table I imputed income on excess group term life coverage?
+[Answer]
+[(Face amount − $50,000) ÷ $1,000] × Table I rate × 12 = annual imputed income. Employee contributions offset this amount.
+
+——————————
+[Card 3 / 36]
+Q. Compute Section 79 imputed income for $250,000 of coverage on a 52-year-old (Table I rate $0.23).
+[Answer]
+[($250,000 − $50,000) ÷ $1,000] × $0.23 × 12 = 200 × $0.23 × 12 = $552 of taxable imputed income.
+
+——————————
+[Card 4 / 36]
+Q. What are the four requirements for coverage to qualify as group term life under Section 79?
+[Answer]
+1) Provides a general death benefit (not limited like AD&D). 2) Provided to a group of employees as compensation. 3) Provided under a master or group policy. 4) Amount is determined by a non-discriminatory (uniform) formula.
+
+——————————
+[Card 5 / 36]
+Q. What is the 10-employee rule for group term life under Section 79?
+[Answer]
+Coverage does not qualify as group term life if provided to fewer than 10 employees, unless a special small-group exception is met (cover all full-time employees, uniform percentage of comp, bracketed amounts, medical questionnaire only).
+
+——————————
+[Card 6 / 36]
+Q. How is a key employee taxed under a discriminatory group term life plan?
+[Answer]
+If a plan discriminates in favor of key employees, those key employees must include the ENTIRE employer-paid premium as taxable compensation — not just the cost above $50,000 that applies under the normal Section 79 rule.
+
+——————————
+[Card 7 / 36]
+Q. What conversion right does an employee have when leaving a group term life plan?
+[Answer]
+The employee may convert group term coverage to an individual policy within 31 days of leaving employment, without evidence of insurability.
+
+——————————
+[Card 8 / 36]
+Q. How is employer-provided dependent group life insurance taxed?
+[Answer]
+Coverage up to $2,000 is excluded from employee income as a de minimis fringe benefit. Coverage above $2,000 is fully taxable to the employee. Spouse and children up to age 26 may be covered.
+
+——————————
+[Card 9 / 36]
+Q. What is the key feature of group universal life (GULP)?
+[Answer]
+It is portable: if the employee leaves, the policy is distributed to them and they continue paying premiums directly. Usually employee-paid, with simplified underwriting (adverse selection risk) and lower admin costs than individual UL.
+
+——————————
+[Card 10 / 36]
+Q. What does Accidental Death & Dismemberment (AD&D) coverage pay, and what are its two types?
+[Answer]
+It pays a benefit for death or loss of body parts due to an accident. Two types: Business travel (only while traveling for work) and Voluntary (any time, any activity). Dismemberment pays a % of the AD&D face (e.g., one limb = 50%).
+
+——————————
+[Card 11 / 36]
+Q. How is group health insurance taxed for the employer and employee?
+[Answer]
+Employer-paid premiums are a deductible business expense and are NOT taxable to the employee. Benefits are generally not includible in income. Self-employed persons may deduct 100% of health premiums.
+
+——————————
+[Card 12 / 36]
+Q. Distinguish COBRA, HIPAA, and ACA in group health.
+[Answer]
+COBRA: continuation of coverage after a qualifying event (pays up to 102%). HIPAA: portability — no pre-existing exclusions if covered 12+ months with a
+
+——————————
+[Card 13 / 36]
+Q. Distinguish an HSA, FSA, and HRA.
+[Answer]
+HSA: requires an HDHP; employee + employer funded; funds roll over; portable; triple tax benefit. FSA: employer plan; use-it-or-lose-it (grace period or carryover option); not portable. HRA: employer-funded only; not portable but rollover allowed by employer.
+
+——————————
+[Card 14 / 36]
+Q. State the 2025 HSA contribution limits and catch-up.
+[Answer]
+Maximum contribution: $4,300 single / $8,550 family; age 55+ catch-up adds $1,000 (each spouse if both have accounts). Non-qualified distributions are ordinary income plus a 20% penalty (penalty waived at 65, disability, or death).
+
+——————————
+[Card 15 / 36]
+Q. What are the key features of a High-Deductible Health Plan (HDHP)?
+[Answer]
+It is required to contribute to an HSA. Minimum annual deductible and out-of-pocket maximums are set by the IRS each year, with differing self-only and family limits. Preventive care is covered pre-deductible under ACA.
+
+——————————
+[Card 16 / 36]
+Q. What are the key rules of a Flexible Spending Arrangement (FSA)?
+[Answer]
+Funded pre-tax (avoids both income and FICA tax). Subject to the use-it-or-lose-it rule: unused funds are forfeited. Covers eligible medical AND dependent care expenses.
+
+——————————
+[Card 17 / 36]
+Q. What FSA use-it-or-lose-it relief options may a plan offer?
+[Answer]
+A plan may offer EITHER a grace period of up to 2½ months OR a carryover of up to $660 (2025) — not both.
+
+——————————
+[Card 18 / 36]
+Q. State the 2025 FSA contribution limits.
+[Answer]
+$3,300 for medical FSAs and $5,000 for dependent care.
+
+——————————
+[Card 19 / 36]
+Q. Contrast group short-term and long-term disability coverage.
+[Answer]
+STD: ~1-week elimination period for sickness (as short as 0 days); benefits one-half to two-thirds of pay for 13/26/52 weeks (up to ~2 years). LTD: 60/90/180-day waiting period; own-occupation for the first 24 months then any-occupation; benefits 50–70% of pay, often to age 65, integrated with Social Security.
+
+——————————
+[Card 20 / 36]
+Q. What does workers' compensation cover, and who can sue the employer?
+[Answer]
+State-mandated coverage for work-related injuries and illnesses. It is a form of absolute (strict) liability and is the exclusive remedy — employees cannot sue the employer. Independent contractors are typically NOT covered.
+
+——————————
+[Card 21 / 36]
+Q. Who funds workers' compensation and how are its benefits taxed?
+[Answer]
+Funded solely by the employer (premiums are deductible). Benefits for injury/sickness are excluded from the recipient's income (tax-free).
+
+——————————
+[Card 22 / 36]
+Q. Name the four types of workers' compensation benefits.
+[Answer]
+1) Medical expenses (no deductible/coinsurance; about 1/3 of all WC benefits paid). 2) Death benefits (weekly sum to surviving spouse). 3) Total permanent disability. 4) Partial temporary disability.
+
+——————————
+[Card 23 / 36]
+Q. What must a Section 125 cafeteria plan offer?
+[Answer]
+It must offer at least one taxable cash benefit plus one or more qualified nontaxable benefits, allowing employees to pay for qualified benefits (health, FSA, DI) with pre-tax dollars. Nondiscrimination rules apply.
+
+——————————
+[Card 24 / 36]
+Q. What benefits are prohibited in a Section 125 cafeteria plan?
+[Answer]
+It cannot include educational assistance, LTC insurance, employee discounts, noncash fringe benefits, commuter benefits, or (generally) deferred compensation.
+
+——————————
+[Card 25 / 36]
+Q. Who is excluded from participating in a Section 125 cafeteria plan?
+[Answer]
+Partners, sole proprietors, and 2% S-corp shareholders cannot participate. (Self-employed individuals may instead deduct 100% of health insurance premiums — including qualifying LTCI within age-based limits — as an above-the-line deduction.)
+
+——————————
+[Card 26 / 36]
+Q. Name the nontaxable Section 132 fringe benefit categories.
+[Answer]
+No-additional-cost services, qualified employee discounts (goods up to gross profit %, services up to 20%), de minimis fringes, working condition fringes, and qualified transportation ($325/month for transit and $325/month for parking in 2025).
+
+——————————
+[Card 27 / 36]
+Q. Distinguish fully-insured, self-funded, and level-funded group health.
+[Answer]
+Fully-insured: employer pays premium to a carrier, which bears all risk (common for small employers). Self-funded (ASO): employer bears claims risk, uses a TPA, buys stop-loss; largely exempt from state insurance law under ERISA preemption (common for large employers). Level-funded: fixed monthly payment with a refund if claims run low (growing with mid-size employers).
+
+——————————
+[Card 28 / 36]
+Q. What regulatory advantage do self-funded health plans gain under ERISA?
+[Answer]
+ERISA exempts self-funded plans from state regulation, avoiding state benefit mandates and the ~ 2% state premium tax.
+
+——————————
+[Card 29 / 36]
+Q. What are the two types of stop-loss insurance for a self-funded plan?
+[Answer]
+Specific (per individual) and aggregate (whole group, settled at year-end). Stop-loss protects the employer from catastrophic claims.
+
+——————————
+[Card 30 / 36]
+Q. What does ERISA regulate, and what does it NOT require?
+[Answer]
+Federal law governing private employer benefit plans; sets minimum standards for participation, vesting, funding, and fiduciary responsibilities and pre-empts conflicting state laws. It does NOT require employers to provide benefits — it only regulates them if offered.
+
+——————————
+[Card 31 / 36]
+Q. Which plans are exempt from ERISA, and what is a VEBA?
+[Answer]
+Governmental and church plans are exempt from ERISA. A VEBA (IRC §501(c)(9)) is a tax-exempt trust, established by an employer or through collective bargaining, that funds employee benefits; employer contributions to the trust are deductible.
+
+——————————
+[Card 32 / 36]
+Q. How does unemployment insurance work and how are benefits taxed?
+[Answer]
+A federal-state joint program funded by employer FUTA/SUTA taxes. Covers involuntarily terminated employees (not those who quit or were fired for cause). Benefits typically last 26 weeks (extended during recessions) and are taxable income.
+
+——————————
+[Card 33 / 36]
+Q. What is a group term life carve-out plan?
+[Answer]
+It removes older, higher-paid executives from the group term plan into individual coverage. Nondiscrimination rules don't apply to the carve-out, which can bring the base plan into compliance; the coverage is taxable to the employee.
+
+——————————
+[Card 34 / 36]
+Q. What tests let a §79 group term life plan qualify (so key employees keep the $50,000 exclusion)?
+[Answer]
+Any ONE of: ≥70% of employees benefit; ≥85% of participants are not key employees; a nondiscriminatory classification; or, if in a cafeteria plan, §125 compliance.
+
+——————————
+[Card 35 / 36]
+Q. What is a group survivor income benefit plan, and how is it taxed?
+[Answer]
+A monthly benefit paid to a surviving spouse/children (no beneficiary choice). It is taxable to recipients and is not treated as life insurance.
+
+——————————
+[Card 36 / 36]
+Q. Name the three employer HRA arrangements and who each serves.
+[Answer]
+ICHRA (individual-coverage HRA — reimburses individual-market premiums), QSEHRA (qualified small-employer HRA — employers with
+
+
+
+===== FP512 · M8 BUSINESS RISK SOLUTIONS =====
+
+[18 cards]
+
+——————————
+[Card 1 / 18]
+Q. Name the three basic steps of business risk management.
+[Answer]
+Risk identification, risk assessment, and risk control.
+
+——————————
+[Card 2 / 18]
+Q. In business risk management, what does the risk identification step involve?
+[Answer]
+Defining the perils a business faces by its industry and size.
+
+——————————
+[Card 3 / 18]
+Q. In business risk management, what does the risk assessment step involve?
+[Answer]
+Evaluating and weighing the risks that have been identified.
+
+——————————
+[Card 4 / 18]
+Q. In business risk management, what does the risk control step involve?
+[Answer]
+Reductions, safety hardware, and procuring coverage.
+
+——————————
+[Card 5 / 18]
+Q. Distinguish the businessowners policy (BOP) from the commercial package policy (CPP).
+[Answer]
+Both combine property and liability coverages from monoline forms at a discount. The BOP is designed for smaller businesses; the CPP is for larger companies. Commercial auto can be added to either.
+
+——————————
+[Card 6 / 18]
+Q. What does directors' & officers' (D&O) insurance cover?
+[Answer]
+It is E&O coverage that protects a company's board members and officers.
+
+——————————
+[Card 7 / 18]
+Q. What does Employment Practices Liability Insurance (EPLI) cover?
+[Answer]
+Wrongful termination, sexual harassment, and discrimination. Government fines are generally not covered.
+
+——————————
+[Card 8 / 18]
+Q. Distinguish malpractice insurance from errors and omissions (E&O) insurance.
+[Answer]
+Malpractice covers physical harm (physicians, dentists, surgeons) and generally has no exclusion for intentional acts. E&O covers financial harm (accountants, lawyers, insurance agents, financial planners).
+
+——————————
+[Card 9 / 18]
+Q. Who owns and benefits from key person insurance, and what is its purpose?
+[Answer]
+The business owns the policy and is the beneficiary; it provides working capital if a critical employee dies. The text recommends separate policies for business vs. personal needs.
+
+——————————
+[Card 10 / 18]
+Q. How is key person insurance taxed?
+[Answer]
+Premiums are not deductible and the death benefit is not taxable.
+
+——————————
+[Card 11 / 18]
+Q. Distinguish a cross-purchase buy-sell agreement from an entity-purchase buy-sell agreement.
+[Answer]
+Cross-purchase: owners individually buy policies on each other — control stays with the owners, but it is inefficient with more than two owners. Entity-purchase: the business buys the policies — easier to administer, but control shifts to the business.
+
+——————————
+[Card 12 / 18]
+Q. What is a Life Insurance Retirement Plan (LIRP) and how is it funded?
+[Answer]
+A LIRP uses a permanent (whole or universal life) policy to fund retirement, mimicking Roth tax treatment with no income limits. It cannot be funded with term life, and it is not subject to ERISA.
+
+——————————
+[Card 13 / 18]
+Q. What two cautions apply when using a LIRP?
+[Answer]
+Watch the MEC rules and avoid lapsing the policy.
+
+——————————
+[Card 14 / 18]
+Q. What two general categories of cyberattack exist?
+[Answer]
+Malware (covert spyware) and phishing (social engineering).
+
+——————————
+[Card 15 / 18]
+Q. What measures help reduce cyber insurance premiums?
+[Answer]
+Employee security training, multi-factor authentication, and a disaster recovery plan.
+
+——————————
+[Card 16 / 18]
+Q. Distinguish cyber insurance from fraud/crime (fidelity) insurance.
+[Answer]
+Cyber covers data breach, ransomware, and related business interruption. Fraud/crime (fidelity) covers employee or third-party dishonesty, embezzlement, and forgery. They are distinct policies.
+
+——————————
+[Card 17 / 18]
+Q. What are a PEO and an AHP, and what do they let small employers do?
+[Answer]
+A PEO (Professional Employer Organization) and an AHP (Association Health Plan) let small and medium employers pool together to access large-group benefits and administration.
+
+——————————
+[Card 18 / 18]
+Q. Which 'monoline' coverage forms can a commercial package policy (CPP) bundle?
+[Answer]
+Commercial property, boiler & machinery (equipment breakdown), crime, inland marine/transportation, commercial general liability, commercial auto, and workers' compensation.

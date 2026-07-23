@@ -1,5 +1,5 @@
 /* FP Study Lab — service worker (offline support) */
-const VERSION = 'v2.49.0';
+const VERSION = 'v2.73.6';
 const CORE_CACHE = `fpsl-core-${VERSION}`;
 const RUNTIME_CACHE = `fpsl-runtime-${VERSION}`;
 /* Infographics live in an UNVERSIONED cache so large images aren't re-downloaded
@@ -8,12 +8,18 @@ const RUNTIME_CACHE = `fpsl-runtime-${VERSION}`;
 const MEDIA_CACHE = 'fpsl-media';
 const MEDIA_ASSETS = [
   /* INFOGRAPHICS-GEN-START */
+  './assets/infographics/FP512-M1-Advanced-Risk-and-Legal-Principles.webp',
   './assets/infographics/FP512-M1-Insurance-and-Risk-Management-Guide.webp',
   './assets/infographics/FP512-M2-Insurance-Professional-Exam-Quick-Reference.webp',
+  './assets/infographics/FP512-M2-Property-and-Casualty-Exam-Essentials.webp',
   './assets/infographics/FP512-M2-Property-and-Casualty-Exam-Guide.webp',
+  './assets/infographics/FP512-M3-Life-Insurance-Mastery.webp',
   './assets/infographics/FP512-M3-Life-Insurance-Reference-Guide.webp',
+  './assets/infographics/FP512-M4-Advanced-Annuity-Nuances.webp',
   './assets/infographics/FP512-M4-Annuities-Exam-Quick-Reference.webp',
   './assets/infographics/FP512-M5-Health-Coverage-Exam-Quick-Reference.webp',
+  './assets/infographics/FP512-M5-Health-and-Government-Insurance-2025-Limits.webp',
+  './assets/infographics/FP512-M6-DI-LTC-and-Veterans-Rules.webp',
   './assets/infographics/FP512-M6-Disability-and-Long-Term-Care-Guide.webp',
   './assets/infographics/FP512-M7-Employee-Benefits-Taxation-Study-Guide.webp',
   './assets/infographics/FP512-M8-Business-Risk-Management-Study-Guide.webp',
@@ -30,13 +36,33 @@ const CORE_ASSETS = [
   './vendor/fonts/dancing-script-latin-400-normal.woff2',
   './flashcards.js',
   './module-content.js',
+  './mcq-why.js',
   './cfp-gist-sync.js',
   './reader-theme.css',
   './reader-theme.js',
   './reader-search.js',
+  './reader-tts.js',
+  './reader-teach.js',
   './vendor/mathjax/tex-mml-svg.js',
   './apps/fp511-reading.html',
   './apps/fp512-reading.html',
+  './apps/fp512-m1-kaplan-slides.html',
+  './apps/fp512-m2-kaplan-slides.html',
+  './apps/fp512-m3-kaplan-slides.html',
+  './apps/fp512-m4-kaplan-slides.html',
+  './apps/fp512-m5-kaplan-slides.html',
+  './apps/fp512-m6-kaplan-slides.html',
+  './apps/fp512-m7-kaplan-slides.html',
+  './apps/fp512-m8-kaplan-slides.html',
+  './apps/fp511-m2-kaplan-slides.html',
+  './apps/fp511-m4-kaplan-slides.html',
+  './apps/fp511-m5-kaplan-slides.html',
+  './apps/fp511-m6-kaplan-slides.html',
+  './apps/fp511-m7-kaplan-slides.html',
+  './apps/fp511-ai-slides.html',
+  './apps/fp512-ai-slides.html',
+  './apps/fp512-m1-ai-slides.html',
+  './apps/fp512-m2-ai-slides.html',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable-512.png',

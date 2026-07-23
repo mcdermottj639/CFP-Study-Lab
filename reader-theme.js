@@ -46,18 +46,41 @@
     };
     b.appendChild(btn);
 
-    // "Back to module" — only when we arrived from a specific Module Hub. Returns
-    // to that exact module (not the dashboard, which is what Home does).
+    // "Back" pill — ALWAYS shown so there's a one-tap path back into the modules
+    // area (Home still → dashboard). If we arrived from a specific Module Hub, return
+    // to that exact module; otherwise return to the Modules tab (the module map).
     try {
       var ret = sessionStorage.getItem('cfpReaderReturn');
+      var back = document.createElement('a');
+      back.id = 'rdrBack';
       if (ret && /^[A-Za-z0-9]+\/\d+$/.test(ret)) {
-        var back = document.createElement('a');
-        back.id = 'rdrBack';
         back.href = '../index.html#m/' + ret;
         back.innerHTML = '‹ Module ' + ret.split('/')[1];
-        b.appendChild(back);
+      } else {
+        back.href = '../index.html#modules';
+        back.innerHTML = '‹ Modules';
       }
+      b.appendChild(back);
     } catch (e) {}
+
+    // Auto-hide the floating chrome (Home / Theme / Back pills + the reader-tts &
+    // search FABs) while the user scrolls, so they stop covering content. They slide
+    // back on scroll-up or when scrolling stops, and are always shown near the top.
+    // During audio playback the buttons are already handled by reader-tts (body.rt-on),
+    // so this only matters while reading. CSS lives in reader-theme.css.
+    (function () {
+      var last = window.pageYOffset || 0, timer = null;
+      function show() { document.body.classList.remove('rdr-hidechrome'); }
+      function hide() { document.body.classList.add('rdr-hidechrome'); }
+      window.addEventListener('scroll', function () {
+        var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+        var dy = y - last; last = y;
+        if (y < 140) show();                 // near the top of a tab — keep them visible
+        else if (dy > 6) hide();             // scrolling down into content — get out of the way
+        else if (dy < -6) show();            // scrolling back up — reveal
+        clearTimeout(timer); timer = setTimeout(show, 900);   // reveal when scrolling stops
+      }, { passive: true });
+    })();
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
