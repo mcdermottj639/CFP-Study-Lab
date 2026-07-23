@@ -906,7 +906,7 @@ function openDeck(course,mod,idx){
   // module deck -> remember the hub so the deck can show a "back to module" pill;
   // whole-course deck (mod 0) -> clear it (its Home button returns to the dashboard).
   try{ if(mod) sessionStorage.setItem('cfpReaderReturn',course+'/'+mod); else sessionStorage.removeItem('cfpReaderReturn'); }catch(e){}
-  // While a podcast is playing, open the deck (e.g. the full-course walkthrough) in an
+  // While a podcast is playing, open the deck (e.g. the whole-course exam review) in an
   // in-app iframe overlay so a page navigation doesn't unload the app and stop the audio.
   if(podcastOpen()){ openDeckOverlay(d); return; }
   location.href=d.src;
