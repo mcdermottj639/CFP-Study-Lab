@@ -76,7 +76,7 @@
   /* AUDIO-GEN-START */
   window.AUDIO = {
       FP511: {
-        0: [ { src: 'assets/audio/FP511-General-Financial-Planning-and-Psychology.m4a', title: 'General Financial Planning and Psychology' } ]
+        0: [ { src: 'assets/audio/FP511-Full-Course-Exam-Review-(Recommended).m4a', title: 'Full Course Exam Review (Recommended)' }, { src: 'assets/audio/FP511-General-Financial-Planning-and-Psychology.m4a', title: 'General Financial Planning and Psychology' } ]
       },
       FP512: {
         0: [ { src: 'assets/audio/FP512-Full-Course-Exam-Review-(Recommended).m4a', title: 'Full Course Exam Review (Recommended)' }, { src: 'assets/audio/FP512-The-Mechanics-of-Financial-Risk-Management.m4a', title: 'The Mechanics of Financial Risk Management' } ]
