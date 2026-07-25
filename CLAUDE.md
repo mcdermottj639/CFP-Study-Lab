@@ -814,6 +814,19 @@ card when a module has none). All in `src/study-home.src.html`:
     exports as MP4 (fine); NotebookLM **audio** exports as WAV or a hefty M4A — transcode/compress
     down (target ~64 kbps: `ffmpeg -i in.m4a -c:a aac -b:a 64k -ac 1 out.m4a`) so it fits under the
     100 MB file limit and caches well on a phone.
+  - **STANDING RULE — storage budget (media lives in git forever).** Every media blob committed
+    stays in `.git` permanently (deleting it later does NOT shrink clones), so `.git` grows
+    monotonically. Budget against GitHub's **~1 GB repo/Pages soft limit** (100 MB/file hard).
+    **As of v2.88.0: `.git` ≈ 470 MB, `assets/` ≈ 420 MB (audio 281 · video 121 · rest 18) — about
+    half the soft limit for 2 courses.** At this density each further course adds ~250–400 MB, so
+    all of FP513–518 would blow past 1 GB. Therefore: **always compress audio to ~64 kbps MONO
+    before committing** (`-b:a 64k -ac 1` — a ~24-min NotebookLM episode goes ~23 MB → ~11 MB, no
+    audible loss for speech); keep video's audio track ≤96 kbps and resolution modest. The sandbox
+    ffmpeg is a Playwright video-only build and **can't transcode AAC/H.264**, so compression must
+    happen before upload (the user already runs a compressor; ask for 64 kbps mono if files arrive
+    large). If a future multi-course push still approaches the limit, move `assets/audio`+`video`
+    to **Git LFS** (its free tier is only 1 GB, so compression comes first) — never rehost to an
+    external host (breaks the offline rule).
 - **Adding one is filename-driven, no engine change.** Name the file
   `FP<course>-M<module>[-Free Text Title].<ext>` (title optional → "Visual guide" /
   "Slide deck" / "Video" / "Podcast"; e.g. `FP512-M1-Insurance-and-Risk-Management-Guide.png`,
