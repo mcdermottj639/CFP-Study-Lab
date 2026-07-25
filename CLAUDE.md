@@ -404,6 +404,14 @@ program sets a due date per *course* — e.g. FP512 due Sep 6 — not per module
   left) / "keep going". `courseSchedChip(c)` adds a compact 📅 due/passed pill to each **Modules-tab course
   card** (next to `statusPill` in `renderModules`). Colors are inline semantic (green/amber/red), readable in
   both themes. No new engine deps — a new course auto-appears once it has content or a date.
+  **Once a course is marked passed, its date `<input>` is hidden** (renderSchedule shows only the
+  passed checkbox + ✓ status — the deadline is moot).
+- **🎯 Today's focus banner (v2.95.0)** — prepended to the Dashboard "Study this today" card by
+  `renderTodayFocus()` (via `focusTarget()`). Picks the single highest-value target: the course with
+  the **nearest not-passed deadline** (else the current module's course), then within it the **weakest
+  module** (lowest `moduleMastery`, tie-broken by most unseen cards, skipping modules with no cards). Renders
+  a one-line "Focus: FP512 Module N — Name (X% ready) · D days to your FP512 deadline" with a **Drill it →**
+  button (`studyScoped(course,mod,'quiz')`, or `studyDomain` if no module resolves).
 
 ## How it's built (IMPORTANT — index.html is generated, don't hand-edit it)
 `index.html` is **built** from a source artifact + overlays. Editing it directly
@@ -973,7 +981,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.94.0`) on every shippable change so installed apps auto-update
+  (current: `v2.95.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
