@@ -97,6 +97,7 @@ a.link{color:var(--brand);text-decoration:none;font-weight:600}
 
   <!-- DASHBOARD -->
   <section id="dash">
+    <div id="schedCard" style="margin-bottom:12px"></div>
     <div class="grid g4">
       <div class="card"><div class="flex"><div class="sub">Exam readiness</div><span id="readyTrend" class="small muted" title="Readiness trend"></span></div><div class="kpi" id="kReady">—</div><div class="bar" style="margin-top:8px"><i id="readyBar" style="width:0%"></i></div><div class="small muted" id="readyDrivers" style="margin-top:6px">Blueprint-weighted across 8 domains</div></div>
       <div class="card"><div class="sub">Study streak</div><div class="kpi" id="kStreak">—</div><div class="small muted">days in a row</div></div>
@@ -401,11 +402,12 @@ function load(){
     // migrate older saves to the SM-2 schema
     if(!x.seen)x.seen={}; if(!x.mcqDue)x.mcqDue={}; if(!x.newSeen)x.newSeen={};
     if(!x.modReady)x.modReady={}; if(!x.objChecked)x.objChecked={};
+    if(!x.courseDue)x.courseDue={}; if(!x.coursePassed)x.coursePassed={};
     if(!Array.isArray(x.history))x.history=[];               // daily readiness snapshots for the trend sparkline
     if(typeof x.newPerDay!=='number'||x.newPerDay===20)x.newPerDay=0; // 0 = show ALL new cards (undo the earlier 20/day default)
     return x;
   }}catch(e){}
-  return {cards:{}, attempts:[], misses:[], sessions:{}, mastery:{}, seen:{}, mcqDue:{}, newSeen:{}, modReady:{}, objChecked:{}, history:[], newPerDay:0, examDate:"2027-03-09", goal:30, lastStudy:null, streak:0};
+  return {cards:{}, attempts:[], misses:[], sessions:{}, mastery:{}, seen:{}, mcqDue:{}, newSeen:{}, modReady:{}, objChecked:{}, history:[], newPerDay:0, examDate:"2027-03-09", goal:30, courseDue:{}, coursePassed:{}, lastStudy:null, streak:0};
 }
 function save(){localStorage.setItem(LS,JSON.stringify(S));}
 
@@ -461,6 +463,10 @@ function mergeState(a,b){
   out.streak=Math.max(a.streak||0,b.streak||0);
   out.lastStudy=((b.lastStudy||'')>(a.lastStudy||''))?b.lastStudy:(a.lastStudy||b.lastStudy||null);
   if(a.lastBackup!=null||b.lastBackup!=null) out.lastBackup=Math.max(a.lastBackup||0,b.lastBackup||0); // don't synthesize the key (kept merge from always reporting "changed")
+  // per-course deadlines & passed — union (due keeps this device's value else incoming; passed OR-wins).
+  // Guarded so merge(x,x) stays idempotent (never synthesizes a key the input lacked).
+  if(a.courseDue||b.courseDue){ out.courseDue=O(out.courseDue); var _bd=O(b.courseDue); Object.keys(_bd).forEach(function(k){ if(out.courseDue[k]==null) out.courseDue[k]=_bd[k]; }); }
+  if(a.coursePassed||b.coursePassed){ out.coursePassed=O(out.coursePassed); var _bp=O(b.coursePassed); Object.keys(_bp).forEach(function(k){ out.coursePassed[k]=out.coursePassed[k]||_bp[k]; }); }
   // settings — keep this device's, fall back to incoming
   ['examDate','goal','newPerDay'].forEach(function(k){ if(out[k]==null) out[k]=b[k]; });
   return out;
@@ -705,10 +711,62 @@ document.getElementById('tabs').addEventListener('click',e=>{if(e.target.dataset
 
 /* ====================== DASHBOARD ====================== */
 let domainChart;
+// ===== Exam schedule — per-course deadlines + CFP exam-day countdown (v2.94.0) =====
+function courseName(c){ const m=MODULES.find(x=>x.id===c); return m&&m.name?m.name:c; }
+// Per-course readiness = blueprint-weighted mean of that course's domain readiness scores.
+function courseReadinessPct(course){
+  const ds=DOMAINS.filter(d=>d.mod===course); if(!ds.length)return 0;
+  let num=0,den=0; ds.forEach(d=>{ num+=d.w*domainReadiness(d).score; den+=d.w; });
+  return den?Math.round(num/den):0;
+}
+// On-track judgement from readiness vs. days left. passed > overdue > on-track/behind/keep-going.
+function courseStatus(c){
+  const r=courseReadinessPct(c);
+  if(S.coursePassed&&S.coursePassed[c]) return {label:'✓ Passed', color:'#1f7a4d'};
+  const due=S.courseDue&&S.courseDue[c];
+  if(!due) return {label:r+'% ready', color:'#897357'};
+  const dl=daysTo(due);
+  if(dl<0) return {label:'⚠ Overdue · '+r+'% ready', color:'#c0453d'};
+  if(r>=70) return {label:dl+' days · '+r+'% ready · on track', color:'#1f7a4d'};
+  if(dl<=10) return {label:dl+' days · '+r+'% ready · behind', color:'#c0453d'};
+  return {label:dl+' days · '+r+'% ready · keep going', color:'#b0731f'};
+}
+// Compact chip for the Modules-tab course card.
+function courseSchedChip(c){
+  if(S.coursePassed&&S.coursePassed[c]) return ` <span class="pill" style="background:#e7f7ef;color:#1f7a4d">✓ Passed</span>`;
+  const due=S.courseDue&&S.courseDue[c]; if(!due) return '';
+  const dl=daysTo(due), col=dl<0?'#c0453d':(dl<=14?'#b0731f':'#5b4b3a');
+  const d=new Date(due+"T00:00:00").toLocaleDateString(undefined,{month:'short',day:'numeric'});
+  return ` <span class="pill" style="background:#f4ecdf;color:${col}">📅 ${dl<0?'overdue':(dl+'d')} · ${d}</span>`;
+}
+function setExamDate(v){ if(v){ S.examDate=v; save(); renderDash(); } }
+function setCourseDue(c,v){ S.courseDue=S.courseDue||{}; if(v){S.courseDue[c]=v;} else {delete S.courseDue[c];} save(); renderDash(); if(document.getElementById('moduleGrid'))renderModules(); }
+function setCoursePassed(c,ck){ S.coursePassed=S.coursePassed||{}; S.coursePassed[c]=!!ck; save(); renderDash(); if(document.getElementById('moduleGrid'))renderModules(); }
+function renderSchedule(){
+  const courses=MODULES.map(m=>m.id).filter(id=>/^FP\d{3}$/.test(id));
+  const show=courses.filter(c=>{ const m=MODULES.find(x=>x.id===c); return (m&&m.status!=='upcoming')||(S.courseDue&&S.courseDue[c])||(S.coursePassed&&S.coursePassed[c]); });
+  const exd=daysTo(S.examDate), exCol=exd<0?'#c0453d':(exd<=30?'#b0731f':'#1f7a4d');
+  const rows=show.map(c=>{
+    const due=(S.courseDue&&S.courseDue[c])||''; const passed=!!(S.coursePassed&&S.coursePassed[c]); const st=courseStatus(c);
+    return `<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:7px 0;border-top:1px solid var(--line,#e6d8c2)">
+      <div style="min-width:150px;flex:1"><b>${courseName(c)}</b> <span class="muted" style="font-size:11px">${c}</span></div>
+      <input type="date" value="${due}" onchange="setCourseDue('${c}',this.value)" style="font-size:12px">
+      <label class="small" style="display:inline-flex;align-items:center;gap:4px"><input type="checkbox" ${passed?'checked':''} onchange="setCoursePassed('${c}',this.checked)"> passed</label>
+      <span style="font-weight:700;font-size:12px;color:${st.color};margin-left:auto">${st.label}</span>
+    </div>`;
+  }).join('');
+  return `<div class="card">
+    <div class="flex"><div><h2 style="margin:0">📅 Exam schedule</h2><div class="small muted">Course deadlines &amp; your CFP&reg; exam-day countdown.</div></div>
+      <div class="center"><div class="kpi" style="color:${exCol}">${exd<0?'—':exd}</div><div class="sub">days to CFP exam</div></div></div>
+    <div style="display:flex;align-items:center;gap:8px;margin:10px 0 2px;flex-wrap:wrap"><b>CFP&reg; exam day</b> <input type="date" value="${S.examDate}" onchange="setExamDate(this.value)" style="font-size:12px"> <span style="font-weight:700;font-size:12px;color:${exCol}">${exd<0?'past':exd+' days to go'}</span></div>
+    <div style="margin-top:6px">${rows||'<div class="small muted">No active courses yet.</div>'}</div>
+  </div>`;
+}
 function renderDash(){
   const days=daysTo(S.examDate);
   document.getElementById('countDays').textContent=days;
   document.getElementById('examLabel').textContent=new Date(S.examDate+"T00:00:00").toLocaleDateString(undefined,{month:'long',year:'numeric'});
+  {const sc=document.getElementById('schedCard'); if(sc) sc.innerHTML=renderSchedule();}
   snapshotReadiness(); save();
   const rd=readiness();
   document.getElementById('kReady').textContent=rd+"%";
@@ -781,7 +839,7 @@ function renderModules(){
       :`<span class="pill" style="background:#f0f2f8;color:var(--muted)">Upcoming</span>`;
     const links=moduleLinks(m.id);
     return `<div class="card modcard" style="border-left-color:${color}">
-      <div class="flex"><div><b>${m.id}</b> ${statusPill}</div><div class="small muted">${dms.map(d=>d.k+" "+d.w+"%").join(" · ")||"—"}</div></div>
+      <div class="flex"><div><b>${m.id}</b> ${statusPill}${courseSchedChip(m.id)}</div><div class="small muted">${dms.map(d=>d.k+" "+d.w+"%").join(" · ")||"—"}</div></div>
       <div style="margin:4px 0 8px">${m.name}</div>
       <div class="bar"><i style="width:${mp}%;background:${color}"></i></div>
       <div class="small muted" style="margin:4px 0 10px">${mp}% exam-ready</div>
