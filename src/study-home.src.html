@@ -1602,21 +1602,13 @@ function mcqRunner(pool,title,opts={}){
       ${q.stem?`<div class="casebox">${q.stem}</div>`:''}
       <h3 style="margin-top:8px">${q.q}</h3>
       <div id="opts">${q.o.map((o,oi)=>`<button class="opt" onclick="window._pick(${oi})">${String.fromCharCode(65+oi)}. ${o}</button>`).join('')}</div>`+
-      (exam?'':`<div id="conf" class="hidden"><div class="small muted" style="margin-top:8px">Before revealing, how confident were you?</div>
-        <div class="confbtns"><button class="btn gray sm" onclick="window._conf(1)">Guess</button><button class="btn gray sm" onclick="window._conf(2)">Unsure</button><button class="btn gray sm" onclick="window._conf(3)">Confident</button></div></div>`)+
       `<div id="rev"></div></div>`;
   }
   window._pick=(oi)=>{
     if(exam){ ttsStop(); record(oi); idx++; draw(); return; }       // exam: lock + advance, no reveal
-    if(picked!==null)return;picked=oi;
-    document.getElementById('conf').classList.remove('hidden');
-    document.querySelectorAll('#opts .opt').forEach(b=>b.classList.add('dim'));
-  };
-  window._conf=(cf)=>{
-    const q=pool[idx];const ok=record(picked,cf);
-    const els=document.querySelectorAll('#opts .opt');
-    els.forEach((b,oi)=>{b.classList.remove('dim');if(oi===q.a)b.classList.add('correct');if(oi===picked&&!ok)b.classList.add('wrong');b.onclick=null;});
-    document.getElementById('conf').classList.add('hidden');
+    if(picked!==null)return;picked=oi;                              // instant feedback: reveal immediately on tap (no confidence gate)
+    const q=pool[idx];const ok=record(oi,2);
+    document.querySelectorAll('#opts .opt').forEach((b,i2)=>{if(i2===q.a)b.classList.add('correct');if(i2===oi&&!ok)b.classList.add('wrong');b.onclick=null;});
     document.getElementById('rev').innerHTML=`<div class="expl"><b>${ok?'✓ Correct':'✗ Not quite'}.</b> ${q.e}<div>${ttsBtn(q.e)}</div></div>${whyNotHtml(q,picked)}
       <div class="center" style="margin-top:10px"><button class="btn" onclick="window._next()">Next →</button></div>`;
   };
