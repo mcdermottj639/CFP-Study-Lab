@@ -1047,10 +1047,10 @@ function renderModuleHub(course,mod){
     '<div class="row" style="flex-wrap:wrap;gap:8px;margin-top:10px">'+decks.map((g,i)=>'<button class="btn gray" onclick="openDeck(\''+course+'\','+mod+','+i+')">📊 '+g.title+deckKindBadge(g.kind)+'</button>').join('')+'</div></div>':'';
   const vids=((window.VIDEO||{})[course]||{})[mod]||[];
   const vidHtml=vids.length?'<div class="card" id="hubVideo" style="margin-top:12px"><div class="flex"><div><h3>Video'+(vids.length>1?'s':'')+'</h3><div class="small muted">NotebookLM video overview — tap to watch full-screen.</div></div></div>'+
-    '<div class="row" style="flex-wrap:wrap;gap:8px;margin-top:10px">'+vids.map((g,i)=>'<button class="btn gray" onclick="openVideo(\''+course+'\','+mod+','+i+')">🎬 '+g.title+'</button>').join('')+'</div></div>':'';
+    '<div class="row" style="flex-wrap:wrap;gap:8px;margin-top:10px">'+vids.map((g,i)=>'<button class="btn gray" onclick="openVideo(\''+course+'\','+mod+','+i+')">🎬 '+g.title+mediaLen(g)+'</button>').join('')+'</div></div>':'';
   const auds=((window.AUDIO||{})[course]||{})[mod]||[];
   const audHtml=auds.length?'<div class="card" id="hubAudio" style="margin-top:12px"><div class="flex"><div><h3>Podcast'+(auds.length>1?'s':'')+'</h3><div class="small muted">NotebookLM audio deep-dive — natural-voice walkthrough you can listen to hands-free.</div></div></div>'+
-    '<div class="row" style="flex-wrap:wrap;gap:8px;margin-top:10px">'+auds.map((g,i)=>'<button class="btn gray" onclick="openAudio(\''+course+'\','+mod+','+i+')">🎧 '+g.title+'</button>').join('')+'</div></div>':'';
+    '<div class="row" style="flex-wrap:wrap;gap:8px;margin-top:10px">'+auds.map((g,i)=>'<button class="btn gray" onclick="openAudio(\''+course+'\','+mod+','+i+')">🎧 '+g.title+mediaLen(g)+'</button>').join('')+'</div></div>':'';
   sec.innerHTML=
     '<div class="card" style="margin-bottom:12px;border-left:4px solid '+color+'">'+
       '<a class="link small" style="cursor:pointer" onclick="go(\'modules\')">← All modules</a>'+
@@ -1159,6 +1159,13 @@ function ensureVideoCSS(){
   '.videoTools a.btn{text-decoration:none}'+
   '#videoEl{flex:1 1 auto;width:100%;min-height:0;background:#000;object-fit:contain}';
   document.head.appendChild(s);
+}
+// Length chip for a media entry (video/podcast) using its parsed `dur` seconds — so a
+// long full lesson reads distinctly from a short high-yield clip. Empty when unknown.
+function mediaLen(g){
+  if(!g||!g.dur)return '';
+  var s=g.dur, txt = s>=3600 ? (Math.floor(s/3600)+'h '+Math.round((s%3600)/60)+'m') : (s>=60 ? (Math.round(s/60)+' min') : (s+' sec'));
+  return ' <span style="display:inline-block;margin-left:6px;padding:1px 7px;border-radius:10px;background:rgba(0,0,0,.16);font-size:.8em;font-weight:700;vertical-align:middle">'+txt+'</span>';
 }
 function openVideo(course,mod,idx){
   const vids=((window.VIDEO||{})[course]||{})[mod]||[];

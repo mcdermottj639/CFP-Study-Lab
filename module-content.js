@@ -59,12 +59,12 @@
   /* VIDEO-GEN-START */
   window.VIDEO = {
       FP512: {
-        1: [ { src: 'assets/video/FP512-M1-Principles-of-Insurance.mp4', title: 'Principles of Insurance' }, { src: 'assets/video/FP512-M1-Top-4-Insurance-Exam-Traps.mp4', title: 'Top 4 Insurance Exam Traps' } ],
-        2: [ { src: 'assets/video/FP512-M2-High-Yield-Property-and-Casualty-Rules.mp4', title: 'High Yield Property and Casualty Rules' }, { src: 'assets/video/FP512-M2-Property-and-Casualty.mp4', title: 'Property and Casualty' } ],
-        3: [ { src: 'assets/video/FP512-M3-CFP-Review-Life-Insurance.mp4', title: 'CFP Review Life Insurance' }, { src: 'assets/video/FP512-M3-High-Yield-Life-Insurance-Review.mp4', title: 'High Yield Life Insurance Review' } ],
-        4: [ { src: 'assets/video/FP512-M4-Annuities-CFP-Exam-Review.mp4', title: 'Annuities CFP Exam Review' }, { src: 'assets/video/FP512-M4-High-Yield-Annuities-Review.mp4', title: 'High Yield Annuities Review' } ],
-        5: [ { src: 'assets/video/FP512-M5-High-Yield-COBRA-Timelines.mp4', title: 'High Yield COBRA Timelines' } ],
-        6: [ { src: 'assets/video/FP512-M6-High-Yield-Disability-and-LTC-Rules.mp4', title: 'High Yield Disability and LTC Rules' } ]
+        1: [ { src: 'assets/video/FP512-M1-Principles-of-Insurance.mp4', title: 'Principles of Insurance', dur: 593 }, { src: 'assets/video/FP512-M1-Top-4-Insurance-Exam-Traps.mp4', title: 'Top 4 Insurance Exam Traps', dur: 71 } ],
+        2: [ { src: 'assets/video/FP512-M2-High-Yield-Property-and-Casualty-Rules.mp4', title: 'High Yield Property and Casualty Rules', dur: 68 }, { src: 'assets/video/FP512-M2-Property-and-Casualty.mp4', title: 'Property and Casualty', dur: 514 } ],
+        3: [ { src: 'assets/video/FP512-M3-CFP-Review-Life-Insurance.mp4', title: 'CFP Review Life Insurance', dur: 635 }, { src: 'assets/video/FP512-M3-High-Yield-Life-Insurance-Review.mp4', title: 'High Yield Life Insurance Review', dur: 73 } ],
+        4: [ { src: 'assets/video/FP512-M4-Annuities-CFP-Exam-Review.mp4', title: 'Annuities CFP Exam Review', dur: 547 }, { src: 'assets/video/FP512-M4-High-Yield-Annuities-Review.mp4', title: 'High Yield Annuities Review', dur: 83 } ],
+        5: [ { src: 'assets/video/FP512-M5-High-Yield-COBRA-Timelines.mp4', title: 'High Yield COBRA Timelines', dur: 71 } ],
+        6: [ { src: 'assets/video/FP512-M6-High-Yield-Disability-and-LTC-Rules.mp4', title: 'High Yield Disability and LTC Rules', dur: 69 } ]
       }
     };
   /* VIDEO-GEN-END */
@@ -76,18 +76,18 @@
   /* AUDIO-GEN-START */
   window.AUDIO = {
       FP511: {
-        0: [ { src: 'assets/audio/FP511-Full-Course-Exam-Review-(Recommended).m4a', title: 'Full Course Exam Review (Recommended)' }, { src: 'assets/audio/FP511-General-Financial-Planning-and-Psychology.m4a', title: 'General Financial Planning and Psychology' } ]
+        0: [ { src: 'assets/audio/FP511-Full-Course-Exam-Review-(Recommended).m4a', title: 'Full Course Exam Review (Recommended)', dur: 3119 }, { src: 'assets/audio/FP511-General-Financial-Planning-and-Psychology.m4a', title: 'General Financial Planning and Psychology', dur: 2857 } ]
       },
       FP512: {
-        0: [ { src: 'assets/audio/FP512-Full-Course-Exam-Review-(Recommended).m4a', title: 'Full Course Exam Review (Recommended)' }, { src: 'assets/audio/FP512-The-Mechanics-of-Financial-Risk-Management.m4a', title: 'The Mechanics of Financial Risk Management' } ],
-        1: [ { src: 'assets/audio/FP512-M1-Principles-of-Insurance-and-Risk-Management.m4a', title: 'Principles of Insurance and Risk Management' } ],
-        2: [ { src: 'assets/audio/FP512-M2-Property-and-Casualty.m4a', title: 'Property and Casualty' } ],
-        3: [ { src: 'assets/audio/FP512-M3-Life-Insurance.m4a', title: 'Life Insurance' } ],
-        4: [ { src: 'assets/audio/FP512-M4-Annuities.m4a', title: 'Annuities' } ],
-        5: [ { src: 'assets/audio/FP512-M5-Health-Insurance.m4a', title: 'Health Insurance' } ],
-        6: [ { src: 'assets/audio/FP512-M6-Disability-and-Long-Term-Care.m4a', title: 'Disability and Long Term Care' } ],
-        7: [ { src: 'assets/audio/FP512-M7-Group-Benefits-and-Taxation.m4a', title: 'Group Benefits and Taxation' } ],
-        8: [ { src: 'assets/audio/FP512-M8-Business-Uses-of-Insurance.m4a', title: 'Business Uses of Insurance' } ]
+        0: [ { src: 'assets/audio/FP512-Full-Course-Exam-Review-(Recommended).m4a', title: 'Full Course Exam Review (Recommended)', dur: 3430 }, { src: 'assets/audio/FP512-The-Mechanics-of-Financial-Risk-Management.m4a', title: 'The Mechanics of Financial Risk Management', dur: 3641 } ],
+        1: [ { src: 'assets/audio/FP512-M1-Principles-of-Insurance-and-Risk-Management.m4a', title: 'Principles of Insurance and Risk Management', dur: 1276 } ],
+        2: [ { src: 'assets/audio/FP512-M2-Property-and-Casualty.m4a', title: 'Property and Casualty', dur: 1477 } ],
+        3: [ { src: 'assets/audio/FP512-M3-Life-Insurance.m4a', title: 'Life Insurance', dur: 1447 } ],
+        4: [ { src: 'assets/audio/FP512-M4-Annuities.m4a', title: 'Annuities', dur: 1255 } ],
+        5: [ { src: 'assets/audio/FP512-M5-Health-Insurance.m4a', title: 'Health Insurance', dur: 1424 } ],
+        6: [ { src: 'assets/audio/FP512-M6-Disability-and-Long-Term-Care.m4a', title: 'Disability and Long Term Care', dur: 1466 } ],
+        7: [ { src: 'assets/audio/FP512-M7-Group-Benefits-and-Taxation.m4a', title: 'Group Benefits and Taxation', dur: 1430 } ],
+        8: [ { src: 'assets/audio/FP512-M8-Business-Uses-of-Insurance.m4a', title: 'Business Uses of Insurance', dur: 1508 } ]
       }
     };
   /* AUDIO-GEN-END */
