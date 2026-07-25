@@ -748,9 +748,10 @@ function renderSchedule(){
   const exd=daysTo(S.examDate), exCol=exd<0?'#c0453d':(exd<=30?'#b0731f':'#1f7a4d');
   const rows=show.map(c=>{
     const due=(S.courseDue&&S.courseDue[c])||''; const passed=!!(S.coursePassed&&S.coursePassed[c]); const st=courseStatus(c);
+    const dateInput = passed ? '' : `<input type="date" value="${due}" onchange="setCourseDue('${c}',this.value)" style="font-size:12px">`;
     return `<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:7px 0;border-top:1px solid var(--line,#e6d8c2)">
       <div style="min-width:150px;flex:1"><b>${courseName(c)}</b> <span class="muted" style="font-size:11px">${c}</span></div>
-      <input type="date" value="${due}" onchange="setCourseDue('${c}',this.value)" style="font-size:12px">
+      ${dateInput}
       <label class="small" style="display:inline-flex;align-items:center;gap:4px"><input type="checkbox" ${passed?'checked':''} onchange="setCoursePassed('${c}',this.checked)"> passed</label>
       <span style="font-weight:700;font-size:12px;color:${st.color};margin-left:auto">${st.label}</span>
     </div>`;
@@ -761,6 +762,49 @@ function renderSchedule(){
     <div style="display:flex;align-items:center;gap:8px;margin:10px 0 2px;flex-wrap:wrap"><b>CFP&reg; exam day</b> <input type="date" value="${S.examDate}" onchange="setExamDate(this.value)" style="font-size:12px"> <span style="font-weight:700;font-size:12px;color:${exCol}">${exd<0?'past':exd+' days to go'}</span></div>
     <div style="margin-top:6px">${rows||'<div class="small muted">No active courses yet.</div>'}</div>
   </div>`;
+}
+// Pick the single highest-value thing to study now: the course with the nearest (not-passed)
+// deadline — else the current module's course — and within it the weakest module (lowest
+// module mastery, tie-broken by most unseen cards). Drives the 🎯 Today's focus banner.
+function focusTarget(){
+  const courses=MODULES.map(m=>m.id).filter(id=>/^FP\d{3}$/.test(id));
+  let best=null;
+  courses.forEach(c=>{
+    if(S.coursePassed&&S.coursePassed[c])return;
+    const due=S.courseDue&&S.courseDue[c]; if(!due)return;
+    const dl=daysTo(due);
+    if(best===null||dl<best.dl) best={course:c,dl:dl};
+  });
+  if(!best){ const cur=MODULES.find(m=>m.status==='current'); if(cur)best={course:cur.id,dl:null}; }
+  if(!best)return null;
+  const meta=(typeof MODMETA!=='undefined')?MODMETA[best.course]:null;
+  let weak=null;
+  if(meta) Object.keys(meta).forEach(k=>{
+    const mod=parseInt(k,10);
+    const total=CARDS.filter((c,i)=>c.m===best.course&&moduleOf(c)===mod).length;
+    if(!total)return;                                   // skip modules with no cards
+    const mm=moduleMastery(best.course,mod), un=moduleUnseenCount(best.course,mod);
+    if(weak===null||mm<weak.mm||(mm===weak.mm&&un>weak.un)) weak={mod:mod,name:meta[k],mm:mm,un:un};
+  });
+  return {course:best.course, dl:best.dl, mod:weak?weak.mod:null, name:weak?weak.name:null, mastery:weak?weak.mm:null};
+}
+function renderTodayFocus(){
+  const f=focusTarget(); if(!f)return '';
+  let target, btn;
+  if(f.mod){
+    target=`${f.course} Module ${f.mod} — ${f.name} <span class="muted">(${f.mastery}% ready)</span>`;
+    btn=`<button class="btn sm" onclick="studyScoped('${f.course}',${f.mod},'quiz')">Drill it →</button>`;
+  } else {
+    target=`<b>${f.course}</b>`;
+    btn=`<button class="btn sm" onclick="studyDomain('${f.course}','quiz')">Study →</button>`;
+  }
+  let urg;
+  if(f.dl==null) urg=`Current course: <b>${f.course}</b>`;
+  else if(f.dl<0) urg=`<b style="color:#c0453d">${f.course} deadline passed</b> — catch up`;
+  else urg=`<b>${f.dl} day${f.dl===1?'':'s'}</b> to your ${f.course} deadline`;
+  return `<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#f4ecdf;border-left:4px solid #d0613a;border-radius:10px;padding:10px 12px;margin:0 0 10px">
+    <div style="flex:1;min-width:170px">🎯 <b>Today's focus:</b> ${target}<div class="small muted" style="margin-top:2px">${urg}</div></div>
+    ${btn}</div>`;
 }
 function renderDash(){
   const days=daysTo(S.examDate);
@@ -788,7 +832,7 @@ function renderDash(){
   const nUnseen=unseenCount(), nNeed=needWorkCount();
   const nMcq=mcqDuePool().length, nHard=hardCards().length;
   const cur=MODULES.find(m=>m.status==='current');
-  let plan=`<ul style="margin:8px 0 0;padding-left:18px">`;
+  let plan=renderTodayFocus()+`<ul style="margin:8px 0 0;padding-left:18px">`;
   plan+=`<li><b>${nUnseen}</b> unseen card${nUnseen===1?'':'s'} to learn${nNeed?` · <b>${nNeed}</b> that need more work`:''} (Study tab → card filter).</li>`;
   if(nMcq)plan+=`<li><b>${nMcq}</b> missed question${nMcq===1?'':'s'} ready to re-attempt (Review missed questions).</li>`;
   if(nHard)plan+=`<li><b>${nHard}</b> hard/flagged card${nHard===1?'':'s'} to drill down.</li>`;
