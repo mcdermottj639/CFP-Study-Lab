@@ -385,6 +385,26 @@ score — only the blueprint weights differ. Attempts now carry a **`src`** fiel
 - New state: `S.history` (array of `{d:ymd,r:readiness}`; defaulted in `load()`, merged in
   `mergeState`). `S.attempts[].src` is additive (legacy attempts treated as `mcq` weight).
 
+### Exam schedule & pacing (v2.94.0)
+Per-**course** deadlines + a CFP exam-day countdown, integrated into the Dashboard. (The user's
+program sets a due date per *course* — e.g. FP512 due Sep 6 — not per module.) All in
+`src/study-home.src.html`:
+- **State:** `S.courseDue` = `{ COURSE: "YYYY-MM-DD" }`, `S.coursePassed` = `{ COURSE: true }`, plus the
+  pre-existing `S.examDate` (the final CFP board exam). Defaulted in `load()` (migrated for old saves) and
+  in the `S` init object. **`mergeState`** unions them — `courseDue` keeps this device's value else takes
+  incoming, `coursePassed` is OR-wins — **guarded (`if(a.x||b.x)`) so `merge(x,x)` never synthesizes a key**
+  and stays idempotent (required, or the gist sync reload-loops — see the sync section).
+- **Dashboard card** (`#schedCard`, rendered by `renderSchedule()` inside `renderDash`): a big days-to-CFP-exam
+  KPI + an editable exam-day `<input type=date>`, then one row per active course (name, editable due date,
+  "passed" checkbox, and an on-track status). Only courses with content (`status!=='upcoming'`) or an
+  already-set date/passed show. Inline editors call `setExamDate`/`setCourseDue`/`setCoursePassed` → `save()`
+  + re-render.
+- **On-track logic:** `courseReadinessPct(course)` = blueprint-weighted mean of that course's `domainReadiness`
+  scores; `courseStatus(c)` returns passed ✓ / overdue / "on track" (≥70% ready) / "behind" (<70% & ≤10 days
+  left) / "keep going". `courseSchedChip(c)` adds a compact 📅 due/passed pill to each **Modules-tab course
+  card** (next to `statusPill` in `renderModules`). Colors are inline semantic (green/amber/red), readable in
+  both themes. No new engine deps — a new course auto-appears once it has content or a date.
+
 ## How it's built (IMPORTANT — index.html is generated, don't hand-edit it)
 `index.html` is **built** from a source artifact + overlays. Editing it directly
 will be overwritten on the next build. The real sources are:
@@ -953,7 +973,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.88.0`) on every shippable change so installed apps auto-update
+  (current: `v2.94.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
