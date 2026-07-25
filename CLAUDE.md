@@ -772,6 +772,14 @@ card when a module has none). All in `src/study-home.src.html`:
   64k -ac 1 out.m4a`) so it fits the repo and caches well on a phone. Binary media can't be pulled through
   the Drive MCP tool at size (base64 overflows context) — get files in by **uploading them into the chat**
   (they land on disk) and copying into `assets/audio/`.
+- **Media length badges (v2.88.0).** `sync_media.mjs` parses each video/audio file's real
+  duration from its MP4/M4A `mvhd` atom (`probeDur()` — offline, no ffprobe) and writes a
+  `dur` (seconds) field into the `window.VIDEO`/`window.AUDIO` entries. The Module Hub's 🎬
+  video and 🎧 podcast buttons render a length chip via `mediaLen(g)` (in
+  `src/study-home.src.html`, next to `openVideo`) — e.g. a full ~10-min lesson reads distinctly
+  from a ~1-min high-yield clip, and a ~24-min podcast is labelled as such. `dur` is optional:
+  if the atom can't be read the chip is simply omitted. Re-run `sync_media.mjs` after adding
+  media to populate it.
 - **SW range-safe media caching (v2.42.0).** `<video>`/`<audio>` fetch with a `Range` header,
   and the Cache API can't store/replay a `206`. So `sw.js`'s same-origin handler has a
   `req.headers.has('range')` branch that refetches the **full** file (no Range → `200`),
@@ -926,7 +934,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.76.0`) on every shippable change so installed apps auto-update
+  (current: `v2.88.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.

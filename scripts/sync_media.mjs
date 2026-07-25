@@ -35,6 +35,24 @@ const NAME = /^(FP\d{3})-M(\d+)(?:-(.*))?$/i;        // single module: FP511-M3[
 const NAME_COURSE = /^(FP\d{3})(?:-(.*))?$/i;         // whole course: FP511[-Title] -> module 0
 const esc = (s) => String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
 
+// Parse an MP4/M4A container's duration (seconds) from its `mvhd` atom — no ffprobe
+// needed, works offline. Returns null if it can't be read. Lets the app label each
+// video/podcast with its real length (so a 25-min lesson reads distinctly from a 3-min clip).
+function probeDur(path) {
+  let buf;
+  try { buf = readFileSync(path); } catch { return null; }
+  const i = buf.indexOf('mvhd');
+  if (i < 0) return null;
+  try {
+    const version = buf[i + 4];
+    let timescale, duration;
+    if (version === 1) { timescale = buf.readUInt32BE(i + 24); duration = Number(buf.readBigUInt64BE(i + 28)); }
+    else { timescale = buf.readUInt32BE(i + 16); duration = buf.readUInt32BE(i + 20); }
+    if (!timescale) return null;
+    return Math.round(duration / timescale);
+  } catch { return null; }
+}
+
 // Media kinds: dir, extension filter, default title, JS global, whether precached.
 const KINDS = [
   { dir: 'infographics', ext: /\.(png|jpe?g|webp|gif|svg|avif)$/i, deft: 'Visual guide', global: 'INFOGRAPHICS', precache: true },
@@ -64,9 +82,14 @@ function scan(kind) {
       title = (m[2] || '').replace(/[-_]+/g, ' ').trim() || kind.deft;
     } else { skipped.push(f); continue; }
     const src = 'assets/' + kind.dir + '/' + f;
+    const entry = { src, title };
+    if (kind.dir === 'video' || kind.dir === 'audio') {
+      const dur = probeDur(join(ROOT, src));
+      if (dur) entry.dur = dur;
+    }
     (data[course] ||= {});
     (data[course][mod] ||= []);
-    data[course][mod].push({ src, title });
+    data[course][mod].push(entry);
     assets.push('./' + src);
   }
   return { data, assets, skipped };
@@ -77,7 +100,7 @@ function literal(global, data) {
   if (!Object.keys(data).length) return `window.${global} = {};`;
   const courses = Object.keys(data).sort().map((c) => {
     const mods = Object.keys(data[c]).map(Number).sort((a, b) => a - b).map((mod) => {
-      const items = data[c][mod].map((g) => `{ src: '${esc(g.src)}', title: '${esc(g.title)}' }`).join(', ');
+      const items = data[c][mod].map((g) => `{ src: '${esc(g.src)}', title: '${esc(g.title)}'${g.dur ? `, dur: ${g.dur}` : ''} }`).join(', ');
       return `      ${mod}: [ ${items} ]`;
     }).join(',\n');
     return `    ${c}: {\n${mods}\n    }`;
