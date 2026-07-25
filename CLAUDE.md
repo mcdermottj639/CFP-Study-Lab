@@ -172,7 +172,7 @@ isn't. Same offline OS voice; different *words*. Built as a second mode inside t
   harness. To revise a tab, edit its entries in `reader-teach.js`. **When adding a new course reader
   (FP513+), author Teach narration for its tabs the same way (author pass, then coverage audit).**
 
-### Teach mode on the per-module Kaplan slide decks (TTS, v2.75.0)
+### Teach mode on the per-module Kaplan slide decks (TTS, v2.75.0; all 13 decks v2.76.0)
 The same 👩‍🏫 Teach walkthrough now runs on the **per-module Kaplan visual decks**
 (`apps/fp5XX-mN-kaplan-slides.html`), not just the readers — the user wanted a teacher to talk them
 through a specific module's deck (the verbatim Podcast stays a reader-only thing they listen to for the
@@ -195,13 +195,16 @@ whole course). Decks are **Teach-ONLY** (a visual deck of stat tiles/tables read
   (chunked at playback into flowing multi-sentence utterances). Grounded strictly in that deck's own
   Kaplan-sourced/audited slide content, matching the reader Teach voice. Precached in `sw.js`
   (`CORE_ASSETS`); each teachable deck loads `../deck-teach.js` then `../reader-tts.js` before `</body>`.
-- **STATUS: pilot — FP512 Module 3 (Life Insurance) only.** 22 `{at,say}` entries (6 LO-section intros +
-  16 slides) → 84 spoken chunks; every anchor runtime-verified against a real heading, in document order,
-  headless smoke-tested (Teach FAB shows, no Podcast FAB, bar activates, chunks flow, sections highlight,
-  Contents lists all 22, zero console errors). **To roll out to the other 12 Kaplan decks** (FP511 M2,4,5,6,7
-  + FP512 M1,2,4–8): author a flat `DECK_TEACH` list against that deck's slide headings, add the two
-  `<script>` tags to the deck HTML — no engine change. (The whole-course AI decks are intentionally left
-  Teach-free.)
+- **STATUS: complete — all 13 Kaplan per-module decks** (FP512 M1–M8 + FP511 M2,4,5,6,7). **352 `{at,say}`
+  entries** total (each deck = its LO-section intros + one per slide; quiz sections skipped), grounded
+  strictly in each deck's own Kaplan-sourced/audited slides and matching the pilot voice. Authored by one
+  grounded author per deck (each read only its own deck + a pre-extracted heading brief), then a single
+  verification gate confirmed **every anchor resolves to a real heading, in document order, across all 12**
+  (`scratchpad/assemble.mjs`), and a headless pass smoke-tested a sample (Teach FAB shows, no Podcast FAB,
+  chunks flow, zero console errors). Each deck loads `../deck-teach.js` + `../reader-tts.js` before
+  `</body>`. To add a new course's decks (FP513+): author a flat `DECK_TEACH` list against that deck's slide
+  headings, add the two `<script>` tags — no engine change. (The whole-course AI decks are intentionally
+  left Teach-free.)
 
 **Docked player bar + no-clutter layout (v2.60.0).** `#rtBar` is a **full-width bar docked at the
 bottom** (not a centered pill — it was colliding with Home/Theme/search). `showBar(on)` toggles it,
@@ -923,7 +926,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.75.0`) on every shippable change so installed apps auto-update
+  (current: `v2.76.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
