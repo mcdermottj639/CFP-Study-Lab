@@ -171,6 +171,38 @@ isn't. Same offline OS voice; different *words*. Built as a second mode inside t
   anchor-validated + runtime-smoke-tested (all 20 tabs play, anchors resolve, no errors) by a scratch
   harness. To revise a tab, edit its entries in `reader-teach.js`. **When adding a new course reader
   (FP513+), author Teach narration for its tabs the same way (author pass, then coverage audit).**
+
+### Teach mode on the per-module Kaplan slide decks (TTS, v2.75.0)
+The same 👩‍🏫 Teach walkthrough now runs on the **per-module Kaplan visual decks**
+(`apps/fp5XX-mN-kaplan-slides.html`), not just the readers — the user wanted a teacher to talk them
+through a specific module's deck (the verbatim Podcast stays a reader-only thing they listen to for the
+whole course). Decks are **Teach-ONLY** (a visual deck of stat tiles/tables reads poorly aloud, so no
+🎙️ Podcast FAB is shown).
+- **Engine reuse, not a fork.** `reader-tts.js` was generalized: a deck is a single vertical-scroll page
+  with **no `.tab-btn` and no collapsibles** (it wraps its content in `#rdrWrap` and carries its own inline
+  Home/Back/Theme chrome). The engine now detects a deck — `isDeck = no .tab-btn && #rdrWrap present &&
+  window.DECK_TEACH[FILE] has entries` — and if so runs teach over a **flat, tab-less playlist**
+  (`buildDeckTeachPlaylist`) instead of the tab-flowing reader playlists. It reuses the whole shared player
+  (docked bar, speed, resume bookmark `cfpTeach:<deck file>`, wake lock, background recovery, ☰ Contents,
+  scroll+highlight). `body.rt-deck` drops the Teach FAB to the base slot (no Podcast FAB beneath it) and the
+  `body.rt-on` hide-rule also hides the decks' `#dkHome`/`#dkBack`/`#tgl` while the bar is up. Double-tap a
+  slide → start/reposition the teacher there (`deckTeachIndexForNode` maps a tapped node → its `.slide`/`.sect`
+  heading anchor). If a deck has no `DECK_TEACH` entry the engine early-returns (harmless), so the two script
+  tags can sit in any deck safely.
+- **Content lives in `deck-teach.js`** (shared; **flat** per-deck list, unlike the reader's tab-keyed
+  `READER_TEACH`): `window.DECK_TEACH[<deck file>] = [ {at, say}, … ]` in **slide order**, where `at` matches a
+  substring of a deck heading (`.sect h2` / `.slide h3`, case-insensitive) and `say` is the narration
+  (chunked at playback into flowing multi-sentence utterances). Grounded strictly in that deck's own
+  Kaplan-sourced/audited slide content, matching the reader Teach voice. Precached in `sw.js`
+  (`CORE_ASSETS`); each teachable deck loads `../deck-teach.js` then `../reader-tts.js` before `</body>`.
+- **STATUS: pilot — FP512 Module 3 (Life Insurance) only.** 22 `{at,say}` entries (6 LO-section intros +
+  16 slides) → 84 spoken chunks; every anchor runtime-verified against a real heading, in document order,
+  headless smoke-tested (Teach FAB shows, no Podcast FAB, bar activates, chunks flow, sections highlight,
+  Contents lists all 22, zero console errors). **To roll out to the other 12 Kaplan decks** (FP511 M2,4,5,6,7
+  + FP512 M1,2,4–8): author a flat `DECK_TEACH` list against that deck's slide headings, add the two
+  `<script>` tags to the deck HTML — no engine change. (The whole-course AI decks are intentionally left
+  Teach-free.)
+
 **Docked player bar + no-clutter layout (v2.60.0).** `#rtBar` is a **full-width bar docked at the
 bottom** (not a centered pill — it was colliding with Home/Theme/search). `showBar(on)` toggles it,
 sets `body.rt-on`, and while playing **hides the 🎧 `#rtFab` + 🔍 `#rsFab`** AND the
@@ -891,7 +923,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.74.0`) on every shippable change so installed apps auto-update
+  (current: `v2.75.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
