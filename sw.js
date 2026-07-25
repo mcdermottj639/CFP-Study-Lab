@@ -1,5 +1,5 @@
 /* FP Study Lab — service worker (offline support) */
-const VERSION = 'v2.77.0';
+const VERSION = 'v2.78.0';
 const CORE_CACHE = `fpsl-core-${VERSION}`;
 const RUNTIME_CACHE = `fpsl-runtime-${VERSION}`;
 /* Infographics live in an UNVERSIONED cache so large images aren't re-downloaded
