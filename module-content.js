@@ -79,7 +79,9 @@
         0: [ { src: 'assets/audio/FP511-Full-Course-Exam-Review-(Recommended).m4a', title: 'Full Course Exam Review (Recommended)' }, { src: 'assets/audio/FP511-General-Financial-Planning-and-Psychology.m4a', title: 'General Financial Planning and Psychology' } ]
       },
       FP512: {
-        0: [ { src: 'assets/audio/FP512-Full-Course-Exam-Review-(Recommended).m4a', title: 'Full Course Exam Review (Recommended)' }, { src: 'assets/audio/FP512-The-Mechanics-of-Financial-Risk-Management.m4a', title: 'The Mechanics of Financial Risk Management' } ]
+        0: [ { src: 'assets/audio/FP512-Full-Course-Exam-Review-(Recommended).m4a', title: 'Full Course Exam Review (Recommended)' }, { src: 'assets/audio/FP512-The-Mechanics-of-Financial-Risk-Management.m4a', title: 'The Mechanics of Financial Risk Management' } ],
+        2: [ { src: 'assets/audio/FP512-M2-Property-and-Casualty.m4a', title: 'Property and Casualty' } ],
+        3: [ { src: 'assets/audio/FP512-M3-Life-Insurance.m4a', title: 'Life Insurance' } ]
       }
     };
   /* AUDIO-GEN-END */
