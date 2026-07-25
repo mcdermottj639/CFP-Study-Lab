@@ -51,7 +51,7 @@ asset, no CDN, no `https://`** (doesn't violate the offline rule). Helpers live 
 (toggle: tapping the active button stops; only one utterance plays at a time via
 `window._ttsBtn`), and `ttsBtn(html,label)` which returns the button markup (empty string
 where TTS is unsupported, so it degrades gracefully). `ttsBtn(q.e)` is spliced into all
-three explanation render points in `mcqRunner`: the instant-feedback reveal (`_conf`), the
+three explanation render points in `mcqRunner`: the instant-feedback reveal (`_pick`, v2.96.0), the
 endless-quiz recap review, and the scored-exam results review. Speech is cancelled on
 navigation — `_next`, exam-advance (`_pick`), `_endQuiz`, and `go()` all call `ttsStop()`
 so audio never bleeds across questions/tabs. Button styles = `.tts-btn` (pill, filled while
@@ -314,7 +314,13 @@ pickers actually affect, so the UI stops pretending scope applies when it doesn'
   instant-feedback practice (v2.49.0): `runQuiz` calls `mcqRunner` with `{endless:true,
   restartMod:mod}` (no `limit`) — the runner keeps serving questions, **reshuffling the full
   in-scope pool each time it's exhausted** (`fullPool`/`draw()` loop) so it never hits the
-  "complete" screen. A persistent **"■ End & see recap"** button (`window._endQuiz`) lets you
+  "complete" screen. **Instant-feedback reveal (v2.96.0):** tapping an option in a non-exam run
+  (`_pick`) now reveals correct/wrong + explanation + Next **immediately** — the old
+  confidence-calibration gate (a Guess/Unsure/Confident step in a `#conf` div that dimmed the
+  options via `.dim` while it waited, which users read as "frozen / can't change my answer") was
+  removed. MCQ attempts now log a neutral confidence (`record(oi,2)`); flashcard grading still
+  supplies real confidence. The scored **exam** path (`_pick` with `exam`) is unchanged (lock +
+  advance, reveal at the end). A persistent **"■ End & see recap"** button (`window._endQuiz`) lets you
   stop any time; the header shows a running `Q{answered+1} · {correct}/{answered} correct`
   counter. Ending calls `endlessRecap()` → score %, verdict, and **"🎯 Areas to work on"**
   (missed topics ranked by miss-count) + a collapsible review of missed questions, with
@@ -981,7 +987,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.95.0`) on every shippable change so installed apps auto-update
+  (current: `v2.96.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
