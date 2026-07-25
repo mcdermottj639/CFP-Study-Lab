@@ -77,10 +77,10 @@
   /* AUDIO-GEN-START */
   window.AUDIO = {
       FP511: {
-        0: [ { src: 'assets/audio/FP511-Full-Course-Exam-Review-(Recommended).m4a', title: 'Full Course Exam Review (Recommended)', dur: 3119 } ]
+        0: [ { src: 'assets/audio/FP511-Full-Course-Exam-Review.m4a', title: 'Full Course Exam Review', dur: 3119 } ]
       },
       FP512: {
-        0: [ { src: 'assets/audio/FP512-Full-Course-Exam-Review-(Recommended).m4a', title: 'Full Course Exam Review (Recommended)', dur: 3430 } ],
+        0: [ { src: 'assets/audio/FP512-Full-Course-Exam-Review.m4a', title: 'Full Course Exam Review', dur: 3430 } ],
         1: [ { src: 'assets/audio/FP512-M1-Principles-of-Insurance-and-Risk-Management.m4a', title: 'Principles of Insurance and Risk Management', dur: 1276 } ],
         2: [ { src: 'assets/audio/FP512-M2-Property-and-Casualty.m4a', title: 'Property and Casualty', dur: 1477 } ],
         3: [ { src: 'assets/audio/FP512-M3-Life-Insurance.m4a', title: 'Life Insurance', dur: 1447 } ],
