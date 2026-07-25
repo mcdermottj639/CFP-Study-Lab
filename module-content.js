@@ -86,7 +86,8 @@
         4: [ { src: 'assets/audio/FP512-M4-Annuities.m4a', title: 'Annuities' } ],
         5: [ { src: 'assets/audio/FP512-M5-Health-Insurance.m4a', title: 'Health Insurance' } ],
         6: [ { src: 'assets/audio/FP512-M6-Disability-and-Long-Term-Care.m4a', title: 'Disability and Long Term Care' } ],
-        7: [ { src: 'assets/audio/FP512-M7-Group-Benefits-and-Taxation.m4a', title: 'Group Benefits and Taxation' } ]
+        7: [ { src: 'assets/audio/FP512-M7-Group-Benefits-and-Taxation.m4a', title: 'Group Benefits and Taxation' } ],
+        8: [ { src: 'assets/audio/FP512-M8-Business-Uses-of-Insurance.m4a', title: 'Business Uses of Insurance' } ]
       }
     };
   /* AUDIO-GEN-END */
