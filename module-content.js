@@ -84,7 +84,8 @@
         2: [ { src: 'assets/audio/FP512-M2-Property-and-Casualty.m4a', title: 'Property and Casualty' } ],
         3: [ { src: 'assets/audio/FP512-M3-Life-Insurance.m4a', title: 'Life Insurance' } ],
         4: [ { src: 'assets/audio/FP512-M4-Annuities.m4a', title: 'Annuities' } ],
-        5: [ { src: 'assets/audio/FP512-M5-Health-Insurance.m4a', title: 'Health Insurance' } ]
+        5: [ { src: 'assets/audio/FP512-M5-Health-Insurance.m4a', title: 'Health Insurance' } ],
+        6: [ { src: 'assets/audio/FP512-M6-Disability-and-Long-Term-Care.m4a', title: 'Disability and Long Term Care' } ]
       }
     };
   /* AUDIO-GEN-END */
