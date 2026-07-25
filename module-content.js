@@ -60,9 +60,9 @@
   window.VIDEO = {
       FP512: {
         1: [ { src: 'assets/video/FP512-M1-Principles-of-Insurance.mp4', title: 'Principles of Insurance' }, { src: 'assets/video/FP512-M1-Top-4-Insurance-Exam-Traps.mp4', title: 'Top 4 Insurance Exam Traps' } ],
-        2: [ { src: 'assets/video/FP512-M2-High-Yield-Property-and-Casualty-Rules.mp4', title: 'High Yield Property and Casualty Rules' }, { src: 'assets/video/FP512-M2-Property-and-Casualty-Part-1.mp4', title: 'Property and Casualty Part 1' } ],
+        2: [ { src: 'assets/video/FP512-M2-High-Yield-Property-and-Casualty-Rules.mp4', title: 'High Yield Property and Casualty Rules' }, { src: 'assets/video/FP512-M2-Property-and-Casualty.mp4', title: 'Property and Casualty' } ],
         3: [ { src: 'assets/video/FP512-M3-CFP-Review-Life-Insurance.mp4', title: 'CFP Review Life Insurance' }, { src: 'assets/video/FP512-M3-High-Yield-Life-Insurance-Review.mp4', title: 'High Yield Life Insurance Review' } ],
-        4: [ { src: 'assets/video/FP512-M4-High-Yield-Annuities-Review.mp4', title: 'High Yield Annuities Review' } ],
+        4: [ { src: 'assets/video/FP512-M4-Annuities-CFP-Exam-Review.mp4', title: 'Annuities CFP Exam Review' }, { src: 'assets/video/FP512-M4-High-Yield-Annuities-Review.mp4', title: 'High Yield Annuities Review' } ],
         5: [ { src: 'assets/video/FP512-M5-High-Yield-COBRA-Timelines.mp4', title: 'High Yield COBRA Timelines' } ],
         6: [ { src: 'assets/video/FP512-M6-High-Yield-Disability-and-LTC-Rules.mp4', title: 'High Yield Disability and LTC Rules' } ]
       }
