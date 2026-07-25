@@ -72,14 +72,23 @@
 
   ready(function () {
     var tabs = [].slice.call(document.querySelectorAll('.tab-btn'));
-    if (!tabs.length) return;                       // not a tabbed reader — skip
+    var FILE = (location.pathname || '').split('/').pop() || 'reader';
+
+    // A Kaplan per-module slide DECK is a single vertical-scroll page (no .tab-btn, no
+    // collapsibles) that opts into Teach via window.DECK_TEACH[FILE] = [{at, say}, …].
+    // Decks are TEACH-ONLY here — the verbatim Podcast reads poorly on a visual deck of
+    // stat tiles/tables — so no 🎙️ FAB is shown. Everything else stays tab-based.
+    var deckRoot = document.getElementById('rdrWrap');
+    var deckTeach = (window.DECK_TEACH && window.DECK_TEACH[FILE]) || null;
+    var isDeck = !tabs.length && !!deckRoot && !!(deckTeach && deckTeach.length);
+    if (!tabs.length && !isDeck) return;            // not a tabbed reader and not a teachable deck — skip
 
     injectStyles();
+    if (isDeck) document.body.classList.add('rt-deck');
 
     // Two modes share this player: 'read' = the whole-reader verbatim podcast;
-    // 'teach' = a teacher's narration (window.READER_TEACH) for the CURRENT tab.
-    var FILE = (location.pathname || '').split('/').pop() || 'reader';
-    var mode = 'read';
+    // 'teach' = a teacher's narration (window.READER_TEACH / window.DECK_TEACH) walkthrough.
+    var mode = isDeck ? 'teach' : 'read';
 
     // Both modes now play the WHOLE reader start-to-finish, flowing tab to tab — read =
     // verbatim, teach = the teacher's narration — so each keeps one per-reader bookmark.
@@ -100,11 +109,11 @@
     function hasTeach(tab) { var m = teachMap(); return !!(m && m[tab] && m[tab].length); }
     // Does this reader have ANY teacher narration? (teach now flows across the whole
     // reader, so the Teach FAB shows regardless of which tab you're on.)
-    function readerHasTeach() { var m = teachMap(); return !!(m && Object.keys(m).length); }
+    function readerHasTeach() { if (isDeck) return true; var m = teachMap(); return !!(m && Object.keys(m).length); }
 
     var fab = el('button', 'rtFab');
     fab.type = 'button';
-    document.body.appendChild(fab);
+    if (!isDeck) document.body.appendChild(fab);    // deck = Teach-only, no verbatim Podcast FAB
 
     // 👩‍🏫 Teach FAB (stacked above the Podcast FAB). Only shown on tabs that have
     // authored teaching narration; playing it speaks the teacher's script for that
@@ -174,9 +183,11 @@
     // otherwise each offers Resume when a bookmark exists, else a fresh start.
     function reflectFab() {
       if (playing) return;                             // showBar handles the playing state
-      var rb = readBookmark(), resume = rb && rb.pos > 0;
-      fab.innerHTML = resume ? '🎧 Resume' : '🎙️ Podcast';
-      fab.title = resume ? 'Resume the podcast where you left off' : 'Play the whole guide as a podcast';
+      if (!isDeck) {                                    // deck has no Podcast FAB
+        var rb = readBookmark(), resume = rb && rb.pos > 0;
+        fab.innerHTML = resume ? '🎧 Resume' : '🎙️ Podcast';
+        fab.title = resume ? 'Resume the podcast where you left off' : 'Play the whole guide as a podcast';
+      }
       updateTeachFab();
     }
     // Teach FAB shows whenever the reader has any narration (teach flows across it all).
@@ -332,7 +343,30 @@
       for (var i = 0; i < playlist.length; i++) { if (playlist[i].el === header) return i; }
       return -1;
     }
+    // Deck: map a tapped node to the teach entry for its enclosing .slide/.sect (its
+    // heading is the playlist anchor), so a double-tap sends the teacher to that slide.
+    function deckTeachIndexForNode(node) {
+      var el = node && node.nodeType === 3 ? node.parentElement : node;
+      if (!el || !el.closest) return -1;
+      var card = el.closest('.slide, .sect');
+      var header = card ? card.querySelector('h2, h3, h4') : null;
+      if (!header) return -1;
+      for (var i = 0; i < playlist.length; i++) { if (playlist[i].el === header) return i; }
+      return -1;
+    }
     function startFromNode(node, allowWordLevel) {
+      // Deck = Teach-only: a double-tap starts (or repositions) the teacher at the tapped slide.
+      if (isDeck) {
+        if (!playing) { playlist = buildTeachPlaylist(); if (!playlist.length) return; }
+        var di = deckTeachIndexForNode(node); if (di < 0) di = 0;
+        try { window.getSelection().removeAllRanges(); } catch (e) {}
+        if (!playing) {
+          playing = true; paused = false; mode = 'teach'; lastRevealEl = null;
+          showBar(true); requestWake();
+          ensureVoices(function () { if (playing) playIndex(di, true); });
+        } else { jump(di); }
+        return;
+      }
       // While teaching, a double-tap repositions the TEACHER to the tapped section
       // (rather than switching into verbatim read).
       if (playing && mode === 'teach') {
@@ -516,7 +550,30 @@
     // Whole-reader teacher walkthrough: every tab's authored sections, in tab order,
     // flowing tab to tab (playback auto-switches tabs via focusTab). Synchronous tab
     // clicks = no flicker; restore the originally-active tab (same trick as buildPlaylist).
+    // Deck teach: DECK_TEACH[FILE] is a flat [{at, say}] in slide order. Anchor each to a
+    // heading (.sect h2 / .slide h3) in #rdrWrap, chunk the narration into flowing
+    // multi-sentence utterances, and return one flat tab-less playlist. The shared player
+    // scrolls to + highlights each anchor exactly as it does a reader section.
+    function buildDeckTeachPlaylist() {
+      var root = deckRoot || document.body;
+      var headers = [].slice.call(root.querySelectorAll('h1,h2,h3,h4'));
+      var list = [];
+      deckTeach.forEach(function (it) {
+        var anchor = null;
+        if (it.at) {
+          var needle = String(it.at).toLowerCase();
+          for (var i = 0; i < headers.length; i++) {
+            if ((headers[i].textContent || '').toLowerCase().indexOf(needle) >= 0) { anchor = headers[i]; break; }
+          }
+        }
+        if (!anchor) anchor = root;
+        chunkSay(it.say).forEach(function (s) { list.push({ el: anchor, text: s, tab: null, tabLabel: '' }); });
+      });
+      return list;
+    }
+
     function buildTeachPlaylist() {
+      if (isDeck) return buildDeckTeachPlaylist();
       var m = teachMap(); if (!m) return [];
       var active = document.querySelector('.tab-btn.active') || tabs[0];
       var list = [];
@@ -667,6 +724,8 @@
         // 👩‍🏫 Teach FAB — stacked above the Podcast FAB, purple so the two are distinct.
         '#rtTeachFab{position:fixed;right:max(14px,env(safe-area-inset-right));bottom:calc(134px + env(safe-area-inset-bottom));z-index:9000;height:50px;padding:0 16px;border:none;border-radius:25px;background:linear-gradient(135deg,#6d5ae0,#8a6ff0);color:#fff;font:600 14px system-ui,-apple-system,sans-serif;display:inline-flex;align-items:center;gap:7px;cursor:pointer;box-shadow:0 6px 18px -4px rgba(50,40,110,.5)}' +
         'body.rt-on #rtTeachFab{display:none!important}' +
+        // On a deck there is no Podcast FAB below it, so drop the Teach FAB to the base slot.
+        'body.rt-deck #rtTeachFab{bottom:calc(74px + env(safe-area-inset-bottom))}' +
         // Docked player bar across the bottom — a single strip so the controls never
         // pile onto the corner buttons. While it's up, the 🎙️ + 🔍 FABs hide and the
         // Home/Theme/Back pills lift above it (body.rt-on rules below).
@@ -682,6 +741,8 @@
         // While the docked bar is up, hide the Home/Theme/Back pills too (they'd cover
         // content just above the bar). The bar has Stop; navigation returns after stopping.
         'body.rt-on #fpslHome,body.rt-on #rdrTheme,body.rt-on #rdrBack{opacity:0;transform:translateY(30px);pointer-events:none}' +
+        // Decks carry their own inline chrome (Home/Back/Theme) — hide it too while the bar is up.
+        'body.rt-on #dkHome,body.rt-on #dkBack,body.rt-on #tgl{opacity:0;transform:translateY(30px);pointer-events:none;transition:opacity .2s ease,transform .2s ease}' +
         '.rt-hi{background:#ffe9b8 !important;border-radius:3px;box-shadow:0 0 0 3px #ffe9b8;scroll-margin-top:80px;scroll-margin-bottom:96px}' +
         // Contents overlay — a bottom sheet sitting above the docked bar.
         '#rtToc{position:fixed;inset:0;z-index:9003;display:none;background:rgba(20,16,12,.5);align-items:flex-end;justify-content:center}' +
