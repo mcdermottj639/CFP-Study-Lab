@@ -502,23 +502,7 @@ document.getElementById('tgl').addEventListener('click',function(){
 });
 </script>
 
-<!-- deck-chrome-injected -->
-<style>
-#dkHome{position:fixed;left:max(14px,env(safe-area-inset-left));bottom:calc(14px + env(safe-area-inset-bottom));z-index:9999;
-  background:#1f4d3a;color:#fff;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:10px 15px;
-  font:700 13px/1 system-ui,-apple-system,sans-serif;text-decoration:none;box-shadow:0 8px 22px -8px rgba(0,0,0,.55);}
-#dkBack{position:fixed;left:max(14px,env(safe-area-inset-left));bottom:calc(60px + env(safe-area-inset-bottom));z-index:9999;
-  background:#fffdf8;color:#1f4d3a;border:1.5px solid #1f4d3a;border-radius:999px;padding:9px 13px;
-  font:700 13px/1 system-ui,-apple-system,sans-serif;text-decoration:none;box-shadow:0 6px 20px -6px rgba(0,0,0,.5);}
-html[data-theme="dark"] #dkBack{background:#17120e;color:#7fd3ac;border-color:#7fd3ac;}
-</style>
-<a id="dkHome" href="../index.html">🏠 Home</a>
-<script>
-(function(){try{var r=sessionStorage.getItem('cfpReaderReturn');var a=document.createElement('a');a.id='dkBack';
-  if(r&&/^[A-Za-z0-9]+\/\d+$/.test(r)){a.href='../index.html#m/'+r;a.textContent='‹ Module '+r.split('/')[1];}
-  else{a.href='../index.html#modules';a.textContent='‹ Modules';}
-  document.body.appendChild(a);}catch(e){}})();
-</script>
+<!-- deck-chrome-injected --><script src="../deck-chrome.js"></script>
 
 <!-- 👩‍🏫 Teach mode — offline teacher walkthrough (deck-teach.js = narration; reader-tts.js = player) -->
 <script src="../deck-teach.js"></script>

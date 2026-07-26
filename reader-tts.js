@@ -113,7 +113,9 @@
 
     var fab = el('button', 'rtFab');
     fab.type = 'button';
-    if (!isDeck) document.body.appendChild(fab);    // deck = Teach-only, no verbatim Podcast FAB
+    // Mount into the reader's top toolbar if present (readers); decks have no toolbar
+    // so their Teach FAB stays a floating button. Deck = Teach-only, no Podcast FAB.
+    if (!isDeck) (window.__rdrChromeR || document.body).appendChild(fab);
 
     // 👩‍🏫 Teach FAB (stacked above the Podcast FAB). Only shown on tabs that have
     // authored teaching narration; playing it speaks the teacher's script for that
@@ -121,7 +123,7 @@
     var teachFab = el('button', 'rtTeachFab');
     teachFab.type = 'button';
     teachFab.style.display = 'none';
-    document.body.appendChild(teachFab);
+    (window.__rdrChromeR || document.body).appendChild(teachFab);   // mount into the top toolbar (readers)
 
     var bar = el('div', 'rtBar');
     bar.innerHTML =
