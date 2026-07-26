@@ -65,7 +65,7 @@
         4: [ { src: 'assets/video/FP512-M4-Annuities-CFP-Exam-Review.mp4', title: 'Annuities CFP Exam Review', dur: 547, cc: 'assets/video/FP512-M4-Annuities-CFP-Exam-Review.vtt' }, { src: 'assets/video/FP512-M4-High-Yield-Annuities-Review.mp4', title: 'High Yield Annuities Review', dur: 83 } ],
         5: [ { src: 'assets/video/FP512-M5-Health-Insurance-Review.mp4', title: 'Health Insurance Review', dur: 515, cc: 'assets/video/FP512-M5-Health-Insurance-Review.vtt' }, { src: 'assets/video/FP512-M5-High-Yield-COBRA-Timelines.mp4', title: 'High Yield COBRA Timelines', dur: 71 } ],
         6: [ { src: 'assets/video/FP512-M6-Cracking-DI-and-LTC.mp4', title: 'Cracking DI and LTC', dur: 486, cc: 'assets/video/FP512-M6-Cracking-DI-and-LTC.vtt' }, { src: 'assets/video/FP512-M6-High-Yield-Disability-and-LTC-Rules.mp4', title: 'High Yield Disability and LTC Rules', dur: 69 } ],
-        7: [ { src: 'assets/video/FP512-M7-Employee-Benefits-Review.mp4', title: 'Employee Benefits Review', dur: 485 } ]
+        7: [ { src: 'assets/video/FP512-M7-Employee-Benefits-Review.mp4', title: 'Employee Benefits Review', dur: 485, cc: 'assets/video/FP512-M7-Employee-Benefits-Review.vtt' } ]
       }
     };
   /* VIDEO-GEN-END */
