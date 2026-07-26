@@ -1,0 +1,482 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:01.506
+Hey there, CFP candidates.
+
+2
+00:00:01.506 --> 00:00:09.325
+Welcome to this high yield explainer covering the exact traps and highly tested rules you need to know for group and employee benefits.
+
+3
+00:00:09.325 --> 00:00:11.294
+You've already studied the basics.
+
+4
+00:00:11.294 --> 00:00:13.264
+You know what health insurance is.
+
+5
+00:00:13.264 --> 00:00:15.928
+But today, we aren't just reading definitions.
+
+6
+00:00:15.928 --> 00:00:21.141
+We are actively hunting for the specific scenarios where the test makers try to trick you.
+
+7
+00:00:21.141 --> 00:00:27.686
+We're going to break down the taxation rules and the structural traps that separate passing scores from the rest.
+
+8
+00:00:27.686 --> 00:00:28.728
+Let's get into it.
+
+9
+00:00:28.728 --> 00:00:35.447
+Here's what we're tackling today: Section 79, group term life and imputed income math example, section 125 and FSAs,
+
+10
+00:00:35.447 --> 00:00:39.617
+the non-discrimination rule trap, and finally, our top five exam points.
+
+11
+00:00:39.617 --> 00:00:43.903
+Okay, let's kick things off with section one, section 79, group term life.
+
+12
+00:00:43.903 --> 00:00:49.000
+So, section 79 allows employers to offer a group term life insurance to their employees.
+
+13
+00:00:49.000 --> 00:00:54.908
+It's an awesome deal for the employer because they get to deduct those premiums as a business expense.
+
+14
+00:00:54.908 --> 00:00:59.657
+But for your exam, the test makers don't really care about the employer side here.
+
+15
+00:00:59.657 --> 00:01:03.769
+They are laser focused on how these premiums are taxed to the employee.
+
+16
+00:01:03.769 --> 00:01:10.546
+They want to see if you know exactly when this tax-free perk suddenly crosses the line and turns into taxable income.
+
+17
+00:01:10.546 --> 00:01:13.326
+And that brings us to the magic number, $50,000.
+
+18
+00:01:13.326 --> 00:01:16.570
+You absolutely need to burn this number into your brain.
+
+19
+00:01:16.570 --> 00:01:16.801
+Why?
+
+20
+00:01:16.801 --> 00:01:22.883
+Because the first $50,000 of employer provided group term life coverage is 100% tax-free to the employee.
+
+21
+00:01:22.883 --> 00:01:25.895
+The exam is going to try to trick you here for sure.
+
+22
+00:01:25.895 --> 00:01:32.208
+They'll throw a massive policy amount at you and try to bait you into calculating the tax on the whole thing.
+
+23
+00:01:32.208 --> 00:01:33.251
+Don't fall for it.
+
+24
+00:01:33.251 --> 00:01:38.174
+Only the cost of coverage that goes over $50,000 creates what we call imputed income.
+
+25
+00:01:38.174 --> 00:01:43.271
+And that excess is what gets fully taxed to the employee based on the IRS Table I rates.
+
+26
+00:01:43.271 --> 00:01:48.194
+Moving right along to section two, let's walk through an imputed income math example.
+
+27
+00:01:48.194 --> 00:01:54.855
+Because look, knowing the rule is great, but actually calculating that imputed income on the coverage over 50, 000,
+
+28
+00:01:54.855 --> 00:01:58.156
+that is exactly where points are won or lost on test day.
+
+29
+00:01:58.156 --> 00:02:02.210
+Let's look at a classic scenario with an employee named John Alvarado.
+
+30
+00:02:02.210 --> 00:02:06.902
+John is 52 years old and his company gives him a $250,000 group term life policy.
+
+31
+00:02:06.902 --> 00:02:10.493
+Now, the trap is immediately trying to tax that full $250,000.
+
+32
+00:02:10.493 --> 00:02:11.999
+But we know better, right?
+
+33
+00:02:11.999 --> 00:02:15.648
+We're going to instantly slice off that first tax-free $50,000.
+
+34
+00:02:15.648 --> 00:02:18.544
+That leaves John with $200,000 of excess coverage.
+
+35
+00:02:18.544 --> 00:02:26.421
+The IRS taxes this excess using a standardized rate called Table I, which essentially gives you a cost per $1,000 of coverage per month.
+
+36
+00:02:26.421 --> 00:02:29.143
+And for a 52-year-old, that Table I rate is 23.
+
+37
+00:02:29.143 --> 00:02:33.545
+So, we'll be calculating the tax on that $200,000 excess using that 23 rate.
+
+38
+00:02:33.545 --> 00:02:39.221
+You're going to want to memorize these exact four steps to quickly find the annual imputed income.
+
+39
+00:02:39.221 --> 00:02:43.739
+Step one, take the total face amount, 250,000, and subtract that magic 50,000.
+
+40
+00:02:43.739 --> 00:02:44.607
+We get 200,000.
+
+41
+00:02:44.607 --> 00:02:49.589
+Step two, divide that excess by 1,000 simply because the IRS rate is priced per 1,000.
+
+42
+00:02:49.589 --> 00:02:50.631
+That gives us 200.
+
+43
+00:02:50.631 --> 00:02:54.222
+Step three, multiply that 200 by our given Table I rate of 23.
+
+44
+00:02:54.222 --> 00:02:57.524
+And finally, step four, multiply by 12 for the full year.
+
+45
+00:02:57.524 --> 00:02:58.508
+The result, $552.
+
+46
+00:02:58.508 --> 00:03:02.563
+That $552 is the imputed income John actually has to report on his W2.
+
+47
+00:03:02.563 --> 00:03:09.397
+Seriously, if you just stick to these four steps, you will never fall for the trap of taxing the entire death benefit.
+
+48
+00:03:09.397 --> 00:03:12.119
+All right, section three, section 125 and FSAs.
+
+49
+00:03:12.119 --> 00:03:17.795
+Now that we've completely crushed life insurance, let's pivot over to section 125 cafeteria plans.
+
+50
+00:03:17.795 --> 00:03:23.761
+Basically, these plans let employees choose between taking taxable cash or opting for pre-tax benefits.
+
+51
+00:03:23.761 --> 00:03:26.541
+Obviously, choosing the benefits saves on taxes.
+
+52
+00:03:26.541 --> 00:03:35.171
+And one of the most heavily tested and honestly most easily confused options under this cafeteria plan umbrella is the flexible spending arrangement,
+
+53
+00:03:35.171 --> 00:03:35.577
+or FSA.
+
+54
+00:03:35.577 --> 00:03:41.600
+Let's look a little closer at the FSA rules because there are some really tricky exam traps hiding here.
+
+55
+00:03:41.600 --> 00:03:45.307
+First up, FSAs are funded by pre-tax employee salary reductions.
+
+56
+00:03:45.307 --> 00:03:46.292
+And this is huge.
+
+57
+00:03:46.292 --> 00:03:50.868
+Not only does this save on income tax, but it also saves on FICA payroll taxes.
+
+58
+00:03:50.868 --> 00:03:52.142
+That's an immediate 7.
+
+59
+00:03:52.142 --> 00:03:54.343
+65% tax savings right out of the gate.
+
+60
+00:03:54.343 --> 00:03:58.687
+For 2025, the maximum deferral for unreimbursed medical expenses is $3,300.
+
+61
+00:03:58.687 --> 00:04:03.262
+Now, as you probably know, FSAs are notorious for their use it or lose it rule.
+
+62
+00:04:03.262 --> 00:04:07.433
+If you have money left over at the end of the year, it's generally gone.
+
+63
+00:04:07.433 --> 00:04:12.819
+The IRS does throw us a bone with a couple of exceptions, but it's a strict either-or choice.
+
+64
+00:04:12.819 --> 00:04:19.596
+An employer can offer a 2 and a half month grace period, or they can allow up to a $660 carryover into the next year.
+
+65
+00:04:19.596 --> 00:04:21.681
+They can literally never offer both.
+
+66
+00:04:21.681 --> 00:04:25.619
+Now, here's a fascinating trap that is highly tested: employer risk.
+
+67
+00:04:25.619 --> 00:04:31.469
+Let's say an employee Walter pledges 3,300 for the year, which is deducted evenly from his paychecks.
+
+68
+00:04:31.469 --> 00:04:38.477
+By February, he's only paid in $550 bucks, but he has a major medical emergency and incurs $1,500 in out-of-pocket costs.
+
+69
+00:04:38.477 --> 00:04:42.416
+The plan actually has to reimburse him that full $1,500 immediately.
+
+70
+00:04:42.416 --> 00:04:47.281
+And what if Walter just quits his job the very next day before paying the rest back?
+
+71
+00:04:47.281 --> 00:04:49.540
+Well, the employer has to eat the loss.
+
+72
+00:04:49.540 --> 00:04:53.768
+That shortfall comes straight out of the employer's pocket, not Walter's.
+
+73
+00:04:53.768 --> 00:04:55.216
+And here's another thing.
+
+74
+00:04:55.216 --> 00:05:00.081
+The exam absolutely loves to test the differences between similar sounding accounts.
+
+75
+00:05:00.081 --> 00:05:04.541
+So, whatever you do, never treat an FSA like a health savings account or HSA.
+
+76
+00:05:04.541 --> 00:05:08.132
+Remember, unlike an HSA, an FSA is strictly use it or lose it.
+
+77
+00:05:08.132 --> 00:05:09.812
+Also, an FSA is not portable.
+
+78
+00:05:09.812 --> 00:05:12.824
+If you leave your job, you leave the account behind.
+
+79
+00:05:12.824 --> 00:05:16.183
+And you definitely cannot invest FSA funds for retirement.
+
+80
+00:05:16.183 --> 00:05:19.195
+On the flip side, an HSA rolls over year after year.
+
+81
+00:05:19.195 --> 00:05:24.929
+It's totally portable when you switch jobs, and you can actually invest those funds for the future.
+
+82
+00:05:24.929 --> 00:05:31.474
+So, if a test question is describing a highly portable investable account, you are looking at an HSA, not an FSA.
+
+83
+00:05:31.474 --> 00:05:35.470
+Okay, let's head into section four, the non-discrimination rule trap.
+
+84
+00:05:35.470 --> 00:05:42.073
+Let's build on what we've learned and look at an overarching behavioral rule, the non-discrimination requirements.
+
+85
+00:05:42.073 --> 00:05:44.332
+The tax code is super clear about this.
+
+86
+00:05:44.332 --> 00:05:49.023
+Employee benefits are designed to benefit everybody, not just the top executives.
+
+87
+00:05:49.023 --> 00:05:56.785
+If an employer's self-insured health plan, life insurance plan, or cafeteria plan violates these rules and unfairly favors the bosses,
+
+88
+00:05:56.785 --> 00:05:58.059
+the penalty is severe.
+
+89
+00:05:58.059 --> 00:06:01.592
+The benefit becomes completely taxable for the favored group.
+
+90
+00:06:01.592 --> 00:06:05.936
+So the absolutely crucial point here is knowing exactly who pays the price.
+
+91
+00:06:05.936 --> 00:06:10.338
+The exam will try to trip you up by saying that if a plan is discriminatory,
+
+92
+00:06:10.338 --> 00:06:14.103
+the entire plan gets disqualified and everybody has to pay taxes.
+
+93
+00:06:14.103 --> 00:06:15.782
+But that is completely false.
+
+94
+00:06:15.782 --> 00:06:20.184
+Only the highly compensated employees or key employees lose their tax break.
+
+95
+00:06:20.184 --> 00:06:25.049
+For example, in a discriminatory group life plan, those key employees lose that $50,
+
+96
+00:06:25.049 --> 00:06:31.073
+000 exclusion entirely and they get taxed on the greater of the actual premium cost or the Table I cost.
+
+97
+00:06:31.073 --> 00:06:34.027
+But what about the rank and file non-key employees?
+
+98
+00:06:34.027 --> 00:06:36.691
+They are completely unaffected by the penalty.
+
+99
+00:06:36.691 --> 00:06:39.298
+They still get their first 50 grand tax-free.
+
+100
+00:06:39.298 --> 00:06:44.684
+Plus, the employer can generally still deduct the premiums paid as a normal business expense.
+
+101
+00:06:44.684 --> 00:06:48.565
+The punishment falls directly and solely on the favored executives.
+
+102
+00:06:48.565 --> 00:06:52.445
+All right, we've made it to section five, our top five exam points.
+
+103
+00:06:52.445 --> 00:06:58.006
+We're in the final stretch, so let's lock in everything we've covered with a rapid-fire summary.
+
+104
+00:06:58.006 --> 00:07:00.960
+Keep this hit list fresh in your mind for test day.
+
+105
+00:07:00.960 --> 00:07:04.435
+Number one, never ever tax the first 50k of group term life.
+
+106
+00:07:04.435 --> 00:07:05.072
+Number two,
+
+107
+00:07:05.072 --> 00:07:13.065
+know exactly how to run that four-step Table I math formula and remember to only calculate imputed income on the coverage amount over 50K.
+
+108
+00:07:13.065 --> 00:07:16.945
+Number three, fiercely separate your FSA rules from your HSA rules.
+
+109
+00:07:16.945 --> 00:07:18.509
+They're not the same thing.
+
+110
+00:07:18.509 --> 00:07:21.058
+Number four, memorize the FSA safety valves.
+
+111
+00:07:21.058 --> 00:07:22.274
+A plan can offer a 2.
+
+112
+00:07:22.274 --> 00:07:25.923
+5-month grace period or up to a $660 carryover, but never both.
+
+113
+00:07:25.923 --> 00:07:31.020
+And finally, number five, remember who actually pays the price in a discriminatory plan.
+
+114
+00:07:31.020 --> 00:07:36.233
+It's the highly compensated and key employees, the rank and file remain totally untouched.
+
+115
+00:07:36.233 --> 00:07:42.140
+With these rules and traps mapped out, the math clarified, and the structural differences highlighted,
+
+116
+00:07:42.140 --> 00:07:45.731
+you are totally ready to conquer the employee benefit section.
+
+117
+00:07:45.731 --> 00:07:52.276
+But ask yourself this, if the IRS makes the rules this complex just for basic life insurance and health accounts,
+
+118
+00:07:52.276 --> 00:07:56.794
+what kinds of traps are waiting for you in retirement planning and estate tax?
+
+119
+00:07:56.794 --> 00:07:59.922
+The exam never stops testing your attention to detail.
+
+120
+00:07:59.922 --> 00:08:04.787
+Keep digging, trust your preparation, and thanks so much for joining this explainer.
+
