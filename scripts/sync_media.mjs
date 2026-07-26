@@ -26,7 +26,7 @@
  * (node scripts/build_index.mjs && node scripts/add_content.mjs add) and bump
  * versions to deploy. Idempotent.
  */
-import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
@@ -51,6 +51,13 @@ function probeDur(path) {
     if (!timescale) return null;
     return Math.round(duration / timescale);
   } catch { return null; }
+}
+
+// Minimal SRT → WebVTT: strip CRs, turn timestamp commas into periods, prepend the header.
+// (SRT cue-index lines are valid VTT cue identifiers, so they can stay.)
+function srtToVtt(s) {
+  s = String(s).replace(/\r/g, '').replace(/(\d\d:\d\d:\d\d),(\d{3})/g, '$1.$2');
+  return 'WEBVTT\n\n' + s.trim() + '\n';
 }
 
 // Media kinds: dir, extension filter, default title, JS global, whether precached.
@@ -87,6 +94,16 @@ function scan(kind) {
       const dur = probeDur(join(ROOT, src));
       if (dur) entry.dur = dur;
     }
+    // Toggleable captions: a sibling <base>.vtt (or <base>.srt, auto-converted) next to a video
+    // → a WebVTT track the player exposes as a CC button on PC + iPhone. No-op if absent.
+    if (kind.dir === 'video') {
+      const dirAbs = join(ROOT, 'assets', kind.dir), vttName = base + '.vtt', srtName = base + '.srt';
+      if (existsSync(join(dirAbs, vttName))) {
+        entry.cc = 'assets/' + kind.dir + '/' + vttName;
+      } else if (existsSync(join(dirAbs, srtName))) {
+        try { writeFileSync(join(dirAbs, vttName), srtToVtt(readFileSync(join(dirAbs, srtName), 'utf8'))); entry.cc = 'assets/' + kind.dir + '/' + vttName; } catch {}
+      }
+    }
     (data[course] ||= {});
     (data[course][mod] ||= []);
     data[course][mod].push(entry);
@@ -100,7 +117,7 @@ function literal(global, data) {
   if (!Object.keys(data).length) return `window.${global} = {};`;
   const courses = Object.keys(data).sort().map((c) => {
     const mods = Object.keys(data[c]).map(Number).sort((a, b) => a - b).map((mod) => {
-      const items = data[c][mod].map((g) => `{ src: '${esc(g.src)}', title: '${esc(g.title)}'${g.dur ? `, dur: ${g.dur}` : ''} }`).join(', ');
+      const items = data[c][mod].map((g) => `{ src: '${esc(g.src)}', title: '${esc(g.title)}'${g.dur ? `, dur: ${g.dur}` : ''}${g.cc ? `, cc: '${esc(g.cc)}'` : ''} }`).join(', ');
       return `      ${mod}: [ ${items} ]`;
     }).join(',\n');
     return `    ${c}: {\n${mods}\n    }`;
