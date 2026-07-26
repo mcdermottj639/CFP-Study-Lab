@@ -59,7 +59,7 @@
   /* VIDEO-GEN-START */
   window.VIDEO = {
       FP512: {
-        1: [ { src: 'assets/video/FP512-M1-Principles-of-Insurance.mp4', title: 'Principles of Insurance', dur: 593 }, { src: 'assets/video/FP512-M1-Top-4-Insurance-Exam-Traps.mp4', title: 'Top 4 Insurance Exam Traps', dur: 71 } ],
+        1: [ { src: 'assets/video/FP512-M1-Principles-of-Insurance.mp4', title: 'Principles of Insurance', dur: 593, cc: 'assets/video/FP512-M1-Principles-of-Insurance.vtt' }, { src: 'assets/video/FP512-M1-Top-4-Insurance-Exam-Traps.mp4', title: 'Top 4 Insurance Exam Traps', dur: 71 } ],
         2: [ { src: 'assets/video/FP512-M2-High-Yield-Property-and-Casualty-Rules.mp4', title: 'High Yield Property and Casualty Rules', dur: 68 }, { src: 'assets/video/FP512-M2-Property-and-Casualty.mp4', title: 'Property and Casualty', dur: 514, cc: 'assets/video/FP512-M2-Property-and-Casualty.vtt' } ],
         3: [ { src: 'assets/video/FP512-M3-CFP-Review-Life-Insurance.mp4', title: 'CFP Review Life Insurance', dur: 635, cc: 'assets/video/FP512-M3-CFP-Review-Life-Insurance.vtt' }, { src: 'assets/video/FP512-M3-High-Yield-Life-Insurance-Review.mp4', title: 'High Yield Life Insurance Review', dur: 73 } ],
         4: [ { src: 'assets/video/FP512-M4-Annuities-CFP-Exam-Review.mp4', title: 'Annuities CFP Exam Review', dur: 547, cc: 'assets/video/FP512-M4-Annuities-CFP-Exam-Review.vtt' }, { src: 'assets/video/FP512-M4-High-Yield-Annuities-Review.mp4', title: 'High Yield Annuities Review', dur: 83 } ],
