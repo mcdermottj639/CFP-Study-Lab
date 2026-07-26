@@ -706,6 +706,20 @@ mode on a content wrapper so fixed buttons/charts stay correct). Their Chart.js 
   bottom-left `#dkHome`/`#dkBack` pills) — all 17 decks now carry a single
   `<!-- deck-chrome-injected --><script src="../deck-chrome.js"></script>` include instead. Adding a new
   reader/deck needs no engine change (the bar auto-builds).
+- **Phone-only vertical table stacking (v2.106.0, `responsive-tables.js`, shared across readers AND decks).**
+  On the phone (`@media(max-width:560px)`) the horizontal `.tbl-scroll` swipe was still awkward for the
+  wide comparison tables — you had to scroll sideways to see cut-off columns (the user's iPhone report).
+  `responsive-tables.js` (self-contained: injects its own `<style id="rt-stack-css">` + processes tables;
+  idempotent; re-runs on `load` and a `rt:rescan` event) converts every `<table>` on phone-width into a
+  **stack of vertical cards** — one card per `<tbody>` row, each cell shown as a `data-rtlabel` (its
+  `<thead>` column header, read from the table's own last header row) rendered as an uppercase label above
+  the value; `thead` is hidden, and any wrapping `.tbl-scroll` gets `.rt-open` (overflow visible, no border).
+  Wider screens keep the normal table untouched. Reader/deck-agnostic via `var(--green/--card/--muted)`
+  fallbacks. **Loaded by all 20 `apps/*.html`** (18 decks via a `<script src="../responsive-tables.js">`
+  before `</body>`; both readers via the injector's new `responsive-tables-injected` marker in
+  `inject_reader_theme.mjs`). Precached in `sw.js` `CORE_ASSETS`. Verified headless at 390px: zero horizontal
+  overflow across both readers (all tabs) + a sample of decks; every table stacked + labeled. New course
+  readers/decks (FP513+) get it automatically (injector for readers; add the one `<script>` tag to a new deck).
 - **Reader deep-linking:** both readers honor a URL hash (`…#annuities`) to open a
   specific tab — the Module Hub uses this. FP511 defers the initial hash open to the
   `load` event (its chart fns are defined late); FP512 opens it in `DOMContentLoaded`.

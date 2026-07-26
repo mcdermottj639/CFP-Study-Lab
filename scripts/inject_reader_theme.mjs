@@ -21,6 +21,9 @@ const SEARCH = `<!-- ${SEARCH_MARK} --><script src="../reader-search.js"></scrip
 // Read-aloud "audiobook mode" (same reasoning — UI on <body>, outside the wrapper)
 const TTS_MARK = 'reader-tts-injected';
 const TTS = `<!-- ${TTS_MARK} --><script src="../reader-tts.js"></script>`;
+// Phone-only vertical table stacking (kills sideways scrolling on iPhone)
+const RTBL_MARK = 'responsive-tables-injected';
+const RTBL = `<!-- ${RTBL_MARK} --><script src="../responsive-tables.js"></script>`;
 
 for (const f of files) {
   let html = readFileSync(f, 'utf8');
@@ -53,6 +56,13 @@ for (const f of files) {
   if (!html.includes(TTS_MARK)) {
     const idx = html.lastIndexOf('</body>');
     html = idx !== -1 ? html.slice(0, idx) + TTS + '\n' + html.slice(idx) : html + TTS;
+    changed = true;
+  }
+
+  // responsive-tables script (separate marker so it lands on already-themed readers too)
+  if (!html.includes(RTBL_MARK)) {
+    const idx = html.lastIndexOf('</body>');
+    html = idx !== -1 ? html.slice(0, idx) + RTBL + '\n' + html.slice(idx) : html + RTBL;
     changed = true;
   }
 
