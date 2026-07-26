@@ -35,52 +35,67 @@
       sc.appendChild(tbl);
     }
 
+    // ---- Top toolbar (menu bar) ----------------------------------------
+    // All reader chrome lives in ONE fixed bar at the top instead of pills/FABs that
+    // float over the content (and used to pop back in as you scrolled). Left group =
+    // Back / Home / Theme; right group = the Podcast / Teach / Search FABs, which the
+    // reader-tts.js & reader-search.js scripts mount into window.__rdrChromeR.
+    b.classList.add('rdr-topbar');
+    var chrome = document.createElement('div');
+    chrome.id = 'rdrChrome';
+    var gL = document.createElement('div'); gL.className = 'rdr-cg rdr-cl';
+    var gR = document.createElement('div'); gR.className = 'rdr-cg rdr-cr';
+    chrome.appendChild(gL); chrome.appendChild(gR);
+    b.appendChild(chrome);
+    window.__rdrChromeL = gL;
+    window.__rdrChromeR = gR;   // FAB scripts append their controls here
+
+    // "Back" — ALWAYS shown so there's a one-tap path back into the modules area
+    // (Home still → dashboard). If we arrived from a specific Module Hub, return to
+    // that exact module; otherwise return to the Modules tab (the module map).
+    try {
+      var ret = sessionStorage.getItem('cfpReaderReturn');
+      var back = document.createElement('a');
+      back.id = 'rdrBack'; back.className = 'rdr-cbtn';
+      if (ret && /^[A-Za-z0-9]+\/\d+$/.test(ret)) {
+        back.href = '../index.html#m/' + ret;
+        back.innerHTML = '<span>‹</span><span class="rdr-lbl">Module ' + ret.split('/')[1] + '</span>';
+      } else {
+        back.href = '../index.html#modules';
+        back.innerHTML = '<span>‹</span><span class="rdr-lbl">Modules</span>';
+      }
+      gL.appendChild(back);
+    } catch (e) {}
+
+    // Home — move the injected Home link into the bar, stripping its floating styles.
+    var home = document.getElementById('fpslHome');
+    if (home) {
+      home.removeAttribute('style');
+      home.className = 'rdr-cbtn rdr-home';
+      home.innerHTML = '<span>⌂</span><span class="rdr-lbl">Home</span>';
+      gL.appendChild(home);
+    }
+
+    // Theme toggle.
     var btn = document.createElement('button');
-    btn.id = 'rdrTheme';
-    btn.type = 'button';
-    btn.innerHTML = '🌙 Theme';
+    btn.id = 'rdrTheme'; btn.type = 'button'; btn.className = 'rdr-cbtn';
+    btn.innerHTML = '<span>🌙</span><span class="rdr-lbl">Theme</span>';
     btn.onclick = function () {
       var d = document.documentElement.getAttribute('data-theme') === 'dark';
       try { localStorage.setItem('cfpTheme', d ? 'light' : 'dark'); } catch (e) {}
       set(d ? 'light' : 'dark');
     };
-    b.appendChild(btn);
+    gL.appendChild(btn);
 
-    // "Back" pill — ALWAYS shown so there's a one-tap path back into the modules
-    // area (Home still → dashboard). If we arrived from a specific Module Hub, return
-    // to that exact module; otherwise return to the Modules tab (the module map).
-    try {
-      var ret = sessionStorage.getItem('cfpReaderReturn');
-      var back = document.createElement('a');
-      back.id = 'rdrBack';
-      if (ret && /^[A-Za-z0-9]+\/\d+$/.test(ret)) {
-        back.href = '../index.html#m/' + ret;
-        back.innerHTML = '‹ Module ' + ret.split('/')[1];
-      } else {
-        back.href = '../index.html#modules';
-        back.innerHTML = '‹ Modules';
-      }
-      b.appendChild(back);
-    } catch (e) {}
-
-    // Auto-hide the floating chrome (Home / Theme / Back pills + the reader-tts &
-    // search FABs) while the user scrolls, so they stop covering content. They slide
-    // back on scroll-up or when scrolling stops, and are always shown near the top.
-    // During audio playback the buttons are already handled by reader-tts (body.rt-on),
-    // so this only matters while reading. CSS lives in reader-theme.css.
-    (function () {
-      var last = window.pageYOffset || 0, timer = null;
-      function show() { document.body.classList.remove('rdr-hidechrome'); }
-      function hide() { document.body.classList.add('rdr-hidechrome'); }
-      window.addEventListener('scroll', function () {
-        var y = window.pageYOffset || document.documentElement.scrollTop || 0;
-        var dy = y - last; last = y;
-        if (y < 140) show();                 // near the top of a tab — keep them visible
-        else if (dy > 6) hide();             // scrolling down into content — get out of the way
-        else if (dy < -6) show();            // scrolling back up — reveal
-        clearTimeout(timer); timer = setTimeout(show, 900);   // reveal when scrolling stops
-      }, { passive: true });
-    })();
+    // Measure the bar so the sticky tab-nav docks just below it and the initial
+    // content clears it (CSS reads --rdrChromeH).
+    function sizeBar() {
+      var h = chrome.offsetHeight || 48;
+      document.documentElement.style.setProperty('--rdrChromeH', h + 'px');
+    }
+    sizeBar();
+    window.addEventListener('resize', sizeBar);
+    window.addEventListener('load', sizeBar);
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

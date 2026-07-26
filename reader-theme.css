@@ -1,6 +1,6 @@
 /* Shared theme for the Interactive Readers — warm light canvas + a synced
  * dark mode. Dark mode filters a content wrapper (#rdrWrap) rather than <body>,
- * so the fixed Home/Theme buttons stay pinned and uninverted. Charts/images/
+ * so the fixed chrome (top toolbar) stays pinned and uninverted. Charts/images/
  * MathJax inside the content are re-inverted so they render correctly. */
 
 /* Warm canvas to match the main app (light mode) */
@@ -20,53 +20,81 @@ html[data-theme="dark"] #rdrWrap mjx-container {
   filter: invert(1) hue-rotate(180deg);
 }
 
-/* Floating theme toggle (sits above the Home button) */
-#rdrTheme {
-  position: fixed;
-  left: max(14px, env(safe-area-inset-left));
-  bottom: calc(60px + env(safe-area-inset-bottom));
-  z-index: 99999;
-  display: inline-flex; align-items: center; gap: 7px;
-  padding: 9px 13px; border-radius: 999px;
-  background: #d0613a; color: #fff;
-  font: 600 13px/1 system-ui, -apple-system, sans-serif;
-  border: 1px solid rgba(255,255,255,.2);
-  box-shadow: 0 6px 20px -6px rgba(0,0,0,.5);
-  cursor: pointer;
+/* ============ Top toolbar (menu bar, v2.98.0) ============
+   All reader chrome is consolidated into ONE fixed bar at the top: Home / Back /
+   Theme on the left, the Podcast / Teach / Search controls mounted on the right
+   (reader-tts.js + reader-search.js append into window.__rdrChromeR). This replaces
+   the pills/FABs that used to float over the content and pop back in on scroll. */
+:root { --rdrChromeH: 48px; }
+
+#rdrChrome {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100000;
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  padding: 6px max(10px, env(safe-area-inset-right)) 6px max(10px, env(safe-area-inset-left));
+  padding-top: calc(6px + env(safe-area-inset-top));
+  background: rgba(255, 253, 248, .92);
+  border-bottom: 1px solid #e7dcc9;
+  box-shadow: 0 2px 14px -8px rgba(0, 0, 0, .4);
+  -webkit-backdrop-filter: saturate(1.4) blur(12px);
+  backdrop-filter: saturate(1.4) blur(12px);
+  overflow-x: auto; overflow-y: hidden;
+  transition: opacity .2s ease, transform .2s ease;
+}
+#rdrChrome::-webkit-scrollbar { display: none; }
+.rdr-cg { display: flex; align-items: center; gap: 6px; flex: 0 0 auto; }
+.rdr-cr { justify-content: flex-end; }
+
+/* Every chrome control — including the FABs mounted from the other scripts — is
+   normalized into a compact chip (overrides their fixed-position FAB styling). */
+#rdrChrome .rdr-cbtn,
+#rdrChrome #rtFab,
+#rdrChrome #rtTeachFab,
+#rdrChrome #rsFab {
+  position: static !important; top: auto !important; right: auto !important;
+  left: auto !important; bottom: auto !important;
+  height: 33px !important; width: auto !important; min-width: 0 !important;
+  padding: 0 11px !important; border-radius: 999px !important; border: none;
+  display: inline-flex; align-items: center; gap: 5px;
+  font: 700 12px/1 system-ui, -apple-system, sans-serif;
+  text-decoration: none; cursor: pointer; white-space: nowrap;
+  box-shadow: none !important; transform: none !important; opacity: 1 !important;
+}
+#rdrChrome .rdr-cbtn > span:first-child { font-size: 15px; line-height: 1; }
+
+/* Colours — kept semantic so each control stays recognisable. */
+#rdrChrome .rdr-home   { background: #1f4d3a; color: #f4efe4; order: 2; }
+#rdrChrome #rdrBack    { background: transparent; color: #1f4d3a; border: 1.5px solid #1f4d3a; order: 1; }
+#rdrChrome #rdrTheme   { background: #d0613a; color: #fff; order: 3; }
+#rdrChrome #rtTeachFab { background: linear-gradient(135deg, #6d5ae0, #8a6ff0); color: #fff; order: 1; }
+#rdrChrome #rtFab      { background: linear-gradient(135deg, #2f8f6b, #3cae86); color: #fff; order: 2; }
+#rdrChrome #rtFab.playing { background: linear-gradient(135deg, #c0453d, #dc6b3a) !important; }
+#rdrChrome #rsFab {
+  background: linear-gradient(135deg, #dc6b3a, #e6a23c); color: #fff; order: 3;
+  width: 34px !important; padding: 0 !important; justify-content: center;
+  border-radius: 50% !important; font-size: 16px;
 }
 
-/* "Back to module" pill — sits above the Theme toggle; outlined so it reads as
-   distinct from the solid Home (green) and Theme (terracotta) buttons. */
-#rdrBack {
-  position: fixed;
-  left: max(14px, env(safe-area-inset-left));
-  bottom: calc(106px + env(safe-area-inset-bottom));
-  z-index: 99999;
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 9px 13px; border-radius: 999px;
-  background: #fffdf8; color: #1f4d3a;
-  font: 700 13px/1 system-ui, -apple-system, sans-serif;
-  text-decoration: none;
-  border: 1.5px solid #1f4d3a;
-  box-shadow: 0 6px 20px -6px rgba(0,0,0,.5);
-}
-html[data-theme="dark"] #rdrBack { background: #17120e; color: #7fd3ac; border-color: #7fd3ac; }
+/* Sticky tab bar sits just under the fixed toolbar; content clears it too. */
+body.rdr-topbar #rdrWrap { padding-top: var(--rdrChromeH); }
+body.rdr-topbar .tab-nav { top: var(--rdrChromeH) !important; }
 
-/* ---- Auto-hide floating chrome while scrolling (see reader-theme.js) ----
-   The Home/Theme/Back pills and the podcast/teach/search FABs slide out of the
-   way as you read so they stop covering content, and slide back when you stop. */
-#fpslHome, #rdrTheme, #rdrBack, #rtFab, #rtTeachFab, #rsFab {
-  transition: opacity .25s ease, transform .25s ease;
-}
-body.rdr-hidechrome #fpslHome,
-body.rdr-hidechrome #rdrTheme,
-body.rdr-hidechrome #rdrBack,
-body.rdr-hidechrome #rtFab,
-body.rdr-hidechrome #rtTeachFab,
-body.rdr-hidechrome #rsFab {
-  opacity: 0;
-  transform: translateY(30px);
-  pointer-events: none;
+/* Hide the whole bar during audio playback (the docked player has its own Stop). */
+body.rt-on #rdrChrome { opacity: 0; transform: translateY(-40px); pointer-events: none; }
+
+/* Dark mode */
+html[data-theme="dark"] #rdrChrome { background: rgba(23, 18, 14, .92); border-color: #3a2e25; }
+html[data-theme="dark"] #rdrChrome .rdr-home { background: #244d3a; color: #dff0e6; }
+html[data-theme="dark"] #rdrChrome #rdrBack { color: #7fd3ac; border-color: #7fd3ac; }
+
+/* Narrow phones: drop the Back/Home/Theme word labels to icons so the whole row
+   fits without scrolling. The two star features (Teach + Podcast) keep their labels. */
+@media (max-width: 430px) {
+  #rdrChrome #rdrBack .rdr-lbl,
+  #rdrChrome .rdr-home .rdr-lbl,
+  #rdrChrome #rdrTheme .rdr-lbl { display: none; }
+  #rdrChrome #rdrBack, #rdrChrome .rdr-home, #rdrChrome #rdrTheme {
+    width: 33px !important; padding: 0 !important; justify-content: center;
+  }
 }
 
 /* ---- Portrait overflow fixes (apply to every reader) ---- */

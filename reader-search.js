@@ -23,7 +23,7 @@
 
     injectStyles();
     var fab = el('button', 'rsFab', '🔍'); fab.title = 'Search this reader';
-    document.body.appendChild(fab);
+    (window.__rdrChromeR || document.body).appendChild(fab);   // mount into the top toolbar if present
     var modal = buildModal();
     document.body.appendChild(modal);
     var input = modal.querySelector('#rsInput');

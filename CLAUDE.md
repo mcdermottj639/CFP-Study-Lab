@@ -681,13 +681,31 @@ mode on a content wrapper so fixed buttons/charts stay correct). Their Chart.js 
   (`overflow-wrap:break-word`); and `.key-list li` (which is `display:flex`, so mixed inline content
   became non-wrapping flex items) is overridden to `display:block` with a hanging ▸ marker. Verified
   headless at 390px: zero elements overflow the viewport outside a `.tbl-scroll` on either reader.
-- **Auto-hide floating chrome on scroll (v2.72.7, in `reader-theme.css`/`.js`).** The six fixed buttons
-  (Home/Theme/Back pills + the 🎙️ Podcast / 👩‍🏫 Teach / 🔍 search FABs) were covering reader content.
-  A `scroll` listener in `reader-theme.js` toggles `body.rdr-hidechrome` — **scrolling down hides** all of
-  them (fade + `translateY(30px)`, `pointer-events:none`), **scroll-up or a 900 ms scroll-stop reveals**
-  them, and they're always shown within 140 px of the top. CSS targets all six IDs by `body.rdr-hidechrome`.
-  Independent of playback (during playback they're already hidden by `body.rt-on`), so no flicker from the
-  audio's own auto-scroll. Reader-agnostic.
+- **Top menu bar — all chrome in ONE fixed top toolbar (v2.105.0, in `reader-theme.css`/`.js` +
+  `deck-chrome.js`).** Replaces the old floating pills/FABs that covered reader content and kept popping
+  back in as you scrolled (the v2.72.7 `rdr-hidechrome` auto-hide-on-scroll was **removed**). `reader-theme.js`
+  now builds a fixed `#rdrChrome` bar pinned to the top: **left group** = ‹ Back / ⌂ Home / 🌙 Theme;
+  **right group** = the 👩‍🏫 Teach / 🎙️ Podcast / 🔍 search controls. Home is the reader's injected `#fpslHome`
+  moved into the bar (styles stripped); Back + Theme are created there. The FAB scripts mount into it:
+  `reader-theme.js` exposes `window.__rdrChromeR` (right group) / `window.__rdrChromeL`, and `reader-tts.js`
+  (`#rtFab`, `#rtTeachFab`) + `reader-search.js` (`#rsFab`) append into `window.__rdrChromeR || document.body`
+  (so on a **deck**, where there's no bar, they stay floating — decks are handled separately, see below).
+  CSS: `#rdrChrome .rdr-cbtn, #rdrChrome #rtFab/#rtTeachFab/#rsFab` normalize every control into a compact
+  33px chip (2-id selectors override each FAB's own fixed-position styling); `order:` sets the visual order;
+  a `@media(max-width:430px)` rule drops the Back/Home/Theme word labels to icons so all six fit one row on a
+  phone (Teach + Podcast keep labels). `body.rdr-topbar` shifts the sticky `.tab-nav` down by `--rdrChromeH`
+  (measured in JS, `sizeBar()`) and pads `#rdrWrap` so content clears the bar. During playback
+  `body.rt-on #rdrChrome` slides the whole bar up out of the way (the docked `#rtBar` player has its own Stop).
+  Reader-agnostic (FP511/FP512, both themes). **Decks (`apps/*-slides.html`) use the SAME bar via shared
+  `deck-chrome.js`** (precached in `sw.js`, in `CORE_ASSETS`; loaded by every deck BEFORE `reader-tts.js` so
+  `window.__rdrChromeR` exists when the Teach FAB mounts): it injects its own bar CSS, builds `#rdrChrome`,
+  creates Back/Home + relocates the deck's existing `#tgl` Theme button (keeps its handler), and moves the
+  deck progress bar `#prog` to ride the very top edge above the bar. Decks are **Teach-only** (Kaplan decks
+  get 👩‍🏫 Teach in the right group via `reader-tts.js`; the 4 AI decks don't load `reader-tts.js`, so their
+  bar is just Back/Home/Theme). This replaced the per-deck inline `deck-chrome-injected` block (the old
+  bottom-left `#dkHome`/`#dkBack` pills) — all 17 decks now carry a single
+  `<!-- deck-chrome-injected --><script src="../deck-chrome.js"></script>` include instead. Adding a new
+  reader/deck needs no engine change (the bar auto-builds).
 - **Reader deep-linking:** both readers honor a URL hash (`…#annuities`) to open a
   specific tab — the Module Hub uses this. FP511 defers the initial hash open to the
   `load` event (its chart fns are defined late); FP512 opens it in `DOMContentLoaded`.
@@ -706,11 +724,15 @@ Dancing-Script woff2), authored light-mode inside `#rdrWrap`. They turn the sour
 dense text into comparison tables, stat tiles, SVG charts, colour-coded trap/tip callouts, a
 styled worked-example (`.calc`), and tap-to-reveal quiz cards (`.quiz <details>`). The shared
 component CSS + progress-bar/theme `<script>` live in the M3 template
-(`apps/fp512-m3-kaplan-slides.html`) and are copied verbatim into each deck. Home + conditional
-"‹ Back to module" chrome was injected by a one-off `inject_deck_chrome.mjs` (marker
-`deck-chrome-injected`) — the decks pre-wrap `#rdrWrap`, so `reader-theme.js` bails (its own
-`if(#rdrWrap)return`); the decks carry their own theme toggle/dark-mode (synced via `cfpTheme`)
-instead of the reader-theme bundle.
+(`apps/fp512-m3-kaplan-slides.html`) and are copied verbatim into each deck. **Chrome (Back / Home /
+Theme) lives in the shared top menu bar built by `deck-chrome.js`** (v2.105.0 — see the "Top menu bar"
+bullet in Interactive Readers above): every deck loads `<script src="../deck-chrome.js"></script>` (via
+the `deck-chrome-injected` marker) which builds the fixed `#rdrChrome` top bar and relocates the deck's
+inline `#tgl` Theme button into it. This replaced the old bottom-left `#dkHome`/`#dkBack` floating pills
+(formerly injected by a one-off `inject_deck_chrome.mjs`). The decks pre-wrap `#rdrWrap`, so
+`reader-theme.js` still bails (its own `if(#rdrWrap)return`) — `deck-chrome.js` is the deck equivalent,
+and the decks keep their own theme toggle/dark-mode (synced via `cfpTheme`) instead of the reader-theme
+bundle. Kaplan decks additionally load `reader-tts.js`, whose 👩‍🏫 Teach FAB mounts into the deck bar.
 - **Data: `window.DECKS`** (hand-authored in `module-content.js`, OUTSIDE the sync_media
   GEN markers) = `{ COURSE: { mod: [ {src, title, kind} ] } }`, `kind ∈ 'kaplan'|'ai'`. Module 0
   = whole-course deck (shown on the Modules-tab course card via `courseSlides`). Add a deck =
@@ -996,7 +1018,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.97.0`) on every shippable change so installed apps auto-update
+  (current: `v2.105.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
