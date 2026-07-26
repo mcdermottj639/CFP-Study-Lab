@@ -681,7 +681,7 @@ mode on a content wrapper so fixed buttons/charts stay correct). Their Chart.js 
   (`overflow-wrap:break-word`); and `.key-list li` (which is `display:flex`, so mixed inline content
   became non-wrapping flex items) is overridden to `display:block` with a hanging ▸ marker. Verified
   headless at 390px: zero elements overflow the viewport outside a `.tbl-scroll` on either reader.
-- **Top menu bar — all chrome in ONE fixed top toolbar (v2.104.0, in `reader-theme.css`/`.js` +
+- **Top menu bar — all chrome in ONE fixed top toolbar (v2.105.0, in `reader-theme.css`/`.js` +
   `deck-chrome.js`).** Replaces the old floating pills/FABs that covered reader content and kept popping
   back in as you scrolled (the v2.72.7 `rdr-hidechrome` auto-hide-on-scroll was **removed**). `reader-theme.js`
   now builds a fixed `#rdrChrome` bar pinned to the top: **left group** = ‹ Back / ⌂ Home / 🌙 Theme;
@@ -725,7 +725,7 @@ dense text into comparison tables, stat tiles, SVG charts, colour-coded trap/tip
 styled worked-example (`.calc`), and tap-to-reveal quiz cards (`.quiz <details>`). The shared
 component CSS + progress-bar/theme `<script>` live in the M3 template
 (`apps/fp512-m3-kaplan-slides.html`) and are copied verbatim into each deck. **Chrome (Back / Home /
-Theme) lives in the shared top menu bar built by `deck-chrome.js`** (v2.104.0 — see the "Top menu bar"
+Theme) lives in the shared top menu bar built by `deck-chrome.js`** (v2.105.0 — see the "Top menu bar"
 bullet in Interactive Readers above): every deck loads `<script src="../deck-chrome.js"></script>` (via
 the `deck-chrome-injected` marker) which builds the fixed `#rdrChrome` top bar and relocates the deck's
 inline `#tgl` Theme button into it. This replaced the old bottom-left `#dkHome`/`#dkBack` floating pills
@@ -1018,7 +1018,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.104.0`) on every shippable change so installed apps auto-update
+  (current: `v2.105.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
