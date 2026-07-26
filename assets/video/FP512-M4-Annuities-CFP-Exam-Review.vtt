@@ -1,0 +1,514 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.140
+All right, let's dive right into this high-yield review of annuities for the CFP exam.
+
+2
+00:00:05.140 --> 00:00:06.694
+Welcome to this explainer.
+
+3
+00:00:06.694 --> 00:00:10.819
+Look, we're going to treat this exactly like your master study sheet.
+
+4
+00:00:10.819 --> 00:00:17.513
+We are prioritizing exactly what you need to memorize, understand, and actually apply so you can pass your exam.
+
+5
+00:00:17.513 --> 00:00:18.410
+No fluff today.
+
+6
+00:00:18.410 --> 00:00:26.120
+We're focusing purely on the critical rules, the formulas, and those really tricky common traps you are absolutely going to face.
+
+7
+00:00:26.120 --> 00:00:29.109
+We have six heavily tested modules to cover today.
+
+8
+00:00:29.109 --> 00:00:31.321
+Number one, annuity types and basics.
+
+9
+00:00:31.321 --> 00:00:34.010
+Number two, variable annuity living benefits.
+
+10
+00:00:34.010 --> 00:00:36.521
+Number three, indexed annuities and QLACs.
+
+11
+00:00:36.521 --> 00:00:39.330
+Number four, payout options and superannuation.
+
+12
+00:00:39.330 --> 00:00:41.781
+Number five, taxation rules and formulas.
+
+13
+00:00:41.781 --> 00:00:44.949
+And number six, suitability, ethics, and regulations.
+
+14
+00:00:44.949 --> 00:00:48.595
+Starting right off with module one, annuity types and basics.
+
+15
+00:00:48.595 --> 00:00:51.105
+Okay, before we get into any complex math,
+
+16
+00:00:51.105 --> 00:00:57.202
+we really need to unpack this alphabet soup of how premiums are paid and when benefits actually start.
+
+17
+00:00:57.202 --> 00:01:00.131
+Spell these acronyms out in your notes right now.
+
+18
+00:01:00.131 --> 00:01:05.211
+A SPIA, or Single Premium Immediate Annuity, is honestly exactly what it sounds like.
+
+19
+00:01:05.211 --> 00:01:10.172
+It's immediate income from a single lump sum with payouts starting within one year.
+
+20
+00:01:10.172 --> 00:01:14.954
+Now, on the flip side, an SPDA and an FPDA defer that income for a year or more.
+
+21
+00:01:14.954 --> 00:01:16.448
+So what's the difference?
+
+22
+00:01:16.448 --> 00:01:22.724
+Well, an SPDA is funded with one lump sum, while an FPDA allows for flexible, ongoing deposits over time.
+
+23
+00:01:22.724 --> 00:01:26.849
+Now, here's the absolute critical distinction you need to understand.
+
+24
+00:01:26.849 --> 00:01:29.897
+The transfer of risk during the accumulation phase.
+
+25
+00:01:29.897 --> 00:01:35.635
+With fixed annuities, you're transferring the investment risk entirely to the insurance company.
+
+26
+00:01:35.635 --> 00:01:37.428
+They guarantee a minimum rate.
+
+27
+00:01:37.428 --> 00:01:43.047
+But with variable annuities, the client keeps the market risk squarely on their own shoulders.
+
+28
+00:01:43.047 --> 00:01:51.116
+Their funds are invested in subaccounts, which, you know, gives them a great inflation hedge, but it carries real downside market risk.
+
+29
+00:01:51.116 --> 00:01:55.001
+Moving right along to Module 2, Variable Annuity Living Benefits.
+
+30
+00:01:55.001 --> 00:02:01.337
+Let's clear up these highly tested and honestly very often confused riders attached to variable annuities.
+
+31
+00:02:01.337 --> 00:02:05.701
+The exam loves testing if you know exactly what these acronyms guarantee.
+
+32
+00:02:05.701 --> 00:02:09.526
+The crucial point here is comparing accumulation against income.
+
+33
+00:02:09.526 --> 00:02:16.818
+A GMAB, or Guaranteed Minimum Accumulation Benefit, simply guarantees a minimum account balance at a specific future date.
+
+34
+00:02:16.818 --> 00:02:18.372
+No annuitization required.
+
+35
+00:02:18.372 --> 00:02:25.903
+Conversely, a GMIB, the Guaranteed Minimum Income Benefit, locks in a payout stream regardless of how the subaccounts perform.
+
+36
+00:02:25.903 --> 00:02:31.283
+But, and this is key, it typically requires the client to actually annuitize the contract.
+
+37
+00:02:31.283 --> 00:02:37.499
+Next up, we have the withdrawal benefits, and you absolutely must know the difference here for the test.
+
+38
+00:02:37.499 --> 00:02:43.536
+GMWB protects the principal by allowing systematic withdrawals over a specified time period in years.
+
+39
+00:02:43.536 --> 00:02:48.019
+But GLWB, the guaranteed lifetime withdrawal benefit, that one is for life.
+
+40
+00:02:48.019 --> 00:02:53.159
+The client can withdraw a specified percentage every single year until they pass away,
+
+41
+00:02:53.159 --> 00:02:57.045
+which is exactly why it's chosen by almost 70% of annuity buyers.
+
+42
+00:02:57.045 --> 00:02:58.240
+It's hugely popular.
+
+43
+00:02:58.240 --> 00:03:01.169
+All right, Module 3, Indexed Annuities and QLACs.
+
+44
+00:03:01.169 --> 00:03:06.668
+Let's see how index products build on these foundations with very specific numeric triggers.
+
+45
+00:03:06.668 --> 00:03:11.569
+You will highly likely see a RILA or registered index linked annuity on your exam.
+
+46
+00:03:11.569 --> 00:03:18.025
+The test writers love making you calculate downside loss using either a hard floor or a cushion-like buffer.
+
+47
+00:03:18.025 --> 00:03:19.758
+Here's how to think about it.
+
+48
+00:03:19.758 --> 00:03:24.600
+If the client has a 10% floor, 10% is the absolute maximum they can lose, period.
+
+49
+00:03:24.600 --> 00:03:31.892
+But if they have a 10% buffer, the insurer absorbs that first 10% of the loss and the client takes everything beyond that.
+
+50
+00:03:31.892 --> 00:03:33.326
+Do not mix those two up.
+
+51
+00:03:33.326 --> 00:03:37.271
+Now let's look at QLACs, the Qualified Longevity Annuity Contract.
+
+52
+00:03:37.271 --> 00:03:39.184
+Why are these so heavily tested?
+
+53
+00:03:39.184 --> 00:03:44.324
+Because they offer a really specific, really valuable exception to standard RMD rules.
+
+54
+00:03:44.324 --> 00:03:52.872
+They actually allow clients inside qualified plans or IRAs to delay taking those required minimum distributions until a much more advanced age.
+
+55
+00:03:52.872 --> 00:03:56.518
+Listen, you need to memorize these exact numbers immediately.
+
+56
+00:03:56.518 --> 00:03:59.925
+Income from a QLAC must commence by age 85 at the latest.
+
+57
+00:03:59.925 --> 00:04:03.033
+The maximum contribution limit for 2025 is $210,000.
+
+58
+00:04:03.033 --> 00:04:05.603
+And here is a massive update from Secure 2.
+
+59
+00:04:05.603 --> 00:04:06.739
+0 you have to know.
+
+60
+00:04:06.739 --> 00:04:12.298
+That old rule limiting contributions to 25% of the account balance, completely gone, removed.
+
+61
+00:04:12.298 --> 00:04:15.406
+Plus, the free look period can now be up to 90 days.
+
+62
+00:04:15.406 --> 00:04:18.394
+On to Module 4, Payout Options and Superannuation.
+
+63
+00:04:18.394 --> 00:04:24.909
+This is where the client transitions into the decumulation phase and decides exactly how to take their money.
+
+64
+00:04:24.909 --> 00:04:28.735
+First, we have to define the underlying problem, superannuation.
+
+65
+00:04:28.735 --> 00:04:33.457
+This is just the specific financial risk of outliving your money in retirement.
+
+66
+00:04:33.457 --> 00:04:35.549
+Write this down in bold, right now.
+
+67
+00:04:35.549 --> 00:04:43.259
+If an exam question asks you about mitigating the risk of superannuation, the answer is almost always going to be a life annuity.
+
+68
+00:04:43.259 --> 00:04:48.460
+And this slide right here brilliantly illustrates the core trade-off of payout options.
+
+69
+00:04:48.460 --> 00:04:55.752
+Basically, the more guarantees you add to protect your heirs, the lower the monthly payout you receive while you're alive.
+
+70
+00:04:55.752 --> 00:04:59.996
+Straight life gives you the highest payout, but it stops cold at death.
+
+71
+00:04:59.996 --> 00:05:01.370
+Nothing for the estate.
+
+72
+00:05:01.370 --> 00:05:04.658
+If you add a 10-year period certain, your payout drops.
+
+73
+00:05:04.658 --> 00:05:06.869
+Add a refund feature, it drops again.
+
+74
+00:05:06.869 --> 00:05:13.325
+And joint and survivor, which covers two lifetimes, gives you the lowest monthly payout of the entire bunch.
+
+75
+00:05:13.325 --> 00:05:16.911
+Okay, let's jump into Module 5, Taxation Rules and Formulas.
+
+76
+00:05:16.911 --> 00:05:21.872
+Pay very, very close attention here because this is prime territory for exam traps.
+
+77
+00:05:21.872 --> 00:05:23.904
+We have one right out of the gate.
+
+78
+00:05:23.904 --> 00:05:30.778
+Unlike typical capital gains or FIFO accounting, non-qualified annuity withdrawals are strictly last in, first out.
+
+79
+00:05:30.778 --> 00:05:31.077
+LIFO.
+
+80
+00:05:31.077 --> 00:05:36.636
+This means all of your taxable earnings come out first and they are taxed as ordinary income.
+
+81
+00:05:36.636 --> 00:05:42.912
+You do not get to touch your tax-free principal until every single dollar of earnings has been withdrawn.
+
+82
+00:05:42.912 --> 00:05:46.379
+Also, do not forget the age 59 and a half numeric trigger.
+
+83
+00:05:46.379 --> 00:05:52.117
+If a client withdraws early, hit the earnings, and I mean only the earnings, with a 10% penalty.
+
+84
+00:05:52.117 --> 00:05:54.807
+The IRS never forgets to take its cut, right?
+
+85
+00:05:54.807 --> 00:05:59.110
+This is an excise tax added on top of their ordinary income tax bracket.
+
+86
+00:05:59.110 --> 00:06:06.223
+The principal, since it was funded with after-tax dollars in a non-qualified annuity, is never subject to this penalty.
+
+87
+00:06:06.223 --> 00:06:14.531
+Now, if the client actually goes ahead and annuitizes that non-qualified contract, we use the exclusion ratio to find the tax-free portion.
+
+88
+00:06:14.531 --> 00:06:17.102
+Just methodically follow these three steps.
+
+89
+00:06:17.102 --> 00:06:19.672
+First, calculate the total expected return.
+
+90
+00:06:19.672 --> 00:06:24.035
+Next, divide the original investment basis by that total expected return.
+
+91
+00:06:24.035 --> 00:06:28.040
+Finally, multiply that resulting percentage by the monthly payment.
+
+92
+00:06:28.040 --> 00:06:28.339
+Boom.
+
+93
+00:06:28.339 --> 00:06:33.001
+That gives you the exact dollar amount that is a tax-free return of principal.
+
+94
+00:06:33.001 --> 00:06:36.049
+Everything else left over, that's taxable interest.
+
+95
+00:06:36.049 --> 00:06:38.022
+Watch out for these common traps.
+
+96
+00:06:38.022 --> 00:06:43.162
+Under IRC Section 1035, yes, you can exchange an annuity for another annuity tax-free,
+
+97
+00:06:43.162 --> 00:06:46.509
+or even a life insurance policy for an annuity tax-free.
+
+98
+00:06:46.509 --> 00:06:52.128
+But, and this is a huge but, you cannot 1035 exchange an annuity into a life insurance policy.
+
+99
+00:06:52.128 --> 00:06:54.100
+Do not fall for that on the test.
+
+100
+00:06:54.100 --> 00:07:01.632
+Also, unlike stocks or real estate, beneficiaries inheriting a non-qualified annuity will not get a step-up in basis at death.
+
+101
+00:07:01.632 --> 00:07:04.919
+Those embedded gains remain fully taxable to the heirs.
+
+102
+00:07:04.919 --> 00:07:08.266
+Finally, Module 6, Suitability, Ethics, and Regulations.
+
+103
+00:07:08.266 --> 00:07:09.641
+10 to 30, what is this?
+
+104
+00:07:09.641 --> 00:07:12.869
+This represents the standard free look period in days.
+
+105
+00:07:12.869 --> 00:07:21.237
+It's a really vital consumer protection tool, allowing a purchaser to basically test drive and cancel an annuity contract for a full refund,
+
+106
+00:07:21.237 --> 00:07:24.644
+completely avoiding any of those steep surrender charges.
+
+107
+00:07:24.644 --> 00:07:25.780
+This table is gold.
+
+108
+00:07:25.780 --> 00:07:30.920
+When comparing a traditional IRA to a non-qualified annuity, the trade-offs are stark.
+
+109
+00:07:30.920 --> 00:07:35.044
+IRAs offer tax-deductible contributions and early penalty exceptions,
+
+110
+00:07:35.044 --> 00:07:39.587
+but they come with strict contribution limits and forced RMDs on the client.
+
+111
+00:07:39.587 --> 00:07:42.635
+Non-qualified annuities completely flip the script.
+
+112
+00:07:42.635 --> 00:07:49.150
+No tax deductions, no penalty exceptions, sure, but you also have no contribution limits, absolutely no RMDs,
+
+113
+00:07:49.150 --> 00:07:52.259
+and they uniquely provide true longevity protection.
+
+114
+00:07:52.259 --> 00:07:56.741
+On the exam, you have to distinguish which regulatory body applies to what.
+
+115
+00:07:56.741 --> 00:08:03.675
+The SEC's Regulation Best Interest, or Reg BI, governs variable annuities because they are classified as securities.
+
+116
+00:08:03.675 --> 00:08:08.696
+Meanwhile, fixed annuities fall under the NAIC suitability model at the state level.
+
+117
+00:08:08.696 --> 00:08:14.314
+And overarching all of this, the CFP board code of ethics demands a strict fiduciary standard.
+
+118
+00:08:14.314 --> 00:08:22.025
+That means duty of loyalty, full disclosure of any conflicts of interest like hefty commissions, and an absolute ban on churning,
+
+119
+00:08:22.025 --> 00:08:27.823
+which is that highly unethical practice of just swapping policies around solely to generate fees.
+
+120
+00:08:27.823 --> 00:08:33.501
+So as you're sitting there reading through some incredibly dense client case study on the exam,
+
+121
+00:08:33.501 --> 00:08:37.207
+I want you to always bring it back to this one final question.
+
+122
+00:08:37.207 --> 00:08:40.136
+Is this annuity truly the most suitable solution?
+
+123
+00:08:40.136 --> 00:08:44.141
+Look, suitability isn't just about memorizing rules to pass a test.
+
+124
+00:08:44.141 --> 00:08:50.178
+It's about solving the real human risk of superannuation in the absolute best interest of the client.
+
+125
+00:08:50.178 --> 00:08:52.270
+Keep that mindset front and center.
+
+126
+00:08:52.270 --> 00:08:59.024
+Memorize the triggers we covered today, and you are absolutely going to crush the annuity questions on your exam.
+
+127
+00:08:59.024 --> 00:09:03.268
+What's the one concept from today that you need to go review right now?
+
+128
+00:09:03.268 --> 00:09:06.854
+Get back to studying, and thanks for joining this explainer.
+
