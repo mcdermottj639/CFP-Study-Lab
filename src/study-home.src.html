@@ -1279,7 +1279,9 @@ function openVideo(course,mod,idx){
   wrap.innerHTML='<div class="videoTools"><span class="vt-t">'+g.title+'</span>'+
     '<span class="vt-r"><a class="btn gray" href="'+g.src+'" target="_blank" rel="noopener">⤢ Open</a>'+
     '<button class="btn gray" onclick="closeVideo()">✕ Close</button></span></div>'+
-    '<video id="videoEl" src="'+g.src+'" controls autoplay playsinline preload="metadata" title="'+g.title.replace(/"/g,'&quot;')+'"></video>';
+    '<video id="videoEl" src="'+g.src+'" controls autoplay playsinline preload="metadata" title="'+g.title.replace(/"/g,'&quot;')+'">'+
+    (g.cc?'<track kind="captions" src="'+g.cc+'" srclang="en" label="English" default>':'')+
+    '</video>';
   wrap.classList.add('on'); document.body.classList.add('videoOpen');
 }
 function closeVideo(){const w=document.getElementById('videoWrap');if(w){const v=w.querySelector('video');if(v){try{v.pause();}catch(e){}}w.classList.remove('on');w.innerHTML='';}document.body.classList.remove('videoOpen');}

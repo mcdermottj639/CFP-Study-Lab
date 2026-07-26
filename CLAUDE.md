@@ -782,6 +782,15 @@ card when a module has none). All in `src/study-home.src.html`:
   transcode NotebookLM MP4s to WebM; that *loses* Safari support). NB open-source Chromium
   can't decode H.264, so headless-browser tests show `error:4` even though real Safari/Chrome
   play fine — verify the file *serves* + the element gets the right `src`, not pixels.
+  - **Toggleable captions (v2.97.0).** Drop a caption file next to a video, named the same
+    (`FP512-M5-Health-Insurance-Review.vtt`, or a `.srt` which `sync_media.mjs` auto-converts to
+    `.vtt` via `srtToVtt()`), and `sync_media` adds a `cc:'assets/video/….vtt'` field to that
+    `window.VIDEO` entry. `openVideo` then renders a `<track kind="captions" … default>` so the
+    HTML5 player shows a **CC toggle on PC and iPhone** (iOS exposes it in the native fullscreen
+    controls). Filename-driven and a **no-op when no caption file exists** (no `cc`, no track).
+    `.vtt` is runtime-cached like the video (same-origin SW path), so it's offline after first
+    online view. Producing the caption text needs an external transcript/auto-caption — the
+    sandbox has no speech-to-text.
 - **Audio podcasts (v2.73.0)** — data `window.AUDIO` (course → module → `[{src,title}]`; module 0 =
   whole-course), for **NotebookLM Audio Overviews** (natural-voice "deep dive" episodes — the real human-
   sounding narration the offline TTS Teach/Podcast can't do). Surfaced as a **🎧 Podcast** card + quick-jump
@@ -987,7 +996,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.96.0`) on every shippable change so installed apps auto-update
+  (current: `v2.97.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
