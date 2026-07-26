@@ -596,6 +596,7 @@
           ["COBRA","~18 months; employers with ≥ 20 employees; you pay full premium + 2%"],
           ["Medicare A / B","A = hospital (premium-free at 40 quarters) · B = outpatient (premium, IRMAA)"],
           ["Medicare C / D","C = Advantage · D = prescription drugs"],
+          ["Part D 2025 (IRA)","Donut hole removed · $2,000 annual out-of-pocket cap"],
           ["Medicaid","Means-tested; main payer of long-term care after spend-down"]
         ],
         mustKnow: [
