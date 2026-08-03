@@ -53,11 +53,18 @@
     function inScope(x) { return (mod === 'ALL' || x.c.m === mod) && modOk(x.c); }
 
     function cardFilter() { return window.CARDFILTER || 'all'; }  // all | unseen | needwork | known
+    function tierFilter() { return window.TIERF || 'all'; }       // all | 1 | 12 | 2 | 3
+    // Exam-likelihood tier gate. Falls back to "keep the card" when the app
+    // globals aren't present (card-tiers.js missing / older cached build), so a
+    // failed load can never empty the deck.
+    function tierPass(c) {
+      return typeof tierOk === 'function' ? tierOk(c) : true;
+    }
 
     function persist() {
       try {
         localStorage.setItem(SKEY, JSON.stringify({
-          mod: mod, modf: (window.MODF || 'ALL'), hard: hardOnly, filter: cardFilter(), day: ymdNow(),
+          mod: mod, modf: (window.MODF || 'ALL'), hard: hardOnly, filter: cardFilter(), tier: tierFilter(), day: ymdNow(),
           ids: deck.map(function (d) { return d.i; }), idx: idx
         }));
       } catch (e) {}
@@ -67,8 +74,9 @@
     function restore() {
       try {
         var s = JSON.parse(localStorage.getItem(SKEY));
-        // only resume an identical session (same course, SUB-MODULE, mode, AND filter) from the same day
-        if (!s || s.day !== ymdNow() || s.mod !== mod || s.modf !== (window.MODF || 'ALL') || !!s.hard !== hardOnly || s.filter !== cardFilter()) return false;
+        // only resume an identical session (same course, SUB-MODULE, mode, card filter AND tier) from the same day
+        if (!s || s.day !== ymdNow() || s.mod !== mod || s.modf !== (window.MODF || 'ALL') || !!s.hard !== hardOnly ||
+            s.filter !== cardFilter() || (s.tier || 'all') !== tierFilter()) return false;
         if (!Array.isArray(s.ids) || s.idx >= s.ids.length) return false;
         var d = s.ids.map(function (i) { return CARDS[i] ? { c: CARDS[i], i: i } : null; }).filter(Boolean);
         if (!d.length) return false;
@@ -88,6 +96,11 @@
         if (f !== 'all' && typeof cardStatus === 'function') {
           src = src.filter(function (x) { return cardStatus(x.i) === f; });
         }
+      }
+      // Exam-likelihood tier narrows BOTH paths (incl. flagged/leech cards), so
+      // "tier 1 only" means the same thing everywhere flashcards are served.
+      if (tierFilter() !== 'all') {
+        src = src.filter(function (x) { return tierPass(x.c); });
       }
       deck = order === 'shuffle' ? shuffle(src) : src;
       idx = 0;
@@ -132,11 +145,16 @@
       if (idx >= deck.length) {
         clearSession();
         if (deck.length === 0) {
-          var fl = cardFilter();
+          var fl = cardFilter(), tf = tierFilter();
           var msg = fl === 'unseen' ? 'No unseen cards here — you’ve studied them all in this scope.'
             : fl === 'needwork' ? 'Nothing needs more work in this scope right now. 👍'
             : fl === 'known' ? 'No cards marked "know well" yet here — study some first.'
             : 'No cards match this filter.';
+          // Name the tier too — otherwise a narrow tier reads as "this module is empty".
+          if (tf !== 'all') {
+            var TL = { '1': 'most likely (tier 1)', '12': 'tier 1+2', '2': 'somewhat likely (tier 2)', '3': 'least likely (tier 3)' };
+            msg += ' You’re also filtered to <b>' + (TL[tf] || tf) + '</b> — widen the tier to see more.';
+          }
           area.innerHTML = '<div class="card center"><h2>Nothing to study</h2><p class="muted">' + msg +
             '</p><button class="btn" onclick="go(\'dash\')">Back to dashboard</button></div>';
           return;
