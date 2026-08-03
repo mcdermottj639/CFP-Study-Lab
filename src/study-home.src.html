@@ -184,6 +184,13 @@ a.link{color:var(--brand);text-decoration:none;font-weight:600}
             <option value="needwork">Need more work</option>
             <option value="known">Know well</option>
           </select>
+          <select id="studyTier" title="Exam-likelihood tier (flashcards only)">
+            <option value="all" selected>All tiers</option>
+            <option value="12">Skip least likely (tier 1+2)</option>
+            <option value="1">Most likely only (tier 1)</option>
+            <option value="2">Somewhat likely (tier 2)</option>
+            <option value="3">Least likely (tier 3)</option>
+          </select>
         </div>
         <button class="btn" id="startBtn">Start</button>
       </div>
@@ -1048,6 +1055,7 @@ function hubScroll(id){var e=document.getElementById(id); if(e)e.scrollIntoView(
 function studyScoped(course,mod,mode){
   window.MODF=String(mod);
   const sEl=document.getElementById('studySession'); window.CARDFILTER=sEl?sEl.value:'all';
+  const tEl=document.getElementById('studyTier'); window.TIERF=tEl?tEl.value:'all';
   const sm=document.getElementById('studyModule'); if(sm){sm.value=course; if(typeof fillModuleNumSelect==='function')fillModuleNumSelect();}
   const mn=document.getElementById('studyModuleNum'); if(mn){mn.disabled=false; mn.value=String(mod);}
   const md=document.getElementById('studyMode'); if(md)md.value=mode;
@@ -1058,6 +1066,7 @@ function studyScoped(course,mod,mode){
 function studyDomain(course,mode){
   window.MODF="ALL";
   const sEl=document.getElementById('studySession'); window.CARDFILTER=sEl?sEl.value:'all';
+  const tEl=document.getElementById('studyTier'); window.TIERF=tEl?tEl.value:'all';
   const sm=document.getElementById('studyModule'); if(sm){sm.value=course; if(typeof fillModuleNumSelect==='function')fillModuleNumSelect();}
   const mn=document.getElementById('studyModuleNum'); if(mn){mn.value='ALL';}
   const md=document.getElementById('studyMode'); if(md)md.value=mode;
@@ -1442,6 +1451,14 @@ function studyScopeSync(){
     e.style.opacity=g?'0.4':'';
     e.title=g?'This mode covers the whole exam — the course/module scope doesn’t apply':'';
   });
+  // Tiers are authored per FLASHCARD (window.CARDTIER), so the tier picker only
+  // bites in the flashcard modes — dim it elsewhere rather than pretend it applies.
+  const te=document.getElementById('studyTier');
+  if(te){
+    const flashMode=(md.value==='flash'||md.value==='hard');
+    te.style.opacity=flashMode?'':'0.4';
+    te.title=flashMode?'Exam-likelihood tier (flashcards only)':'Tiers are authored per flashcard — this doesn’t apply to question modes';
+  }
 }
 // Populate the per-course sub-module filter — only modules that actually have content show.
 function fillModuleNumSelect(){
@@ -1463,12 +1480,32 @@ document.getElementById('startBtn').onclick=()=>{
   window.MODF=(mnEl&&!mnEl.disabled)?mnEl.value:"ALL";
   const sEl=document.getElementById('studySession');
   window.CARDFILTER=sEl?sEl.value:"all";
+  const tEl=document.getElementById('studyTier');
+  window.TIERF=tEl?tEl.value:"all";
   const mode=document.getElementById('studyMode').value;
   ({flash:runFlash,hard:runHard,quiz:runQuiz,exam:runModuleExam,mcqreview:runMcqReview,mock:runMock,scenario:runScenario,calc:runCalc,ethics:runEthics,vtheory:runTheoryExam,vmath:runMathExam,vcase:runCaseExam})[mode](mod);
 };
 // Hard-cards mode reuses the flashcard runner over the struggling-cards pool
 function runHard(mod){window._hardOnly=true;runFlash(mod);}
 function filt(arr,mod){let r=mod==="ALL"?arr:arr.filter(x=>x.m===mod);const mf=window.MODF;if(mf&&mf!=="ALL")r=r.filter(x=>moduleOf(x)===+mf);return r;}
+// Exam-likelihood tier for a flashcard (card-tiers.js): 1 high / 2 moderate / 3 low.
+// 0 = untiered (no entry) — e.g. a newly added course not yet tiered.
+function cardTier(c){const m=window.CARDTIER;return (m&&c&&m[c.f])||0;}
+// Does this card pass the active tier filter (window.TIERF)? An UNTIERED card
+// passes every filter on purpose: new content must never vanish from study
+// silently just because nobody has tiered it yet.
+function tierOk(c){
+  const f=window.TIERF;
+  if(!f||f==="all")return true;
+  const t=cardTier(c);
+  return t===0||f.indexOf(String(t))>=0;
+}
+// How many in-scope cards each tier holds — drives the tier counts in the UI.
+function tierCounts(mod){
+  const out={1:0,2:0,3:0,0:0};
+  filt(CARDS,mod).forEach(c=>{out[cardTier(c)]++;});
+  return out;
+}
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 
 // Flashcards w/ spaced repetition

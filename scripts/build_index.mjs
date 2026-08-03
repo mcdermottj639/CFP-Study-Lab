@@ -12,7 +12,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 
 const SRC = process.argv[2] || 'src/study-home.src.html';
 const OUT = 'index.html';
-const APP_VERSION = 'v2.106.0';
+const APP_VERSION = 'v2.107.0';
 let html = readFileSync(SRC, 'utf8');
 
 const HEAD = `
@@ -112,6 +112,7 @@ const TOOLKIT = `
 </script>
 <script src="module-content.js"></script>
 <script src="mcq-why.js"></script>
+<script src="card-tiers.js"></script>
 <script src="flashcards.js"></script>
 <script src="cfp-gist-sync.js"></script>
 <script>
