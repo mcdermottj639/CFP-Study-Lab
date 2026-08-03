@@ -553,6 +553,26 @@ and audited. All flashcards are atomic/list-shaped (see authoring rules above). 
 textbooks for them yet and will drop each into the Google Drive `CFP` folder when
 available. `MODULES`/`DOMAINS` in the source already scaffold all 8.
 
+### PDF extraction bleed — check this when authoring MCQs (fixed v2.108.0)
+The original source `MCQ` array (in `src/study-home.src.html`, NOT the content JSON) carried
+**PDF text-extraction bleed** from the textbook: an explanation would end correctly, then run on
+into `<page#> <module#> <Module Title> INTRODUCTION <the whole next module's intro prose>`.
+**8 explanations** were affected (1,342–2,627 chars against a 155-char median) and **31 options**
+had a page number glued to the end (`"A.M. Best 39"`, `"I, II, III, and IV 276"`) — **7 of those
+sat on the keyed correct answer**, which made the right option visually identifiable without
+knowing the material. All 39 were cleaned in v2.108.0; flashcards and question text were audited
+and were clean.
+- **When importing a new course (FP513+), scan for this before shipping.** Cheap detectors:
+  explanation length outliers (flag > ~600 chars against the median), the markers
+  `INTRODUCTION` / `LEARNING OBJECTIVE` / `After completing this module` / `This module introduces
+  you`, and options matching `/[A-Za-z).’"]\s+\d{1,3}$/`. Beware two legitimate matches of that
+  last pattern: `"N of 6"` (ADL-count answers) and `"…RMDs at age 73"`.
+- **Editing option text is coupled to `mcq-why.js`**, which is keyed by *exact* option string —
+  renaming an option without re-keying `MCQWHY` silently orphans its "why the others are wrong"
+  rationale. Fix both in one pass and verify: every `MCQWHY` option key must match a real option
+  (v2.108.0 verified 1,142 rationales, 0 orphaned). Question text was left untouched, so
+  `mcqKey()`/`S.mcqDue` SRS history survived the cleanup.
+
 ### Per-module filtering (sub-modules within a course)
 The Study tab can filter flashcards & quizzes down to a single **module within a
 course** (e.g. "FP512 → Module 4 — Annuities"), in addition to the whole-course
