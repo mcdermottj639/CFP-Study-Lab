@@ -495,6 +495,28 @@ flashcards — only their MCQs remain in source). `content/extra.cards.json` is 
 Future courses (FP513+) should be authored atomic from the start, so this de-dupe step won't
 recur — but keep applying the shape rules above.
 
+### Card exam-likelihood tiers (`content/card-tiers.json`)
+Every flashcard carries an **exam-likelihood tier** so study time can be aimed at what the CFP
+Board actually tests. Data lives in **`content/card-tiers.json`**: `{ tiers: { "<exact card front
+text>": 1|2|3 } }` — keyed by front text, the same key the content pipeline already de-dupes on
+(all 579 fronts are unique, verified). Tiers: **1 = high yield / most likely on the Board exam**,
+**2 = moderate / somewhat likely**, **3 = low yield** (course-and-textbook detail that sits outside
+the Board's Principal Knowledge Topics). The file also carries `_counts` for a quick sanity check.
+- **Basis:** judgment against the CFP Board **Principal Knowledge Topics + blueprint domain
+  weights**, NOT an official CFP Board source — it's an informed prioritization, not an answer key.
+- **Tier 3 ≠ wrong or useless.** Those cards are still faithful to the textbook and the FP511/FP512
+  **course module exams still test them** — the tier only predicts the *Board* exam. Don't delete
+  tier-3 cards on the strength of this file.
+- **Current split (as of v2.106.0, 579 cards):** T1 238 (41.1%) · T2 233 (40.2%) · T3 108 (18.7%).
+  By course — FP511: 87/93/53 (37.3/39.9/22.7%); FP512: 151/140/55 (43.6/40.5/15.9%). The
+  tier-3 weight is concentrated in FP511 Domain H (Psychology, 43% tier 3 — Social Penetration
+  Theory, the five named counseling schools, money-disorder vocabulary) and in FP512's Veterans
+  Benefits / Business Risk / EIUL crediting-method blocks.
+- **Adding a course (FP513+):** author tiers for its cards in the same file. Nothing in the build
+  reads this yet — it is currently a standalone data/reporting layer, so `build_index.mjs` and
+  `add_content.mjs` are untouched. Wiring it into the Study tab (e.g. a tier filter beside the
+  card filter) is a separate, not-yet-built change.
+
 Taxonomy (the `d` domain code drives analytics / exam-weight readiness):
 | m | course | d | domain | weight |
 |---|---|---|---|---|
