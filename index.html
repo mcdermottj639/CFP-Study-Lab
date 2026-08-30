@@ -429,7 +429,11 @@ html[data-theme="dark"] input,html[data-theme="dark"] select,html[data-theme="da
 
 /* --- Mobile: keep the icon bottom bar, squared off --------------------- */
 @media(max-width:780px){
-  .tabs{border-bottom:none;border-top:2px solid var(--rule);border-radius:0;
+  /* margin:0 is REQUIRED. The desktop .tabs rule above sets margin:12px 0 20px and
+     is later in the file than the earlier mobile @media block, so it wins here too —
+     and on a position:fixed;bottom:0 bar, margin-bottom lifts it off the bottom edge
+     and content scrolls visibly through the gap underneath. */
+  .tabs{margin:0;border-bottom:none;border-top:2px solid var(--rule);border-radius:0;
     background:var(--card);box-shadow:none;justify-content:space-around;flex-wrap:nowrap;
     padding:8px 6px calc(8px + env(safe-area-inset-bottom))}
   html[data-theme="dark"] .tabs{background:var(--card)}
@@ -2946,7 +2950,7 @@ autoBackup();
       <p style="font-size:11.5px;color:#9aa3b5;margin:8px 0 0;line-height:1.45"><b>On iPhone, keep this on “Automatic.”</b> The app then uses your <b>device default</b> voice — set it in Settings → Accessibility → Spoken Content → <b>Voices → English</b> (download <b>Ava</b> or another Enhanced/Premium voice and tap it to make it the default). iOS doesn’t show Enhanced/Premium labels to web apps and can’t use Siri voices — and forcing a specific voice here often sounds worse than the device default, so the list is mainly for desktop.</p>
     </div>
     <div id="cfpTkMsg" style="font-size:12.5px;color:#1f9d6b;text-align:center;min-height:16px;margin-top:10px"></div>
-    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.112.0</div>
+    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.112.1</div>
   </div>
 </div>
 <script>

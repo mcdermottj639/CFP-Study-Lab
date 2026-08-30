@@ -12,7 +12,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 
 const SRC = process.argv[2] || 'src/study-home.src.html';
 const OUT = 'index.html';
-const APP_VERSION = 'v2.112.0';
+const APP_VERSION = 'v2.112.1';
 let html = readFileSync(SRC, 'utf8');
 
 const HEAD = `
@@ -491,7 +491,11 @@ html[data-theme="dark"] input,html[data-theme="dark"] select,html[data-theme="da
 
 /* --- Mobile: keep the icon bottom bar, squared off --------------------- */
 @media(max-width:780px){
-  .tabs{border-bottom:none;border-top:2px solid var(--rule);border-radius:0;
+  /* margin:0 is REQUIRED. The desktop .tabs rule above sets margin:12px 0 20px and
+     is later in the file than the earlier mobile @media block, so it wins here too —
+     and on a position:fixed;bottom:0 bar, margin-bottom lifts it off the bottom edge
+     and content scrolls visibly through the gap underneath. */
+  .tabs{margin:0;border-bottom:none;border-top:2px solid var(--rule);border-radius:0;
     background:var(--card);box-shadow:none;justify-content:space-around;flex-wrap:nowrap;
     padding:8px 6px calc(8px + env(safe-area-inset-bottom))}
   html[data-theme="dark"] .tabs{background:var(--card)}
