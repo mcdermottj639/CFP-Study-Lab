@@ -294,6 +294,28 @@ never appear). Three coordinated additions, all in `src/study-home.src.html` unl
 - **Scenario bank grew 2 → 8** (added FP511 cash-flow + fiduciary/conflicts, FP512 auto-PAP,
   disability-income, life-needs-analysis, Medicare/LTC) so `vcase`/`runScenario` feel substantial.
 
+### Study focus mode — a started session owns the screen (v2.110.0)
+The Study tab used to keep the whole filter card (4 selects + Start) above `#studyArea`, so every
+question started ~590px down the page on a phone: you scrolled past the pickers to read the
+question, then scrolled again to reach the answer and Next. Fixed with a **focus mode** in
+`src/study-home.src.html`:
+- **`studyFocus(on)`** toggles **`body.study-focus`**, which hides `#studySetup` (the filter card,
+  newly id'd) and `#appHeader` (the title block, newly id'd) and reveals **`#studyBar`** — a slim
+  sticky one-liner showing the active scope (`studyLabel()` reads the pickers → "FP512 · Module 4 ·
+  Quiz") with a **⚙ Filters** button that exits focus and brings the pickers back. It also scrolls
+  to top. `#studyBar` carries `padding-right:48px` to clear the fixed ⋯ toolkit button.
+- **Wired into every launcher**: the `startBtn` handler, `studyScoped()`, and `studyDomain()` all
+  call `studyFocus(true)` after dispatching to the runner. `go()` calls `studyFocus(false)` when
+  navigating to any tab that isn't `study`, so the pickers are back next time you open Study.
+- **Sticky Next (`.revnext`)** — `mcqRunner._pick` wraps the Next button in `.revnext`
+  (`position:sticky;bottom`, offset by the bottom tab bar under 780px) so a long explanation never
+  puts Next out of reach, and scrolls `#rev` into view on tap so the explanation never starts below
+  the fold. The band is a **solid `var(--card)` with a `border-top`** — a `linear-gradient` to
+  `rgba(255,255,255,0)` interpolates through white and flashed grey in dark mode.
+- Measured at 390×844: question top **593px → 150px**, all options on screen, and Next stayed on
+  screen across a run of questions. Reader/mode-agnostic — flashcards, quiz, exam, and the
+  simulators all benefit with no per-mode code.
+
 ### Study mode dropdown — scoped vs. global (v2.20.0)
 The `#studyMode` `<select>` is split into two `<optgroup>`s by what the course/sub-module
 pickers actually affect, so the UI stops pretending scope applies when it doesn't:
@@ -1135,7 +1157,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.109.0`) on every shippable change so installed apps auto-update
+  (current: `v2.110.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.

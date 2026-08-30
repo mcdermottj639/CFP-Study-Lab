@@ -83,6 +83,34 @@ a.link{color:var(--brand);text-decoration:none;font-weight:600}
 .small{font-size:12px}
 .center{text-align:center}
 .flex{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+/* ===== Study focus mode (v2.110.0) =====
+   Starting a session hands the whole screen to it: the filter card and the app
+   header collapse away and a slim sticky bar takes their place, so the question
+   sits at the top and the explanation + Next button land on the same screen
+   instead of below the fold. "Filters" brings the pickers back. */
+#studyBar{display:none}
+body.study-focus #studySetup,body.study-focus #appHeader{display:none}
+body.study-focus #studyBar{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  position:sticky;top:0;z-index:40;margin:0 0 10px;padding:7px 10px;
+  border:1px solid var(--line);border-radius:12px;
+  background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  font-size:12px;color:var(--muted);
+  padding-right:48px}                                 /* clear the fixed ⋯ toolkit button */
+#studyBarLabel{font-weight:700;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#studyBar .sb-acts{display:flex;gap:6px;flex:none}
+/* The Next button sticks to the bottom of the viewport, so a long explanation
+   never puts it out of reach — you scroll to READ, not to advance. */
+.revnext{position:sticky;bottom:10px;z-index:30;
+  margin:10px -18px -12px;padding:10px 18px 12px;   /* -18px cancels .card padding so the band is full-bleed */
+  background:var(--card);border-top:1px solid var(--line);
+  border-radius:0 0 20px 20px}   /* solid, not a fade: a gradient to rgba(255,255,255,0)
+                                    interpolates through white and flashed grey in dark mode */
+.revnext .btn{box-shadow:0 8px 22px -8px rgba(74,48,28,.55)}
+@media(max-width:780px){.revnext{bottom:calc(74px + env(safe-area-inset-bottom))}}
+html[data-theme="dark"] body.study-focus #studyBar{background:rgba(36,27,21,.92)}
+body.study-focus .wrap{padding-top:6px}
+@media(max-width:780px){body.study-focus #studyBar{top:calc(env(safe-area-inset-top) - 4px)}}
 </style>
 
 <style id="freshUI">
@@ -236,7 +264,7 @@ section:not(.hidden){animation:rise .42s cubic-bezier(.2,.7,.3,1)}
 </head>
 <body>
 <div class="wrap">
-  <div class="flex">
+  <div class="flex" id="appHeader">
     <div>
       <h1>CFP&reg; Study Home</h1>
       <div class="sub">Your launchpad, study engine & progress tracker — built from your CFP Drive folder. Target: <b id="examLabel">March 2027</b></div>
@@ -313,7 +341,7 @@ section:not(.hidden){animation:rise .42s cubic-bezier(.2,.7,.3,1)}
 
   <!-- STUDY -->
   <section id="study" class="hidden">
-    <div class="card" style="margin-bottom:14px">
+    <div class="card" id="studySetup" style="margin-bottom:14px">
       <div class="flex">
         <div class="row">
           <select id="studyModule"></select>
@@ -355,6 +383,7 @@ section:not(.hidden){animation:rise .42s cubic-bezier(.2,.7,.3,1)}
         <button class="btn" id="startBtn">Start</button>
       </div>
     </div>
+    <div id="studyBar"><span id="studyBarLabel"></span><span class="sb-acts"><button class="btn ghost sm" onclick="studyFocus(false)">⚙ Filters</button></span></div>
     <div id="studyArea"></div>
   </section>
 
@@ -908,6 +937,7 @@ function go(t){
   if(typeof ttsStop==='function')ttsStop();          // stop any read-aloud when navigating tabs
   document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.t===t));
   ['dash','modules','study','analytics','mobile','modhub'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.toggle('hidden',id!==t);});
+  if(t!=='study'&&typeof studyFocus==='function')studyFocus(false);   // pickers are back next time you open Study
   if(t==='dash')renderDash();
   if(t==='analytics')renderAnalytics();
   if(t==='modules')renderModules();
@@ -1240,6 +1270,7 @@ function studyScoped(course,mod,mode){
   const md=document.getElementById('studyMode'); if(md)md.value=mode;
   go('study');
   ({flash:runFlash,adaptive:runAdaptive,exam:runModuleExam,quiz:runQuiz,calc:runCalc,scenario:runScenario})[mode](course);
+  studyFocus(true);
 }
 // Course-wide study launch (no sub-module filter) — used by the Analytics widgets.
 function studyDomain(course,mode){
@@ -1251,6 +1282,7 @@ function studyDomain(course,mode){
   const md=document.getElementById('studyMode'); if(md)md.value=mode;
   go('study');
   ({flash:runFlash,adaptive:runAdaptive,exam:runModuleExam,quiz:runQuiz,calc:runCalc,scenario:runScenario})[mode](course);
+  studyFocus(true);
 }
 // "Readiness check" = adaptive practice: prioritize missed (mcqDue), then unseen,
 // then the rest; instant feedback per question; not scored to the badge.
@@ -1653,6 +1685,25 @@ function fillModuleNumSelect(){
   sel.innerHTML=`<option value="ALL">All modules</option>`+nums.map(n=>`<option value="${n}">Module ${n} — ${meta[n]}</option>`).join('');
   sel.value="ALL";
 }
+/* Study focus mode — see the CSS block above. studyFocus(true) is called by every
+   study launcher (Start button, studyScoped, studyDomain); go() clears it when you
+   leave the Study tab so the pickers are back next time you arrive. */
+function studyLabel(){
+  const txt=id=>{const el=document.getElementById(id);return el&&el.selectedIndex>=0?el.options[el.selectedIndex].text:'';};
+  const mn=document.getElementById('studyModuleNum');
+  const parts=[txt('studyModule')];
+  if(mn&&!mn.disabled&&mn.value!=='ALL')parts.push(txt('studyModuleNum'));
+  parts.push(txt('studyMode'));
+  return parts.filter(Boolean).join(' \u00b7 ');
+}
+function studyFocus(on){
+  document.body.classList.toggle('study-focus',!!on);
+  if(on){
+    const el=document.getElementById('studyBarLabel');
+    if(el)el.textContent=studyLabel();
+    window.scrollTo(0,0);
+  }
+}
 document.getElementById('startBtn').onclick=()=>{
   const mod=document.getElementById('studyModule').value;
   const mnEl=document.getElementById('studyModuleNum');
@@ -1663,6 +1714,7 @@ document.getElementById('startBtn').onclick=()=>{
   window.TIERF=tEl?tEl.value:"all";
   const mode=document.getElementById('studyMode').value;
   ({flash:runFlash,hard:runHard,quiz:runQuiz,exam:runModuleExam,mcqreview:runMcqReview,mock:runMock,scenario:runScenario,calc:runCalc,ethics:runEthics,vtheory:runTheoryExam,vmath:runMathExam,vcase:runCaseExam})[mode](mod);
+  studyFocus(true);
 };
 // Hard-cards mode reuses the flashcard runner over the struggling-cards pool
 function runHard(mod){window._hardOnly=true;runFlash(mod);}
@@ -1827,8 +1879,12 @@ function mcqRunner(pool,title,opts={}){
     if(picked!==null)return;picked=oi;                              // instant feedback: reveal immediately on tap (no confidence gate)
     const q=pool[idx];const ok=record(oi,2);
     document.querySelectorAll('#opts .opt').forEach((b,i2)=>{if(i2===q.a)b.classList.add('correct');if(i2===oi&&!ok)b.classList.add('wrong');b.onclick=null;});
-    document.getElementById('rev').innerHTML=`<div class="expl"><b>${ok?'✓ Correct':'✗ Not quite'}.</b> ${q.e}<div>${ttsBtn(q.e)}</div></div>${whyNotHtml(q,picked)}
-      <div class="center" style="margin-top:10px"><button class="btn" onclick="window._next()">Next →</button></div>`;
+    const rev=document.getElementById('rev');
+    rev.innerHTML=`<div class="expl"><b>${ok?'✓ Correct':'✗ Not quite'}.</b> ${q.e}<div>${ttsBtn(q.e)}</div></div>${whyNotHtml(q,picked)}
+      <div class="center revnext"><button class="btn" onclick="window._next()">Next →</button></div>`;
+    // Bring the explanation into view on tap — the answer should never start below the fold.
+    // (Next itself is sticky, so it stays reachable even under a long explanation.)
+    try{rev.scrollIntoView({behavior:'smooth',block:'nearest'});}catch(e){rev.scrollIntoView(false);}
   };
   window._next=()=>{ttsStop();idx++;picked=null;draw();};
   window._endQuiz=()=>{ttsStop();endlessRecap();};
@@ -2711,7 +2767,7 @@ autoBackup();
       <p style="font-size:11.5px;color:#9aa3b5;margin:8px 0 0;line-height:1.45"><b>On iPhone, keep this on “Automatic.”</b> The app then uses your <b>device default</b> voice — set it in Settings → Accessibility → Spoken Content → <b>Voices → English</b> (download <b>Ava</b> or another Enhanced/Premium voice and tap it to make it the default). iOS doesn’t show Enhanced/Premium labels to web apps and can’t use Siri voices — and forcing a specific voice here often sounds worse than the device default, so the list is mainly for desktop.</p>
     </div>
     <div id="cfpTkMsg" style="font-size:12.5px;color:#1f9d6b;text-align:center;min-height:16px;margin-top:10px"></div>
-    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.109.0</div>
+    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.110.0</div>
   </div>
 </div>
 <script>
