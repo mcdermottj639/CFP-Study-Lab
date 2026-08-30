@@ -573,6 +573,36 @@ and were clean.
   (v2.108.0 verified 1,142 rationales, 0 orphaned). Question text was left untouched, so
   `mcqKey()`/`S.mcqDue` SRS history survived the cleanup.
 
+### Case-study questions need their fact pattern (`stem`) — fixed v2.109.0
+The 10 FP512 MCQs with topic **`"Insurance in the Plan"`** come from the textbook's **Module 9
+Madison case study** (Nicholas & Katie Madison) and were imported **without the printed case fact
+pattern**. Six of them were therefore **unanswerable in the app** — e.g. the fire-loss question asks
+you to apply the 80% coinsurance rule but never states the **$225,000 replacement cost**; the DI,
+medical, auto, and HSA questions were likewise missing their benefit/deductible figures. (The user
+hit this in a quiz and asked "where did you give me the home value?")
+- **Fix:** a `MADISON_CASE` HTML string in `src/study-home.src.html` (immediately after the `MCQ`
+  array) is attached as **`q.stem`** to every `t==="Insurance in the Plan"` question. `mcqRunner`'s
+  `draw()` already renders `q.stem` in a `.casebox`, so the facts now appear above the question in
+  **every** mode (quiz, exam, mock, review, the exam-version simulators). v2.109.0 also added the
+  same `.casebox` render to the **two post-hoc review blocks** (`endlessRecap` + `examResults`),
+  which previously showed a case question with no case.
+- **Do this as a `stem`, never by rewriting `q.q`.** Question text is the key for `mcq-why.js`
+  rationales and for `mcqKey()`/`S.mcqDue` SRS history — editing stems into the question text would
+  orphan both (see the PDF-extraction-bleed section for the same coupling on option text).
+  `mcqFresh()` preserves `stem` (`Object.assign({},q,v)`), so generator-backed items are fine too.
+- **Provenance caveat:** the case facts were **reconstructed from the textbook's own answer-key
+  explanations** (each explanation discloses the figure its question needs), NOT copied from the
+  printed case pages. Those pages are FP512 textbook **pp. 311–324 (Module 9)** and were not
+  reachable from this sandbox: `read_file_content` caps at ~375k chars (~p. 296), the
+  `FP512 Modules 5-8.pdf` split stops at p. 309, and `download_file_content` on the 7.7 MB full
+  textbook kills the Drive MCP session. **If those pages ever get extracted, replace
+  `MADISON_CASE` with the verbatim fact pattern** (it will also carry income, asset, and life-
+  insurance face amounts the answer key never states) and drop the "Reconstructed…" footnote.
+- **When importing a new course (FP513+), check for orphaned case questions**: any MCQ whose stem
+  refers to a named family/entity ("the Madisons'", "his policy", "their plan") or whose explanation
+  introduces a figure absent from the question text is missing its case. Attach the case as a `stem`
+  the same way, or put the item in `SCENARIOS` (which carries a per-set `stem` natively).
+
 ### Per-module filtering (sub-modules within a course)
 The Study tab can filter flashcards & quizzes down to a single **module within a
 course** (e.g. "FP512 → Module 4 — Annuities"), in addition to the whole-course
@@ -1093,7 +1123,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.105.0`) on every shippable change so installed apps auto-update
+  (current: `v2.109.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
