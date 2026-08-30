@@ -7,6 +7,13 @@ Context for future sessions. Read this before changing anything.
 > section here in the SAME change (and bump the version example below if you
 > shipped). Future sessions rely on this file being accurate — don't wait to be asked.
 
+> **STANDING RULE — fix what's cheap to fix.** The user's instruction: *"Fix any issue
+> that's easily fixable always."* If you notice a small, low-risk defect while working —
+> a missing dark-mode override, a contrast or overflow problem, a stale comment, a broken
+> link — just fix it in the same change and say so, rather than reporting it and waiting.
+> This does NOT extend to risky or wide-reaching edits (schema/data migrations, deleting
+> content, rewriting a subsystem, changing the brand palette) — flag those instead.
+
 ## What this is
 An installable, **fully offline** Progressive Web App (PWA) to study for the
 CFP® exam, deployed on GitHub Pages. One single app — no separate sub-apps in
@@ -293,6 +300,23 @@ never appear). Three coordinated additions, all in `src/study-home.src.html` unl
   references" rows (Dashboard + Modules tab), alongside Key numbers / Exam tips.
 - **Scenario bank grew 2 → 8** (added FP511 cash-flow + fiduciary/conflicts, FP512 auto-PAP,
   disability-income, life-needs-analysis, Medicare/LTC) so `vcase`/`runScenario` feel substantial.
+
+### Dark-mode overrides for late-added surfaces (v2.111.0)
+The freshUI dark palette in `build_index.mjs` overrides each hardcoded light background
+individually, so **any surface added to `src/study-home.src.html` after that palette was written
+stays a bright panel in dark mode unless you add a matching override.** Four had drifted:
+`.whynot` (+ `.wn-h`/`.wn-you`), `.casebox`, `.tts-btn` (+`:hover`), and `.btn.ghost`. All now have
+warm-dark counterparts next to the existing `html[data-theme="dark"] .expl` rule. Measured contrast
+after the fix: 7.3–13.8 in dark, 4.7–15.5 in light.
+- **When you add a styled surface, add its dark rule in the same change.** To audit, scan the
+  source `<style>` block for `background:#<light hex>` and check each selector has an
+  `html[data-theme="dark"]` counterpart in `build_index.mjs`.
+- The study scope bar `#studyBar` is deliberately **opaque `var(--card)`**, not translucent —
+  content scrolls under it and bled through at 8% alpha.
+- **Known, deliberately not changed:** `.tts-btn`/`.btn.ghost` are brand-orange on white in light
+  mode (contrast 3.85, under AA for 12.5px text). That's the app-wide `--brand` on a light surface,
+  not a local defect — fixing it means darkening the brand colour everywhere, so it needs a
+  design decision rather than a drive-by fix.
 
 ### Study focus mode — a started session owns the screen (v2.110.0)
 The Study tab used to keep the whole filter card (4 selects + Start) above `#studyArea`, so every
@@ -1157,7 +1181,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.110.0`) on every shippable change so installed apps auto-update
+  (current: `v2.111.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.

@@ -12,7 +12,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 
 const SRC = process.argv[2] || 'src/study-home.src.html';
 const OUT = 'index.html';
-const APP_VERSION = 'v2.110.0';
+const APP_VERSION = 'v2.111.0';
 let html = readFileSync(SRC, 'utf8');
 
 const HEAD = `
@@ -290,6 +290,15 @@ html[data-theme="dark"] .opt.wrong{background:#3a1c1c!important;border-color:#7a
 html[data-theme="dark"] .btn.gray{background:#3a2e25;color:var(--ink)}
 html[data-theme="dark"] .tabs{background:rgba(36,27,21,.85)}
 html[data-theme="dark"] .expl,html[data-theme="dark"] [style*="#f4f7ff"]{background:#2b2118!important;border-color:#3a2e25!important;color:var(--ink)!important}
+/* Dark-mode overrides for surfaces added after this palette was written — each was
+   authored with a hardcoded light background and no dark counterpart, so it stayed
+   a bright panel in dark mode. Warm-dark tints matching .expl above. */
+html[data-theme="dark"] .whynot{background:#2b1e1b;border-color:#4a332e}
+html[data-theme="dark"] .wn-h,html[data-theme="dark"] .wn-you{color:#e8907f}
+html[data-theme="dark"] .casebox{background:#2b2318;border-color:#4a3a25;border-left-color:#d98a1f}
+html[data-theme="dark"] .tts-btn{background:transparent}
+html[data-theme="dark"] .tts-btn:hover{background:#2f251d}
+html[data-theme="dark"] .btn.ghost{background:transparent}
 html[data-theme="dark"] select,html[data-theme="dark"] input,html[data-theme="dark"] textarea{background:#2b211a!important;color:var(--ink)!important;border:1px solid #3a2e25!important}
 html[data-theme="dark"] select option{background:#241b15;color:#f4ece2}
 html[data-theme="dark"] ::placeholder{color:#8f8170}

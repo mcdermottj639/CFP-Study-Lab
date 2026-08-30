@@ -94,7 +94,7 @@ body.study-focus #studyBar{
   display:flex;align-items:center;justify-content:space-between;gap:10px;
   position:sticky;top:0;z-index:40;margin:0 0 10px;padding:7px 10px;
   border:1px solid var(--line);border-radius:12px;
-  background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  background:var(--card);                             /* opaque: content scrolls UNDER it, must not bleed through */
   font-size:12px;color:var(--muted);
   padding-right:48px}                                 /* clear the fixed ⋯ toolkit button */
 #studyBarLabel{font-weight:700;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -108,7 +108,6 @@ body.study-focus #studyBar{
                                     interpolates through white and flashed grey in dark mode */
 .revnext .btn{box-shadow:0 8px 22px -8px rgba(74,48,28,.55)}
 @media(max-width:780px){.revnext{bottom:calc(74px + env(safe-area-inset-bottom))}}
-html[data-theme="dark"] body.study-focus #studyBar{background:rgba(36,27,21,.92)}
 body.study-focus .wrap{padding-top:6px}
 @media(max-width:780px){body.study-focus #studyBar{top:calc(env(safe-area-inset-top) - 4px)}}
 </style>
@@ -229,6 +228,15 @@ html[data-theme="dark"] .opt.wrong{background:#3a1c1c!important;border-color:#7a
 html[data-theme="dark"] .btn.gray{background:#3a2e25;color:var(--ink)}
 html[data-theme="dark"] .tabs{background:rgba(36,27,21,.85)}
 html[data-theme="dark"] .expl,html[data-theme="dark"] [style*="#f4f7ff"]{background:#2b2118!important;border-color:#3a2e25!important;color:var(--ink)!important}
+/* Dark-mode overrides for surfaces added after this palette was written — each was
+   authored with a hardcoded light background and no dark counterpart, so it stayed
+   a bright panel in dark mode. Warm-dark tints matching .expl above. */
+html[data-theme="dark"] .whynot{background:#2b1e1b;border-color:#4a332e}
+html[data-theme="dark"] .wn-h,html[data-theme="dark"] .wn-you{color:#e8907f}
+html[data-theme="dark"] .casebox{background:#2b2318;border-color:#4a3a25;border-left-color:#d98a1f}
+html[data-theme="dark"] .tts-btn{background:transparent}
+html[data-theme="dark"] .tts-btn:hover{background:#2f251d}
+html[data-theme="dark"] .btn.ghost{background:transparent}
 html[data-theme="dark"] select,html[data-theme="dark"] input,html[data-theme="dark"] textarea{background:#2b211a!important;color:var(--ink)!important;border:1px solid #3a2e25!important}
 html[data-theme="dark"] select option{background:#241b15;color:#f4ece2}
 html[data-theme="dark"] ::placeholder{color:#8f8170}
@@ -2767,7 +2775,7 @@ autoBackup();
       <p style="font-size:11.5px;color:#9aa3b5;margin:8px 0 0;line-height:1.45"><b>On iPhone, keep this on “Automatic.”</b> The app then uses your <b>device default</b> voice — set it in Settings → Accessibility → Spoken Content → <b>Voices → English</b> (download <b>Ava</b> or another Enhanced/Premium voice and tap it to make it the default). iOS doesn’t show Enhanced/Premium labels to web apps and can’t use Siri voices — and forcing a specific voice here often sounds worse than the device default, so the list is mainly for desktop.</p>
     </div>
     <div id="cfpTkMsg" style="font-size:12.5px;color:#1f9d6b;text-align:center;min-height:16px;margin-top:10px"></div>
-    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.110.0</div>
+    <div style="font-size:11px;color:#9aa3b5;text-align:center;margin-top:8px">CFP Study Home · v2.111.0</div>
   </div>
 </div>
 <script>
