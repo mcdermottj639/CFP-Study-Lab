@@ -12,7 +12,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 
 const SRC = process.argv[2] || 'src/study-home.src.html';
 const OUT = 'index.html';
-const APP_VERSION = 'v2.111.0';
+const APP_VERSION = 'v2.112.0';
 let html = readFileSync(SRC, 'utf8');
 
 const HEAD = `
@@ -329,6 +329,177 @@ section:not(.hidden){animation:rise .42s cubic-bezier(.2,.7,.3,1)}
   .tab{flex:1;flex-direction:column;gap:3px;font-size:10.5px;padding:6px 2px;border-radius:12px}
   .tab::before{font-size:21px}
   .tab.active{background:none;color:var(--brand);box-shadow:none}
+}
+
+/* ==========================================================================
+   CLASSICAL — editorial restyle (v2.112.0).
+
+   STRUCTURE + TYPOGRAPHY ONLY. This block is appended LAST so it overrides
+   everything above without deleting any of it, and it reuses every existing
+   colour token unchanged (--bg/--card/--ink/--muted/--line/--brand/--good/
+   --warn/--bad and the whole warm dark mode). Nothing in the app's markup,
+   content or engine JS is touched by this — delete this one block to return
+   to the previous look.
+
+   The move: from soft "product UI" (gradients, pill tabs, big radii, drop
+   shadows) to a printed-page language — flat warm paper, 2px rules instead
+   of boxes, serif figures with tabular numerals, uppercase letterspaced
+   kickers, and justified prose.
+   ========================================================================== */
+:root{
+  --serif:ui-serif,"Iowan Old Style","New York",Georgia,"Times New Roman",serif;
+  --rule:#d9c9ae;   /* a firmer draw of --line, same warm family */
+  --rad:6px;        /* near-square: classical, not pill */
+}
+html[data-theme="dark"]{--rule:#4a3b2e}
+
+/* Flat paper — drop the corner glows, keep the exact background colour */
+body,html[data-theme="dark"] body{background:var(--bg)}
+
+/* --- Type ------------------------------------------------------------- */
+/* h1 stays Dancing Script: it's the brand (and the app icon), and a script
+   display face over a serif body is a traditional editorial pairing. */
+h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:-.01em}
+h2{font-size:23px;line-height:1.2}
+h3{font-size:18px}
+
+/* .sub becomes the kicker — small, uppercase, letterspaced. Two exceptions:
+   the header standfirst and the Module-map line are sentences, not labels. */
+.sub{font-size:11px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;
+  font-variant-numeric:tabular-nums;line-height:1.35;color:var(--muted)}
+#appHeader .sub,h1+.sub,h2+.sub{font-size:13px;font-weight:400;letter-spacing:0;
+  text-transform:none;line-height:1.5}
+
+/* Figures: serif, tabular, tight. Solid brand — no gradient text clip. */
+.kpi{font-family:var(--serif);font-weight:600;font-variant-numeric:tabular-nums;
+  letter-spacing:-.02em;line-height:.95;color:var(--brand);
+  background:none!important;-webkit-text-fill-color:currentColor!important}
+
+/* --- Rules instead of boxes ------------------------------------------- */
+.card{border:2px solid var(--rule);border-radius:var(--rad);box-shadow:none;transition:none}
+.modcard::before{width:3px}
+.modcard:hover{transform:none;box-shadow:none}
+
+.bar{height:9px;border:1px solid var(--rule);border-radius:0;background:transparent}
+.bar>i{background:var(--brand)!important;border-radius:0}
+
+/* --- Buttons: flat, ruled, no lift ------------------------------------ */
+.btn{border-radius:var(--rad);border:2px solid var(--brand);background:var(--brand);
+  color:#fff;font-weight:600;box-shadow:none;
+  transition:background .14s ease,color .14s ease,border-color .14s ease}
+.btn:hover,.btn:active{transform:none}
+.btn.ghost{background:transparent;border-color:var(--rule);color:var(--brand);box-shadow:none}
+.btn.ghost:hover{border-color:var(--brand)}
+.btn.gray{background:transparent;border-color:var(--rule);color:var(--ink);box-shadow:none}
+html[data-theme="dark"] .btn.gray{background:transparent;color:var(--ink)}
+.btn.sm{padding:7px 12px;font-size:12px}
+.revnext .btn{box-shadow:none}
+a.link{font-weight:600}
+
+/* Tags outline; .pill keeps its inline status colour (inline style wins) */
+.tag{border:2px solid var(--rule);border-radius:4px;background:transparent;
+  color:var(--muted);font-weight:600;letter-spacing:.06em;padding:3px 9px}
+html[data-theme="dark"] .tag{background:transparent;color:var(--muted)}
+.pill{border-radius:4px;font-weight:600;letter-spacing:.06em;font-variant-numeric:tabular-nums}
+/* Three pills carry an inline cold blue-grey left over from the original blue
+   design system (#eef0f6 / #f0f2f8) — wrong in the warm palette, and bright
+   chips in dark mode since they had no dark counterpart. Same attribute-selector
+   technique the dark block above already uses for #f4f7ff. */
+.pill[style*="#eef0f6"],.pill[style*="#f0f2f8"]{
+  background:transparent!important;border:2px solid var(--rule);color:var(--muted)!important}
+
+/* --- Navigation: a ruled masthead on desktop -------------------------- */
+.tabs{gap:0;margin:12px 0 20px;padding:8px 0 0;background:var(--bg);  /* sticky: must stay opaque */
+  backdrop-filter:none;-webkit-backdrop-filter:none;
+  border:none;border-bottom:2px solid var(--rule);border-radius:0;box-shadow:none;
+  justify-content:flex-start;flex-wrap:wrap}
+html[data-theme="dark"] .tabs{background:var(--bg)}
+.tab{font-family:var(--serif);font-size:15px;font-weight:600;color:var(--muted);
+  background:none;border:none;border-bottom:3px solid transparent;border-radius:0;
+  padding:9px 0;margin-right:22px;gap:0}
+.tab::before{display:none}          /* emoji stay on the mobile bar, below */
+.tab:hover{color:var(--brand)}
+.tab.active{background:none;color:var(--ink);border-bottom-color:var(--brand);box-shadow:none}
+
+/* --- Quiz + flashcards ------------------------------------------------ */
+.opt{border:2px solid var(--rule);border-radius:var(--rad);font-weight:500}
+.opt:hover{border-color:var(--brand)}
+
+.flash{background:var(--card);border:2px solid var(--rule);border-bottom:3px solid var(--brand);
+  border-radius:var(--rad);font-family:var(--serif);font-size:26px;font-weight:600;
+  line-height:1.25;text-align:left;align-items:flex-start;justify-content:center;
+  padding:28px 26px;text-wrap:pretty}
+html[data-theme="dark"] .flash{background:var(--card)}
+.flash b{font-weight:700}
+
+.flashseg{background:transparent;border:2px solid var(--rule);border-radius:var(--rad);padding:3px;gap:3px}
+html[data-theme="dark"] .flashseg{background:transparent}
+.flashseg button{border-radius:3px;font-weight:600}
+.flashseg button.on{background:var(--brand);color:#fff;box-shadow:none}
+.flashopts button{border:2px solid var(--rule);border-radius:var(--rad);font-weight:600}
+.flashopts button.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+
+/* --- Prose blocks: a margin rule, not a coloured box ------------------- */
+/* !important is needed to beat the dark-mode .expl rule written above. */
+.expl{background:transparent!important;border:none!important;border-radius:0;
+  border-left:3px solid var(--brand)!important;padding:2px 0 2px 14px;
+  color:var(--ink)!important;line-height:1.65}
+.whynot{background:transparent;border:none;border-radius:0;
+  border-left:3px solid var(--bad);padding:2px 0 2px 14px}
+html[data-theme="dark"] .whynot{background:transparent;border-left-color:var(--bad)}
+.casebox{background:transparent;border:none;border-radius:0;
+  border-left:3px solid var(--warn);padding:2px 0 2px 14px}
+html[data-theme="dark"] .casebox{background:transparent;border-left-color:var(--warn)}
+/* Justify only where the measure is wide enough to do it well */
+@media(min-width:560px){
+  .expl,.casebox,.whynot li{text-align:justify;hyphens:auto}
+}
+.tts-btn{border-radius:4px;border:2px solid var(--brand);font-weight:600}
+
+/* Today's focus banner (renderTodayFocus, v2.95.0) is inline-styled
+   background:#f4ecdf with no dark counterpart, so in dark mode it rendered as a
+   bright cream panel with its light headline text invisible on top. A scripted
+   sweep of all five tabs confirms this was the only light-on-light surface left. */
+[style*="#f4ecdf"]{border-radius:var(--rad)!important}
+html[data-theme="dark"] [style*="#f4ecdf"]{background:#2b211a!important}
+
+/* --- Lists, tables, fields, chrome ------------------------------------ */
+.modrow{border:2px solid var(--rule);border-radius:var(--rad);box-shadow:none}
+.modrow:hover{border-color:var(--brand)}
+.modrow:active{transform:none}
+.modnum{border-radius:3px;font-weight:600}
+.modchip{border:2px solid var(--rule);border-radius:4px;font-weight:600}
+.modchip.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+.modlist-open,.modlist>summary{border-top:2px solid var(--rule)}
+
+table{font-variant-numeric:tabular-nums}
+th{color:var(--ink);font-weight:600;border-bottom:2px solid var(--rule)}
+td{border-bottom:1px solid var(--line)}
+
+input,select,textarea{border:2px solid var(--rule);border-radius:4px;max-width:100%}
+/* Pre-existing phone overflow: .row is a flex item at min-width:auto, so the
+   widest <select>'s intrinsic width pushed it past the card (3px before this
+   change, 6px once borders went to 2px). Letting flex items shrink lets the
+   max-width above actually clamp. */
+.row,.row>*{min-width:0}
+html[data-theme="dark"] input,html[data-theme="dark"] select,html[data-theme="dark"] textarea{
+  border:2px solid var(--rule)!important}
+
+#studyBar{border:2px solid var(--rule);border-radius:var(--rad)}
+.revnext{border-top:2px solid var(--rule);border-radius:0}
+.toast{border-radius:var(--rad)}
+
+/* --- Mobile: keep the icon bottom bar, squared off --------------------- */
+@media(max-width:780px){
+  .tabs{border-bottom:none;border-top:2px solid var(--rule);border-radius:0;
+    background:var(--card);box-shadow:none;justify-content:space-around;flex-wrap:nowrap;
+    padding:8px 6px calc(8px + env(safe-area-inset-bottom))}
+  html[data-theme="dark"] .tabs{background:var(--card)}
+  .tab{font-family:inherit;font-size:10.5px;font-weight:600;margin-right:0;
+    border-bottom:none;padding:6px 2px;gap:3px}
+  .tab::before{display:block;font-size:21px}
+  .tab.active{color:var(--brand);border-bottom:none}
+  .flash{font-size:22px;padding:22px 20px}
 }
 </style>
 `;
