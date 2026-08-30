@@ -326,6 +326,14 @@ a Claude Design "CFP Study Redesign — Classical" mock.
   bottom icon bar is preserved** — the emoji `::before` icons are hidden on desktop only and
   restored in the block's own `max-width:780px` query. `.tabs` keeps an opaque background
   because it is `position:sticky`.
+- **The mobile bar MUST re-declare `margin:0` (v2.112.1).** The Classical block's desktop
+  `.tabs` rule sets `margin:12px 0 20px` and sits **later in the file** than freshUI's earlier
+  `@media(max-width:780px)` block (media queries carry no extra priority — same specificity, so
+  source order decides), so it wins at phone width too. On a `position:fixed;bottom:0` bar a
+  `margin-bottom` **lifts it off the bottom edge** and page content scrolls visibly through the
+  gap underneath. Shipped broken in v2.112.0; fixed by adding `margin:0` to the block's own
+  mobile `.tabs` rule. **Any property the desktop `.tabs` rule sets must be re-declared in the
+  mobile one**, not just the ones that look mobile-specific.
 - **Gotchas for future edits:** `.kpi` needs `background:none!important` +
   `-webkit-text-fill-color:currentColor!important` to undo the old gradient text-clip;
   `.bar>i` and `.expl` need `!important` to beat rules written earlier in the file; `.pill`
@@ -1226,7 +1234,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.112.0`) on every shippable change so installed apps auto-update
+  (current: `v2.112.1`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
