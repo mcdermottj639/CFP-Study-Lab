@@ -301,6 +301,51 @@ never appear). Three coordinated additions, all in `src/study-home.src.html` unl
 - **Scenario bank grew 2 → 8** (added FP511 cash-flow + fiduciary/conflicts, FP512 auto-PAP,
   disability-income, life-needs-analysis, Medicare/LTC) so `vcase`/`runScenario` feel substantial.
 
+### Classical restyle — the editorial layer (v2.112.0)
+The app's look was moved from soft "product UI" (gradients, pill tabs, big radii, drop
+shadows) to a **printed-page language**: flat warm paper, 2px rules instead of boxes, serif
+figures with tabular numerals, uppercase letterspaced kickers, and justified prose. Built from
+a Claude Design "CFP Study Redesign — Classical" mock.
+- **Where it lives:** ONE block at the very END of `FRESH_UI` in `scripts/build_index.mjs`,
+  marked `CLASSICAL — editorial restyle`. It is **purely additive** — it is appended last and
+  overrides the rules above without deleting any of them, so **deleting that one block returns
+  the app to the previous look**. No markup, content JSON, or engine JS was touched (verified:
+  the rebuilt `index.html` diff was **152 added lines, 0 deleted**, all CSS).
+- **The palette was deliberately NOT changed.** The design's own colours were rejected; every
+  existing token (`--bg`/`--card`/`--ink`/`--muted`/`--line`/`--brand`/`--good`/`--warn`/`--bad`
+  and the whole warm dark mode) is reused unchanged. The block adds only **`--serif`**
+  (`ui-serif`/Iowan Old Style/Georgia stack — system fonts, so no new vendored asset and the
+  offline rule holds), **`--rule`** (a firmer draw of `--line`: `#d9c9ae` light / `#4a3b2e` dark)
+  and **`--rad`** (6px, near-square).
+- **h1 stays Dancing Script** — it's the brand and the app icon; a script display face over a
+  serif body is a traditional editorial pairing. `h2`/`h3`, `.kpi` and `.flash` take the serif.
+- **`.sub` became the kicker** (11px, uppercase, .13em tracking). Two exceptions are carved out
+  because they are sentences, not labels: `#appHeader .sub` and `h2+.sub` (the Module-map line).
+  **If you add a `.sub` that is prose, put it directly after an `h1`/`h2` or it will uppercase.**
+- **Desktop nav is a ruled masthead** (serif tabs, accent underline on active); the **mobile
+  bottom icon bar is preserved** — the emoji `::before` icons are hidden on desktop only and
+  restored in the block's own `max-width:780px` query. `.tabs` keeps an opaque background
+  because it is `position:sticky`.
+- **Gotchas for future edits:** `.kpi` needs `background:none!important` +
+  `-webkit-text-fill-color:currentColor!important` to undo the old gradient text-clip;
+  `.bar>i` and `.expl` need `!important` to beat rules written earlier in the file; `.pill`
+  is left unbordered so inline status colours survive (inline style wins over the sheet).
+- **Three pre-existing defects were fixed in the same pass** (standing rule): the phone
+  overflow on the Study tab (`.row` was a flex item at `min-width:auto`, so the widest
+  `<select>`'s intrinsic width pushed it past the card — 3px before, 6px once borders went to
+  2px; fixed with `.row,.row>*{min-width:0}` + `max-width:100%` on fields), three `.pill`s
+  carrying an inline cold blue-grey (`#eef0f6`/`#f0f2f8`) left over from the original blue
+  design system, and the **Today's focus banner** (`renderTodayFocus`, v2.95.0) which hardcoded
+  `background:#f4ecdf` with no dark counterpart and so rendered as a bright cream panel with
+  its headline text invisible in dark mode.
+- **Verification harness worth re-running after any style change:** a headless pass over all
+  five tabs × light/dark that asserts (a) zero horizontal overflow at 390px and 1200px,
+  (b) zero console errors, (c) **no element with a light computed background AND light computed
+  text** (the light-on-light detector that found the focus-banner bug), and (d) a functional
+  smoke test — flashcard flip + SM-2 grade writes `S.cards`, quiz option click renders `.expl`
+  and logs an attempt, `#m/FP512/1` opens the Module Hub, `openCheatSheet` opens. Runtime data
+  counts are asserted too (579 cards / 421 MCQs / 8 scenarios / 32 MCQ generators / 579 tiers).
+
 ### Dark-mode overrides for late-added surfaces (v2.111.0)
 The freshUI dark palette in `build_index.mjs` overrides each hardcoded light background
 individually, so **any surface added to `src/study-home.src.html` after that palette was written
@@ -1181,7 +1226,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.111.0`) on every shippable change so installed apps auto-update
+  (current: `v2.112.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
