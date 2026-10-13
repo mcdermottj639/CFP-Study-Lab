@@ -5,14 +5,26 @@ One complete, installable, **fully offline** study app for the CFP® exam.
 Open it once in Safari, **Add to Home Screen**, and it runs full-screen like a
 native app — no App Store, no Apple Developer account, no Mac required.
 
+### Daily study coach — v2.113.0
+
+Start a 3, 10 or 25-minute guided session on **Today**. Review older material, learn a
+short lesson, apply it and practise explaining a concept to a fictional client. Sessions
+save automatically. Set weekly study/case goals and reminder preferences in **Settings**.
+Calendar reminders require importing the generated calendar event; in-app reminders
+stop after today's practice. No background push notifications are sent.
+
+Progress separates current-course learning, loaded exam coverage and delayed recall.
+Active time is measured from this version onward; earlier estimated hours are not
+reclassified as measured time. FP511/FP512 are loaded; later courses await materials.
+
 ### What's inside
 A single all-in-one app (FP511 + FP512) with:
 
 - **Dashboard** — exam countdown, study streak, "study this today," weak-topic targeting
 - **9 study modes** — flashcards, quiz, exam simulator, mock exam, scenario item-sets,
   calculator drills, ethics, key numbers, and exam tips
-- **336 flashcards + 288 practice questions** across FP511 & FP512
-- **Analytics** — mastery by module, confidence vs. accuracy, domain readiness by
+- **579 flashcards + 421 practice questions** across FP511 & FP512
+- **Analytics** — mastery by module, flashcard recall ratings, domain readiness by
   official exam weights, and a mistake journal
 - **Progress saved** on your device (`localStorage`)
 - **100% offline** — no external dependencies (Chart.js is bundled locally)
@@ -27,7 +39,7 @@ FP513–FP518 are scaffolded in the module map as "coming soon."
 2. Tap **Share** (the square with an ↑) → **Add to Home Screen** → **Add**.
 3. Launch **CFP Study** from the new icon — full-screen and works offline.
 
-Repeat on each device. Progress is stored per-device.
+Repeat on each device. Progress is stored per-device; optional GitHub Gist sync can merge progress between devices.
 
 ---
 

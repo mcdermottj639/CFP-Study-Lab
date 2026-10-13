@@ -12,11 +12,13 @@ import { readFileSync, writeFileSync } from 'node:fs';
 
 const SRC = process.argv[2] || 'src/study-home.src.html';
 const OUT = 'index.html';
-const APP_VERSION = 'v2.112.1';
+const APP_VERSION = 'v2.113.0';
 let html = readFileSync(SRC, 'utf8');
 
 const HEAD = `
 <!-- pwa:head -->
+<link rel="stylesheet" href="coach.css">
+<script src="coach-core.js"></script>
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#d0613a">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -114,6 +116,9 @@ const TOOLKIT = `
 <script src="mcq-why.js"></script>
 <script src="card-tiers.js"></script>
 <script src="flashcards.js"></script>
+<script src="coach-cases.js"></script>
+<script src="coach.js"></script>
+<script src="study-activity.js"></script>
 <script src="cfp-gist-sync.js"></script>
 <script>
 if('serviceWorker' in navigator){
@@ -156,7 +161,7 @@ const FIXES = [
   // Remove the Kyle "push to Kyle" card, keep the Settings card
   [
     /<section id="mobile" class="hidden">[\s\S]*?<h2>Settings<\/h2>/,
-    '<section id="mobile" class="hidden">\n    <div class="card">\n      <h2>Settings</h2>',
+    '<section id="mobile" class="hidden">\n    <div id="coachSettings" class="coach" style="margin-bottom:14px"></div>\n    <div class="card">\n      <h2>Settings</h2>',
   ],
   // Rename the now Settings-only tab
   ['<div class="tab" data-t="mobile">Mobile</div>', '<div class="tab" data-t="mobile">Settings</div>'],

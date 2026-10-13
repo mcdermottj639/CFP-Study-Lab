@@ -825,11 +825,13 @@ Definition: Any Occupation · Description: Disabled only if unable to perform AN
 
   • Own-occ — disabled if you can’t do your occupation, even if you work elsewhere. Broadest, most expensive (professionals).
 
-  • Modified own-occ / split — own-occ for a first period (e.g. 2–5 yrs), then converts to any-occ.
+  • Modified own-occ — disabled if you can’t perform your own occupation and do not work in another occupation.
 
   • Any-occ — disabled only if you can’t do any job you’re reasonably suited to. Narrowest private definition (group/blue-collar).
 
   • Social Security — strictest of all: unable to do any substantial gainful activity, expected to last ≥12 months or result in death.
+
+Split definition: the policy changes its disability definition after an initial period — for example, from own-occupation to modified-own or any-occupation. This is distinct from modified own-occupation.
 
 -- Elimination Period, Benefit Period & Renewability --
 

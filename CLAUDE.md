@@ -21,9 +21,80 @@ the UI — plus two long-form **Interactive Readers** reachable from the Modules
 
 - **Live URL:** https://mcdermottj639.github.io/CFP-Study-Lab/
 - **Repo:** `mcdermottj639/CFP-Study-Lab` (public — required for free GitHub Pages)
-- **Working branch:** `claude/cfp-study-lab-mobile-4q6qpf`. Deploys happen from `main`.
+- **Working branch for the coach release:** `codex/cfp-learning-coach-20261013`. Deploys happen from `main`.
 - The app is **standalone/offline**: no external CDNs, no analytics, no backend.
   Progress is saved per-device in `localStorage` key `cfpStudyHome.v1`.
+
+### Daily learning coach (v2.113.0)
+Jack approved the complete engagement proposal on October 13, 2026 ("Do it all").
+The **Today** tab now leads with a 3/10/25-minute guided session, saved resume,
+flexible weekly goals, a small comeback session after 3 missed days, and a weekly
+review. Free study and existing filters/instant feedback remain available.
+
+- `coach-core.js` is a dependency-free browser/Node module for local-calendar days,
+  review ranking/scheduling, weekly statistics, retention, reminder eligibility and
+  idempotent merges. `coach.js` owns the UI; `coach.css` follows the existing warm
+  palette; `coach-cases.js` contains ten original fictional client teach-backs with
+  exact links to the existing course readers and explicit self-check lists.
+- The build loads core in the head, then cases/UI/activity after module-content,
+  MCQ explanations and flashcards, **before** gist sync. All five assets are precached.
+- Guided sessions use 3, 6 or 13 distinct question families (subject to available
+  scoped questions), an explanation/recall card for 10/25 minutes, and a client
+  teach-back. Due questions are ranked first, then weak/unseen items; current course
+  and nearest outstanding deadline supply the focus. Existing calculation generators
+  supply varied numbers. Time budgets are estimates of session size, not countdowns
+  that force an answer. Never silently generate financial rules or missing courses.
+- State is additive under `S.coach`: settings, completed events, review records,
+  an active session, activeUpdatedAt, measured time segments and reminder skips.
+  Question snapshots and answers persist on every interaction. Completing a session
+  writes an active-session tombstone, so an older synced session does not resurrect it.
+  Merge uses unique attempt IDs where present; legacy entries are retained.
+- Reviews require a correct response on a **later local day** before counting as
+  retained. Same-day retries never raise retained counts. Correct later checks use
+  3/7/14/30-day intervals; misses return the following day. Due items are suggestions,
+  not gates. No confidence question was reintroduced. Standard quizzes also feed
+  the coach review queue. Three free-study answers/grades count a weekly study day;
+  repeated sessions that day do not inflate the day count.
+- Client explanations can be spoken aloud with an optional 60-second timer or typed.
+  Checklist coverage is **self-assessment**, never automated grading, exam accuracy,
+  or evidence of mastery. Notes stay in the same personal saved/synced progress.
+- `study-activity.js` measures visible activity in study flows/readers/decks, flushes
+  local time segments every ~15 seconds, excludes hidden/idle/suspended time, and
+  recognizes active audio. The 90-second inactivity cutoff resumes on interaction.
+  Cross-tab storage updates merge new records. Earlier 25-second-per-interaction
+  estimates are preserved as legacy activity counters, not relabeled measured time.
+  Reader/deck injection is shared via `scripts/inject_reader_theme.mjs` for future files.
+- Progress now calculates A/B/H from their **own** domain-tagged evidence. Coverage
+  recognizes stable generator keys. Per-domain exam evidence uses the most recent 100
+  tagged exam attempts. Course progress and loaded blueprint coverage are separate
+  from weighted full-exam progress; **none is a pass probability**. Old trend points
+  remain saved; only metric-version-2 snapshots appear in the new trend line.
+  The old confidence-vs-accuracy chart is replaced by flashcard recall-rating counts:
+  MCQs never supplied real confidence after the old confidence prompt was removed.
+- Weekly accuracy takes the first attempt for each distinct question key that week;
+  the UI explicitly says those questions may have been seen in previous weeks.
+- Settings support weekly study/case goals, default duration, reminder weekdays/time,
+  in-app reminder suppression after today's completed practice, and an ICS calendar
+  export. **No background push service or assistant automation was created.** Calendar
+  alerts require the user's import and are independent of app completion. Time uses
+  the device's local calendar; new installs do not invent an exam date. Existing dates
+  and all prior progress are preserved.
+- Source availability rechecked in Drive on October 13: only FP511/FP512 textbooks
+  and course slides are present; a search for FP513–518 returned none. Upcoming courses
+  stay visibly awaiting source material and contribute no coverage. Supplied 2026
+  course editions contain some 2025 figures; alignment to the user's particular exam
+  tax tables is **not verified**. Source/year detail is available in every guided step.
+- Corrected one reader inconsistency: FP512 disability's confused-definitions block
+  conflated modified own-occupation with a split definition. It now matches the same
+  reader's table and the audited textbook cards; e-reader exports were regenerated.
+
+Validation: `node --test tests/coach-core.test.cjs`; DOM integration requires `jsdom`
+(`NODE_PATH=<external-jsdom-node_modules> node --test tests/coach-dom.test.cjs`).
+16 tests cover timezones/DST, review retention, idempotent sync, session recovery,
+3/10/25-minute completion, case self-checks, safe notes, legacy saves, domain evidence,
+free-study behavior, active time, reminders and offline/source links. These are
+**DOM/engine checks, not rendered browser QA**. The browser plugin was unavailable in
+this implementation environment. No real user progress was read or modified by tests.
 
 ### Study engine / spaced repetition (SM-2)
 The Study tab's scheduler lives in `src/study-home.src.html`. Flashcards use a
@@ -471,9 +542,7 @@ self-grades: `accWeight()` = exam 1.15 · mcq/legacy 1.0 · card 0.5), and **Exa
 with weights **cov .30 / acc .40 / exam .30** renormalized over present signals (Exam only
 once taken), times a light **recency decay** (`daysSinceMod`, full ≤14d easing to a 0.85
 floor by ~90d). `readiness()` then **blueprint-weights** these across the 8 domains by `d.w`
-(unchanged). So module Exam scores now actually move the dashboard number. NOTE: accuracy/
-coverage/exam are tracked per **module (course)**, so the 3 FP511 domains (A/B/H) share one
-score — only the blueprint weights differ. Attempts now carry a **`src`** field
+(unchanged). So module Exam scores now actually move the dashboard number. Historical note: before v2.113.0, A/B/H shared course-level signals. The coach release now uses distinct domain-tagged evidence (see above). Attempts now carry a **`src`** field
 (`'exam'|'mcq'|'card'`); set in `mcqRunner.record` and `flashcards.js`.
 - **Dashboard:** `#readyDrivers` sub-line ("X% covered · Y% accuracy · Z% exam avg",
   thin-data flagged under 8 answers) via `readinessBreakdown()`; `#readyTrend` inline-SVG
@@ -1234,7 +1303,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.112.1`) on every shippable change so installed apps auto-update
+  (current: `v2.113.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.

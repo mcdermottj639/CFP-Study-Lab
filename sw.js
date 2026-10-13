@@ -1,5 +1,5 @@
 /* FP Study Lab — service worker (offline support) */
-const VERSION = 'v2.112.1';
+const VERSION = 'v2.113.0';
 const CORE_CACHE = `fpsl-core-${VERSION}`;
 const RUNTIME_CACHE = `fpsl-runtime-${VERSION}`;
 /* Infographics live in an UNVERSIONED cache so large images aren't re-downloaded
@@ -35,6 +35,11 @@ const CORE_ASSETS = [
   './vendor/fonts/dancing-script-latin-700-normal.woff2',
   './vendor/fonts/dancing-script-latin-400-normal.woff2',
   './flashcards.js',
+  './coach-core.js',
+  './coach-cases.js',
+  './coach.js',
+  './coach.css',
+  './study-activity.js',
   './module-content.js',
   './mcq-why.js',
   './card-tiers.js',

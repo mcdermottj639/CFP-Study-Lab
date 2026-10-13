@@ -24,7 +24,7 @@
   // grade -> {correct, conf} for the confidence-calibration analytics
   var CAL = { 0: { c: 0, conf: 1 }, 1: { c: 1, conf: 2 }, 2: { c: 1, conf: 3 }, 3: { c: 1, conf: 3 } };
 
-  function ymdNow() { return new Date().toISOString().slice(0, 10); }
+  function ymdNow() { return ymd(new Date()); }
 
   // Read-aloud helpers reuse the app's global TTS (defined in the source next to
   // mcqRunner). Return '' when unavailable so the deck degrades gracefully.
@@ -220,6 +220,7 @@
       var c = item.c;
       try {
         S.attempts.push({ mod: c.m, domain: c.d, topic: c.t, correct: cal.c, conf: cal.conf, ts: Date.now(), src: 'card' });
+        if(window.CFPCoach)window.CFPCoach.freeCredit();
         save();
       } catch (e) {}
       idx++; persist(); draw();

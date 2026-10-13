@@ -28,6 +28,12 @@ const RTBL = `<!-- ${RTBL_MARK} --><script src="../responsive-tables.js"></scrip
 for (const f of files) {
   let html = readFileSync(f, 'utf8');
   let changed = false;
+  if (!html.includes('study-activity-injected')) {
+    const at = html.lastIndexOf('</body>');
+    const activity = '<!-- study-activity-injected --><script src="../study-activity.js"></script>\n';
+    html = at < 0 ? html + activity : html.slice(0, at) + activity + html.slice(at);
+    changed = true;
+  }
 
   // Point any jsdelivr Chart.js / MathJax at local vendored copies (offline)
   const before = html;
