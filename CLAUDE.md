@@ -25,7 +25,7 @@ the UI — plus two long-form **Interactive Readers** reachable from the Modules
 - The app is **standalone/offline**: no external CDNs, no analytics, no backend.
   Progress is saved per-device in `localStorage` key `cfpStudyHome.v1`.
 
-### FP513 Investment Planning (v2.114.0) — active course
+### FP513 Investment Planning (v2.114.0–v2.114.1) — active course
 Jack passed FP512 and started FP513 (Nov 17 2026). Built from his directive "CLAUDE BUILD
 DIRECTIVE — CFP Study Lab FP513". FP513 is `status:"current"`; FP512 is `"done"`.
 - **Source.** College for Financial Planning *FP513 Investment Planning*, 2026 edition (385-page
@@ -71,6 +71,9 @@ DIRECTIVE — CFP Study Lab FP513". FP513 is `status:"current"`; FP512 is `"done
   `replace.json` rules may be course-scoped (`"m"`) — the FSA `$640→$660` rule is now FP512-only.
 - **Textbook issues found while authoring** (page refs, kept out of questions):
   `content/fp513/SOURCE-NOTES.md`.
+- **v2.114.1** (same day): Today's focus/coach hero re-render after `fp513-course.js` hooks install (the first
+  render had picked Module 4); version bumped because `sw.js` serves static assets cache-first, so a
+  changed JS file under an unchanged cache version would stay stale on installed devices.
 - **Cheap fixes shipped with it:** reader chrome drops Back/Home/Theme labels at ≤500px (was 430px;
   the search button was clipped on the folded Duo at 466px). Known leftover: at 320px the right-hand
   Teach/Podcast/Search group still overflows ~18px (all readers, pre-existing). `MODULES` still
