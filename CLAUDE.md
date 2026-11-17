@@ -63,7 +63,7 @@ Sports Hub's `duo.js` (v372–v378); detection rules and Safari scrolling rules 
   emulates the fold with CDP `displayFeature` — book 951×676 offset 475, seated 466×677 offset 339, seated
   1280×900, manual `?duo=book`, and flat 466/960/390 — 26 checks. The pipeline test's version check now
   compares `sw.js` VERSION with `APP_VERSION` instead of a pinned string.
-- **Not done:** Kaplan/AI slide decks don't load `duo.js` (flat only). Physical iPhone Duo not verified.
+- **Not done (SUPERSEDED v2.117.0 — decks now load duo):** ~~Kaplan/AI slide decks don't load `duo.js`~~. Physical iPhone Duo not verified.
 - **v2.115.1 (same day) — Jack's phone showed no change when folded.** WebKit: Viewport Segments + Device
   Posture are a developer preview behind Safari feature flags (https://webkit.org/blog/18486/), and Sports Hub
   v379 already saw Safari report no segment geometry on his phone. So: a visible **📖 Book** button (`#duoBtn`;
@@ -72,6 +72,42 @@ Sports Hub's `duo.js` (v372–v378); detection rules and Safari scrolling rules 
   portrait; tap again (✕ Single page) = `off`. Manual book/seated and posture-only `folded` (no segments)
   also split at the middle, but never on the folded outer screen. Header countdown shows "N days" on short
   screens (the label ran under ⋯), and the FP513 card's days badge clears the status strip.
+
+- **v2.117.0 (Nov 17 2026) — Duo finished across the app + Continue FP513 fix.** Jack: *"Finish the CFP Duo
+  experience consistently across the entire app"* and, for the book view, *"context-aware, so the two pages work
+  together"* (reading = contents | lesson; flashcards = question | answer; practice = question + choices |
+  explanation; calc = problem + inputs | formula + solution; Teach = outline + position | synced content; exam
+  review = topics + weak areas | explanations; analytics = modules + overview | detail).
+  - **Slide decks now load `duo.css`/`duo.js`** (all 18 `apps/*-slides.html`, `<!-- duo-injected -->` after
+    `deck-chrome.js`; `build_fp513_deck.mjs` inherits it from the FP512 AI shell). `IS_DECK` = `#rdrWrap` +
+    `.sect/.slide`, no tabs. Book/seated: `#duoToc` lists every `.sect` (LO/module label + title) with the current
+    section's `.slide` h3s nested; FP513 decks also show **Weak areas** (modules <70% with ≥2 answers + weakest LOs)
+    from `localStorage['cfp:fp513-weak']` — a read-only cache `fp513-course.js` `cacheWeak()` writes on each Today
+    render (never read by the app, never touches `S` or scoring). Tap a weak module → its section.
+  - **Collapsible contents:** "Full page ⇥" in the contents header sets `html.duo-wide` (text spans both pages);
+    `#duoTocBtn` "☰ Contents" in the bar brings the split back. In-memory only (temporary by design).
+  - **Persistent navigation:** tapping a tab/section highlights it instantly, scrolls the right page, and the
+    position (tab + section label) is saved per file in `localStorage['cfp:duo-pos:<file>']`; restored the next
+    time the book/seated view opens (a `#hash` deep link wins).
+  - **Teach mode:** the narrated block's section gets `.teach` ("🔊 teaching") on the left page and is kept in view;
+    while the player is up the contents/text use the hidden bar's space and clear the docked player.
+  - **Status areas:** with `html.pf-side-status` the reader/deck bar drops the top safe-area band (the Duo's icons
+    are a right-side strip) and keeps its right end clear; the book right page gets a float "notch" (`::before`,
+    `--duo-r` × 150/110px) so only its top-right corner steps around the icons; seated contents pad right.
+    `#duoBtn` is now hidden on the folded outer screen in readers/decks too (`#rdrChrome .rdr-cbtn` had beaten
+    `#duoBtn{display:none}`). Short screens (`html.duo-short`): tighter deck header/top padding.
+  - **Labels:** header countdown reads "N days to CFP exam" (short screens) / "days to CFP exam"; the FP513 card
+    badge reads "N days of Kaplan access" with the access end date in its title.
+  - **Calc spread:** right page placeholder says the formula, steps and solution open there after Check.
+  - **Continue FP513 bug (Jack's report):** `CFPCoach.launch` with a course override no longer resumes another
+    course's unfinished session — it is **parked** in `S.coach.parked[course]` (or `parked.mixed`), shown on the
+    coach home as "Saved … session · step N — Resume it" (`unpark`), and a parked session for the requested course
+    is resumed instead of building a new one. The plain Start button still resumes whatever is active. Course
+    sessions take due reviews **only from their own course**; the FP511/FP512 retention item was removed from
+    FP513 sessions. **Mixed review · all courses** (`launch(min,'mixed')`) holds cumulative review. `coach-core`
+    `normalize`/`merge` carry `parked` only when present (merge(x,x) stays idempotent). Regression test in
+    `tests/fp513-dom.test.cjs`.
+  - Tests: 47/47 node (`NODE_PATH=<jsdom@26>`), `tests/duo-browser.cjs` 51/51. Physical iPhone Duo not verified.
 
 ### FP513 Investment Planning (v2.114.0–v2.114.1) — active course
 Jack passed FP512 and started FP513 (Nov 17 2026). Built from his directive "CLAUDE BUILD
@@ -107,8 +143,8 @@ DIRECTIVE — CFP Study Lab FP513". FP513 is `status:"current"`; FP512 is `"done
   cumulative Forms A/B (Study → "FP513 practice forms"; static halves split by question hash,
   + 3 generated calc items; LO diagnostics after scoring). Wraps `renderDash`,
   `renderAnalytics` and `focusTarget` (FP513 focus follows course sequence, not weakest module).
-  `coach.js` calls `FP513COURSE.prioritize()` (due → missed → untested LO → new) and adds one
-  FP511/FP512 retention item to 10/25-min FP513 sessions.
+  `coach.js` calls `FP513COURSE.prioritize()` (due → missed → untested LO → new). (The FP511/FP512 retention
+  item in FP513 sessions was REMOVED in v2.117.0 — older courses live in Mixed review.)
 - **State:** `S.fp513 = {init, start, official[], forms[]}`; `fp513Activate()` runs once per
   save (sets `coursePassed.FP512=true` if unset and `courseDue.FP513='2027-02-15'` if unset).
   Deadline verified against Kaplan's "Online Access for Order" email (Nov 17 2026): every FP513
@@ -1413,7 +1449,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.116.0`) on every shippable change so installed apps auto-update
+  (current: `v2.117.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.

@@ -63,13 +63,21 @@
     var s = state(), scope = MCQ.filter(function (q) { return q.m === f.course && (!f.mod || moduleOf(q) === +f.mod); });
     if (!scope.length) scope = MCQ.filter(function (q) { return q.m === f.course; });
     var ranked = C.rankQuestions(scope, s, S.attempts), allRanked = C.rankQuestions(MCQ, s, S.attempts);
+    // v2.117.0: a course session reviews ONLY that course; other courses' overdue items live in Mixed review.
+    var duePool = (kind === 'mixed' ? allRanked : allRanked.filter(function (q) { return q.m === f.course; })).filter(function (q) { var r = s.reviews[C.key(q)]; return r && r.due <= C.day(); });
     // FP513: due reviews → missed FP513 → untested objectives → new material (fp513-course.js)
     if (f.course === 'FP513' && window.FP513COURSE) ranked = window.FP513COURSE.prioritize(ranked);
     var n = minutes === 3 ? 3 : minutes === 25 ? 13 : 6, reviewN = minutes === 25 ? 3 : (minutes === 3 ? 1 : 2);
     var used = {}, steps = [], chosen = chooseCase(f);
     function add(q, type) { var k = C.key(q); if (used[k]) return; used[k] = true; steps.push({ type: type, q: mcqFresh(q), originalKey: k, result: null }); }
+    if (kind === 'mixed') {   // cumulative review across every course: overdue first, then the weakest items anywhere
+      duePool.slice(0, n).forEach(function (q) { add(q, 'review'); });
+      allRanked.forEach(function (q) { if (steps.length < n) add(q, 'practice'); });
+      if (!steps.length) return null;
+      return { id: C.id('session'), minutes: minutes, kind: 'mixed', focus: { course: f.course, mod: f.mod, mixed: true }, steps: steps, index: 0, started: Date.now(), day: C.day(), paused: false };
+    }
     if (kind !== 'case-only') {
-      allRanked.filter(function (q) { var r = s.reviews[C.key(q)]; return r && r.due <= C.day(); }).slice(0, reviewN).forEach(function (q) { add(q, 'review'); });
+      duePool.slice(0, reviewN).forEach(function (q) { add(q, 'review'); });
       ranked.forEach(function (q) { if (steps.length < n) add(q, steps.length < reviewN ? 'warmup' : 'practice'); });
       if (minutes !== 3 && steps.length) {
         var cds = CARDS.filter(function (c) { return c.m === f.course && (!f.mod || moduleOf(c) === +f.mod); });
@@ -78,15 +86,28 @@
         if (card) steps.splice(Math.min(reviewN, steps.length), 0, { type: 'lesson', course: f.course, mod: f.mod, front: card.f, back: card.b, revealed: false });
       }
     }
-    // FP513 sessions of 10+ minutes keep one FP511/FP512 retention question (skipped if a review already came from those courses)
-    if (f.course === 'FP513' && minutes !== 3 && kind !== 'case-only' && window.FP513COURSE && !steps.some(function (x) { return x.q && x.q.m !== 'FP513'; })) { var rq = window.FP513COURSE.retentionPick(used); if (rq) add(rq, 'review'); }
+    // (v2.117.0) FP511/FP512 retention questions moved out of FP513 sessions into Mixed review.
     if ((minutes !== 3 || kind === 'case-only') && chosen) steps.push({ type: 'case', caseId: chosen.id, draft: '', checks: [], revealed: false });
     if (!steps.length) return null;
     return { id: C.id('session'), minutes: minutes, kind: kind || 'guided', focus: f, steps: steps, index: 0, started: Date.now(), day: C.day(), paused: false };
   }
+  // v2.117.0: an unfinished session belongs to its course. Asking for another course (Continue FP513)
+  // parks it under s.parked[course] instead of resuming it; the plain Start button still resumes.
+  function scopeOf(a) { return a ? (a.kind === 'mixed' ? 'mixed' : (a.focus && a.focus.course) || '') : ''; }
+  function park(s) { if (!s.active) return; var a = s.active; a.paused = true; a.parkedAt = Date.now(); s.parked = s.parked || {}; s.parked[scopeOf(a)] = a; s.active = null; }
+  function unpark(scope) {
+    var s = state(), p = s.parked && s.parked[scope]; if (!p) return false;
+    if (s.active) park(s);
+    delete s.parked[scope]; if (!Object.keys(s.parked).length) delete s.parked;
+    p.paused = false; s.active = p; touch(); location.hash = 'coach'; go('coach'); render(); return true;
+  }
   function launch(minutes, kind, override, replace) {
-    var s = state();
-    if (s.active && !replace) { resume(); toast('Resuming your saved session. Finish it or use Start fresh.'); return; }
+    var s = state(), want = kind === 'mixed' ? 'mixed' : (override && override.course) || '';
+    if (s.active && !replace) {
+      if (!want || scopeOf(s.active) === want) { resume(); toast('Resuming your saved ' + (scopeOf(s.active) === 'mixed' ? 'mixed review' : scopeOf(s.active)) + ' session. Finish it or use Start fresh.'); return; }
+      park(s);
+    }
+    if (want && !replace && unpark(want)) { toast('Resuming your saved ' + (want === 'mixed' ? 'mixed review' : want) + ' session.'); return; }
     var session = build(minutes, kind, override);
     if (!session) { toast('Add course questions before starting a session.'); return; }
     s.active = session; s.settings.minutes = minutes; s.settings.updatedAt = Date.now(); touch();
@@ -104,10 +125,12 @@
     el.innerHTML = '<div class="c-hero"><div class="c-eyebrow">Your daily study coach</div><h2>' + title + '</h2><p class="c-muted">' + esc(copy) + '</p>' +
       (!active ? '<div class="c-segments" aria-label="Session length">' + [3,10,25].map(function (n) { return '<button data-caction="minutes" data-value="' + n + '" aria-pressed="' + (mins === n) + '">' + n + ' min</button>'; }).join('') + '</div>' : '') +
       '<div class="c-row">' + btn(active ? 'resume' : 'start', active ? 'Resume session →' : st.comeback ? 'Start a 3-minute comeback →' : 'Start my session →', '', true) +
-      '<button class="c-link" data-caction="free">Free study</button></div><p class="c-muted" style="margin-bottom:0;font-size:11px">' + (mins === 3 ? 'Three questions. A clear finish.' : 'Review · learn · apply · explain. Time is approximate; pause whenever you need.') + '</p></div>' +
+      '<button class="c-link" data-caction="free">Free study</button><button class="c-link" data-caction="mixed">Mixed review · all courses</button></div><p class="c-muted" style="margin-bottom:0;font-size:11px">' + (mins === 3 ? 'Three questions. A clear finish.' : 'Review · learn · apply · explain. Time is approximate; pause whenever you need.') + '</p></div>' +
       '<div class="c-grid"><div class="c-card"><div class="c-eyebrow">This week</div><div class="c-flex"><h3 style="margin:0">' + st.days + ' of ' + goal + ' study days</h3><span class="c-chip">' + (st.goalMet ? 'Weekly goal met' : st.cases + '/' + s.settings.caseGoal + ' client cases') + '</span></div><div class="c-progress"><i style="width:' + pct + '%"></i></div><div class="c-dots">' + Array.from({length:7},function(_,i){var d=C.addDay(st.start,i),done=Object.values(s.completed).some(function(x){return x.day===d;});return '<span class="c-dot '+(done?'done':'')+'" title="'+d+'">'+['M','T','W','T','F','S','S'][i]+'</span>';}).join('') + '</div><p class="c-muted">' + (st.goalMet ? 'You reached your weekly practice target. Keep it light or explore a new case.' : 'A finished session or three free-study answers counts. Missed days never create a catch-up backlog.') + '</p><div class="c-row">' + btn('case', 'Practice a client conversation') + '</div></div>' +
       '<div class="c-card"><div class="c-eyebrow">Your learning is moving</div><div class="c-stats"><div class="c-stat"><b>'+st.minutes+'</b><span>active minutes this week</span></div><div class="c-stat"><b>'+st.recovered+'</b><span>missed concepts recalled later</span></div><div class="c-stat"><b>'+st.best+'</b><span>best week · study days</span></div></div><p class="c-muted">'+(st.n ? st.accuracy+'% on the first attempt per distinct question this week · '+st.n+' questions.' : 'Your first-attempt question results will appear here as you practice.')+'</p>'+btn('weekly','Open my weekly review')+'</div></div>';
-    if (st.due) el.innerHTML += '<div class="c-notice">'+st.due+' review items are available. Your next session takes a small selection; there is no requirement to clear them all.</div>';
+    Object.keys(s.parked || {}).forEach(function (k) { var p = s.parked[k]; el.innerHTML += '<div class="c-notice">Saved ' + esc(k === 'mixed' ? 'mixed review' : moduleName(p.focus.course, p.focus.mod)) + ' session · step ' + Math.min(p.index + 1, p.steps.length) + ' of ' + p.steps.length + ' kept for later. ' + btn('unpark', 'Resume it', 'data-value="' + esc(k) + '"') + '</div>'; });
+    if (st.due) { var fc = f && f.course, mine = 0, other = 0; Object.keys(s.reviews).forEach(function (k) { var r = s.reviews[k]; if (r && r.due <= C.day()) { if (r.course === fc) mine++; else other++; } });
+      el.innerHTML += '<div class="c-notice">' + (mine ? mine + ' ' + esc(fc) + ' review items — your next ' + esc(fc) + ' session takes a small selection. ' : '') + (other ? other + ' from earlier courses wait in ' + btn('mixed', 'Mixed review') + '. ' : '') + 'There is no requirement to clear them all.</div>'; }
     if (C.dueReminder(s,S.attempts)) el.innerHTML += '<div class="c-notice">Your study window is here. '+btn('start','Start a short session')+' '+btn('snooze','Skip today’s reminder')+'</div>';
   }
   function shell(label, html) {
@@ -198,7 +221,7 @@
     minutes:function(el){state().settings.minutes=Number(el.dataset.value);state().settings.updatedAt=Date.now();commit();home();},
     start:function(){var st=C.stats(state(),S.attempts);launch(st.comeback?3:state().settings.minutes);},
     resume:resume,pause:pause,home:function(){go('dash');location.hash='';},free:function(){go('study');},
-    case:function(){launch(10,'case-only');},weekly:weekly,settings:function(){go('mobile');settings();},
+    case:function(){launch(10,'case-only');},mixed:function(){launch(state().settings.minutes,'mixed');},unpark:function(el){unpark(el.dataset.value);},weekly:weekly,settings:function(){go('mobile');settings();},
     answer:function(el){answer(Number(el.dataset.value));},next:next,
     'lesson-reveal':function(){state().active.steps[state().active.index].revealed=true;touch();render();},
     'case-reveal':function(){state().active.steps[state().active.index].revealed=true;touch();render();},
@@ -213,7 +236,7 @@
   document.addEventListener('input',function(ev){if(ev.target.id==='coachDraft'&&state().active){var p=state().active.steps[state().active.index];if(p.type==='case'){p.draft=ev.target.value.slice(0,6000);touch();}}});
   document.addEventListener('change',function(ev){if(ev.target.matches('[data-coach-check]')&&state().active){var p=state().active.steps[state().active.index],n=Number(ev.target.dataset.coachCheck);p.checks=p.checks.filter(function(x){return x!==n;});if(ev.target.checked)p.checks.push(n);touch();}});
   document.addEventListener('click',function(ev){if(ev.target.closest('[data-coach-resource]')&&state().active){touch();sessionStorage.setItem('cfpCoachReturn','1');}});
-  window.CFPCoach={home:home,analytics:analytics,settings:settings,launch:launch,resume:resume,recordReview:recordReview,freeCredit:freeCredit,render:render,onNavigate:function(t){stopClock();if(t==='dash')home();if(t==='analytics')analytics();if(t==='mobile')settings();},recordFree:function(q,ok,at){recordReview(q,ok,at);freeCredit();}};
+  window.CFPCoach={home:home,unpark:unpark,analytics:analytics,settings:settings,launch:launch,resume:resume,recordReview:recordReview,freeCredit:freeCredit,render:render,onNavigate:function(t){stopClock();if(t==='dash')home();if(t==='analytics')analytics();if(t==='mobile')settings();},recordFree:function(q,ok,at){recordReview(q,ok,at);freeCredit();}};
   window.addEventListener('storage',function(ev){
     if(ev.key!=='cfpStudyHome.v1'||!ev.newValue)return;
     try{var incoming=JSON.parse(ev.newValue);if(!Array.isArray(incoming.attempts))return;S=mergeState(S,incoming);state();home();analytics();}catch(e){}

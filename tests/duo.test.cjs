@@ -31,6 +31,11 @@ test('duo.js parses, and the app, all readers and the service worker load it', (
     assert.ok(h.includes('<!-- duo-injected --><link rel="stylesheet" href="../duo.css"><script src="../duo.js"></script>'), r);
     assert.ok(h.lastIndexOf('duo-injected') > h.lastIndexOf('reader-theme.js'), r + ': runs after the reader chrome is built');
   }
+  for (const f of fs.readdirSync(path.join(root, 'apps')).filter((x) => /-slides\.html$/.test(x))) {
+    const h = read('apps/' + f);
+    assert.ok(h.includes('<!-- duo-injected --><link rel="stylesheet" href="../duo.css"><script src="../duo.js"></script>'), f + ' loads duo (v2.117.0)');
+    assert.ok(h.lastIndexOf('duo-injected') > h.lastIndexOf('deck-chrome.js'), f + ': after the deck bar is built');
+  }
   const sw = read('sw.js');
   assert.ok(sw.includes("'./duo.js'") && sw.includes("'./duo.css'"));
 });

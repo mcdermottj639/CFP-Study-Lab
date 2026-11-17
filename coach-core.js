@@ -22,6 +22,7 @@
     var b = blank(), x = v || {};
     Object.keys(b).forEach(function (k) { if (x[k] != null) b[k] = x[k]; });
     b.settings = Object.assign({}, blank().settings, x.settings || {});
+    if (x.parked) b.parked = x.parked;   // v2.117.0: unfinished sessions kept per course (only when present — merge stays idempotent)
     return b;
   }
   function merge(a, b) {
@@ -33,6 +34,11 @@
     });
     Object.keys(y.time).forEach(function (id) { if (!out.time[id] || y.time[id].ms > out.time[id].ms) out.time[id] = y.time[id]; });
     if (y.activeUpdatedAt > x.activeUpdatedAt) { out.active = y.active; out.activeUpdatedAt = y.activeUpdatedAt; }
+    if (x.parked || y.parked) {
+      out.parked = JSON.parse(JSON.stringify(x.parked || {}));
+      Object.keys(y.parked || {}).forEach(function (c) { var p = y.parked[c]; if (!out.parked[c] || (p.parkedAt || 0) > (out.parked[c].parkedAt || 0)) out.parked[c] = p; });
+      Object.keys(out.parked).forEach(function (c) { if (out.active && out.parked[c] && out.active.id === out.parked[c].id) delete out.parked[c]; });
+    }
     out.seeded = x.seeded || y.seeded;
     return out;
   }

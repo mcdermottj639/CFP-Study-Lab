@@ -32,6 +32,11 @@
   var FOLD_GAP = 24, MODE_KEY = 'cfp:duo-mode';
   var IS_APP = !!document.getElementById('dash');
   var IS_READER = !IS_APP && !!document.querySelector('.tab-nav .tab-btn, .tab-btn');
+  // Slide decks (apps/*-slides.html, v2.117.0): one long #rdrWrap page of .sect headers + .slide cards.
+  var IS_DECK = !IS_APP && !IS_READER && !!document.getElementById('rdrWrap') && !!document.querySelector('.sect, .slide');
+  var IS_DOC = IS_READER || IS_DECK;   // pages that get the contents | text book layout
+  var FILE = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
+  var POS_KEY = 'cfp:duo-pos:' + FILE, wide = false;   // wide = contents folded away, text across both pages
   var mode = 'auto';
   try {
     var q = (location.search.match(/[?&]duo=(book|seated|off|auto)\b/) || [])[1];
@@ -122,6 +127,8 @@
     if (!name && big && want === 'book' && wide) { name = 'book'; setVars('book', { right: W / 2 }, { left: W / 2 }); }
     if (!name && big && want === 'seated' && !wide) { name = 'seated'; setVars('seated', { bottom: H / 2 }, { top: H / 2 }); }
     root.classList.toggle('duo-big', big);
+    root.classList.toggle('duo-short', H <= 720 && W >= 420);
+    root.classList.toggle('duo-deck', IS_DECK);
     if (!name) setVars('', null, null);
     if (name) root.setAttribute('data-duo-pose', name); else root.removeAttribute('data-duo-pose');
     var changed = name !== current; current = name;
@@ -292,7 +299,7 @@
     var b = document.getElementById('duoBtn');
     if (!b) {
       b = document.createElement('button'); b.type = 'button'; b.id = 'duoBtn';
-      var host = IS_READER && window.__rdrChromeL;
+      var host = IS_DOC && window.__rdrChromeL;
       if (host) { b.className = 'rdr-cbtn'; host.appendChild(b); } else document.body.appendChild(b);
       b.addEventListener('click', function () {
         if (current) setMode('off'); else setMode(innerWidth > innerHeight ? 'book' : 'seated');
@@ -308,60 +315,186 @@
     b.title = (root.getAttribute('data-duo-diag') || '') + ' \u2014 tap to ' + (current ? 'go back to one page' : (wide ? 'split into two pages at the crease' : 'split top / bottom at the crease'));
   }
 
-  // ---------- reader layouts ----------
+  // ---------- reader + deck layouts: contents on the left page, text on the right ----------
   function readerHeads(panel) {
     if (!panel) return [];
     return Array.prototype.slice.call(panel.querySelectorAll('.collapsible-header, .ch'));
   }
   function headLabel(h) {
     var t = h.querySelector('h1,h2,h3,h4') || h;
-    return t.textContent.replace(/[\u2212\u2013\u2014+\-\u25B8\u25BE\u25B6\u25BC\u203A\u2039\u2606\u2605]/g, ' ').replace(/\bEXAM\b\s*$/, '').replace(/\s+/g, ' ').trim();
+    return t.textContent.replace(/[−–—+\-▸▾▶▼›‹☆★]/g, ' ').replace(/\bEXAM\b\s*$/, '').replace(/\s+/g, ' ').trim();
   }
   function isCollapsed(h) {
     var c = h.nextElementSibling;
     return !!(c && (c.classList.contains('collapsed') || c.classList.contains('closed')));
   }
+  function tocHead(title) {
+    return '<div class="duo-tochead"><div class="duo-eyebrow">' + esc(title) + '</div>' +
+      '<button type="button" class="duo-fold" data-duo-wide="1" title="Hide the contents and spread the text across both pages">Full page ⇥</button></div>';
+  }
+  // Exam review (FP513 decks): weak areas from the app's own FP513 evidence (cached by fp513-course.js).
+  function weakHtml() {
+    if (!/^fp513/.test(FILE)) return '';
+    var w = null; try { w = JSON.parse(localStorage.getItem('cfp:fp513-weak') || 'null'); } catch (e) {}
+    if (!w || !w.mods) return '<div class="duo-eyebrow duo-gap">Weak areas</div><div class="duo-none">Answer a few FP513 questions in the app and your weakest modules show here.</div>';
+    var rows = Object.keys(w.mods).map(function (m) { var x = w.mods[m]; return { m: +m, n: x.n, pct: x.n ? Math.round(100 * x.ok / x.n) : null }; })
+      .filter(function (r) { return r.n >= 2 && r.pct < 70; }).sort(function (a, b) { return a.pct - b.pct; }).slice(0, 4);
+    var los = (w.los || []).slice(0, 4);
+    if (!rows.length && !los.length) return '<div class="duo-eyebrow duo-gap">Weak areas</div><div class="duo-none">Nothing under 70% yet (needs 2+ answers).</div>';
+    return '<div class="duo-eyebrow duo-gap">Weak areas</div><div class="duo-weak">' +
+      rows.map(function (r) { return '<button type="button" data-duo-mod="' + r.m + '"><b>M' + r.m + '</b><span>' + r.pct + '%</span><i>' + r.n + ' answers</i></button>'; }).join('') +
+      los.map(function (l) { return '<button type="button" data-duo-mod="' + l.mod + '"><b>' + esc(l.id) + '</b><span>' + l.ok + '/' + l.n + '</span><i>' + esc(l.text) + '</i></button>'; }).join('') + '</div>';
+  }
+  function deckSections() {
+    return Array.prototype.slice.call(document.querySelectorAll('#rdrWrap .sect'));
+  }
+  function deckSlides(sect) {   // the slide cards that follow one section header, up to the next one
+    var out = [], n = sect.nextElementSibling;
+    while (n && !n.classList.contains('sect')) { var h = n.matches('.slide') ? n.querySelector('h3') : null; if (h) out.push(n); n = n.nextElementSibling; }
+    return out;
+  }
+  function deckToc(toc) {
+    var sects = deckSections(), cur = toc.__cur && toc.__cur.sect;
+    var title = ((document.querySelector('.deck-head h1, h1') || {}).textContent || 'Contents').trim();
+    var heads = [], html = tocHead(title) + weakHtml() + '<div class="duo-eyebrow duo-gap">Topics</div><ol class="duo-secs duo-decksecs">';
+    sects.forEach(function (sc) {
+      var lab = sc.querySelector('.lo'), h2 = sc.querySelector('h2'), i = heads.length; heads.push(sc);
+      html += '<li><button type="button" data-duo-sec="' + i + '"><small>' + esc(lab ? lab.textContent.trim() : '') + '</small>' + esc(h2 ? h2.textContent.trim() : headLabel(sc)) + '</button>';
+      if (sc === cur) {
+        var sl = deckSlides(sc);
+        if (sl.length) html += '<ol class="duo-sub">' + sl.map(function (s) { var j = heads.length; heads.push(s); return '<li><button type="button" data-duo-sec="' + j + '">' + esc(s.querySelector('h3').textContent.trim()) + '</button></li>'; }).join('') + '</ol>';
+      }
+      html += '</li>';
+    });
+    html += '</ol>';
+    toc.__heads = heads; toc.__tabs = [];
+    return html;
+  }
   function readerToc() {
     var toc = el('nav', 'duoToc', 'duo-toc'); toc.setAttribute('aria-label', 'Contents');
-    var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab-btn'));
-    var panel = document.querySelector('.section-panel.active, .panel.active');
-    var heads = readerHeads(panel);
-    var title = ((document.querySelector('.report-title h1, header h1, h1') || {}).textContent || 'Contents').trim();
-    var html = '<div class="duo-eyebrow">' + esc(title) + '</div><div class="duo-tabs">' +
-      tabs.map(function (b, i) { return '<button type="button" data-duo-tab="' + i + '" class="' + (b.classList.contains('active') ? 'on' : '') + '">' + esc(b.textContent.trim()) + '</button>'; }).join('') +
-      '</div><div class="duo-eyebrow duo-gap">In this tab</div><ol class="duo-secs">' +
-      heads.map(function (h, i) { return '<li><button type="button" data-duo-sec="' + i + '">' + esc(headLabel(h)) + '</button></li>'; }).join('') + '</ol>';
+    var html;
+    if (IS_DECK) html = deckToc(toc);
+    else {
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab-btn'));
+      var panel = document.querySelector('.section-panel.active, .panel.active');
+      var heads = readerHeads(panel);
+      var title = ((document.querySelector('.report-title h1, header h1, h1') || {}).textContent || 'Contents').trim();
+      html = tocHead(title) + '<div class="duo-tabs">' +
+        tabs.map(function (b, i) { return '<button type="button" data-duo-tab="' + i + '" class="' + (b.classList.contains('active') ? 'on' : '') + '">' + esc(b.textContent.trim()) + '</button>'; }).join('') +
+        '</div><div class="duo-eyebrow duo-gap">In this tab</div><ol class="duo-secs">' +
+        heads.map(function (h, i) { return '<li><button type="button" data-duo-sec="' + i + '">' + esc(headLabel(h)) + '</button></li>'; }).join('') + '</ol>';
+      toc.__heads = heads; toc.__tabs = tabs;
+    }
     if (toc.__html !== html) { toc.__html = html; toc.innerHTML = html; }
-    toc.__heads = heads; toc.__tabs = tabs;
     return toc;
   }
-  var tocT = 0;
-  function markToc() {
-    var toc = document.getElementById('duoToc'), wrap = document.getElementById('rdrWrap');
-    if (!toc || toc.hidden || !wrap || !toc.__heads) return;
-    var lim = wrap.getBoundingClientRect().top + 60, cur = -1;
-    toc.__heads.forEach(function (h, i) { var r = h.getBoundingClientRect(); if (r.height && r.top <= lim) cur = i; });
-    toc.querySelectorAll('[data-duo-sec]').forEach(function (b, i) { b.classList.toggle('now', i === cur); });
+  function scroller() { return document.getElementById('rdrWrap'); }
+  // Teach mode: the block being narrated carries .rt-hi — mark its section on the left page.
+  function teachHead(heads) {
+    var hi = document.querySelector('.rt-hi'); if (!hi || !document.body.classList.contains('rt-on')) return -1;
+    var best = -1;
+    heads.forEach(function (h, i) {
+      if (h === hi || h.contains(hi)) { best = i; return; }
+      var c = h.closest('.section-card') || h.parentElement;
+      if (!IS_DECK && c && c.contains(hi)) best = i;
+      if (IS_DECK && (h.compareDocumentPosition(hi) & Node.DOCUMENT_POSITION_FOLLOWING)) best = i;
+    });
+    return best;
   }
-  document.addEventListener('scroll', function () { if (!IS_READER || !current) return; clearTimeout(tocT); tocT = setTimeout(markToc, 80); }, true);
+  var tocT = 0, restored = false;
+  function markToc() {
+    var toc = document.getElementById('duoToc'), wrap = scroller();
+    if (!toc || toc.hidden || !wrap || !toc.__heads) return;
+    var lim = (current ? wrap.getBoundingClientRect().top : 0) + 32, cur = -1;
+    toc.__heads.forEach(function (h, i) { var r = h.getBoundingClientRect(); if (r.height && r.top <= lim) cur = i; });
+    var teach = teachHead(toc.__heads);
+    if (IS_DECK) {   // nested list follows the section you are in
+      var sects = deckSections(), cs = null;
+      for (var k = sects.length - 1; k >= 0; k--) { if (sects[k].getBoundingClientRect().top <= lim) { cs = sects[k]; break; } }
+      if (teach >= 0) { var th = toc.__heads[teach]; cs = th.classList.contains('sect') ? th : cs; }
+      if ((toc.__cur && toc.__cur.sect) !== cs) { toc.__cur = { sect: cs }; readerToc(); return markToc(); }
+    }
+    toc.querySelectorAll('[data-duo-sec]').forEach(function (b, i) { b.classList.toggle('now', i === cur); b.classList.toggle('teach', i === teach); });
+    var on = toc.querySelector(teach >= 0 ? '.teach' : '.now');
+    if (on && on !== toc.__on) { toc.__on = on; var tb = toc.getBoundingClientRect(), ob = on.getBoundingClientRect(); if (ob.top < tb.top + 40 || ob.bottom > tb.bottom - 20) on.scrollIntoView({ block: 'center' }); }
+    savePos(cur >= 0 ? toc.__heads[cur] : null);
+  }
+  // Remember where you were (tab + section) per reader/deck; restored the next time the book view opens.
+  function savePos(h) {
+    if (!h || !current) return;
+    var tabs = toc_tabs(), ti = -1;
+    tabs.forEach(function (b, i) { if (b.classList.contains('active')) ti = i; });
+    var lab = IS_DECK ? ((h.querySelector('h2,h3') || h).textContent.trim()) : headLabel(h);
+    try { localStorage.setItem(POS_KEY, JSON.stringify({ tab: ti, sec: lab, ts: Date.now() })); } catch (e) {}
+  }
+  function toc_tabs() { return Array.prototype.slice.call(document.querySelectorAll('.tab-btn')); }
+  function restorePos() {
+    if (restored || !current) return; restored = true;
+    if (/^#./.test(location.hash)) return;   // a deep link (Module Hub → reader tab) wins
+    var p = null; try { p = JSON.parse(localStorage.getItem(POS_KEY) || 'null'); } catch (e) {}
+    if (!p || !p.sec) return;
+    var tabs = toc_tabs();
+    if (p.tab >= 0 && tabs[p.tab] && !tabs[p.tab].classList.contains('active')) tabs[p.tab].click();
+    setTimeout(function () {
+      var heads = IS_DECK ? Array.prototype.slice.call(document.querySelectorAll('#rdrWrap .sect, #rdrWrap .slide')) : readerHeads(document.querySelector('.section-panel.active, .panel.active'));
+      var h = heads.filter(function (x) { return (IS_DECK ? ((x.querySelector('h2,h3') || x).textContent.trim()) : headLabel(x)) === p.sec; })[0];
+      if (h) goTo(h);
+    }, 60);
+  }
+  function goTo(h) {
+    if (!IS_DECK && isCollapsed(h)) h.click();
+    var t = IS_DECK ? h : (h.closest('.section-card') || h), w = scroller();
+    if (current && w) w.scrollTop += t.getBoundingClientRect().top - w.getBoundingClientRect().top - 8;
+    else t.scrollIntoView({ block: 'start' });
+    setTimeout(markToc, 120);
+  }
+  document.addEventListener('scroll', function () { if (!IS_DOC || !current) return; clearTimeout(tocT); tocT = setTimeout(markToc, 80); }, true);
+  function setWide(on) {
+    wide = !!on; root.classList.toggle('duo-wide', wide && !!current);
+    var b = document.getElementById('duoTocBtn'); if (b) { b.hidden = !(current && wide); }
+    setTimeout(markToc, 60);
+  }
+  function tocBtn() {   // "☰ Contents" — brings the left page back after Full page
+    var b = document.getElementById('duoTocBtn');
+    if (!b && window.__rdrChromeL) {
+      b = document.createElement('button'); b.type = 'button'; b.id = 'duoTocBtn'; b.className = 'rdr-cbtn';
+      b.innerHTML = '<span>☰</span><span class="rdr-lbl">Contents</span>'; b.hidden = true;
+      window.__rdrChromeL.appendChild(b);
+      b.addEventListener('click', function () { setWide(false); });
+    }
+    if (b) b.hidden = !(current && wide);
+  }
   function layoutReader() {
     var toc = document.getElementById('duoToc');
-    if (current) { toc = readerToc(); toc.hidden = false; markToc(); } else if (toc) toc.hidden = true;
+    if (current) { toc = readerToc(); toc.hidden = false; markToc(); restorePos(); } else if (toc) toc.hidden = true;
+    root.classList.toggle('duo-wide', wide && !!current);
+    tocBtn();
   }
   document.addEventListener('click', function (e) {
-    if (!IS_READER || !e.target.closest) return;
+    if (!IS_DOC || !e.target.closest) return;
     var toc = document.getElementById('duoToc'); if (!toc || !toc.contains(e.target)) return;
-    var t = e.target.closest('[data-duo-tab]'), s = e.target.closest('[data-duo-sec]');
-    if (t) { var b = toc.__tabs[+t.getAttribute('data-duo-tab')]; if (b) b.click(); var w = document.getElementById('rdrWrap'); if (w) w.scrollTop = 0; setTimeout(layoutReader, 30); }
+    if (e.target.closest('[data-duo-wide]')) { setWide(true); return; }
+    var t = e.target.closest('[data-duo-tab]'), s = e.target.closest('[data-duo-sec]'), m = e.target.closest('[data-duo-mod]');
+    if (t) {
+      var b = toc.__tabs[+t.getAttribute('data-duo-tab')]; if (b) b.click();
+      var w = scroller(); if (w) w.scrollTop = 0;
+      toc.querySelectorAll('[data-duo-tab]').forEach(function (x) { x.classList.toggle('on', x === t); });   // instant feedback
+      setTimeout(layoutReader, 30);
+    }
     if (s) {
       var h = toc.__heads[+s.getAttribute('data-duo-sec')];
-      if (h) { if (isCollapsed(h)) h.click(); (h.closest('.section-card') || h).scrollIntoView({ block: 'start' }); }
+      toc.querySelectorAll('[data-duo-sec]').forEach(function (x) { x.classList.toggle('now', x === s); });
+      if (h) { if (IS_DECK && h.classList.contains('sect')) toc.__cur = { sect: h }; goTo(h); }
+    }
+    if (m) {
+      var mod = m.getAttribute('data-duo-mod'), sc = deckSections().filter(function (x) { var l = x.querySelector('.lo'); return l && new RegExp('Module ' + mod + '\\b').test(l.textContent); })[0];
+      if (sc) { toc.__cur = { sect: sc }; goTo(sc); }
     }
   });
 
   function layout(changed) {
     if (IS_APP) layoutApp(changed);
-    if (IS_READER) layoutReader();
+    if (IS_DOC) layoutReader();
   }
 
   // ---------- watchers ----------
@@ -390,6 +523,10 @@
         var mo2 = new MutationObserver(function () { if (current === 'seated') renderTop(); else if (current === 'book') layoutApp(false); });
         [area, coach, ft].forEach(function (n) { if (n) mo2.observe(n, { childList: true, subtree: true }); });
       }
+      if (IS_DOC) {
+        var mo4 = new MutationObserver(function () { if (current) { clearTimeout(tocT); tocT = setTimeout(markToc, 120); } });
+        mo4.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+      }
       if (IS_READER) {
         var mo3 = new MutationObserver(function () { if (current) layoutReader(); });
         document.querySelectorAll('.section-panel, .panel').forEach(function (p) { mo3.observe(p, { attributes: true, attributeFilter: ['class'] }); });
@@ -403,5 +540,5 @@
     toggleBtn();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
-  window.CFPDuo = { decide: decide, setMode: setMode, mode: function () { return mode; }, pose: function () { return current; } };
+  window.CFPDuo = { decide: decide, setMode: setMode, setWide: setWide, mode: function () { return mode; }, pose: function () { return current; } };
 })();
