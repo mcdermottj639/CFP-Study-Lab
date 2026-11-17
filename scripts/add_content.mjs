@@ -129,9 +129,21 @@ if (existsSync(join(CONTENT_DIR, 'fixups.json'))) {
 let repl = 0;
 if (existsSync(join(CONTENT_DIR, 'replace.json'))) {
   const rules = JSON.parse(readFileSync(join(CONTENT_DIR, 'replace.json'), 'utf8'));
-  const fix = (s) => { let v = String(s); for (const r of rules) v = v.split(r.from).join(r.to); if (v !== String(s)) repl++; return v; };
-  cards.forEach((c) => { c.f = fix(c.f); c.b = fix(c.b); });
-  mcqs.forEach((q) => { q.q = fix(q.q); q.e = fix(q.e); if (Array.isArray(q.o)) q.o = q.o.map(fix); });
+  // A rule may be scoped to one course with "m" (e.g. "FP512"); unscoped rules apply everywhere.
+  const fix = (s, m) => { let v = String(s); for (const r of rules) if (!r.m || r.m === m) v = v.split(r.from).join(r.to); if (v !== String(s)) repl++; return v; };
+  cards.forEach((c) => { c.f = fix(c.f, c.m); c.b = fix(c.b, c.m); });
+  mcqs.forEach((q) => { q.q = fix(q.q, q.m); q.e = fix(q.e, q.m); if (Array.isArray(q.o)) q.o = q.o.map((o) => fix(o, q.m)); });
+}
+
+// Guard: a rebuild must never silently drop a course (content/manifest.json minimums).
+if (existsSync(join(CONTENT_DIR, 'manifest.json'))) {
+  const mins = JSON.parse(readFileSync(join(CONTENT_DIR, 'manifest.json'), 'utf8')).minimums || {};
+  const bad = [];
+  for (const [course, m] of Object.entries(mins)) {
+    const nc = cards.filter((c) => c.m === course).length, nq = mcqs.filter((q) => q.m === course).length;
+    if (nc < (m.cards || 0) || nq < (m.mcqs || 0)) bad.push(`${course}: ${nc}/${m.cards} cards, ${nq}/${m.mcqs} mcqs`);
+  }
+  if (bad.length) { console.error('REFUSING TO WRITE — course content below content/manifest.json minimums:\n  ' + bad.join('\n  ')); process.exit(2); }
 }
 
 html = setArray(html, 'CARDS', cards);

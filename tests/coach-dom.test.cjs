@@ -107,6 +107,9 @@ test('all new assets are offline-cached and case source tabs exist',()=>{
   const sw=fs.readFileSync(path.join(root,'sw.js'),'utf8');
   for(const f of ['coach.js','coach-core.js','coach.css','coach-cases.js','study-activity.js']){assert.ok(sw.includes("'./"+f+"'"));assert.ok(fs.existsSync(path.join(root,f)));}
   const vm=require('node:vm'),ctx={window:{}};vm.runInNewContext(fs.readFileSync(path.join(root,'coach-cases.js'),'utf8'),ctx);
-  assert.equal(ctx.window.CFP_CLIENT_CASES.length,10);
+  // v2.114.0: the 10 original FP511/FP512 cases are unchanged; FP513 adds 18 more (2 per module).
+  assert.equal(ctx.window.CFP_CLIENT_CASES.filter(c=>c.course!=='FP513').length,10);
+  assert.equal(ctx.window.CFP_CLIENT_CASES.filter(c=>c.course==='FP513').length,18);
+  assert.equal(new Set(ctx.window.CFP_CLIENT_CASES.map(c=>c.id)).size,ctx.window.CFP_CLIENT_CASES.length,'unique case ids');
   for(const c of ctx.window.CFP_CLIENT_CASES){const [file,hash]=c.source.split('#'),html=fs.readFileSync(path.join(root,file),'utf8');assert.ok(html.includes('data-tab="'+hash+'"'),c.id+' source tab');}
 });

@@ -25,6 +25,58 @@ the UI — plus two long-form **Interactive Readers** reachable from the Modules
 - The app is **standalone/offline**: no external CDNs, no analytics, no backend.
   Progress is saved per-device in `localStorage` key `cfpStudyHome.v1`.
 
+### FP513 Investment Planning (v2.114.0) — active course
+Jack passed FP512 and started FP513 (Nov 17 2026). Built from his directive "CLAUDE BUILD
+DIRECTIVE — CFP Study Lab FP513". FP513 is `status:"current"`; FP512 is `"done"`.
+- **Source.** College for Financial Planning *FP513 Investment Planning*, 2026 edition (385-page
+  PDF, private Drive `CFP → Textbooks`, id `1O9-CegTKxIpzOzzg4MmjZ4FVBIVJnyA_`). The Drive MCP
+  `read_file_content` stops at PDF page 146 and `download_file_content` refuses >10 MB; the rest
+  was read from the signed-in Drive viewer's text layer in Jack's Chrome. **Never commit the PDF
+  or extracted text** (repo is public). Verbatim-overlap check: `FP513_SRC=<private dir>
+  python3 content/fp513/validate.py mN` (rejects any 12-word run from the book).
+- **Content layout & build:** see `content/README.md` → "FP513". One command,
+  `node scripts/build_fp513.mjs` (`--check` in tests), generates `content/fp513*.json`,
+  `mcq-why-fp513.js` (separate file — `mcq-why.js` untouched), the `FP513-GEN` blocks in
+  `module-content.js` / `coach-cases.js`, `reader-teach.js`'s FP513 block, card tiers,
+  `apps/fp513-reading.html` (shell = FP512 reader head + injected body tail, own script in
+  `content/fp513/reader-script.js`), and `docs/fp513-coverage-matrix.md`.
+- **Counts:** 304 cards, 340 questions (22 integrated-case), 18 generator-backed math questions,
+  26 calc drills, 18 teach-backs, 81 Teach sections. Every one of the 48 LOs: ≥2 cards, ≥4
+  questions, a reader section with an `id="lo-x.y.z"` anchor.
+- **Items carry `lo`/`pg`/`k`.** `moduleOf()` falls back to `loModule()` (LO → module), so
+  `TOPIC_MOD.FP513` only lists the Module 9 topics. Module 9 is an ORIGINAL case (Calloway
+  family) — never import the textbook's Madison case or practice questions.
+- **Calc lab = `fp513-calc.js`** (loaded in `<head>`; `CALCGEN` = FP513 drills `.concat([...])`;
+  `MCQGEN` gets `fp513.*` generators). Drills return assumptions, tol, formula, subst, steps[],
+  errors[] (computed mistake values → `calcSolutionHtml()` names the mistake). Conventions match
+  the book: semiannual bonds; Macaulay duration with %ΔP ≈ −D·Δy/(1+y); sample SD; TEY
+  y/(1−t); DWR = IRR of investor flows. `tests/fp513-calc.test.cjs` checks every formula against a
+  second method. No calculator keystrokes are given (generic N, I/Y, PV, PMT, FV only).
+- **`fp513-course.js`**: Today FP513 card (current module = first with untested LOs; next LO;
+  Continue FP513 → `CFPCoach.launch(min,null,{course:'FP513',mod})`; reviews due; LO progress;
+  pacing plan from `S.fp513.start`), Analytics FP513 panel (tested / first-try / recalled-later /
+  calc / checkpoint per module, weak LOs, blueprint coverage, manual Kaplan score log),
+  cumulative Forms A/B (Study → "FP513 practice forms"; static halves split by question hash,
+  + 3 generated calc items; LO diagnostics after scoring). Wraps `renderDash`,
+  `renderAnalytics` and `focusTarget` (FP513 focus follows course sequence, not weakest module).
+  `coach.js` calls `FP513COURSE.prioritize()` (due → missed → untested LO → new) and adds one
+  FP511/FP512 retention item to 10/25-min FP513 sessions.
+- **State:** `S.fp513 = {init, start, official[], forms[]}`; `fp513Activate()` runs once per
+  save (sets `coursePassed.FP512=true` if unset and `courseDue.FP513='2027-02-15'` if unset).
+  Deadline verified against Kaplan's "Online Access for Order" email (Nov 17 2026): every FP513
+  component expires 2/15/2027. `mergeState` unions `fp513.official/forms` (idempotent).
+- **Protection:** card progress is index-based; FP513 cards are appended after the 579
+  FP511/FP512 cards, and `tests/fp513-pipeline.test.cjs` pins exact hashes of the old arrays.
+  `content/manifest.json` minimums make `add_content.mjs` refuse a lossy rebuild.
+  `replace.json` rules may be course-scoped (`"m"`) — the FSA `$640→$660` rule is now FP512-only.
+- **Textbook issues found while authoring** (page refs, kept out of questions):
+  `content/fp513/SOURCE-NOTES.md`.
+- **Cheap fixes shipped with it:** reader chrome drops Back/Home/Theme labels at ≤500px (was 430px;
+  the search button was clipped on the folded Duo at 466px). Known leftover: at 320px the right-hand
+  Teach/Podcast/Search group still overflows ~18px (all readers, pre-existing). `MODULES` still
+  names FP517 "Psychology" and has FP518 — the 2026 program is FP511–FP517 with FP517 = Financial
+  Plan Development; not changed (ids may be referenced in saved data).
+
 ### Daily learning coach (v2.113.0)
 Jack approved the complete engagement proposal on October 13, 2026 ("Do it all").
 The **Today** tab now leads with a 3/10/25-minute guided session, saved resume,
@@ -716,8 +768,8 @@ Taxonomy (the `d` domain code drives analytics / exam-weight readiness):
 | FP515 | Retirement | F | Retirement | 18% |
 | FP516 | Estate Planning | G | Estate | 10% |
 
-Current content: **FP511 + FP512 only** (~579 cards, ~421 MCQs), textbook-grounded
-and audited. All flashcards are atomic/list-shaped (see authoring rules above). **FP513–518 are "coming soon"** placeholders — the user has NO
+Current content: **FP511 + FP512 + FP513** (883 cards, 779 MCQs incl. 18 generated), textbook-grounded
+and audited. All flashcards are atomic/list-shaped (see authoring rules above). **FP514–518 are "coming soon"** placeholders — the user has NO
 textbooks for them yet and will drop each into the Google Drive `CFP` folder when
 available. `MODULES`/`DOMAINS` in the source already scaffold all 8.
 

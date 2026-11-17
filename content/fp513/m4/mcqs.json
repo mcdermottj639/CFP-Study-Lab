@@ -1,0 +1,740 @@
+[
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Bond Pricing",
+  "q": "Corinne is looking at a 15-year, $1,000 par bond with a 4% coupon paid semiannually. Comparable bonds now yield 5.5%. What is the bond's intrinsic value?",
+  "o": [
+   "$1,000.00",
+   "$1,152.79",
+   "$848.13",
+   "$849.44"
+  ],
+  "a": 2,
+  "e": "PV of semiannual coupons and par at the market yield. N = 30, I/YR = 5.5 (2 P/YR, so 2.75% per period), PMT = 40 &divide; 2 = 20, FV = 1,000 &rarr; PV = $848.13. Market rate above coupon, so a discount price is expected.",
+  "lo": "LO 4.1.1",
+  "pg": 128,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Bond Pricing",
+  "q": "Ten-year, 6% semiannual-coupon bond; seven years remain until maturity. Comparable seven-year bonds yield 4.5%; ten-year bonds yield 5%. What should the bond sell for today?",
+  "o": [
+   "$1,089.22",
+   "$1,119.73",
+   "$1,041.66",
+   "$1,000.00"
+  ],
+  "a": 0,
+  "e": "Price the bond on its remaining life using the yield for that maturity: N = 14, I/YR = 4.5 (2 P/YR), PMT = 30, FV = 1,000 &rarr; PV = $1,089.22. The coupon exceeds the market yield, so it sells at a premium.",
+  "lo": "LO 4.1.1",
+  "pg": 128,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Yield Relationships",
+  "q": "A callable bond is trading above par. Which ordering of its yields is correct, from highest to lowest?",
+  "o": [
+   "YTC, YTM, current yield",
+   "YTM, current yield, YTC",
+   "All three are equal",
+   "Current yield, YTM, YTC"
+  ],
+  "a": 3,
+  "e": "For a premium bond, current yield is highest; YTM is lower because it accounts for the premium shrinking to par; YTC is lowest because a call forces that loss sooner.",
+  "lo": "LO 4.1.1",
+  "pg": 130,
+  "k": "D.32",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Yield Relationships",
+  "q": "Paolo owns a callable corporate bond priced at $1,080. Which statements are correct?<br>I. Its current yield is above its YTM.<br>II. Its YTC is below its YTM.<br>III. Its coupon rate is below current market yields for comparable bonds.<br>IV. Being called would give him the lowest of the three yields.",
+  "o": [
+   "I and II only",
+   "I, II, and IV",
+   "III and IV only",
+   "I, II, III, and IV"
+  ],
+  "a": 1,
+  "e": "A $1,080 price is a premium, so CY &gt; YTM &gt; YTC and a call is the worst case (I, II, IV). A premium means the coupon is <i>above</i> market yields, so III is false.",
+  "lo": "LO 4.1.1",
+  "pg": 130,
+  "k": "D.32",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Bond Pricing",
+  "q": "Hal bought a 4% coupon bond at par. Comparable bonds now yield 5%. If Hal sells today, what best describes the sale?",
+  "o": [
+   "He sells above par because rates rose",
+   "He sells below par so the buyer earns about 5%",
+   "He sells at par; the coupon resets to 5%",
+   "He sells at par because the coupon is fixed"
+  ],
+  "a": 1,
+  "e": "Bond prices and rates move inversely. The coupon stays at 4%, so the only way a buyer earns the new 5% market yield is to pay less than par.",
+  "lo": "LO 4.1.1",
+  "pg": 129,
+  "k": "D.32",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Duration Price Change",
+  "q": "Nadia's bond is priced at $980, has a duration of 6.2 (annual compounding), and the current YTM is 5%. If rates rise 75 basis points, what is the estimated new price using the textbook's duration formula?",
+  "o": [
+   "$934.43",
+   "$1,023.40",
+   "$922.13",
+   "$936.60"
+  ],
+  "a": 3,
+  "e": "&Delta;P/P = &minus;D &times; [&Delta;y &divide; (1 + y)] = &minus;6.2 &times; (0.0075 &divide; 1.05) = &minus;4.43%. &minus;0.0443 &times; $980 = &minus;$43.40, so the price falls to about $936.60.",
+  "lo": "LO 4.1.2",
+  "pg": 138,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Duration Price Change",
+  "q": "A bond priced at $1,050 has a duration of 8.4 and a YTM of 6% (annual compounding). If rates fall 50 basis points, what is the approximate new price?",
+  "o": [
+   "$1,091.60",
+   "$1,008.40",
+   "$1,094.10",
+   "$1,133.21"
+  ],
+  "a": 0,
+  "e": "&Delta;P/P = &minus;8.4 &times; (&minus;0.0050 &divide; 1.06) = +3.96%. +0.0396 &times; $1,050 = +$41.60 &rarr; about $1,091.60.",
+  "lo": "LO 4.1.2",
+  "pg": 138,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Duration Price Change",
+  "q": "Using the textbook's semiannual-compounding convention, estimate the new price of a $1,000 bond with a duration of 5.0 and a 7% YTM if rates rise 1%.",
+  "o": [
+   "$953.27",
+   "$950.00",
+   "$951.69",
+   "$975.85"
+  ],
+  "a": 2,
+  "e": "Semiannual: halve the YTM in the denominator only. &minus;5.0 &times; (0.01 &divide; 1.035) = &minus;4.83%; $1,000 &times; (1 &minus; 0.0483) &asymp; $951.69.",
+  "lo": "LO 4.1.2",
+  "pg": 139,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Duration",
+  "q": "A three-year, $1,000 bond pays a 6% annual coupon and yields 7%, so it is priced at $973.76. Using the cash-flow method, what is its duration?",
+  "o": [
+   "3.00 years",
+   "2.76 years",
+   "2.00 years",
+   "2.83 years"
+  ],
+  "a": 3,
+  "e": "PV of flows at 7%: $56.07, $52.41, $865.28. Time-weighted: 56.07 + 2(52.41) + 3(865.28) = $2,756.71. Divide by price: 2,756.71 &divide; 973.76 = 2.83 years.",
+  "lo": "LO 4.1.2",
+  "pg": 137,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Duration",
+  "q": "All else equal, which bond has the highest duration?",
+  "o": [
+   "20-year 6% coupon bond",
+   "20-year zero-coupon bond",
+   "10-year zero-coupon bond",
+   "20-year 8% coupon bond"
+  ],
+  "a": 1,
+  "e": "Duration rises with maturity and falls as coupon rises. A zero's duration equals its maturity (20), longer than any coupon bond of that maturity.",
+  "lo": "LO 4.1.2",
+  "pg": 134,
+  "k": "D.32",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Duration",
+  "q": "Ms. Okafor will need the money in 9 years. All four AAA bonds below are available. Which best immunizes her against interest-rate risk?",
+  "o": [
+   "Bond A: 9-year maturity, duration 7.2",
+   "Bond C: 15-year maturity, duration 10.6",
+   "Bond B: 12-year maturity, duration 9.1",
+   "Bond D: 10-year maturity, duration 8.0"
+  ],
+  "a": 2,
+  "e": "Match duration, not maturity, to the time horizon. Bond B's 9.1-year duration is closest to her 9-year need.",
+  "lo": "LO 4.1.2",
+  "pg": 137,
+  "k": "D.32",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Duration",
+  "q": "An advisor strongly expects interest rates to drop over the next year. Which adjustment best positions a client's bond allocation?",
+  "o": [
+   "Raise the portfolio's average duration",
+   "Move into short-term bond funds",
+   "Favor high-coupon, short-maturity bonds",
+   "Lower duration to match risk tolerance"
+  ],
+  "a": 0,
+  "e": "When rates are expected to fall, higher-duration holdings deliver the largest price gains, so you lengthen duration. Shortening is the move when rates are expected to rise.",
+  "lo": "LO 4.1.2",
+  "pg": 132,
+  "k": "D.32",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Duration Price Change",
+  "q": "A short-term bond fund has a duration of 2.4 and yields 3.1%; a long-term fund has a duration of 12.9 and yields 4.4%. Using the rule of thumb, if rates jump 1%, about how many more percentage points would the long fund lose?",
+  "o": [
+   "1.3",
+   "15.3",
+   "10.5",
+   "5.4"
+  ],
+  "a": 2,
+  "e": "Rule of thumb: % change &asymp; &minus;duration &times; rate change. Short fund &asymp; &minus;2.4%; long fund &asymp; &minus;12.9%. Difference = 12.9 &minus; 2.4 = 10.5 points &mdash; the extra risk taken for 1.3 points more yield.",
+  "lo": "LO 4.1.2",
+  "pg": 131,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Convexity",
+  "q": "A noncallable bond with positive convexity has a duration of 6. Rates rise 2.5%, so duration alone predicts a 15% price drop. What is the actual drop most likely to be?",
+  "o": [
+   "Somewhat less than 15%",
+   "Exactly 15%",
+   "Somewhat more than 15%",
+   "About 2.5%"
+  ],
+  "a": 0,
+  "e": "Duration assumes a straight line. With positive convexity, duration overstates losses when rates rise and understates gains when they fall, so the actual decline is smaller than 15%.",
+  "lo": "LO 4.1.2",
+  "pg": 140,
+  "k": "D.32",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Convexity",
+  "q": "Rates are expected to fall sharply. Which holding is most likely to gain LESS than its duration predicts?",
+  "o": [
+   "A noncallable Treasury bond",
+   "A long zero-coupon bond",
+   "A low-coupon noncallable bond",
+   "A callable corporate bond"
+  ],
+  "a": 3,
+  "e": "Callable and mortgage-backed bonds have negative convexity: when rates fall they rise less than duration suggests, and when rates rise they fall more.",
+  "lo": "LO 4.1.2",
+  "pg": 141,
+  "k": "D.32",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Duration Price Change",
+  "q": "In the formula &Delta;P/P = &minus;D &times; [&Delta;y &divide; (1 + y)], what does y represent?",
+  "o": [
+   "The bond's coupon rate",
+   "The bond's current yield to maturity",
+   "The bond's current yield",
+   "The expected change in rates"
+  ],
+  "a": 1,
+  "e": "y is the current YTM (current market rate). The coupon is not needed because it is already reflected in the duration figure.",
+  "lo": "LO 4.1.2",
+  "pg": 138,
+  "k": "D.32",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Fundamental Analysis",
+  "q": "Which sequence describes top-down fundamental analysis?",
+  "o": [
+   "Company, then industry, then economy",
+   "Economy, then industry, then company",
+   "Economy, then company, then industry",
+   "Price trends, then volume, then company"
+  ],
+  "a": 1,
+  "e": "Top-down works from macro to micro: economic phase, then the industries expected to do best, then the best companies within them.",
+  "lo": "LO 4.2.1",
+  "pg": 148,
+  "k": "D.32",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Financial Ratios",
+  "q": "Brightwater Co. reports current assets of $450,000 (including $150,000 of inventory) and current liabilities of $300,000. What are its current ratio and quick ratio?",
+  "o": [
+   "1.0 and 1.5",
+   "1.5 and 0.5",
+   "0.67 and 1.0",
+   "1.5 and 1.0"
+  ],
+  "a": 3,
+  "e": "Current ratio = current assets &divide; current liabilities = 450,000 &divide; 300,000 = 1.5. Quick ratio = (450,000 &minus; 150,000) &divide; 300,000 = 1.0.",
+  "lo": "LO 4.2.1",
+  "pg": 150,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Technical Analysis",
+  "q": "Which is a core assumption of technical analysis?",
+  "o": [
+   "Prices move in trends that persist over time",
+   "Only rational behavior drives security prices",
+   "Ratio analysis reveals a stock's true value",
+   "Prices instantly reflect all public news"
+  ],
+  "a": 0,
+  "e": "Technicians assume supply and demand set prices, rational and irrational behavior both matter, and prices move in lasting trends because news reaches the market gradually.",
+  "lo": "LO 4.2.1",
+  "pg": 152,
+  "k": "D.34",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Technical Indicators",
+  "q": "The put-call ratio has spiked and mutual fund cash levels are unusually high. How would a contrarian read this?",
+  "o": [
+   "Bearish, following the crowd",
+   "Bearish, since cash signals weakness",
+   "Bullish, since the crowd is bearish",
+   "Neutral; contrarians use only odd-lots"
+  ],
+  "a": 2,
+  "e": "Contrarians do the opposite of the majority. Heavy put buying and high fund cash show bearish sentiment, so the contrarian turns bullish.",
+  "lo": "LO 4.2.1",
+  "pg": 153,
+  "k": "D.34",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Technical Indicators",
+  "q": "The gap between high-quality and lower-quality bond yields in the Barron's confidence index has narrowed. What does this indicate?",
+  "o": [
+   "A flight to quality; a bearish sign",
+   "Rising default rates; a bearish sign",
+   "Nothing; it tracks only Treasuries",
+   "Investor confidence; a bullish sign"
+  ],
+  "a": 3,
+  "e": "In confident markets investors sell high-grade bonds and buy lower-grade ones for yield (flight from quality), narrowing the spread. A widening spread is the bearish flight to quality.",
+  "lo": "LO 4.2.1",
+  "pg": 154,
+  "k": "D.34",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Analysis and MPT",
+  "q": "A client is convinced markets are semistrong-form efficient. According to the textbook, which form of analysis could help him beat the market?",
+  "o": [
+   "Technical analysis only",
+   "Neither technical nor fundamental",
+   "Fundamental analysis only",
+   "Both technical and fundamental"
+  ],
+  "a": 1,
+  "e": "Technical analysis is of no help in any EMH form. Fundamental analysis can help only in the weak form, so under semistrong efficiency neither adds value.",
+  "lo": "LO 4.2.1",
+  "pg": 155,
+  "k": "D.34",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Analysis and MPT",
+  "q": "Using fundamental analysis, an advisor concludes that Stock Q is undervalued after a steep drop. Which use of technical analysis does the textbook support?",
+  "o": [
+   "Replace the valuation with chart signals",
+   "Sell because the trend is down",
+   "Wait for rising on-balance volume to buy",
+   "Ignore technicians; they cannot move prices"
+  ],
+  "a": 2,
+  "e": "An MPT-minded advisor can use technical knowledge for execution timing, such as buying when on-balance volume starts rising or near support, since enough technicians act on these signals to move prices.",
+  "lo": "LO 4.2.1",
+  "pg": 156,
+  "k": "D.34",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Financial Leverage",
+  "q": "Halcyon Corp. has total assets of $800 million, liabilities of $300 million, net income of $60 million and dividends of $24 million. What is Halcyon's ROE?",
+  "o": [
+   "12.0%",
+   "7.5%",
+   "7.2%",
+   "20.0%"
+  ],
+  "a": 0,
+  "e": "Equity = assets &minus; liabilities = $800M &minus; $300M = $500M. ROE = net income &divide; equity = $60M &divide; $500M = 12.0%.",
+  "lo": "LO 4.2.2",
+  "pg": 160,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Dividend Growth Rate",
+  "q": "Using Halcyon's figures (ROE 12%, net income $60 million, dividends $24 million), what is its sustainable dividend growth rate?",
+  "o": [
+   "4.8%",
+   "12.0%",
+   "7.2%",
+   "4.5%"
+  ],
+  "a": 2,
+  "e": "Retention rate = ($60M &minus; $24M) &divide; $60M = 0.60. g = ROE &times; RR = 0.12 &times; 0.60 = 7.2%.",
+  "lo": "LO 4.2.2",
+  "pg": 160,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Financial Leverage",
+  "q": "Two firms each raise $40 million. Firm X uses all equity; Firm Y uses $15 million of equity and $25 million of debt. Each earns $4 million (ignore interest). What are their ROEs?",
+  "o": [
+   "X 10.0%, Y 26.7%",
+   "X 10.0%, Y 10.0%",
+   "X 10.0%, Y 16.0%",
+   "X 26.7%, Y 10.0%"
+  ],
+  "a": 0,
+  "e": "ROE = earnings &divide; equity. X: $4M &divide; $40M = 10.0%. Y: $4M &divide; $15M = 26.7%. Debt shrinks the equity base and magnifies ROE.",
+  "lo": "LO 4.2.2",
+  "pg": 151,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Dividend Growth Rate",
+  "q": "Juniper Inc. earns a steady 15% ROE. The board raises the dividend payout ratio from 30% to 60%. What happens to its sustainable growth rate?",
+  "o": [
+   "Rises from 4.5% to 9.0%",
+   "Stays at 15.0%",
+   "Falls from 10.5% to 4.5%",
+   "Falls from 10.5% to 6.0%"
+  ],
+  "a": 3,
+  "e": "g = ROE &times; retention. Before: 0.15 &times; 0.70 = 10.5%. After: 0.15 &times; 0.40 = 6.0%. Paying out more leaves less to reinvest, so growth slows.",
+  "lo": "LO 4.2.2",
+  "pg": 161,
+  "k": "D.32",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Financial Leverage",
+  "q": "Firm L has a 40% ROE, a 6% ROA and heavy long-term debt. Firm U has a 22% ROE, an 11% ROA and no debt. Which is likely to hold up better in a business contraction?",
+  "o": [
+   "Firm L, because its ROE is higher",
+   "Firm U, with no fixed interest to pay",
+   "Firm L, because debt lifts its EPS",
+   "They should fare about the same"
+  ],
+  "a": 1,
+  "e": "Leverage boosts ROE in good times, but fixed interest payments are hard to meet and debt is hard to pay down in a contraction. The unlevered firm carries no such burden.",
+  "lo": "LO 4.2.2",
+  "pg": 159,
+  "k": "D.32",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Financial Leverage",
+  "q": "A company's ROA is about one-seventh of its ROE. What does this most likely indicate?",
+  "o": [
+   "The company has no debt",
+   "The company is heavily leveraged",
+   "The company pays no dividends",
+   "The company's assets are undervalued"
+  ],
+  "a": 1,
+  "e": "A low ROA relative to ROE is a sign of high financial leverage: a small equity base makes modest asset returns look large to shareholders.",
+  "lo": "LO 4.2.2",
+  "pg": 159,
+  "k": "D.32",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Dividend Discount Models",
+  "q": "A preferred stock pays a fixed $4.25 annual dividend with no maturity. Ellen requires an 8.5% return. What is the most she should pay?",
+  "o": [
+   "$36.13",
+   "$54.25",
+   "$4.61",
+   "$50.00"
+  ],
+  "a": 3,
+  "e": "No-growth (perpetuity) model: V = D &divide; r = $4.25 &divide; 0.085 = $50.00. If quoted above $50, its yield is below 8.5% and it is overvalued for her.",
+  "lo": "LO 4.3.1",
+  "pg": 162,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Dividend Discount Models",
+  "q": "Arbor Co. just paid a $1.80 dividend, expected to grow 5% a year indefinitely. An investor requires 11%. What is the stock's intrinsic value?",
+  "o": [
+   "$31.50",
+   "$30.00",
+   "$11.81",
+   "$37.80"
+  ],
+  "a": 0,
+  "e": "Constant growth model: D<sub>1</sub> = $1.80 &times; 1.05 = $1.89. V = $1.89 &divide; (0.11 &minus; 0.05) = $31.50.",
+  "lo": "LO 4.3.1",
+  "pg": 163,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Dividend Discount Models",
+  "q": "Selma is offered Kestrel stock at $54. It just paid $2.40, dividends should grow 4% a year, and she requires 9%. What should she conclude?",
+  "o": [
+   "Undervalued; worth about $49.92",
+   "Overvalued; worth about $48.00",
+   "Overvalued; worth about $49.92",
+   "Undervalued; worth about $62.40"
+  ],
+  "a": 2,
+  "e": "V = $2.40 &times; 1.04 &divide; (0.09 &minus; 0.04) = $2.496 &divide; 0.05 = $49.92. Market price $54 exceeds intrinsic value, so the stock is overvalued and she should not buy at $54.",
+  "lo": "LO 4.3.1",
+  "pg": 170,
+  "k": "D.32",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Multistage DDM",
+  "q": "Wren Corp. just paid $1.40. Dividends should grow 8% a year for three years, then 3% indefinitely. The required return is 9%. Rounding each dividend to the cent, what is the intrinsic value?",
+  "o": [
+   "$30.17",
+   "$35.07",
+   "$24.03",
+   "$27.41"
+  ],
+  "a": 3,
+  "e": "D<sub>1</sub>=1.51, D<sub>2</sub>=1.63, D<sub>3</sub>=1.76; D<sub>4</sub>=1.76&times;1.03=1.81. P<sub>3</sub>=1.81&divide;(0.09&minus;0.03)=30.17. CF1=1.51, CF2=1.63, CF3=1.76+30.17=31.93; NPV at 9% = $27.41.",
+  "lo": "LO 4.3.1",
+  "pg": 165,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Free Cash Flow Valuation",
+  "q": "Pinecrest LLC pays no dividends. Its free cash flow to equity was $2.50 per share this year and should grow 4% a year. A client requires 12%. What is the intrinsic value per share?",
+  "o": [
+   "$31.25",
+   "$32.50",
+   "$16.25",
+   "$20.83"
+  ],
+  "a": 1,
+  "e": "V = FCFE<sub>0</sub>(1 + g) &divide; (r &minus; g) = $2.50 &times; 1.04 &divide; 0.08 = $2.60 &divide; 0.08 = $32.50.",
+  "lo": "LO 4.3.1",
+  "pg": 165,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Free Cash Flow Valuation",
+  "q": "Which model fits a profitable closely held company that has never paid a dividend and does not plan to?",
+  "o": [
+   "Constant growth dividend discount model",
+   "No-growth dividend discount model",
+   "Discounted free cash flow model",
+   "Multistage dividend discount model"
+  ],
+  "a": 2,
+  "e": "All three dividend discount models need dividends. With none expected, discount free cash flow to equity, the cash potentially available to pay dividends.",
+  "lo": "LO 4.3.1",
+  "pg": 165,
+  "k": "D.32",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Dividend Discount Models",
+  "q": "Which statements about the constant growth dividend discount model are correct?<br>I. The growth rate must be lower than the required return.<br>II. A higher required return lowers the stock's value.<br>III. It is best suited to companies in the growth phase.<br>IV. Next year's dividend equals D<sub>0</sub> &times; (1 + g).",
+  "o": [
+   "I, II, and IV",
+   "I and III only",
+   "II and IV only",
+   "I, II, III, and IV"
+  ],
+  "a": 0,
+  "e": "g must be below r (as g nears r, value explodes); raising r lowers value; D<sub>1</sub> = D<sub>0</sub>(1 + g). The Gordon model suits mature companies; the multistage model suits growth-phase firms, so III is false.",
+  "lo": "LO 4.3.1",
+  "pg": 163,
+  "k": "D.32",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "P/E and PEG Ratios",
+  "q": "Larkspur stock trades at $63 with EPS of $4.20. The industry P/E is 18. Using the industry multiple, what is its estimated value, and what does it suggest?",
+  "o": [
+   "$75.60; overvalued",
+   "$52.50; overvalued",
+   "$75.60; undervalued",
+   "$3.50; overvalued"
+  ],
+  "a": 2,
+  "e": "Larkspur's P/E = $63 &divide; $4.20 = 15, below the industry's 18. Estimated value V = EPS &times; P/E = $4.20 &times; 18 = $75.60, above the $63 price, so it looks undervalued.",
+  "lo": "LO 4.3.2",
+  "pg": 167,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "P/E and PEG Ratios",
+  "q": "A client is choosing among four stocks. By the PEG ratio, which looks most attractive?",
+  "o": [
+   "Cedar: P/E 12, growth 15%",
+   "Alder: P/E 24, growth 20%",
+   "Birch: P/E 15, growth 10%",
+   "Dogwood: P/E 10, growth 5%"
+  ],
+  "a": 0,
+  "e": "PEG = P/E &divide; g (whole number). Alder 24 &divide; 20 = 1.20; Birch 15 &divide; 10 = 1.50; Cedar 12 &divide; 15 = 0.80; Dogwood 10 &divide; 5 = 2.00. Cedar is lowest and under 1.00.",
+  "lo": "LO 4.3.2",
+  "pg": 168,
+  "k": "D.32",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "P/FCF and P/S Ratios",
+  "q": "A stock's earnings are expected to grow 6% and the investor requires 11%. Using the textbook formula, what is its price-to-free-cash-flow ratio?",
+  "o": [
+   "20.0",
+   "6.24",
+   "9.64",
+   "21.2"
+  ],
+  "a": 3,
+  "e": "P/FCF = (1 + g) &divide; (r &minus; g) = 1.06 &divide; (0.11 &minus; 0.06) = 1.06 &divide; 0.05 = 21.2.",
+  "lo": "LO 4.3.2",
+  "pg": 168,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "P/FCF and P/S Ratios",
+  "q": "Thistle stock trades at $42 with sales of $12 per share. Its peers average a P/S of 4.8. What is Thistle's P/S, and what does it suggest?",
+  "o": [
+   "3.5; possibly overvalued",
+   "3.5; possibly undervalued",
+   "0.29; possibly undervalued",
+   "4.8; fairly valued"
+  ],
+  "a": 1,
+  "e": "P/S = price per share &divide; sales per share = $42 &divide; $12 = 3.5. Below the peer average of 4.8 suggests a possible value buy.",
+  "lo": "LO 4.3.2",
+  "pg": 169,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Valuation Method Types",
+  "q": "Which of these is a relative value method rather than an intrinsic value method?",
+  "o": [
+   "Multistage dividend discount model",
+   "Price-to-earnings divided by growth",
+   "No-growth dividend discount model",
+   "Discounted free cash flow model"
+  ],
+  "a": 1,
+  "e": "Relative (comparison) methods: P/E, PEG, P/FCF and P/S. Intrinsic (stand-alone) methods: the three dividend discount models and the discounted free cash flow model.",
+  "lo": "LO 4.3.2",
+  "pg": 169,
+  "k": "D.32",
+  "kind": "concept"
+ }
+]

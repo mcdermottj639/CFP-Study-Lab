@@ -1,0 +1,794 @@
+[
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Common Stock Basics",
+  "q": "From the issuing corporation's point of view, which statement best describes raising capital with common stock instead of bonds?",
+  "o": [
+   "It avoids fixed payments, but dividends are not tax-deductible",
+   "It avoids fixed payments, and dividends are tax-deductible",
+   "It requires fixed payments, but dividends are tax-deductible",
+   "It requires fixed payments, and interest is tax-deductible"
+  ],
+  "a": 0,
+  "e": "Equity's corporate advantage is that it needs no fixed payments that could drain operating cash. Its corporate disadvantage is that dividends are not deductible, whereas bond interest is. Because stock lacks a fixed return, equity investors demand a higher expected return than bondholders.",
+  "lo": "LO 3.1.1",
+  "pg": 77,
+  "k": "D.27",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Common Stock Types",
+  "q": "Rafael, age 61, plans to retire in two years and fears a recession. He wants to add one stock whose results depend least on the business cycle. Which is the best fit?",
+  "o": [
+   "A national automaker",
+   "A regional grocery chain",
+   "A casual-dining restaurant chain",
+   "An emerging robotics developer"
+  ],
+  "a": 1,
+  "e": "Defensive stocks, such as grocery chains, sell everyday necessities, so demand holds up in recessions. They grow slowly but steadily and tend to gain favor in downturns, which fits Rafael's concern.",
+  "lo": "LO 3.1.1",
+  "pg": 78,
+  "k": "D.29",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Equity Risks",
+  "q": "Brightway Corp. pays for a large expansion by issuing new bonds rather than new shares. Which risk to Brightway's stockholders increases most directly?",
+  "o": [
+   "Market risk",
+   "Business risk",
+   "Financial risk",
+   "Interest rate risk"
+  ],
+  "a": 2,
+  "e": "Financial risk is tied to how a firm acquires its assets. Choosing debt over equity adds leverage and raises financial risk for shareholders.",
+  "lo": "LO 3.1.1",
+  "pg": 79,
+  "k": "D.28",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Rights and Warrants",
+  "q": "Lena pays $2 per share for warrants that let her buy 80 shares of Corvex at $25 per share any time in the next four years. Corvex rises to $31 and she exercises. Ignoring commissions, what is her profit?",
+  "o": [
+   "$160",
+   "$320",
+   "$480",
+   "$640"
+  ],
+  "a": 1,
+  "e": "Profit = (gain on stock &minus; warrant cost) &times; shares. Gain per share = $31 &minus; $25 = $6. Profit = ($6 &minus; $2) &times; 80 = $320.",
+  "lo": "LO 3.1.1",
+  "pg": 81,
+  "k": "D.27",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Rights and Warrants",
+  "q": "Which feature is typical of a warrant but NOT of a subscription right?",
+  "o": [
+   "An exercise price below the stock's market price at issue",
+   "A life of only a few weeks before it expires",
+   "An offer to existing holders to keep their ownership share",
+   "An exercise price above the stock's market price at issue"
+  ],
+  "a": 3,
+  "e": "Warrants are long-term, are usually priced above market when issued, and are typically attached as a sweetener to a bond or preferred issue. Rights are short-term, priced below market, and go to existing holders.",
+  "lo": "LO 3.1.1",
+  "pg": 81,
+  "k": "D.27",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Rights and Warrants",
+  "q": "Which statement correctly contrasts a warrant with an exchange-listed call option?",
+  "o": [
+   "The issuing company creates the warrant and customizes its terms",
+   "The warrant usually expires within nine months of issue",
+   "The warrant's terms are standardized by the Options Clearing Corporation",
+   "The warrant is written by an individual investor, not the company"
+  ],
+  "a": 0,
+  "e": "A warrant is issued by the corporation with terms tailored to the issuer and buyer, and it usually runs several years. A listed call is written by an individual, has standardized OCC terms, and normally expires within nine months.",
+  "lo": "LO 3.1.1",
+  "pg": 80,
+  "k": "D.27",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Cash Dividends",
+  "q": "Which of the following defines the ex-dividend date?",
+  "o": [
+   "The day the board of directors announces the dividend amount",
+   "The day the dividend is actually paid to shareholders",
+   "The first trading day on which a buyer does not get the declared dividend",
+   "The day the company's books are checked to list owners entitled to it"
+  ],
+  "a": 2,
+  "e": "The ex-dividend date is the first day a security trades without the right to the already-declared dividend. A buyer must purchase before that date to be a shareholder of record.",
+  "lo": "LO 3.2.1",
+  "pg": 83,
+  "k": "D.27",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Cash Dividends",
+  "q": "Mateo wants to receive the next quarterly dividend on Halvern Corp. stock. Halvern's ex-dividend date is a Wednesday. Which purchase qualifies him for the dividend?",
+  "o": [
+   "Buying on Wednesday at the market open",
+   "Buying on Wednesday just before the close",
+   "Buying on Thursday, the day after the ex-dividend date",
+   "Buying on Tuesday, the day before the ex-dividend date"
+  ],
+  "a": 3,
+  "e": "To be a shareholder of record, an investor must buy before the ex-dividend date. A purchase on or after the ex-dividend date, at any time of day, does not qualify.",
+  "lo": "LO 3.2.1",
+  "pg": 83,
+  "k": "D.27",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Stock Dividends and Splits",
+  "q": "Tallis Inc. is worth $24 million and has 2 million shares outstanding. It declares a 20% stock dividend. What should the share price be afterward, all else equal?",
+  "o": [
+   "$9.60",
+   "$10.00",
+   "$12.00",
+   "$14.40"
+  ],
+  "a": 1,
+  "e": "Price before = $24,000,000 &divide; 2,000,000 = $12. Shares after = 2,000,000 &times; 1.20 = 2,400,000. Company value is theoretically unchanged, so price = $24,000,000 &divide; 2,400,000 = $10.",
+  "lo": "LO 3.2.1",
+  "pg": 85,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Stock Dividends and Splits",
+  "q": "Priya owns 200 shares of Norland Co. that she bought at $45 each. The stock trades at $90 when Norland does a 3-for-2 split. Immediately afterward, what does she hold?",
+  "o": [
+   "300 shares at $60; basis $30 per share",
+   "300 shares at $60; basis $45 per share",
+   "400 shares at $45; basis $22.50 per share",
+   "300 shares at $90; basis $30 per share"
+  ],
+  "a": 0,
+  "e": "3-for-2 means 3 new shares for every 2 held: 200 &times; 3 &divide; 2 = 300 shares. Price = $90 &times; 2 &divide; 3 = $60 (value stays $18,000). Basis per share = $9,000 &divide; 300 = $30. A split is not taxable.",
+  "lo": "LO 3.2.1",
+  "pg": 86,
+  "k": "E.41",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Dividend Taxation",
+  "q": "For a common-stock dividend to receive qualified (long-term capital gain) rates, how long must the shareholder have held the stock?",
+  "o": [
+   "More than 12 months before the dividend payment date",
+   "At least 30 days in the 61-day window centered on the record date",
+   "More than 60 days in the 121-day window starting 60 days before the ex-dividend date",
+   "More than 60 days in the 121-day window starting on the record date"
+  ],
+  "a": 2,
+  "e": "Qualified dividends must come from a domestic or qualified foreign corporation, and the stock must be held more than 60 days in the 121-day period that begins 60 days before the ex-dividend date (2026 edition figure). They are then taxed at 0%, 15% or 20% (2026 edition figure).",
+  "lo": "LO 3.2.1",
+  "pg": 84,
+  "k": "D.27",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Dividend Reinvestment Plans",
+  "q": "Hal has $1,200 of dividends reinvested through his employer's DRIP this year. What is the tax result?",
+  "o": [
+   "No tax is due until he sells the shares bought with the dividends",
+   "Tax is due on the $1,200 now, but his basis does not change",
+   "No tax is due now, and his basis rises by $1,200",
+   "Tax is due on the $1,200 now, and his basis rises by $1,200"
+  ],
+  "a": 3,
+  "e": "Dividends reinvested through a DRIP are taxed the same as cash dividends. Unlike cash dividends, the reinvested amount also increases the investor's tax basis.",
+  "lo": "LO 3.2.1",
+  "pg": 84,
+  "k": "D.27",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Stock Dividends and Splits",
+  "q": "Corin Corp. pays a 10% stock dividend, and shareholders have no option to take cash instead. What is the federal income tax result for a shareholder?",
+  "o": [
+   "No tax now; existing basis is spread over more shares",
+   "Taxed now as a qualified dividend at the new shares' value",
+   "Taxed now as ordinary income at the new shares' value",
+   "No tax now; the new shares have a zero basis"
+  ],
+  "a": 0,
+  "e": "A stock dividend is generally not taxable unless the holder could elect cash (constructive receipt). The shareholder's total basis stays the same and is spread over the larger number of shares, so basis per share falls.",
+  "lo": "LO 3.2.1",
+  "pg": 85,
+  "k": "E.41",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Net Asset Value",
+  "q": "The Aldergrove Fund holds securities worth $46.1 million and cash of $2.4 million, owes $1.3 million in liabilities, and has 2.36 million shares outstanding. What is its NAV per share?",
+  "o": [
+   "$18.98",
+   "$19.53",
+   "$20.00",
+   "$20.55"
+  ],
+  "a": 2,
+  "e": "NAV per share = (total assets &minus; liabilities) &divide; shares. Assets = $46.1M + $2.4M = $48.5M. NAV = $48.5M &minus; $1.3M = $47.2M. Per share = $47.2M &divide; 2.36M = $20.00.",
+  "lo": "LO 3.3.1",
+  "pg": 87,
+  "k": "D.27",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Net Asset Value",
+  "q": "Claire enters an order at 11:15 a.m. ET to buy shares of an open-end mutual fund. What price will she pay, before any sales load?",
+  "o": [
+   "The NAV computed at the prior day's close",
+   "The NAV computed after that day's market close",
+   "The fund's NAV at the moment her order is entered",
+   "A market price set by supply and demand on an exchange"
+  ],
+  "a": 1,
+  "e": "Mutual fund orders are filled at the next NAV calculated after the order is placed (forward pricing). Most funds calculate NAV after the 4:00 p.m. ET NYSE close.",
+  "lo": "LO 3.3.1",
+  "pg": 87,
+  "k": "D.27",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Share Classes and Fees",
+  "q": "Gwen, age 40, will put a large sum into one fund family and expects to hold it for more than 20 years. Which share class generally gives her the lowest total cost?",
+  "o": [
+   "Class B shares with a contingent deferred sales charge",
+   "Class C shares with a level asset-based load",
+   "Whichever class has the smallest up-front charge",
+   "Class A shares with a front-end load"
+  ],
+  "a": 3,
+  "e": "Class A shares charge the commission up front but generally have the lowest total cost structure, which makes them more suitable for long holding periods.",
+  "lo": "LO 3.3.1",
+  "pg": 88,
+  "k": "D.27",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Bond Fund Types",
+  "q": "Teresa, an Oregon resident in a high tax bracket, wants bond fund income that is free of both federal and Oregon income tax. Which fund best fits?",
+  "o": [
+   "An Oregon single-state municipal bond fund",
+   "A national municipal bond fund",
+   "A GNMA mortgage-backed securities fund",
+   "An investment-grade corporate bond fund"
+  ],
+  "a": 0,
+  "e": "A single-state municipal fund holds bonds from one state, so residents of that state get income free of both federal and state tax (double tax exempt). Out-of-state residents usually avoid such funds because they can't use the state exemption.",
+  "lo": "LO 3.3.1",
+  "pg": 92,
+  "k": "D.27",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Bond Fund Types",
+  "q": "Nolan, an Ohio resident, received $2,400 of interest from a national municipal bond fund. The fund reports that 15% of its interest came from Ohio issuers. How much of Nolan's interest is generally exempt from Ohio income tax?",
+  "o": [
+   "$0",
+   "$360",
+   "$2,040",
+   "$2,400"
+  ],
+  "a": 1,
+  "e": "A national muni fund's interest is free of federal tax, but most is subject to state tax. The portion from the investor's own state is generally state-exempt: $2,400 &times; 15% = $360.",
+  "lo": "LO 3.3.1",
+  "pg": 92,
+  "k": "D.27",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Hybrid and Target Funds",
+  "q": "What does a target-date (lifecycle) fund's glide path describe?",
+  "o": [
+   "A fixed risk level the investor picks: conservative, moderate or growth",
+   "Moving up to 100% into stocks, bonds or cash based on forecasts",
+   "Its gradual shift from stocks toward bonds and cash as the target year nears",
+   "Holding about 60% stocks and 40% bonds at all times"
+  ],
+  "a": 2,
+  "e": "A lifecycle (target-date) fund aims at a retirement year and becomes more conservative over time by cutting stocks and adding bonds and cash. That planned path is its glide path.",
+  "lo": "LO 3.3.1",
+  "pg": 96,
+  "k": "D.31",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Closed-End Funds",
+  "q": "Which feature distinguishes a closed-end fund from an open-end mutual fund?",
+  "o": [
+   "It continuously issues new shares to meet investor demand",
+   "Investors redeem their shares directly with the fund at NAV",
+   "Its share count rises and falls daily with purchases and redemptions",
+   "Its shares trade on an exchange and can sell above or below NAV"
+  ],
+  "a": 3,
+  "e": "After its IPO a closed-end fund generally issues no new shares. Its shares trade like stock, so supply and demand can push the price to a premium or discount to NAV. They can also be bought on margin or sold short.",
+  "lo": "LO 3.3.1",
+  "pg": 98,
+  "k": "D.27",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Unit Investment Trusts",
+  "q": "Which statement about unit investment trusts (UITs) is correct?",
+  "o": [
+   "Unit holders are taxed each year on income and gains passed through",
+   "A board of directors oversees the trust's investment advisor",
+   "The portfolio is actively traded in response to market changes",
+   "The trust continues indefinitely, like a mutual fund"
+  ],
+  "a": 0,
+  "e": "During the trust's term, interest, dividends and capital gains are passed through and taxed to unit holders, much like mutual fund shareholders. UITs are passively managed, have no board or advisor, and have a set life.",
+  "lo": "LO 3.3.1",
+  "pg": 99,
+  "k": "D.27",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Separately Managed Accounts",
+  "q": "Marcus has $600,000 to invest. He wants a professional manager, wants to exclude tobacco stocks, and wants control over when gains are realized on each holding. Which vehicle best fits?",
+  "o": [
+   "A large-cap index mutual fund",
+   "A separately managed account",
+   "A unit investment trust",
+   "A closed-end fund"
+  ],
+  "a": 1,
+  "e": "In a separately managed account the investor owns 100% of the securities, can exclude specific investments, and keeps an individual cost basis in each position, which makes tax management easier. Minimums are often $50,000 or more.",
+  "lo": "LO 3.3.1",
+  "pg": 100,
+  "k": "D.27",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Exchange-Traded Funds",
+  "q": "Which feature mainly makes ETFs more tax-efficient than most actively managed mutual funds?",
+  "o": [
+   "A legal exemption from distributing capital gains",
+   "They pay only qualified dividends",
+   "Lower turnover and in-kind redemptions",
+   "Forward pricing once at each day's close"
+  ],
+  "a": 2,
+  "e": "Because they track indexes, ETFs have low turnover and so realize fewer gains. In an in-kind redemption the investor receives underlying securities instead of cash, so the transaction is not taxed.",
+  "lo": "LO 3.4.1",
+  "pg": 101,
+  "k": "D.27",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Exchange-Traded Funds",
+  "q": "Sofia wants low-cost, broad index exposure that she can trade during the day, buy on margin and sell short. Which investment best fits?",
+  "o": [
+   "An S&amp;P 500 index mutual fund",
+   "A stock unit investment trust",
+   "A hedge fund of funds",
+   "An S&amp;P 500 index ETF"
+  ],
+  "a": 3,
+  "e": "ETFs suit investors who want index or sector exposure at low cost, tax efficiency, and the ability to trade intraday, buy on margin and sell short.",
+  "lo": "LO 3.4.1",
+  "pg": 102,
+  "k": "D.27",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Hedge Funds",
+  "q": "Which client is the best candidate for a hedge fund investment?",
+  "o": [
+   "Accredited, $8 million net worth, sophisticated, values manager skill",
+   "Age 26, $40,000 net worth, wants long-term growth",
+   "Retired widow, $300,000 net worth, needs monthly income",
+   "Couple saving for college in five years, $90,000 net worth"
+  ],
+  "a": 0,
+  "e": "Hedge funds are private pools for wealthy, financially sophisticated (generally accredited) investors who care about managing loss risk and about the manager's skill. Smaller investors seeking growth or income are better served by mutual funds.",
+  "lo": "LO 3.4.1",
+  "pg": 103,
+  "k": "D.35",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Hedge Funds",
+  "q": "Which is a recognized drawback of a hedge fund of funds (FOF)?",
+  "o": [
+   "It is open only to large institutions",
+   "A second layer of fees plus cash drag",
+   "Lower correlation with stocks than single hedge funds",
+   "All its assets sit in one hedge fund strategy"
+  ],
+  "a": 1,
+  "e": "An FOF diversifies across about 10 to 30 hedge funds, but the extra management layer adds fees, and cash kept for withdrawals creates drag. Its returns have also been more correlated with stocks than those of single hedge funds.",
+  "lo": "LO 3.4.1",
+  "pg": 104,
+  "k": "D.35",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Guaranteed Investment Contracts",
+  "q": "The trustee of the Pellham Co. 401(k) plan is choosing a GIC for the plan's stable-value option and expects market interest rates to rise during the contract term. Which choice is most prudent?",
+  "o": [
+   "A nonparticipating GIC",
+   "A nonparticipating GIC with a longer term",
+   "A participating GIC",
+   "A nonparticipating GIC with a shorter term"
+  ],
+  "a": 2,
+  "e": "A participating GIC pays a variable return that follows interest rate changes, so it benefits if rates rise. A nonparticipating GIC pays a fixed rate and is the better choice when rates are expected to decline.",
+  "lo": "LO 3.4.1",
+  "pg": 105,
+  "k": "D.27",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Dollar Cost Averaging",
+  "q": "Jun invests $3,000 a month in a stock fund. Over four months the share prices are $20, $15, $24 and $16. What is his average cost per share?",
+  "o": [
+   "$16.00",
+   "$18.11",
+   "$18.75",
+   "$19.50"
+  ],
+  "a": 1,
+  "e": "Shares: 3,000/20 = 150; 3,000/15 = 200; 3,000/24 = 125; 3,000/16 = 187.5; total 662.5. Average cost = $12,000 &divide; 662.5 = $18.11. It is below the $18.75 average price because the fixed amount bought more shares at low prices.",
+  "lo": "LO 3.5.1",
+  "pg": 106,
+  "k": "D.34",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Value Averaging",
+  "q": "Ava uses value averaging with a target of +$2,000 in account value each month. In month 1 she invests $2,000 at $25 per share. In month 2 the price is $20. How much must she invest in month 2?",
+  "o": [
+   "$1,600",
+   "$2,000",
+   "$2,400",
+   "$4,000"
+  ],
+  "a": 2,
+  "e": "Month 1: $2,000 &divide; $25 = 80 shares. Month 2 target value = $4,000. Current value = 80 &times; $20 = $1,600. Investment = $4,000 &minus; $1,600 = $2,400 (buys 120 shares).",
+  "lo": "LO 3.5.1",
+  "pg": 108,
+  "k": "D.34",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Value Averaging",
+  "q": "Under Owen's value averaging plan, his account should be worth $6,000 at the end of month 3. He holds 250 shares, and the price is now $27. What does the plan call for?",
+  "o": [
+   "Buy $750 of shares",
+   "Invest the usual $2,000",
+   "Take no action until next month",
+   "Sell $750 of shares"
+  ],
+  "a": 3,
+  "e": "Current value = 250 &times; $27 = $6,750, which is $750 above the $6,000 target. Unlike DCA, value averaging sells shares when the account exceeds its target, so Owen sells $750 of shares.",
+  "lo": "LO 3.5.1",
+  "pg": 108,
+  "k": "D.34",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Share Averaging",
+  "q": "Imani buys 100 shares of a fund each quarter at prices of $40, $50 and $30. What are her total investment and average cost per share?",
+  "o": [
+   "$12,000 invested; $40.00 per share",
+   "$12,000 invested; $38.30 per share",
+   "$15,000 invested; $50.00 per share",
+   "$9,000 invested; $30.00 per share"
+  ],
+  "a": 0,
+  "e": "Cost = 100 &times; ($40 + $50 + $30) = $12,000 for 300 shares. Average cost = $12,000 &divide; 300 = $40.00, which equals the simple average price because the share count is the same each time.",
+  "lo": "LO 3.5.1",
+  "pg": 109,
+  "k": "D.34",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Share Averaging",
+  "q": "Which investor is best suited to share averaging rather than dollar cost averaging?",
+  "o": [
+   "A value investor who wants more shares when prices fall",
+   "A saver who needs the same dollar amount every month",
+   "A hands-on investor who will buy heavily to hit value targets",
+   "A momentum investor able to raise purchases as prices rise"
+  ],
+  "a": 3,
+  "e": "Share averaging buys a fixed number of shares, so the investor commits more money as the price rises and less as it falls &mdash; the mirror image of DCA. It appeals to investors who can increase purchases and to momentum-style investors.",
+  "lo": "LO 3.5.1",
+  "pg": 109,
+  "k": "D.34",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Dollar Cost Averaging",
+  "q": "Which statement about dollar cost averaging is correct?",
+  "o": [
+   "It works best in falling or fluctuating markets",
+   "It guarantees a profit if continued long enough",
+   "It beats a lump sum in a steadily rising market",
+   "It requires selling when the account is above target"
+  ],
+  "a": 0,
+  "e": "DCA buys more shares when prices drop, lowering average cost, so it works best in declining or fluctuating markets. It does poorly in steadily rising markets and never guarantees a profit.",
+  "lo": "LO 3.5.1",
+  "pg": 107,
+  "k": "D.34",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Cost Basis Methods",
+  "q": "Dmitri bought shares of a fund in three lots: 200 at $10, 300 at $14 and 250 at $18. He now sells 200 shares at $20. Using the average cost method, what is his gain?",
+  "o": [
+   "$400.00",
+   "$1,146.67",
+   "$2,000.00",
+   "$4,000.00"
+  ],
+  "a": 1,
+  "e": "Total cost = $2,000 + $4,200 + $4,500 = $10,700 for 750 shares; average = $14.2667. Basis of 200 shares = $2,853.33. Proceeds = 200 &times; $20 = $4,000. Gain = $4,000 &minus; $2,853.33 = $1,146.67.",
+  "lo": "LO 3.5.1",
+  "pg": 98,
+  "k": "E.41",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Cost Basis Methods",
+  "q": "Rhea bought 500 fund shares for $9,750 plus a $250 commission. Later, $600 of taxable dividends were reinvested into 30 more shares. She now redeems all 530 shares at $23. What is her taxable gain?",
+  "o": [
+   "$1,590",
+   "$1,840",
+   "$2,190",
+   "$2,440"
+  ],
+  "a": 0,
+  "e": "Basis = $9,750 + $250 commission + $600 reinvested dividends = $10,600. Proceeds = 530 &times; $23 = $12,190. Gain = $12,190 &minus; $10,600 = $1,590.",
+  "lo": "LO 3.5.1",
+  "pg": 98,
+  "k": "E.41",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Expense Ratio and Turnover",
+  "q": "A fund's management fee is 0.55%, its 12b-1 fee is 0.25% and its other expenses are 0.15%. It also charges a 4% front-end load, and its trading commissions equal 0.10% of assets. What is its expense ratio?",
+  "o": [
+   "0.80%",
+   "0.95%",
+   "1.05%",
+   "4.95%"
+  ],
+  "a": 1,
+  "e": "Expense ratio = management fee + 12b-1 fee + other expenses = 0.55% + 0.25% + 0.15% = 0.95%. Loads and the fund's brokerage costs are excluded.",
+  "lo": "LO 3.6.1",
+  "pg": 115,
+  "k": "D.33",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Expense Ratio and Turnover",
+  "q": "Last year a fund bought $120 million and sold $90 million of securities. Its average monthly assets were $300 million. What was its portfolio turnover?",
+  "o": [
+   "30%",
+   "35%",
+   "40%",
+   "70%"
+  ],
+  "a": 0,
+  "e": "Turnover = lesser of purchases or sales &divide; average monthly assets = $90M &divide; $300M = 30%.",
+  "lo": "LO 3.6.1",
+  "pg": 116,
+  "k": "D.33",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Fund Performance Analysis",
+  "q": "Lucia puts $10,000 in each of two funds. Fund X gains 20% in year 1 and loses 10% in year 2. Fund Y gains 40% and then loses 25%. What are the ending values?",
+  "o": [
+   "X: $11,000; Y: $11,500",
+   "X: $10,800; Y: $11,500",
+   "X: $10,800; Y: $10,500",
+   "X: $11,000; Y: $10,500"
+  ],
+  "a": 2,
+  "e": "X: $10,000 &times; 1.20 &times; 0.90 = $10,800. Y: $10,000 &times; 1.40 &times; 0.75 = $10,500. The steadier fund ends ahead despite a lower best year &mdash; consistency matters.",
+  "lo": "LO 3.6.1",
+  "pg": 113,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Fund Performance Analysis",
+  "q": "A fund's NAV falls 40% in a bear market. What percentage gain does it need to get back to its starting value?",
+  "o": [
+   "40.00%",
+   "50.00%",
+   "60.00%",
+   "66.67%"
+  ],
+  "a": 3,
+  "e": "Required gain = loss &divide; (1 &minus; loss) = 0.40 &divide; 0.60 = 66.67%. Check: $100 &rarr; $60; $60 &times; 1.6667 = $100.",
+  "lo": "LO 3.6.1",
+  "pg": 113,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Fund Selection Factors",
+  "q": "Ava puts 30% of her portfolio in a fund she believes is 100% U.S. stocks. The manager has actually moved the fund to 75% stocks and 25% cash. What share of her total portfolio is really in stocks through this fund?",
+  "o": [
+   "7.5%",
+   "22.5%",
+   "25.0%",
+   "30.0%"
+  ],
+  "a": 1,
+  "e": "Effective stock exposure = 30% &times; 75% = 22.5%. Managers with flexibility to hold cash can push a client's real allocation away from plan, so check the prospectus.",
+  "lo": "LO 3.6.1",
+  "pg": 112,
+  "k": "D.33",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Fund Pitfalls",
+  "q": "In early December, Luis plans to invest $50,000 from a taxable account in a stock fund that had a strong year and is about to pay a large capital gain distribution. What is the best advice?",
+  "o": [
+   "Buy now, since only long-time holders are taxed on distributions",
+   "Buy now, since reinvested distributions are not taxed",
+   "Check the distribution date and consider buying after it is paid",
+   "Buy Class C shares, which skip capital gain distributions"
+  ],
+  "a": 2,
+  "e": "Buying a fund with large realized gains just before a distribution is essentially buying a tax liability, because the distribution is taxed no matter how briefly the buyer has held the fund. Checking the distribution date avoids this.",
+  "lo": "LO 3.6.1",
+  "pg": 120,
+  "k": "D.33",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Fund Performance Analysis",
+  "q": "A fund family merges its worst-performing fund into a stronger fund, erasing the weak fund's record. What distortion in category return data does this create?",
+  "o": [
+   "Survivorship bias that understates past category returns",
+   "Style drift that understates the category's risk",
+   "Forward pricing that inflates the surviving fund's NAV",
+   "Survivorship bias that overstates past category returns"
+  ],
+  "a": 3,
+  "e": "When poor funds are merged away or closed, only stronger funds remain in the data, so the category's past returns look higher than they would if every fund were counted. This is survivorship bias.",
+  "lo": "LO 3.6.1",
+  "pg": 113,
+  "k": "D.33",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Fund Tax Efficiency",
+  "q": "Which statement about portfolio turnover and tax efficiency is correct?",
+  "o": [
+   "High turnover always leads to large capital gain distributions",
+   "Funds pass their net realized capital losses through to shareholders",
+   "Low turnover doesn't guarantee tax efficiency if embedded gains are large",
+   "Trading costs from turnover are included in the expense ratio"
+  ],
+  "a": 2,
+  "e": "A low-turnover manager has usually held stocks a long time, so large embedded gains can still be realized. High turnover can, but need not, create big distributions, because realized losses offset gains.",
+  "lo": "LO 3.6.1",
+  "pg": 117,
+  "k": "D.33",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Fund Selection Factors",
+  "q": "Which pairing of client objective and fund type follows this module's general suitability rules?",
+  "o": [
+   "Maximum safety of principal &rarr; high-yield bond fund",
+   "Aggressive growth &rarr; U.S. government bond fund",
+   "High-bracket income seeker &rarr; corporate bond fund",
+   "Immediate liquidity &rarr; money market fund"
+  ],
+  "a": 3,
+  "e": "General rules: growth &rarr; stock funds; income &rarr; bond funds; safety of principal &rarr; government bond funds; immediate liquidity &rarr; money market funds; high-bracket income &rarr; municipal bond funds.",
+  "lo": "LO 3.6.1",
+  "pg": 121,
+  "k": "D.33",
+  "kind": "applied"
+ }
+]

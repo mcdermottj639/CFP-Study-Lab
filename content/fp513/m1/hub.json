@@ -1,0 +1,97 @@
+{
+ "objectives": [
+  "LO 1.1.1: Identify what financial intermediaries do, especially investment bankers and dealers",
+  "LO 1.2.1: Identify the parts, terms and mechanics of primary and secondary markets (orders, short sales, margin)",
+  "LO 1.3.1: Recognize the features and tax treatment of each type of cash or cash equivalent",
+  "LO 1.4.1: Assess how capital gains and losses, dividends and wash sales affect an investor's taxes"
+ ],
+ "synthesis": "This module is the plumbing of investment planning: how securities are born (underwriting), where they trade (primary vs. secondary markets), how trades are executed and financed (orders, margin, short sales), and what the client keeps after tax. Cash equivalents anchor the emergency fund and supply the risk-free rate used in later return and portfolio models. The tax rules here (netting, wash sales, qualified dividends, NIIT) drive asset location and tax-loss harvesting decisions in every client review.",
+ "example": {
+  "title": "Harvesting a loss without tripping the wash sale rule",
+  "html": "<p>Fictional client Mara has a $12,000 net long-term gain this year from selling a fund. She also holds 300 shares of Pine Co. with a $21,000 basis now worth $15,600.</p><ol><li>Sell Pine: $15,600 &minus; $21,000 = &minus;$5,400 short-term loss (held under a year).</li><li>Cross-net: $12,000 LT gain &minus; $5,400 = $6,600 net LT gain taxed at 0/15/20% (2026 edition figure) instead of $12,000.</li><li>If she rebuys Pine within 30 days before or after the sale (2026 edition figure), the loss is disallowed and her new basis becomes the repurchase cost + $5,400.</li><li>Option: wait 31+ days, or hold something similar but not the same meanwhile.</li></ol>"
+ },
+ "cheat": {
+  "keyNumbers": [
+   [
+    "Reg T initial margin",
+    "50% (2026 edition figure)"
+   ],
+   [
+    "Maintenance margin",
+    "Broker-set, usually 35%; NYSE Rule 431(b) floor 25%"
+   ],
+   [
+    "SIPC",
+    "$500,000 per customer, max $250,000 cash (2026 edition figure)"
+   ],
+   [
+    "FDIC (CDs, MMDAs)",
+    "$250,000 per ownership category (2026 edition figure)"
+   ],
+   [
+    "Commercial paper",
+    "Max 270 days; usually $100,000+"
+   ],
+   [
+    "Capital loss deduction",
+    "$3,000/yr net; excess carried forward indefinitely (2026 edition figure)"
+   ],
+   [
+    "Qualified dividend holding",
+    "More than 60 days in 121-day window (2026 edition figure)"
+   ],
+   [
+    "NIIT",
+    "3.8% &times; lesser of NII or MAGI over $250K MFJ / $125K MFS / $200K other (2026 edition figure)"
+   ]
+  ],
+  "mustKnow": [
+   "Firm commitment: underwriter bears unsold shares; best efforts: issuer does",
+   "Stop &rarr; market order (execution certain); stop-limit &rarr; limit order (price certain)",
+   "Margin-call price = loan per share &divide; (1 &minus; maintenance %)",
+   "Liquid &ne; marketable: MMDA is liquid only; T-bill is both",
+   "T-bill income: federal ordinary income, state-exempt; munis: federal-exempt, state-taxable unless in-state",
+   "Netting: ST with ST, LT with LT, then cross-net; $3,000 cap on net loss",
+   "Wash sale: disallowed loss is added to the replacement shares' basis"
+  ],
+  "traps": [
+   "Using the original purchase price (not current price) when computing a margin deposit",
+   "Forgetting the short seller pays dividends to the share lender",
+   "Calling a money market mutual fund FDIC-insured (only MMDAs are)",
+   "Treating REIT or S corporation dividends as qualified",
+   "Thinking the wash-sale window only looks forward from the sale"
+  ],
+  "tips": [
+   "Margin HPR: divide by the investor's own money and subtract margin interest",
+   "NIIT: always compare NII to MAGI over the threshold and tax the smaller",
+   "For I/II/III/IV items, eliminate any combination containing one false statement first"
+  ]
+ },
+ "topics": [
+  "Bank Cash Accounts",
+  "Banker's Acceptances",
+  "Brokers and Dealers",
+  "Capital Gain Netting",
+  "Commercial Paper",
+  "Dividend Taxation",
+  "Interest Income Taxation",
+  "Investment Banking",
+  "Limited Partnerships",
+  "Liquidity vs Marketability",
+  "Margin Accounts",
+  "Margin HPR",
+  "Market Structure",
+  "Money Market Funds",
+  "Net Investment Income Tax",
+  "Order Types",
+  "Private Placements",
+  "Repurchase Agreements",
+  "SIPC Coverage",
+  "Short Selling",
+  "Special Gain Rates",
+  "Treasury Bills",
+  "Underwriting Agreements",
+  "Venture Capital",
+  "Wash Sales"
+ ]
+}

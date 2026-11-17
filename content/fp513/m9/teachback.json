@@ -1,0 +1,30 @@
+[
+ {
+  "id": "fp513-case-kdx",
+  "title": "Kestrel has made us a fortune. Why should I touch it?",
+  "scenario": "Nadia Calloway, 50, holds $360,000 of her employer&rsquo;s stock (about 25% of the family&rsquo;s investments) with a $200,000 gain and resists diversifying.",
+  "prompt": "Explain why the position is a risk, what the CAPM says about it, and how she can reduce it without a large tax bill.",
+  "points": [
+   "Single-company (unsystematic) risk can be diversified away, so the CAPM does not reward it with extra expected return.",
+   "CAPM required return 12.4% (4% + 6% &times; 1.40) beats the 11% expected, so the stock does not pay enough for its risk.",
+   "An exchange fund diversifies without immediate capital gains tax and keeps the value in the family.",
+   "A protective put or a zero-cost collar can set a floor while she decides; the collar caps upside at the call strike.",
+   "Selling outright is simple but triggers tax on the $200,000 gain."
+  ],
+  "anchor": "Decision 3 · Allocation and the Kestrel concentration"
+ },
+ {
+  "id": "fp513-case-taxloc",
+  "title": "Does it really matter which account holds our bonds?",
+  "scenario": "Graham Calloway keeps a $60,000 corporate bond fund in the joint brokerage account while his 401(k) is mostly stocks; the couple is in the 32% federal and 5% state brackets.",
+  "prompt": "Explain asset placement, the municipal-bond comparison, and the wash-sale trap in plain language.",
+  "points": [
+   "Interest from the corporate fund is taxed every year as ordinary income in the joint account.",
+   "Holding bonds in the 401(k) and stock index funds in the joint account keeps the same mix with less tax.",
+   "For new taxable bond money, an in-state muni at 3.6% equals 5.57% taxable for them, beating the 5.2% corporate fund.",
+   "Never put municipals in a Roth or IRA; their income is already tax-free.",
+   "If they sell a fund at a loss, buying it back within 30 days defers the loss into the new basis."
+  ],
+  "anchor": "Decision 5 · Taxes: wash sales, TEY and placement"
+ }
+]

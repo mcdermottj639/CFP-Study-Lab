@@ -1,0 +1,30 @@
+[
+ {
+  "id": "fp513-twr-dwr",
+  "title": "&ldquo;The fund says it made 16% a year, so why did I only make 15%?&rdquo;",
+  "scenario": "Omar bought one share of a stock fund, then bought a second share a year later at a higher price. His statement shows a lower return than the fund's published figure.",
+  "prompt": "Explain why the fund's published return and Omar's personal return differ, and which one judges the manager.",
+  "points": [
+   "Published fund returns are time-weighted: they ignore the investor's own deposits and withdrawals",
+   "Omar's return is dollar-weighted (an IRR) and reflects when he added money",
+   "He added money right before a weaker year, so his result trails the fund's",
+   "The time-weighted figure is the fair way to judge the manager; the dollar-weighted figure shows his own outcome",
+   "Neither number is wrong &mdash; they answer different questions"
+  ],
+  "anchor": "LO 7.1.1 · Time-weighted vs. dollar-weighted return"
+ },
+ {
+  "id": "fp513-tey",
+  "title": "&ldquo;Why would I take a 4.3% muni when the corporate pays 6%?&rdquo;",
+  "scenario": "Felix is in the 32% federal bracket in a state with no income tax and is choosing between a 6% corporate bond and a 4.3% municipal bond of similar quality and maturity.",
+  "prompt": "Walk Felix through the taxable equivalent yield and say which bond wins on yield.",
+  "points": [
+   "Muni interest is free of federal income tax; corporate interest is fully taxable",
+   "TEY = 4.3% &divide; (1 &minus; 0.32) = 6.32%, above the corporate's 6%",
+   "Cross-check: the corporate keeps 6% &times; 0.68 = 4.08% after tax, below 4.3%",
+   "Compare only bonds of similar credit quality and maturity",
+   "If his state taxed income and the muni were in-state, the TEY would be even higher"
+  ],
+  "anchor": "LO 7.4.1 · Taxable equivalent yield (TEY)"
+ }
+]

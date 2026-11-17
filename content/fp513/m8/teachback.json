@@ -1,0 +1,29 @@
+[
+ {
+  "id": "fp513-capm-hurdle",
+  "title": "\"This fund has done great and it's riskier, so shouldn't it beat my 11% target?\"",
+  "scenario": "Marisol, 47, wants to buy a fund with a beta of 1.3 because it outperformed last year. She needs 11% to stay on track; T-bills yield 3% and the market is expected to return 8%.",
+  "prompt": "Explain how CAPM sets a fair return for the fund's risk and whether it clears her 11% hurdle.",
+  "points": [
+   "Market risk premium = 8% &minus; 3% = 5%; stock risk premium = 5% &times; 1.3 = 6.5%",
+   "CAPM expected return = 3% + 6.5% = 9.5%, below her 11% requirement &rarr; pass",
+   "Beta measures only market (systematic) risk; that's the only risk CAPM pays for",
+   "Last year's performance doesn't change the required return; if the goal still needs 11%, revisit risk tolerance or the goal itself"
+  ],
+  "anchor": "LO 8.2.1 · CAPM and the security market line"
+ },
+ {
+  "id": "fp513-crisis-cash",
+  "title": "\"Markets are crashing. Shouldn't we just go to cash until it's over?\"",
+  "scenario": "Derek, 39, has a 25-year horizon, an IPS targeting 80/20, and an emergency fund in a money market account. After a pandemic-driven selloff he wants out of stocks.",
+  "prompt": "Explain why the plan usually stays put, and what would actually justify changing it.",
+  "points": [
+   "A pandemic is an exogenous shock; the pain is severe but temporary",
+   "His emergency fund already covers short-term needs, so he doesn't have to sell stocks low",
+   "Moving to cash risks trading losses and missing the early rebound; markets have a long-term positive bias",
+   "Only discontinuous change in his own life (job loss, inheritance, health) calls for rewriting the IPS",
+   "Name the bias: vivid crash coverage feeds the availability heuristic"
+  ],
+  "anchor": "LO 8.6.1 · Crisis events and adapting to new norms"
+ }
+]

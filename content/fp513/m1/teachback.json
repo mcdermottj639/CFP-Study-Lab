@@ -1,0 +1,30 @@
+[
+ {
+  "id": "fp513-wash-sale",
+  "title": "\"Why can't I sell my losing stock for the tax write-off and buy it right back?\"",
+  "scenario": "Fictional client Derek, 52, has a large gain from selling a mutual fund this year and holds a tech stock down $8,000. He wants to sell it in December and repurchase it the next week.",
+  "prompt": "Explain the wash sale rule, what happens to his loss if he repurchases within the window, and his alternatives.",
+  "points": [
+   "Wash sale = loss sale plus acquiring similar securities within 30 days before or after (2026 edition figure)",
+   "The loss isn't recognized now; it's added to the basis of the new shares, so it's deferred, not lost",
+   "A December sale and January repurchase is still inside the window",
+   "Alternatives: wait out the window, or hold a similar-but-different position (for bonds, a similar bond from another issuer)",
+   "Show how the harvested loss nets against his gains first, with any net loss capped at $3,000 a year and the rest carried forward"
+  ],
+  "anchor": "LO 1.4.1 · Capital gain netting and wash sales"
+ },
+ {
+  "id": "fp513-mmf-vs-mmda",
+  "title": "\"Is my money market fund insured like my bank account?\"",
+  "scenario": "Fictional retiree Lorraine, 71, keeps $180,000 in a brokerage money market fund and $60,000 in a bank money market account as her emergency reserve.",
+  "prompt": "Explain the difference between an MMDA and a money market mutual fund, what protection each has, and the risk of holding too much cash.",
+  "points": [
+   "MMDA is a bank deposit, FDIC-insured to $250,000 per ownership category (2026 edition figure)",
+   "A money market mutual fund is an investment company product and is not federally insured",
+   "SIPC protects against broker failure (up to $500,000, $250,000 cash; 2026 edition figure), not market losses",
+   "Both are liquid, but only marketable instruments trade beyond the issuer",
+   "Too much cash exposes a retiree to purchasing power risk from inflation"
+  ],
+  "anchor": "LO 1.3.1 · Cash and cash equivalents"
+ }
+]

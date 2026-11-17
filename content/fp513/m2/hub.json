@@ -1,0 +1,94 @@
+{
+ "objectives": [
+  "LO 2.1.1: Know bond terms, issuer types (Treasury, agency, muni, corporate, foreign), their tax treatment and the risks bonds carry",
+  "LO 2.2.1: Calculate a convertible's conversion ratio and value, investment value, both premiums and downside risk",
+  "LO 2.3.1: Analyze immunization, ladders, barbells, bullets and the five bond swaps",
+  "LO 2.3.2: Match fixed-income choices to an investor's goals, taxes, horizon and rate outlook",
+  "LO 2.4.1: Read yield curve shapes, the three term-structure theories and what each curve implies for buying bonds",
+  "LO 2.5.1: Recognize preferred stock features, how it compares with bonds and how to value it"
+ ],
+ "synthesis": "Bonds are the stability and income engine of most client portfolios, so this module feeds asset allocation (Module 6), bond pricing, duration and yield math (Modules 4 and 7) and tax-aware account placement. Knowing which issuer, structure and maturity fits a client's bracket, horizon and rate outlook is the core of a fixed-income recommendation, and convertibles and preferreds bridge into equity analysis.",
+ "example": {
+  "title": "Convertible bond: five numbers from one set of facts",
+  "html": "<p>$1,000 par, 4% semiannual coupon, 10 years left, straight bonds yield 6%, conversion price $62.50, stock $55, convertible priced at $1,000.</p><ul><li>Conversion ratio = $1,000 &divide; $62.50 = 16 shares</li><li>Conversion value = 16 &times; $55 = $880</li><li>Investment value: N 20, I/YR 3, PMT $20, FV $1,000 &rarr; $851.23</li><li>Floor = greater of $851.23 and $880 = $880</li><li>Conversion premium = $120 &divide; $880 = 13.64%</li><li>Investment premium = $148.77 &divide; $851.23 = 17.48%</li><li>Downside risk = $148.77 &divide; $1,000 = 14.88%</li></ul>"
+ },
+ "cheat": {
+  "keyNumbers": [
+   [
+    "Investment-grade line",
+    "BBB&minus; (S&amp;P) / Baa (Moody's) and above"
+   ],
+   [
+    "Exam defaults",
+    "$1,000 par; semiannual coupons"
+   ],
+   [
+    "Basis point",
+    "1/100 of 1%"
+   ],
+   [
+    "Corporate call protection",
+    "Generally at least 10 years"
+   ],
+   [
+    "Dividends-received deduction",
+    "50% if &lt;20% owned; 65% if 20%+ (2026 edition figure)"
+   ],
+   [
+    "Private activity bond tests",
+    "&gt;10% private use; qualified if 95%+ for qualified purposes (2026 edition figure)"
+   ],
+   [
+    "EE / I bonds",
+    "$25&ndash;$10,000; 12-month hold; 3-month penalty within 5 years (2026 edition figure)"
+   ],
+   [
+    "GNMA certificate minimum",
+    "$25,000 (2026 edition figure)"
+   ]
+  ],
+  "mustKnow": [
+   "TEY = tax-exempt yield &divide; (1 &minus; t); after-tax yield = taxable yield &times; (1 &minus; t)",
+   "Convertible: ratio = par &divide; conversion price; CV = ratio &times; stock price; floor = greater of IV or CV",
+   "Downside risk % divides by market price; investment premium % divides by investment value",
+   "Immunization: portfolio duration = time horizon; rebalance as duration drifts",
+   "Only liquidity preference theory is limited to an upward-sloping curve",
+   "Treasuries: no state/local tax; agencies: taxable at all levels; GNMA has the direct guarantee",
+   "Preferred: V = D &divide; r; dividend is % of par, paid quarterly; cumulative arrears come first"
+  ],
+  "traps": [
+   "Treasuries are default-risk free, not risk free",
+   "Zeros and STRIPS create phantom income in taxable accounts",
+   "Eurobonds can be in any currency; Yankee bonds remove currency risk",
+   "With an inverted curve, the textbook favors call-protected long bonds",
+   "A barbell is active; a ladder is the passive, staggered one"
+  ],
+  "tips": [
+   "Convertible questions: write CV, IV and price in a row before computing any %",
+   "With state tax in a muni problem, tax each bond only where it is actually taxed",
+   "Low coupon + long maturity + low YTM = biggest price swings"
+  ]
+ },
+ "topics": [
+  "Bond Terms & Features",
+  "Bond Risk Types",
+  "Bond Ratings",
+  "Treasury Securities",
+  "TIPS & Savings Bonds",
+  "Agency & Mortgage Bonds",
+  "Municipal Bonds",
+  "Muni vs Taxable Yield",
+  "Bond Discount & Premium Tax",
+  "Zero-Coupon Bonds",
+  "Foreign Bonds",
+  "Convertible Bond Math",
+  "Portfolio Immunization",
+  "Ladders, Barbells, Bullets",
+  "Bond Swaps",
+  "Fixed-Income Selection",
+  "Yield Curve Shapes",
+  "Yield Curve Theories",
+  "Yield Curve Strategy",
+  "Preferred Stock Features"
+ ]
+}

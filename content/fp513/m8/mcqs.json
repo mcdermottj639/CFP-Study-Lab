@@ -1,0 +1,820 @@
+[
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Modern Portfolio Theory",
+  "q": "Which of the following is one of Markowitz's assumptions underlying modern portfolio theory?",
+  "o": [
+   "Investors base decisions only on expected return and the variability of returns",
+   "Investors can borrow and lend unlimited sums at the risk-free rate",
+   "Investors measure portfolio risk with beta instead of standard deviation",
+   "Investor indifference strengthens the further they look past the holding period"
+  ],
+  "a": 0,
+  "e": "MPT assumes mean-variance decision making: investors weigh only expected return and risk (standard deviation), prefer more return at a given risk, view each investment as a return distribution over a holding period, and maximize wealth over that period.",
+  "lo": "LO 8.1.1",
+  "pg": 289,
+  "k": "D.33",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Efficient Frontier",
+  "q": "Based on these facts, which conclusion is correct?",
+  "o": [
+   "The current portfolio is efficient because it can actually be built today",
+   "The current portfolio is inefficient; the proposed one cannot be built",
+   "The proposed portfolio dominates and should be implemented right away",
+   "Both portfolios are efficient because they carry the same risk level"
+  ],
+  "a": 1,
+  "e": "At 12% standard deviation the best attainable return is 8%. The 6.5% portfolio lies below the frontier (attainable, dominated). The 10% claim lies above the frontier, outside the set of possible portfolios.",
+  "lo": "LO 8.1.1",
+  "pg": 290,
+  "k": "D.33",
+  "kind": "applied",
+  "stem": "<p>An optimizer shows that, for the available asset classes, the efficient frontier offers a maximum expected return of <b>8%</b> at a <b>12%</b> standard deviation. The client's current portfolio: 6.5% expected return, 12% standard deviation. A product pitch claims a portfolio from the same asset classes with 10% expected return at 12% standard deviation.</p>"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Indifference Curves",
+  "q": "Compared with a moderately risk-tolerant investor, a highly risk-averse investor's indifference curves are",
+  "o": [
+   "flatter, touching the efficient frontier at a lower-risk point",
+   "steeper, touching the efficient frontier at a higher-risk point",
+   "steeper, touching the efficient frontier at a lower-risk point",
+   "downward sloping, since added risk lowers the return demanded"
+  ],
+  "a": 2,
+  "e": "The more risk averse the investor, the more extra return is demanded per unit of risk, so the curve is steeper and its tangency with the frontier lies to the left, at a lower-risk portfolio.",
+  "lo": "LO 8.1.1",
+  "pg": 291,
+  "k": "D.33",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Indifference Curves",
+  "q": "Investor A's indifference curve is tangent to the efficient frontier at a portfolio with a 10% standard deviation; Investor B's is tangent at 18%. Which statement is most accurate?",
+  "o": [
+   "B has steeper indifference curves and is more risk averse than A",
+   "A's portfolio is inefficient because it has a lower expected return",
+   "No conclusion about risk attitudes can be drawn from tangency points",
+   "B has flatter indifference curves and is more risk tolerant than A"
+  ],
+  "a": 3,
+  "e": "A tangency farther right (higher risk) reflects a flatter indifference curve: the investor needs only a small extra return to accept more risk, so B is more risk tolerant. Both portfolios are efficient.",
+  "lo": "LO 8.1.1",
+  "pg": 292,
+  "k": "D.33",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "MPT Portfolio Construction",
+  "q": "Dana owns 14 mutual funds. Nine are large-cap U.S. stock funds whose top-10 holdings largely repeat. Under MPT principles, what is the best observation?",
+  "o": [
+   "The overlap mimics a costly index fund without adding diversification",
+   "More funds always reduce unsystematic risk, so she should add more",
+   "She holds too few securities to eliminate unsystematic risk",
+   "Overlap lowers her correlation with bonds, which reduces total risk"
+  ],
+  "a": 0,
+  "e": "Owning many funds with the same top holdings (overlap) creates a de facto index fund with extra cost. A handful of concentrated funds, or one large balanced fund, can remove most unsystematic risk.",
+  "lo": "LO 8.1.1",
+  "pg": 293,
+  "k": "D.31",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "MPT Portfolio Construction",
+  "q": "A portfolio has risen in value since it was built, and the advisor has new cash to invest. Under the textbook's correlation guidance, which addition would most likely lower portfolio standard deviation?",
+  "o": [
+   "The portfolio's best performer, to add to existing momentum",
+   "A recent decliner that is negatively correlated with the portfolio",
+   "A fund highly correlated with current holdings, for consistency",
+   "Whichever available security has the highest standard deviation"
+  ],
+  "a": 1,
+  "e": "The correlation coefficient is the key to cutting portfolio risk. A security that has dropped while the portfolio rose shows negative correlation with it, so adding it helps lower overall standard deviation.",
+  "lo": "LO 8.1.1",
+  "pg": 294,
+  "k": "D.31",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "CAPM Required Return",
+  "q": "A stock has a beta of 1.4. The T-bill yields 3.5%, and the market is expected to return 9.5%. What is the stock's required return under CAPM?",
+  "o": [
+   "13.30%",
+   "8.40%",
+   "11.90%",
+   "16.80%"
+  ],
+  "a": 2,
+  "e": "r = r<sub>f</sub> + (r<sub>m</sub> &minus; r<sub>f</sub>)&beta; = 3.5% + (9.5% &minus; 3.5%) &times; 1.4 = 3.5% + 8.4% = 11.9%.",
+  "lo": "LO 8.2.1",
+  "pg": 298,
+  "k": "D.33",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "CAPM Required Return",
+  "q": "The market is expected to return 8.5% and T-bills yield 2.5%. For a stock with a beta of 0.7, what are the market risk premium and the stock risk premium?",
+  "o": [
+   "Market risk premium 8.5%; stock risk premium 5.95%",
+   "Market risk premium 6.0%; stock risk premium 6.7%",
+   "Market risk premium 4.2%; stock risk premium 6.0%",
+   "Market risk premium 6.0%; stock risk premium 4.2%"
+  ],
+  "a": 3,
+  "e": "Market risk premium = r<sub>m</sub> &minus; r<sub>f</sub> = 8.5% &minus; 2.5% = 6.0%. Stock risk premium = (r<sub>m</sub> &minus; r<sub>f</sub>) &times; &beta; = 6.0% &times; 0.7 = 4.2%.",
+  "lo": "LO 8.2.1",
+  "pg": 298,
+  "k": "D.33",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "CAPM Required Return",
+  "q": "Based on CAPM, what is the best recommendation for Priya?",
+  "o": [
+   "Pass: CAPM expects 10.5%, below her 12% required return",
+   "Buy: CAPM expects 14.25%, above her 12% required return",
+   "Pass: CAPM expects 7.5%, below her 12% required return",
+   "Buy: a beta above 1.0 ensures it will beat her 12% target"
+  ],
+  "a": 0,
+  "e": "CAPM expected return = 3% + (9% &minus; 3%) &times; 1.25 = 3% + 7.5% = 10.5%. Because 10.5% is below her 12% required return, the fund should be rejected.",
+  "lo": "LO 8.2.1",
+  "pg": 299,
+  "k": "D.33",
+  "kind": "calc",
+  "stem": "<p>Priya requires a 12% return from a new holding. The fund she is considering has a beta of 1.25. The market is expected to return 9%, and T-bills yield 3%.</p>"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "CAPM Required Return",
+  "q": "An asset has a beta of &minus;0.4. The risk-free rate is 4% and the market is expected to return 11%. What is its CAPM required return?",
+  "o": [
+   "6.80%",
+   "1.20%",
+   "&minus;2.80%",
+   "&minus;0.40%"
+  ],
+  "a": 1,
+  "e": "r = 4% + (11% &minus; 4%) &times; (&minus;0.4) = 4% &minus; 2.8% = 1.2%. Negative-beta assets move against the market; investors accept a low return for their diversification value.",
+  "lo": "LO 8.2.1",
+  "pg": 301,
+  "k": "D.33",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Security Market Line",
+  "q": "Using CAPM, which conclusion about Stocks Q and R is correct?",
+  "o": [
+   "Q plots below the SML (sell); R plots above the SML (buy)",
+   "Both plot on the SML because both forecasts exceed the risk-free rate",
+   "Q plots above the SML (buy); R plots below the SML (sell or short)",
+   "R is the better buy because its forecast return is the higher one"
+  ],
+  "a": 2,
+  "e": "Required: Q = 4% + 6% &times; 0.9 = 9.4%; R = 4% + 6% &times; 1.6 = 13.6%. Q's 10% forecast exceeds 9.4% (undervalued, above SML); R's 12.5% is below 13.6% (overvalued, below SML).",
+  "lo": "LO 8.2.1",
+  "pg": 302,
+  "k": "D.33",
+  "kind": "calc",
+  "stem": "<p>Risk-free rate 4%; expected market return 10%.<br>Stock Q: beta 0.9, analyst forecast return 10.0%<br>Stock R: beta 1.6, analyst forecast return 12.5%</p>"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Capital Market Line",
+  "q": "The risk-free rate is 3%. The market portfolio is expected to return 10% with a 16% standard deviation. Using the CML, what is the expected return of an efficient portfolio with a 12% standard deviation?",
+  "o": [
+   "7.50%",
+   "12.33%",
+   "10.50%",
+   "8.25%"
+  ],
+  "a": 3,
+  "e": "r<sub>p</sub> = r<sub>f</sub> + &sigma;<sub>p</sub> &times; [(r<sub>m</sub> &minus; r<sub>f</sub>) &divide; &sigma;<sub>m</sub>] = 3% + 12% &times; (7% &divide; 16%) = 3% + 5.25% = 8.25%.",
+  "lo": "LO 8.2.1",
+  "pg": 296,
+  "k": "D.33",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Security Market Line",
+  "q": "Expected inflation rises and the risk-free rate moves from 3.0% to 4.5%; the market risk premium stays at 6%. What happens to the required return on a stock with a beta of 1.2?",
+  "o": [
+   "It rises from 10.2% to 11.7% as the SML shifts up in parallel",
+   "It rises from 10.2% to 12.0% as the SML becomes steeper",
+   "It stays at 10.2% because inflation changes only the slope",
+   "It falls to 8.7% because higher rates cut required returns"
+  ],
+  "a": 0,
+  "e": "Before: 3% + 6% &times; 1.2 = 10.2%. After: 4.5% + 6% &times; 1.2 = 11.7%. Inflation moves the risk-free rate, producing a parallel shift that raises all required returns by 1.5 points.",
+  "lo": "LO 8.2.1",
+  "pg": 303,
+  "k": "D.33",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Security Market Line",
+  "q": "Investors in general become more risk averse, while the risk-free rate is unchanged. What happens to the SML?",
+  "o": [
+   "It shifts upward, parallel to the original line",
+   "It pivots at the risk-free rate and becomes steeper",
+   "It pivots at the risk-free rate and becomes flatter",
+   "Its intercept falls while its slope is unchanged"
+  ],
+  "a": 1,
+  "e": "More risk aversion raises the market risk premium (the price of risk), which steepens the SML around the unchanged risk-free intercept. Only risky assets are affected.",
+  "lo": "LO 8.2.1",
+  "pg": 303,
+  "k": "D.33",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Arbitrage Pricing Theory",
+  "q": "Using APT, what is the expected return on this stock?",
+  "o": [
+   "9.30%",
+   "14.50%",
+   "11.80%",
+   "13.30%"
+  ],
+  "a": 2,
+  "e": "r = a<sub>0</sub> + &Sigma;b&times;F = 2.5% + (1.2 &times; 4%) + (0.6 &times; 5%) + (0.5 &times; 3%) = 2.5% + 4.8% + 3.0% + 1.5% = 11.8%.",
+  "lo": "LO 8.2.1",
+  "pg": 305,
+  "k": "D.33",
+  "kind": "calc",
+  "stem": "<p>Risk-free return: 2.5%.<br>Unanticipated inflation: sensitivity 1.2, risk premium 4%<br>Industrial production (GDP): sensitivity 0.6, risk premium 5%<br>Interest rates (yield curve): sensitivity 0.5, risk premium 3%</p>"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Arbitrage Pricing Theory",
+  "q": "Which of the following is NOT one of the four primary APT factors identified in the textbook?",
+  "o": [
+   "Inflation",
+   "Industrial production (changes in GDP)",
+   "The yield curve (interest rates)",
+   "Stock market trading volume"
+  ],
+  "a": 3,
+  "e": "The four primary APT factors are inflation, industrial production (GDP), risk premiums, and the yield curve. Only unexpected changes in them matter; trading volume is not among them.",
+  "lo": "LO 8.2.1",
+  "pg": 304,
+  "k": "D.33",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "CAPM Required Return",
+  "q": "Which of the following is one of the assumptions Sharpe stipulated for CAPM?",
+  "o": [
+   "Capital markets are always in equilibrium, so assets are properly priced",
+   "Investors hold differing expectations about each asset's return distribution",
+   "Taxes and transaction costs are central to every investment decision",
+   "Investors can borrow only at rates well above the risk-free rate"
+  ],
+  "a": 0,
+  "e": "CAPM assumes identical expectations, borrowing and lending at the risk-free rate (e.g., 13-week T-bill), no taxes or transaction costs, and markets that are always in equilibrium with every asset properly priced.",
+  "lo": "LO 8.2.1",
+  "pg": 299,
+  "k": "D.33",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "EMH Forms",
+  "q": "Under the semistrong form of the efficient market hypothesis, which approach could still produce above-market returns?",
+  "o": [
+   "Fundamental analysis of financial statements",
+   "Trading on material inside information",
+   "Charting support and resistance levels",
+   "Buying right after favorable earnings news"
+  ],
+  "a": 1,
+  "e": "The semistrong form holds that prices reflect all public information (historical data, financial statements, industry and economic outlook). Only inside information could beat the market.",
+  "lo": "LO 8.3.1",
+  "pg": 307,
+  "k": "D.34",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "EMH Forms",
+  "q": "Which statements are correct?",
+  "o": [
+   "I and II only",
+   "I, III, and IV",
+   "II and III only",
+   "III only"
+  ],
+  "a": 1,
+  "e": "Marcus uses fundamental analysis, which can add value only under the weak form (I true). Elena's technical rules are rejected by every form (II false, IV true). Theo's passive indexing fits the semistrong and strong forms (III true).",
+  "lo": "LO 8.3.1",
+  "pg": 308,
+  "k": "D.34",
+  "kind": "applied",
+  "stem": "<p>Marcus studies annual reports to find mispriced stocks. Elena trades on moving-average crossovers. Theo buys a total-market index fund and holds it.</p><p>I. Marcus's approach is consistent with the weak form of the EMH.<br>II. Elena's approach is supported by the weak form of the EMH.<br>III. Theo's approach is consistent with the semistrong and strong forms.<br>IV. No form of the EMH supports Elena's approach.</p>"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "EMH Forms",
+  "q": "Which type of research has tended to SUPPORT the semistrong form of the EMH?",
+  "o": [
+   "Return-prediction studies of January and weekend effects",
+   "Cross-sectional studies showing low-P/E stocks outperform",
+   "Studies showing insiders earn abnormal trading profits",
+   "Event studies of splits, IPOs, and surprise announcements"
+  ],
+  "a": 3,
+  "e": "Event studies found prices adjust quickly to stock splits, IPOs, exchange listings, and surprise news, confirming semistrong efficiency. Return-prediction and cross-sectional studies found anomalies.",
+  "lo": "LO 8.3.1",
+  "pg": 309,
+  "k": "D.34",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Market Anomalies",
+  "q": "Jonah buys small-company stocks each December and sells them in January. Which anomaly is he using, and what caveat applies?",
+  "o": [
+   "January effect; it now tends to show up earlier, in December",
+   "Weekend effect; price moves may not cover transaction costs",
+   "Neglected-firm effect; it may just be an extension of the size effect",
+   "Dividend-yield anomaly; higher-yielding stocks tend to outperform"
+  ],
+  "a": 0,
+  "e": "The January effect seeks lower December prices (partly from tax selling) and higher January prices. Because it is widely known, it has shifted earlier into December, so treating it as a fixed rule is risky.",
+  "lo": "LO 8.3.1",
+  "pg": 310,
+  "k": "D.34",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "EMH Forms",
+  "q": "In a semistrong-form test, CAPM sets a stock's required return at 9%. Over the period, the stock actually returns 12.5%. What abnormal return do researchers attribute to it?",
+  "o": [
+   "12.5%",
+   "3.5%",
+   "&minus;3.5%",
+   "21.5%"
+  ],
+  "a": 1,
+  "e": "Abnormal return = actual return &minus; CAPM required return = 12.5% &minus; 9% = 3.5%. Persistent abnormal returns from public information would contradict semistrong efficiency.",
+  "lo": "LO 8.3.1",
+  "pg": 309,
+  "k": "D.34",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "EMH Applications",
+  "q": "A client believes U.S. large-cap stocks are highly efficient but emerging markets are not. Which implementation best fits that view?",
+  "o": [
+   "Use an active manager for large caps and index emerging markets",
+   "Use active managers everywhere, since some segments are inefficient",
+   "Index the large-cap sleeve and use an active manager for emerging markets",
+   "Avoid emerging markets entirely because their statements are unreliable"
+  ],
+  "a": 2,
+  "e": "Different parts of the market have different degrees of efficiency. Large caps tend to be efficient (index them); emerging markets are less efficient, so an active manager may find opportunities there.",
+  "lo": "LO 8.3.2",
+  "pg": 307,
+  "k": "D.34",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "EMH Applications",
+  "q": "According to the textbook, why have low-P/E and high book-to-market stocks tended to deliver higher returns?",
+  "o": [
+   "They are fundamentally strong firms with highly predictable earnings growth",
+   "They carry lower betas, and CAPM rewards low beta with higher returns",
+   "Securities laws restrict insiders from trading them, reducing competition",
+   "They're shunned as weak firms and assigned high required returns"
+  ],
+  "a": 3,
+  "e": "Low-P/E and high-BV/MV companies often look weak, so most analysts ignore them. Investors assign them high required returns for perceived risk; as fortunes improve, value investors realize those returns.",
+  "lo": "LO 8.3.2",
+  "pg": 312,
+  "k": "D.34",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "EMH Applications",
+  "q": "According to the Brinson, Hood, and Beebower study, what explains more than 90% of the variability of a portfolio's returns?",
+  "o": [
+   "Asset allocation",
+   "Security selection",
+   "Market timing",
+   "Expense ratios"
+  ],
+  "a": 0,
+  "e": "The widely quoted (and later debated) Brinson study found that more than 90% of the variability of portfolio returns is driven by the asset allocation decision, with selection and timing contributing little.",
+  "lo": "LO 8.3.2",
+  "pg": 313,
+  "k": "D.31",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "EMH Applications",
+  "q": "A prospect wants to hire only managers who consistently rank in the top 25% of their asset class. What does the textbook suggest?",
+  "o": [
+   "Most active funds beat their indexes, so this is easy to accomplish",
+   "Rare; strong stretches are usually followed by subpar ones",
+   "Top-quartile consistency is common among large-cap growth funds",
+   "A past top-quartile ranking virtually ensures future outperformance"
+  ],
+  "a": 1,
+  "e": "Even excellent long-record managers tend to have periods of strong performance followed by subpar periods (regression to the mean). Staying consistently in the top 25% of an asset class is rare.",
+  "lo": "LO 8.3.2",
+  "pg": 313,
+  "k": "D.34",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Investment Policy Statement",
+  "q": "A client wants to keep $60,000 available for a home down payment in three years. In which IPS content area should this be recorded?",
+  "o": [
+   "Return requirement",
+   "Laws and regulations",
+   "Liquidity",
+   "Permitted and excluded investments"
+  ],
+  "a": 2,
+  "e": "The liquidity section captures cash needs such as an emergency fund or an amount needed within three to five years for a planned expenditure. Many advisors keep such money out of stocks.",
+  "lo": "LO 8.4.1",
+  "pg": 319,
+  "k": "D.33",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Investment Policy Statement",
+  "q": "How should Walter's IPS describe his risk tolerance?",
+  "o": [
+   "Low ability and low willingness to take risk",
+   "High ability and high willingness, since wealth sets tolerance",
+   "Low ability but high willingness to take risk",
+   "High ability but low willingness to take risk"
+  ],
+  "a": 3,
+  "e": "Ability reflects resources and circumstances; willingness reflects emotional comfort with volatility. Walter has ample resources (high ability) but dislikes swings (low willingness), and may not need much risk.",
+  "lo": "LO 8.4.1",
+  "pg": 319,
+  "k": "D.33",
+  "kind": "applied",
+  "stem": "<p>Walter, 61, has $4 million invested, is in excellent health, is fully insured, and has a pension that covers his living expenses. He checks his balances daily and is upset by any decline.</p>"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Investment Policy Statement",
+  "q": "An IPS targets a 4.5% real return, and the advisor assumes 2.5% average inflation. Using the textbook's simple approach, what nominal return requirement should the IPS state?",
+  "o": [
+   "7.0%",
+   "2.0%",
+   "4.5%",
+   "11.25%"
+  ],
+  "a": 0,
+  "e": "Simple method: return requirement = target real return + average inflation = 4.5% + 2.5% = 7.0%. The IPS could also say returns should beat inflation by 4.5% on average.",
+  "lo": "LO 8.4.1",
+  "pg": 319,
+  "k": "D.33",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Risk Tolerance Factors",
+  "q": "Research shows that the pain of a loss outweighs the pleasure of an equal gain. Which concept, introduced by Kahneman and Tversky, does this describe?",
+  "o": [
+   "Risk aversion",
+   "Loss aversion",
+   "Overconfidence",
+   "Representativeness"
+  ],
+  "a": 1,
+  "e": "Loss aversion: losses hurt more than equal gains please, so investors may gamble to avoid a sure loss or hold losers hoping to break even. Kahneman and Tversky first introduced it.",
+  "lo": "LO 8.4.1",
+  "pg": 316,
+  "k": "H.66",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Monte Carlo Simulation",
+  "q": "An advisor runs a Monte Carlo retirement projection using the returns of the Wilshire 5000, but the client's funds carry meaningful fees. What is the main risk?",
+  "o": [
+   "It will understate success because it ignores the market's positive bias",
+   "Monte Carlo cannot model withdrawals, so the result is meaningless",
+   "The projection may overstate future values and sustainable withdrawals",
+   "Fees matter only in taxable accounts, so there is no distortion"
+  ],
+  "a": 2,
+  "e": "A known weakness of Monte Carlo is simulating asset-class index returns rather than the actual fee-bearing holdings. That can significantly overstate future value or how long distributions can last.",
+  "lo": "LO 8.4.1",
+  "pg": 318,
+  "k": "D.33",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Economic Cycle Investing",
+  "q": "A client expects the Fed to keep raising rates over the next year and wants to stay flexible. Which holding best fits the textbook's guidance?",
+  "o": [
+   "A long-term investment-grade corporate bond fund",
+   "Shares of a highly leveraged electric utility",
+   "A 20-year zero-coupon Treasury bond",
+   "Money market funds or short-term Treasury bills"
+  ],
+  "a": 3,
+  "e": "Liquid and short-term holdings (money market funds, T-bills and notes) let an investor reinvest at higher yields as rates continue to rise, avoiding the price losses of long-duration assets.",
+  "lo": "LO 8.5.1",
+  "pg": 323,
+  "k": "D.29",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Economic Cycle Investing",
+  "q": "As an economy begins recovering from a recession, which pattern does the textbook describe?",
+  "o": [
+   "Unemployment falls, income grows, and cyclicals begin to rise",
+   "Consumer noncyclicals lead as investors seek steady, reliable demand",
+   "Basic materials and energy lead on renewed inflation fears",
+   "Utilities rally because interest rates are climbing quickly"
+  ],
+  "a": 0,
+  "e": "In recovery, unemployment declines and personal income grows, so cyclical stocks begin to move; autos may keep benefiting from low-cost financing.",
+  "lo": "LO 8.5.1",
+  "pg": 324,
+  "k": "D.29",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Economic Cycle Investing",
+  "q": "Inflation is accelerating sharply. Which holding is most likely to hold up, according to the textbook?",
+  "o": [
+   "A long-term Treasury bond",
+   "Shares of an oil and gas producer",
+   "An intermediate-term corporate bond fund",
+   "A heavily indebted bank stock"
+  ],
+  "a": 1,
+  "e": "Strong inflation hurts stocks in most industries and bonds generally, but commodity-linked areas (energy producers, natural resources, real estate) may see their share prices climb.",
+  "lo": "LO 8.5.1",
+  "pg": 323,
+  "k": "D.29",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Economic Cycle Investing",
+  "q": "Which statement best describes sensitivity analysis?",
+  "o": [
+   "Running thousands of random trials to build a probability distribution",
+   "Measuring a stock's volatility relative to the overall market",
+   "Testing NPV and IRR under pessimistic, expected and optimistic inputs",
+   "Shifting among industries as the business cycle progresses"
+  ],
+  "a": 2,
+  "e": "Sensitivity analysis changes one input at a time under pessimistic, expected, and optimistic assumptions and reviews the effect on NPV and IRR, revealing how reliable an investment's outcome is.",
+  "lo": "LO 8.5.1",
+  "pg": 325,
+  "k": "D.29",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Asset Allocation Methods",
+  "q": "Which statement about tactical asset allocation (TAA) is correct?",
+  "o": [
+   "It holds a fixed mix until a major life event calls for a change",
+   "It usually has lower turnover and lower costs than strategic allocation",
+   "It is generally preferred by passive, buy-and-hold investors",
+   "A contrarian, market-timing approach that buys out-of-favor classes"
+  ],
+  "a": 3,
+  "e": "TAA continually shifts the mix to exploit perceived mispricing, gives little weight to long-term goals, is inherently contrarian, and costs more to run than strategic allocation.",
+  "lo": "LO 8.5.2",
+  "pg": 329,
+  "k": "D.31",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Asset Allocation Methods",
+  "q": "A lifecycle (target-date) 401(k) fund gradually shifts toward bonds as participants age, regardless of market conditions. This is an example of",
+  "o": [
+   "rebalancing under a strategic asset allocation",
+   "tactical asset allocation based on market timing",
+   "sector rotation across the business cycle",
+   "a core-and-satellite investment strategy"
+  ],
+  "a": 0,
+  "e": "Lifecycle funds adjust allocation for age and risk tolerance, not market timing; the textbook cites them as rebalancing within a strategic asset allocation orientation.",
+  "lo": "LO 8.5.2",
+  "pg": 329,
+  "k": "D.31",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Asset Allocation Methods",
+  "q": "A $500,000 portfolio has a strategic target of 60% stocks / 40% bonds. After a rally, stocks are 70% of the portfolio. How much stock must be sold to restore the target?",
+  "o": [
+   "$35,000",
+   "$50,000",
+   "$100,000",
+   "$30,000"
+  ],
+  "a": 1,
+  "e": "Stocks now = 70% &times; $500,000 = $350,000. Target = 60% &times; $500,000 = $300,000. Sell $350,000 &minus; $300,000 = $50,000 and buy bonds to restore 60/40.",
+  "lo": "LO 8.5.2",
+  "pg": 329,
+  "k": "D.31",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Core and Satellite",
+  "q": "How much is invested in emerging-market equity in this core-and-satellite portfolio?",
+  "o": [
+   "$360,000",
+   "$288,000",
+   "$72,000",
+   "$60,000"
+  ],
+  "a": 2,
+  "e": "Satellite = 20% &times; $1,200,000 = $240,000. Emerging-market equity = 30% &times; $240,000 = $72,000.",
+  "lo": "LO 8.5.2",
+  "pg": 330,
+  "k": "D.31",
+  "kind": "calc",
+  "stem": "<p>$1,200,000 portfolio: 80% core (index funds), 20% satellite. Satellite split: 30% emerging-market equity, 25% REITs, 25% high-yield bonds, 20% commodities.</p>"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Concentrated Positions",
+  "q": "Which strategy best fits Lorraine's goals?",
+  "o": [
+   "Contribute the shares to a diversified exchange fund",
+   "Gift the shares outright to her adult son",
+   "Sell the shares to the company's ESOP",
+   "Transfer the shares to a charitable remainder trust"
+  ],
+  "a": 3,
+  "e": "A CRT creates a charitable income tax deduction that can offset compensation income, and because the trust is tax-exempt it can sell the shares without income tax, then diversify.",
+  "lo": "LO 8.5.2",
+  "pg": 331,
+  "k": "D.31",
+  "kind": "applied",
+  "stem": "<p>Lorraine, 58, a public-company executive, holds most of her wealth in low-basis employer stock. She is charitably inclined, wants a current income tax deduction to offset her high compensation, and wants the stock sold and diversified without the sale itself being taxed.</p>"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Crisis Planning",
+  "q": "A global pandemic triggers a sharp market selloff. How does the textbook classify this source of risk?",
+  "o": [
+   "Exogenous",
+   "Endogenous",
+   "Unsystematic",
+   "Incremental"
+  ],
+  "a": 0,
+  "e": "Exogenous risks are non-financial catastrophes from outside the financial system (terror attacks, earthquakes, tsunamis, pandemics) that slow commerce and create fear.",
+  "lo": "LO 8.6.1",
+  "pg": 334,
+  "k": "H.70",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Crisis Planning",
+  "q": "Which client event most clearly calls for redesigning the investment policy statement?",
+  "o": [
+   "Receiving a 4% raise at her annual performance review",
+   "Unexpectedly inheriting a business worth triple her portfolio",
+   "A sudden 6% one-week drop in the S&amp;P 500 Index",
+   "Her bond fund trailing its benchmark slightly this quarter"
+  ],
+  "a": 1,
+  "e": "A sudden large inheritance is discontinuous change: a radical break in the client's economic life that requires reassessing IPS assumptions and strategies. Noise is ignored; incremental change is watched.",
+  "lo": "LO 8.6.1",
+  "pg": 335,
+  "k": "H.70",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Crisis Planning",
+  "q": "During a sharp bear market, Corinne, 44, with a long time horizon and a 75/25 stock/bond IPS, demands to sell her stocks. Which advisor response best fits the textbook?",
+  "o": [
+   "Move her to cash now and re-enter once volatility subsides",
+   "Shift the portfolio to all Treasuries until the economy recovers",
+   "Listen, reassure, revisit the IPS, and keep the allocation",
+   "Switch to tactical allocation so she can time the rebound"
+  ],
+  "a": 2,
+  "e": "When a client insists on raising cash, the best course is usually no action: keep a long-term view and the existing allocation. Markets have a long-term positive bias, and the IPS should transcend current conditions.",
+  "lo": "LO 8.6.1",
+  "pg": 339,
+  "k": "H.70",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Crisis Planning",
+  "q": "Before any crisis, which step best prepares a client to absorb a sudden job loss without disrupting the long-term portfolio?",
+  "o": [
+   "Count on federal stimulus programs being offered again",
+   "Hold a large single-stock position as a flexible reserve",
+   "Plan to borrow on margin against the stock portfolio",
+   "Keep liquid reserves such as a money market account"
+  ],
+  "a": 3,
+  "e": "Regular access to liquid investments, such as a money market account, lets clients meet short-term setbacks without selling long-term holdings at depressed prices.",
+  "lo": "LO 8.6.1",
+  "pg": 335,
+  "k": "H.70",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Crisis Planning",
+  "q": "After vivid news coverage of a market crash, a client becomes convinced another one is imminent. Which heuristic is most likely at work?",
+  "o": [
+   "Availability",
+   "Anchoring and adjustment",
+   "Familiarity",
+   "Overconfidence"
+  ],
+  "a": 0,
+  "e": "The availability heuristic leads investors to overweight vivid or recent events, such as fearing a crash after dramatic coverage. Recognizing it helps the advisor keep the client on plan.",
+  "lo": "LO 8.6.1",
+  "pg": 338,
+  "k": "H.70",
+  "kind": "concept"
+ }
+]

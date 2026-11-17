@@ -1,0 +1,227 @@
+{
+ "Which of the following is one of Markowitz's assumptions underlying modern portfolio theory?": {
+  "Investors can borrow and lend unlimited sums at the risk-free rate": "Unlimited borrowing/lending at the risk-free rate is a CAPM assumption added later by Sharpe, not part of Markowitz's list.",
+  "Investors measure portfolio risk with beta instead of standard deviation": "MPT measures risk with standard deviation; beta is the CAPM/SML risk measure.",
+  "Investor indifference strengthens the further they look past the holding period": "MPT assumes indifference diminishes beyond the holding period, not that it strengthens."
+ },
+ "Based on these facts, which conclusion is correct?": {
+  "The current portfolio is efficient because it can actually be built today": "Being attainable is not the same as efficient; the current portfolio earns less than the frontier offers at 12% risk.",
+  "The proposed portfolio dominates and should be implemented right away": "A 10% return at 12% risk lies above the frontier, so it cannot be constructed from this asset universe.",
+  "Both portfolios are efficient because they carry the same risk level": "Equal risk does not make portfolios efficient; only the frontier point (8%) is efficient at that risk."
+ },
+ "Compared with a moderately risk-tolerant investor, a highly risk-averse investor's indifference curves are": {
+  "flatter, touching the efficient frontier at a lower-risk point": "Flat curves belong to risk-tolerant investors, not risk-averse ones.",
+  "steeper, touching the efficient frontier at a higher-risk point": "Steep curves produce a tangency to the left (lower risk), not to the right.",
+  "downward sloping, since added risk lowers the return demanded": "Indifference curves slope upward because more risk requires more return."
+ },
+ "Investor A's indifference curve is tangent to the efficient frontier at a portfolio with a 10% standard deviation; Investor B's is tangent at 18%. Which statement is most accurate?": {
+  "B has steeper indifference curves and is more risk averse than A": "A steeper curve would place the tangency to the left (lower risk), the opposite of B's position.",
+  "A's portfolio is inefficient because it has a lower expected return": "Both tangency points lie on the frontier, so both portfolios are efficient.",
+  "No conclusion about risk attitudes can be drawn from tangency points": "The tangency location reveals the slope of each investor's curves and therefore relative risk tolerance."
+ },
+ "Dana owns 14 mutual funds. Nine are large-cap U.S. stock funds whose top-10 holdings largely repeat. Under MPT principles, what is the best observation?": {
+  "More funds always reduce unsystematic risk, so she should add more": "Funds holding many securities add no further unsystematic-risk reduction and may dilute performance.",
+  "She holds too few securities to eliminate unsystematic risk": "Through 14 funds she indirectly owns thousands of issues; far fewer are needed to diversify.",
+  "Overlap lowers her correlation with bonds, which reduces total risk": "Overlap concentrates the same stocks; it does nothing to lower correlation with bonds."
+ },
+ "A portfolio has risen in value since it was built, and the advisor has new cash to invest. Under the textbook's correlation guidance, which addition would most likely lower portfolio standard deviation?": {
+  "The portfolio's best performer, to add to existing momentum": "Adding more of a top performer raises concentration and correlation, not diversification.",
+  "A fund highly correlated with current holdings, for consistency": "High correlation with existing holdings gives little or no risk reduction.",
+  "Whichever available security has the highest standard deviation": "A high standalone standard deviation says nothing about how the asset interacts with the portfolio; correlation drives the benefit."
+ },
+ "A stock has a beta of 1.4. The T-bill yields 3.5%, and the market is expected to return 9.5%. What is the stock's required return under CAPM?": {
+  "13.30%": "13.30% multiplies the market return by beta and ignores the risk-free rate entirely.",
+  "8.40%": "8.40% is only the stock risk premium; the risk-free rate must be added back.",
+  "16.80%": "16.80% applies beta to the full market return instead of to the market risk premium."
+ },
+ "The market is expected to return 8.5% and T-bills yield 2.5%. For a stock with a beta of 0.7, what are the market risk premium and the stock risk premium?": {
+  "Market risk premium 8.5%; stock risk premium 5.95%": "The market risk premium subtracts the risk-free rate: 8.5% &minus; 2.5% = 6.0%, not 8.5%.",
+  "Market risk premium 6.0%; stock risk premium 6.7%": "6.7% is the full CAPM required return (2.5% + 4.2%), not the stock risk premium.",
+  "Market risk premium 4.2%; stock risk premium 6.0%": "The two figures are reversed; the market premium is 6.0% and the stock premium is 6.0% &times; 0.7."
+ },
+ "Based on CAPM, what is the best recommendation for Priya?": {
+  "Buy: CAPM expects 14.25%, above her 12% required return": "14.25% applies beta to the whole 9% market return rather than to the 6% premium.",
+  "Pass: CAPM expects 7.5%, below her 12% required return": "7.5% is only the risk premium (6% &times; 1.25); the 3% risk-free rate was left out.",
+  "Buy: a beta above 1.0 ensures it will beat her 12% target": "A beta above 1.0 raises the expected return, but CAPM still gives only 10.5% here."
+ },
+ "An asset has a beta of &minus;0.4. The risk-free rate is 4% and the market is expected to return 11%. What is its CAPM required return?": {
+  "6.80%": "6.80% ignores the negative sign on beta and adds the premium instead of subtracting it.",
+  "&minus;2.80%": "&minus;2.80% is only the (negative) stock risk premium; the 4% risk-free rate must be added.",
+  "&minus;0.40%": "&minus;0.40% multiplies beta by the market return (11%) instead of the market risk premium (7%)."
+ },
+ "Using CAPM, which conclusion about Stocks Q and R is correct?": {
+  "Q plots below the SML (sell); R plots above the SML (buy)": "This reverses the result: Q's forecast beats its 9.4% requirement, while R's falls short of 13.6%.",
+  "Both plot on the SML because both forecasts exceed the risk-free rate": "Plotting on the SML requires expected return to equal the CAPM required return, not merely exceed the risk-free rate.",
+  "R is the better buy because its forecast return is the higher one": "A higher raw forecast ignores risk; R's forecast is below what its beta of 1.6 requires."
+ },
+ "The risk-free rate is 3%. The market portfolio is expected to return 10% with a 16% standard deviation. Using the CML, what is the expected return of an efficient portfolio with a 12% standard deviation?": {
+  "7.50%": "7.50% scales the market return by 12/16 but omits the risk-free rate and the premium structure.",
+  "12.33%": "12.33% inverts the ratio, multiplying the premium by 16/12 instead of 12/16.",
+  "10.50%": "10.50% uses the full 10% market return instead of the 7% market risk premium in the slope."
+ },
+ "Expected inflation rises and the risk-free rate moves from 3.0% to 4.5%; the market risk premium stays at 6%. What happens to the required return on a stock with a beta of 1.2?": {
+  "It rises from 10.2% to 12.0% as the SML becomes steeper": "The slope (market risk premium) is unchanged, so beta does not multiply the 1.5% increase.",
+  "It stays at 10.2% because inflation changes only the slope": "Higher inflation raises the risk-free intercept, which lifts every asset's required return.",
+  "It falls to 8.7% because higher rates cut required returns": "A higher risk-free rate raises, not lowers, required returns."
+ },
+ "Investors in general become more risk averse, while the risk-free rate is unchanged. What happens to the SML?": {
+  "It shifts upward, parallel to the original line": "A parallel shift comes from a change in the risk-free rate (e.g., inflation), not in risk aversion.",
+  "It pivots at the risk-free rate and becomes flatter": "A flatter SML reflects investors becoming less concerned about risk.",
+  "Its intercept falls while its slope is unchanged": "Greater risk aversion changes the price of risk (slope), not the risk-free intercept."
+ },
+ "Using APT, what is the expected return on this stock?": {
+  "9.30%": "9.30% sums the factor terms but leaves out the 2.5% risk-free return (a<sub>0</sub>).",
+  "14.50%": "14.50% adds the raw risk premiums without weighting them by the sensitivities.",
+  "13.30%": "13.30% ignores the 0.5 sensitivity and adds the full 3% interest-rate premium."
+ },
+ "Which of the following is NOT one of the four primary APT factors identified in the textbook?": {
+  "Inflation": "Inflation is one of the four primary APT factors.",
+  "Industrial production (changes in GDP)": "Industrial production, or changes in GDP, is one of the four primary factors.",
+  "The yield curve (interest rates)": "The yield curve (interest rates) is one of the four primary factors."
+ },
+ "Which of the following is one of the assumptions Sharpe stipulated for CAPM?": {
+  "Investors hold differing expectations about each asset's return distribution": "CAPM assumes homogeneous expectations: all investors estimate identical distributions.",
+  "Taxes and transaction costs are central to every investment decision": "CAPM assumes there are no taxes or transaction costs.",
+  "Investors can borrow only at rates well above the risk-free rate": "CAPM assumes investors can borrow and lend at the risk-free rate."
+ },
+ "Under the semistrong form of the efficient market hypothesis, which approach could still produce above-market returns?": {
+  "Fundamental analysis of financial statements": "Semistrong efficiency says public financial statement data is already in the price.",
+  "Charting support and resistance levels": "Technical analysis has no value under any form of the EMH.",
+  "Buying right after favorable earnings news": "Public announcements are priced in quickly, so buying afterward gives no edge."
+ },
+ "Which statements are correct?": {
+  "I and II only": "Statement II is wrong: no form of the EMH supports technical analysis.",
+  "II and III only": "Statement II is wrong, and statements I and IV are also correct.",
+  "III only": "Statements I and IV are also correct."
+ },
+ "Which type of research has tended to SUPPORT the semistrong form of the EMH?": {
+  "Return-prediction studies of January and weekend effects": "Return-prediction studies uncovered anomalies that challenge semistrong efficiency.",
+  "Cross-sectional studies showing low-P/E stocks outperform": "Cross-sectional anomalies such as the low P/E effect are evidence against semistrong efficiency.",
+  "Studies showing insiders earn abnormal trading profits": "Insider profits are evidence against the strong form, not support for the semistrong form."
+ },
+ "Jonah buys small-company stocks each December and sells them in January. Which anomaly is he using, and what caveat applies?": {
+  "Weekend effect; price moves may not cover transaction costs": "The weekend effect involves buying late Monday and selling late Friday, not a December-January cycle.",
+  "Neglected-firm effect; it may just be an extension of the size effect": "The neglected-firm effect concerns stocks with little analyst coverage, not calendar timing.",
+  "Dividend-yield anomaly; higher-yielding stocks tend to outperform": "The dividend-yield anomaly is about payout levels, not buying in December."
+ },
+ "In a semistrong-form test, CAPM sets a stock's required return at 9%. Over the period, the stock actually returns 12.5%. What abnormal return do researchers attribute to it?": {
+  "12.5%": "12.5% is the total return; abnormal return is only the portion above the CAPM requirement.",
+  "&minus;3.5%": "The sign is reversed; the stock beat its required return, so the abnormal return is positive.",
+  "21.5%": "21.5% adds the required and actual returns instead of taking the difference."
+ },
+ "A client believes U.S. large-cap stocks are highly efficient but emerging markets are not. Which implementation best fits that view?": {
+  "Use an active manager for large caps and index emerging markets": "This reverses the logic: active management fits the less efficient segment.",
+  "Use active managers everywhere, since some segments are inefficient": "Paying for active management in efficient segments is unlikely to add value.",
+  "Avoid emerging markets entirely because their statements are unreliable": "Information gaps are exactly what create opportunities for skilled active managers."
+ },
+ "According to the textbook, why have low-P/E and high book-to-market stocks tended to deliver higher returns?": {
+  "They are fundamentally strong firms with highly predictable earnings growth": "These stocks usually show poor ratios versus industry peers; \"good\" predictable firms get low required returns.",
+  "They carry lower betas, and CAPM rewards low beta with higher returns": "CAPM pays more for higher beta, not lower; that would not explain the outperformance.",
+  "Securities laws restrict insiders from trading them, reducing competition": "The textbook ties the effect to investor neglect and perceived risk, not insider trading rules."
+ },
+ "According to the Brinson, Hood, and Beebower study, what explains more than 90% of the variability of a portfolio's returns?": {
+  "Security selection": "Security selection explained only a small share of return variability.",
+  "Market timing": "Market timing explained only a small share of return variability.",
+  "Expense ratios": "The study attributed the variability to asset allocation, not to costs."
+ },
+ "A prospect wants to hire only managers who consistently rank in the top 25% of their asset class. What does the textbook suggest?": {
+  "Most active funds beat their indexes, so this is easy to accomplish": "Well over half of mutual funds fail to outperform their indexes.",
+  "Top-quartile consistency is common among large-cap growth funds": "The textbook calls consistent top-quartile performance rare, without a large-cap exception.",
+  "A past top-quartile ranking virtually ensures future outperformance": "Regression to the mean is common, so past ranking does not ensure future results."
+ },
+ "A client wants to keep $60,000 available for a home down payment in three years. In which IPS content area should this be recorded?": {
+  "Return requirement": "The return requirement states the target return, not near-term cash needs.",
+  "Laws and regulations": "Laws and regulations cover items like ERISA compliance for plans, rarely individuals.",
+  "Permitted and excluded investments": "This area lists asset types the client wants included or excluded."
+ },
+ "How should Walter's IPS describe his risk tolerance?": {
+  "Low ability and low willingness to take risk": "His wealth, health, insurance and pension give him a high ability to bear risk.",
+  "High ability and high willingness, since wealth sets tolerance": "Wealth drives ability, but his distress at any decline shows low willingness.",
+  "Low ability but high willingness to take risk": "This reverses both dimensions of his profile."
+ },
+ "An IPS targets a 4.5% real return, and the advisor assumes 2.5% average inflation. Using the textbook's simple approach, what nominal return requirement should the IPS state?": {
+  "2.0%": "2.0% subtracts inflation instead of adding it.",
+  "4.5%": "4.5% ignores inflation, so the portfolio would lose purchasing-power ground.",
+  "11.25%": "11.25% multiplies the two rates instead of adding them."
+ },
+ "Research shows that the pain of a loss outweighs the pleasure of an equal gain. Which concept, introduced by Kahneman and Tversky, does this describe?": {
+  "Risk aversion": "Risk aversion is preferring a sure gain over a gamble with the same expected value.",
+  "Overconfidence": "Overconfidence is overrating one's ability to predict or beat the market.",
+  "Representativeness": "Representativeness is assuming recent patterns will continue."
+ },
+ "An advisor runs a Monte Carlo retirement projection using the returns of the Wilshire 5000, but the client's funds carry meaningful fees. What is the main risk?": {
+  "It will understate success because it ignores the market's positive bias": "Simulating a fee-free index ignores costs, which biases results upward, not downward.",
+  "Monte Carlo cannot model withdrawals, so the result is meaningless": "Monte Carlo can model additions and withdrawals at each period; that is a strength.",
+  "Fees matter only in taxable accounts, so there is no distortion": "Fees reduce returns in every account type."
+ },
+ "A client expects the Fed to keep raising rates over the next year and wants to stay flexible. Which holding best fits the textbook's guidance?": {
+  "A long-term investment-grade corporate bond fund": "Long-term bonds lose value as rates rise and lock in today's lower yield.",
+  "Shares of a highly leveraged electric utility": "Utilities often trade on yield and carry heavy debt, so rising rates hurt them.",
+  "A 20-year zero-coupon Treasury bond": "Long zero-coupon bonds are among the most rate-sensitive holdings."
+ },
+ "As an economy begins recovering from a recession, which pattern does the textbook describe?": {
+  "Consumer noncyclicals lead as investors seek steady, reliable demand": "Noncyclicals are favored when rates rise and a slowdown looms, not early recovery.",
+  "Basic materials and energy lead on renewed inflation fears": "Materials and energy tend to lead later in the cycle when inflation fears return.",
+  "Utilities rally because interest rates are climbing quickly": "Rising rates hurt utilities, which trade on yield and carry heavy debt."
+ },
+ "Inflation is accelerating sharply. Which holding is most likely to hold up, according to the textbook?": {
+  "A long-term Treasury bond": "Rising inflation almost always lifts rates and pushes bond prices down, especially long bonds.",
+  "An intermediate-term corporate bond fund": "Bond funds lose value as inflation drives interest rates higher.",
+  "A heavily indebted bank stock": "Financial firms and high-debt companies are especially hurt by rising rates."
+ },
+ "Which statement best describes sensitivity analysis?": {
+  "Running thousands of random trials to build a probability distribution": "Thousands of random trials describes Monte Carlo simulation (stochastic modeling).",
+  "Measuring a stock's volatility relative to the overall market": "Volatility relative to the market is beta.",
+  "Shifting among industries as the business cycle progresses": "Moving among industries over the cycle is rotational investing."
+ },
+ "Which statement about tactical asset allocation (TAA) is correct?": {
+  "It holds a fixed mix until a major life event calls for a change": "Holding a fixed mix until a life event describes strategic asset allocation.",
+  "It usually has lower turnover and lower costs than strategic allocation": "TAA's frequent reallocation makes transaction and turnover costs much higher.",
+  "It is generally preferred by passive, buy-and-hold investors": "Passive, buy-and-hold investors tend toward strategic allocation; active managers favor TAA."
+ },
+ "A lifecycle (target-date) 401(k) fund gradually shifts toward bonds as participants age, regardless of market conditions. This is an example of": {
+  "tactical asset allocation based on market timing": "TAA shifts the mix based on market conditions, which this fund explicitly ignores.",
+  "sector rotation across the business cycle": "Sector rotation moves among industries as the business cycle changes.",
+  "a core-and-satellite investment strategy": "Core and satellite pairs passive index holdings with higher-risk active positions."
+ },
+ "A $500,000 portfolio has a strategic target of 60% stocks / 40% bonds. After a rally, stocks are 70% of the portfolio. How much stock must be sold to restore the target?": {
+  "$35,000": "$35,000 is 10% of the $350,000 stock position, not the excess over target.",
+  "$100,000": "$100,000 doubles the actual drift.",
+  "$30,000": "$30,000 is 10% of the $300,000 target, not the dollar overweight."
+ },
+ "How much is invested in emerging-market equity in this core-and-satellite portfolio?": {
+  "$360,000": "$360,000 applies 30% to the whole portfolio instead of to the satellite sleeve.",
+  "$288,000": "$288,000 applies 30% to the core sleeve rather than the satellite sleeve.",
+  "$60,000": "$60,000 uses the 25% REIT weight instead of the 30% emerging-market weight."
+ },
+ "Which strategy best fits Lorraine's goals?": {
+  "Contribute the shares to a diversified exchange fund": "An exchange fund diversifies without immediate capital gains tax but creates no charitable deduction.",
+  "Gift the shares outright to her adult son": "A gift may trigger gift tax and gives her no charitable deduction to offset compensation.",
+  "Sell the shares to the company's ESOP": "Selling to an ESOP creates a market for the shares but generates no charitable deduction."
+ },
+ "A global pandemic triggers a sharp market selloff. How does the textbook classify this source of risk?": {
+  "Endogenous": "Endogenous risks arise inside the financial system itself, such as the 2008-2009 crisis.",
+  "Unsystematic": "A pandemic hits the whole market; it is not company-specific risk.",
+  "Incremental": "Incremental describes small changes in a client's situation, not a source of crisis risk."
+ },
+ "Which client event most clearly calls for redesigning the investment policy statement?": {
+  "Receiving a 4% raise at her annual performance review": "A modest raise is incremental change: worth watching, not a reason to rewrite the IPS.",
+  "A sudden 6% one-week drop in the S&amp;P 500 Index": "Short-term market swings are noise that an IPS is designed to help clients ignore.",
+  "Her bond fund trailing its benchmark slightly this quarter": "Minor benchmark lag is noise, not a change in the client's circumstances."
+ },
+ "During a sharp bear market, Corinne, 44, with a long time horizon and a 75/25 stock/bond IPS, demands to sell her stocks. Which advisor response best fits the textbook?": {
+  "Move her to cash now and re-enter once volatility subsides": "Moving to cash risks trading losses and missing the early stages of the recovery.",
+  "Shift the portfolio to all Treasuries until the economy recovers": "Abandoning the IPS for short-term conditions is the micromanaging the textbook warns against.",
+  "Switch to tactical allocation so she can time the rebound": "Market timing contradicts the long-term policy that should guide her through the crisis."
+ },
+ "Before any crisis, which step best prepares a client to absorb a sudden job loss without disrupting the long-term portfolio?": {
+  "Count on federal stimulus programs being offered again": "Government relief is not guaranteed in a future crisis; the textbook warns not to assume it.",
+  "Hold a large single-stock position as a flexible reserve": "A concentrated stock position adds unsystematic risk and may be down when cash is needed.",
+  "Plan to borrow on margin against the stock portfolio": "Margin borrowing adds leverage just when markets are falling."
+ },
+ "After vivid news coverage of a market crash, a client becomes convinced another one is imminent. Which heuristic is most likely at work?": {
+  "Anchoring and adjustment": "Anchoring ties decisions to a reference point, such as a purchase price.",
+  "Familiarity": "Familiarity pushes investors toward what they know, at the cost of diversification.",
+  "Overconfidence": "Overconfidence makes investors overrate their skill at predicting or beating the market."
+ }
+}

@@ -1,0 +1,172 @@
+{
+ "Dana's investment produced a total return of 45% over six years. What is her simple (noncompounded) annual rate of return?": {
+  "6.39%": "This is the compound annual rate, 1.45<sup>1/6</sup> &minus; 1, not the simple rate the question asks for.",
+  "9.00%": "This divides by 5 instead of the six years Dana held the investment.",
+  "45.00%": "This is the cumulative return for the whole period, not an annual rate."
+ },
+ "A fund returned 10%, &minus;5%, 18% and 7% in four consecutive years. Which pair correctly states its arithmetic mean and geometric mean?": {
+  "Arithmetic 7.18%; geometric 7.50%": "The two values are swapped; the geometric mean can never exceed the arithmetic mean.",
+  "Arithmetic 10.00%; geometric 7.18%": "This treats the &minus;5% year as a +5% gain when averaging.",
+  "Arithmetic 7.50%; geometric 7.98%": "7.98% is the cumulative 31.94% divided by 4, which is not a geometric mean."
+ },
+ "Which statement about the arithmetic and geometric mean of a return series is CORRECT?": {
+  "The geometric mean exceeds the arithmetic mean when returns are volatile.": "Volatility pushes the geometric mean further below the arithmetic mean, not above it.",
+  "The arithmetic mean assumes each period's return is reinvested.": "The arithmetic mean is a simple average and does not assume reinvestment.",
+  "The geometric mean ignores the effect of compounding.": "Compounding is exactly what the geometric mean captures; the arithmetic mean ignores it."
+ },
+ "Based on these facts, what is the time-weighted return on the stock?": {
+  "15.37%": "15.37% is the dollar-weighted return, which includes Omar's second purchase.",
+  "14.02%": "This leaves out the $2 dividend: (52 &divide; 40)<sup>1/2</sup> &minus; 1.",
+  "30.00%": "This is the two-year price gain on one share, not an annualized total return."
+ },
+ "Based on these facts, what is Omar's dollar-weighted return?": {
+  "16.54%": "16.54% is the time-weighted return, which ignores Omar's added purchase.",
+  "13.69%": "This drops the $2 dividend from the Year 1 cash flow (CF1 = &minus;46).",
+  "63.76%": "This counts the ending value of two shares but never subtracts the $46 purchase."
+ },
+ "Ben's account statement shows a lower return than the mutual fund's published return for the same period, even though he owned only that fund. What is the best explanation?": {
+  "Published fund returns are dollar-weighted across all shareholders.": "Funds generally report time-weighted, not dollar-weighted, returns.",
+  "Time-weighted returns include investor contributions, so they always run higher.": "It is the dollar-weighted return, not the time-weighted one, that includes investor cash flows.",
+  "The fund is quoting its SEC yield rather than any total return measure.": "Nothing suggests a yield was quoted; the gap comes from cash-flow timing."
+ },
+ "Using the textbook's convention for annualizing a periodic IRR, what is Rosa's dollar-weighted return?": {
+  "2.40%": "2.40% is the quarterly IRR before annualizing.",
+  "9.75%": "This is a simple HPR, ($300 gain + $480 dividends) &divide; $8,000, which ignores timing.",
+  "9.97%": "This compounds the quarterly rate, (1.024044)<sup>4</sup> &minus; 1; the textbook multiplies by 4."
+ },
+ "A corporate bond has a 7% nominal return and inflation is 2.5%. Using the formula expected on the CFP exam, what is the real rate of return?": {
+  "4.50%": "Nominal minus inflation is a shortcut, not the exact real-return formula.",
+  "9.68%": "This multiplies (1.07 &times; 1.025) instead of dividing.",
+  "6.83%": "This divides 7% by 1.025 without converting the nominal rate to 1 + r."
+ },
+ "Priya holds a 7% corporate bond, has a 30% combined federal and state marginal tax rate, and inflation is 2.5%. What is her after-tax, inflation-adjusted return?": {
+  "2.40%": "This subtracts inflation from the after-tax rate instead of using the real-return formula.",
+  "4.39%": "This is the real return before taxes.",
+  "3.07%": "This applies the tax to the pre-tax real return; tax the nominal rate first, then adjust for inflation."
+ },
+ "A credit card charges 1.5% interest per month, compounded monthly. What are the card's APR and effective annual rate?": {
+  "APR 19.56%; EAR 18.00%": "The labels are reversed; the APR is the uncompounded figure.",
+  "APR 1.50%; EAR 19.56%": "1.5% is the monthly periodic rate, not the annual percentage rate.",
+  "APR 18.00%; EAR 18.00%": "The EAR equals the APR only with annual compounding; monthly compounding raises it."
+ },
+ "Luis bought a bond for $960, collected $140 of interest, and sold it for $1,010. What is his holding period return?": {
+  "5.21%": "This counts only the price gain and leaves out the interest.",
+  "14.58%": "This counts only the interest and leaves out the price gain.",
+  "18.81%": "This divides by the ending value; HPR uses the beginning value."
+ },
+ "Kendra earned an HPR of 20% on an investment she held for three years. Which statement is CORRECT?": {
+  "The HPR understates the investment's true annual return.": "Understatement happens when the holding period is shorter than one year.",
+  "The HPR equals the investment's compound annual return.": "A three-year HPR is cumulative; the annual compound rate would be far lower.",
+  "The HPR already reflects when each cash flow occurred.": "Ignoring cash-flow timing is the HPR's major weakness."
+ },
+ "Based on these facts, what is the portfolio's Jensen's alpha?": {
+  "+2.00%": "This compares the portfolio with the market return and ignores beta.",
+  "&minus;0.80%": "The sign is reversed; actual minus required is positive here.",
+  "+8.00%": "This is the excess return over the risk-free rate, not over the CAPM return."
+ },
+ "Based on these facts, what is the portfolio's Treynor ratio (in percentage points)?": {
+  "9.17": "This divides the total return by beta without subtracting the risk-free rate.",
+  "1.67": "This subtracts the market return instead of the risk-free rate.",
+  "0.50": "0.50 is the Sharpe ratio, which divides by standard deviation."
+ },
+ "Based on these facts, what is the portfolio's Sharpe ratio?": {
+  "0.69": "This divides the total return by standard deviation without subtracting the risk-free rate.",
+  "6.67": "6.67 is the Treynor ratio, which divides by beta.",
+  "0.13": "This subtracts the market return instead of the risk-free rate."
+ },
+ "Which fund showed better risk-adjusted performance, and why?": {
+  "Fund L, because it has the higher Treynor ratio": "Treynor relies on beta, which is unreliable with R&sup2; this low.",
+  "Fund L, because it has the higher Sharpe ratio": "Fund L's Sharpe ratio is 0.50, below Fund K's 0.58.",
+  "Fund K, because it has the higher Treynor ratio": "Fund K's Treynor ratio (7.78) is lower than L's (9.09), and Treynor should not be used here anyway."
+ },
+ "A portfolio's Jensen's alpha is negative. Which statement must be true?": {
+  "It earned less than the risk-free rate.": "It can beat the risk-free rate and still fall short of its CAPM required return.",
+  "It has a beta below 1.0.": "Alpha's sign says nothing about the size of beta.",
+  "Its Sharpe ratio is below the market's.": "Sharpe uses total risk; a negative alpha does not settle how Sharpe ratios compare."
+ },
+ "Fund Q returned 9.5% with a tracking error of 3%. Fund R returned 10% with a tracking error of 6%. Their benchmark returned 8%. Which fund has the better information ratio?": {
+  "Fund R, with an IR of 0.33": "0.33 is Fund R's IR, but it is lower than Fund Q's.",
+  "Fund R, with an IR of 1.67": "This divides Fund R's total return by tracking error without subtracting the benchmark.",
+  "Fund Q, with an IR of 3.17": "This divides Fund Q's total return by tracking error without subtracting the benchmark."
+ },
+ "The information ratio becomes identical to the Sharpe ratio when": {
+  "the portfolio's beta equals 1.0": "A beta of 1.0 does not turn active risk into total risk.",
+  "the tracking error equals zero": "Zero tracking error would make the ratio undefined.",
+  "the benchmark is the S&amp;P 500 Index": "An equity index benchmark keeps the measure an active-return ratio."
+ },
+ "Which performance measure is an ABSOLUTE measure rather than a relative one?": {
+  "Sharpe ratio": "The Sharpe ratio is relative; it must be compared with another portfolio or the market.",
+  "Treynor ratio": "The Treynor ratio is relative; it must be compared with another portfolio or the market.",
+  "Information ratio": "The information ratio is a ratio of active return to active risk, judged against other managers."
+ },
+ "In a price-weighted index such as the DJIA, how does a $90 stock's influence compare with a $30 stock's, regardless of company size?": {
+  "One-third as much": "This reverses the relationship; the higher-priced stock has more influence.",
+  "About the same": "Price weighting gives unequal influence based on share price.",
+  "It depends on each firm's market capitalization": "Market capitalization drives weights in cap-weighted indices, not price-weighted ones."
+ },
+ "A company with a $45 billion market value belongs to a capitalization-weighted index whose members total $300 billion. What share of the index's price movement does it account for?": {
+  "0.20%": "This assumes equal weighting across 500 stocks rather than cap weighting.",
+  "6.67%": "This inverts the ratio ($300B &divide; $45B), giving a multiple rather than a weight.",
+  "85.00%": "This is the share held by all the other companies, not this one."
+ },
+ "Which of the following is NOT a shortcoming of the Dow Jones Industrial Average?": {
+  "It ignores cash dividends.": "Failing to reflect cash dividends is a recognized DJIA weakness.",
+  "It gives higher-priced stocks more influence.": "Price weighting, which favors high-priced shares, is a recognized weakness.",
+  "It relies on a small sample of mostly blue-chip stocks.": "Its 30-stock, blue-chip sample is a recognized source of bias."
+ },
+ "Marta manages a fund of developed-market stocks from Europe, Australasia and the Far East, excluding the U.S. and Canada. Which benchmark fits best?": {
+  "Russell 2000 Index": "The Russell 2000 measures U.S. small-cap stocks.",
+  "Wilshire 5000 Index": "The Wilshire 5000 measures the broad U.S. market.",
+  "S&amp;P 500 Index": "The S&amp;P 500 measures U.S. large-cap stocks."
+ },
+ "Which conclusion about the client's 7.9% return is most appropriate?": {
+  "It lagged the S&amp;P 500 by 2.1%, so the portfolio underperformed.": "Measuring the whole portfolio against the S&amp;P 500 ignores the 50% held in other asset classes.",
+  "It beat a blended benchmark of 6.67%.": "6.67% is a simple average of the three index returns, which ignores the client's weights.",
+  "It beat the Russell 2000 by 1.9%, so the manager added value.": "A single small-cap index ignores the 70% of the portfolio held in other asset classes."
+ },
+ "A bond with a 4.5% coupon is trading at $920. What is its current yield?": {
+  "4.50%": "4.5% is the coupon (nominal) yield, based on par rather than price.",
+  "4.14%": "This multiplies the coupon rate by the price ratio instead of dividing interest by price.",
+  "2.45%": "This uses the semiannual payment ($22.50) instead of the annual interest."
+ },
+ "An 8-year bond with a 5% coupon paid semiannually is priced at $940. What is its yield to maturity?": {
+  "2.98%": "2.98% is the semiannual rate; it must be doubled (or use 2 P/Yr).",
+  "5.32%": "5.32% is the current yield ($50 &divide; $940), which ignores the gain to par.",
+  "5.00%": "5% is the coupon rate; a discount bond's YTM is above its coupon."
+ },
+ "Based on these facts, what is the bond's yield to call?": {
+  "5.93%": "5.93% is the yield to maturity (FV 1,000, N 20).",
+  "6.48%": "6.48% is the current yield ($70 &divide; $1,080).",
+  "4.78%": "This uses par ($1,000) instead of the $1,020 call price."
+ },
+ "A 15-year bond with a 6% coupon trades at $930 and is callable at par in 5 years. Which ordering of its yields is expected?": {
+  "Coupon &gt; current yield &gt; YTM &gt; YTC": "This is the premium-bond ordering, reversed.",
+  "YTM &gt; YTC &gt; current yield &gt; coupon": "Reaching par sooner (at the call) raises the YTC above the YTM for a discount bond.",
+  "Current yield &gt; YTC &gt; YTM &gt; coupon": "Current yield ignores the gain to par, so it falls below both YTM and YTC."
+ },
+ "A 10-year zero-coupon bond is priced at $600. Using the textbook's default conventions, what is its yield to maturity?": {
+  "5.24%": "This uses annual compounding (N = 10), but the default is semiannual even for zeros.",
+  "2.59%": "2.59% is the semiannual rate before annualizing.",
+  "6.67%": "This is a simple average gain ($400 &divide; $600 &divide; 10 years) that ignores compounding."
+ },
+ "Which assumption is built into a bond's yield to maturity?": {
+  "Coupons are spent as received rather than reinvested.": "The IRR math assumes reinvestment, not spending.",
+  "Coupons are reinvested at the bond's coupon rate.": "The reinvestment rate assumed is the YTM, not the coupon rate.",
+  "The bond is redeemed at its first call date.": "Redemption at the first call date is the yield-to-call assumption."
+ },
+ "A municipal bond yields 3.6%. The investor's marginal federal rate is 35% and her state has no income tax. What is the bond's taxable equivalent yield?": {
+  "2.34%": "This multiplies by (1 &minus; t), which converts a taxable yield to after-tax, not the reverse.",
+  "4.86%": "This multiplies by (1 + t) instead of dividing by (1 &minus; t).",
+  "10.29%": "This divides by the tax rate instead of by (1 &minus; tax rate)."
+ },
+ "Using the textbook's method for a double tax-exempt bond, what is its taxable equivalent yield?": {
+  "4.86%": "Simply adding the two rates (3.4% &divide; 0.70) is the non-itemizer shortcut.",
+  "4.47%": "This ignores the state tax exemption (3.4% &divide; 0.76).",
+  "2.43%": "This multiplies by the two factors instead of dividing."
+ },
+ "Felix can buy a 6% corporate bond or a 4.3% municipal bond of similar quality and maturity. His marginal federal rate is 32% and his state has no income tax. Based on yield alone, which should he prefer?": {
+  "The corporate, because 6% beats the muni's stated 4.3%": "Comparing a pre-tax yield with a tax-free yield ignores taxes.",
+  "The corporate, because the muni's TEY is only 2.92%": "This multiplies the muni yield by (1 &minus; t) instead of dividing.",
+  "The municipal, because its TEY of 13.44% exceeds 6%": "This divides by the tax rate rather than by (1 &minus; tax rate)."
+ }
+}

@@ -1,0 +1,105 @@
+{
+ "objectives": [
+  "LO 5.1.1: Compare ways to own investment real estate, value it with NOI and cap rates, and know how it is taxed",
+  "LO 5.2.1: Recognize option types and positions, payoffs, intrinsic/time value, pricing-model inputs and option taxation",
+  "LO 5.2.2: Choose option strategies for speculation, income and hedging (covered calls, protective puts, collars, straddles)",
+  "LO 5.3.1: Explain futures terms, margin and marking to market, short vs. long hedges, and 60/40 taxation",
+  "LO 5.4.1: Weigh collectibles, gold and natural resources, including liquidity and the 28% collectibles rate",
+  "LO 5.5.1: Assess the risks and benefits of foreign securities, market types, fund choices and ADRs",
+  "LO 5.5.2: Measure how exchange rate moves change a foreign investment's return in dollars"
+ ],
+ "synthesis": "Module 5 adds the tools that sit beside stocks and bonds: real assets and foreign securities widen diversification because they move differently from U.S. financial assets, while options and futures let a client transfer or shape risk. In planning, these show up as REIT income sleeves, collars on concentrated stock, index puts or futures as portfolio insurance, and international funds whose currency exposure must be explained. Each carries its own liquidity, leverage and tax rules that feed directly into asset allocation and tax planning.",
+ "example": {
+  "title": "Collar on a concentrated position",
+  "html": "<p>Rina owns 1,000 shares bought at $20, now $60. She buys 10 puts with a $55 strike at $2.40 and writes 10 calls with a $70 strike at $2.40.</p><ul><li>Net premium: $2,400 received &minus; $2,400 paid = <b>$0</b> (zero-cost collar)</li><li>Floor: if the stock falls to $40, she can sell at $55 &rarr; value protected at $55,000</li><li>Ceiling: above $70 the shares are called away at $70 &rarr; value capped at $70,000</li><li>Range kept until expiration: $55,000 to $70,000, versus $60,000 today</li></ul>"
+ },
+ "cheat": {
+  "keyNumbers": [
+   [
+    "Value = NOI &divide; cap rate",
+    "NOI excludes depreciation and debt service"
+   ],
+   [
+    "REIT tests: 90% / 75%",
+    "Distribute &ge;90% of net earnings; &ge;75% of gross income from real estate (2026 edition figures)"
+   ],
+   [
+    "1 option = 100 shares",
+    "Multiply per-share premiums and payoffs by 100"
+   ],
+   [
+    "Call BE = strike + premium; put BE = strike &minus; premium",
+    "Applies to buyer and writer alike"
+   ],
+   [
+    "Futures initial margin ~5&ndash;10%",
+    "Margin call restores the initial level"
+   ],
+   [
+    "Futures tax 60% LT / 40% ST",
+    "Regardless of holding period (2026 edition figure)"
+   ],
+   [
+    "Collectibles max LTCG 28%",
+    "Higher than securities (2026 edition figure)"
+   ],
+   [
+    "Gold allocation 5&ndash;10%",
+    "Possible advisor cap in a diversified portfolio"
+   ]
+  ],
+  "mustKnow": [
+   "Max gain/loss for all four option positions: only the long call (gain) and naked short call (loss) are unlimited",
+   "Intrinsic value: call = stock &minus; strike, put = strike &minus; stock, never below zero; time value = premium &minus; intrinsic",
+   "Black-Scholes: every input raises call value except the exercise price",
+   "Short hedge = own the asset, sell futures; long hedge = need the asset, buy futures",
+   "REIT income is portfolio income; RELPs fall under passive activity rules",
+   "A U.S. owner of foreign securities wants the dollar to fall during the holding period; ADRs keep currency risk"
+  ],
+  "traps": [
+   "Subtracting mortgage interest or depreciation when computing NOI",
+   "Calling a long put's gain unlimited (it is strike &minus; premium)",
+   "Restoring a futures account only to maintenance margin",
+   "Hedging a short sale with puts instead of calls",
+   "Choosing a global fund to diversify away from U.S. holdings"
+  ],
+  "tips": [
+   "Write the four-position payoff table from memory before any option question",
+   "For currency questions, first restate the quote as foreign units per $1, then divide to get dollars",
+   "Hedges always take the position opposite the cash exposure"
+  ]
+ },
+ "topics": [
+  "Real Estate NOI",
+  "Cap Rate Valuation",
+  "Real Estate Leverage",
+  "Undeveloped Land",
+  "RELPs vs. REITs",
+  "REIT Taxation",
+  "REMICs & CMOs",
+  "Option Basics",
+  "Option Payoffs",
+  "Intrinsic & Time Value",
+  "Option Pricing Models",
+  "Option Taxation",
+  "Option Speculation",
+  "Covered Calls",
+  "Protective Puts & Collars",
+  "Naked Option Writing",
+  "Straddles & Spreads",
+  "Option Hedging Uses",
+  "Futures Basics",
+  "Futures Margin",
+  "Futures Hedging",
+  "Futures Taxation",
+  "Collectibles & Tangibles",
+  "Gold Investing",
+  "Natural Resources",
+  "Foreign Investing Risks",
+  "Emerging vs. Developed Markets",
+  "International Fund Types",
+  "ADRs",
+  "Currency-Adjusted Returns",
+  "Exchange Rate Quotes"
+ ]
+}

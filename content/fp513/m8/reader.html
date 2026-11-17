@@ -1,0 +1,345 @@
+<div id="tab-portfolio" class="section-panel">
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 8.1.1 · MPT, the efficient frontier and indifference curves</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <p class="text-sm">Markowitz (1952) gave a way to measure how much diversification cuts risk. Risk = standard deviation. Unless two assets are perfectly positively correlated (+1.0), combining them lowers risk. MPT is about <b>risk-adjusted</b> return, not raw return: don't take more risk than the goal needs.</p>
+    <ul class="key-list">
+      <li><strong>MPT assumptions</strong> &mdash; each investment is a probability distribution of returns over a holding period; risk = variability (standard deviation); decisions rest only on expected return and risk; investors maximize wealth over a set period (indifference fades beyond it); at equal risk, more return wins.</li>
+      <li><strong>Mean-variance optimization</strong> &mdash; uses each asset's return, standard deviation, and its correlation with every other asset to build optimal portfolios.</li>
+      <li><strong>Efficient frontier</strong> &mdash; the curve of portfolios with the most return for each level of risk.</li>
+      <li><strong>Indifference curve</strong> &mdash; a picture of the investor's utility function: every point on one curve gives equal satisfaction. Curves slope upward and run parallel; higher curves = more satisfaction.</li>
+      <li><strong>Optimal portfolio</strong> &mdash; where the highest reachable indifference curve is <b>tangent</b> to the frontier.</li>
+    </ul>
+    <table><thead><tr><th>Position vs. frontier</th><th>Attainable?</th><th>Efficient?</th></tr></thead><tbody>
+      <tr><td>On the curve</td><td>Yes</td><td>Yes</td></tr>
+      <tr><td>Below / inside</td><td>Yes</td><td>No (dominated)</td></tr>
+      <tr><td>Above / outside</td><td>No</td><td>&mdash;</td></tr>
+    </tbody></table>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; label three portfolios</div>
+      <p class="text-sm mb-1">At a 10% standard deviation the frontier's best expected return is 7%. Portfolio K: 5.5% / 10%. Portfolio L: 7% / 10%. Portfolio N: 9% / 10%.</p>
+      <ol><li>K sits below the frontier &rarr; attainable but inefficient (L beats it at the same risk).</li><li>L sits on the frontier &rarr; attainable and efficient.</li><li>N sits above the frontier &rarr; unattainable with these assets.</li></ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> calling K efficient because it can be built; calling N the "best" portfolio when it can't exist.</div>
+      <div class="tryit"><strong>Try it:</strong> A fourth portfolio earns 7% at a 14% standard deviation. Efficient? (No &mdash; L earns 7% with less risk.)</div></div>
+    <div class="confuse"><div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; steep vs. flat indifference curves</div><table><thead><tr><th></th><th>Steep curve</th><th>Flat curve</th></tr></thead><tbody>
+      <tr><td>Investor</td><td>Very risk averse</td><td>More risk tolerant</td></tr>
+      <tr><td>Extra return demanded per unit of risk</td><td>Large</td><td>Small</td></tr>
+      <tr><td>Tangency on frontier</td><td>Left (lower risk)</td><td>Right (higher risk)</td></tr>
+    </tbody></table><div class="tell"><strong>How to tell:</strong> steeper = scared; the tangency point slides left as the curve steepens.</div></div>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> the optimal point is a <b>tangency</b>, not an intersection. A curve that cuts the frontier in two places gives lower utility than the tangent one; a curve wholly above the frontier is unreachable.</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> "For any amount of ups and downs you're willing to live with, there's a best mix you can build. We aim for that mix at <i>your</i> comfort level &mdash; not the mix with the highest return on paper."</div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 289&ndash;292</span> <span class="srcref">LO 8.1.1</span></p>
+  </div>
+</div>
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 8.1.1 · Building portfolios on MPT principles</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <p class="text-sm">Few rules matter, yet many portfolios end up inefficient: too many funds, heavy overlap, and highly correlated holdings.</p>
+    <ul class="key-list">
+      <li><strong>How many stocks?</strong> &mdash; many studies: 10&ndash;15 large-cap U.S. stocks across industries; others say 20&ndash;40 or more. Small/mid caps need about <b>twice</b> as many as large caps.</li>
+      <li><strong>Overlap</strong> &mdash; several large-cap funds holding the same top names; the investor builds a pricey homemade index fund. Funds with huge holding counts add no further unsystematic-risk reduction and can dilute results.</li>
+      <li><strong>Correlation</strong> &mdash; the key driver of lower portfolio standard deviation; aim for low correlations. Studies find <b>4&ndash;7 asset classes</b> give sufficient diversification.</li>
+      <li><strong>Correlation drift</strong> &mdash; figures are historical; U.S. and developed international markets have grown more correlated.</li>
+      <li><strong>Adding new cash</strong> &mdash; a security that recently fell while the portfolio rose is negatively correlated with it and helps cut standard deviation.</li>
+      <li><strong>Optimizer limits</strong> &mdash; output is very sensitive to estimated returns, standard deviations and correlations; it may drop asset classes clients want; adding min/max constraints means the output may no longer be optimal. Some advisors build intuitively, then check with software.</li>
+    </ul>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; spotting an overlap problem</div>
+      <p class="text-sm mb-1">Gina owns 11 funds: 7 large-cap U.S. funds (each 150+ holdings), 2 money market funds, 1 bond fund, 1 international fund.</p>
+      <ol><li>Seven large-cap funds &asymp; 1,000+ positions, mostly the same top names &rarr; overlap, no added diversification.</li><li>Only about three distinct asset classes are represented &mdash; below the 4&ndash;7 range.</li><li>Fix: consolidate the large-cap sleeve into one or two funds; add lower-correlation classes (e.g., small caps, emerging markets, short-term bonds, real estate).</li></ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> assuming more funds = more diversification; counting funds instead of distinct, low-correlation asset classes.</div>
+      <div class="tryit"><strong>Try it:</strong> How many small/mid-cap stocks would roughly match the diversification of 12 large caps? (About 24.)</div></div>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> standalone volatility doesn't decide whether an asset helps &mdash; its <b>correlation</b> with the existing portfolio does.</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> "Owning nine funds that all hold the same big companies is like buying the same stock nine times with nine fees. Let's own fewer things that actually behave differently."</div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 292&ndash;295</span> <span class="srcref">LO 8.1.1</span></p>
+  </div>
+</div>
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 8.2.1 · Capital market theory and the capital market line</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <p class="text-sm">Sharpe extended Markowitz: pick the market portfolio <b>M</b> (all risky assets) on the frontier and draw a straight line from the risk-free rate through it. With a risk-free asset available, that line &mdash; the <b>CML</b> &mdash; replaces the curved frontier as the new efficient set.</p>
+    <div class="formula-block"><strong>CML:</strong> r<sub>p</sub> = r<sub>f</sub> + &sigma;<sub>p</sub> &times; [(r<sub>m</sub> &minus; r<sub>f</sub>) &divide; &sigma;<sub>m</sub>]<br>where r<sub>p</sub> = portfolio expected return, r<sub>f</sub> = risk-free rate, r<sub>m</sub> = market return, &sigma;<sub>p</sub> and &sigma;<sub>m</sub> = standard deviations of the portfolio and the market.</div>
+    <ul class="key-list">
+      <li><strong>Risk measure</strong> &mdash; standard deviation on the x-axis (like Markowitz's frontier).</li>
+      <li><strong>Lending portfolio</strong> &mdash; between r<sub>f</sub> and M: some money in risk-free government securities; more conservative.</li>
+      <li><strong>Borrowing portfolio</strong> &mdash; beyond M: margin/leverage; more aggressive.</li>
+      <li><strong>Fully diversified</strong> &mdash; everything on the CML has correlation +1.0 with M and no unsystematic risk. Real portfolios (e.g., vs. the S&amp;P 500) aren't like that, which is why the SML is needed.</li>
+    </ul>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; CML expected returns</div>
+      <p class="text-sm mb-1">r<sub>f</sub> = 3%, r<sub>m</sub> = 10%, &sigma;<sub>m</sub> = 16%. Slope = (10% &minus; 3%) &divide; 16% = 0.4375.</p>
+      <ol><li>Lending portfolio, &sigma;<sub>p</sub> = 8%: 3% + 8% &times; 0.4375 = <b>6.5%</b></li><li>Borrowing portfolio, &sigma;<sub>p</sub> = 20%: 3% + 20% &times; 0.4375 = <b>11.75%</b></li></ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> using r<sub>m</sub> instead of (r<sub>m</sub> &minus; r<sub>f</sub>) in the slope; flipping &sigma;<sub>p</sub>/&sigma;<sub>m</sub>; plugging in beta.</div>
+      <div class="tryit"><strong>Try it:</strong> Same market, &sigma;<sub>p</sub> = 4%. (3% + 4% &times; 0.4375 = 4.75%.)</div></div>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> the CML only prices <b>efficient, fully diversified</b> portfolios. Asked about an individual stock? Use the SML/CAPM with beta.</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> "Think of a dial between T-bills and the whole market. Turn it toward T-bills to calm things down, toward the market for more growth. Going past 100% market means borrowing &mdash; more upside and more downside."</div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 296&ndash;298</span> <span class="srcref">LO 8.2.1</span></p>
+  </div>
+</div>
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 8.2.1 · CAPM and the security market line</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <p class="text-sm">CAPM is the practical result of capital market theory. It sets the return an asset <i>should</i> earn given its systematic risk (beta). The SML is CAPM drawn on a graph: intercept = r<sub>f</sub>, slope = market risk premium, x-axis = beta.</p>
+    <div class="formula-block"><strong>CAPM:</strong> r<sub>i</sub> = r<sub>f</sub> + (r<sub>m</sub> &minus; r<sub>f</sub>)&beta;<sub>i</sub><br><b>Market risk premium</b> = r<sub>m</sub> &minus; r<sub>f</sub> (reward for investing in the market at all)<br><b>Stock risk premium</b> = (r<sub>m</sub> &minus; r<sub>f</sub>)&beta;<sub>i</sub> (reward for owning that particular stock)</div>
+    <ul class="key-list">
+      <li><strong>Only systematic risk is priced</strong> &mdash; unsystematic risk is assumed diversified away.</li>
+      <li><strong>Assumptions</strong> &mdash; identical expectations; borrow and lend at the risk-free rate (13-week T-bill); no taxes or transaction costs; markets always in equilibrium.</li>
+      <li><strong>Decision rule</strong> &mdash; CAPM return above the client's required return &rarr; positive decision; below &rarr; reject.</li>
+      <li><strong>Equilibrium</strong> &mdash; expected and required returns are used interchangeably; all assets should plot on the SML.</li>
+      <li><strong>Above the SML</strong> = undervalued (buy &rarr; price rises). <strong>Below</strong> = overvalued (sell/short &rarr; price falls).</li>
+      <li><strong>Negative beta</strong> &mdash; moves against the market; investors accept a very low return for its diversification value.</li>
+      <li><strong>Betas are historical</strong> &mdash; analysts often adjust them subjectively for expectations.</li>
+    </ul>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; required return and valuation</div>
+      <p class="text-sm mb-1">r<sub>f</sub> = 3%, r<sub>m</sub> = 9%, fund beta 1.3. The client's hurdle is 10%. An analyst forecasts the fund will return 9.5%.</p>
+      <ol><li>Market risk premium = 9% &minus; 3% = 6%</li><li>Stock risk premium = 6% &times; 1.3 = 7.8%</li><li>CAPM required return = 3% + 7.8% = <b>10.8%</b> &rarr; above the client's 10% hurdle, so the fund's risk/return fits her requirement</li><li>But the 9.5% forecast is below the 10.8% the fund <i>should</i> earn &rarr; it plots <b>below</b> the SML &rarr; overvalued</li></ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> r<sub>m</sub> &times; &beta; (forgets r<sub>f</sub>); stopping at the stock risk premium; dropping the minus sign on a negative beta.</div>
+      <div class="tryit"><strong>Try it:</strong> Same market, beta 0.6. (3% + 6% &times; 0.6 = 6.6%.)</div></div>
+    <div class="confuse"><div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; CML vs. SML</div><table><thead><tr><th></th><th>CML</th><th>SML</th></tr></thead><tbody>
+      <tr><td>X-axis risk</td><td>Standard deviation (total)</td><td>Beta (systematic)</td></tr>
+      <tr><td>Applies to</td><td>Efficient, fully diversified portfolios</td><td>Individual securities and portfolios</td></tr>
+      <tr><td>Level</td><td>Macro</td><td>Micro (graph of CAPM)</td></tr>
+    </tbody></table><div class="tell"><strong>How to tell:</strong> if the question gives beta, you're on the SML.</div></div>
+    <table><thead><tr><th>What changes</th><th>Effect on SML</th><th>Who is affected</th></tr></thead><tbody>
+      <tr><td>Expected inflation &uarr; (r<sub>f</sub> &uarr;)</td><td>Parallel shift up</td><td>All assets</td></tr>
+      <tr><td>Risk aversion &uarr; (market risk premium &uarr;)</td><td>Pivots at r<sub>f</sub>, steeper</td><td>Risky assets only</td></tr>
+      <tr><td>Risk aversion &darr;</td><td>Pivots at r<sub>f</sub>, flatter</td><td>Risky assets only</td></tr>
+    </tbody></table>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> "stock risk premium" is the beta-adjusted premium, not the total required return. Also: a high forecast return doesn't make a stock a buy &mdash; compare it with what its beta requires.</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> "Every investment has a fair return for the market risk it carries. If what we expect is below that bar, we're not being paid enough &mdash; even if it did great last year."</div>
+    <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; how mispricing corrects<span class="toggle-icon">+</span></div>
+    <div class="collapsible-content deep-body collapsed"><div class="inner"><p class="text-sm">Buying undervalued assets creates excess demand that pushes prices up (and expected returns down); selling overvalued assets creates excess supply that pushes prices down. Trading stops when every asset's expected return equals its required return &mdash; all assets back on the SML.</p></div></div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 298&ndash;304</span> <span class="srcref">LO 8.2.1</span></p>
+  </div>
+</div>
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 8.2.1 · Arbitrage pricing theory (APT)</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <p class="text-sm">CAPM explains return with one factor (beta). APT is a <b>multifactor</b> alternative in which the market portfolio no longer plays the central role. Only <b>unanticipated</b> changes in factors matter &mdash; expected changes are already priced in.</p>
+    <div class="formula-block"><strong>APT:</strong> r<sub>i</sub> = a<sub>0</sub> + b<sub>1</sub>F<sub>1</sub> + b<sub>2</sub>F<sub>2</sub> + &hellip; + b<sub>n</sub>F<sub>n</sub> + e<br>a<sub>0</sub> = risk-free return; b = the security's sensitivity to each factor; F = risk premium for each unanticipated factor; e = error term.</div>
+    <ul class="key-list">
+      <li><strong>Four primary factors</strong> &mdash; inflation; industrial production (GDP changes); risk premiums; yield curve (interest rates).</li>
+      <li><strong>Sector vs. systematic influences</strong> &mdash; some factors hit one industry (banks vs. airlines); others hit all businesses (rates, overall activity).</li>
+      <li><strong>Why CAPM is more common</strong> &mdash; APT's factor list isn't exhaustive, so results depend on the analyst and the factors chosen.</li>
+    </ul>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; APT expected return</div>
+      <p class="text-sm mb-1">Risk-free 2%. Inflation: b = 0.9, premium 4%. GDP: b = 1.1, premium 3%. Yield curve: b = 0.4, premium 2.5%.</p>
+      <ol><li>0.9 &times; 4% = 3.6%</li><li>1.1 &times; 3% = 3.3%</li><li>0.4 &times; 2.5% = 1.0%</li><li>2% + 3.6% + 3.3% + 1.0% = <b>9.9%</b></li></ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> leaving out a<sub>0</sub>; adding raw premiums without weighting by sensitivity.</div>
+      <div class="tryit"><strong>Try it:</strong> Raise the GDP sensitivity to 1.5. (2% + 3.6% + 4.5% + 1.0% = 11.1%.)</div></div>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> unemployment, trading volume and the like are <b>not</b> among the four primary APT factors (an analyst may still choose to use other factors).</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> "Some holdings react more to inflation surprises, others to growth or rate surprises. APT lets us see which surprises a holding is most exposed to."</div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 304&ndash;305</span> <span class="srcref">LO 8.2.1</span></p>
+  </div>
+</div>
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 8.3.1 · The three forms of the efficient market hypothesis</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <p class="text-sm">Fama's EMH: prices reflect available information and adjust fast to news. News is by definition unexpected, so price changes are random (<b>random walk</b>) and no strategy beats the market consistently &mdash; the basis for buy-and-hold and index funds. Random walk does <i>not</i> mean prices are set randomly; it means future moves depend on information not yet known.</p>
+    <ul class="key-list">
+      <li><strong>Efficient-market conditions</strong> &mdash; many competing participants; information readily available; tiny (or zero) transaction costs; no over- or undervalued securities; returns match risk taken.</li>
+    </ul>
+    <table><thead><tr><th>Form</th><th>Prices already reflect</th><th>What can still win</th></tr></thead><tbody>
+      <tr><td><b>Weak</b></td><td>Past price and volume data</td><td>Fundamental analysis, inside information</td></tr>
+      <tr><td><b>Semistrong</b></td><td>All public information</td><td>Inside information only</td></tr>
+      <tr><td><b>Strong</b></td><td>Public + private information</td><td>Nothing</td></tr>
+    </tbody></table>
+    <p class="text-sm">Technical analysis has no value under <b>any</b> form. There is no &ldquo;semiweak&rdquo; form.</p>
+    <table><thead><tr><th>Evidence</th><th>Finding</th></tr></thead><tbody>
+      <tr><td>Weak-form tests</td><td>Largely hold: technical rules don't consistently win</td></tr>
+      <tr><td>Event studies</td><td>Prices adjust quickly to splits, IPOs, listings, surprises &rarr; support semistrong</td></tr>
+      <tr><td>Return-prediction &amp; cross-sectional studies</td><td>Anomalies found &rarr; evidence against semistrong</td></tr>
+      <tr><td>Strong-form tests</td><td>Do not hold (insiders have profited)</td></tr>
+    </tbody></table>
+    <ul class="key-list">
+      <li><strong>January effect</strong> &mdash; buy (especially small stocks) in December, sell in January; now showing up earlier as more investors exploit it; also seen abroad, so tax selling may not fully explain it.</li>
+      <li><strong>Dividend-yield</strong> &mdash; higher payers have tended to beat lower payers.</li>
+      <li><strong>Weekend effect</strong> &mdash; buy late Monday, sell late Friday; gains may not cover costs.</li>
+      <li><strong>Unanticipated earnings</strong> &mdash; favorable surprises bring immediate price moves.</li>
+      <li><strong>Low P/E</strong> &mdash; low-P/E stocks have tended to beat high-P/E stocks.</li>
+      <li><strong>Size (small-firm)</strong> &mdash; small firms have outperformed, but with volatility that can be nearly double that of large firms.</li>
+      <li><strong>BV/MV</strong> &mdash; high book-to-market stocks have outperformed (more likely undervalued).</li>
+      <li><strong>Neglected firm</strong> &mdash; little analyst coverage &rarr; outperformance; possibly an offshoot of the size effect.</li>
+      <li><strong>Value Line enigma</strong> &mdash; top-ranked (&ldquo;1&rdquo;) timeliness picks have done well, but frequent trading eats returns.</li>
+    </ul>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; measuring an abnormal return</div>
+      <p class="text-sm mb-1">Researchers use CAPM to set a stock's required return at 8%. It actually returns 11%.</p>
+      <ol><li>Abnormal return = actual &minus; required = 11% &minus; 8% = <b>3%</b></li><li>If public information reliably produced such excess returns, that would contradict semistrong efficiency.</li></ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> calling the whole 11% abnormal; reversing the sign.</div>
+      <div class="tryit"><strong>Try it:</strong> Required 10%, actual 7%. (&minus;3% abnormal.)</div></div>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> a client who studies financial statements believes markets are only <b>weak-form</b> efficient; one who buys an index fund and holds is consistent with semistrong/strong; one who charts prices is supported by <b>no</b> form.</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> "Once news is public, it's in the price within moments. That's why we don't chase headlines &mdash; we own the market cheaply and look for an edge only where information really is thin."</div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 306&ndash;311</span> <span class="srcref">LO 8.3.1</span></p>
+  </div>
+</div>
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 8.3.2 · How the EMH relates to other investment approaches</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <ul class="key-list">
+      <li><strong>Technical analysis</strong> &mdash; EMH says it doesn't work, but so many traders use it that support and resistance levels can steer short-term prices. Knowing them can help you time a buy near support rather than resistance.</li>
+      <li><strong>Fundamental analysis</strong> &mdash; can add value only under the weak form. Disclosure rules and armies of analysts make an edge in big names hard to find.</li>
+      <li><strong>Value anomaly</strong> &mdash; low-P/E, high-BV/MV firms often show weak ratios, so most analysts skip them. They get high required returns; as fortunes improve, those returns are realized. At times the SML even appears to slope the wrong way (lower risk, higher return) &mdash; the pattern value investors like most.</li>
+      <li><strong>Active vs. passive</strong> &mdash; EMH points to index funds; well over half of mutual funds fail to beat their indexes. Strong managers tend to regress to the mean; staying in the top 25% of an asset class consistently is rare.</li>
+      <li><strong>Brinson, Hood &amp; Beebower</strong> &mdash; more than 90% of the <i>variability</i> of portfolio returns came from asset allocation; selection and timing explained little (the conclusions were later debated).</li>
+      <li><strong>Foreign markets</strong> &mdash; efficiency depends on information. Developed foreign markets use accounting standards that differ from U.S. GAAP, rewarding analysts who adjust. Emerging and frontier markets have less reliable statements; managers lean on top-down country views and local contacts.</li>
+      <li><strong>Other markets</strong> &mdash; real estate, art and tangibles have limited, narrow information: EMH doesn't apply everywhere.</li>
+    </ul>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; splitting index vs. active by efficiency</div>
+      <p class="text-sm mb-1">Ana has $400,000 for equities: 70% U.S. large cap, 30% emerging markets.</p>
+      <ol><li>Large cap ($280,000): highly efficient &rarr; low-cost index fund.</li><li>Emerging markets ($120,000): less efficient &rarr; active manager may add value.</li></ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> paying for active management in the most efficient segment; avoiding inefficient markets entirely.</div>
+      <div class="tryit"><strong>Try it:</strong> Which of her sleeves would a strict EMH believer index? (Both.)</div></div>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> Brinson measured the <b>variability</b> of returns, not the level of returns.</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> "Most of how your portfolio behaves comes from the mix of stocks, bonds and cash &mdash; not from picking hot funds. So we spend our energy on the mix and keep costs low where markets are efficient."</div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 311&ndash;314</span> <span class="srcref">LO 8.3.2</span></p>
+  </div>
+</div>
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 8.4.1 · Risk tolerance, Monte Carlo and the investment policy statement</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <p class="text-sm">Good investment counseling reviews goals, risk tolerance and exposure, taxes, liquidity/marketability needs, and financial statements. Measuring risk tolerance remains more art than science.</p>
+    <ul class="key-list">
+      <li><strong>Loss aversion</strong> &mdash; a gamble is preferred over a sure loss of equal expected value; e.g., holding a loser until it gets back to breakeven. Losses hurt more than equal gains please (Kahneman &amp; Tversky).</li>
+      <li><strong>Risk aversion</strong> &mdash; a sure gain is preferred over a gamble of equal expected value (the &ldquo;sleep at night&rdquo; test). Tolerance looks higher in rising markets &rarr; buy high, sell low.</li>
+      <li><strong>Liquidity available</strong> &mdash; high liquidity and job stability support more risk.</li>
+      <li><strong>Proximity/priority of goals</strong> &mdash; goals within ~5 years: low-risk assets; longer: stocks can fit.</li>
+      <li><strong>Psychographics</strong> &mdash; methodical/cautious types are more risk averse; individualistic/spontaneous types less so.</li>
+      <li><strong>Monte Carlo simulation</strong> &mdash; stochastic modeling with thousands of random trials to give probabilities of outcomes. Pros: ranks paths best to worst, models taxes and asset location, contributions/withdrawals, short- vs. long-term risk, &ldquo;Can I retire earlier?&rdquo; Cons: simplistic historical inputs; simulating an index (e.g., Wilshire 5000) instead of fee-bearing funds can overstate results.</li>
+    </ul>
+    <p class="text-sm"><b>The IPS</b> is a written document stating the client's objectives, the asset allocation boundaries, investment guidelines and limits on the manager. It guides the manager, sets a yardstick for performance, eases a change of advisors, and tests recommendations for suitability. Every investor has a policy &mdash; implicitly or in writing.</p>
+    <table><thead><tr><th>Four purposes (Boone &amp; Lubitz)</th><th>Minimum content areas</th></tr></thead><tbody>
+      <tr><td>1. Setting objectives</td><td><b>Return requirement</b> (absolute/relative, pre- or after-tax, real)</td></tr>
+      <tr><td>2. Defining asset allocation policy</td><td><b>Risk tolerance</b> (ability + willingness)</td></tr>
+      <tr><td>3. Establishing management procedures</td><td>Liquidity &bull; Time horizon &bull; Laws &amp; regulations (e.g., ERISA for plans)</td></tr>
+      <tr><td>4. Determining communication procedures</td><td>Taxes &bull; Unique preferences &amp; circumstances &bull; Permitted &amp; excluded investments</td></tr>
+    </tbody></table>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; return requirement vs. risk tolerance</div>
+      <p class="text-sm mb-1">Ken wants a 4% real return; the advisor assumes 3% inflation. Ken's risk tolerance is conservative, and the portfolio that matches it is projected to earn about 5%.</p>
+      <ol><li>Simple return requirement = 4% + 3% = <b>7%</b> (or: beat inflation by 4% on average)</li><li>5% projected &lt; 7% required &rarr; conflict</li><li>Resolve: accept more risk, lower the requirement (scale back goals), or both</li></ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> subtracting inflation; writing a return target the risk profile can't support.</div>
+      <div class="tryit"><strong>Try it:</strong> 5% real target, 2% inflation. (7%.)</div></div>
+    <div class="confuse"><div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; ability vs. willingness</div><table><thead><tr><th>Ability</th><th>Willingness</th></tr></thead><tbody>
+      <tr><td>Resources and circumstances: health, insurance, savings, wealth</td><td>Emotional comfort with balances moving</td></tr>
+    </tbody></table><div class="tell"><strong>How to tell:</strong> facts about money &rarr; ability; feelings about swings &rarr; willingness. A rich client who frets over every dip = high ability, low willingness.</div></div>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> the client is <b>active</b> while the IPS is created (advisor facilitates); once implemented the roles flip &mdash; advisor active, client passive. A good IPS is custom, not cookie-cutter: could the client have stuck with it through past decades of markets?</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> "This document is our game plan &mdash; what return you need, how much bumpiness you can live with, and what cash you'll need when. When markets get loud, we check the plan, not the headlines."</div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 315&ndash;321</span> <span class="srcref">LO 8.4.1</span></p>
+  </div>
+</div>
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 8.5.1 · Investments across interest-rate and economic cycles</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <p class="text-sm">Investment planning matches vehicles to goals. Start with an emergency fund; without one, limit volatile assets (stocks) and illiquid ones (real estate). If goals are unrealistic for the client's finances, revise them; count expected resources (bonus, inheritance) only if fairly certain.</p>
+    <ul class="key-list">
+      <li><strong>Top-down view</strong> &mdash; next economic phase &rarr; Fed policy &rarr; money supply and rates &rarr; stock and bond prices. (MPT leans on fundamental analysis, valid under the weak form.)</li>
+      <li><strong>Rates up</strong> &mdash; bonds fall; stocks generally fall too. Rates down &rarr; both tend to rise. Financials and high-debt firms are hit harder than nondurable-goods makers.</li>
+      <li><strong>Staying flexible</strong> &mdash; money market funds and short-term Treasuries let you reinvest as rates keep rising.</li>
+      <li><strong>Cycle</strong> &mdash; expansion: stocks up, Fed may raise rates &rarr; bonds down; contraction: stocks down, Fed may cut &rarr; bonds up. Not clear-cut; they can move together.</li>
+      <li><strong>Inflation</strong> &mdash; rising inflation nearly always lifts rates and cuts bond prices; moderate inflation may not hurt stocks; strong inflation hurts most industries, but commodity-linked areas (oil and gas, real estate, natural resources) may gain.</li>
+      <li><strong>Company life cycle</strong> &mdash; development &rarr; growth &rarr; expansion (growth slowing, competition rising) &rarr; maturity (growth &asymp; GDP) &rarr; decline.</li>
+      <li><strong>Sensitivity analysis</strong> &mdash; recompute NPV and IRR under pessimistic, expected, and optimistic assumptions, changing one input at a time, to see how reliable the outcome is.</li>
+    </ul>
+    <table><thead><tr><th>Cycle stage</th><th>Rotational investors favor</th></tr></thead><tbody>
+      <tr><td>Rates bottom out</td><td>Housing, lumber, household durables, autos</td></tr>
+      <tr><td>Recovery (unemployment &darr;, income &uarr;)</td><td>Cyclicals; autos still benefit</td></tr>
+      <tr><td>Rates rising / slowdown risk</td><td>Consumer noncyclicals (food, pharma, beverages, tobacco); utilities and banks suffer</td></tr>
+      <tr><td>Late cycle, inflation fears</td><td>Basic materials, metals, energy</td></tr>
+    </tbody></table>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; positioning for rising rates</div>
+      <p class="text-sm mb-1">Leo holds $200,000 in a long-term bond fund and a leveraged utility stock. He expects several Fed hikes.</p>
+      <ol><li>Long bonds lose value as rates climb &rarr; shorten maturities.</li><li>Utilities trade on yield and carry debt &rarr; vulnerable.</li><li>Money market / T-bills let him reinvest at each higher rate.</li></ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> buying long bonds "to lock in yield" just before more hikes; treating utilities as rate-proof.</div>
+      <div class="tryit"><strong>Try it:</strong> Which sector does the textbook expect to lead once rates have bottomed? (Housing and related durables.)</div></div>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> early recovery means <b>falling</b> unemployment and rising income &mdash; not rising unemployment.</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> "When rates rise, bonds and most stocks feel it. Keeping your near-term money short and liquid means higher rates become an opportunity instead of a loss."</div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 322&ndash;325</span> <span class="srcref">LO 8.5.1</span></p>
+  </div>
+</div>
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 8.5.2 · Asset allocation methodologies</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <p class="text-sm">Asset allocation spreads wealth across countries and asset classes and is the main driver of long-run performance (about 90% of the variability, per studies). Most planners use mean-variance optimization software. Build the model around risk and time horizon, investing experience, required return, and tax status.</p>
+    <ul class="key-list">
+      <li><strong>Four policy decisions</strong> &mdash; which asset classes; what weights; allowable ranges; which specific securities.</li>
+      <li><strong>Time-horizon imbalance</strong> &mdash; retirees over-weighting bonds face inflation erosion; young investors over-weighting stocks may bail in a bear market.</li>
+      <li><strong>Model portfolios</strong> &mdash; questionnaire into a &ldquo;black box.&rdquo; Limits: not customized; one-size-fits-all with assumptions the advisor may not know; benchmark relevance; poor tax handling. Aim for <b>tax efficiency</b> (max after-tax income), not an all-muni portfolio.</li>
+      <li><strong>Strategic</strong> &mdash; long-term mix from goals, risk tolerance and life-cycle phase (accumulation &rarr; conservation/protection &rarr; distribution/gifting); held until a life event; rebalanced back to target. Lifecycle (target-date) 401(k) funds are an example.</li>
+      <li><strong>Tactical (TAA)</strong> &mdash; continuously shifts to exploit perceived mispricing; market timing; contrarian (buys out-of-favor classes); higher costs; little weight on goals.</li>
+      <li><strong>Choosing</strong> &mdash; active believers in inefficient markets lean TAA; passive buy-and-hold investors lean strategic. Sticking with the chosen method matters most.</li>
+      <li><strong>Core and satellite</strong> &mdash; passive index core (U.S. stocks, U.S. bonds, developed international) + higher-risk satellites (REITs, emerging markets, high-yield). Core = strategic, satellite = tactical.</li>
+      <li><strong>Value vs. growth</strong> &mdash; value bets the P/E is too low and will re-rate (price focus); growth bets earnings will rise with P/E steady (earnings focus; ~15%+ growth, low payout, high P/E, higher beta).</li>
+    </ul>
+    <table><thead><tr><th>Sample model</th><th>Bonds</th><th>Money mkt</th><th>Large cap</th><th>Intl</th><th>Small cap</th></tr></thead><tbody>
+      <tr><td>Conservative</td><td>40%</td><td>30%</td><td>20%</td><td>5%</td><td>5%</td></tr>
+      <tr><td>Moderate</td><td>40%</td><td>5%</td><td>35%</td><td>15%</td><td>5%</td></tr>
+      <tr><td>High risk tolerance</td><td>20%</td><td>&mdash;</td><td>50%</td><td>20%</td><td>10%</td></tr>
+    </tbody></table>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; rebalancing and a satellite sleeve</div>
+      <p class="text-sm mb-1">An $800,000 portfolio targets 60% stocks / 40% bonds; after a rally stocks are 68%. Separately, a $600,000 core-and-satellite portfolio is 80/20 with 25% of the satellite in emerging markets.</p>
+      <ol><li>Stocks now = 68% &times; $800,000 = $544,000; target = 60% &times; $800,000 = $480,000 &rarr; sell <b>$64,000</b> of stock, buy bonds.</li><li>Satellite = 20% &times; $600,000 = $120,000; emerging markets = 25% &times; $120,000 = <b>$30,000</b>.</li></ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> taking the drift % of the stock value instead of the whole portfolio; applying a satellite weight to the total portfolio.</div>
+      <div class="tryit"><strong>Try it:</strong> $500,000 at 70% stocks vs. a 60% target. (Sell $50,000.)</div></div>
+    <div class="confuse"><div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; strategic vs. tactical</div><table><thead><tr><th></th><th>Strategic</th><th>Tactical</th></tr></thead><tbody>
+      <tr><td>Driver</td><td>Client's long-term goals and life phase</td><td>Perceived market mispricing</td></tr>
+      <tr><td>Changes when</td><td>Life event; rebalance to target</td><td>Continuously</td></tr>
+      <tr><td>Style / cost</td><td>Passive, lower cost</td><td>Active, contrarian, higher cost</td></tr>
+    </tbody></table><div class="tell"><strong>How to tell:</strong> "regardless of market conditions" = strategic; "to take advantage of" = tactical.</div></div>
+    <table><thead><tr><th>Concentrated stock tool</th><th>Key feature</th></tr></thead><tbody>
+      <tr><td>Sell (family member or ESOP)</td><td>Creates a market for hard-to-sell shares</td></tr>
+      <tr><td>Gift</td><td>Gift tax possible; donor owes no income tax</td></tr>
+      <tr><td>Charitable remainder trust</td><td>Charitable income tax deduction; tax-exempt trust can sell without income tax</td></tr>
+      <tr><td>Exchange fund</td><td>Swap shares for a stake in a diversified pool; no immediate capital gains; client keeps the value</td></tr>
+    </tbody></table>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> an <b>exchange fund</b> is not an exchange-traded fund. And TAA buys <i>undervalued</i> classes and sells <i>overvalued</i> ones.</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> "We set your long-term mix once, then trim what's grown too big and add to what's lagged. If you want some 'play money' for bets, we keep it to a small satellite so the core plan stays intact."</div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 326&ndash;331</span> <span class="srcref">LO 8.5.2</span></p>
+  </div>
+</div>
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 8.6.1 · Crisis events and adapting to new norms</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <p class="text-sm">Plans usually cover personal shocks (job loss, business failure, death). A market-wide crisis hits everyone &mdash; advisor included &mdash; so staying level-headed and objective matters most.</p>
+    <ul class="key-list">
+      <li><strong>Black swan</strong> &mdash; rare, unpredictable, severe, beyond normal volatility; seems predictable only afterward; models can't forecast it or its full impact.</li>
+      <li><strong>Endogenous risk</strong> &mdash; from inside the financial system, amplified by herding (1929 crash, 2008&ndash;2009 crisis).</li>
+      <li><strong>Exogenous risk</strong> &mdash; outside shocks (terror attack, earthquake, tsunami, pandemic) that slow commerce and spread fear.</li>
+      <li><strong>Feedback loop</strong> &mdash; monitoring flows back to data gathering, analysis and goals, because client situations change gradually or suddenly.</li>
+      <li><strong>Liquidity</strong> &mdash; regular access to liquid assets (e.g., money market account) to absorb short-term setbacks.</li>
+      <li><strong>Government relief</strong> &mdash; stimulus checks, enhanced unemployment, tax credits, business loans helped during COVID-19; know the rules and tax effects, but never assume they'll be repeated.</li>
+      <li><strong>Long-term positive bias</strong> &mdash; over time the odds favor the patient, diversified investor; time is the single most powerful factor. Policy must transcend current conditions; micromanaging brings trading losses, costs, and missing early rebounds.</li>
+    </ul>
+    <table><thead><tr><th>Change type</th><th>Example</th><th>Response</th></tr></thead><tbody>
+      <tr><td>Noise</td><td>A rough week in the market</td><td>Ignore</td></tr>
+      <tr><td>Incremental</td><td>A modest raise</td><td>Watch</td></tr>
+      <tr><td>Discontinuous</td><td>Lottery win, job loss, expansion turning to recession</td><td>Reassess / redesign the IPS</td></tr>
+    </tbody></table>
+    <p class="text-sm"><b>Life events that call for adjustments:</b> illness or injury; a business failing or income lost; a wedding or a divorce; a death in the family; an inheritance; lump-sum pension payout or plan termination; forced early retirement; starting or selling a business; having children.</p>
+    <table><thead><tr><th>Heuristic</th><th>Crisis symptom</th></tr></thead><tbody>
+      <tr><td>Representativeness</td><td>&ldquo;Recent pattern will continue&rdquo;; good company = good stock</td></tr>
+      <tr><td>Availability</td><td>Vivid crash coverage &rarr; fear of another crash</td></tr>
+      <tr><td>Anchoring &amp; adjustment</td><td>Clinging to purchase price when deciding to sell</td></tr>
+      <tr><td>Overconfidence</td><td>Believes he can time the bottom</td></tr>
+      <tr><td>Familiarity</td><td>Retreats into what he knows; diversification suffers</td></tr>
+    </tbody></table>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; triaging three client calls</div>
+      <p class="text-sm mb-1">In one week: (1) Ava asks about a 5% market drop; (2) Ben got a 3% raise; (3) Cal's employer offers him an early-retirement buyout of 18 months' pay.</p>
+      <ol><li>Ava = noise &rarr; reassure, no portfolio change.</li><li>Ben = incremental &rarr; note it; maybe raise savings.</li><li>Cal = discontinuous &rarr; redo goals, liquidity, taxes on the lump sum, and the IPS.</li></ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> rewriting the IPS after a market drop; treating a buyout as routine.</div>
+      <div class="tryit"><strong>Try it:</strong> A client's spouse passes away unexpectedly. Which type? (Discontinuous &mdash; reassess the IPS.)</div></div>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> when a long-horizon client insists on moving to cash, the best answer is usually <b>no action</b> &mdash; keep the allocation and the long-term view.</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> "I'm living through this market too, and I get the urge to do something. But your plan was built for days like this, your cash reserve covers what you need, and history rewards people who stay invested."</div>
+    <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; four signs of a strong client-advisor relationship<span class="toggle-icon">+</span></div>
+    <div class="collapsible-content deep-body collapsed"><div class="inner"><ol><li>The advisor understands the client's long-term goals (and, via behavioral finance, why).</li><li>The advisor stays consistent, adding structure before giving advice.</li><li>The advisor acts as the client expects &mdash; the area behavioral finance improves most (what to do, what to share, how often to call).</li><li>Both benefit: a closer bond, happier clients, a stronger practice.</li></ol></div></div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 334&ndash;339</span> <span class="srcref">LO 8.6.1</span></p>
+  </div>
+</div>
+
+</div>

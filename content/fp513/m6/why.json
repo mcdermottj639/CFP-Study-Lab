@@ -1,0 +1,187 @@
+{
+ "Which statement best distinguishes asset allocation from diversification?": {
+  "Asset allocation and diversification are two names for the same portfolio process.": "The textbook says diversification is not a synonym for asset allocation.",
+  "Diversification is only achieved once a portfolio holds all four broad asset classes.": "Diversification can occur within one class, such as a dozen stocks across industries.",
+  "Holding a dozen stocks in varied industries is asset allocation rather than diversification.": "That is diversification within one asset class (common stock), not allocation across classes."
+ },
+ "For CFP exam purposes, how many large-cap stocks in different industries does the textbook treat as enough for a diversified portfolio?": {
+  "4 to 7 stocks": "That range applies to mutual funds in different asset classes.",
+  "25 to 30 stocks": "That range is the rule of thumb for mid- or small-cap stocks.",
+  "About 100 stocks": "Some studies suggest up to 100, but the exam rule is 10 to 15 large caps."
+ },
+ "Dalia, 34, and her father Ramon, 67, are each considering the same aggressive growth fund whose annual returns swing widely. Why can Dalia hold it more safely?": {
+  "Younger investors are not exposed to systematic risk.": "Systematic risk affects every investor regardless of age.",
+  "The fund's standard deviation is lower for a younger shareholder.": "A fund's volatility is a property of the fund, not of who owns it.",
+  "Her portfolio beta automatically falls because of her age.": "Beta depends on the holdings and their market sensitivity, not the owner's age."
+ },
+ "A client is choosing between a Treasury bond fund expected to return 6% and a speculative overseas mining venture expected to return 8%. What is the best advice?": {
+  "Pick the mining venture because its expected return is higher.": "Judging by return alone ignores the risk taken to earn it.",
+  "Pick the Treasury fund because lower risk is always the better choice.": "Looking only at risk is also wrong; too little risk may not meet goals.",
+  "Pick the mining venture because more risk guarantees a higher realized return.": "Higher risk raises the return investors demand; it guarantees nothing."
+ },
+ "Which of the following is a systematic (nondiversifiable) risk?": {
+  "Business risk": "Business risk is firm- or sector-specific and diversifiable.",
+  "Financial risk": "Financial risk comes from one firm's capital structure and is diversifiable.",
+  "Marketability risk": "Marketability risk is listed among the unsystematic risks."
+ },
+ "Which of the following are unsystematic risks?<br>I. Default risk<br>II. Purchasing power risk<br>III. Investment manager risk<br>IV. Tax risk": {
+  "I and III only": "Tax risk (IV) is also on the textbook's unsystematic list.",
+  "II and IV only": "Purchasing power risk (II) is systematic, and I and III are omitted.",
+  "I, II, III, and IV": "Purchasing power risk (II) is the P in PRIME, a systematic risk."
+ },
+ "Corwin owns common stock in a privately held regional bakery chain. Which risk does he NOT face as a shareholder?": {
+  "Liquidity risk": "A private company's shares may take a long time to sell, so liquidity risk applies.",
+  "Business risk": "The chain's operating income is uncertain, so business risk applies.",
+  "Market risk": "Market risk is systematic and affects essentially all investments."
+ },
+ "Priya, retired, wants a bond holding that eliminates reinvestment rate risk. Which should she consider?": {
+  "A GNMA mortgage-backed security": "GNMAs return cash flows early and are a prominent example of reinvestment rate risk.",
+  "A long-term coupon Treasury bond": "Long-term coupon bonds are highly exposed to reinvestment rate risk.",
+  "A bond fund holding 20-year coupon bonds": "Coupon income must be reinvested, so the risk remains."
+ },
+ "Theo, a U.S. investor, owns a Japanese bond that pays &yen;10,000 of interest. When he bought it, $1 bought &yen;100; today $1 buys &yen;125. What happened to the dollar value of each interest payment?": {
+  "The dollar weakened; each payment is now worth $125, up $25.": "More yen per dollar means the dollar strengthened, and the payment converts to fewer dollars.",
+  "The dollar strengthened; each payment is now worth $125, up $25.": "Multiplying yen by the rate instead of dividing gives the wrong direction.",
+  "The dollar weakened; each payment is now worth $80, down $20.": "The amount is right, but a dollar that buys more yen has strengthened."
+ },
+ "Joanne keeps 80% of her long-term savings in CDs and money market funds \"to be safe.\" Which risk is she most exposed to?": {
+  "Business risk": "CDs and money market funds have little firm-specific operating exposure.",
+  "Exchange rate risk": "Her holdings are domestic, so currency moves are not the main concern.",
+  "Marketability risk": "Cash equivalents are easy to convert; they help manage liquidity."
+ },
+ "The Harbor Growth Fund has a standard deviation of 24, the market index has a standard deviation of 15, and their correlation coefficient is 0.70. What is the fund's beta?": {
+  "1.60": "This is 24 &divide; 15 without multiplying by the correlation.",
+  "0.44": "This inverts the ratio: 0.70 &times; 15 &divide; 24.",
+  "0.07": "This divides by the market variance (225) instead of the market standard deviation."
+ },
+ "A stock's covariance with the market is 180, and the market's standard deviation is 15. What is the stock's beta?": {
+  "12.00": "This divides covariance by the standard deviation instead of the variance.",
+  "1.25": "This inverts the formula: variance &divide; covariance.",
+  "0.64": "This squares the beta, confusing it with R-squared."
+ },
+ "Ana's $100,000 portfolio holds $50,000 of a stock with a beta of 1.40, $30,000 of a stock with a beta of 0.90, and $20,000 of a stock with a beta of 0.50. What is the portfolio's weighted beta?": {
+  "0.93": "This is the simple average of the three betas, ignoring dollar weights.",
+  "1.40": "This uses only the largest holding's beta.",
+  "2.80": "This adds the betas instead of weighting them."
+ },
+ "Beta is the most appropriate measure of risk for which of the following?": {
+  "A single, undiversified stock position": "A lone stock carries unsystematic risk; standard deviation captures total risk.",
+  "Any asset, whether or not it is diversified": "That describes standard deviation, which works for all assets.",
+  "An asset with a very low correlation to the market": "Low correlation makes beta unreliable."
+ },
+ "A gold-mining fund has a standard deviation of 30 versus 15 for the S&amp;P 500, yet its beta against the S&amp;P 500 is only 0.40. Which conclusion is best?": {
+  "The fund is 60% less volatile than the overall market.": "Its standard deviation is twice the market's, so it is not less volatile.",
+  "The fund has less total risk than an S&amp;P 500 index fund.": "Total risk is measured by standard deviation, which is higher here.",
+  "The fund's standard deviation figure must be misreported.": "Nothing is inconsistent: beta = 2 &times; correlation, so &rho; = 0.20."
+ },
+ "Nadia has $60,000 in a large-cap fund that returned 11%, $25,000 in a bond fund that returned 6%, and $15,000 in a REIT that returned 4%. What was her portfolio's weighted average return?": {
+  "7.00%": "This is the simple average of the three returns, ignoring dollar weights.",
+  "11.00%": "This uses only the largest holding's return.",
+  "21.00%": "This adds the returns instead of weighting them."
+ },
+ "A fund earned 12%, &minus;4%, 9%, 15%, and 3% over the last five years. Using the textbook's convention for historical returns, what is its standard deviation?": {
+  "6.78%": "This is the population standard deviation (dividing by n = 5).",
+  "7.00%": "This is the mean return, not the standard deviation.",
+  "57.50%": "This is the sample variance; you must take the square root."
+ },
+ "A portfolio has a mean annual return of 8% and a standard deviation of 6%. Assuming a normal distribution, within what range should returns fall about 95% of the time?": {
+  "2% to 14%": "That is &plusmn;1 standard deviation, which covers about 68%.",
+  "&minus;10% to 26%": "That is &plusmn;3 standard deviations, which covers about 99%.",
+  "5% to 11%": "That shifts the mean by half a standard deviation, not two."
+ },
+ "A stock fund has a mean return of 9% and a standard deviation of 5%. Assuming a normal distribution, about what share of annual returns would exceed 19%?": {
+  "5%": "That is the share outside &plusmn;2 SD on both sides combined, not just the upper tail.",
+  "16%": "That is the upper tail beyond +1 SD (14%).",
+  "0.5%": "That is the upper tail beyond +3 SD (24%)."
+ },
+ "A fund's mean return is 10% with a standard deviation of 4%. Last year it returned 2%. What is that year's z-statistic?": {
+  "+2.0": "The return is below the mean, so the z-score is negative.",
+  "&minus;0.5": "This divides the standard deviation by the deviation instead of the reverse.",
+  "&minus;8.0": "This is the raw deviation; it must be divided by the standard deviation."
+ },
+ "When projecting the ending value of an unleveraged portfolio, which distribution does the textbook say to assume?": {
+  "Normal": "Normal is assumed for the range of annual returns, which can be negative.",
+  "Platykurtic": "Platykurtic describes peakedness, not the floor at zero.",
+  "Negatively skewed": "Ending values have a long right tail, not a long left tail."
+ },
+ "Which statement about return distributions is correct according to the textbook?": {
+  "Kurtosis measures how asymmetric a distribution is around its mean.": "Asymmetry is skewness; kurtosis measures peakedness.",
+  "In a positively skewed distribution, the median lies above the mean.": "In positive skew the median is below the mean.",
+  "Semivariance measures deviations both above and below the mean.": "Semivariance counts only deviations below the mean."
+ },
+ "An analyst is measuring risk from five years of a fund's historical returns. Which method does the textbook expect on the CFP exam?": {
+  "Population standard deviation, dividing by n": "Measuring a full population is rarely realistic; the exam likely asks only for the sample version.",
+  "Variance, dividing by n &minus; 1 with no square root": "Variance is the squared figure; risk is reported as standard deviation.",
+  "Semivariance, using only below-mean returns": "Semivariance is a downside measure, not the standard total-risk measure."
+ },
+ "A fund has an average annual return of 12%, a beta of 1.10, and a standard deviation of 18%. What is its coefficient of variation?": {
+  "0.67": "This inverts the formula: return &divide; standard deviation.",
+  "0.09": "This divides beta by return; CV uses standard deviation, not beta.",
+  "16.36": "This divides standard deviation by beta."
+ },
+ "Based on the data above, which fund offers the least total risk per unit of return?": {
+  "Fund P": "P's CV is 12 &divide; 9 = 1.33, higher than Q's 1.14.",
+  "Fund R": "R has the lowest standard deviation but the highest CV (9 &divide; 6 = 1.50).",
+  "Fund S": "S's CV is 15 &divide; 11 = 1.36, higher than Q's 1.14."
+ },
+ "A lower coefficient of variation indicates which of the following?": {
+  "Less systematic risk per unit of return": "CV uses standard deviation, which measures total risk, not beta.",
+  "A lower correlation with the market": "Correlation is a separate measure of co-movement.",
+  "A higher expected return": "CV can fall from lower risk alone, with no change in return."
+ },
+ "Lena is choosing between a fund with a 7% mean return and 9% standard deviation and one with a 12% mean return and 14% standard deviation. Which tool best compares their risk per unit of return?": {
+  "Covariance": "Covariance measures how two assets move together, not risk per unit of return.",
+  "Beta": "Beta captures only systematic risk relative to the market.",
+  "Coefficient of determination": "R-squared shows how much movement the benchmark explains."
+ },
+ "Fund A has a standard deviation of 14, Fund B has a standard deviation of 20, and their correlation coefficient is 0.45. What is their covariance?": {
+  "15.30": "This multiplies the correlation by the sum of the standard deviations.",
+  "280.00": "This omits the correlation coefficient.",
+  "622.22": "This divides by the correlation instead of multiplying."
+ },
+ "Two funds have standard deviations of 12 and 16, and their covariance is 96. What is their correlation coefficient?": {
+  "0.25": "This squares the correlation, which gives R-squared.",
+  "8.00": "This divides covariance by only one standard deviation.",
+  "0.67": "This divides by the first fund's variance (144) instead of the product of the SDs."
+ },
+ "A portfolio is 70% in a bond fund (standard deviation 12) and 30% in a stock fund (standard deviation 25). Their correlation is 0.20. What is the portfolio's standard deviation?": {
+  "15.90%": "This is the weighted average SD, valid only at a correlation of +1.",
+  "11.26%": "This drops the covariance term from the formula.",
+  "152.01%": "This is the portfolio variance; take the square root."
+ },
+ "Under which condition does a two-asset portfolio's standard deviation equal the weighted average of the two assets' standard deviations?": {
+  "The correlation coefficient is zero": "At zero correlation, portfolio SD is below the weighted average.",
+  "The correlation coefficient is &minus;1.0": "At &minus;1, risk is reduced most and can even reach zero.",
+  "The two assets are held in equal weights": "Weights do not matter; only a correlation of +1 allows the shortcut."
+ },
+ "Marcus already owns an S&amp;P 500 index fund. Which additional fund would add the most diversification, based on each fund's correlation with the S&amp;P 500?": {
+  "Fund with a correlation of +0.93": "This fund moves almost in lockstep with what he already owns.",
+  "Fund with a correlation of +0.85": "This correlation is still high; little diversification is added.",
+  "Fund with a correlation of +0.70": "Lower than the others but still well above +0.36."
+ },
+ "An investor puts 50% in each of two assets that both have a standard deviation of 15 and a correlation of &minus;1.0. What is the portfolio's standard deviation?": {
+  "15": "That is the weighted average, which applies only at a correlation of +1.",
+  "7.5": "This halves one asset's SD and ignores the covariance term.",
+  "10.6": "This uses a zero correlation: &radic;(56.25 + 56.25) = 10.6."
+ },
+ "A fund's correlation coefficient with its benchmark is 0.80. What percentage of the fund's movement comes from unsystematic (non-benchmark) factors?": {
+  "20%": "This subtracts the correlation from 1 instead of R-squared.",
+  "64%": "This is R-squared, the share explained by the benchmark (systematic).",
+  "80%": "This is the correlation coefficient itself."
+ },
+ "A fund has a standard deviation of 20 and a covariance of 224 with the market, whose standard deviation is 16. What is the fund's R-squared, and is beta a reliable risk measure for it?": {
+  "0.70; yes, it meets the 0.70 threshold": "0.70 is the correlation; R-squared is 0.70 squared.",
+  "0.875; yes, beta is high enough to rely on": "0.875 is the beta (224 &divide; 256), not R-squared.",
+  "0.49; yes, any positive R-squared validates beta": "Beta needs an R-squared of about 0.70 or more."
+ },
+ "A portfolio's R-squared with the S&amp;P 500 is 0.45. Which performance measure is appropriate?": {
+  "Treynor ratio": "Treynor uses beta, which needs an R-squared of about 0.70 or more.",
+  "Jensen's alpha": "Jensen uses beta, which needs an R-squared of about 0.70 or more.",
+  "Treynor and Jensen together": "Both rely on beta, which is unreliable at this R-squared."
+ },
+ "An actively managed large-cap fund with materially higher expenses than an index fund shows an R-squared of 0.98 against the S&amp;P 500. What is the best interpretation?": {
+  "Its manager's stock picking explains 98% of its returns.": "R-squared is the share explained by the benchmark, not by the manager.",
+  "It is an excellent diversifier for an S&amp;P 500 index fund.": "An R-squared that high means it moves with the index and diversifies little.",
+  "Its beta is unreliable because R-squared is too high.": "A high R-squared makes beta more reliable, not less."
+ }
+}

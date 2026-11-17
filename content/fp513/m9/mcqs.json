@@ -1,0 +1,420 @@
+[
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Integrated Case",
+  "stem": "<p><b>Calloway case.</b> Graham (53) and Nadia (50) are drafting an IPS. Two items on their list:</p><ul><li>Keep a cash reserve equal to six months of living expenses.</li><li>Have Leah&rsquo;s first-year college money available when she starts college in three years.</li></ul>",
+  "q": "In which section of the Calloways' investment policy statement (IPS) should these two needs be recorded?",
+  "o": [
+   "Return requirement",
+   "Liquidity",
+   "Laws and regulations",
+   "Permitted and excluded investments"
+  ],
+  "a": 1,
+  "e": "Liquidity constraints record money the clients must be able to reach: an emergency reserve and any known outlay within roughly the next three to five years, such as tuition. Many advisors keep money needed inside five years out of the stock market. The return requirement states the target return; laws and regulations mainly concern plans like ERISA trusts; permitted/excluded investments lists the clients&rsquo; preferences.",
+  "lo": "LO 8.4.1",
+  "pg": 319,
+  "k": "D.33",
+  "kind": "case"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Integrated Case",
+  "stem": "<p><b>Calloway case.</b> Net worth about $2.05 million; combined salaries $350,000; adequate life and disability coverage; about 12 years to retirement. In a past bear market Graham sold most of his stock funds near the low, and he says a 15% portfolio drop would cost him sleep. The planner calculates that their retirement goal needs a 6.5% annual return.</p>",
+  "q": "Which statement best describes the Calloways' risk tolerance for the IPS?",
+  "o": [
+   "Low ability and low willingness; the IPS should target capital preservation and leave the 6.5% goal as is",
+   "High ability and high willingness; their net worth lets the IPS set above-average volatility",
+   "Low ability but high willingness; the planner should rely on the questionnaire score alone",
+   "High ability but low willingness; the IPS should record both and reconcile the risk level with the 6.5% requirement"
+  ],
+  "a": 3,
+  "e": "Ability depends on resources and circumstances (wealth, income, insurance, horizon), and the Calloways&rsquo; is high. Willingness is emotional comfort with swings, and Graham&rsquo;s history shows it is low. The IPS addresses both, and the risk objective must fit the return requirement: if 6.5% needs more risk than they will accept, they must accept more risk, lower the goal, or do some of each.",
+  "lo": "LO 8.4.1",
+  "pg": 319,
+  "k": "D.33",
+  "kind": "case"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Integrated Case",
+  "stem": "<p><b>Calloway case.</b> Living expenses run $13,500 per month, and the Calloways want a reserve equal to six months of living expenses. They have an annual cash-flow surplus of $47,600.</p><table><thead><tr><th>Liquid asset</th><th>Balance</th></tr></thead><tbody><tr><td>Checking account</td><td>$18,000</td></tr><tr><td>Money market mutual fund</td><td>$24,000</td></tr><tr><td>1-year bank CD</td><td>$20,000</td></tr></tbody></table><p>Other resources: taxable brokerage $542,060; 401(k)s $705,000; a home equity line of credit is available.</p>",
+  "q": "How large is the gap in the Calloways' emergency reserve, and what is the best way to close it?",
+  "o": [
+   "$19,000; add it to a money market holding from the cash-flow surplus or taxable assets",
+   "$19,000; arrange a 401(k) loan that can be drawn if an emergency occurs",
+   "$81,000; open a home equity line of credit to serve as the whole reserve",
+   "$39,000; leave the CD out of the reserve and draw the gap from the 401(k)s"
+  ],
+  "a": 0,
+  "e": "Target = 6 &times; $13,500 = $81,000. Liquid assets = $18,000 + $24,000 + $20,000 = $62,000. Gap = $81,000 &minus; $62,000 = $19,000. The reserve belongs in highly liquid, marketable holdings such as a money market account so short-term setbacks never force a sale of long-term assets or new borrowing. Their $47,600 surplus can fill the gap within the year.",
+  "lo": "LO 8.6.1",
+  "pg": 335,
+  "k": "H.70",
+  "kind": "case"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Integrated Case",
+  "stem": "<p><b>Calloway case.</b> Nadia plans to hold the new reserve money in the Pinecrest Money Market Fund, a money market mutual fund at their brokerage. She says it is &ldquo;just as safe as a bank money market account because both are FDIC insured.&rdquo;</p>",
+  "q": "Which response by the planner is most accurate?",
+  "o": [
+   "She is right; both accounts carry FDIC coverage up to $250,000 per ownership category",
+   "She is right only if the fund holds Treasury bills, which makes the fund itself FDIC insured",
+   "The mutual fund is not federally insured; a bank money market deposit account is insured up to $250,000 per ownership category",
+   "Neither account is insured, but only the bank account permits check-writing"
+  ],
+  "a": 2,
+  "e": "Money market mutual funds are offered by open-end investment companies and are not federally insured, although they hold high-quality short-term paper and are very liquid. A money market deposit account (MMDA) is a bank obligation insured up to $250,000 per ownership category (2026 edition figure). Either can hold an emergency fund; the client simply needs to know the difference.",
+  "lo": "LO 1.3.1",
+  "pg": 17,
+  "k": "D.27",
+  "kind": "case"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Integrated Case",
+  "stem": "<p><b>Calloway case.</b> When their $20,000 CD matures, Nadia wants to roll it into 13-week Treasury bills yielding 4.0%. The Calloways are in the 32% federal bracket and a 5% state bracket. Inflation is expected to run 3.0%.</p>",
+  "q": "What is the Calloways' after-tax, inflation-adjusted return on the T-bills?",
+  "o": [
+   "0.97%",
+   "&minus;0.27%",
+   "1.00%",
+   "&minus;0.47%"
+  ],
+  "a": 1,
+  "e": "T-bill interest is federally taxed but state-exempt, so use 32% only (2026 edition figure). After-tax = 4.0% &times; (1 &minus; 0.32) = 2.72%. Real = [(1.0272 &divide; 1.03) &minus; 1] &times; 100 = &minus;0.27%. The roll-over keeps reserve money safe but loses purchasing power: fine for an emergency fund, a poor home for long-term money.",
+  "lo": "LO 7.1.1",
+  "pg": 263,
+  "k": "D.30",
+  "kind": "case"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Integrated Case",
+  "stem": "<p><b>Calloway case.</b> Six months after the IPS is signed, stocks fall 25% in two months. Graham, 53, wants to move his entire 401(k) ($410,000) into the stable value fund &ldquo;until things calm down.&rdquo; The six-month reserve is fully funded, both spouses still have their jobs, and retirement is about 12 years away.</p>",
+  "q": "What is the planner's best course of action with Graham?",
+  "o": [
+   "Keep a long-term perspective and hold the IPS allocation, reminding Graham why it was chosen",
+   "Move the 401(k) to stable value now and re-enter after the market regains half its loss",
+   "Shift half the 401(k) to stable value as a compromise to ease Graham&rsquo;s anxiety",
+   "Rewrite the IPS around capital preservation because a 25% decline changes their goals"
+  ],
+  "a": 0,
+  "e": "With jobs, reserves and a 12-year horizon intact, the decline is market turmoil, not a change in the clients&rsquo; own situation. When a client presses to move to cash, the best course is usually no action: keep the allocation and the long view. Markets carry a long-term positive bias that rewards patient, diversified investors; abandoning the plan tends to leave clients on the sidelines early in a recovery.",
+  "lo": "LO 8.6.1",
+  "pg": 339,
+  "k": "H.70",
+  "kind": "case"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Integrated Case",
+  "stem": "<p><b>Calloway case.</b> Over the next year the planner notes these events:</p><ul><li>I. Graham receives a 4% raise.</li><li>II. The S&amp;P 500 drops 2% in one week, then recovers.</li><li>III. Kestrel eliminates Nadia&rsquo;s division; she is laid off with six months of severance.</li></ul>",
+  "q": "Which event(s) should prompt the planner to reassess the assumptions in the Calloways' IPS?",
+  "o": [
+   "I and III",
+   "II and III",
+   "III only",
+   "I, II, and III"
+  ],
+  "a": 2,
+  "e": "Change comes in three kinds. Noise (II) carries no meaning and is ignored. Incremental change (I) is a small extension of an existing pattern and bears watching. Discontinuous change (III), such as losing a job, is a radical break that calls for revisiting the IPS assumptions: income, liquidity, risk capacity and the Kestrel holding.",
+  "lo": "LO 8.6.1",
+  "pg": 335,
+  "k": "H.70",
+  "kind": "case"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Integrated Case",
+  "stem": "<p><b>Calloway case.</b> Graham wants low-cost index funds that track broad markets, with little trading. Nadia wants part of the money in actively chosen, higher-risk areas (emerging markets and REITs) that might beat the market. Both want diversification and attention to taxes.</p>",
+  "q": "Which approach best reconciles the spouses' preferences for their retirement assets?",
+  "o": [
+   "Tactical asset allocation applied to the entire portfolio",
+   "A single moderate model portfolio from a fund sponsor&rsquo;s questionnaire",
+   "A strategic allocation held entirely in index funds with no active component",
+   "A core-and-satellite strategy: a passive index core plus a smaller active satellite sleeve"
+  ],
+  "a": 3,
+  "e": "Core and satellite puts most assets in passive broad-market index funds (the core, run strategically) and a smaller share in higher-risk opportunities such as emerging markets, REITs or high-yield bonds (the satellite, run tactically). Its aims (diversification, returns in line with the required return, low transaction costs, tax management) fit both spouses.",
+  "lo": "LO 8.5.2",
+  "pg": 330,
+  "k": "D.31",
+  "kind": "case"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Integrated Case",
+  "stem": "<p><b>Calloway case.</b> Nadia holds 4,000 shares of her employer, Kestrel Diagnostics (KDX), worth $90 per share ($360,000), with a basis of $40 per share. KDX is about 25% of the couple&rsquo;s investment assets. She wants to diversify without an immediate capital gains tax, and she wants the value to stay with the family rather than go to charity.</p>",
+  "q": "Which strategy best meets Nadia's goals for her Kestrel shares?",
+  "o": [
+   "Contribute the shares to an exchange fund",
+   "Transfer the shares to a charitable remainder trust",
+   "Give the shares to Leah and Sam",
+   "Sell the shares and buy a diversified index fund"
+  ],
+  "a": 0,
+  "e": "An exchange fund takes concentrated public stock in return for a proportional interest in a diversified pool, spreading the company-specific (unsystematic) risk without an immediate capital gains tax, and Nadia keeps the value. A CRT avoids tax on the sale but leaves the remainder to charity; gifting gives up ownership; an outright sale taxes the $200,000 gain (4,000 &times; $50).",
+  "lo": "LO 8.5.2",
+  "pg": 331,
+  "k": "D.31",
+  "kind": "case"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Integrated Case",
+  "stem": "<p><b>Calloway case.</b> Nadia owns 4,000 KDX shares at $90. Worried about a drop before Kestrel&rsquo;s next product decision, she buys 40 six-month KDX put contracts with an $80 strike at a premium of $2.50 per share. She is not a corporate insider and has no trading restrictions.</p>",
+  "q": "Ignoring commissions, what is the minimum net value of Nadia's hedged KDX position at expiration (the value the puts lock in, less the premium paid)?",
+  "o": [
+   "$300,000",
+   "$320,000",
+   "$350,000",
+   "$310,000"
+  ],
+  "a": 3,
+  "e": "Premium = 40 contracts &times; 100 &times; $2.50 = $10,000. However far KDX falls, she can sell at $80: 4,000 &times; $80 = $320,000. Net floor = $320,000 &minus; $10,000 = $310,000, versus $360,000 today. A protective put works like insurance: she keeps the upside, but the cost recurs and coverage ends at expiration.",
+  "lo": "LO 5.2.2",
+  "pg": 197,
+  "k": "D.34",
+  "kind": "case"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Integrated Case",
+  "stem": "<p><b>Calloway case.</b> Nadia finds the puts too costly to renew every six months. She wants to protect KDX (now $90) against a fall below $80 with no net premium outlay, and she is willing to give up gains above $105.</p>",
+  "q": "Which option position should Nadia add to her 4,000 KDX shares?",
+  "o": [
+   "Buy 40 $80 puts and write 40 $105 calls with offsetting premiums",
+   "Write 40 $105 covered calls and nothing else",
+   "Write 40 $80 puts and buy 40 $105 calls",
+   "Buy 40 $90 calls and 40 $90 puts (a long straddle)"
+  ],
+  "a": 0,
+  "e": "A zero-cost collar = long stock + long put + short call. The $80 put sets a floor; the premium received for the $105 call pays for the put, so the net cost is about zero. The trade-off: shares may be called away above $105. Covered calls alone cap the upside but give only premium-sized protection in a sharp drop.",
+  "lo": "LO 5.2.2",
+  "pg": 201,
+  "k": "D.34",
+  "kind": "case"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Integrated Case",
+  "stem": "<p><b>Calloway case.</b> Planning assumptions: 13-week T-bill (risk-free) rate 4.0%; expected market return 10.0%. KDX has a beta of 1.40. Analysts&rsquo; consensus expected return for KDX is 11.0%.</p>",
+  "q": "Using the CAPM, what is the required return on KDX, and what does it imply about adding to the position?",
+  "o": [
+   "18.0%; KDX is undervalued, so buy more",
+   "12.4%; the expected return falls short, so do not add to KDX",
+   "8.4%; the expected return exceeds it, so add to KDX",
+   "14.0%; KDX plots on the security market line, so hold it unchanged"
+  ],
+  "a": 1,
+  "e": "CAPM: r = r<sub>f</sub> + (r<sub>m</sub> &minus; r<sub>f</sub>)&beta; = 4.0% + (10.0% &minus; 4.0%)(1.40) = 4.0% + 8.4% = 12.4%. The 11.0% expected return is below the 12.4% required, so KDX plots below the SML (priced too high for its systematic risk) and the CAPM test says reject further purchases. It supports the diversification plan.",
+  "lo": "LO 8.2.1",
+  "pg": 298,
+  "k": "D.33",
+  "kind": "case"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Integrated Case",
+  "stem": "<p><b>Calloway case.</b> Equity holdings in the joint brokerage account:</p><table><thead><tr><th>Holding</th><th>Value</th><th>Beta</th></tr></thead><tbody><tr><td>Kestrel Diagnostics (KDX)</td><td>$360,000</td><td>1.40</td></tr><tr><td>Harborline Large-Cap Growth Fund</td><td>$85,000</td><td>1.15</td></tr><tr><td>Summit European Equity Fund</td><td>$37,060</td><td>0.90</td></tr></tbody></table>",
+  "q": "What is the weighted beta of the equity holdings in the joint brokerage account?",
+  "o": [
+   "1.15",
+   "1.40",
+   "1.32",
+   "1.07"
+  ],
+  "a": 2,
+  "e": "Weighted beta = &Sigma;(value &times; beta) &divide; total value = ($504,000 + $97,750 + $33,354) &divide; $482,060 = $635,104 &divide; $482,060 = 1.32. The sleeve is about 32% more volatile than the market. With one stock at 75% of it, beta understates total risk, because company-specific risk has not been diversified away.",
+  "lo": "LO 6.2.1",
+  "pg": 235,
+  "k": "D.30",
+  "kind": "case"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Integrated Case",
+  "stem": "<p><b>Calloway case.</b> Of Graham&rsquo;s 401(k), 85% is in an S&amp;P 500 index fund. He can add one plan fund as a diversifier. Correlation coefficient (R) of each with the S&amp;P 500:</p><table><thead><tr><th>Fund</th><th>Correlation (R)</th></tr></thead><tbody><tr><td>Large-Cap Value Index</td><td>0.94</td></tr><tr><td>Mid-Cap Blend</td><td>0.89</td></tr><tr><td>Dividend Growth</td><td>0.86</td></tr><tr><td>International Developed Index</td><td>0.62</td></tr></tbody></table>",
+  "q": "Using the R² threshold taught in the course, which fund is the effective diversifier for Graham's account?",
+  "o": [
+   "Large-Cap Value Index, R² = 0.88",
+   "Mid-Cap Blend, R² = 0.79",
+   "International Developed Index, R² = 0.38",
+   "Dividend Growth, R² = 0.74"
+  ],
+  "a": 2,
+  "e": "R² = R &times; R. Morningstar treats an R² above 70% (correlation above about 0.84) as too tied to the market to diversify an S&amp;P 500 holding. Only the international fund (0.62&sup2; = 0.38) is under 70%; most of its movement comes from factors other than the S&amp;P 500. A low positive correlation is enough; a negative one is not required.",
+  "lo": "LO 6.2.5",
+  "pg": 251,
+  "k": "D.30",
+  "kind": "case"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Integrated Case",
+  "stem": "<p><b>Calloway case.</b> To replace Harborline, the planner screens two large-cap growth funds (3-year figures). Risk-free rate 4.0%.</p><table><thead><tr><th>Fund</th><th>Return</th><th>Std. dev.</th><th>Beta</th><th>R²</th></tr></thead><tbody><tr><td>Alder Growth</td><td>11.6%</td><td>16.0%</td><td>1.05</td><td>0.92</td></tr><tr><td>Bexley Focused Growth</td><td>13.0%</td><td>22.0%</td><td>1.20</td><td>0.58</td></tr></tbody></table>",
+  "q": "Which fund shows the better risk-adjusted performance, using the appropriate measure?",
+  "o": [
+   "Bexley, because its Treynor ratio (7.50) beats Alder&rsquo;s (7.24)",
+   "Bexley, because its return is 1.4 points higher than Alder&rsquo;s",
+   "Alder, because its higher R² shows it has the better manager",
+   "Alder, because its Sharpe ratio (0.48) beats Bexley&rsquo;s (0.41)"
+  ],
+  "a": 3,
+  "e": "Bexley&rsquo;s R² of 0.58 is below 0.70, so its beta is unreliable and beta-based measures (Treynor, Jensen) are suspect. Use Sharpe = (R<sub>p</sub> &minus; R<sub>f</sub>) &divide; &sigma;. Alder: (11.6 &minus; 4.0) &divide; 16.0 = 0.48. Bexley: (13.0 &minus; 4.0) &divide; 22.0 = 0.41. Alder delivers more excess return per unit of total risk.",
+  "lo": "LO 7.2.1",
+  "pg": 267,
+  "k": "D.30",
+  "kind": "case"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Integrated Case",
+  "stem": "<p><b>Calloway case.</b> Harborline Large-Cap Growth Fund, held in the taxable joint account: expense ratio 1.25%; portfolio turnover 140%; the manager who built its 12-year record left last quarter; last year it ranked in its category&rsquo;s top 10%.</p>",
+  "q": "Which of these statements about Harborline are CORRECT? I. Its high turnover adds trading costs not included in the 1.25% expense ratio. II. Its high turnover can produce capital gains distributions taxable to the Calloways. III. The expense ratio already includes the fund's brokerage commissions. IV. The manager's departure is a reason to monitor the fund more closely.",
+  "o": [
+   "I and III",
+   "II and IV",
+   "I, II, and IV",
+   "I, II, III, and IV"
+  ],
+  "a": 2,
+  "e": "Turnover generates commissions, bid-ask spreads and market-impact costs, none of which appear in the expense ratio (I true; III false, since the ratio covers operating expenses, management fees and 12b-1 fees). High turnover can also realize gains that are distributed and taxed in a taxable account (II). Losing the manager behind the record calls for closer monitoring, though weaker results are not certain (IV).",
+  "lo": "LO 3.6.1",
+  "pg": 116,
+  "k": "D.33",
+  "kind": "case"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Integrated Case",
+  "stem": "<p><b>Calloway case.</b> On December 12 the Calloways sell their entire Harborline position for $85,000 (basis $100,000). On January 2, 21 days later, Graham buys Harborline again in the same account for $82,000.</p>",
+  "q": "What loss can the Calloways recognize on the December sale, and what is their basis in the repurchased shares?",
+  "o": [
+   "$15,000 loss; basis $82,000",
+   "$0 loss; basis $97,000",
+   "$3,000 loss; basis $94,000",
+   "$0 loss; basis $82,000"
+  ],
+  "a": 1,
+  "e": "Buying the same security within 30 days before or after selling it at a loss (2026 edition figure) is a wash sale. The $15,000 loss ($85,000 &minus; $100,000) is postponed, not lost: it is added to the new shares&rsquo; basis, $82,000 + $15,000 = $97,000. Waiting more than 30 days to buy Harborline back would have kept the loss deductible.",
+  "lo": "LO 1.4.1",
+  "pg": 26,
+  "k": "D.27",
+  "kind": "case"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Integrated Case",
+  "stem": "<p><b>Calloway case.</b> The Calloways itemize deductions; federal bracket 32%, state bracket 5%. For new bond money in the taxable account they can choose an in-state municipal bond fund yielding 3.6% (exempt from federal and state tax) or the Ridgeway corporate bond fund yielding 5.2%. Credit quality and duration are similar.</p>",
+  "q": "What is the municipal fund's taxable-equivalent yield for the Calloways, and which fund pays more after tax?",
+  "o": [
+   "5.29%; the municipal fund",
+   "5.71%; the municipal fund",
+   "5.57%; the municipal fund",
+   "5.57%; the corporate fund"
+  ],
+  "a": 2,
+  "e": "Double tax-exempt bond, itemizer: TEY = tax-free yield &divide; [(1 &minus; state rate)(1 &minus; federal rate)] = 3.6% &divide; (0.95 &times; 0.68) = 3.6% &divide; 0.646 = 5.57%. The 32% and 5% brackets are case assumptions (2026 edition figure). Since 5.57% &gt; 5.2%, the municipal fund pays more after tax. Adding the brackets (3.6% &divide; 0.63 = 5.71%) applies only to non-itemizers.",
+  "lo": "LO 7.4.1",
+  "pg": 282,
+  "k": "D.30",
+  "kind": "case"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Integrated Case",
+  "stem": "<p><b>Calloway case.</b> The taxable joint account holds the Ridgeway corporate bond fund ($60,000; all income is interest taxed as ordinary income). Graham&rsquo;s 401(k) is 85% in an S&amp;P 500 index fund. Their brackets are 32% federal and 5% state.</p>",
+  "q": "Which change makes the Calloways' asset placement most tax-efficient while keeping their overall stock/bond mix?",
+  "o": [
+   "Hold the taxable bond exposure in the 401(k) and keep tax-efficient index funds or municipals in the joint account",
+   "Buy municipal bonds inside Nadia&rsquo;s Roth IRA so the bond income is doubly tax-free",
+   "Keep the bond fund in the joint account, since its interest is taxed the same in any account",
+   "Swap the bond fund for taxable zero-coupon corporate bonds in the joint account to defer the interest"
+  ],
+  "a": 0,
+  "e": "Tax-inefficient holdings (taxable interest, nonqualified dividends, high turnover) are best kept in tax-deferred accounts; tax-efficient ones (broad index funds, qualified dividends, municipals) can sit in taxable accounts. Swapping bonds into the 401(k) and stocks into the joint account keeps the same mix while sheltering interest now taxed at 32% federal and 5% state (2026 edition figure).",
+  "lo": "LO 3.6.1",
+  "pg": 117,
+  "k": "D.27",
+  "kind": "case"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Integrated Case",
+  "stem": "<p><b>Calloway case.</b> Ridgeway Intermediate Corporate Bond Fund: value $60,000; duration 6.2 years; yield to maturity 5.2%. The planner shows the effect if market rates rise by 1% (100 basis points).</p>",
+  "q": "Using the duration formula, approximately what will the Calloways' Ridgeway position be worth after the rate increase?",
+  "o": [
+   "$56,280",
+   "$56,464",
+   "$63,536",
+   "$59,400"
+  ],
+  "a": 1,
+  "e": "&Delta;P &divide; P = &minus;D &times; [&Delta;y &divide; (1 + y)] = &minus;6.2 &times; (0.01 &divide; 1.052) = &minus;5.89%. Change = &minus;0.0589 &times; $60,000 &asymp; &minus;$3,536, so the value is about $56,464. The rule of thumb (6.2 &times; 1%) gives $56,280. A bond fund never matures, so this price risk cannot be removed by holding on.",
+  "lo": "LO 4.1.2",
+  "pg": 137,
+  "k": "D.32",
+  "kind": "case"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Integrated Case",
+  "stem": "<p><b>Calloway case.</b> Leah, 15, starts college in three years. Her education account ($96,000, a taxable account in her parents&rsquo; names) is 100% in a stock index fund. The Calloways want to be confident the money will be there when the first bill arrives.</p>",
+  "q": "Which fixed-income approach best protects the money for Leah's first tuition bill?",
+  "o": [
+   "A long-term bond fund with a duration of 14, for its higher yield",
+   "Three-year Treasury zero-coupon bonds, whose duration equals the three-year horizon",
+   "A barbell of 1-year and 20-year bonds",
+   "Keep the stock index fund, since stocks beat bonds over long periods"
+  ],
+  "a": 1,
+  "e": "Matching a portfolio&rsquo;s duration to the time until the money is needed immunizes it: higher rates lower prices but raise reinvestment income, and vice versa. A zero-coupon bond&rsquo;s duration equals its maturity, so a 3-year Treasury zero delivers a known sum on schedule with no default or reinvestment risk. In a taxable account the accrued interest is taxed yearly (phantom income).",
+  "lo": "LO 2.3.1",
+  "pg": 57,
+  "k": "D.34",
+  "kind": "case"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Integrated Case",
+  "stem": "<p><b>Calloway case.</b> One year ago the Calloways invested $36,000 in the unhedged Summit European Equity Fund when &euro;1 = $1.08. Over the year the fund&rsquo;s value in euros rose 9%, and the exchange rate is now &euro;1 = $1.02. Ignore distributions.</p>",
+  "q": "What was the Calloways' holding period return on the Summit fund in U.S. dollars?",
+  "o": [
+   "9.00%",
+   "15.41%",
+   "3.44%",
+   "2.94%"
+  ],
+  "a": 3,
+  "e": "Convert at both ends: $36,000 &divide; 1.08 = &euro;33,333; &times; 1.09 = &euro;36,333; &times; $1.02 = $37,060. HPR = ($37,060 &minus; $36,000) &divide; $36,000 = 2.94%, or 1.09 &times; (1.02 &divide; 1.08) &minus; 1. The euro fell against the dollar, shrinking a 9% local gain to about 3%. A U.S. investor abroad wants the dollar to fall during the holding period.",
+  "lo": "LO 5.5.2",
+  "pg": 217,
+  "k": "D.30",
+  "kind": "case"
+ }
+]

@@ -63,6 +63,8 @@
     var s = state(), scope = MCQ.filter(function (q) { return q.m === f.course && (!f.mod || moduleOf(q) === +f.mod); });
     if (!scope.length) scope = MCQ.filter(function (q) { return q.m === f.course; });
     var ranked = C.rankQuestions(scope, s, S.attempts), allRanked = C.rankQuestions(MCQ, s, S.attempts);
+    // FP513: due reviews → missed FP513 → untested objectives → new material (fp513-course.js)
+    if (f.course === 'FP513' && window.FP513COURSE) ranked = window.FP513COURSE.prioritize(ranked);
     var n = minutes === 3 ? 3 : minutes === 25 ? 13 : 6, reviewN = minutes === 25 ? 3 : (minutes === 3 ? 1 : 2);
     var used = {}, steps = [], chosen = chooseCase(f);
     function add(q, type) { var k = C.key(q); if (used[k]) return; used[k] = true; steps.push({ type: type, q: mcqFresh(q), originalKey: k, result: null }); }
@@ -76,6 +78,8 @@
         if (card) steps.splice(Math.min(reviewN, steps.length), 0, { type: 'lesson', course: f.course, mod: f.mod, front: card.f, back: card.b, revealed: false });
       }
     }
+    // FP513 sessions of 10+ minutes keep one FP511/FP512 retention question (skipped if a review already came from those courses)
+    if (f.course === 'FP513' && minutes !== 3 && kind !== 'case-only' && window.FP513COURSE && !steps.some(function (x) { return x.q && x.q.m !== 'FP513'; })) { var rq = window.FP513COURSE.retentionPick(used); if (rq) add(rq, 'review'); }
     if ((minutes !== 3 || kind === 'case-only') && chosen) steps.push({ type: 'case', caseId: chosen.id, draft: '', checks: [], revealed: false });
     if (!steps.length) return null;
     return { id: C.id('session'), minutes: minutes, kind: kind || 'guided', focus: f, steps: steps, index: 0, started: Date.now(), day: C.day(), paused: false };

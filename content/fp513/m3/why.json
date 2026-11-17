@@ -1,0 +1,222 @@
+{
+ "From the issuing corporation's point of view, which statement best describes raising capital with common stock instead of bonds?": {
+  "It avoids fixed payments, and dividends are tax-deductible": "Dividends paid on stock are not deductible to the corporation; only bond interest is.",
+  "It requires fixed payments, but dividends are tax-deductible": "This reverses both points: stock needs no fixed payments, and its dividends are not deductible.",
+  "It requires fixed payments, and interest is tax-deductible": "That describes debt financing, not equity."
+ },
+ "Rafael, age 61, plans to retire in two years and fears a recession. He wants to add one stock whose results depend least on the business cycle. Which is the best fit?": {
+  "A national automaker": "Automakers are cyclical: profits rise in expansions and fall in downturns.",
+  "A casual-dining restaurant chain": "Restaurants are cyclical consumer discretionary businesses that suffer in recessions.",
+  "An emerging robotics developer": "An emerging growth/technology company carries high risk and is not defensive."
+ },
+ "Brightway Corp. pays for a large expansion by issuing new bonds rather than new shares. Which risk to Brightway's stockholders increases most directly?": {
+  "Market risk": "Market risk comes from broad market moves, not from how this firm finances itself.",
+  "Business risk": "Business risk relates to the firm's operations and management, not its choice of debt over equity.",
+  "Interest rate risk": "Rate changes affect all stocks; the specific risk added by borrowing is financial (leverage) risk."
+ },
+ "Lena pays $2 per share for warrants that let her buy 80 shares of Corvex at $25 per share any time in the next four years. Corvex rises to $31 and she exercises. Ignoring commissions, what is her profit?": {
+  "$160": "That is just the total cost of the warrants (80 &times; $2), not the profit.",
+  "$480": "This counts the $6 stock gain per share but forgets to subtract the $2 warrant cost.",
+  "$640": "This adds the warrant cost instead of subtracting it: ($6 + $2) &times; 80."
+ },
+ "Which feature is typical of a warrant but NOT of a subscription right?": {
+  "An exercise price below the stock's market price at issue": "A below-market exercise price describes rights, not warrants.",
+  "A life of only a few weeks before it expires": "A very short life describes rights; warrants usually run for years.",
+  "An offer to existing holders to keep their ownership share": "Rights are offered to current shareholders to preserve their percentage ownership."
+ },
+ "Which statement correctly contrasts a warrant with an exchange-listed call option?": {
+  "The warrant usually expires within nine months of issue": "Calls usually expire within nine months; warrants typically last several years.",
+  "The warrant's terms are standardized by the Options Clearing Corporation": "Standardized OCC terms describe listed calls; warrants are customized.",
+  "The warrant is written by an individual investor, not the company": "Calls are written by individuals; warrants are issued by the corporation."
+ },
+ "Which of the following defines the ex-dividend date?": {
+  "The day the board of directors announces the dividend amount": "That is the declaration date.",
+  "The day the dividend is actually paid to shareholders": "That is the payment date.",
+  "The day the company's books are checked to list owners entitled to it": "That describes the record date, when settled owners appear on the books."
+ },
+ "Mateo wants to receive the next quarterly dividend on Halvern Corp. stock. Halvern's ex-dividend date is a Wednesday. Which purchase qualifies him for the dividend?": {
+  "Buying on Wednesday at the market open": "Any purchase on the ex-dividend date comes without the dividend, even at the open.",
+  "Buying on Wednesday just before the close": "Shares bought on the ex-dividend date do not carry the dividend.",
+  "Buying on Thursday, the day after the ex-dividend date": "Purchases after the ex-dividend date are not entitled to the declared dividend."
+ },
+ "Tallis Inc. is worth $24 million and has 2 million shares outstanding. It declares a 20% stock dividend. What should the share price be afterward, all else equal?": {
+  "$9.60": "This cuts the price by 20% ($12 &times; 0.80) instead of dividing value by the new share count.",
+  "$12.00": "The price cannot stay the same: the same value is now spread over 2.4 million shares.",
+  "$14.40": "A stock dividend lowers the price per share; it does not raise it by 20%."
+ },
+ "Priya owns 200 shares of Norland Co. that she bought at $45 each. The stock trades at $90 when Norland does a 3-for-2 split. Immediately afterward, what does she hold?": {
+  "300 shares at $60; basis $45 per share": "Her total basis ($9,000) is now spread over 300 shares, so basis per share must fall.",
+  "400 shares at $45; basis $22.50 per share": "This treats the split as 2-for-1, not 3-for-2.",
+  "300 shares at $90; basis $30 per share": "The price must fall when shares increase; total value stays at $18,000."
+ },
+ "For a common-stock dividend to receive qualified (long-term capital gain) rates, how long must the shareholder have held the stock?": {
+  "More than 12 months before the dividend payment date": "The 12-month rule is for long-term capital gains on sales, not the dividend holding test.",
+  "At least 30 days in the 61-day window centered on the record date": "This invents a window; the test uses 60 of 121 days measured from the ex-dividend date.",
+  "More than 60 days in the 121-day window starting on the record date": "The window starts 60 days before the ex-dividend date, not on the record date."
+ },
+ "Hal has $1,200 of dividends reinvested through his employer's DRIP this year. What is the tax result?": {
+  "No tax is due until he sells the shares bought with the dividends": "Reinvested dividends are taxed in the year paid, just like cash dividends.",
+  "Tax is due on the $1,200 now, but his basis does not change": "Reinvested dividends are added to basis, which prevents double taxation when he sells.",
+  "No tax is due now, and his basis rises by $1,200": "Reinvestment doesn't defer tax; the dividend is taxable in the year paid."
+ },
+ "Corin Corp. pays a 10% stock dividend, and shareholders have no option to take cash instead. What is the federal income tax result for a shareholder?": {
+  "Taxed now as a qualified dividend at the new shares' value": "A stock dividend with no cash option is generally not taxable when received.",
+  "Taxed now as ordinary income at the new shares' value": "No income is recognized; the holder owns the same share of the company.",
+  "No tax now; the new shares have a zero basis": "Basis is not zero; total basis is reallocated across all shares, lowering basis per share."
+ },
+ "The Aldergrove Fund holds securities worth $46.1 million and cash of $2.4 million, owes $1.3 million in liabilities, and has 2.36 million shares outstanding. What is its NAV per share?": {
+  "$18.98": "This leaves out the $2.4 million of cash; total assets include everything the fund owns.",
+  "$19.53": "This uses only the securities and ignores both cash and liabilities.",
+  "$20.55": "This counts all assets but forgets to subtract the $1.3 million of liabilities."
+ },
+ "Claire enters an order at 11:15 a.m. ET to buy shares of an open-end mutual fund. What price will she pay, before any sales load?": {
+  "The NAV computed at the prior day's close": "Mutual funds use forward pricing, not the last computed NAV.",
+  "The fund's NAV at the moment her order is entered": "Open-end funds don't price continuously; they price at the next calculation.",
+  "A market price set by supply and demand on an exchange": "That describes closed-end funds and ETFs, not open-end funds."
+ },
+ "Gwen, age 40, will put a large sum into one fund family and expects to hold it for more than 20 years. Which share class generally gives her the lowest total cost?": {
+  "Class B shares with a contingent deferred sales charge": "B shares avoid an up-front load but generally cost more in total than A shares.",
+  "Class C shares with a level asset-based load": "C shares charge an ongoing 12b-1 sales fee every year, which adds up over long horizons.",
+  "Whichever class has the smallest up-front charge": "Total cost over the holding period matters, not just the initial charge."
+ },
+ "Teresa, an Oregon resident in a high tax bracket, wants bond fund income that is free of both federal and Oregon income tax. Which fund best fits?": {
+  "A national municipal bond fund": "Most of a national fund's interest is subject to state tax; only the Oregon-issuer portion would be exempt.",
+  "A GNMA mortgage-backed securities fund": "GNMA fund income is federally taxable.",
+  "An investment-grade corporate bond fund": "Corporate bond interest is federally taxable."
+ },
+ "Nolan, an Ohio resident, received $2,400 of interest from a national municipal bond fund. The fund reports that 15% of its interest came from Ohio issuers. How much of Nolan's interest is generally exempt from Ohio income tax?": {
+  "$0": "The fund reports the in-state share precisely so residents can exempt it from state tax.",
+  "$2,040": "That is the out-of-state portion (85%), which is subject to Ohio tax.",
+  "$2,400": "Only the share from Ohio issuers is state-exempt; a national fund is not fully exempt."
+ },
+ "What does a target-date (lifecycle) fund's glide path describe?": {
+  "A fixed risk level the investor picks: conservative, moderate or growth": "Choosing a fixed risk level describes a lifestyle fund.",
+  "Moving up to 100% into stocks, bonds or cash based on forecasts": "That describes a flexible portfolio fund.",
+  "Holding about 60% stocks and 40% bonds at all times": "A steady 60/40 mix describes a typical balanced fund."
+ },
+ "Which feature distinguishes a closed-end fund from an open-end mutual fund?": {
+  "It continuously issues new shares to meet investor demand": "Continuous issuance describes open-end funds; closed-end capital is fixed after the IPO.",
+  "Investors redeem their shares directly with the fund at NAV": "Closed-end shares are sold to other investors in the market, not redeemed with the fund.",
+  "Its share count rises and falls daily with purchases and redemptions": "A changing share count describes open-end funds."
+ },
+ "Which statement about unit investment trusts (UITs) is correct?": {
+  "A board of directors oversees the trust's investment advisor": "UITs have no board, no corporate officers and no investment advisor.",
+  "The portfolio is actively traded in response to market changes": "UITs are passive: the portfolio is selected once and then held.",
+  "The trust continues indefinitely, like a mutual fund": "UITs have a limited, specified life and liquidate at the end of their term."
+ },
+ "Marcus has $600,000 to invest. He wants a professional manager, wants to exclude tobacco stocks, and wants control over when gains are realized on each holding. Which vehicle best fits?": {
+  "A large-cap index mutual fund": "A fund holder owns a share of a pool, can't exclude holdings and has no lot-level basis.",
+  "A unit investment trust": "A UIT's portfolio is fixed at the start; it can't be customized or actively managed for taxes.",
+  "A closed-end fund": "A closed-end fund is still a pooled portfolio with no individual cost basis or exclusions."
+ },
+ "Which feature mainly makes ETFs more tax-efficient than most actively managed mutual funds?": {
+  "A legal exemption from distributing capital gains": "ETFs have no such exemption; their structure simply tends to produce fewer gains.",
+  "They pay only qualified dividends": "Nothing restricts ETFs to qualified dividends; that depends on what they hold.",
+  "Forward pricing once at each day's close": "ETFs trade all day at market prices; forward pricing applies to mutual funds."
+ },
+ "Sofia wants low-cost, broad index exposure that she can trade during the day, buy on margin and sell short. Which investment best fits?": {
+  "An S&amp;P 500 index mutual fund": "A mutual fund is priced once a day and can't be bought on margin or sold short like an exchange-traded share.",
+  "A stock unit investment trust": "A UIT has a fixed portfolio and isn't designed for intraday trading, margin and short sales.",
+  "A hedge fund of funds": "An FOF is costly, layered with fees, and not a low-cost index tool."
+ },
+ "Which client is the best candidate for a hedge fund investment?": {
+  "Age 26, $40,000 net worth, wants long-term growth": "A hedge fund is beyond the means of a small investor seeking growth; a mutual fund fits better.",
+  "Retired widow, $300,000 net worth, needs monthly income": "She needs income and liquidity; hedge funds are for wealthy, sophisticated investors.",
+  "Couple saving for college in five years, $90,000 net worth": "Their modest assets and short horizon don't suit an illiquid, high-risk hedge fund."
+ },
+ "Which is a recognized drawback of a hedge fund of funds (FOF)?": {
+  "It is open only to large institutions": "FOFs can actually give nonaccredited investors access to hedge funds.",
+  "Lower correlation with stocks than single hedge funds": "FOF returns have been more highly correlated with equity markets, not less.",
+  "All its assets sit in one hedge fund strategy": "An FOF spreads money across roughly 10&ndash;30 hedge funds for diversification."
+ },
+ "The trustee of the Pellham Co. 401(k) plan is choosing a GIC for the plan's stable-value option and expects market interest rates to rise during the contract term. Which choice is most prudent?": {
+  "A nonparticipating GIC": "A fixed-rate nonparticipating GIC is better when rates are expected to fall.",
+  "A nonparticipating GIC with a longer term": "Locking a fixed rate for longer is the wrong move if rates are expected to rise.",
+  "A nonparticipating GIC with a shorter term": "It still pays a fixed rate; only a participating GIC's rate moves with market rates."
+ },
+ "Jun invests $3,000 a month in a stock fund. Over four months the share prices are $20, $15, $24 and $16. What is his average cost per share?": {
+  "$16.00": "That is just the latest price, not the cost of all shares bought.",
+  "$18.75": "That is the simple average of the four prices (average price), not average cost.",
+  "$19.50": "That is the midpoint of the high ($24) and low ($15) prices."
+ },
+ "Ava uses value averaging with a target of +$2,000 in account value each month. In month 1 she invests $2,000 at $25 per share. In month 2 the price is $20. How much must she invest in month 2?": {
+  "$1,600": "$1,600 is what her 80 shares are worth now, not the amount she needs to add.",
+  "$2,000": "Investing a fixed $2,000 is dollar cost averaging, not value averaging.",
+  "$4,000": "$4,000 is the month-2 target value, not the new money needed."
+ },
+ "Under Owen's value averaging plan, his account should be worth $6,000 at the end of month 3. He holds 250 shares, and the price is now $27. What does the plan call for?": {
+  "Buy $750 of shares": "The account is above target, so value averaging requires selling, not buying.",
+  "Invest the usual $2,000": "A fixed monthly amount is dollar cost averaging; value averaging varies the amount.",
+  "Take no action until next month": "Value averaging adjusts every period to hit the target value."
+ },
+ "Imani buys 100 shares of a fund each quarter at prices of $40, $50 and $30. What are her total investment and average cost per share?": {
+  "$12,000 invested; $38.30 per share": "$38.30 is what DCA-style weighting would give; with equal shares, cost equals the simple average price.",
+  "$15,000 invested; $50.00 per share": "This prices all 300 shares at the highest price.",
+  "$9,000 invested; $30.00 per share": "This prices all 300 shares at the lowest price."
+ },
+ "Which investor is best suited to share averaging rather than dollar cost averaging?": {
+  "A value investor who wants more shares when prices fall": "Buying more shares on dips is what DCA does; it suits value-style investors.",
+  "A saver who needs the same dollar amount every month": "A fixed dollar amount is DCA; share averaging spends more when prices rise.",
+  "A hands-on investor who will buy heavily to hit value targets": "Buying to reach a target account value describes value averaging."
+ },
+ "Which statement about dollar cost averaging is correct?": {
+  "It guarantees a profit if continued long enough": "DCA does not guarantee a profit, especially if the price keeps falling and never recovers.",
+  "It beats a lump sum in a steadily rising market": "In a steadily rising market, investing the lump sum up front buys more shares.",
+  "It requires selling when the account is above target": "Selling to hit a target is a feature of value averaging, not DCA."
+ },
+ "Dmitri bought shares of a fund in three lots: 200 at $10, 300 at $14 and 250 at $18. He now sells 200 shares at $20. Using the average cost method, what is his gain?": {
+  "$400.00": "That is the specific identification result using the $18 lot.",
+  "$2,000.00": "That is the FIFO result using the $10 lot.",
+  "$4,000.00": "This treats the shares as having no basis at all."
+ },
+ "Rhea bought 500 fund shares for $9,750 plus a $250 commission. Later, $600 of taxable dividends were reinvested into 30 more shares. She now redeems all 530 shares at $23. What is her taxable gain?": {
+  "$1,840": "This includes the reinvested dividends but leaves out the $250 commission.",
+  "$2,190": "This includes the commission but leaves out the $600 of reinvested dividends.",
+  "$2,440": "This leaves out both the commission and the reinvested dividends."
+ },
+ "A fund's management fee is 0.55%, its 12b-1 fee is 0.25% and its other expenses are 0.15%. It also charges a 4% front-end load, and its trading commissions equal 0.10% of assets. What is its expense ratio?": {
+  "0.80%": "This leaves out the 0.15% of other expenses.",
+  "1.05%": "Trading commissions are not part of the expense ratio.",
+  "4.95%": "Sales loads are paid by the investor and are not in the expense ratio."
+ },
+ "Last year a fund bought $120 million and sold $90 million of securities. Its average monthly assets were $300 million. What was its portfolio turnover?": {
+  "35%": "This averages purchases and sales; turnover uses the lesser of the two.",
+  "40%": "This uses purchases, the larger figure; turnover uses the lesser.",
+  "70%": "This adds purchases and sales together."
+ },
+ "Lucia puts $10,000 in each of two funds. Fund X gains 20% in year 1 and loses 10% in year 2. Fund Y gains 40% and then loses 25%. What are the ending values?": {
+  "X: $11,000; Y: $11,500": "This adds the percentages instead of compounding them.",
+  "X: $10,800; Y: $11,500": "Fund Y must be compounded: $14,000 &times; 0.75 = $10,500.",
+  "X: $11,000; Y: $10,500": "Fund X must be compounded: $12,000 &times; 0.90 = $10,800."
+ },
+ "A fund's NAV falls 40% in a bear market. What percentage gain does it need to get back to its starting value?": {
+  "40.00%": "The gain is earned on a smaller base, so it must exceed the 40% loss.",
+  "50.00%": "A 50% gain on 60% of the value only gets back to 90%.",
+  "60.00%": "A 60% gain on 60% of the value only gets back to 96%."
+ },
+ "Ava puts 30% of her portfolio in a fund she believes is 100% U.S. stocks. The manager has actually moved the fund to 75% stocks and 25% cash. What share of her total portfolio is really in stocks through this fund?": {
+  "7.5%": "That is the cash portion (30% &times; 25%), not the stock portion.",
+  "25.0%": "This uses the fund's cash percentage instead of applying its stock percentage to her 30%.",
+  "30.0%": "This assumes the fund is fully invested in stocks, ignoring manager flexibility."
+ },
+ "In early December, Luis plans to invest $50,000 from a taxable account in a stock fund that had a strong year and is about to pay a large capital gain distribution. What is the best advice?": {
+  "Buy now, since only long-time holders are taxed on distributions": "Distributions are taxed regardless of how long the buyer has owned the shares.",
+  "Buy now, since reinvested distributions are not taxed": "Reinvested distributions are taxable under constructive receipt.",
+  "Buy Class C shares, which skip capital gain distributions": "Share class doesn't change the fund's capital gain distributions."
+ },
+ "A fund family merges its worst-performing fund into a stronger fund, erasing the weak fund's record. What distortion in category return data does this create?": {
+  "Survivorship bias that understates past category returns": "Dropping losers makes the remaining average look better, not worse.",
+  "Style drift that understates the category's risk": "Style drift is a fund changing its approach, not the removal of failed funds.",
+  "Forward pricing that inflates the surviving fund's NAV": "Forward pricing is how mutual fund orders are priced; it isn't a data bias."
+ },
+ "Which statement about portfolio turnover and tax efficiency is correct?": {
+  "High turnover always leads to large capital gain distributions": "Realized losses can offset gains, so high turnover does not always produce big distributions.",
+  "Funds pass their net realized capital losses through to shareholders": "Funds don't distribute losses; they use them to offset gains.",
+  "Trading costs from turnover are included in the expense ratio": "Commissions, spreads and market-impact costs are outside the expense ratio."
+ },
+ "Which pairing of client objective and fund type follows this module's general suitability rules?": {
+  "Maximum safety of principal &rarr; high-yield bond fund": "Safety of principal points to government bond funds; high-yield funds carry more default risk.",
+  "Aggressive growth &rarr; U.S. government bond fund": "Aggressive growth points to small-cap, technology or new-company stock funds.",
+  "High-bracket income seeker &rarr; corporate bond fund": "High-tax-bracket income seekers are directed to municipal bond funds."
+ }
+}

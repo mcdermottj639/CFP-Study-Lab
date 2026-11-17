@@ -1,0 +1,89 @@
+{
+ "objectives": [
+  "LO 8.1.1: Evaluate MPT assumptions, indifference curves, and the efficient frontier",
+  "LO 8.2.1: Analyze capital market theory, the CML, CAPM, and the SML",
+  "LO 8.3.1: Identify the weak, semistrong, and strong forms of the EMH",
+  "LO 8.3.2: Appraise how the EMH relates to technical, fundamental, active/passive, and foreign investing",
+  "LO 8.4.1: Identify the components of an investment policy statement",
+  "LO 8.5.1: Judge which investments look attractive across interest-rate and economic cycles",
+  "LO 8.5.2: Critique strategic, tactical, core-and-satellite, and other allocation methods",
+  "LO 8.6.1: Evaluate how clients and planners manage crisis events with severe financial consequences"
+ ],
+ "synthesis": "Module 8 turns the risk and return tools from earlier modules into a portfolio process: MPT and CAPM say how much return a given risk deserves, the EMH says whether paying for active management is worth it, and the IPS writes those choices down as a client's policy. Asset allocation then implements that policy across economic cycles, and the crisis section tests whether the client can stick with it when markets break.",
+ "example": {
+  "title": "Should Nora buy this fund? (CAPM decision)",
+  "html": "<p>Nora requires 8% from a new equity fund. The fund's beta is 1.1, T-bills yield 3.5%, and the market is expected to return 8.5%.</p><ol><li>Market risk premium = 8.5% &minus; 3.5% = 5.0%</li><li>Stock risk premium = 5.0% &times; 1.1 = 5.5%</li><li>CAPM expected return = 3.5% + 5.5% = 9.0%</li><li>9.0% &ge; 8% required &rarr; acceptable on a risk-adjusted basis</li></ol><p>Check: a beta-0.8 fund would give 3.5% + 5.0% &times; 0.8 = 7.5%, below her 8% requirement &rarr; pass.</p>"
+ },
+ "cheat": {
+  "keyNumbers": [
+   [
+    "CAPM",
+    "r = r<sub>f</sub> + (r<sub>m</sub> &minus; r<sub>f</sub>)&beta;"
+   ],
+   [
+    "CML",
+    "r<sub>p</sub> = r<sub>f</sub> + &sigma;<sub>p</sub>(r<sub>m</sub> &minus; r<sub>f</sub>) &divide; &sigma;<sub>m</sub>"
+   ],
+   [
+    "APT",
+    "r = a<sub>0</sub> + b<sub>1</sub>F<sub>1</sub> + &hellip; + b<sub>n</sub>F<sub>n</sub> + e (4 primary factors)"
+   ],
+   [
+    "Diversification",
+    "10&ndash;15 large caps (some studies 20&ndash;40); ~2&times; as many small/mid caps; 4&ndash;7 asset classes"
+   ],
+   [
+    "Brinson et al.",
+    "&gt;90% of return variability from asset allocation"
+   ],
+   [
+    "Liquidity rule of thumb",
+    "Money needed within ~5 years stays out of stocks"
+   ],
+   [
+    "Growth stocks",
+    "Earnings growth ~15%+/yr, low payout, high P/E, higher beta"
+   ]
+  ],
+  "mustKnow": [
+   "Optimal portfolio = tangency of the highest indifference curve with the efficient frontier; steeper curve = more risk averse",
+   "CML uses standard deviation (efficient portfolios); SML uses beta (any security); above SML = undervalued",
+   "Weak form: fundamental + inside info can win; semistrong: inside info only; strong: nothing; technical analysis never",
+   "IPS: return and risk objectives plus liquidity, time horizon, legal, tax, unique circumstances, permitted/excluded investments",
+   "Strategic = long-term mix + rebalancing; TAA = contrarian market timing; core-and-satellite = strategic core + tactical satellite",
+   "Crisis: ignore noise, watch incremental change, rewrite the IPS for discontinuous change; usually take no action when a client wants cash"
+  ],
+  "traps": [
+   "Stock risk premium is (r<sub>m</sub> &minus; r<sub>f</sub>)&beta;, not r<sub>m</sub>&beta; and not the full required return",
+   "Inflation shifts the SML in parallel; changing risk aversion changes its slope",
+   "There is no semiweak form of the EMH",
+   "Exchange fund (diversify, keep value, defer gains) is not an exchange-traded fund"
+  ],
+  "tips": [
+   "For any CAPM decision, compute the required return first, then compare it with the forecast or the client's hurdle",
+   "Tie EMH questions to the information set: past prices &rarr; public &rarr; private"
+  ]
+ },
+ "topics": [
+  "Modern Portfolio Theory",
+  "Efficient Frontier",
+  "Indifference Curves",
+  "MPT Portfolio Construction",
+  "Capital Market Line",
+  "Security Market Line",
+  "CAPM Required Return",
+  "Arbitrage Pricing Theory",
+  "EMH Forms",
+  "Market Anomalies",
+  "EMH Applications",
+  "Risk Tolerance Factors",
+  "Monte Carlo Simulation",
+  "Investment Policy Statement",
+  "Economic Cycle Investing",
+  "Asset Allocation Methods",
+  "Core and Satellite",
+  "Concentrated Positions",
+  "Value and Growth Investing",
+  "Crisis Planning"
+ ]
+}

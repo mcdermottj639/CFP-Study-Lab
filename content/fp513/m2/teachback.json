@@ -1,0 +1,30 @@
+[
+ {
+  "id": "fp513-convertible-premium",
+  "title": "Why would I pay $1,000 for a bond that's only worth $851 as a bond?",
+  "scenario": "Rosa, 58, is offered a convertible bond priced at $1,000. Its straight-bond value is $851.23 and it converts into 16 shares of a $55 stock.",
+  "prompt": "Explain what she is paying for, how far it could fall, and what protects her.",
+  "points": [
+   "Conversion value = 16 &times; $55 = $880; the bond can't trade below the greater of $880 and $851.23",
+   "The $148.77 above straight value (17.48%) is the price of the option to share in the stock's upside",
+   "Downside risk = $148.77 &divide; $1,000 = 14.88% to the straight-bond cushion",
+   "The cushion moves with interest rates, so it is not fixed",
+   "Trade-off: a lower coupon than a straight bond in exchange for the conversion right"
+  ],
+  "anchor": "LO 2.2.1 · Convertible bond math"
+ },
+ {
+  "id": "fp513-inverted-curve",
+  "title": "Short-term CDs and bills pay more than long bonds right now, so why would I lock up money for 20 years?",
+  "scenario": "Marcus, 61, an income investor, sees 1-year bills at 5.2% and 20-year bonds at 4.4% and wants to keep everything short.",
+  "prompt": "Explain what an inverted yield curve signals and why the textbook favors call-protected long bonds here.",
+  "points": [
+   "An inverted curve usually follows Fed tightening against inflation and signals falling rates ahead",
+   "When the curve normalizes, short rates fall the most; bills mature and get reinvested lower",
+   "Long bonds lock in today's rate and rise in price as rates fall",
+   "Call protection keeps the issuer from redeeming the bond once rates drop",
+   "His horizon may run 20+ years, so staying all-short adds reinvestment risk"
+  ],
+  "anchor": "LO 2.4.1 · Using yield curves to make decisions"
+ }
+]

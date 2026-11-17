@@ -1,0 +1,227 @@
+{
+ "What is Harbor Point's annual net operating income (NOI)?": {
+  "$77,000": "Subtracts both mortgage interest and depreciation, which are never part of NOI.",
+  "$97,000": "Subtracts mortgage interest; debt service reflects the investor's financing, not the property's cash flow.",
+  "$146,000": "Skips the 5% vacancy and collection allowance, overstating effective gross income."
+ },
+ "What is the building's estimated value, and how does the asking price compare?": {
+  "$768,000; the asking price is too high": "Multiplies NOI by 8 instead of dividing by 0.08.",
+  "$1,200,000; the asking price is a bargain": "Value is correct, but paying $1,350,000 for a $1,200,000 property is overpaying.",
+  "$1,687,500; the asking price is a bargain": "Capitalizes effective gross income instead of NOI (expenses were never subtracted)."
+ },
+ "Which pair of requirements allows a REIT to avoid federal income tax at the entity level?": {
+  "Distribute at least 75% of net annual earnings; derive at least 90% of gross income from real estate": "Swaps the two percentages.",
+  "Distribute all net annual earnings; derive all gross income from rents": "Overstates both tests; mortgage interest and other real estate income also count.",
+  "Distribute at least 90% of net annual earnings; hold only mortgage loans": "Equity REITs that own property qualify too; there is no mortgage-only requirement."
+ },
+ "Grace, 58, wants real estate exposure in her taxable account. She has $15,000, may need the money on short notice, and wants diversification across property types. Which choice best fits?": {
+  "A nonpublicly traded real estate limited partnership": "RELPs are generally illiquid and usually require selling the whole interest.",
+  "A parcel of undeveloped land near a growing suburb": "Land is illiquid, produces no income, and is concentrated in one property.",
+  "The Z tranche of a collateralized mortgage obligation": "That is a mortgage debt instrument with the most interest rate risk, not property diversification."
+ },
+ "Which of the following statements about RELPs and REITs are CORRECT?<br>I. Income a REIT shareholder receives is portfolio (investment) income, not passive income.<br>II. A RELP investor generally must sell the entire partnership interest rather than part of it.<br>III. A REIT is managed by a general partner.<br>IV. Losses from a REIT are restricted by the passive activity rules.": {
+  "I and III only": "III is wrong: a REIT is run by a board of directors; a RELP has the general partner.",
+  "II and IV only": "IV is wrong: REIT losses are capital losses outside the passive activity rules.",
+  "III and IV only": "Both describe a RELP, not a REIT."
+ },
+ "Lena wants to buy a CMO tranche but wants the least exposure to interest rate risk. Which tranche best fits?": {
+  "Tranche Z, because its interest accrues like a zero-coupon bond": "Z is repaid last and carries the most interest rate risk.",
+  "A middle tranche, because risk is spread evenly": "Middle tranches wait for A to be retired, so they have longer repayment periods than A.",
+  "Any tranche, because each gets a pro rata share of principal": "Pro rata principal describes a pass-through MBS, not a CMO."
+ },
+ "Owen buys raw acreage, planning to sell once a highway extension is built. Which statement about his investment is CORRECT?": {
+  "Appreciation is taxed each year as the land rises in value": "Appreciation is not recognized until a taxable sale.",
+  "The land produces positive cash flow from depreciation deductions": "Raw land produces no income and has ongoing expenses; it is held for appreciation.",
+  "Property taxes cannot be deducted until the land is sold": "Real estate taxes are normally deductible throughout ownership."
+ },
+ "Rivet Corp. stock trades at $62. A Rivet $55 call trades for $9.40. What are the call's intrinsic value and time value per share?": {
+  "Intrinsic $9.40; time value $0": "Treats the whole premium as intrinsic; intrinsic value is only stock price minus strike.",
+  "Intrinsic $0; time value $9.40": "A call with the stock above the strike is in the money and has intrinsic value.",
+  "Intrinsic $7.00; time value $16.40": "Adds intrinsic value to the premium instead of subtracting it."
+ },
+ "Bexley stock trades at $48. Which option is in the money?": {
+  "A $45 put": "A put with the stock above its strike is out of the money.",
+  "A $50 call": "A call with the stock below its strike is out of the money.",
+  "A $48 call": "Strike equals the stock price, so it is at the money with zero intrinsic value."
+ },
+ "Dana writes one uncovered put with a $60 strike and receives a $4 premium. What is her maximum possible loss on the contract?": {
+  "$400": "That is her maximum gain (the premium kept if the put expires).",
+  "$6,000": "Ignores the $400 premium she received, which offsets part of the loss.",
+  "$6,400": "Adds the premium to the loss instead of subtracting it."
+ },
+ "Marcus buys one put on Orrin Co. with a $40 strike for a $2.50 premium. What is his maximum possible gain on the contract?": {
+  "$250": "That is his maximum loss (the premium paid).",
+  "$4,000": "Ignores the $250 premium he paid.",
+  "Unlimited": "Unlimited gain belongs to a long call; a stock cannot fall below zero."
+ },
+ "Under the Black-Scholes model, holding everything else constant, which change DECREASES the value of a call option?": {
+  "Higher volatility of the stock's returns": "More volatility raises a call's value.",
+  "A longer time until expiration": "More time raises a call's value.",
+  "A higher risk-free rate": "The risk-free rate is directly related to call value."
+ },
+ "Which statement correctly contrasts the binomial and Black-Scholes option pricing models?": {
+  "Binomial assumes continuous price change; Black-Scholes assumes discrete up-or-down moves": "Reverses the two models' assumptions.",
+  "Black-Scholes values American puts; binomial values only European calls": "Black-Scholes is designed for European calls.",
+  "Black-Scholes ignores volatility; binomial is driven by volatility": "Volatility (&sigma;) is a core Black-Scholes input."
+ },
+ "Hal buys one call with a $50 strike for a $3 premium and later exercises it, buying 100 shares. What is his cost basis in the shares?": {
+  "$4,700": "Subtracts the premium; for a call holder the premium is added to basis.",
+  "$5,000": "Ignores the premium, which becomes part of the cost of the shares.",
+  "$300": "That is only the premium; exercising also required paying the strike price."
+ },
+ "Priya wrote one call and received a $300 premium. The option expired unexercised. How is the $300 treated for tax?": {
+  "Ordinary income when the premium is received": "The writer is not taxed on receipt; on expiration the premium becomes a short-term capital gain.",
+  "Long-term capital gain if the call was open over one year": "Expired premium is short-term for the writer regardless of how long the position was open.",
+  "No tax; the premium reduces the basis of her shares": "Basis adjustments apply when an option is exercised, not when it expires."
+ },
+ "Noor holds an American call with several months left. The call is in the money and she has decided to close the position. What is generally her better choice, and why?": {
+  "Exercise the call, because exercise captures both intrinsic and time value": "Exercise captures only intrinsic value; time value is lost.",
+  "Exercise the call, because American options cannot be sold before expiration": "Listed options trade on exchanges and can be sold before expiration.",
+  "Let the call expire, because in-the-money calls lose value if closed early": "Letting it expire abandons both its intrinsic and time value."
+ },
+ "Ines owns 300 shares bought at $38. She writes 3 calls with a $45 strike for $1.80 each. At expiration the stock is $52 and the shares are called away. What is her total gain, ignoring costs?": {
+  "$540": "Counts only the premium and ignores the gain from $38 to the $45 strike.",
+  "$2,100": "Counts only the stock gain to the strike and omits the premium.",
+  "$4,740": "Assumes she keeps the gain up to $52; above the $45 strike that upside belongs to the call buyer."
+ },
+ "Arjun owns shares now worth $80 and buys a $75 put for $3 to protect them until expiration. What is the most he can lose per share from today's value through expiration?": {
+  "$2": "Subtracts the premium from the $5 gap instead of adding it.",
+  "$3": "Counts only the put premium and ignores the drop from $80 to the $75 floor.",
+  "$5": "Ignores the $3 paid for the put."
+ },
+ "Theo writes one naked call on Calder Co. with an $85 strike for a $2.40 premium. The stock jumps to $97 and the call is exercised. What is Theo's net loss, ignoring costs?": {
+  "$240": "That is the premium he received, not his loss.",
+  "$1,200": "Ignores the $240 premium that partly offsets the loss.",
+  "$1,440": "Adds the premium to the loss instead of subtracting it."
+ },
+ "Elise buys a $60 call for $3.50 and a $60 put for $2.75 on the same stock, same expiration. At expiration, outside what price range does she profit?": {
+  "Below $56.50 or above $63.50": "Uses only the call premium on each side instead of the combined $6.25.",
+  "Below $57.25 or above $62.75": "Uses only the put premium on each side instead of the combined $6.25.",
+  "Between $53.75 and $66.25": "Reverses the logic: inside that range the long straddle loses money."
+ },
+ "Ruth, a retiree, holds a large blue-chip position that she expects to trade sideways for months. She wants extra income and would accept selling at a modestly higher price. Which strategy fits best?": {
+  "Buy a long straddle on the shares": "A long straddle needs a big move; sideways trading makes it lose both premiums.",
+  "Buy call options on the shares": "Buying calls costs premium and needs a rise; it produces no income.",
+  "Buy protective puts on the shares": "Puts cost premium and protect against declines; they do not add income."
+ },
+ "Felix sold short 500 shares of a stock he expects to fall. He worries about a sudden surge. Which option position best limits his risk?": {
+  "Buy puts on the stock": "Puts gain when the stock falls, adding to the short bet instead of hedging it.",
+  "Write calls on the stock": "Writing calls adds more upside risk on top of the short sale.",
+  "Write puts on the stock": "Short puts lose when the stock falls and give little protection against a surge."
+ },
+ "Beatrix holds a single stock with a large gain. She wants downside protection without spending cash on premiums and accepts capping her upside. Which strategy fits?": {
+  "Buy a put and buy a call on the shares": "Buying both options is a long straddle and costs two premiums.",
+  "Write a put and write a call on the shares": "That is a short straddle; it adds risk instead of protecting the gain.",
+  "Write a put and buy a call on the shares": "Writing a put increases downside exposure rather than protecting it."
+ },
+ "All else equal, which set of conditions lets a call writer collect the LARGEST premium?": {
+  "Stock price below the strike, stable stock, long time to expiration": "An out-of-the-money call on a calm stock commands a small premium.",
+  "Stock price above the strike, stable stock, short time to expiration": "Low volatility and little time both shrink the premium.",
+  "Stock price below the strike, volatile stock, short time to expiration": "Being out of the money with little time left keeps the premium small."
+ },
+ "Walter's portfolio is mostly large-cap U.S. stock funds. He fears a broad market drop over the next few months but does not want to sell. Which hedge is most appropriate?": {
+  "Write call options on the S&amp;P 500 Index": "Writing index calls adds income but offers only a premium-sized cushion against a big decline.",
+  "Buy call options on the S&amp;P 500 Index": "Calls profit when the market rises, not when it falls.",
+  "Buy puts on one stock in the largest fund": "A single-stock put does not match the broad portfolio's market movement."
+ },
+ "Corbin buys 2 corn futures contracts of 5,000 bushels each at $6.20 per bushel. The next day the price settles at $5.85. What happens to his account equity when it is marked to market?": {
+  "It falls by $1,750": "Counts only one contract.",
+  "It rises by $3,500": "A long futures position loses when the price falls.",
+  "No change until the contracts are closed": "Futures are marked to market daily, so gains and losses hit equity each day."
+ },
+ "An investor is long 2 stock index futures contracts at 4,210. Each contract has a $250 multiplier. At settlement the index is 4,198. What is the investor's result?": {
+  "Gain of $6,000": "A long position loses when the index falls from 4,210 to 4,198.",
+  "Loss of $3,000": "Counts only one of the two contracts.",
+  "Loss of $24": "Multiplies points by contracts but omits the $250 multiplier."
+ },
+ "Initial margin on a futures position is $5,000 and maintenance margin is $3,600. After losses, Rosa's equity is $3,200. How much must she deposit?": {
+  "$400": "Restores equity only to the maintenance level; the call requires a return to initial margin.",
+  "$1,400": "That is just the gap between initial and maintenance margin.",
+  "$3,200": "That is her current equity, not the amount needed."
+ },
+ "A juice bottler will need to buy large amounts of oranges next season and fears prices will rise. How should it hedge with futures?": {
+  "Sell orange futures, a short hedge": "Selling protects an owner against falling prices; the bottler is short the commodity.",
+  "Sell orange futures, a long hedge": "Mislabels the hedge, and selling would lose if prices rise.",
+  "No hedge; hedging is only needed when prices may fall": "A buyer who needs the commodity is hurt by rising prices, which a long hedge covers."
+ },
+ "Simone holds a large portfolio of long-term Treasury bonds. She expects interest rates to rise over the next quarter but wants to keep the bonds. Which futures position hedges her risk?": {
+  "Buy Treasury bond futures": "Long bond futures lose when rates rise, adding to her bond losses.",
+  "Buy stock index futures": "Stock index futures do not track her interest rate exposure.",
+  "Sell stock index futures": "That hedges a stock portfolio, not a bond portfolio."
+ },
+ "Kofi held a futures contract for three months and had a $20,000 net gain at year end. How is the gain characterized for tax purposes?": {
+  "$20,000 short-term": "Futures get 60/40 treatment regardless of the actual holding period.",
+  "$8,000 long-term and $12,000 short-term": "Reverses the split; 60% is long-term.",
+  "$20,000 ordinary income": "Futures gains are capital gains regardless of the underlying asset."
+ },
+ "Martina sells a rare coin collection held for nine years at a large gain. What is the maximum federal long-term capital gain rate on collectibles?": {
+  "15%": "That is a common long-term rate for securities, not collectibles.",
+  "20%": "That is the top regular long-term rate for securities; collectibles have a higher cap.",
+  "37%": "Long-term collectibles gains are not taxed at the top ordinary rate."
+ },
+ "In which environment is gold most likely to be attractive to investors?": {
+  "Real interest rates are high": "High real rates raise the opportunity cost of holding a non-income asset, the worst case for gold.",
+  "Inflation is falling and bond yields are rising": "That combination raises real rates, which works against gold.",
+  "Stock prices are rising steadily": "Gold often moves opposite to stocks, so a strong stock market is not its best setting."
+ },
+ "Harold, 70, has 40% of his net worth in rare stamps and needs more retirement income. What is the biggest planning concern with this allocation?": {
+  "Stamp income is taxed at ordinary income rates each year": "Most tangibles produce no current income at all.",
+  "Stamps are highly correlated with his stock holdings": "Tangibles often have low or negative correlation with financial assets.",
+  "The stamps' basis will be stepped down at his death": "Appreciated tangibles get a step-up to fair market value at death."
+ },
+ "What is a major tax advantage of investing in natural resource programs such as oil and gas limited partnerships?": {
+  "Gains are taxed at the 28% collectibles rate": "The 28% cap applies to collectibles, and it is not an advantage.",
+  "Income is exempt from federal tax while held": "There is no general exemption; the benefit is pass-through deductions.",
+  "Losses avoid capital loss limits by being treated as REIT losses": "REIT rules do not apply to natural resource programs."
+ },
+ "Which term describes the combined political and structural risks of investing in a particular nation, such as coups or confiscatory policies on dividends?": {
+  "Exchange rate risk": "Currency risk is a separate risk arising from changes in exchange rates.",
+  "Liquidity risk": "Liquidity risk concerns how easily an asset can be sold at a fair price.",
+  "Reinvestment rate risk": "That concerns reinvesting cash flows at lower rates."
+ },
+ "Isabel's portfolio is already filled with U.S. large-cap and small-cap funds. She wants to diversify away from U.S. companies. Which fund type fits best?": {
+  "A global fund": "Global funds also hold U.S. stocks, creating overlap with her domestic funds.",
+  "A U.S. large-cap index fund": "That adds more of the U.S. exposure she already has.",
+  "A single-country fund": "One country is concentrated and highly volatile, not a broad diversifier."
+ },
+ "Which statement about American depositary receipts (ADRs) is CORRECT?": {
+  "Currency risk is eliminated because ADRs trade in dollars": "Dividends are declared in local currency and the price tracks the home market, so currency risk remains.",
+  "ADRs are issued by the foreign company's home government": "ADRs are trust receipts issued by a U.S. bank.",
+  "ADRs are illiquid because they trade only in the foreign market": "ADRs trade on U.S. exchanges and are relatively liquid."
+ },
+ "Which characteristic is LEAST typical of an emerging market?": {
+  "Low levels of equity capitalization": "Small market capitalization is a typical emerging market trait.",
+  "Lower regulatory standards and less transparency": "Weak regulation is a typical emerging market trait.",
+  "Strong prospects for economic growth": "Growth potential is what attracts investors to emerging markets."
+ },
+ "What is her holding period return in U.S. dollars?": {
+  "8.00%": "That is the return in euros; it ignores the currency move.",
+  "2.32%": "Assumes the dollar strengthened; here $1 buys fewer euros, so the dollar weakened.",
+  "13.88%": "Simply adds the 8% euro return and the 5.88% currency change; convert the actual cost and proceeds instead."
+ },
+ "What is his holding period return in U.S. dollars when the dollar strengthens to &euro;0.95?": {
+  "8.00%": "Ignores the currency move; that is the euro return only.",
+  "14.35%": "Assumes $1 buys fewer euros at sale; here it buys more.",
+  "13.26%": "Treats the 5.26% currency move as a gain; a stronger dollar shrinks the dollar proceeds."
+ },
+ "The quote is $1.10 per euro. Wendell converts $3,300 into euros before a trip. How many euros does he receive, ignoring fees?": {
+  "&euro;2,970": "Uses 0.90 as the inverse of 1.10; the true inverse is about 0.909.",
+  "&euro;3,300": "Ignores the exchange rate entirely.",
+  "&euro;3,630": "Multiplies by the dollars-per-euro rate instead of dividing."
+ },
+ "Hana, a Japanese investor, owns U.S. stocks. Holding stock prices constant, what currency move during the holding period helps her return measured in yen?": {
+  "The yen strengthens against the dollar": "A stronger yen means her dollars convert into fewer yen at sale.",
+  "The dollar weakens against the yen": "That is the same as a stronger yen, which hurts her yen return.",
+  "Neither, because her stocks are priced in dollars": "Her return in yen depends on converting dollars back to yen."
+ },
+ "What happens to a futures contract's price as the contract approaches expiration?": {
+  "It converges toward the daily price limit": "The daily limit caps one day's move; it is not a target price.",
+  "It moves away from the spot price as open interest falls": "Open interest counts outstanding contracts; it does not set convergence.",
+  "It locks at the initial margin level": "Margin is a deposit, not a price the contract converges to."
+ },
+ "The dollar currently buys 0.92 euros. If the U.S. dollar is revalued (strengthens), which quote could result?": {
+  "$1 buys 0.89 euros": "Fewer euros per dollar means the dollar weakened (devalued).",
+  "One euro costs $1.12": "Since 1 &divide; 0.92 &asymp; $1.087, a higher dollar cost per euro means the dollar weakened.",
+  "$1 still buys 0.92 euros, but euro goods cost more": "A revaluation changes the exchange rate itself."
+ }
+}

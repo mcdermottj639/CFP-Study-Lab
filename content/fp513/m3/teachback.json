@@ -1,0 +1,30 @@
+[
+ {
+  "id": "fp513-fund-tax-bill",
+  "title": "\"I never sold a thing, so why did my mutual fund send me a tax bill?\"",
+  "scenario": "Dana, 52, holds an actively managed growth fund in a taxable account and reinvests everything. After a strong market year she received a 1099 showing a large capital gain distribution and is upset.",
+  "prompt": "Explain why a mutual fund can create taxable income without a sale, and what she can do about it going forward.",
+  "points": [
+   "Funds must distribute their net realized gains each year, and the shareholder is taxed on them",
+   "Reinvesting doesn't avoid tax (constructive receipt), but reinvested amounts do add to her basis",
+   "High turnover tends to produce bigger distributions; index funds and ETFs tend to be more tax-efficient",
+   "Check distribution dates before buying so she doesn't buy a tax bill late in the year",
+   "Tax-inefficient funds are better placed in tax-deferred accounts"
+  ],
+  "anchor": "LO 3.3.1 · Fund taxation and closed-end funds, UITs and SMAs"
+ },
+ {
+  "id": "fp513-dca-bonus",
+  "title": "\"Should I invest my $60,000 bonus all at once or a little each month?\"",
+  "scenario": "Theo, 34, received a $60,000 bonus and is nervous the market could drop right after he invests. He is considering $5,000 a month for a year.",
+  "prompt": "Explain dollar cost averaging, how it lowers average cost, and when it helps or hurts compared with a lump sum.",
+  "points": [
+   "DCA invests a fixed dollar amount on a schedule, so it buys more shares when prices are low",
+   "Average cost per share (total dollars &divide; shares) ends up below the average price",
+   "It limits the regret of investing everything just before a drop",
+   "In a steadily rising market a lump sum up front usually does better",
+   "DCA does not guarantee a profit if the investment keeps falling"
+  ],
+  "anchor": "LO 3.5.1 · Averaging techniques"
+ }
+]

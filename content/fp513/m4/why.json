@@ -1,0 +1,207 @@
+{
+ "Corinne is looking at a 15-year, $1,000 par bond with a 4% coupon paid semiannually. Comparable bonds now yield 5.5%. What is the bond's intrinsic value?": {
+  "$1,000.00": "Par value only results when the market yield equals the 4% coupon; here it is 5.5%.",
+  "$1,152.79": "This comes from entering 2.75 as I/YR with 2 P/YR, which halves the yield twice and produces a premium price.",
+  "$849.44": "This uses annual compounding (N = 15, PMT = 40); the coupon is paid semiannually."
+ },
+ "Ten-year, 6% semiannual-coupon bond; seven years remain until maturity. Comparable seven-year bonds yield 4.5%; ten-year bonds yield 5%. What should the bond sell for today?": {
+  "$1,119.73": "This prices a full 10-year life at 4.5%; only 7 years of cash flows remain.",
+  "$1,041.66": "This uses the 3 years already elapsed as the remaining term.",
+  "$1,000.00": "Par would apply only if the market yield equaled the 6% coupon."
+ },
+ "A callable bond is trading above par. Which ordering of its yields is correct, from highest to lowest?": {
+  "YTC, YTM, current yield": "This is the ranking for a discount bond, where accretion to par raises YTM and YTC.",
+  "YTM, current yield, YTC": "Current yield ignores the premium's erosion, so it sits above YTM for a premium bond.",
+  "All three are equal": "Equal yields occur only at par with no call premium."
+ },
+ "Paolo owns a callable corporate bond priced at $1,080. Which statements are correct?<br>I. Its current yield is above its YTM.<br>II. Its YTC is below its YTM.<br>III. Its coupon rate is below current market yields for comparable bonds.<br>IV. Being called would give him the lowest of the three yields.": {
+  "I and II only": "Statement IV is also true: for a premium bond, being called produces the lowest yield.",
+  "III and IV only": "Statement III is false (a premium bond's coupon exceeds market yields) and I and II are both true.",
+  "I, II, III, and IV": "Statement III is false; a bond trades at a premium because its coupon is higher than market yields."
+ },
+ "Hal bought a 4% coupon bond at par. Comparable bonds now yield 5%. If Hal sells today, what best describes the sale?": {
+  "He sells above par because rates rose": "Rising rates push prices down, not up.",
+  "He sells at par; the coupon resets to 5%": "A fixed-rate bond's coupon never resets; the price adjusts instead.",
+  "He sells at par because the coupon is fixed": "Because the coupon is fixed, the price must fall to deliver the higher market yield."
+ },
+ "Nadia's bond is priced at $980, has a duration of 6.2 (annual compounding), and the current YTM is 5%. If rates rise 75 basis points, what is the estimated new price using the textbook's duration formula?": {
+  "$934.43": "This skips the (1 + y) divisor and uses &minus;6.2 &times; 0.0075 = &minus;4.65%.",
+  "$1,023.40": "This adds the change; rising rates lower bond prices.",
+  "$922.13": "This uses a full 1% rate change instead of 0.75%."
+ },
+ "A bond priced at $1,050 has a duration of 8.4 and a YTM of 6% (annual compounding). If rates fall 50 basis points, what is the approximate new price?": {
+  "$1,008.40": "This subtracts the change; falling rates raise bond prices.",
+  "$1,094.10": "This omits the (1 + y) divisor: 8.4 &times; 0.005 = 4.2%.",
+  "$1,133.21": "This uses a 1% drop rather than 0.5%."
+ },
+ "Using the textbook's semiannual-compounding convention, estimate the new price of a $1,000 bond with a duration of 5.0 and a 7% YTM if rates rise 1%.": {
+  "$953.27": "This is the annual-compounding answer (dividing by 1.07).",
+  "$950.00": "This is the rule-of-thumb estimate with no (1 + y) divisor.",
+  "$975.85": "This also halves the rate change; the textbook keeps &Delta;y at the full 0.01."
+ },
+ "A three-year, $1,000 bond pays a 6% annual coupon and yields 7%, so it is priced at $973.76. Using the cash-flow method, what is its duration?": {
+  "3.00 years": "That is maturity; a coupon bond's duration is always shorter.",
+  "2.76 years": "This divides the time-weighted total by par ($1,000) instead of the price.",
+  "2.00 years": "This is a simple average of payment dates, ignoring present-value weights."
+ },
+ "All else equal, which bond has the highest duration?": {
+  "20-year 6% coupon bond": "Its coupons pull duration below 20 years.",
+  "10-year zero-coupon bond": "Its duration is only 10 years.",
+  "20-year 8% coupon bond": "A higher coupon gives the lowest duration of the 20-year bonds."
+ },
+ "Ms. Okafor will need the money in 9 years. All four AAA bonds below are available. Which best immunizes her against interest-rate risk?": {
+  "Bond A: 9-year maturity, duration 7.2": "It matches maturity to the horizon, but its 7.2 duration is well short of 9.",
+  "Bond C: 15-year maturity, duration 10.6": "A 10.6 duration overshoots the 9-year horizon more than Bond B.",
+  "Bond D: 10-year maturity, duration 8.0": "An 8.0 duration is further from 9 than Bond B's 9.1."
+ },
+ "An advisor strongly expects interest rates to drop over the next year. Which adjustment best positions a client's bond allocation?": {
+  "Move into short-term bond funds": "Short-term funds have low durations and gain the least when rates fall.",
+  "Favor high-coupon, short-maturity bonds": "Both features lower duration, muting gains from falling rates.",
+  "Lower duration to match risk tolerance": "Nothing suggests a risk-tolerance problem; the rate outlook calls for longer duration."
+ },
+ "A short-term bond fund has a duration of 2.4 and yields 3.1%; a long-term fund has a duration of 12.9 and yields 4.4%. Using the rule of thumb, if rates jump 1%, about how many more percentage points would the long fund lose?": {
+  "1.3": "That is the yield difference, not the difference in price loss.",
+  "15.3": "This adds the two durations instead of subtracting.",
+  "5.4": "This is the ratio of the durations (12.9 &divide; 2.4), not the gap in losses."
+ },
+ "A noncallable bond with positive convexity has a duration of 6. Rates rise 2.5%, so duration alone predicts a 15% price drop. What is the actual drop most likely to be?": {
+  "Exactly 15%": "Duration is only accurate for small moves; at 2.5% the curve matters.",
+  "Somewhat more than 15%": "Larger-than-predicted losses describe negative convexity, not positive.",
+  "About 2.5%": "This confuses the rate change with the price change."
+ },
+ "Rates are expected to fall sharply. Which holding is most likely to gain LESS than its duration predicts?": {
+  "A noncallable Treasury bond": "Straight (noncallable) bonds generally have positive convexity and gain more than duration predicts.",
+  "A long zero-coupon bond": "Long zeros have high positive convexity, amplifying gains when rates fall.",
+  "A low-coupon noncallable bond": "Low coupons raise positive convexity, which helps when rates fall."
+ },
+ "In the formula &Delta;P/P = &minus;D &times; [&Delta;y &divide; (1 + y)], what does y represent?": {
+  "The bond's coupon rate": "The coupon is already built into duration; using it is a classic error.",
+  "The bond's current yield": "Current yield (coupon &divide; price) is a different measure from YTM.",
+  "The expected change in rates": "That is &Delta;y, the numerator."
+ },
+ "Which sequence describes top-down fundamental analysis?": {
+  "Company, then industry, then economy": "That is bottom-up analysis.",
+  "Economy, then company, then industry": "Industry selection comes before screening individual companies.",
+  "Price trends, then volume, then company": "Price and volume study is technical, not fundamental, analysis."
+ },
+ "Brightwater Co. reports current assets of $450,000 (including $150,000 of inventory) and current liabilities of $300,000. What are its current ratio and quick ratio?": {
+  "1.0 and 1.5": "The two ratios are reversed; removing inventory can only lower the ratio.",
+  "1.5 and 0.5": "This divides inventory by current liabilities for the quick ratio.",
+  "0.67 and 1.0": "This inverts the current ratio (liabilities over assets)."
+ },
+ "Which is a core assumption of technical analysis?": {
+  "Only rational behavior drives security prices": "Technicians give irrational behavior (fear and greed) real weight.",
+  "Ratio analysis reveals a stock's true value": "That is fundamental analysis; technicians ignore ratios.",
+  "Prices instantly reflect all public news": "Instant adjustment contradicts the trend assumption; it is an efficient-market idea."
+ },
+ "The put-call ratio has spiked and mutual fund cash levels are unusually high. How would a contrarian read this?": {
+  "Bearish, following the crowd": "Following the crowd is the opposite of a contrarian approach.",
+  "Bearish, since cash signals weakness": "High fund cash shows bearish managers, which a contrarian reads as bullish.",
+  "Neutral; contrarians use only odd-lots": "Odd-lot theory is one contrarian tool among several, including the put-call ratio and fund cash."
+ },
+ "The gap between high-quality and lower-quality bond yields in the Barron's confidence index has narrowed. What does this indicate?": {
+  "A flight to quality; a bearish sign": "A flight to quality widens the spread, not narrows it.",
+  "Rising default rates; a bearish sign": "Default worries would push lower-grade yields up and widen the gap.",
+  "Nothing; it tracks only Treasuries": "The index compares high-grade and lower-grade bond yields, not just Treasuries."
+ },
+ "A client is convinced markets are semistrong-form efficient. According to the textbook, which form of analysis could help him beat the market?": {
+  "Technical analysis only": "Technical analysis does not help in any form of the EMH.",
+  "Fundamental analysis only": "Fundamental analysis helps only if markets are merely weak-form efficient.",
+  "Both technical and fundamental": "Neither works under semistrong efficiency."
+ },
+ "Using fundamental analysis, an advisor concludes that Stock Q is undervalued after a steep drop. Which use of technical analysis does the textbook support?": {
+  "Replace the valuation with chart signals": "The textbook keeps fundamental selection and uses technicals only for timing.",
+  "Sell because the trend is down": "The advisor already judged the stock cheap; technicals help time the purchase.",
+  "Ignore technicians; they cannot move prices": "The textbook says there are enough technicians to influence prices."
+ },
+ "Halcyon Corp. has total assets of $800 million, liabilities of $300 million, net income of $60 million and dividends of $24 million. What is Halcyon's ROE?": {
+  "7.5%": "That is ROA (net income &divide; total assets).",
+  "7.2%": "That is the dividend growth rate (12% &times; 60% retention), not ROE.",
+  "20.0%": "This divides net income by liabilities instead of equity."
+ },
+ "Using Halcyon's figures (ROE 12%, net income $60 million, dividends $24 million), what is its sustainable dividend growth rate?": {
+  "4.8%": "This multiplies ROE by the 40% payout ratio instead of the retention rate.",
+  "12.0%": "This is ROE alone; growth also depends on how much is retained.",
+  "4.5%": "This uses ROA (7.5%) instead of ROE."
+ },
+ "Two firms each raise $40 million. Firm X uses all equity; Firm Y uses $15 million of equity and $25 million of debt. Each earns $4 million (ignore interest). What are their ROEs?": {
+  "X 10.0%, Y 10.0%": "This divides by total capital for both, which is a return on capital, not ROE.",
+  "X 10.0%, Y 16.0%": "This divides Y's earnings by its debt rather than its equity.",
+  "X 26.7%, Y 10.0%": "The results are swapped; the leveraged firm has the higher ROE."
+ },
+ "Juniper Inc. earns a steady 15% ROE. The board raises the dividend payout ratio from 30% to 60%. What happens to its sustainable growth rate?": {
+  "Rises from 4.5% to 9.0%": "This multiplies ROE by the payout ratio instead of the retention rate.",
+  "Stays at 15.0%": "ROE alone is not the growth rate; retention matters.",
+  "Falls from 10.5% to 4.5%": "The new retention rate is 40%, giving 6.0%, not 4.5%."
+ },
+ "Firm L has a 40% ROE, a 6% ROA and heavy long-term debt. Firm U has a 22% ROE, an 11% ROA and no debt. Which is likely to hold up better in a business contraction?": {
+  "Firm L, because its ROE is higher": "L's high ROE comes mostly from leverage, which adds risk in a downturn.",
+  "Firm L, because debt lifts its EPS": "Higher EPS from leverage comes with fixed interest that strains a contraction.",
+  "They should fare about the same": "Their capital structures differ sharply, and that drives downturn risk."
+ },
+ "A company's ROA is about one-seventh of its ROE. What does this most likely indicate?": {
+  "The company has no debt": "With no debt, equity equals assets and ROE equals ROA.",
+  "The company pays no dividends": "Dividend policy does not set the ROA-to-ROE relationship.",
+  "The company's assets are undervalued": "The ROA/ROE gap points to capital structure, not asset valuation."
+ },
+ "A preferred stock pays a fixed $4.25 annual dividend with no maturity. Ellen requires an 8.5% return. What is the most she should pay?": {
+  "$36.13": "This multiplies the dividend by 8.5 instead of dividing by 0.085.",
+  "$54.25": "This grows the dividend by r first ($4.25 &times; 1.085); a fixed dividend has no growth.",
+  "$4.61": "This is just the dividend grown by 8.5%, not a valuation."
+ },
+ "Arbor Co. just paid a $1.80 dividend, expected to grow 5% a year indefinitely. An investor requires 11%. What is the stock's intrinsic value?": {
+  "$30.00": "This uses D<sub>0</sub> ($1.80) instead of next year's dividend.",
+  "$11.81": "This divides by r + g (0.16) instead of r &minus; g.",
+  "$37.80": "This divides by 0.05 (g) instead of r &minus; g (0.06)."
+ },
+ "Selma is offered Kestrel stock at $54. It just paid $2.40, dividends should grow 4% a year, and she requires 9%. What should she conclude?": {
+  "Undervalued; worth about $49.92": "A price above intrinsic value means overvalued, not undervalued.",
+  "Overvalued; worth about $48.00": "$48.00 uses D<sub>0</sub> ($2.40 &divide; 0.05) without growing the dividend.",
+  "Undervalued; worth about $62.40": "This divides D<sub>1</sub> by g (0.04) instead of r &minus; g (0.05)."
+ },
+ "Wren Corp. just paid $1.40. Dividends should grow 8% a year for three years, then 3% indefinitely. The required return is 9%. Rounding each dividend to the cent, what is the intrinsic value?": {
+  "$30.17": "That is the Year-3 terminal value, not discounted to today and without the early dividends.",
+  "$35.07": "This adds the dividends and terminal value without discounting.",
+  "$24.03": "This applies 3% growth from today and ignores the 8% stage."
+ },
+ "Pinecrest LLC pays no dividends. Its free cash flow to equity was $2.50 per share this year and should grow 4% a year. A client requires 12%. What is the intrinsic value per share?": {
+  "$31.25": "This uses this year's FCFE without growing it one year.",
+  "$16.25": "This divides by r + g (0.16) instead of r &minus; g.",
+  "$20.83": "This treats FCFE as a no-growth perpetuity at 12%."
+ },
+ "Which model fits a profitable closely held company that has never paid a dividend and does not plan to?": {
+  "Constant growth dividend discount model": "It requires a dividend stream growing at a constant rate.",
+  "No-growth dividend discount model": "It requires a fixed, ongoing dividend.",
+  "Multistage dividend discount model": "It still discounts dividends, just with changing growth rates."
+ },
+ "Which statements about the constant growth dividend discount model are correct?<br>I. The growth rate must be lower than the required return.<br>II. A higher required return lowers the stock's value.<br>III. It is best suited to companies in the growth phase.<br>IV. Next year's dividend equals D<sub>0</sub> &times; (1 + g).": {
+  "I and III only": "Statement III is false and II and IV are true.",
+  "II and IV only": "Statement I is also true; the model breaks down if g is not below r.",
+  "I, II, III, and IV": "Statement III is false; growth-phase firms call for the multistage model."
+ },
+ "Larkspur stock trades at $63 with EPS of $4.20. The industry P/E is 18. Using the industry multiple, what is its estimated value, and what does it suggest?": {
+  "$75.60; overvalued": "Value above market price means undervalued, not overvalued.",
+  "$52.50; overvalued": "This scales the price by 15/18 instead of multiplying EPS by the industry P/E.",
+  "$3.50; overvalued": "This divides price by the industry P/E, which is not a valuation."
+ },
+ "A client is choosing among four stocks. By the PEG ratio, which looks most attractive?": {
+  "Alder: P/E 24, growth 20%": "Fast growth, but its PEG of 1.20 is above Cedar's 0.80.",
+  "Birch: P/E 15, growth 10%": "Its PEG is 1.50.",
+  "Dogwood: P/E 10, growth 5%": "It has the lowest P/E but the highest PEG (2.00) because growth is slow."
+ },
+ "A stock's earnings are expected to grow 6% and the investor requires 11%. Using the textbook formula, what is its price-to-free-cash-flow ratio?": {
+  "20.0": "This leaves out the (1 + g) numerator.",
+  "6.24": "This divides by r + g (0.17).",
+  "9.64": "This divides 1.06 by r alone."
+ },
+ "Thistle stock trades at $42 with sales of $12 per share. Its peers average a P/S of 4.8. What is Thistle's P/S, and what does it suggest?": {
+  "3.5; possibly overvalued": "A P/S below peers points to value, not overvaluation.",
+  "0.29; possibly undervalued": "This inverts the ratio (sales &divide; price).",
+  "4.8; fairly valued": "4.8 is the peer average, not Thistle's ratio."
+ },
+ "Which of these is a relative value method rather than an intrinsic value method?": {
+  "Multistage dividend discount model": "It is an intrinsic value model.",
+  "No-growth dividend discount model": "It is an intrinsic value model.",
+  "Discounted free cash flow model": "It is an intrinsic value model."
+ }
+}
