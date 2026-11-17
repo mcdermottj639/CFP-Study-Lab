@@ -45,6 +45,8 @@ test('Today shows the FP513 card; Continue FP513 starts a session in the current
   const a = await open(LEGACY);
   const card = a.$('#fp513Today'); assert.ok(card, 'FP513 card'); assert.match(card.textContent, /FP513 · Investment Planning/); assert.match(card.textContent, /Module 1/); assert.match(card.textContent, /LO 1\.1\.1/);
   assert.match(card.textContent, /0\/48/); assert.ok(!/NaN|undefined/.test(card.textContent));
+  // Today's focus and the coach hero follow the FP513 sequence (Module 1 first), not the module with the most cards
+  assert.match(a.$('#todayPlan').textContent, /FP513 Module 1/); assert.match(a.$('#coachHome').textContent, /Securities Markets/);
   a.eval('S.attempts.push({mod:"FP512",domain:"C",topic:"x",correct:1,ts:1790000000001,src:"mcq",questionKey:mcqKey(MCQ.find(q=>q.m==="FP512"))});save()');
   a.$('[data-fp5="continue"]').click();
   const steps = a.eval('S.coach.active.steps.map(s=>s.q?s.q.m+"|"+(s.q.lo||""):s.type)');

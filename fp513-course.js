@@ -292,6 +292,9 @@
   var origAnalytics = window.renderAnalytics;
   if (typeof origAnalytics === 'function') window.renderAnalytics = function () { origAnalytics.apply(this, arguments); try { analyticsPanel(); } catch (e) { console.warn('fp513 analytics', e); } };
   try { todayCard(); analyticsPanel(); } catch (e) { console.warn('fp513 init', e); }
+  // The first dashboard render (and the coach hero) ran before this file loaded, so they used the
+  // unwrapped focusTarget(). Re-render once so Today's focus + coach follow the FP513 sequence.
+  try { var dash = $('dash'); if (dash && !dash.classList.contains('hidden') && typeof window.renderDash === 'function') window.renderDash(); } catch (e) { console.warn('fp513 rerender', e); }
 
   window.FP513COURSE = { LOS: LOS, DEADLINE: DEADLINE, DEADLINE_SRC: DEADLINE_SRC, evidence: evidence, moduleSummary: moduleSummary, currentModule: currentModule, nextObjective: nextObjective,
     prioritize: prioritize, retentionPick: retentionPick, runForm: runForm, buildForm: buildForm, diagnostics: diagnostics, todayCard: todayCard, analyticsPanel: analyticsPanel, reindex: indexItems };
