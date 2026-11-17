@@ -120,6 +120,18 @@ const PROBE = `(() => {
       assert.ok(r.toc && r.toc.b <= r.foldT + 1 && r.wrap.t >= r.foldB - 1);
     });
   }
+  await check('open screen, no fold sensors: Book button splits the app, tap again for one page', async () => {
+    const r = await open('open', 'index.html', "document.getElementById('duoBtn').click()"); clean(r);
+    assert.equal(r.pose, 'book'); assert.ok(r.left && r.left.r <= r.foldL + 1);
+    const r2 = await open('open', 'index.html', "document.getElementById('duoBtn').click();document.getElementById('duoBtn').click()"); flat(r2);
+  });
+  await check('open screen, no fold sensors: Book button in the reader chrome', async () => {
+    const r = await open('open', 'apps/fp513-reading.html', "document.querySelector('#rdrChrome #duoBtn').click()"); clean(r);
+    assert.equal(r.pose, 'book'); assert.ok(r.toc && r.wrap.l >= r.foldR - 1);
+  });
+  await check('folded outer screen: no Book button, manual book ignored', async () => {
+    const r = await open('folded', 'index.html', "CFPDuo.setMode('book')"); flat(r);
+  });
   for (const p of ['folded', 'open', 'phone']) {
     await check(p + ': flat, untouched', async () => { const r = await open(p, 'index.html'); clean(r); flat(r); });
     await check(p + ' reader: flat, untouched', async () => { const r = await open(p, 'apps/fp513-reading.html'); clean(r); flat(r); assert.equal(r.toc, null); });

@@ -114,14 +114,20 @@
       if (mode === 'seated' && name !== 'seated') name = '';
       if (name) setVars(name, a, b);
     }
-    // Manual choice without (matching) sensor data: split at the middle of the layout viewport.
-    if (!name && mode === 'book' && W >= 640) { name = 'book'; setVars('book', { right: W / 2 }, { left: W / 2 }); }
-    if (!name && mode === 'seated' && H >= 520) { name = 'seated'; setVars('seated', { bottom: H / 2 }, { top: H / 2 }); }
+    // No segment geometry (Safari often reports none): split at the middle of the layout
+    // viewport when the user chose a split (button / Settings) or posture alone says "folded".
+    // Only on the big inner screen (both sides >= 600px), never the folded outer display.
+    var big = Math.min(W, H) >= 600, wide = W > H;
+    var want = mode === 'book' || mode === 'seated' ? mode : (mode === 'auto' && post === 'folded' ? (wide ? 'book' : 'seated') : '');
+    if (!name && big && want === 'book' && wide) { name = 'book'; setVars('book', { right: W / 2 }, { left: W / 2 }); }
+    if (!name && big && want === 'seated' && !wide) { name = 'seated'; setVars('seated', { bottom: H / 2 }, { top: H / 2 }); }
+    root.classList.toggle('duo-big', big);
     if (!name) setVars('', null, null);
     if (name) root.setAttribute('data-duo-pose', name); else root.removeAttribute('data-duo-pose');
     var changed = name !== current; current = name;
     diag(seg, post, name);
     layout(changed);
+    syncBtn();
   }
   function diag(seg, post, name) {
     var apis = (window.viewport && 'segments' in window.viewport ? 'S' : '') + (navigator.devicePosture ? 'P' : '') + (MQ.v2 && MQ.v2.media !== 'not all' ? 'M' : '');
@@ -280,7 +286,27 @@
     });
     diag(segments(), posture(), current);
   }
-  function setMode(m) { mode = m; try { localStorage.setItem(MODE_KEY, m); } catch (e) {} decide(); }
+  function setMode(m) { mode = m; try { localStorage.setItem(MODE_KEY, m); } catch (e) {} decide(); syncBtn(); }
+  // Visible toggle on the big inner screen: one tap = book (landscape) or top/bottom (portrait).
+  function toggleBtn() {
+    var b = document.getElementById('duoBtn');
+    if (!b) {
+      b = document.createElement('button'); b.type = 'button'; b.id = 'duoBtn';
+      var host = IS_READER && window.__rdrChromeL;
+      if (host) { b.className = 'rdr-cbtn'; host.appendChild(b); } else document.body.appendChild(b);
+      b.addEventListener('click', function () {
+        if (current) setMode('off'); else setMode(innerWidth > innerHeight ? 'book' : 'seated');
+      });
+    }
+    syncBtn();
+  }
+  function syncBtn() {
+    var b = document.getElementById('duoBtn'); if (!b) return;
+    var wide = innerWidth > innerHeight;
+    b.textContent = current ? '\u2715 Single page' : (wide ? '\uD83D\uDCD6 Book' : '\u2B12 Split');
+    b.setAttribute('aria-pressed', String(!!current));
+    b.title = (root.getAttribute('data-duo-diag') || '') + ' \u2014 tap to ' + (current ? 'go back to one page' : (wide ? 'split into two pages at the crease' : 'split top / bottom at the crease'));
+  }
 
   // ---------- reader layouts ----------
   function readerHeads(panel) {
@@ -374,6 +400,7 @@
   function start() {
     probeSide(); decide(); watch();
     if (IS_APP) settingsControl();
+    toggleBtn();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
   window.CFPDuo = { decide: decide, setMode: setMode, mode: function () { return mode; }, pose: function () { return current; } };
