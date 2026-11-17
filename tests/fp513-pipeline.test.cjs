@@ -129,3 +129,13 @@ test('no licensed textbook text, PDF or answer key is published', () => {
   assert.ok(!/All rights reserved|may not be reproduced|Module \d Answer Key/i.test(pub), 'no copied front matter / answer keys');
   assert.ok(!/Madison/.test(read('content/fp513.mcqs.json')), 'Module 9 uses an original case, not the textbook case');
 });
+
+test('FP513 high-yield exam review deck is current, offline and listed on the course card', () => {
+  cp.execSync('node scripts/build_fp513_deck.mjs --check', { cwd: root, stdio: 'pipe' });
+  const deck = read('apps/fp513-ai-slides.html');
+  assert.ok(!/https?:\/\//.test(deck.replace(/xmlns="http:\/\/www\.w3\.org\/2000\/svg"/g, '')), 'no network URLs');
+  for (let n = 1; n <= 9; n++) assert.ok(deck.includes('<div class="n">' + n + '</div>'), 'module ' + n + ' section');
+  assert.ok((deck.match(/class="quiz"/g) || []).length >= 17, 'self-check questions');
+  assert.ok(read('module-content.js').includes("apps/fp513-ai-slides.html"), 'listed in DECKS');
+  assert.ok(read('sw.js').includes("'./apps/fp513-ai-slides.html'"), 'precached');
+});
