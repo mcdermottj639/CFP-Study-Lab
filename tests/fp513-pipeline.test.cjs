@@ -114,8 +114,11 @@ test('offline: every precached asset exists; FP513 files are precached', () => {
   const list = [...sw.matchAll(/'\.\/([^']*)'/g)].map((m) => m[1]).filter((p) => p && !p.endsWith('/'));
   for (const p of list) assert.ok(fs.existsSync(path.join(root, p)), 'missing precached ' + p);
   for (const p of ['fp513-calc.js', 'fp513-course.js', 'mcq-why-fp513.js', 'apps/fp513-reading.html']) assert.ok(list.includes(p), p + ' precached');
-  assert.match(sw, /const VERSION = 'v2\.114\.1'/);
-  assert.match(html, /v2\.114\.1/);
+  // sw.js and the app stamp must carry the same version (bumped together on every release)
+  const v = (read('scripts/build_index.mjs').match(/APP_VERSION = '(v[\d.]+)'/) || [])[1];
+  assert.ok(v, 'APP_VERSION found');
+  assert.ok(sw.includes("const VERSION = '" + v + "'"), 'sw.js VERSION matches APP_VERSION ' + v);
+  assert.ok(html.includes(v), 'index.html stamped ' + v);
 });
 
 test('no licensed textbook text, PDF or answer key is published', () => {

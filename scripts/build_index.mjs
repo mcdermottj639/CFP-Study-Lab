@@ -12,7 +12,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 
 const SRC = process.argv[2] || 'src/study-home.src.html';
 const OUT = 'index.html';
-const APP_VERSION = 'v2.114.1';
+const APP_VERSION = 'v2.115.0';
 let html = readFileSync(SRC, 'utf8');
 
 const HEAD = `
@@ -121,6 +121,7 @@ const TOOLKIT = `
 <script src="coach-cases.js"></script>
 <script src="coach.js"></script>
 <script src="fp513-course.js"></script>
+<script src="duo.js"></script>
 <script src="study-activity.js"></script>
 <script src="cfp-gist-sync.js"></script>
 <script>
@@ -516,6 +517,8 @@ html[data-theme="dark"] input,html[data-theme="dark"] select,html[data-theme="da
 </style>
 `;
 html = html.replace('</head>', FRESH_UI + '</head>');
+// iPhone Duo fold layouts load LAST so their pose rules win (v2.115.0)
+html = html.replace('</head>', '<link rel="stylesheet" href="duo.css">\n</head>');
 
 // 1. viewport-fit=cover
 html = html.replace(
