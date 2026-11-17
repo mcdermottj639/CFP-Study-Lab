@@ -122,6 +122,10 @@
       6: [ { src: 'apps/fp512-m6-kaplan-slides.html', title: 'Disability, LTC & Veterans',          kind: 'kaplan' } ],
       7: [ { src: 'apps/fp512-m7-kaplan-slides.html', title: 'Employee Group Benefits',             kind: 'kaplan' } ],
       8: [ { src: 'apps/fp512-m8-kaplan-slides.html', title: 'Business Owner Risk',                 kind: 'kaplan' } ]
+    },
+    FP513: {
+      // Claude-built from the app's own FP513 notes (scripts/build_fp513_deck.mjs) — no NotebookLM/Kaplan source yet
+      0: [ { src: 'apps/fp513-ai-slides.html', title: 'High-yield exam review', kind: 'ai' } ]
     }
   };
 

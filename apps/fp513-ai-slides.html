@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FP513 · High-Yield Exam Review (Visual Deck)</title>
+<style>
+/* ---- Dancing Script title (vendored, offline) ---- */
+@font-face{font-family:'Dancing Script';src:url('../vendor/fonts/dancing-script-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap;}
+
+:root{
+  --canvas:#f4ecdf; --card:#fffdf8; --card2:#faf3e6;
+  --ink:#2c2118; --ink2:#5b4b3a; --muted:#897357;
+  --line:#e6d8c2; --line2:#d8c6aa;
+  --terra:#d0613a; --terra-d:#b34d2a;
+  --green:#1f4d3a; --green-l:#2f7355;
+  --gold:#c58a2e; --sky:#3a6ea5;
+  --trap:#b34d2a; --trap-bg:#fbe9e1; --tip:#2f7355; --tip-bg:#e6f2ea;
+  --key-bg:#efe4d0;
+  --radius:18px; --shadow:0 8px 26px -14px rgba(60,40,20,.55);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--canvas);}
+body{font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;color:var(--ink);-webkit-text-size-adjust:100%;}
+
+/* ---- App-synced dark mode: filter-invert the content wrapper (matches readers) ---- */
+html[data-theme="dark"]{background:#17120e;}
+html[data-theme="dark"] body{background:#17120e;}
+html[data-theme="dark"] #rdrWrap{filter:invert(.92) hue-rotate(180deg);}
+html[data-theme="dark"] #rdrWrap svg,
+html[data-theme="dark"] #rdrWrap img,
+html[data-theme="dark"] #rdrWrap canvas{filter:invert(1) hue-rotate(180deg);}
+
+#rdrWrap{max-width:820px;margin:0 auto;padding:18px 15px 90px;}
+
+/* ---- Header ---- */
+.deck-head{padding:26px 20px 22px;border-radius:var(--radius);color:#fff;
+  background:linear-gradient(135deg,#1f4d3a 0%,#2f7355 55%,#d0613a 160%);
+  box-shadow:var(--shadow);position:relative;overflow:hidden;}
+.deck-head .eyebrow{font:700 12px/1 system-ui;letter-spacing:.16em;text-transform:uppercase;opacity:.85;}
+.deck-head h1{font-family:'Dancing Script',cursive;font-size:clamp(34px,9vw,52px);margin:.15em 0 .1em;line-height:1;}
+.deck-head .sub{font-size:15px;opacity:.95;max-width:46ch;}
+.deck-head .pillrow{margin-top:14px;display:flex;flex-wrap:wrap;gap:7px;}
+.deck-head .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+  border-radius:999px;padding:5px 11px;font:600 12px/1 system-ui;}
+
+/* ---- Section divider ---- */
+.sect{margin:34px 2px 14px;display:flex;align-items:center;gap:12px;}
+.sect .n{flex:none;width:38px;height:38px;border-radius:11px;background:var(--green);color:#fff;
+  font:800 15px/38px system-ui;text-align:center;box-shadow:var(--shadow);}
+.sect h2{font-size:19px;margin:0;color:var(--green);letter-spacing:.01em;}
+.sect .lo{font:600 11px/1 system-ui;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
+
+/* ---- Slide card ---- */
+.slide{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 19px;margin:13px 0;box-shadow:var(--shadow);}
+.slide h3{margin:0 0 8px;font-size:18px;color:var(--ink);display:flex;gap:9px;align-items:baseline;}
+.slide h3 .ic{font-size:19px;}
+.slide p{margin:8px 0;color:var(--ink2);}
+.slide ul{margin:9px 0;padding-left:1.15em;}
+.slide li{margin:5px 0;color:var(--ink2);}
+.lead{font-size:16.5px;color:var(--ink)!important;}
+
+/* ---- Stat tiles ---- */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:11px;margin:14px 0 4px;}
+.tile{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:13px 14px;}
+.tile .v{font:800 24px/1.05 system-ui;color:var(--terra-d);letter-spacing:-.01em;}
+.tile .k{font-size:12.5px;color:var(--ink2);margin-top:5px;}
+
+/* ---- Callouts ---- */
+.callout{border-radius:13px;padding:12px 14px 12px 15px;margin:13px 0;border-left:5px solid;font-size:14.5px;}
+.callout.trap{background:var(--trap-bg);border-color:var(--trap);}
+.callout.tip{background:var(--tip-bg);border-color:var(--tip);}
+.callout b{color:var(--ink);}
+.callout .lab{display:block;font:800 11px/1 system-ui;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;}
+.callout.trap .lab{color:var(--trap);}
+.callout.tip .lab{color:var(--tip);}
+
+/* ---- Tables ---- */
+.tbl-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0 4px;
+  border:1px solid var(--line);border-radius:13px;}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:460px;}
+caption{caption-side:top;text-align:left;font:700 13px/1.4 system-ui;color:var(--muted);padding:2px 4px 9px;}
+th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
+thead th{background:var(--green);color:#fff;font-weight:700;font-size:12.5px;position:sticky;top:0;}
+tbody th{background:var(--card2);color:var(--ink);font-weight:700;white-space:nowrap;}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:none;}
+td.y{color:var(--tip);font-weight:700;} td.n{color:var(--trap);font-weight:700;}
+
+/* ---- Chart figure ---- */
+figure{margin:14px 0 4px;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:14px 14px 10px;}
+figure svg{width:100%;height:auto;display:block;}
+figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center;}
+.legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:9px;font:600 12.5px/1 system-ui;}
+.legend span{display:inline-flex;align-items:center;gap:6px;color:var(--ink2);}
+.legend i{width:14px;height:3px;border-radius:2px;display:inline-block;}
+
+/* ---- Three-up option groups ---- */
+.triad{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;margin:13px 0 4px;}
+.opt{background:var(--card2);border:1px solid var(--line);border-radius:13px;padding:12px 13px;}
+.opt .t{font:800 13.5px/1.2 system-ui;color:var(--green);margin-bottom:5px;}
+.opt .d{font-size:13px;color:var(--ink2);}
+
+/* ---- Worked example ---- */
+.calc{background:#1c2b24;color:#e9f3ee;border-radius:14px;padding:16px 16px 12px;margin:14px 0 4px;}
+.calc h4{margin:0 0 10px;color:#7fd3ac;font-size:14.5px;}
+.calc .step{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-top:1px solid rgba(255,255,255,.12);}
+.calc .step:first-of-type{border-top:none;}
+.calc .sn{flex:none;width:24px;height:24px;border-radius:8px;background:#2f7355;color:#fff;font:800 12px/24px system-ui;text-align:center;}
+.calc .sb{font-size:13.5px;}
+.calc .sb b{color:#fff;}
+.calc code{font:600 12.5px/1.5 ui-monospace,Menlo,monospace;color:#ffd9a8;background:rgba(255,255,255,.07);
+  padding:1px 6px;border-radius:6px;display:inline-block;margin-top:3px;}
+.calc .res{margin-top:11px;background:#d0613a;color:#fff;border-radius:10px;padding:10px 13px;font:700 15px/1.2 system-ui;}
+
+/* ---- Quiz (tap to reveal) ---- */
+.quiz{background:var(--card);border:1.5px solid var(--terra);border-radius:14px;padding:0;margin:13px 0;overflow:hidden;box-shadow:var(--shadow);}
+.quiz>summary{list-style:none;cursor:pointer;padding:15px 16px;font-size:15px;color:var(--ink);position:relative;}
+.quiz>summary::-webkit-details-marker{display:none;}
+.quiz>summary .qlab{display:inline-block;font:800 10.5px/1 system-ui;letter-spacing:.12em;color:var(--terra-d);
+  background:var(--trap-bg);border-radius:6px;padding:4px 7px;margin-bottom:8px;text-transform:uppercase;}
+.quiz>summary .opts{margin-top:9px;font-size:13.5px;color:var(--ink2);}
+.quiz>summary .tap{margin-top:10px;font:700 12.5px/1 system-ui;color:var(--terra);}
+.quiz[open]>summary .tap{display:none;}
+.quiz .ans{padding:0 16px 15px;border-top:1px dashed var(--line2);margin-top:2px;}
+.quiz .ans .correct{font:800 14px/1.4 system-ui;color:var(--tip);margin:12px 0 6px;}
+.quiz .ans p{font-size:13.5px;color:var(--ink2);margin:6px 0 0;}
+
+.foot{margin-top:34px;padding:16px;border-radius:var(--radius);background:var(--card2);border:1px solid var(--line);
+  font-size:12.5px;color:var(--muted);text-align:center;}
+
+/* ---- Floating theme toggle (standalone preview; injection can replace) ---- */
+#tgl{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:9999;
+  background:var(--terra);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:999px;
+  padding:10px 15px;font:700 13px/1 system-ui;cursor:pointer;box-shadow:0 8px 22px -8px rgba(0,0,0,.55);}
+
+/* ---- Sticky progress ---- */
+#prog{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--green),var(--terra));z-index:9999;transition:width .1s;}
+
+@media(min-width:560px){.slide{padding:22px 24px;} #rdrWrap{padding:22px 20px 90px;}}
+</style>
+</head>
+<style>.fp5-svg{width:100%;max-width:560px;height:auto;display:block;margin:.5rem auto;color:var(--ink)}.fp5-svg text{font-family:inherit}html[data-theme="dark"] .fp5-svg{color:#e9dccb}.kn .d{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}</style>
+<body>
+<div id="prog"></div>
+<div id="rdrWrap">
+
+  <header class="deck-head">
+    <div class="eyebrow">Visual Deck · FP513 · Modules 1–9</div>
+    <h1>High-Yield Exam Review</h1>
+    <div class="sub">Investment Planning — <b>CFP® Domain D, 17% of the exam</b>. The formulas, numbers, rules and two-plausible-answer traps from all nine FP513 modules, on one scroll.</div>
+    <div class="pillrow">
+      <span class="pill">🤖 Claude-built from the app's FP513 notes</span>
+      <span class="pill">🎯 Domain D · 17% weight</span>
+      <span class="pill">🏦 Markets · Bonds · Stocks · Valuation</span>
+      <span class="pill">📊 Risk · Returns · Portfolio · Case</span>
+    </div>
+  </header>
+
+  <div class="callout tip" style="margin-top:16px;"><span class="lab">Read me first</span>Built by Claude from this app's FP513 cheat sheets, worked examples and question bank (all written from the 2026 course text and checked against it). It is a cram layer — the interactive reader is the full-depth source. Calculator steps are generic (N, I/Y, PV, PMT, FV); check them against your own calculator's manual.</div>
+
+  <!-- ============ MODULE 1 ============ -->
+  <div class="sect"><div class="n">1</div><div><div class="lo">Module 1</div><h2>Securities Markets &amp; Money Market Instruments</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🏦</span>Key numbers &amp; formulas</h3>
+    <div class="triad kn">
+      <div class="opt"><div class="t">Reg T initial margin</div><div class="d">50% (2026 edition figure)</div></div>
+      <div class="opt"><div class="t">Maintenance margin</div><div class="d">Broker-set, usually 35%; NYSE Rule 431(b) floor 25%</div></div>
+      <div class="opt"><div class="t">SIPC</div><div class="d">$500,000 per customer, max $250,000 cash (2026 edition figure)</div></div>
+      <div class="opt"><div class="t">FDIC (CDs, MMDAs)</div><div class="d">$250,000 per ownership category (2026 edition figure)</div></div>
+      <div class="opt"><div class="t">Commercial paper</div><div class="d">Max 270 days; usually $100,000+</div></div>
+      <div class="opt"><div class="t">Capital loss deduction</div><div class="d">$3,000/yr net; excess carried forward indefinitely (2026 edition figure)</div></div>
+      <div class="opt"><div class="t">Qualified dividend holding</div><div class="d">More than 60 days in 121-day window (2026 edition figure)</div></div>
+      <div class="opt"><div class="t">NIIT</div><div class="d">3.8% &times; lesser of NII or MAGI over $250K MFJ / $125K MFS / $200K other (2026 edition figure)</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">✅</span>Must know</h3>
+    <ul>
+      <li>Firm commitment: underwriter bears unsold shares; best efforts: issuer does</li>
+      <li>Stop &rarr; market order (execution certain); stop-limit &rarr; limit order (price certain)</li>
+      <li>Margin-call price = loan per share &divide; (1 &minus; maintenance %)</li>
+      <li>Liquid &ne; marketable: MMDA is liquid only; T-bill is both</li>
+      <li>T-bill income: federal ordinary income, state-exempt; munis: federal-exempt, state-taxable unless in-state</li>
+      <li>Netting: ST with ST, LT with LT, then cross-net; $3,000 cap on net loss</li>
+      <li>Wash sale: disallowed loss is added to the replacement shares' basis</li>
+    </ul>
+
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">⚠️</span>Traps &amp; tips</h3>
+    <div class="callout trap"><span class="lab">Trap</span>Using the original purchase price (not current price) when computing a margin deposit</div>
+    <div class="callout trap"><span class="lab">Trap</span>Forgetting the short seller pays dividends to the share lender</div>
+    <div class="callout trap"><span class="lab">Trap</span>Calling a money market mutual fund FDIC-insured (only MMDAs are)</div>
+    <div class="callout trap"><span class="lab">Trap</span>Treating REIT or S corporation dividends as qualified</div>
+    <div class="callout trap"><span class="lab">Trap</span>Thinking the wash-sale window only looks forward from the sale</div>
+    <div class="callout tip"><span class="lab">Exam tip</span>Margin HPR: divide by the investor's own money and subtract margin interest</div>
+    <div class="callout tip"><span class="lab">Exam tip</span>NIIT: always compare NII to MAGI over the threshold and tax the smaller</div>
+    <div class="callout tip"><span class="lab">Exam tip</span>For I/II/III/IV items, eliminate any combination containing one false statement first</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧾</span>Worked example — Harvesting a loss without tripping the wash sale rule</h3>
+    <p>Fictional client Mara has a $12,000 net long-term gain this year from selling a fund. She also holds 300 shares of Pine Co. with a $21,000 basis now worth $15,600.</p><ol><li>Sell Pine: $15,600 &minus; $21,000 = &minus;$5,400 short-term loss (held under a year).</li><li>Cross-net: $12,000 LT gain &minus; $5,400 = $6,600 net LT gain taxed at 0/15/20% (2026 edition figure) instead of $12,000.</li><li>If she rebuys Pine within 30 days before or after the sale (2026 edition figure), the loss is disallowed and her new basis becomes the repurchase cost + $5,400.</li><li>Option: wait 31+ days, or hold something similar but not the same meanwhile.</li></ol>
+  </div>
+
+  <!-- ============ MODULE 2 ============ -->
+  <div class="sect"><div class="n">2</div><div><div class="lo">Module 2</div><h2>Debt Investments</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">📜</span>Key numbers &amp; formulas</h3>
+    <div class="triad kn">
+      <div class="opt"><div class="t">Investment-grade line</div><div class="d">BBB&minus; (S&amp;P) / Baa (Moody's) and above</div></div>
+      <div class="opt"><div class="t">Exam defaults</div><div class="d">$1,000 par; semiannual coupons</div></div>
+      <div class="opt"><div class="t">Basis point</div><div class="d">1/100 of 1%</div></div>
+      <div class="opt"><div class="t">Corporate call protection</div><div class="d">Generally at least 10 years</div></div>
+      <div class="opt"><div class="t">Dividends-received deduction</div><div class="d">50% if &lt;20% owned; 65% if 20%+ (2026 edition figure)</div></div>
+      <div class="opt"><div class="t">Private activity bond tests</div><div class="d">&gt;10% private use; qualified if 95%+ for qualified purposes (2026 edition figure)</div></div>
+      <div class="opt"><div class="t">EE / I bonds</div><div class="d">$25&ndash;$10,000; 12-month hold; 3-month penalty within 5 years (2026 edition figure)</div></div>
+      <div class="opt"><div class="t">GNMA certificate minimum</div><div class="d">$25,000 (2026 edition figure)</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">✅</span>Must know</h3>
+    <ul>
+      <li>TEY = tax-exempt yield &divide; (1 &minus; t); after-tax yield = taxable yield &times; (1 &minus; t)</li>
+      <li>Convertible: ratio = par &divide; conversion price; CV = ratio &times; stock price; floor = greater of IV or CV</li>
+      <li>Downside risk % divides by market price; investment premium % divides by investment value</li>
+      <li>Immunization: portfolio duration = time horizon; rebalance as duration drifts</li>
+      <li>Only liquidity preference theory is limited to an upward-sloping curve</li>
+      <li>Treasuries: no state/local tax; agencies: taxable at all levels; GNMA has the direct guarantee</li>
+      <li>Preferred: V = D &divide; r; dividend is % of par, paid quarterly; cumulative arrears come first</li>
+    </ul>
+
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">⚠️</span>Traps &amp; tips</h3>
+    <div class="callout trap"><span class="lab">Trap</span>Treasuries are default-risk free, not risk free</div>
+    <div class="callout trap"><span class="lab">Trap</span>Zeros and STRIPS create phantom income in taxable accounts</div>
+    <div class="callout trap"><span class="lab">Trap</span>Eurobonds can be in any currency; Yankee bonds remove currency risk</div>
+    <div class="callout trap"><span class="lab">Trap</span>With an inverted curve, the textbook favors call-protected long bonds</div>
+    <div class="callout trap"><span class="lab">Trap</span>A barbell is active; a ladder is the passive, staggered one</div>
+    <div class="callout tip"><span class="lab">Exam tip</span>Convertible questions: write CV, IV and price in a row before computing any %</div>
+    <div class="callout tip"><span class="lab">Exam tip</span>With state tax in a muni problem, tax each bond only where it is actually taxed</div>
+    <div class="callout tip"><span class="lab">Exam tip</span>Low coupon + long maturity + low YTM = biggest price swings</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧾</span>Worked example — Convertible bond: five numbers from one set of facts</h3>
+    <p>$1,000 par, 4% semiannual coupon, 10 years left, straight bonds yield 6%, conversion price $62.50, stock $55, convertible priced at $1,000.</p><ul><li>Conversion ratio = $1,000 &divide; $62.50 = 16 shares</li><li>Conversion value = 16 &times; $55 = $880</li><li>Investment value: N 20, I/YR 3, PMT $20, FV $1,000 &rarr; $851.23</li><li>Floor = greater of $851.23 and $880 = $880</li><li>Conversion premium = $120 &divide; $880 = 13.64%</li><li>Investment premium = $148.77 &divide; $851.23 = 17.48%</li><li>Downside risk = $148.77 &divide; $1,000 = 14.88%</li></ul>
+  </div>
+
+  <!-- ============ MODULE 3 ============ -->
+  <div class="sect"><div class="n">3</div><div><div class="lo">Module 3</div><h2>Equity Investments &amp; Managed Assets</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">📈</span>Key numbers &amp; formulas</h3>
+    <div class="triad kn">
+      <div class="opt"><div class="t">Qualified dividend holding test</div><div class="d">More than 60 days in the 121-day window starting 60 days before ex-date (2026 edition figure)</div></div>
+      <div class="opt"><div class="t">Qualified dividend rates</div><div class="d">0% / 15% / 20% (2026 edition figure)</div></div>
+      <div class="opt"><div class="t">Market-cap bands</div><div class="d">Small up to $2B; mid $2B&ndash;$10B; large over $10B</div></div>
+      <div class="opt"><div class="t">Expense ratio range</div><div class="d">Under 0.20% (some index funds) to 2.00%+</div></div>
+      <div class="opt"><div class="t">Hedge fund of funds</div><div class="d">Usually holds about 10&ndash;30 hedge funds</div></div>
+      <div class="opt"><div class="t">Separately managed account</div><div class="d">Minimums often $50,000+</div></div>
+      <div class="opt"><div class="t">Loss recovery</div><div class="d">&minus;50% needs +100%; &minus;40% needs +66.67%</div></div>
+      <div class="opt"><div class="t">Class B CDSC</div><div class="d">May be waived after about 5 years</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">✅</span>Must know</h3>
+    <ul>
+      <li>Buy before the ex-dividend date to get a declared dividend</li>
+      <li>Stock dividends and splits: no tax, same total value and basis, lower basis per share</li>
+      <li>NAV per share = (assets &minus; liabilities) &divide; shares; forward pricing at the next NAV</li>
+      <li>Closed-end funds trade at a premium or discount to NAV; open-end funds trade at NAV (+ load)</li>
+      <li>DCA average cost = total dollars &divide; total shares, which is below the simple average price</li>
+      <li>Basis = price + commissions + reinvested distributions; specific ID most favorable, FIFO the default</li>
+      <li>Expense ratio excludes loads and trading costs; turnover = lesser of buys or sells &divide; average assets</li>
+    </ul>
+
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">⚠️</span>Traps &amp; tips</h3>
+    <div class="callout trap"><span class="lab">Trap</span>Reinvested dividends and capital gain distributions are still taxable (constructive receipt)</div>
+    <div class="callout trap"><span class="lab">Trap</span>Value averaging can require selling; DCA and share averaging never do</div>
+    <div class="callout trap"><span class="lab">Trap</span>GICs are insurer-backed, not FDIC-insured</div>
+    <div class="callout trap"><span class="lab">Trap</span>'No-load' funds may still charge 12b-1 fees (hidden loads)</div>
+    <div class="callout trap"><span class="lab">Trap</span>A fund labeled 'stock' may hold cash or foreign stocks: check manager flexibility</div>
+    <div class="callout tip"><span class="lab">Exam tip</span>For split questions, total value never changes; only the share count and price per share do</div>
+    <div class="callout tip"><span class="lab">Exam tip</span>On basis-method questions in a rising market: specific ID gives the lowest gain, FIFO the highest</div>
+    <div class="callout tip"><span class="lab">Exam tip</span>Match the fund to the client's top-priority objective first, then risk tolerance, then cost and taxes</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧾</span>Worked example — Dollar cost averaging: average cost vs. average price</h3>
+    <p>Jun invests $3,000 a month for four months at prices of $20, $15, $24 and $16.</p><table><thead><tr><th>Month</th><th>Price</th><th>Shares</th></tr></thead><tbody><tr><td>1</td><td>$20</td><td>150.0</td></tr><tr><td>2</td><td>$15</td><td>200.0</td></tr><tr><td>3</td><td>$24</td><td>125.0</td></tr><tr><td>4</td><td>$16</td><td>187.5</td></tr><tr><td><b>Total</b></td><td></td><td><b>662.5</b></td></tr></tbody></table><p>Average cost = $12,000 &divide; 662.5 = <b>$18.11</b>. Average price = ($20 + $15 + $24 + $16) &divide; 4 = <b>$18.75</b>. The fixed dollar amount bought more shares when the price was low, so cost is $0.64 below the average price. At the final $16 price the account is worth $10,600 &mdash; a $1,400 loss, so DCA lowers cost but does not guarantee a profit.</p>
+  </div>
+
+  <!-- ============ MODULE 4 ============ -->
+  <div class="sect"><div class="n">4</div><div><div class="lo">Module 4</div><h2>Bond &amp; Stock Valuation</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🧮</span>Key numbers &amp; formulas</h3>
+    <div class="triad kn">
+      <div class="opt"><div class="t">Duration price change</div><div class="d">&Delta;P/P = &minus;D &times; [&Delta;y &divide; (1 + y)]; y = current YTM (semiannual: y &divide; 2)</div></div>
+      <div class="opt"><div class="t">Rule of thumb</div><div class="d">%&Delta;P &asymp; &minus;D &times; &Delta;y (duration 6, +1% &rarr; about &minus;6%)</div></div>
+      <div class="opt"><div class="t">Bond price inputs</div><div class="d">N = years &times; 2, PMT = coupon &divide; 2, I/YR = market yield, FV = par</div></div>
+      <div class="opt"><div class="t">Sustainable growth</div><div class="d">g = ROE &times; (1 &minus; payout)</div></div>
+      <div class="opt"><div class="t">Gordon model</div><div class="d">V = D<sub>0</sub>(1 + g) &divide; (r &minus; g); g must be &lt; r</div></div>
+      <div class="opt"><div class="t">No-growth / preferred</div><div class="d">V = D &divide; r</div></div>
+      <div class="opt"><div class="t">PEG</div><div class="d">P/E &divide; g (whole number); under 1.00 = value</div></div>
+      <div class="opt"><div class="t">P/FCF</div><div class="d">(1 + g) &divide; (r &minus; g)</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">✅</span>Must know</h3>
+    <ul>
+      <li>Duration falls as coupon or market yield rises and grows with maturity; a zero's duration equals its maturity</li>
+      <li>Match a bond's duration, not its maturity, to the client's time horizon</li>
+      <li>Positive convexity: duration understates gains and overstates losses; callable and mortgage-backed bonds show negative convexity</li>
+      <li>Premium bond: CY > YTM > YTC; discount bond: CY < YTM < YTC</li>
+      <li>Leverage raises ROE and EPS but adds fixed interest that hurts in a contraction; low ROA vs. ROE signals leverage</li>
+      <li>Constant growth fits mature firms; multistage fits growth-phase firms; FCFE fits non-dividend payers</li>
+      <li>Intrinsic value above price = undervalued; relative methods need a peer or industry benchmark</li>
+    </ul>
+    <figure><svg class="fp5-svg" viewBox="0 0 520 300" role="img" aria-label="Price-yield curve of a 20-year 6% bond: the curve bows above the straight duration line"><line x1="48" y1="262" x2="500" y2="262" stroke="currentColor"/><line x1="48" y1="20" x2="48" y2="262" stroke="currentColor"/><text x="274.0" y="292" text-anchor="middle" font-size="12" fill="currentColor">Market yield (2% → 12%)</text><text x="14" y="141.0" text-anchor="middle" font-size="12" fill="currentColor" transform="rotate(-90 14 141.0)">Bond price</text><polyline fill="none" stroke="#2563eb" stroke-width="3" points="48.0,69.2 57.0,75.6 66.1,81.7 75.1,87.6 84.2,93.3 93.2,98.8 102.2,104.1 111.3,109.3 120.3,114.2 129.4,119.0 138.4,123.7 147.4,128.1 156.5,132.5 165.5,136.7 174.6,140.7 183.6,144.6 192.6,148.4 201.7,152.1 210.7,155.6 219.8,159.0 228.8,162.4 237.8,165.6 246.9,168.7 255.9,171.7 265.0,174.6 274.0,177.4 283.0,180.2 292.1,182.8 301.1,185.4 310.2,187.9 319.2,190.3 328.2,192.6 337.3,194.9 346.3,197.1 355.4,199.3 364.4,201.3 373.4,203.4 382.5,205.3 391.5,207.2 400.6,209.0 409.6,210.8 418.6,212.6 427.7,214.3 436.7,215.9 445.8,217.5 454.8,219.0 463.8,220.5 472.9,222.0 481.9,223.4 491.0,224.8 500.0,226.2"/><polyline fill="none" stroke="#e11d48" stroke-width="2" stroke-dasharray="6 5" points="93.2,113.4 364.4,211.3"/><circle cx="228.8" cy="162.4" r="5" fill="currentColor"/><text x="342" y="177" font-size="12" fill="#2563eb">actual price (convex)</text><text x="98" y="46" font-size="12" fill="#e11d48">duration estimate (straight line)</text><text x="238" y="152" font-size="12" fill="currentColor">par at 6%</text></svg></figure>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">⚠️</span>Traps &amp; tips</h3>
+    <div class="callout trap"><span class="lab">Trap</span>Using the coupon rate as y in the duration formula</div>
+    <div class="callout trap"><span class="lab">Trap</span>Plugging D<sub>0</sub> into the Gordon model without growing it to D<sub>1</sub></div>
+    <div class="callout trap"><span class="lab">Trap</span>Multiplying ROE by the payout ratio instead of the retention rate</div>
+    <div class="callout trap"><span class="lab">Trap</span>Treating technical analysis as useful under any form of the EMH</div>
+    <div class="callout trap"><span class="lab">Trap</span>Picking the lowest P/E without adjusting for growth (use PEG)</div>
+    <div class="callout tip"><span class="lab">Exam tip</span>Predict premium or discount before pricing a bond; it catches calculator entry errors</div>
+    <div class="callout tip"><span class="lab">Exam tip</span>If a YTM is given in a duration question, use the (1 + y) version of the formula</div>
+    <div class="callout tip"><span class="lab">Exam tip</span>In multistage problems, add the terminal value to the last high-growth year's cash flow before taking the NPV</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧾</span>Worked example — Is Kestrel worth $54 to Selma?</h3>
+    <p>Kestrel just paid a $2.40 dividend, expected to grow 4% a year. Selma requires 9%.</p><ol><li>D<sub>1</sub> = 2.40 &times; 1.04 = $2.496</li><li>V = 2.496 &divide; (0.09 &minus; 0.04) = <b>$49.92</b></li><li>Price $54 &gt; value $49.92 &rarr; <b>overvalued</b> for Selma; don't buy at $54.</li></ol><p>Sensitivity: if her required return fell to 8%, V = 2.496 &divide; 0.04 = $62.40 &mdash; small changes in r &minus; g swing the answer a lot.</p>
+  </div>
+
+  <!-- ============ MODULE 5 ============ -->
+  <div class="sect"><div class="n">5</div><div><div class="lo">Module 5</div><h2>Alternative Investments &amp; Derivatives</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🎲</span>Key numbers &amp; formulas</h3>
+    <div class="triad kn">
+      <div class="opt"><div class="t">Value = NOI &divide; cap rate</div><div class="d">NOI excludes depreciation and debt service</div></div>
+      <div class="opt"><div class="t">REIT tests: 90% / 75%</div><div class="d">Distribute &ge;90% of net earnings; &ge;75% of gross income from real estate (2026 edition figures)</div></div>
+      <div class="opt"><div class="t">1 option = 100 shares</div><div class="d">Multiply per-share premiums and payoffs by 100</div></div>
+      <div class="opt"><div class="t">Call BE = strike + premium; put BE = strike &minus; premium</div><div class="d">Applies to buyer and writer alike</div></div>
+      <div class="opt"><div class="t">Futures initial margin ~5&ndash;10%</div><div class="d">Margin call restores the initial level</div></div>
+      <div class="opt"><div class="t">Futures tax 60% LT / 40% ST</div><div class="d">Regardless of holding period (2026 edition figure)</div></div>
+      <div class="opt"><div class="t">Collectibles max LTCG 28%</div><div class="d">Higher than securities (2026 edition figure)</div></div>
+      <div class="opt"><div class="t">Gold allocation 5&ndash;10%</div><div class="d">Possible advisor cap in a diversified portfolio</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">✅</span>Must know</h3>
+    <ul>
+      <li>Max gain/loss for all four option positions: only the long call (gain) and naked short call (loss) are unlimited</li>
+      <li>Intrinsic value: call = stock &minus; strike, put = strike &minus; stock, never below zero; time value = premium &minus; intrinsic</li>
+      <li>Black-Scholes: every input raises call value except the exercise price</li>
+      <li>Short hedge = own the asset, sell futures; long hedge = need the asset, buy futures</li>
+      <li>REIT income is portfolio income; RELPs fall under passive activity rules</li>
+      <li>A U.S. owner of foreign securities wants the dollar to fall during the holding period; ADRs keep currency risk</li>
+    </ul>
+    <figure><svg class="fp5-svg" viewBox="0 0 250 188" style="max-width:260px" role="img" aria-label="Long call payoff at expiration"><text x="125.0" y="14" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">Long call</text><line x1="30" y1="81.0" x2="240" y2="81.0" stroke="currentColor" stroke-opacity=".5"/><line x1="135.0" y1="22" x2="135.0" y2="140" stroke="currentColor" stroke-dasharray="3 4" stroke-opacity=".5"/><polyline fill="none" stroke="#16a34a" stroke-width="3" points="30.0,86.9 33.5,86.9 37.0,86.9 40.5,86.9 44.0,86.9 47.5,86.9 51.0,86.9 54.5,86.9 58.0,86.9 61.5,86.9 65.0,86.9 68.5,86.9 72.0,86.9 75.5,86.9 79.0,86.9 82.5,86.9 86.0,86.9 89.5,86.9 93.0,86.9 96.5,86.9 100.0,86.9 103.5,86.9 107.0,86.9 110.5,86.9 114.0,86.9 117.5,86.9 121.0,86.9 124.5,86.9 128.0,86.9 131.5,86.9 135.0,86.9 138.5,85.4 142.0,84.0 145.5,82.5 149.0,81.0 152.5,79.5 156.0,78.0 159.5,76.6 163.0,75.1 166.5,73.6 170.0,72.2 173.5,70.7 177.0,69.2 180.5,67.7 184.0,66.2 187.5,64.8 191.0,63.3 194.5,61.8 198.0,60.3 201.5,58.9 205.0,57.4 208.5,55.9 212.0,54.5 215.5,53.0 219.0,51.5 222.5,50.0 226.0,48.5 229.5,47.1 233.0,45.6 236.5,44.1 240.0,42.7"/><text x="138.0" y="152" font-size="10" fill="currentColor">K = 50</text><text x="30" y="172" font-size="10.5" fill="currentColor">BE 54 · max loss 4 · gain unlimited</text></svg><svg class="fp5-svg" viewBox="0 0 250 188" style="max-width:260px" role="img" aria-label="Short call payoff at expiration"><text x="125.0" y="14" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">Short call</text><line x1="30" y1="81.0" x2="240" y2="81.0" stroke="currentColor" stroke-opacity=".5"/><line x1="135.0" y1="22" x2="135.0" y2="140" stroke="currentColor" stroke-dasharray="3 4" stroke-opacity=".5"/><polyline fill="none" stroke="#dc2626" stroke-width="3" points="30.0,75.1 33.5,75.1 37.0,75.1 40.5,75.1 44.0,75.1 47.5,75.1 51.0,75.1 54.5,75.1 58.0,75.1 61.5,75.1 65.0,75.1 68.5,75.1 72.0,75.1 75.5,75.1 79.0,75.1 82.5,75.1 86.0,75.1 89.5,75.1 93.0,75.1 96.5,75.1 100.0,75.1 103.5,75.1 107.0,75.1 110.5,75.1 114.0,75.1 117.5,75.1 121.0,75.1 124.5,75.1 128.0,75.1 131.5,75.1 135.0,75.1 138.5,76.6 142.0,78.0 145.5,79.5 149.0,81.0 152.5,82.5 156.0,84.0 159.5,85.4 163.0,86.9 166.5,88.4 170.0,89.8 173.5,91.3 177.0,92.8 180.5,94.3 184.0,95.8 187.5,97.2 191.0,98.7 194.5,100.2 198.0,101.7 201.5,103.1 205.0,104.6 208.5,106.1 212.0,107.5 215.5,109.0 219.0,110.5 222.5,112.0 226.0,113.5 229.5,114.9 233.0,116.4 236.5,117.9 240.0,119.3"/><text x="138.0" y="152" font-size="10" fill="currentColor">K = 50</text><text x="30" y="172" font-size="10.5" fill="currentColor">BE 54 · max gain 4 · loss unlimited</text></svg><svg class="fp5-svg" viewBox="0 0 250 188" style="max-width:260px" role="img" aria-label="Long put payoff at expiration"><text x="125.0" y="14" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">Long put</text><line x1="30" y1="81.0" x2="240" y2="81.0" stroke="currentColor" stroke-opacity=".5"/><line x1="135.0" y1="22" x2="135.0" y2="140" stroke="currentColor" stroke-dasharray="3 4" stroke-opacity=".5"/><polyline fill="none" stroke="#16a34a" stroke-width="3" points="30.0,41.2 33.5,42.7 37.0,44.1 40.5,45.6 44.0,47.1 47.5,48.5 51.0,50.0 54.5,51.5 58.0,53.0 61.5,54.5 65.0,55.9 68.5,57.4 72.0,58.9 75.5,60.3 79.0,61.8 82.5,63.3 86.0,64.8 89.5,66.2 93.0,67.7 96.5,69.2 100.0,70.7 103.5,72.2 107.0,73.6 110.5,75.1 114.0,76.6 117.5,78.0 121.0,79.5 124.5,81.0 128.0,82.5 131.5,84.0 135.0,85.4 138.5,85.4 142.0,85.4 145.5,85.4 149.0,85.4 152.5,85.4 156.0,85.4 159.5,85.4 163.0,85.4 166.5,85.4 170.0,85.4 173.5,85.4 177.0,85.4 180.5,85.4 184.0,85.4 187.5,85.4 191.0,85.4 194.5,85.4 198.0,85.4 201.5,85.4 205.0,85.4 208.5,85.4 212.0,85.4 215.5,85.4 219.0,85.4 222.5,85.4 226.0,85.4 229.5,85.4 233.0,85.4 236.5,85.4 240.0,85.4"/><text x="138.0" y="152" font-size="10" fill="currentColor">K = 50</text><text x="30" y="172" font-size="10.5" fill="currentColor">BE 47 · max loss 3 · max gain 47</text></svg><svg class="fp5-svg" viewBox="0 0 250 188" style="max-width:260px" role="img" aria-label="Short put payoff at expiration"><text x="125.0" y="14" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">Short put</text><line x1="30" y1="81.0" x2="240" y2="81.0" stroke="currentColor" stroke-opacity=".5"/><line x1="135.0" y1="22" x2="135.0" y2="140" stroke="currentColor" stroke-dasharray="3 4" stroke-opacity=".5"/><polyline fill="none" stroke="#dc2626" stroke-width="3" points="30.0,120.8 33.5,119.3 37.0,117.9 40.5,116.4 44.0,114.9 47.5,113.5 51.0,112.0 54.5,110.5 58.0,109.0 61.5,107.5 65.0,106.1 68.5,104.6 72.0,103.1 75.5,101.7 79.0,100.2 82.5,98.7 86.0,97.2 89.5,95.8 93.0,94.3 96.5,92.8 100.0,91.3 103.5,89.8 107.0,88.4 110.5,86.9 114.0,85.4 117.5,84.0 121.0,82.5 124.5,81.0 128.0,79.5 131.5,78.0 135.0,76.6 138.5,76.6 142.0,76.6 145.5,76.6 149.0,76.6 152.5,76.6 156.0,76.6 159.5,76.6 163.0,76.6 166.5,76.6 170.0,76.6 173.5,76.6 177.0,76.6 180.5,76.6 184.0,76.6 187.5,76.6 191.0,76.6 194.5,76.6 198.0,76.6 201.5,76.6 205.0,76.6 208.5,76.6 212.0,76.6 215.5,76.6 219.0,76.6 222.5,76.6 226.0,76.6 229.5,76.6 233.0,76.6 236.5,76.6 240.0,76.6"/><text x="138.0" y="152" font-size="10" fill="currentColor">K = 50</text><text x="30" y="172" font-size="10.5" fill="currentColor">BE 47 · max gain 3 · max loss 47</text></svg><svg class="fp5-svg" viewBox="0 0 250 188" style="max-width:260px" role="img" aria-label="Covered call (stock bought at 50) payoff at expiration"><text x="125.0" y="14" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">Covered call (stock bought at 50)</text><line x1="30" y1="81.0" x2="240" y2="81.0" stroke="currentColor" stroke-opacity=".5"/><line x1="135.0" y1="22" x2="135.0" y2="140" stroke="currentColor" stroke-dasharray="3 4" stroke-opacity=".5"/><polyline fill="none" stroke="#7c3aed" stroke-width="3" points="30.0,119.3 33.5,117.9 37.0,116.4 40.5,114.9 44.0,113.5 47.5,112.0 51.0,110.5 54.5,109.0 58.0,107.5 61.5,106.1 65.0,104.6 68.5,103.1 72.0,101.7 75.5,100.2 79.0,98.7 82.5,97.2 86.0,95.8 89.5,94.3 93.0,92.8 96.5,91.3 100.0,89.8 103.5,88.4 107.0,86.9 110.5,85.4 114.0,84.0 117.5,82.5 121.0,81.0 124.5,79.5 128.0,78.0 131.5,76.6 135.0,75.1 138.5,75.1 142.0,75.1 145.5,75.1 149.0,75.1 152.5,75.1 156.0,75.1 159.5,75.1 163.0,75.1 166.5,75.1 170.0,75.1 173.5,75.1 177.0,75.1 180.5,75.1 184.0,75.1 187.5,75.1 191.0,75.1 194.5,75.1 198.0,75.1 201.5,75.1 205.0,75.1 208.5,75.1 212.0,75.1 215.5,75.1 219.0,75.1 222.5,75.1 226.0,75.1 229.5,75.1 233.0,75.1 236.5,75.1 240.0,75.1"/><text x="138.0" y="152" font-size="10" fill="currentColor">K = 50</text><text x="30" y="172" font-size="10.5" fill="currentColor">BE 46 · capped at +4 above 50</text></svg><svg class="fp5-svg" viewBox="0 0 250 188" style="max-width:260px" role="img" aria-label="Protective put (stock bought at 50) payoff at expiration"><text x="125.0" y="14" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">Protective put (stock bought at 50)</text><line x1="30" y1="81.0" x2="240" y2="81.0" stroke="currentColor" stroke-opacity=".5"/><line x1="135.0" y1="22" x2="135.0" y2="140" stroke="currentColor" stroke-dasharray="3 4" stroke-opacity=".5"/><polyline fill="none" stroke="#0891b2" stroke-width="3" points="30.0,85.4 33.5,85.4 37.0,85.4 40.5,85.4 44.0,85.4 47.5,85.4 51.0,85.4 54.5,85.4 58.0,85.4 61.5,85.4 65.0,85.4 68.5,85.4 72.0,85.4 75.5,85.4 79.0,85.4 82.5,85.4 86.0,85.4 89.5,85.4 93.0,85.4 96.5,85.4 100.0,85.4 103.5,85.4 107.0,85.4 110.5,85.4 114.0,85.4 117.5,85.4 121.0,85.4 124.5,85.4 128.0,85.4 131.5,85.4 135.0,85.4 138.5,84.0 142.0,82.5 145.5,81.0 149.0,79.5 152.5,78.0 156.0,76.6 159.5,75.1 163.0,73.6 166.5,72.2 170.0,70.7 173.5,69.2 177.0,67.7 180.5,66.2 184.0,64.8 187.5,63.3 191.0,61.8 194.5,60.3 198.0,58.9 201.5,57.4 205.0,55.9 208.5,54.5 212.0,53.0 215.5,51.5 219.0,50.0 222.5,48.5 226.0,47.1 229.5,45.6 233.0,44.1 236.5,42.7 240.0,41.2"/><text x="138.0" y="152" font-size="10" fill="currentColor">K = 50</text><text x="30" y="172" font-size="10.5" fill="currentColor">BE 53 · floor −3 · upside open</text></svg></figure>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">⚠️</span>Traps &amp; tips</h3>
+    <div class="callout trap"><span class="lab">Trap</span>Subtracting mortgage interest or depreciation when computing NOI</div>
+    <div class="callout trap"><span class="lab">Trap</span>Calling a long put's gain unlimited (it is strike &minus; premium)</div>
+    <div class="callout trap"><span class="lab">Trap</span>Restoring a futures account only to maintenance margin</div>
+    <div class="callout trap"><span class="lab">Trap</span>Hedging a short sale with puts instead of calls</div>
+    <div class="callout trap"><span class="lab">Trap</span>Choosing a global fund to diversify away from U.S. holdings</div>
+    <div class="callout tip"><span class="lab">Exam tip</span>Write the four-position payoff table from memory before any option question</div>
+    <div class="callout tip"><span class="lab">Exam tip</span>For currency questions, first restate the quote as foreign units per $1, then divide to get dollars</div>
+    <div class="callout tip"><span class="lab">Exam tip</span>Hedges always take the position opposite the cash exposure</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧾</span>Worked example — Collar on a concentrated position</h3>
+    <p>Rina owns 1,000 shares bought at $20, now $60. She buys 10 puts with a $55 strike at $2.40 and writes 10 calls with a $70 strike at $2.40.</p><ul><li>Net premium: $2,400 received &minus; $2,400 paid = <b>$0</b> (zero-cost collar)</li><li>Floor: if the stock falls to $40, she can sell at $55 &rarr; value protected at $55,000</li><li>Ceiling: above $70 the shares are called away at $70 &rarr; value capped at $70,000</li><li>Range kept until expiration: $55,000 to $70,000, versus $60,000 today</li></ul>
+  </div>
+
+  <!-- ============ MODULE 6 ============ -->
+  <div class="sect"><div class="n">6</div><div><div class="lo">Module 6</div><h2>Investment Risk &amp; Quantitative Concepts</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">📊</span>Key numbers &amp; formulas</h3>
+    <div class="triad kn">
+      <div class="opt"><div class="t">68 / 95 / 99%</div><div class="d">Share of returns within &plusmn;1, 2, 3 SD (textbook uses 99%, not 99.7%)</div></div>
+      <div class="opt"><div class="t">R&sup2; &ge; 0.70</div><div class="d">Beta reliable; Treynor/Jensen OK (Morningstar). &rho; &asymp; &plusmn;0.84</div></div>
+      <div class="opt"><div class="t">10&ndash;15</div><div class="d">Large-cap stocks in different industries to diversify (exam rule)</div></div>
+      <div class="opt"><div class="t">25&ndash;30 / 4&ndash;7</div><div class="d">Small/mid-cap stocks / mutual funds in different asset classes</div></div>
+      <div class="opt"><div class="t">n &minus; 1</div><div class="d">Sample SD divisor for historical returns (calculator S<sub>x</sub>)</div></div>
+      <div class="opt"><div class="t">&beta; = 1.0</div><div class="d">Market; &lt;1 defensive, &gt;1 aggressive, 0 = no correlation (T-bills)</div></div>
+      <div class="opt"><div class="t">&rho; = +1</div><div class="d">Only case where portfolio SD = weighted-average SD</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">✅</span>Must know</h3>
+    <ul>
+      <li>Total risk (SD) = systematic (beta) + unsystematic; PRIME = purchasing power, reinvestment rate, interest rate, market, exchange rate</li>
+      <li>&beta; = COV<sub>im</sub> &divide; &sigma;<sub>m</sub><sup>2</sup> = &rho;<sub>im</sub>&sigma;<sub>i</sub> &divide; &sigma;<sub>m</sub>; portfolio beta = dollar-weighted average</li>
+      <li>CV = &sigma; &divide; mean; lower is better</li>
+      <li>COV = &rho;&sigma;<sub>i</sub>&sigma;<sub>j</sub>; &rho; = COV &divide; (&sigma;<sub>i</sub>&sigma;<sub>j</sub>); R<sup>2</sup> = &rho;<sup>2</sup>; 1 &minus; R<sup>2</sup> = unsystematic share</li>
+      <li>&sigma;<sub>p</sub> = &radic;[W<sub>i</sub><sup>2</sup>&sigma;<sub>i</sub><sup>2</sup> + W<sub>j</sub><sup>2</sup>&sigma;<sub>j</sub><sup>2</sup> + 2W<sub>i</sub>W<sub>j</sub>COV<sub>ij</sub>]</li>
+      <li>Normal distribution for annual returns; lognormal for ending portfolio value</li>
+    </ul>
+
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">⚠️</span>Traps &amp; tips</h3>
+    <div class="callout trap"><span class="lab">Trap</span>Low beta &ne; low volatility &mdash; low correlation shrinks beta (gold funds)</div>
+    <div class="callout trap"><span class="lab">Trap</span>Liquidity and marketability risk are unsystematic; common stock has no default risk</div>
+    <div class="callout trap"><span class="lab">Trap</span>Don't weight-average SDs unless &rho; = +1; don't stop at the variance</div>
+    <div class="callout trap"><span class="lab">Trap</span>Only one tail: 95% within &plusmn;2 SD leaves 2.5% above and 2.5% below</div>
+    <div class="callout trap"><span class="lab">Trap</span>CV questions pad the facts &mdash; ignore beta and R<sup>2</sup></div>
+    <div class="callout tip"><span class="lab">Exam tip</span>Check R<sup>2</sup> first: it tells you whether to trust beta (Treynor/Jensen) or use SD (Sharpe)</div>
+    <div class="callout tip"><span class="lab">Exam tip</span>Correlation pyramid: covariance (unbounded) &rarr; correlation (&minus;1 to +1) &rarr; R<sup>2</sup> (square it)</div>
+    <div class="callout tip"><span class="lab">Exam tip</span>Zero-coupon bonds eliminate reinvestment rate risk; Yankee bonds reduce exchange rate risk</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧾</span>Worked example — Is the new fund a real diversifier?</h3>
+    <p>Rosa holds an S&amp;P 500 index fund. A candidate fund has &sigma; = 20, the market &sigma; = 16, and their covariance is 224.</p><ol><li>&rho; = 224 &divide; (20 &times; 16) = 0.70</li><li>R<sup>2</sup> = 0.70<sup>2</sup> = 0.49 &rarr; under 0.70, so it is not just an index look-alike, and beta (224 &divide; 256 = 0.875) is not reliable</li><li>Judge it with standard deviation and Sharpe, and check portfolio SD: at 50/50 with this correlation, &radic;[0.25(400) + 0.25(256) + 2(0.25)(224)] = &radic;276 &asymp; 16.61, below the 18.00 weighted-average SD.</li></ol>
+  </div>
+
+  <!-- ============ MODULE 7 ============ -->
+  <div class="sect"><div class="n">7</div><div><div class="lo">Module 7</div><h2>Measures of Investment Returns</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">💹</span>Key numbers &amp; formulas</h3>
+    <div class="triad kn">
+      <div class="opt"><div class="t">R&sup2; &ge; 0.70</div><div class="d">Beta is reliable &rarr; Treynor and Jensen usable; below it, use Sharpe</div></div>
+      <div class="opt"><div class="t">IR &ge; 0.50</div><div class="d">Often a top-quartile active manager</div></div>
+      <div class="opt"><div class="t">2 P/Yr, END</div><div class="d">Bond default: PMT = coupon &times; $1,000 &divide; 2, N = years &times; 2, zeros included</div></div>
+      <div class="opt"><div class="t">$1,000</div><div class="d">Default face value (FV, positive); price is a negative PV</div></div>
+      <div class="opt"><div class="t">30 days</div><div class="d">SEC yield measurement window, net of expenses (2026 edition figure)</div></div>
+      <div class="opt"><div class="t">&times; 4</div><div class="d">Textbook annualizes a quarterly IRR by multiplying, not compounding</div></div>
+      <div class="opt"><div class="t">&gt; 0.95</div><div class="d">DJIA's correlation with the S&amp;P 500</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">✅</span>Must know</h3>
+    <ul>
+      <li>Real return = (1 + nominal) &divide; (1 + inflation) &minus; 1 &mdash; not subtraction</li>
+      <li>Geometric mean &lt; arithmetic mean unless all returns are equal</li>
+      <li>Time-weighted = the investment/manager; dollar-weighted = the investor's IRR</li>
+      <li>Alpha = actual &minus; CAPM required; Treynor &divide; beta; Sharpe &divide; standard deviation</li>
+      <li>YTC: FV = call price, N = periods to first call</li>
+      <li>TEY = muni yield &divide; (1 &minus; t); in-state itemizer: &divide; (1 &minus; SMTB)(1 &minus; FMTB)</li>
+    </ul>
+
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">⚠️</span>Traps &amp; tips</h3>
+    <div class="callout trap"><span class="lab">Trap</span>Using Treynor/Jensen when R&sup2; is below 0.70</div>
+    <div class="callout trap"><span class="lab">Trap</span>Forgetting to double the semiannual rate (or using N = years)</div>
+    <div class="callout trap"><span class="lab">Trap</span>Multiplying a muni yield by (1 &minus; t) instead of dividing</div>
+    <div class="callout trap"><span class="lab">Trap</span>Benchmarking a multi-asset portfolio against the S&amp;P 500 alone</div>
+    <div class="callout trap"><span class="lab">Trap</span>Treating a multi-year HPR as an annual return</div>
+    <div class="callout tip"><span class="lab">Exam tip</span>Discount bond: coupon &lt; CY &lt; YTM &lt; YTC; premium bond: the reverse</div>
+    <div class="callout tip"><span class="lab">Exam tip</span>In Sharpe/Treynor/IR you can use whole numbers or decimals &mdash; just be consistent</div>
+    <div class="callout tip"><span class="lab">Exam tip</span>Compare Sharpe ratios only within one asset class</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧾</span>Worked example — Did the manager add value?</h3>
+    <p>Portfolio: 11% return, beta 1.2, &sigma; 16%, R&sup2; 0.85. Market 9%, risk-free 3%.</p><ul><li>CAPM required = 3 + 1.2(9 &minus; 3) = 10.2% &rarr; <b>alpha +0.80%</b></li><li>Treynor = (11 &minus; 3) &divide; 1.2 = <b>6.67</b></li><li>Sharpe = (11 &minus; 3) &divide; 16 = <b>0.50</b></li></ul><p>R&sup2; &ge; 0.70, so all three are usable; positive alpha means the manager beat the return required for the risk taken.</p>
+  </div>
+
+  <!-- ============ MODULE 8 ============ -->
+  <div class="sect"><div class="n">8</div><div><div class="lo">Module 8</div><h2>Portfolio Theory &amp; Asset Allocation</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">🧭</span>Key numbers &amp; formulas</h3>
+    <div class="triad kn">
+      <div class="opt"><div class="t">CAPM</div><div class="d">r = r<sub>f</sub> + (r<sub>m</sub> &minus; r<sub>f</sub>)&beta;</div></div>
+      <div class="opt"><div class="t">CML</div><div class="d">r<sub>p</sub> = r<sub>f</sub> + &sigma;<sub>p</sub>(r<sub>m</sub> &minus; r<sub>f</sub>) &divide; &sigma;<sub>m</sub></div></div>
+      <div class="opt"><div class="t">APT</div><div class="d">r = a<sub>0</sub> + b<sub>1</sub>F<sub>1</sub> + &hellip; + b<sub>n</sub>F<sub>n</sub> + e (4 primary factors)</div></div>
+      <div class="opt"><div class="t">Diversification</div><div class="d">10&ndash;15 large caps (some studies 20&ndash;40); ~2&times; as many small/mid caps; 4&ndash;7 asset classes</div></div>
+      <div class="opt"><div class="t">Brinson et al.</div><div class="d">&gt;90% of return variability from asset allocation</div></div>
+      <div class="opt"><div class="t">Liquidity rule of thumb</div><div class="d">Money needed within ~5 years stays out of stocks</div></div>
+      <div class="opt"><div class="t">Growth stocks</div><div class="d">Earnings growth ~15%+/yr, low payout, high P/E, higher beta</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">✅</span>Must know</h3>
+    <ul>
+      <li>Optimal portfolio = tangency of the highest indifference curve with the efficient frontier; steeper curve = more risk averse</li>
+      <li>CML uses standard deviation (efficient portfolios); SML uses beta (any security); above SML = undervalued</li>
+      <li>Weak form: fundamental + inside info can win; semistrong: inside info only; strong: nothing; technical analysis never</li>
+      <li>IPS: return and risk objectives plus liquidity, time horizon, legal, tax, unique circumstances, permitted/excluded investments</li>
+      <li>Strategic = long-term mix + rebalancing; TAA = contrarian market timing; core-and-satellite = strategic core + tactical satellite</li>
+      <li>Crisis: ignore noise, watch incremental change, rewrite the IPS for discontinuous change; usually take no action when a client wants cash</li>
+    </ul>
+    <figure><svg class="fp5-svg" viewBox="0 0 520 300" role="img" aria-label="Efficient frontier with the capital market line tangent at the market portfolio"><line x1="48" y1="262" x2="500" y2="262" stroke="currentColor"/><line x1="48" y1="20" x2="48" y2="262" stroke="currentColor"/><text x="274.0" y="292" text-anchor="middle" font-size="12" fill="currentColor">Risk — standard deviation σ</text><text x="14" y="141.0" text-anchor="middle" font-size="12" fill="currentColor" transform="rotate(-90 14 141.0)">Expected return</text><polyline fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width="2" stroke-dasharray="4 4" points="123.3,201.5"/><polyline fill="none" stroke="#2563eb" stroke-width="3" points="123.3,201.5 123.4,200.1 123.7,198.8 124.1,197.4 124.8,196.1 125.6,194.7 126.5,193.3 127.6,192.0 128.9,190.6 130.3,189.2 131.9,187.9 133.6,186.5 135.4,185.2 137.3,183.8 139.3,182.4 141.5,181.1 143.7,179.7 146.0,178.4 148.4,177.0 150.9,175.6 153.5,174.3 156.1,172.9 158.8,171.6 161.5,170.2 164.3,168.8 167.1,167.5 170.0,166.1 172.9,164.7 175.9,163.4 178.9,162.0 181.9,160.7 185.0,159.3 188.1,157.9 191.2,156.6 194.4,155.2 197.5,153.9 200.7,152.5 204.0,151.1 207.2,149.8 210.5,148.4 213.7,147.1 217.0,145.7 220.3,144.3 223.7,143.0 227.0,141.6 230.4,140.2 233.7,138.9 237.1,137.5 240.5,136.2 243.9,134.8 247.3,133.4 250.7,132.1 254.2,130.7 257.6,129.4 261.1,128.0 264.5,126.6 268.0,125.3 271.4,123.9 274.9,122.5 278.4,121.2 281.9,119.8 285.4,118.5 288.9,117.1 292.4,115.7 295.9,114.4 299.4,113.0 303.0,111.7 306.5,110.3 310.0,108.9 313.6,107.6 317.1,106.2 320.6,104.9 324.2,103.5 327.7,102.1 331.3,100.8 334.9,99.4 338.4,98.0 342.0,96.7 345.6,95.3 349.1,94.0 352.7,92.6 356.3,91.2 359.9,89.9 363.4,88.5 367.0,87.2 370.6,85.8 374.2,84.4 377.8,83.1 381.4,81.7 385.0,80.3 388.6,79.0 392.2,77.6 395.8,76.3 399.4,74.9 403.0,73.5 406.6,72.2 410.2,70.8 413.8,69.5 417.4,68.1 421.1,66.7 424.7,65.4"/><polyline fill="none" stroke="#e11d48" stroke-width="2.5" points="48.0,216.6 469.9,39.5"/><circle cx="207.2" cy="149.8" r="5" fill="#e11d48"/><text x="215.2" y="165.8" font-size="12" fill="#e11d48">M (market portfolio)</text><circle cx="48.0" cy="216.6" r="4" fill="currentColor"/><text x="54.0" y="210.6" font-size="12" fill="currentColor">Rf</text><text x="334.3" y="32.1" font-size="12" fill="#e11d48">CML</text><text x="356.9" y="107.7" font-size="12" fill="#2563eb">efficient frontier</text><text x="145.9" y="228.7" font-size="11" fill="currentColor" fill-opacity=".6">inefficient (below the minimum-variance point)</text></svg></figure>
+    <figure><svg class="fp5-svg" viewBox="0 0 520 300" role="img" aria-label="Security market line: required return rises linearly with beta"><line x1="48" y1="262" x2="500" y2="262" stroke="currentColor"/><line x1="48" y1="20" x2="48" y2="262" stroke="currentColor"/><text x="274.0" y="292" text-anchor="middle" font-size="12" fill="currentColor">Beta β (0 → 2)</text><text x="14" y="141.0" text-anchor="middle" font-size="12" fill="currentColor" transform="rotate(-90 14 141.0)">Required return</text><line x1="48.0" y1="221.7" x2="500.0" y2="33.4" stroke="#7c3aed" stroke-width="3"/><circle cx="274.0" cy="127.6" r="5" fill="#7c3aed"/><text x="282.0" y="143.6" font-size="12" fill="#7c3aed">market: β 1, Rm 10%</text><circle cx="364.4" cy="53.6" r="5" fill="#16a34a"/><text x="214.4" y="47.6" font-size="12" fill="#16a34a">above SML → undervalued (+α)</text><circle cx="206.2" cy="188.1" r="5" fill="#dc2626"/><text x="214.2" y="204.1" font-size="12" fill="#dc2626">below SML → overvalued (−α)</text><text x="54.0" y="215.7" font-size="12" fill="currentColor">Rf 3%</text></svg></figure>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">⚠️</span>Traps &amp; tips</h3>
+    <div class="callout trap"><span class="lab">Trap</span>Stock risk premium is (r<sub>m</sub> &minus; r<sub>f</sub>)&beta;, not r<sub>m</sub>&beta; and not the full required return</div>
+    <div class="callout trap"><span class="lab">Trap</span>Inflation shifts the SML in parallel; changing risk aversion changes its slope</div>
+    <div class="callout trap"><span class="lab">Trap</span>There is no semiweak form of the EMH</div>
+    <div class="callout trap"><span class="lab">Trap</span>Exchange fund (diversify, keep value, defer gains) is not an exchange-traded fund</div>
+    <div class="callout tip"><span class="lab">Exam tip</span>For any CAPM decision, compute the required return first, then compare it with the forecast or the client's hurdle</div>
+    <div class="callout tip"><span class="lab">Exam tip</span>Tie EMH questions to the information set: past prices &rarr; public &rarr; private</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧾</span>Worked example — Should Nora buy this fund? (CAPM decision)</h3>
+    <p>Nora requires 8% from a new equity fund. The fund's beta is 1.1, T-bills yield 3.5%, and the market is expected to return 8.5%.</p><ol><li>Market risk premium = 8.5% &minus; 3.5% = 5.0%</li><li>Stock risk premium = 5.0% &times; 1.1 = 5.5%</li><li>CAPM expected return = 3.5% + 5.5% = 9.0%</li><li>9.0% &ge; 8% required &rarr; acceptable on a risk-adjusted basis</li></ol><p>Check: a beta-0.8 fund would give 3.5% + 5.0% &times; 0.8 = 7.5%, below her 8% requirement &rarr; pass.</p>
+  </div>
+
+  <!-- ============ MODULE 9 ============ -->
+  <div class="sect"><div class="n">9</div><div><div class="lo">Module 9</div><h2>Integrated Case Study</h2></div></div>
+
+  <div class="slide">
+    <h3><span class="ic">👪</span>Key numbers &amp; formulas</h3>
+    <div class="triad kn">
+      <div class="opt"><div class="t">Emergency reserve gap</div><div class="d">6 &times; $13,500 &minus; $62,000 = $19,000</div></div>
+      <div class="opt"><div class="t">KDX CAPM required return</div><div class="d">4% + 6% &times; 1.40 = 12.4% (expected 11.0%)</div></div>
+      <div class="opt"><div class="t">Equity sleeve weighted beta</div><div class="d">$635,104 &divide; $482,060 = 1.32</div></div>
+      <div class="opt"><div class="t">R&sup2; diversifier cutoff</div><div class="d">0.70 (R &asymp; 0.84)</div></div>
+      <div class="opt"><div class="t">Muni TEY, itemizer</div><div class="d">3.6% &divide; (0.95 &times; 0.68) = 5.57%</div></div>
+      <div class="opt"><div class="t">Bond fund if rates +1%</div><div class="d">&minus;6.2 &times; 0.01 &divide; 1.052 = &minus;5.89% &rarr; $56,464</div></div>
+      <div class="opt"><div class="t">Protective put floor</div><div class="d">$320,000 &minus; $10,000 premium = $310,000</div></div>
+      <div class="opt"><div class="t">Euro fund in dollars</div><div class="d">1.09 &times; (1.02 &divide; 1.08) &minus; 1 = 2.94%</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">✅</span>Must know</h3>
+    <ul>
+      <li>Money needed within about 3&ndash;5 years is a liquidity constraint and generally stays out of stocks.</li>
+      <li>Ability to take risk (resources) and willingness (emotions) are different; the risk objective must fit the return requirement.</li>
+      <li>Low R&sup2; (&lt; 0.70) makes beta unreliable: use Sharpe, not Treynor or Jensen.</li>
+      <li>Duration matched to the goal date immunizes; a zero-coupon bond&rsquo;s duration equals its maturity.</li>
+      <li>Tax-inefficient holdings belong in tax-deferred accounts; munis never belong in an IRA or Roth.</li>
+      <li>Exchange fund = diversify a concentrated position without immediate gains tax while keeping the value.</li>
+    </ul>
+
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">⚠️</span>Traps &amp; tips</h3>
+    <div class="callout trap"><span class="lab">Trap</span>Leaving the risk-free rate out of CAPM (8.4% or 14.0% instead of 12.4%).</div>
+    <div class="callout trap"><span class="lab">Trap</span>Applying state tax to T-bill interest, or adding brackets for an itemizer&rsquo;s TEY.</div>
+    <div class="callout trap"><span class="lab">Trap</span>Using the duration rule of thumb when the question asks for the formula with 1 + YTM.</div>
+    <div class="callout trap"><span class="lab">Trap</span>Forgetting that a wash-sale loss is added to the new shares&rsquo; basis.</div>
+    <div class="callout trap"><span class="lab">Trap</span>Calling a market drop a discontinuous change when the client&rsquo;s own situation is unchanged.</div>
+    <div class="callout tip"><span class="lab">Exam tip</span>Read the last line of each question first; it tells you which facts to hunt for.</div>
+    <div class="callout tip"><span class="lab">Exam tip</span>Answer the rule-based questions first and save multi-step calculations for later.</div>
+    <div class="callout tip"><span class="lab">Exam tip</span>Write the client&rsquo;s brackets, risk-free rate and market return in your scratch notes once and reuse them.</div>
+  </div>
+
+  <div class="slide">
+    <h3><span class="ic">🧾</span>Worked example — Calloway case: three linked numbers</h3>
+    <p><b>Reserve:</b> 6 &times; $13,500 = $81,000 target &minus; $62,000 liquid = <b>$19,000 gap</b>.</p><p><b>KDX required return:</b> 4.0% + (10.0% &minus; 4.0%) &times; 1.40 = <b>12.4%</b> &gt; 11.0% expected, so do not add to KDX.</p><p><b>Muni vs. corporate:</b> 3.6% &divide; (0.95 &times; 0.68) = <b>5.57%</b> TEY &gt; 5.2% corporate, so choose the municipal fund for the taxable account.</p>
+  </div>
+
+  <div class="sect"><div class="n">✓</div><div><div class="lo">Check yourself</div><h2>Two questions per module</h2></div></div>
+  <details class="quiz">
+    <summary><span class="qlab">M1 · 1.1.1</span><div>Under which arrangement does the investment banker guarantee the issuer the full proceeds and absorb the loss on any shares it cannot sell?</div><div class="opts">A. Firm commitment underwriting · B. Best efforts underwriting · C. Private placement · D. Green shoe option</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ A — Firm commitment underwriting</div><p>In a firm commitment the underwriter buys the entire issue at a set price and resells it, so any shares left unsold are its loss. Under best efforts the banker only tries to sell as much as possible and the company bears the shortfall.</p></div>
+  </details>
+  <details class="quiz">
+    <summary><span class="qlab">M1 · 1.1.1</span><div>Which of these fictional clients qualifies as an accredited investor under Rule 501 of Regulation D?</div><div class="opts">A. Ivan, net worth of $1.5 million, of which $700,000 is equity in his primary residence · B. Rosa and Tom, joint income of $320,000 in each of the last two years, expecting the same this year · C. Leah, single, income of $185,000 in each of the last two years and expecting a raise · D. A local charity whose total assets are $4 million</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — Rosa and Tom, joint income of $320,000 in each of the last two years, expecting the same this year</div><p>Natural persons qualify with joint income above $300,000 (or above $200,000 alone) in each of the two most recent years plus a reasonable expectation of the same (2026 edition figure), or net worth above $1 million excluding the primary residence. Charities need assets above $5 million.</p></div>
+  </details>
+  <details class="quiz">
+    <summary><span class="qlab">M2 · 2.1.1</span><div>Which of these ratings is the LOWEST that still counts as investment grade?</div><div class="opts">A. BBB&minus; from Standard &amp; Poor's · B. BB+ from Standard &amp; Poor's · C. Ba from Moody's · D. A&minus; from Standard &amp; Poor's</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ A — BBB&minus; from Standard &amp; Poor's</div><p>Investment grade covers the top four categories: BBB&minus; or better at S&amp;P and Baa or better at Moody's. BB+/Ba and below are high-yield (junk).</p></div>
+  </details>
+  <details class="quiz">
+    <summary><span class="qlab">M2 · 2.1.1</span><div>A bond's yield to maturity climbs from 4.10% to 5.35%. How large was the move in basis points?</div><div class="opts">A. 12.5 basis points · B. 125 basis points · C. 1.25 basis points · D. 1,250 basis points</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — 125 basis points</div><p>A basis point is 1/100 of 1%. Change = 5.35% &minus; 4.10% = 1.25 percentage points &times; 100 = 125 basis points.</p></div>
+  </details>
+  <details class="quiz">
+    <summary><span class="qlab">M3 · 3.1.1</span><div>From the issuing corporation's point of view, which statement best describes raising capital with common stock instead of bonds?</div><div class="opts">A. It avoids fixed payments, but dividends are not tax-deductible · B. It avoids fixed payments, and dividends are tax-deductible · C. It requires fixed payments, but dividends are tax-deductible · D. It requires fixed payments, and interest is tax-deductible</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ A — It avoids fixed payments, but dividends are not tax-deductible</div><p>Equity's corporate advantage is that it needs no fixed payments that could drain operating cash. Its corporate disadvantage is that dividends are not deductible, whereas bond interest is. Because stock lacks a fixed return, equity investors demand a higher expected return than bondholders.</p></div>
+  </details>
+  <details class="quiz">
+    <summary><span class="qlab">M3 · 3.1.1</span><div>Rafael, age 61, plans to retire in two years and fears a recession. He wants to add one stock whose results depend least on the business cycle. Which is the best fit?</div><div class="opts">A. A national automaker · B. A regional grocery chain · C. A casual-dining restaurant chain · D. An emerging robotics developer</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — A regional grocery chain</div><p>Defensive stocks, such as grocery chains, sell everyday necessities, so demand holds up in recessions. They grow slowly but steadily and tend to gain favor in downturns, which fits Rafael's concern.</p></div>
+  </details>
+  <details class="quiz">
+    <summary><span class="qlab">M4 · 4.1.1</span><div>A callable bond is trading above par. Which ordering of its yields is correct, from highest to lowest?</div><div class="opts">A. YTC, YTM, current yield · B. YTM, current yield, YTC · C. All three are equal · D. Current yield, YTM, YTC</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ D — Current yield, YTM, YTC</div><p>For a premium bond, current yield is highest; YTM is lower because it accounts for the premium shrinking to par; YTC is lowest because a call forces that loss sooner.</p></div>
+  </details>
+  <details class="quiz">
+    <summary><span class="qlab">M4 · 4.1.1</span><div>Corinne is looking at a 15-year, $1,000 par bond with a 4% coupon paid semiannually. Comparable bonds now yield 5.5%. What is the bond's intrinsic value?</div><div class="opts">A. $1,000.00 · B. $1,152.79 · C. $848.13 · D. $849.44</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — $848.13</div><p>PV of semiannual coupons and par at the market yield. N = 30, I/YR = 5.5 (2 P/YR, so 2.75% per period), PMT = 40 &divide; 2 = 20, FV = 1,000 &rarr; PV = $848.13. Market rate above coupon, so a discount price is expected.</p></div>
+  </details>
+  <details class="quiz">
+    <summary><span class="qlab">M5 · 5.1.1</span><div>Which pair of requirements allows a REIT to avoid federal income tax at the entity level?</div><div class="opts">A. Distribute at least 90% of net annual earnings; derive at least 75% of gross income from real estate · B. Distribute at least 75% of net annual earnings; derive at least 90% of gross income from real estate · C. Distribute all net annual earnings; derive all gross income from rents · D. Distribute at least 90% of net annual earnings; hold only mortgage loans</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ A — Distribute at least 90% of net annual earnings; derive at least 75% of gross income from real estate</div><p>A REIT escapes entity-level federal income tax if it pays out at least 90% of net annual earnings and at least 75% of its gross income comes from real estate (2026 edition figures).</p></div>
+  </details>
+  <details class="quiz">
+    <summary><span class="qlab">M5 · 5.1.1</span><div class="casebox" style="font-size:13px;margin:6px 0"><b>Harbor Point</b> (fictional): 12 units at $1,500/month each; parking income $4,000/yr; vacancy &amp; collection losses 5% of PGI; cash operating expenses $74,000/yr; mortgage interest $38,000/yr; depreciation $20,000/yr.</div><div>What is Harbor Point's annual net operating income (NOI)?</div><div class="opts">A. $77,000 · B. $97,000 · C. $135,000 · D. $146,000</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ C — $135,000</div><p>PGI = 12 &times; $1,500 &times; 12 + $4,000 = $220,000. Vacancy 5% = $11,000 &rarr; EGI $209,000. NOI = $209,000 &minus; $74,000 = <b>$135,000</b>. Interest and depreciation are excluded because NOI measures the property's cash flow.</p></div>
+  </details>
+  <details class="quiz">
+    <summary><span class="qlab">M6 · 6.1.1</span><div>Which statement best distinguishes asset allocation from diversification?</div><div class="opts">A. A portfolio can span several asset classes yet still be concentrated in one or two holdings per class. · B. Asset allocation and diversification are two names for the same portfolio process. · C. Diversification is only achieved once a portfolio holds all four broad asset classes. · D. Holding a dozen stocks in varied industries is asset allocation rather than diversification.</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ A — A portfolio can span several asset classes yet still be concentrated in one or two holdings per class.</div><p>Allocation spreads money among classes (cash, fixed income, equities, real assets); diversification means holding enough loosely correlated securities to remove unsystematic risk. Allocation alone does not guarantee diversification, though a sound allocation usually includes enough securities in each class.</p></div>
+  </details>
+  <details class="quiz">
+    <summary><span class="qlab">M6 · 6.1.1</span><div>Dalia, 34, and her father Ramon, 67, are each considering the same aggressive growth fund whose annual returns swing widely. Why can Dalia hold it more safely?</div><div class="opts">A. Younger investors are not exposed to systematic risk. · B. Her longer horizon allows more time for strong years to offset weak ones. · C. The fund's standard deviation is lower for a younger shareholder. · D. Her portfolio beta automatically falls because of her age.</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — Her longer horizon allows more time for strong years to offset weak ones.</div><p>A longer time horizon is one of the two diversification levers the textbook names (with low correlation). The younger investor has more years for large positive returns to offset several negative ones.</p></div>
+  </details>
+  <details class="quiz">
+    <summary><span class="qlab">M7 · 7.1.1</span><div>Which statement about the arithmetic and geometric mean of a return series is CORRECT?</div><div class="opts">A. They are equal only when every period's return is the same. · B. The geometric mean exceeds the arithmetic mean when returns are volatile. · C. The arithmetic mean assumes each period's return is reinvested. · D. The geometric mean ignores the effect of compounding.</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ A — They are equal only when every period's return is the same.</div><p>The geometric mean is always below the arithmetic mean except when all periodic returns are identical, because only the geometric mean reflects compounding.</p></div>
+  </details>
+  <details class="quiz">
+    <summary><span class="qlab">M7 · 7.1.1</span><div>Dana's investment produced a total return of 45% over six years. What is her simple (noncompounded) annual rate of return?</div><div class="opts">A. 6.39% · B. 7.50% · C. 9.00% · D. 45.00%</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — 7.50%</div><p>Simple rate of return = total return &divide; years held = 45% &divide; 6 = 7.5%. It is annualized but ignores compounding (time value of money).</p></div>
+  </details>
+  <details class="quiz">
+    <summary><span class="qlab">M8 · 8.1.1</span><div>Which of the following is one of Markowitz's assumptions underlying modern portfolio theory?</div><div class="opts">A. Investors base decisions only on expected return and the variability of returns · B. Investors can borrow and lend unlimited sums at the risk-free rate · C. Investors measure portfolio risk with beta instead of standard deviation · D. Investor indifference strengthens the further they look past the holding period</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ A — Investors base decisions only on expected return and the variability of returns</div><p>MPT assumes mean-variance decision making: investors weigh only expected return and risk (standard deviation), prefer more return at a given risk, view each investment as a return distribution over a holding period, and maximize wealth over that period.</p></div>
+  </details>
+  <details class="quiz">
+    <summary><span class="qlab">M8 · 8.1.1</span><div class="casebox" style="font-size:13px;margin:6px 0"><p>An optimizer shows that, for the available asset classes, the efficient frontier offers a maximum expected return of <b>8%</b> at a <b>12%</b> standard deviation. The client's current portfolio: 6.5% expected return, 12% standard deviation. A product pitch claims a portfolio from the same asset classes with 10% expected return at 12% standard deviation.</p></div><div>Based on these facts, which conclusion is correct?</div><div class="opts">A. The current portfolio is efficient because it can actually be built today · B. The current portfolio is inefficient; the proposed one cannot be built · C. The proposed portfolio dominates and should be implemented right away · D. Both portfolios are efficient because they carry the same risk level</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — The current portfolio is inefficient; the proposed one cannot be built</div><p>At 12% standard deviation the best attainable return is 8%. The 6.5% portfolio lies below the frontier (attainable, dominated). The 10% claim lies above the frontier, outside the set of possible portfolios.</p></div>
+  </details>
+  <details class="quiz">
+    <summary><span class="qlab">M9 · 8.4.1</span><div class="casebox" style="font-size:13px;margin:6px 0"><p><b>Calloway case.</b> Graham (53) and Nadia (50) are drafting an IPS. Two items on their list:</p><ul><li>Keep a cash reserve equal to six months of living expenses.</li><li>Have Leah&rsquo;s first-year college money available when she starts college in three years.</li></ul></div><div>In which section of the Calloways' investment policy statement (IPS) should these two needs be recorded?</div><div class="opts">A. Return requirement · B. Liquidity · C. Laws and regulations · D. Permitted and excluded investments</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ B — Liquidity</div><p>Liquidity constraints record money the clients must be able to reach: an emergency reserve and any known outlay within roughly the next three to five years, such as tuition. Many advisors keep money needed inside five years out of the stock market. The return requirement states the target return; laws and regulations mainly concern plans like ERISA trusts; permitted/excluded investments lists the clients&rsquo; preferences.</p></div>
+  </details>
+  <details class="quiz">
+    <summary><span class="qlab">M9 · 8.4.1</span><div class="casebox" style="font-size:13px;margin:6px 0"><p><b>Calloway case.</b> Net worth about $2.05 million; combined salaries $350,000; adequate life and disability coverage; about 12 years to retirement. In a past bear market Graham sold most of his stock funds near the low, and he says a 15% portfolio drop would cost him sleep. The planner calculates that their retirement goal needs a 6.5% annual return.</p></div><div>Which statement best describes the Calloways' risk tolerance for the IPS?</div><div class="opts">A. Low ability and low willingness; the IPS should target capital preservation and leave the 6.5% goal as is · B. High ability and high willingness; their net worth lets the IPS set above-average volatility · C. Low ability but high willingness; the planner should rely on the questionnaire score alone · D. High ability but low willingness; the IPS should record both and reconcile the risk level with the 6.5% requirement</div><div class="tap">▸ Tap to reveal answer</div></summary>
+    <div class="ans"><div class="correct">✓ D — High ability but low willingness; the IPS should record both and reconcile the risk level with the 6.5% requirement</div><p>Ability depends on resources and circumstances (wealth, income, insurance, horizon), and the Calloways&rsquo; is high. Willingness is emotional comfort with swings, and Graham&rsquo;s history shows it is low. The IPS addresses both, and the risk objective must fit the return requirement: if 6.5% needs more risk than they will accept, they must accept more risk, lower the goal, or do some of each.</p></div>
+  </details>
+
+  <div class="foot" style="margin:28px 0 8px;font-size:12px;color:var(--muted);text-align:center">
+    Built from this app's FP513 study content (cheat sheets, worked examples, question bank). Original wording; no textbook text, Kaplan questions or answer keys.
+    Not affiliated with Kaplan / the College for Financial Planning®.
+  </div>
+
+</div>
+
+<button id="tgl" aria-label="Toggle dark mode">🌙 Theme</button>
+<script>
+/* Progress bar */
+var prog=document.getElementById('prog');
+addEventListener('scroll',function(){
+  var h=document.documentElement,b=document.body;
+  var st=h.scrollTop||b.scrollTop, sh=(h.scrollHeight||b.scrollHeight)-h.clientHeight;
+  prog.style.width=(sh>0?(st/sh*100):0)+'%';
+},{passive:true});
+/* Theme — synced with the app via localStorage cfpTheme */
+var root=document.documentElement;
+function applyTheme(t){root.setAttribute('data-theme',t);}
+try{
+  var saved=localStorage.getItem('cfpTheme');
+  if(saved){applyTheme(saved);}
+  else if(matchMedia('(prefers-color-scheme:dark)').matches){applyTheme('dark');}
+}catch(e){}
+document.getElementById('tgl').addEventListener('click',function(){
+  var t=root.getAttribute('data-theme')==='dark'?'light':'dark';
+  applyTheme(t);try{localStorage.setItem('cfpTheme',t);}catch(e){}
+});
+</script>
+
+<!-- deck-chrome-injected --><script src="../deck-chrome.js"></script>
+
+<script src="../responsive-tables.js"></script>
+<!-- study-activity-injected --><script src="../study-activity.js"></script>
+</body>
+</html>
