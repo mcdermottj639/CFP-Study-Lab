@@ -24,6 +24,9 @@ const TTS = `<!-- ${TTS_MARK} --><script src="../reader-tts.js"></script>`;
 // Phone-only vertical table stacking (kills sideways scrolling on iPhone)
 const RTBL_MARK = 'responsive-tables-injected';
 const RTBL = `<!-- ${RTBL_MARK} --><script src="../responsive-tables.js"></script>`;
+// iPhone Duo fold layouts (book: contents | text; seated: contents over text) — runs last
+const DUO_MARK = 'duo-injected';
+const DUO = `<!-- ${DUO_MARK} --><link rel="stylesheet" href="../duo.css"><script src="../duo.js"></script>`;
 
 for (const f of files) {
   let html = readFileSync(f, 'utf8');
@@ -69,6 +72,13 @@ for (const f of files) {
   if (!html.includes(RTBL_MARK)) {
     const idx = html.lastIndexOf('</body>');
     html = idx !== -1 ? html.slice(0, idx) + RTBL + '\n' + html.slice(idx) : html + RTBL;
+    changed = true;
+  }
+
+  // Duo fold layouts (separate marker so it lands on already-themed readers too)
+  if (!html.includes(DUO_MARK)) {
+    const idx = html.lastIndexOf('</body>');
+    html = idx !== -1 ? html.slice(0, idx) + DUO + '\n' + html.slice(idx) : html + DUO;
     changed = true;
   }
 

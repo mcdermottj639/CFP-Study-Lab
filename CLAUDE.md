@@ -25,6 +25,46 @@ the UI — plus two long-form **Interactive Readers** reachable from the Modules
 - The app is **standalone/offline**: no external CDNs, no analytics, no backend.
   Progress is saved per-device in `localStorage` key `cfpStudyHome.v1`.
 
+### iPhone Duo layouts — book, seated, flat (v2.115.0)
+Jack, Nov 17 2026: *"I want this to be duo optimized too. With vertical fold, book half fold. Every way we
+can do it but especially like a book."* Layout only — no content, scoring or data changes. Ported from
+Sports Hub's `duo.js` (v372–v378); detection rules and Safari scrolling rules are the same.
+- **Files:** `duo.js` + `duo.css` (precached). The app loads `duo.css` LAST in `<head>` (after FRESH_UI, via
+  `build_index.mjs`) and `duo.js` after `fp513-course.js`. Readers get both via `inject_reader_theme.mjs`'s
+  `duo-injected` marker (runs after `reader-theme.js` builds the chrome); `fp513-reading.html` inherits it
+  from the FP512 shell in `build_fp513.mjs`.
+- **Detection:** Viewport Segments (`window.viewport.segments`, CSS `env(viewport-segment-*)` fallback) +
+  Device Posture; side-by-side segments → `html[data-duo-pose="book"]` (`--fold-left/--fold-right`),
+  stacked → `"seated"` (`--fold-top/--fold-bottom`), ≥24px gutter; posture `continuous` = flat. Folding fires
+  no resize, so it listens to the media queries, posture, visualViewport, visibility + a 1s poll (only when a
+  fold API exists). **Manual override:** Settings → "Fold layout (iPhone Duo)" (Automatic / Book / Top·bottom /
+  Off) or `?duo=book|seated|off|auto`, stored in `localStorage['cfp:duo-mode']`; a manual Book/Seated with
+  no sensor data splits at the middle. Settings shows a `fold: …` diagnostic line for screenshots.
+- **App, book:** fixed LEFT page `#duoL` (header, tabs, `#fp513Today`, plus Today → `#coachHome`,
+  Analytics → `#coachAnalytics` + `#fp513Analytics`), own scroll; RIGHT page = `.wrap` as a fixed scroller.
+  Nodes move with comment placeholders and go home on every route/pose change (`restoreAll`).
+  **Study/coach spread:** when a live question card exists (`#rev`/`#calcrev`/`#flashctrl` in `#studyArea`,
+  or `#coach .c-card` with `.c-question`) the card is split into `.duo-lp` (question + options) and
+  `.duo-rp` (answer/explanation/why-not/Next, sticky) on either side of the crease. Flashcards: front left,
+  answer cloned to the right page on flip (back nodes wrapped in `span.duo-backtext`).
+- **App, seated:** `#duoTop` above the fold mirrors the live question (MCQ/calc/coach; flashcard face, tap
+  forwards to `#flashface`) or the FP513 compass with Continue/Read/Calc forwarding clicks to the real
+  `[data-fp5=…]` buttons; every route scrolls below the fold in `.wrap`; `#tabs` moves to `<body>` as the
+  fixed bottom bar (`--duo-nav` measured). The mirrored question is hidden below (`body[data-duo-top=q|flash]`).
+- **Readers:** `#duoToc` (title, every tab, this tab's sections, "◀ reading" marker) on the left page (book) or
+  top half (seated); `#rdrWrap` becomes the fixed scroller on the other side; `.tab-nav` hidden. Handles both
+  reader dialects (`.section-panel`/`.collapsible-header` and FP511's `.panel`/`.ch`).
+- **Flat folded/open:** slim one-row header on short screens (`max-height:720px and min-width:420px`);
+  `html.pf-side-status` clears the ~100px status-icon strip for the header and `#studyBar`.
+- **Safari rules kept:** document locked (`html,body{overflow:hidden}`), an inner element scrolls, no
+  `position:fixed` element inside a scroller (the browser test asserts it).
+- **Tests:** `tests/duo.test.cjs` (every `duo.css` selector keyed to a pose/strip/duo element; loading in app,
+  readers, SW). `tests/duo-browser.cjs` (optional; `PLAYWRIGHT_MODULE=… PLAYWRIGHT_CHROMIUM_EXECUTABLE=…`)
+  emulates the fold with CDP `displayFeature` — book 951×676 offset 475, seated 466×677 offset 339, seated
+  1280×900, manual `?duo=book`, and flat 466/960/390 — 26 checks. The pipeline test's version check now
+  compares `sw.js` VERSION with `APP_VERSION` instead of a pinned string.
+- **Not done:** Kaplan/AI slide decks don't load `duo.js` (flat only). Physical iPhone Duo not verified.
+
 ### FP513 Investment Planning (v2.114.0–v2.114.1) — active course
 Jack passed FP512 and started FP513 (Nov 17 2026). Built from his directive "CLAUDE BUILD
 DIRECTIVE — CFP Study Lab FP513". FP513 is `status:"current"`; FP512 is `"done"`.
@@ -1358,7 +1398,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.113.0`) on every shippable change so installed apps auto-update
+  (current: `v2.115.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
