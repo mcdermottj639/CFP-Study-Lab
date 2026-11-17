@@ -8,7 +8,7 @@
  *                 manual Kaplan score log (official results are never imported or implied).
  *   - Study:      two randomized cumulative FP513 practice forms (A/B) with LO diagnostics.
  *   - Coach:      FP513.prioritize() orders guided-session questions: due reviews → missed →
- *                 untested objectives → new material; coach.js adds one FP511/FP512 retention item.
+ *                 untested objectives → new material; older courses are reviewed only in Mixed review (v2.117.0).
  * Evidence comes only from S.attempts / S.coach / S.cards. Nothing here is a pass probability.
  * State: S.fp513 = { init, start, official:[{id,date,kind,score,weak}], forms:[{id,form,pct,n,ts}] }
  */
@@ -141,12 +141,24 @@
     return pool[0] || null;
   }
 
+  // Read-only summary for the slide decks' Duo "Weak areas" page (v2.117.0). Derived from the same
+  // evidence the Analytics panel shows; never read back by the app, never touches S or scoring.
+  function cacheWeak(ev, mods) {
+    try {
+      var m = {}; Object.keys(mods).forEach(function (k) { m[k] = { n: mods[k].n, ok: mods[k].ok }; });
+      var los = LOS.filter(function (l) { var e = ev[l.id]; return e.n >= 2 && e.ok / e.n < 0.7; }).sort(function (a, b) { return ev[a.id].ok / ev[a.id].n - ev[b.id].ok / ev[b.id].n; })
+        .slice(0, 6).map(function (l) { return { id: l.id, mod: l.mod, text: l.text, ok: ev[l.id].ok, n: ev[l.id].n }; });
+      localStorage.setItem('cfp:fp513-weak', JSON.stringify({ ts: Date.now(), mods: m, los: los }));
+    } catch (e) {}
+  }
+
   // ---------- Today card ----------
   function todayCard() {
     var host = $('fp513Today');
     if (!host) { var anchor = $('coachHome'); if (!anchor) return; host = document.createElement('div'); host.id = 'fp513Today'; anchor.insertAdjacentElement('beforebegin', host); }
     var ev = evidence(), cur = currentModule(ev), nx = nextObjective(ev, cur), mods = moduleSummary(ev), dr = dueReviews();
     var tested = LOS.filter(function (l) { return ev[l.id].n; }).length, retained = LOS.filter(function (l) { return ev[l.id].retained; }).length;
+    cacheWeak(ev, mods);
     var passed = S.coursePassed && S.coursePassed[COURSE], due = (S.courseDue && S.courseDue[COURSE]) || DEADLINE, left = daysBetween(localDay(), due);
     var verified = due === DEADLINE;
     var start = startDay(), week = Math.max(1, Math.floor(daysBetween(start, localDay()) / 7) + 1);
@@ -158,7 +170,7 @@
     var loLine = nx ? '<div class="fp5-next"><span class="tag">' + nx.lo.id + '</span> ' + esc(nx.lo.text) + ' <span class="small muted">· ' + nx.why + '</span></div>' : '';
     host.innerHTML = '<div class="card fp5-card">' +
       '<div class="fp5-head"><div style="min-width:0"><div class="small muted">Active course</div><h2 style="margin:2px 0">FP513 · Investment Planning</h2></div>' +
-      '<div class="fp5-days"><b>' + (passed ? '✓' : (left >= 0 ? left : 0)) + '</b><span>' + (passed ? 'passed' : 'days left') + '</span></div></div>' +
+      '<div class="fp5-days" title="Kaplan course access ends ' + due + ' — separate from your CFP exam date"><b>' + (passed ? '✓' : (left >= 0 ? left : 0)) + '</b><span>' + (passed ? 'passed' : 'days of Kaplan access') + '</span></div></div>' +
       '<div class="fp5-mod"><b>Module ' + cur + '</b> — ' + esc(modName(cur)) + '</div>' + loLine +
       '<div class="row" style="flex-wrap:wrap;gap:8px;margin:10px 0 4px">' +
         '<button class="btn" data-fp5="continue">Continue FP513 →</button>' +
@@ -266,7 +278,7 @@
   function css() {
     if ($('fp5css')) return;
     var s = document.createElement('style'); s.id = 'fp5css';
-    s.textContent = '.fp5-card{margin-bottom:12px;border-left:4px solid #8a5cd6}.fp5-head{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}.fp5-days{text-align:center;background:rgba(138,92,214,.1);border-radius:12px;padding:6px 10px;min-width:64px}.fp5-days b{display:block;font-size:22px;line-height:1.1;color:#8a5cd6}.fp5-days span{font-size:11px;color:var(--muted)}.fp5-mod{margin-top:6px}.fp5-next{margin-top:4px;font-size:13px;line-height:1.45}' +
+    s.textContent = '.fp5-card{margin-bottom:12px;border-left:4px solid #8a5cd6}.fp5-head{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}.fp5-days{text-align:center;background:rgba(138,92,214,.1);border-radius:12px;padding:6px 10px;min-width:64px;max-width:108px}.fp5-days span{display:block;line-height:1.25}.fp5-days b{display:block;font-size:22px;line-height:1.1;color:#8a5cd6}.fp5-days span{font-size:11px;color:var(--muted)}.fp5-mod{margin-top:6px}.fp5-next{margin-top:4px;font-size:13px;line-height:1.45}' +
       '.fp5-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:8px}.fp5-stats div{background:rgba(138,92,214,.08);border-radius:10px;padding:8px;min-width:0}.fp5-stats b{display:block;font-size:17px}.fp5-stats span{font-size:11px;color:var(--muted)}' +
       '.fp5-details{margin-top:8px}.fp5-details summary{cursor:pointer;font-weight:700;font-size:13px}.fp5-paces{display:grid;gap:6px;margin:8px 0}.fp5-pace{display:grid;grid-template-columns:62px 1fr auto auto;gap:8px;align-items:center;font-size:13px;padding:6px 8px;border-radius:8px;background:rgba(0,0,0,.03)}.fp5-pace.on{background:rgba(138,92,214,.14);font-weight:600}.fp5-ok{color:var(--good)}' +
       '.fp5-tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}.fp5-table{width:100%;border-collapse:collapse;font-size:12.5px}.fp5-table th,.fp5-table td{padding:5px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.fp5-table th{font-size:11px;color:var(--muted);font-weight:700}' +

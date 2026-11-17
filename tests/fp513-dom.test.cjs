@@ -41,7 +41,7 @@ test('upgrade from v2.113.0 keeps every record; FP512 shows passed; FP513 active
   assert.equal(b.eval('JSON.stringify(mergeState(S,S))===JSON.stringify(S)'), true, 'merge stays idempotent'); b.dom.window.close();
 });
 
-test('Today shows the FP513 card; Continue FP513 starts a session in the current module with a retention item', async () => {
+test('Today shows the FP513 card; Continue FP513 starts an FP513-only session in the current module', async () => {
   const a = await open(LEGACY);
   const card = a.$('#fp513Today'); assert.ok(card, 'FP513 card'); assert.match(card.textContent, /FP513 · Investment Planning/); assert.match(card.textContent, /Module 1/); assert.match(card.textContent, /LO 1\.1\.1/);
   assert.match(card.textContent, /0\/48/); assert.ok(!/NaN|undefined/.test(card.textContent));
@@ -52,8 +52,42 @@ test('Today shows the FP513 card; Continue FP513 starts a session in the current
   const steps = a.eval('S.coach.active.steps.map(s=>s.q?s.q.m+"|"+(s.q.lo||""):s.type)');
   assert.ok(steps.some((s) => /^FP513\|LO 1\./.test(s)), 'module-1 FP513 questions: ' + steps.join(','));
   assert.equal(a.eval('S.coach.active.focus.course'), 'FP513');
-  assert.ok(steps.some((s) => /^FP51[12]\|/.test(s)), 'one FP511/FP512 retention question (legacy save has history)');
+  assert.ok(steps.every((s) => !/^FP51[12]\|/.test(s)), 'no FP511/FP512 questions in an FP513 session (v2.117.0): ' + steps.join(','));
   assert.deepEqual(a.errors, []); a.dom.window.close();
+});
+
+// v2.117.0 regression — Jack: "Continue FP513" resumed an unfinished FP512 session and pulled 39 FP511/FP512 reviews in.
+test('switching FP512 → FP513: unfinished FP512 session is parked, overdue older reviews stay out, Mixed review has them', async () => {
+  const a = await open(LEGACY);
+  // an unfinished FP512 session with one answered question
+  a.eval('CFPCoach.launch(10,null,{course:"FP512",mod:1},true)');
+  assert.equal(a.eval('S.coach.active.focus.course'), 'FP512');
+  const fp512Id = a.eval('S.coach.active.id');
+  a.eval('S.coach.active.index=1;save()');
+  // overdue reviews from FP511 and FP512
+  a.eval('MCQ.filter(q=>q.m==="FP512"||q.m==="FP511").slice(0,39).forEach(function(q){S.coach.reviews[CFPCoachCore.key(q)]={qKey:CFPCoachCore.key(q),course:q.m,due:"2026-01-01",lastDay:"2025-12-31",at:1,step:0,wrong:1,checks:0,retained:false};});save()');
+  a.$('[data-fp5="continue"]').click();
+  const act = a.eval('({c:S.coach.active.focus.course, ms:S.coach.active.steps.filter(x=>x.q).map(x=>x.q.m)})');
+  assert.equal(act.c, 'FP513', 'Continue FP513 opens FP513, not the saved FP512 session');
+  assert.ok(act.ms.length && act.ms.every((m) => m === 'FP513'), 'FP513-only questions: ' + act.ms.join(','));
+  assert.equal(a.eval('S.coach.parked.FP512.id'), fp512Id, 'FP512 session kept'); assert.equal(a.eval('S.coach.parked.FP512.index'), 1, 'its place kept');
+  assert.match(a.$('#coachHome') ? (a.eval('CFPCoach.home(),document.getElementById("coachHome").textContent')) : '', /Saved .*session · step 2/);
+  // pressing Continue FP513 again resumes the same FP513 session
+  const fp513Id = a.eval('S.coach.active.id'); a.$('[data-fp5="continue"]').click(); assert.equal(a.eval('S.coach.active.id'), fp513Id);
+  // survives a reload and a sync merge
+  a.eval('save()'); const saved = a.saved(); a.dom.window.close();
+  const b = await open(saved);
+  assert.equal(b.eval('S.coach.parked.FP512.id'), fp512Id);
+  assert.equal(b.eval('JSON.stringify(mergeState(S,S))===JSON.stringify(S)'), true, 'merge stays idempotent with a parked session');
+  // resuming the saved FP512 session parks FP513 the same way
+  b.eval('CFPCoach.unpark("FP512")'); assert.equal(b.eval('S.coach.active.id'), fp512Id); assert.equal(b.eval('S.coach.parked.FP513.id'), fp513Id);
+  // Mixed review is where FP511/FP512 overdue items go
+  b.eval('CFPCoach.launch(10,"mixed")');
+  assert.equal(b.eval('S.coach.active.kind'), 'mixed');
+  assert.ok(b.eval('S.coach.active.steps.filter(x=>x.q).some(x=>x.q.m!=="FP513")'), 'mixed review includes older courses');
+  assert.ok(b.eval('!!S.coach.parked.FP512 && !!S.coach.parked.FP513'), 'both course sessions still parked');
+  assert.equal(b.eval('S.attempts.length'), 1, 'no progress records added or lost by switching');
+  assert.deepEqual(b.errors, []); b.dom.window.close();
 });
 
 test('FP513 is selectable in Study, all 9 modules filter, Module Hub opens with objectives and calc drills', async () => {

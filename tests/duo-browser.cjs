@@ -1,4 +1,4 @@
-// Optional browser regression for the v2.115.0 iPhone Duo layouts (book, seated, flat).
+// Optional browser regression for the v2.115.0–v2.117.0 iPhone Duo layouts (book, seated, flat).
 //   PLAYWRIGHT_MODULE=/opt/npm-tools/node_modules/playwright \
 //   PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/google-chrome node tests/duo-browser.cjs
 // Chrome emulates the fold with CDP Emulation.setDeviceMetricsOverride displayFeature,
@@ -120,6 +120,77 @@ const PROBE = `(() => {
       assert.ok(r.toc && r.toc.b <= r.foldT + 1 && r.wrap.t >= r.foldB - 1);
     });
   }
+  // ---- v2.117.0: slide decks, context-aware pages, collapsible contents, status strip ----
+  await check('book calc drill: problem + input left, solution page right', async () => {
+    const r = await open('book', 'index.html', quiz.replace("'quiz'", "'calc'")); clean(r);
+    assert.ok(r.spread && r.rp, 'calc card split');
+  });
+  for (const dk of ['fp513-ai', 'fp512-m3-kaplan', 'fp511-ai']) {
+    await check('book ' + dk + ' deck: topics | slides', async () => {
+      const r = await open('book', 'apps/' + dk + '-slides.html'); clean(r);
+      assert.equal(r.pose, 'book'); assert.ok(r.toc && r.toc.r <= r.foldL + 1 && r.wrap.l >= r.foldR - 1 && r.tocSecs > 3);
+    });
+    await check('seated ' + dk + ' deck: topics over slides', async () => {
+      const r = await open('seated', 'apps/' + dk + '-slides.html'); clean(r);
+      assert.ok(r.toc && r.toc.b <= r.foldT + 1 && r.wrap.t >= r.foldB - 1);
+    });
+  }
+  for (const p of ['folded', 'open', 'phone']) {
+    await check(p + ' deck: flat, untouched', async () => { const r = await open(p, 'apps/fp513-ai-slides.html'); clean(r); flat(r); assert.equal(r.toc, null); });
+    await check(p + ': Book button only on the big inner screen (app, reader, deck)', async () => {
+      for (const u of ['index.html', 'apps/fp513-reading.html', 'apps/fp513-ai-slides.html']) {
+        const P = POSES[p], ctx = await browser.newContext({ viewport: { width: P.width, height: P.height }, serviceWorkers: 'block' }), page = await ctx.newPage();
+        await page.goto(base + u); await page.waitForTimeout(800);
+        const vis = await page.evaluate("(() => { const b = document.getElementById('duoBtn'); return !!b && getComputedStyle(b).display !== 'none'; })()");
+        assert.equal(vis, p === 'open', u); await ctx.close();
+      }
+    });
+  }
+  await check('Full page folds the contents away; ☰ Contents brings it back', async () => {
+    const r = await open('book', 'apps/fp513-reading.html', "document.querySelector('#duoToc [data-duo-wide]').click()"); clean(r);
+    assert.ok(!r.toc || r.toc.r - r.toc.l === 0, 'contents hidden'); assert.ok(r.wrap.l <= 1, 'text spans both pages');
+    const r2 = await open('book', 'apps/fp513-ai-slides.html', "document.querySelector('#duoToc [data-duo-wide]').click();document.getElementById('duoTocBtn').click()"); clean(r2);
+    assert.ok(r2.toc && r2.wrap.l >= r2.foldR - 1, 'split view again');
+  });
+  await check('deck topic tap scrolls the right page, highlights it, and is remembered', async () => {
+    const P = POSES.manualBook, ctx = await browser.newContext({ viewport: { width: P.width, height: P.height }, serviceWorkers: 'block' }), page = await ctx.newPage(), errs = [];
+    page.on('pageerror', e => errs.push(String(e)));
+    await page.goto(base + 'apps/fp513-ai-slides.html?duo=book'); await page.waitForTimeout(900);
+    await page.evaluate("document.querySelectorAll('#duoToc [data-duo-sec]')[3].click()"); await page.waitForTimeout(500);
+    const a = await page.evaluate("({ st: document.getElementById('rdrWrap').scrollTop, now: (document.querySelector('#duoToc .now') || {}).textContent || '', sub: document.querySelectorAll('#duoToc .duo-sub [data-duo-sec]').length })");
+    assert.ok(a.st > 500 && /Bond & Stock Valuation/.test(a.now) && a.sub > 0, JSON.stringify(a));
+    await page.reload(); await page.waitForTimeout(1200);
+    const b = await page.evaluate("({ st: document.getElementById('rdrWrap').scrollTop })");
+    assert.ok(Math.abs(b.st - a.st) < 80, 'position restored ' + JSON.stringify([a.st, b.st]));
+    assert.deepEqual(errs, []); await ctx.close();
+  });
+  await check('teach mode marks the narrated section on the left page', async () => {
+    const r = await open('book', 'apps/fp512-m3-kaplan-slides.html', "speechSynthesis.speak = u => setTimeout(() => u.onstart && u.onstart(), 5); document.getElementById('rtTeachFab').click()");
+    assert.deepEqual(r.errs, []);
+    const P = POSES.manualBook, ctx = await browser.newContext({ viewport: { width: P.width, height: P.height }, serviceWorkers: 'block' }), page = await ctx.newPage();
+    await page.goto(base + 'apps/fp512-m3-kaplan-slides.html?duo=book'); await page.waitForTimeout(900);
+    await page.evaluate("speechSynthesis.speak = u => setTimeout(() => u.onstart && u.onstart(), 5); document.getElementById('rtTeachFab').click()"); await page.waitForTimeout(1200);
+    const t = await page.evaluate("({ teach: !!document.querySelector('#duoToc .teach'), top: document.getElementById('duoToc').getBoundingClientRect().top })");
+    assert.ok(t.teach, 'teaching marker'); assert.ok(t.top <= 1, 'contents use the space the hidden top bar left'); await ctx.close();
+  });
+  const side = r => "(() => { window.__duoForce = 1; const h = document.documentElement; h.classList.add('pf-side-status'); h.style.setProperty('--duo-r', '" + r + "px'); })()";
+  for (const [pose, url] of [['book', 'apps/fp513-ai-slides.html'], ['book', 'apps/fp513-reading.html'], ['book', 'index.html'], ['folded', 'apps/fp513-ai-slides.html'], ['open', 'index.html']]) {
+    await check(pose + ' ' + url + ' with the side status strip: bar clear of the icons, no overflow', async () => {
+      const r = await open(pose, url, side(pose === 'folded' ? 97 : 105)); clean(r);
+      const P = POSES[pose], ctx = await browser.newContext({ viewport: { width: P.width, height: P.height }, serviceWorkers: 'block' }), page = await ctx.newPage();
+      await page.goto(base + url + (pose === 'book' ? '?duo=book' : '')); await page.waitForTimeout(900); await page.evaluate(side(pose === 'folded' ? 97 : 105)); await page.waitForTimeout(300);
+      const c = await page.evaluate("(() => { const b = document.getElementById('rdrChrome'); if (!b) return null; const cs = getComputedStyle(b); return { pt: parseFloat(cs.paddingTop), pr: parseFloat(cs.paddingRight), last: Math.max(...[...b.querySelectorAll('button,a')].filter(x => x.offsetParent).map(x => x.getBoundingClientRect().right)) }; })()");
+      if (c) { assert.ok(c.pt <= 6.5, 'no top safe-area band'); assert.ok(c.last <= P.width - (pose === 'folded' ? 97 : 105) + 1, 'controls left of the icons'); }
+      await ctx.close();
+    });
+  }
+  await check('Kaplan access countdown is labelled apart from the CFP exam countdown', async () => {
+    const r = await open('folded', 'index.html'); clean(r);
+    const P = POSES.folded, ctx = await browser.newContext({ viewport: { width: P.width, height: P.height }, serviceWorkers: 'block' }), page = await ctx.newPage();
+    await page.goto(base + 'index.html'); await page.waitForTimeout(1200);
+    const t = await page.evaluate("({ k: document.querySelector('#fp513Today .fp5-days').textContent, h: getComputedStyle(document.getElementById('countDays'), '::after').content })");
+    assert.match(t.k, /Kaplan access/); assert.match(t.h, /CFP exam/); await ctx.close();
+  });
   await check('open screen, no fold sensors: Book button splits the app, tap again for one page', async () => {
     const r = await open('open', 'index.html', "document.getElementById('duoBtn').click()"); clean(r);
     assert.equal(r.pose, 'book'); assert.ok(r.left && r.left.r <= r.foldL + 1);
