@@ -64,6 +64,14 @@ Sports Hub's `duo.js` (v372–v378); detection rules and Safari scrolling rules 
   1280×900, manual `?duo=book`, and flat 466/960/390 — 26 checks. The pipeline test's version check now
   compares `sw.js` VERSION with `APP_VERSION` instead of a pinned string.
 - **Not done:** Kaplan/AI slide decks don't load `duo.js` (flat only). Physical iPhone Duo not verified.
+- **v2.115.1 (same day) — Jack's phone showed no change when folded.** WebKit: Viewport Segments + Device
+  Posture are a developer preview behind Safari feature flags (https://webkit.org/blog/18486/), and Sports Hub
+  v379 already saw Safari report no segment geometry on his phone. So: a visible **📖 Book** button (`#duoBtn`;
+  fixed beside ⋯ in the app, in the reader chrome's left group) shows on the big inner screen
+  (`html.duo-big` = both sides ≥ 600px) and splits at the middle — Book when landscape, top/bottom when
+  portrait; tap again (✕ Single page) = `off`. Manual book/seated and posture-only `folded` (no segments)
+  also split at the middle, but never on the folded outer screen. Header countdown shows "N days" on short
+  screens (the label ran under ⋯), and the FP513 card's days badge clears the status strip.
 
 ### FP513 Investment Planning (v2.114.0–v2.114.1) — active course
 Jack passed FP512 and started FP513 (Nov 17 2026). Built from his directive "CLAUDE BUILD
@@ -1398,7 +1406,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.115.0`) on every shippable change so installed apps auto-update
+  (current: `v2.115.1`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
