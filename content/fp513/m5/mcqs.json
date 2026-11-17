@@ -1,0 +1,816 @@
+[
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Real Estate NOI",
+  "q": "What is Harbor Point's annual net operating income (NOI)?",
+  "o": [
+   "$77,000",
+   "$97,000",
+   "$135,000",
+   "$146,000"
+  ],
+  "a": 2,
+  "e": "PGI = 12 &times; $1,500 &times; 12 + $4,000 = $220,000. Vacancy 5% = $11,000 &rarr; EGI $209,000. NOI = $209,000 &minus; $74,000 = <b>$135,000</b>. Interest and depreciation are excluded because NOI measures the property's cash flow.",
+  "lo": "LO 5.1.1",
+  "pg": 178,
+  "k": "D.35",
+  "kind": "calc",
+  "stem": "<b>Harbor Point</b> (fictional): 12 units at $1,500/month each; parking income $4,000/yr; vacancy &amp; collection losses 5% of PGI; cash operating expenses $74,000/yr; mortgage interest $38,000/yr; depreciation $20,000/yr."
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Cap Rate Valuation",
+  "q": "What is the building's estimated value, and how does the asking price compare?",
+  "o": [
+   "$1,200,000; the asking price is too high",
+   "$768,000; the asking price is too high",
+   "$1,200,000; the asking price is a bargain",
+   "$1,687,500; the asking price is a bargain"
+  ],
+  "a": 0,
+  "e": "NOI = $135,000 &minus; $39,000 = $96,000. Value = NOI &divide; cap rate = $96,000 &divide; 0.08 = <b>$1,200,000</b>. The $1,350,000 asking price exceeds intrinsic value, so a prudent buyer would not pay it.",
+  "lo": "LO 5.1.1",
+  "pg": 179,
+  "k": "D.35",
+  "kind": "calc",
+  "stem": "A small office building has effective gross income of $135,000 and cash operating expenses of $39,000. Comparable sales imply an 8% cap rate. The seller is asking $1,350,000."
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "REIT Taxation",
+  "q": "Which pair of requirements allows a REIT to avoid federal income tax at the entity level?",
+  "o": [
+   "Distribute at least 90% of net annual earnings; derive at least 75% of gross income from real estate",
+   "Distribute at least 75% of net annual earnings; derive at least 90% of gross income from real estate",
+   "Distribute all net annual earnings; derive all gross income from rents",
+   "Distribute at least 90% of net annual earnings; hold only mortgage loans"
+  ],
+  "a": 0,
+  "e": "A REIT escapes entity-level federal income tax if it pays out at least 90% of net annual earnings and at least 75% of its gross income comes from real estate (2026 edition figures).",
+  "lo": "LO 5.1.1",
+  "pg": 182,
+  "k": "D.27",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "RELPs vs. REITs",
+  "q": "Grace, 58, wants real estate exposure in her taxable account. She has $15,000, may need the money on short notice, and wants diversification across property types. Which choice best fits?",
+  "o": [
+   "The Z tranche of a collateralized mortgage obligation",
+   "A diversified, publicly traded equity REIT",
+   "A nonpublicly traded real estate limited partnership",
+   "A parcel of undeveloped land near a growing suburb"
+  ],
+  "a": 1,
+  "e": "Publicly traded REITs let investors buy real estate exposure with modest sums, sell any number of shares on an exchange, and get diversification across properties and locations &mdash; the liquidity and marketability RELPs generally lack.",
+  "lo": "LO 5.1.1",
+  "pg": 181,
+  "k": "D.35",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "RELPs vs. REITs",
+  "q": "Which of the following statements about RELPs and REITs are CORRECT?<br>I. Income a REIT shareholder receives is portfolio (investment) income, not passive income.<br>II. A RELP investor generally must sell the entire partnership interest rather than part of it.<br>III. A REIT is managed by a general partner.<br>IV. Losses from a REIT are restricted by the passive activity rules.",
+  "o": [
+   "I and II only",
+   "II and IV only",
+   "III and IV only",
+   "I and III only"
+  ],
+  "a": 0,
+  "e": "REIT shareholders receive investment income and REIT losses are capital losses not subject to passive activity limits (those limits apply to RELPs). A REIT is governed by a board; a RELP by a general partner, and RELP investors usually must sell the whole interest.",
+  "lo": "LO 5.1.1",
+  "pg": 182,
+  "k": "D.27",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "REMICs & CMOs",
+  "q": "Lena wants to buy a CMO tranche but wants the least exposure to interest rate risk. Which tranche best fits?",
+  "o": [
+   "A middle tranche, because risk is spread evenly",
+   "Tranche Z, because its interest accrues like a zero-coupon bond",
+   "Any tranche, because each gets a pro rata share of principal",
+   "Tranche A, because it receives all principal payments first"
+  ],
+  "a": 3,
+  "e": "In a CMO, all tranches receive interest, but principal goes entirely to Tranche A until it is retired, then to B, and so on. Tranche A has the shortest repayment period and therefore the least interest rate risk; Tranche Z has the most.",
+  "lo": "LO 5.1.1",
+  "pg": 184,
+  "k": "D.35",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Undeveloped Land",
+  "q": "Owen buys raw acreage, planning to sell once a highway extension is built. Which statement about his investment is CORRECT?",
+  "o": [
+   "If the IRS treats him as a dealer, his gain on sale is ordinary income",
+   "Property taxes cannot be deducted until the land is sold",
+   "Appreciation is taxed each year as the land rises in value",
+   "The land produces positive cash flow from depreciation deductions"
+  ],
+  "a": 0,
+  "e": "Undeveloped land is held purely for appreciation and has negative cash flow. Gains are recognized only on a taxable sale, as capital gain &mdash; unless the owner is treated as a real estate dealer, which makes the gain ordinary income. Risks include rezoning, permits, access and growth that never comes.",
+  "lo": "LO 5.1.1",
+  "pg": 178,
+  "k": "D.27",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Intrinsic & Time Value",
+  "q": "Rivet Corp. stock trades at $62. A Rivet $55 call trades for $9.40. What are the call's intrinsic value and time value per share?",
+  "o": [
+   "Intrinsic $7.00; time value $16.40",
+   "Intrinsic $7.00; time value $2.40",
+   "Intrinsic $0; time value $9.40",
+   "Intrinsic $9.40; time value $0"
+  ],
+  "a": 1,
+  "e": "Call intrinsic = max(0, $62 &minus; $55) = <b>$7.00</b>. Time value = premium &minus; intrinsic = $9.40 &minus; $7.00 = <b>$2.40</b>.",
+  "lo": "LO 5.2.1",
+  "pg": 187,
+  "k": "D.35",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Intrinsic & Time Value",
+  "q": "Bexley stock trades at $48. Which option is in the money?",
+  "o": [
+   "A $45 put",
+   "A $48 call",
+   "A $50 call",
+   "A $50 put"
+  ],
+  "a": 3,
+  "e": "A put is in the money when the stock price is below the strike: $50 &minus; $48 = $2 intrinsic value. Calls are in the money only when the stock is above the strike.",
+  "lo": "LO 5.2.1",
+  "pg": 188,
+  "k": "D.35",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Option Payoffs",
+  "q": "Dana writes one uncovered put with a $60 strike and receives a $4 premium. What is her maximum possible loss on the contract?",
+  "o": [
+   "$400",
+   "$5,600",
+   "$6,000",
+   "$6,400"
+  ],
+  "a": 1,
+  "e": "A put writer must buy at the strike. Worst case the stock goes to zero: loss = (strike &minus; premium) &times; 100 = ($60 &minus; $4) &times; 100 = <b>$5,600</b>. Her maximum gain is the $400 premium.",
+  "lo": "LO 5.2.1",
+  "pg": 186,
+  "k": "D.35",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Option Payoffs",
+  "q": "Marcus buys one put on Orrin Co. with a $40 strike for a $2.50 premium. What is his maximum possible gain on the contract?",
+  "o": [
+   "Unlimited",
+   "$250",
+   "$3,750",
+   "$4,000"
+  ],
+  "a": 2,
+  "e": "A long put gains most if the stock falls to zero: (strike &minus; premium) &times; 100 = ($40 &minus; $2.50) &times; 100 = <b>$3,750</b>. Maximum loss is the $250 premium.",
+  "lo": "LO 5.2.1",
+  "pg": 186,
+  "k": "D.35",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Option Pricing Models",
+  "q": "Under the Black-Scholes model, holding everything else constant, which change DECREASES the value of a call option?",
+  "o": [
+   "Higher volatility of the stock's returns",
+   "A higher exercise price",
+   "A higher risk-free rate",
+   "A longer time until expiration"
+  ],
+  "a": 1,
+  "e": "Stock price, time to expiration, volatility and the risk-free rate all move in the same direction as call value. The exercise price is the exception: a higher strike means the stock must rise further before the call has intrinsic value.",
+  "lo": "LO 5.2.1",
+  "pg": 193,
+  "k": "D.35",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Option Pricing Models",
+  "q": "Which statement correctly contrasts the binomial and Black-Scholes option pricing models?",
+  "o": [
+   "Black-Scholes ignores volatility; binomial is driven by volatility",
+   "Black-Scholes values American puts; binomial values only European calls",
+   "Binomial assumes continuous price change; Black-Scholes assumes discrete up-or-down moves",
+   "Binomial assumes discrete up-or-down price moves; Black-Scholes assumes continuous price change"
+  ],
+  "a": 3,
+  "e": "The binomial (two-state) model steps the stock up or down in discrete increments; with many steps it approaches Black-Scholes, which assumes prices change continuously (geometric Brownian motion) and summarizes that through a volatility factor.",
+  "lo": "LO 5.2.1",
+  "pg": 192,
+  "k": "D.35",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Option Taxation",
+  "q": "Hal buys one call with a $50 strike for a $3 premium and later exercises it, buying 100 shares. What is his cost basis in the shares?",
+  "o": [
+   "$300",
+   "$4,700",
+   "$5,000",
+   "$5,300"
+  ],
+  "a": 3,
+  "e": "When a call is exercised, the holder adds the premium to the basis of the stock purchased: ($50 + $3) &times; 100 = <b>$5,300</b>.",
+  "lo": "LO 5.2.1",
+  "pg": 191,
+  "k": "D.27",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Option Taxation",
+  "q": "Priya wrote one call and received a $300 premium. The option expired unexercised. How is the $300 treated for tax?",
+  "o": [
+   "Short-term capital gain on the expiration date",
+   "Ordinary income when the premium is received",
+   "No tax; the premium reduces the basis of her shares",
+   "Long-term capital gain if the call was open over one year"
+  ],
+  "a": 0,
+  "e": "If an option expires, the writer reports the premium as a short-term capital gain on the expiration date, and the holder reports a capital loss on the same date.",
+  "lo": "LO 5.2.1",
+  "pg": 191,
+  "k": "D.27",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Option Basics",
+  "q": "Noor holds an American call with several months left. The call is in the money and she has decided to close the position. What is generally her better choice, and why?",
+  "o": [
+   "Let the call expire, because in-the-money calls lose value if closed early",
+   "Exercise the call, because exercise captures both intrinsic and time value",
+   "Sell the call, because exercising early forfeits its time value",
+   "Exercise the call, because American options cannot be sold before expiration"
+  ],
+  "a": 2,
+  "e": "Early exercise of an American option gives up its remaining time value. Selling it in the secondary market captures both intrinsic and time value &mdash; one reason pricing models are built on European options.",
+  "lo": "LO 5.2.1",
+  "pg": 193,
+  "k": "D.35",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Covered Calls",
+  "q": "Ines owns 300 shares bought at $38. She writes 3 calls with a $45 strike for $1.80 each. At expiration the stock is $52 and the shares are called away. What is her total gain, ignoring costs?",
+  "o": [
+   "$540",
+   "$2,100",
+   "$2,640",
+   "$4,740"
+  ],
+  "a": 2,
+  "e": "Called away at $45: stock gain ($45 &minus; $38) + premium $1.80 = $8.80 per share &times; 300 = <b>$2,640</b>. The covered call writer gives up all appreciation above the strike.",
+  "lo": "LO 5.2.2",
+  "pg": 197,
+  "k": "D.34",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Protective Puts & Collars",
+  "q": "Arjun owns shares now worth $80 and buys a $75 put for $3 to protect them until expiration. What is the most he can lose per share from today's value through expiration?",
+  "o": [
+   "$2",
+   "$3",
+   "$5",
+   "$8"
+  ],
+  "a": 3,
+  "e": "The put lets him sell at $75 no matter how far the stock falls. Maximum loss = ($80 &minus; $75) + $3 premium = <b>$8 per share</b>. Any rise above $80 is still his, less the $3 cost.",
+  "lo": "LO 5.2.2",
+  "pg": 198,
+  "k": "D.34",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Naked Option Writing",
+  "q": "Theo writes one naked call on Calder Co. with an $85 strike for a $2.40 premium. The stock jumps to $97 and the call is exercised. What is Theo's net loss, ignoring costs?",
+  "o": [
+   "$240",
+   "$960",
+   "$1,200",
+   "$1,440"
+  ],
+  "a": 1,
+  "e": "He must buy at $97 to deliver at $85: loss $12 per share, less the $2.40 premium = $9.60 &times; 100 = <b>$960</b>. Because a stock has no price ceiling, naked call losses are theoretically unlimited.",
+  "lo": "LO 5.2.2",
+  "pg": 200,
+  "k": "D.34",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Straddles & Spreads",
+  "q": "Elise buys a $60 call for $3.50 and a $60 put for $2.75 on the same stock, same expiration. At expiration, outside what price range does she profit?",
+  "o": [
+   "Below $53.75 or above $66.25",
+   "Below $56.50 or above $63.50",
+   "Below $57.25 or above $62.75",
+   "Between $53.75 and $66.25"
+  ],
+  "a": 0,
+  "e": "A long straddle profits only if the stock moves by more than the total premiums paid: $3.50 + $2.75 = $6.25. Breakevens are $60 &minus; $6.25 = <b>$53.75</b> and $60 + $6.25 = <b>$66.25</b>.",
+  "lo": "LO 5.2.2",
+  "pg": 200,
+  "k": "D.34",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Covered Calls",
+  "q": "Ruth, a retiree, holds a large blue-chip position that she expects to trade sideways for months. She wants extra income and would accept selling at a modestly higher price. Which strategy fits best?",
+  "o": [
+   "Buy call options on the shares",
+   "Buy protective puts on the shares",
+   "Buy a long straddle on the shares",
+   "Write covered calls against the shares"
+  ],
+  "a": 3,
+  "e": "Covered call writing is a conservative income strategy that works best in a sideways market: she keeps the premium, and the trade-off is giving up gains above the strike if the shares are called away.",
+  "lo": "LO 5.2.2",
+  "pg": 196,
+  "k": "D.34",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Option Hedging Uses",
+  "q": "Felix sold short 500 shares of a stock he expects to fall. He worries about a sudden surge. Which option position best limits his risk?",
+  "o": [
+   "Write puts on the stock",
+   "Write calls on the stock",
+   "Buy calls on the stock",
+   "Buy puts on the stock"
+  ],
+  "a": 2,
+  "e": "A short seller's risk is a price rise, which is theoretically unlimited. Buying calls offsets that: if the stock surges, the calls gain; if it falls, the calls expire and their cost trims the short-sale profit.",
+  "lo": "LO 5.2.2",
+  "pg": 199,
+  "k": "D.34",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Protective Puts & Collars",
+  "q": "Beatrix holds a single stock with a large gain. She wants downside protection without spending cash on premiums and accepts capping her upside. Which strategy fits?",
+  "o": [
+   "Write a put and write a call on the shares",
+   "Buy a put and write a call on the shares",
+   "Write a put and buy a call on the shares",
+   "Buy a put and buy a call on the shares"
+  ],
+  "a": 1,
+  "e": "A zero-cost collar combines the long stock, a purchased put for protection, and a written call whose premium pays for the put. It protects a gain at little or no net cost, in exchange for giving up gains above the call strike.",
+  "lo": "LO 5.2.2",
+  "pg": 201,
+  "k": "D.34",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Covered Calls",
+  "q": "All else equal, which set of conditions lets a call writer collect the LARGEST premium?",
+  "o": [
+   "Stock price above the strike, stable stock, short time to expiration",
+   "Stock price below the strike, stable stock, long time to expiration",
+   "Stock price above the strike, volatile stock, long time to expiration",
+   "Stock price below the strike, volatile stock, short time to expiration"
+  ],
+  "a": 2,
+  "e": "Call premiums grow with (1) how far the stock sits above (or close to) the strike, (2) time remaining until expiration, and (3) the stock's volatility. An in-the-money call on a volatile stock with months to run earns the writer the most.",
+  "lo": "LO 5.2.2",
+  "pg": 196,
+  "k": "D.34",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Protective Puts & Collars",
+  "q": "Walter's portfolio is mostly large-cap U.S. stock funds. He fears a broad market drop over the next few months but does not want to sell. Which hedge is most appropriate?",
+  "o": [
+   "Buy call options on the S&amp;P 500 Index",
+   "Buy puts on one stock in the largest fund",
+   "Write call options on the S&amp;P 500 Index",
+   "Buy put options on the S&amp;P 500 Index"
+  ],
+  "a": 3,
+  "e": "Index puts act as portfolio insurance: losses in a large-cap portfolio are offset by gains on puts written on an index that matches it, such as the S&amp;P 500. A portfolio with several asset classes may need several index options.",
+  "lo": "LO 5.2.2",
+  "pg": 198,
+  "k": "D.34",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Futures Margin",
+  "q": "Corbin buys 2 corn futures contracts of 5,000 bushels each at $6.20 per bushel. The next day the price settles at $5.85. What happens to his account equity when it is marked to market?",
+  "o": [
+   "No change until the contracts are closed",
+   "It falls by $1,750",
+   "It falls by $3,500",
+   "It rises by $3,500"
+  ],
+  "a": 2,
+  "e": "Change = ($5.85 &minus; $6.20) &times; 5,000 &times; 2 = &minus;$0.35 &times; 10,000 = <b>&minus;$3,500</b>. Daily marking to market moves the loss straight into his account equity.",
+  "lo": "LO 5.3.1",
+  "pg": 204,
+  "k": "D.35",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Futures Basics",
+  "q": "An investor is long 2 stock index futures contracts at 4,210. Each contract has a $250 multiplier. At settlement the index is 4,198. What is the investor's result?",
+  "o": [
+   "Gain of $6,000",
+   "Loss of $6,000",
+   "Loss of $24",
+   "Loss of $3,000"
+  ],
+  "a": 1,
+  "e": "Points moved = 4,198 &minus; 4,210 = &minus;12. Result = &minus;12 &times; $250 &times; 2 = <b>&minus;$6,000</b>. Each index point is worth the multiplier per contract.",
+  "lo": "LO 5.3.1",
+  "pg": 206,
+  "k": "D.35",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Futures Margin",
+  "q": "Initial margin on a futures position is $5,000 and maintenance margin is $3,600. After losses, Rosa's equity is $3,200. How much must she deposit?",
+  "o": [
+   "$400",
+   "$1,400",
+   "$1,800",
+   "$3,200"
+  ],
+  "a": 2,
+  "e": "When equity falls below maintenance margin, the account must be brought back to the <b>initial</b> margin: $5,000 &minus; $3,200 = <b>$1,800</b>.",
+  "lo": "LO 5.3.1",
+  "pg": 203,
+  "k": "D.35",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Futures Hedging",
+  "q": "A juice bottler will need to buy large amounts of oranges next season and fears prices will rise. How should it hedge with futures?",
+  "o": [
+   "Buy orange futures, a long hedge",
+   "Sell orange futures, a short hedge",
+   "No hedge; hedging is only needed when prices may fall",
+   "Sell orange futures, a long hedge"
+  ],
+  "a": 0,
+  "e": "The bottler does not own the oranges it will need, so it is short the commodity. It buys futures (a long hedge): if prices rise, futures gains offset the higher cash-market cost.",
+  "lo": "LO 5.3.1",
+  "pg": 207,
+  "k": "D.34",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Futures Hedging",
+  "q": "Simone holds a large portfolio of long-term Treasury bonds. She expects interest rates to rise over the next quarter but wants to keep the bonds. Which futures position hedges her risk?",
+  "o": [
+   "Sell stock index futures",
+   "Buy Treasury bond futures",
+   "Sell Treasury bond futures",
+   "Buy stock index futures"
+  ],
+  "a": 2,
+  "e": "Rising rates push bond prices down. Selling bond futures creates a short position that gains as bond prices fall, offsetting losses on the bonds she holds.",
+  "lo": "LO 5.3.1",
+  "pg": 206,
+  "k": "D.34",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Futures Taxation",
+  "q": "Kofi held a futures contract for three months and had a $20,000 net gain at year end. How is the gain characterized for tax purposes?",
+  "o": [
+   "$8,000 long-term and $12,000 short-term",
+   "$12,000 long-term and $8,000 short-term",
+   "$20,000 ordinary income",
+   "$20,000 short-term"
+  ],
+  "a": 1,
+  "e": "Futures are marked to market at year end and net gains are treated as 60% long-term and 40% short-term (2026 edition figure): $20,000 &times; 60% = <b>$12,000 LT</b>; $20,000 &times; 40% = <b>$8,000 ST</b>.",
+  "lo": "LO 5.3.1",
+  "pg": 207,
+  "k": "D.27",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Collectibles & Tangibles",
+  "q": "Martina sells a rare coin collection held for nine years at a large gain. What is the maximum federal long-term capital gain rate on collectibles?",
+  "o": [
+   "15%",
+   "37%",
+   "20%",
+   "28%"
+  ],
+  "a": 3,
+  "e": "Long-term gains on collectibles (tangible assets other than real estate) face a maximum 28% rate (2026 edition figure), higher than the rate on long-term gains from securities.",
+  "lo": "LO 5.4.1",
+  "pg": 208,
+  "k": "D.27",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Gold Investing",
+  "q": "In which environment is gold most likely to be attractive to investors?",
+  "o": [
+   "Real interest rates are negative",
+   "Stock prices are rising steadily",
+   "Real interest rates are high",
+   "Inflation is falling and bond yields are rising"
+  ],
+  "a": 0,
+  "e": "Gold pays no income, so its opportunity cost rises with real (after-inflation) interest rates. High real rates push investors toward bonds; negative real rates create a favorable environment for gold.",
+  "lo": "LO 5.4.1",
+  "pg": 209,
+  "k": "D.35",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Collectibles & Tangibles",
+  "q": "Harold, 70, has 40% of his net worth in rare stamps and needs more retirement income. What is the biggest planning concern with this allocation?",
+  "o": [
+   "Stamps are highly correlated with his stock holdings",
+   "The stamps' basis will be stepped down at his death",
+   "Stamp income is taxed at ordinary income rates each year",
+   "He may be forced to sell into an illiquid market at a loss"
+  ],
+  "a": 3,
+  "e": "Collectibles trade in inefficient, illiquid markets and produce only capital gains or losses. A retiree who needs income may have to sell them during a bear market for that asset class to buy income-producing financial assets.",
+  "lo": "LO 5.4.1",
+  "pg": 208,
+  "k": "D.35",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Natural Resources",
+  "q": "What is a major tax advantage of investing in natural resource programs such as oil and gas limited partnerships?",
+  "o": [
+   "Income is exempt from federal tax while held",
+   "Losses avoid capital loss limits by being treated as REIT losses",
+   "Pass-through of deductions such as depletion and intangible drilling costs",
+   "Gains are taxed at the 28% collectibles rate"
+  ],
+  "a": 2,
+  "e": "Natural resource investments pass certain tax benefits to investors, notably depletion and intangible drilling cost deductions. Their risk is high, especially for exploratory drilling, but they have historically diversified stock and bond portfolios.",
+  "lo": "LO 5.4.1",
+  "pg": 210,
+  "k": "D.35",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Foreign Investing Risks",
+  "q": "Which term describes the combined political and structural risks of investing in a particular nation, such as coups or confiscatory policies on dividends?",
+  "o": [
+   "Country risk",
+   "Liquidity risk",
+   "Exchange rate risk",
+   "Reinvestment rate risk"
+  ],
+  "a": 0,
+  "e": "Country risk is the composite of all risks of investing in a given country, including political events (revolutions, military coups) and structural ones (confiscatory treatment of profits, capital gains or dividends).",
+  "lo": "LO 5.5.1",
+  "pg": 211,
+  "k": "D.28",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "International Fund Types",
+  "q": "Isabel's portfolio is already filled with U.S. large-cap and small-cap funds. She wants to diversify away from U.S. companies. Which fund type fits best?",
+  "o": [
+   "A U.S. large-cap index fund",
+   "An international fund",
+   "A global fund",
+   "A single-country fund"
+  ],
+  "a": 1,
+  "e": "International funds hold only non-U.S. securities. Global funds include U.S. companies, so for an investor who already owns domestic funds they can duplicate existing holdings.",
+  "lo": "LO 5.5.1",
+  "pg": 213,
+  "k": "D.31",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "ADRs",
+  "q": "Which statement about American depositary receipts (ADRs) is CORRECT?",
+  "o": [
+   "ADRs are illiquid because they trade only in the foreign market",
+   "Dividends are paid in dollars, but the holder still bears currency risk",
+   "ADRs are issued by the foreign company's home government",
+   "Currency risk is eliminated because ADRs trade in dollars"
+  ],
+  "a": 1,
+  "e": "An ADR is a U.S. bank's trust receipt for foreign shares. It trades on U.S. exchanges and pays dividends in dollars, but the dividends are converted from the local currency and the price follows the home-market share, so exchange rate risk is not eliminated.",
+  "lo": "LO 5.5.1",
+  "pg": 215,
+  "k": "D.28",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Emerging vs. Developed Markets",
+  "q": "Which characteristic is LEAST typical of an emerging market?",
+  "o": [
+   "Few, if any, restrictions on currency conversion",
+   "Strong prospects for economic growth",
+   "Low levels of equity capitalization",
+   "Lower regulatory standards and less transparency"
+  ],
+  "a": 0,
+  "e": "Emerging markets often restrict currency conversion and foreign ownership, along with low capitalization, questionable liquidity, high volatility and weak transparency. Few conversion restrictions is a developed market trait.",
+  "lo": "LO 5.5.1",
+  "pg": 212,
+  "k": "D.28",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Currency-Adjusted Returns",
+  "q": "What is her holding period return in U.S. dollars?",
+  "o": [
+   "2.32%",
+   "8.00%",
+   "13.88%",
+   "14.35%"
+  ],
+  "a": 3,
+  "e": "Cost = &euro;5,000 &divide; 0.90 = $5,555.56. Proceeds = &euro;5,400 &divide; 0.85 = $6,352.94. HPR = ($6,352.94 &minus; $5,555.56) &divide; $5,555.56 = <b>14.35%</b>. The dollar fell against the euro, boosting the dollar return.",
+  "lo": "LO 5.5.2",
+  "pg": 217,
+  "k": "D.30",
+  "kind": "calc",
+  "stem": "A U.S. investor buys shares of a eurozone company for &euro;5,000 when $1 = &euro;0.90. One year later she sells for &euro;5,400 when $1 = &euro;0.85."
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Currency-Adjusted Returns",
+  "q": "What is his holding period return in U.S. dollars when the dollar strengthens to &euro;0.95?",
+  "o": [
+   "2.32%",
+   "8.00%",
+   "13.26%",
+   "14.35%"
+  ],
+  "a": 0,
+  "e": "Cost = &euro;5,000 &divide; 0.90 = $5,555.56. Proceeds = &euro;5,400 &divide; 0.95 = $5,684.21. HPR = ($5,684.21 &minus; $5,555.56) &divide; $5,555.56 = <b>2.32%</b>. A rising dollar shrinks the dollar value of euro proceeds.",
+  "lo": "LO 5.5.2",
+  "pg": 217,
+  "k": "D.30",
+  "kind": "calc",
+  "stem": "A U.S. investor buys shares of a eurozone company for &euro;5,000 when $1 = &euro;0.90. One year later he sells for &euro;5,400 when $1 = &euro;0.95."
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Exchange Rate Quotes",
+  "q": "The quote is $1.10 per euro. Wendell converts $3,300 into euros before a trip. How many euros does he receive, ignoring fees?",
+  "o": [
+   "&euro;2,970",
+   "&euro;3,000",
+   "&euro;3,300",
+   "&euro;3,630"
+  ],
+  "a": 1,
+  "e": "Dollars per euro = 1.10, so euros per dollar = 1 &divide; 1.10 = 0.9091. $3,300 &divide; 1.10 = <b>&euro;3,000</b>.",
+  "lo": "LO 5.5.2",
+  "pg": 218,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Currency-Adjusted Returns",
+  "q": "Hana, a Japanese investor, owns U.S. stocks. Holding stock prices constant, what currency move during the holding period helps her return measured in yen?",
+  "o": [
+   "Neither, because her stocks are priced in dollars",
+   "The dollar weakens against the yen",
+   "The yen strengthens against the dollar",
+   "The yen weakens against the dollar"
+  ],
+  "a": 3,
+  "e": "An investor holding foreign securities wants the home currency to fall against the foreign currency during the holding period. For a Japanese owner of U.S. stocks, a weaker yen (stronger dollar) converts sale proceeds into more yen.",
+  "lo": "LO 5.5.2",
+  "pg": 218,
+  "k": "D.30",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Futures Basics",
+  "q": "What happens to a futures contract's price as the contract approaches expiration?",
+  "o": [
+   "It moves away from the spot price as open interest falls",
+   "It converges toward the daily price limit",
+   "It converges toward the spot price, matching it at expiration",
+   "It locks at the initial margin level"
+  ],
+  "a": 2,
+  "e": "The spot price is the current cash-market price. As expiration nears, a futures price approaches the spot price, and at expiration the two are the same.",
+  "lo": "LO 5.3.1",
+  "pg": 203,
+  "k": "D.35",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Exchange Rate Quotes",
+  "q": "The dollar currently buys 0.92 euros. If the U.S. dollar is revalued (strengthens), which quote could result?",
+  "o": [
+   "$1 buys 0.89 euros",
+   "$1 still buys 0.92 euros, but euro goods cost more",
+   "One euro costs $1.12",
+   "$1 buys 0.95 euros"
+  ],
+  "a": 3,
+  "e": "A stronger dollar buys more foreign currency per dollar, so euros per dollar rises (0.92 &rarr; 0.95) and it takes fewer dollars to buy one euro (1 &divide; 0.95 &asymp; $1.053 versus $1.087).",
+  "lo": "LO 5.5.2",
+  "pg": 218,
+  "k": "D.30",
+  "kind": "concept"
+ }
+]

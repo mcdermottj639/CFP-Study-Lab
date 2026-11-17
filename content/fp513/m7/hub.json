@@ -1,0 +1,85 @@
+{
+ "objectives": [
+  "LO 7.1.1: Calculate return measures &mdash; simple, compound, arithmetic/geometric mean, time- vs dollar-weighted, real and after-tax, APR/EAR, HPR, total return",
+  "LO 7.2.1: Evaluate risk-adjusted performance with Jensen's alpha, Treynor, Sharpe and the information ratio",
+  "LO 7.3.1: Match portfolios to the right index or blended benchmark and know how indices are weighted",
+  "LO 7.4.1: Compute current yield, YTM, YTC and taxable equivalent yield"
+ ],
+ "synthesis": "Module 6 measured risk (standard deviation, beta, R&sup2;); this module turns those into return and risk-adjusted performance numbers, so the R&sup2; &ge; 0.70 test decides whether beta-based measures can be trusted. The same IRR and TVM mechanics drive dollar-weighted returns and bond yields, and TEY links bond selection to the client's tax bracket. In client reviews these measures, paired with the right benchmark, are how a planner shows whether a manager or portfolio actually earned its keep.",
+ "example": {
+  "title": "Did the manager add value?",
+  "html": "<p>Portfolio: 11% return, beta 1.2, &sigma; 16%, R&sup2; 0.85. Market 9%, risk-free 3%.</p><ul><li>CAPM required = 3 + 1.2(9 &minus; 3) = 10.2% &rarr; <b>alpha +0.80%</b></li><li>Treynor = (11 &minus; 3) &divide; 1.2 = <b>6.67</b></li><li>Sharpe = (11 &minus; 3) &divide; 16 = <b>0.50</b></li></ul><p>R&sup2; &ge; 0.70, so all three are usable; positive alpha means the manager beat the return required for the risk taken.</p>"
+ },
+ "cheat": {
+  "keyNumbers": [
+   [
+    "R&sup2; &ge; 0.70",
+    "Beta is reliable &rarr; Treynor and Jensen usable; below it, use Sharpe"
+   ],
+   [
+    "IR &ge; 0.50",
+    "Often a top-quartile active manager"
+   ],
+   [
+    "2 P/Yr, END",
+    "Bond default: PMT = coupon &times; $1,000 &divide; 2, N = years &times; 2, zeros included"
+   ],
+   [
+    "$1,000",
+    "Default face value (FV, positive); price is a negative PV"
+   ],
+   [
+    "30 days",
+    "SEC yield measurement window, net of expenses (2026 edition figure)"
+   ],
+   [
+    "&times; 4",
+    "Textbook annualizes a quarterly IRR by multiplying, not compounding"
+   ],
+   [
+    "&gt; 0.95",
+    "DJIA's correlation with the S&amp;P 500"
+   ]
+  ],
+  "mustKnow": [
+   "Real return = (1 + nominal) &divide; (1 + inflation) &minus; 1 &mdash; not subtraction",
+   "Geometric mean &lt; arithmetic mean unless all returns are equal",
+   "Time-weighted = the investment/manager; dollar-weighted = the investor's IRR",
+   "Alpha = actual &minus; CAPM required; Treynor &divide; beta; Sharpe &divide; standard deviation",
+   "YTC: FV = call price, N = periods to first call",
+   "TEY = muni yield &divide; (1 &minus; t); in-state itemizer: &divide; (1 &minus; SMTB)(1 &minus; FMTB)"
+  ],
+  "traps": [
+   "Using Treynor/Jensen when R&sup2; is below 0.70",
+   "Forgetting to double the semiannual rate (or using N = years)",
+   "Multiplying a muni yield by (1 &minus; t) instead of dividing",
+   "Benchmarking a multi-asset portfolio against the S&amp;P 500 alone",
+   "Treating a multi-year HPR as an annual return"
+  ],
+  "tips": [
+   "Discount bond: coupon &lt; CY &lt; YTM &lt; YTC; premium bond: the reverse",
+   "In Sharpe/Treynor/IR you can use whole numbers or decimals &mdash; just be consistent",
+   "Compare Sharpe ratios only within one asset class"
+  ]
+ },
+ "topics": [
+  "Simple & Compound Return",
+  "Arithmetic & Geometric Mean",
+  "Time- vs Dollar-Weighted",
+  "Real & After-Tax Return",
+  "APR and EAR",
+  "Holding Period Return",
+  "Total Return & SEC Yield",
+  "Jensen's Alpha",
+  "Treynor Ratio",
+  "Sharpe Ratio",
+  "Choosing a Performance Measure",
+  "Information Ratio",
+  "Index Weighting Methods",
+  "Asset Class Benchmarks",
+  "Bond Calculator Conventions",
+  "Current Yield",
+  "YTM and YTC",
+  "Taxable Equivalent Yield"
+ ]
+}

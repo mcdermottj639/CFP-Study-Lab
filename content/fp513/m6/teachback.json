@@ -1,0 +1,30 @@
+[
+ {
+  "id": "fp513-two-similar-funds",
+  "title": "\"I own two different growth funds from two different companies — aren't I diversified?\"",
+  "scenario": "Derek, 45, holds two large-cap growth funds from different fund companies. Each has a correlation of about +0.90 with the S&P 500, and an R-squared near 0.81.",
+  "prompt": "Explain why different fund names and managers don't guarantee diversification, and what to look for instead.",
+  "points": [
+   "Correlation measures how closely two holdings move together; the farther below +1, the more diversification",
+   "Both funds track the S&P 500 closely (R-squared about 0.81, above the 0.70 threshold), so they behave almost like one fund",
+   "Portfolio standard deviation drops below the weighted average only when correlation is under +1 — the lower, the bigger the drop",
+   "Better pairing: keep one and add a fund with a low positive correlation; negative correlation isn't required",
+   "Check the two funds' correlation with each other, and remember correlations tend to rise in falling markets"
+  ],
+  "anchor": "LO 6.2.4 · Covariance, correlation and two-asset portfolio risk"
+ },
+ {
+  "id": "fp513-low-beta-gold",
+  "title": "\"My gold fund has a beta of 0.4 — so it's my safest holding, right?\"",
+  "scenario": "Wen, 58, sees a gold-mining fund with a beta of 0.40 against the S&P 500 but a standard deviation twice the market's, and wants to move her emergency reserve into it.",
+  "prompt": "Explain what beta does and doesn't measure, and which risk measure fits this fund.",
+  "points": [
+   "Beta measures only systematic risk relative to the market: beta = (fund SD ÷ market SD) × correlation",
+   "Here the volatility ratio is 2, so a 0.40 beta means a correlation of only 0.20 — the low beta reflects low correlation, not low volatility",
+   "R-squared is 0.04, far below 0.70, so beta is unreliable; use standard deviation (total risk) or a gold-index benchmark",
+   "Its SD shows it is more volatile than the market — unsuitable for money that must be there in an emergency (liquidity needs belong in cash equivalents)",
+   "It may still be a useful diversifier in a small slice because of its low correlation"
+  ],
+  "anchor": "LO 6.2.1 · Beta and weighted beta"
+ }
+]

@@ -1,0 +1,800 @@
+[
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Bond Terms & Features",
+  "q": "A bond's yield to maturity climbs from 4.10% to 5.35%. How large was the move in basis points?",
+  "o": [
+   "12.5 basis points",
+   "125 basis points",
+   "1.25 basis points",
+   "1,250 basis points"
+  ],
+  "a": 1,
+  "e": "A basis point is 1/100 of 1%. Change = 5.35% &minus; 4.10% = 1.25 percentage points &times; 100 = 125 basis points.",
+  "lo": "LO 2.1.1",
+  "pg": 34,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Bond Ratings",
+  "q": "Which of these ratings is the LOWEST that still counts as investment grade?",
+  "o": [
+   "BBB&minus; from Standard &amp; Poor's",
+   "BB+ from Standard &amp; Poor's",
+   "Ba from Moody's",
+   "A&minus; from Standard &amp; Poor's"
+  ],
+  "a": 0,
+  "e": "Investment grade covers the top four categories: BBB&minus; or better at S&amp;P and Baa or better at Moody's. BB+/Ba and below are high-yield (junk).",
+  "lo": "LO 2.1.1",
+  "pg": 34,
+  "k": "D.27",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Bond Risk Types",
+  "q": "Which risks does an investor holding U.S. Treasury notes face?<br>I. Interest rate risk<br>II. Reinvestment rate risk<br>III. Purchasing power risk<br>IV. Default risk",
+  "o": [
+   "I and II only",
+   "IV only",
+   "I, II, III, and IV",
+   "I, II, and III only"
+  ],
+  "a": 3,
+  "e": "Treasuries are default-risk free but not risk free: they still carry interest rate risk, reinvestment rate risk and purchasing power (inflation) risk.",
+  "lo": "LO 2.1.1",
+  "pg": 38,
+  "k": "D.28",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Bond Risk Types",
+  "q": "Market rates drop two full percentage points, yet Dana's corporate bond, callable at $1,040, barely trades above $1,040. What best explains the muted price gain?",
+  "o": [
+   "Wider bid-ask spreads from liquidity risk are holding the price down",
+   "Extension risk has lengthened the bond's expected life",
+   "Investors expect a call, so the price is capped near the call price",
+   "Lower rates raise purchasing power risk on the coupon"
+  ],
+  "a": 2,
+  "e": "Call risk: issuers call after rates fall so they can refinance. Because buyers expect the call, the bond's price has limited room to rise above the call price, and the holder faces reinvestment at lower rates.",
+  "lo": "LO 2.1.1",
+  "pg": 38,
+  "k": "D.28",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "TIPS & Savings Bonds",
+  "q": "Marisol buys $50,000 par of a TIPS with a 2.0% coupon. The CPI rises 1.5% over the first six months. What is her first semiannual interest payment?",
+  "o": [
+   "$500.00",
+   "$507.50",
+   "$1,015.00",
+   "$761.25"
+  ],
+  "a": 1,
+  "e": "Adjusted principal = $50,000 &times; 1.015 = $50,750. Payment = $50,750 &times; (2.0% &divide; 2) = $50,750 &times; 1% = $507.50.",
+  "lo": "LO 2.1.1",
+  "pg": 41,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "TIPS & Savings Bonds",
+  "q": "Theo bought a TIPS at its $1,000 par. This year the inflation adjustment raises the principal to $1,025, and he sells right afterward for $1,031. Ignoring coupon interest, how is the $31 above his cost treated?",
+  "o": [
+   "$25 ordinary income; $6 capital gain",
+   "$0 ordinary income; $31 capital gain",
+   "$25 ordinary income; $31 capital gain",
+   "$31 ordinary income; $0 capital gain"
+  ],
+  "a": 0,
+  "e": "The $25 principal increase is federal ordinary income for the year and raises basis to $1,025. Sale gain = $1,031 &minus; $1,025 = $6.",
+  "lo": "LO 2.1.1",
+  "pg": 42,
+  "k": "D.27",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Agency & Mortgage Bonds",
+  "q": "Which of the following securities carries the direct backing and guarantee of the U.S. government?",
+  "o": [
+   "Federal National Mortgage Association (FNMA) securities",
+   "Federal Home Loan Mortgage Corporation (FHLMC) securities",
+   "Student Loan Marketing Association (SLMA) securities",
+   "Government National Mortgage Association (GNMA) securities"
+  ],
+  "a": 3,
+  "e": "Ginnie Mae (and the Farm Credit Administration) issues carry the direct U.S. guarantee. Fannie Mae, Freddie Mac and Sallie Mae have indirect backing and therefore slightly higher coupons.",
+  "lo": "LO 2.1.1",
+  "pg": 43,
+  "k": "D.27",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Agency & Mortgage Bonds",
+  "q": "Rates rise sharply and homeowners stop refinancing, so principal on Victor's mortgage pass-through comes back far more slowly than projected. Which risk is he experiencing?",
+  "o": [
+   "Prepayment risk",
+   "Call risk",
+   "Extension risk",
+   "Event risk"
+  ],
+  "a": 2,
+  "e": "Extension risk: when rates rise, prepayments slow, the pool's average life lengthens and expected principal is delayed, lowering the return.",
+  "lo": "LO 2.1.1",
+  "pg": 45,
+  "k": "D.28",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Municipal Bonds",
+  "q": "Ruth, a cautious investor, wants the municipal bond with the least credit risk. Which should she choose?",
+  "o": [
+   "A toll-bridge revenue bond",
+   "A city general obligation bond",
+   "An airport revenue bond",
+   "A private activity bond financing a sports stadium"
+  ],
+  "a": 1,
+  "e": "GO bonds are backed by the issuer's taxing power (full faith and credit), often need voter approval and face debt limits, making them less risky than revenue or private activity bonds.",
+  "lo": "LO 2.1.1",
+  "pg": 46,
+  "k": "D.27",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Muni vs Taxable Yield",
+  "q": "Owen faces a 35% marginal tax rate. A municipal bond yields 3.6%. What taxable equivalent yield must a corporate bond offer to match it?",
+  "o": [
+   "5.54%",
+   "2.34%",
+   "4.86%",
+   "3.60%"
+  ],
+  "a": 0,
+  "e": "TEY = tax-exempt yield &divide; (1 &minus; marginal rate) = 3.6% &divide; 0.65 = 5.54%.",
+  "lo": "LO 2.1.1",
+  "pg": 47,
+  "k": "D.27",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Muni vs Taxable Yield",
+  "q": "Priya pays a 32% federal and a 6% state income tax (add them for simplicity). Which bond gives her the highest after-tax yield?",
+  "o": [
+   "A corporate bond yielding 6.5%",
+   "Her own state's municipal bond yielding 3.9%",
+   "A U.S. Treasury note yielding 5.2%",
+   "Another state's municipal bond yielding 4.4%"
+  ],
+  "a": 3,
+  "e": "Out-of-state muni: federal exempt, state taxed: 4.4% &times; (1 &minus; 0.06) = 4.14%. Corporate 6.5% &times; 0.62 = 4.03%; in-state muni 3.90%; Treasury 5.2% &times; 0.68 = 3.54%. Highest = 4.14%.",
+  "lo": "LO 2.1.1",
+  "pg": 48,
+  "k": "D.27",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Bond Discount & Premium Tax",
+  "q": "Ken bought a corporate bond, originally issued at par, for $900 in the secondary market. When he sells it for $960, accrued market discount is $40 and he never elected to include it annually. How is his $60 gain taxed?",
+  "o": [
+   "$60 capital gain",
+   "$60 interest income",
+   "$40 interest income and $20 capital gain",
+   "$20 interest income and $40 capital gain"
+  ],
+  "a": 2,
+  "e": "Market discount is generally deferred until sale and then treated as interest income. Only the gain in excess of accrued market discount is capital gain: $60 &minus; $40 = $20.",
+  "lo": "LO 2.1.1",
+  "pg": 49,
+  "k": "D.27",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Zero-Coupon Bonds",
+  "q": "For which client would a taxable zero-coupon corporate bond held in a regular brokerage account be the POOREST fit?",
+  "o": [
+   "Parents who need a lump sum for tuition in six years",
+   "A retiree who needs monthly cash flow from the account",
+   "A pension fund matching a payout due in 12 years",
+   "A speculator expecting rates to fall who wants maximum price gain"
+  ],
+  "a": 1,
+  "e": "Zeros pay nothing until maturity, yet taxable zeros create yearly phantom income. A retiree needing current cash flow gets no income and still owes tax.",
+  "lo": "LO 2.1.1",
+  "pg": 50,
+  "k": "D.27",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Foreign Bonds",
+  "q": "A Canadian bank issues U.S.-dollar bonds that are sold and traded in the United States. What are these bonds called?",
+  "o": [
+   "Yankee bonds",
+   "Eurodollar bonds",
+   "Eurobonds",
+   "Bulldog bonds"
+  ],
+  "a": 0,
+  "e": "Yankee bonds are foreign-issuer bonds denominated in U.S. dollars and sold in the U.S., so U.S. investors avoid exchange rate risk.",
+  "lo": "LO 2.1.1",
+  "pg": 51,
+  "k": "D.27",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Convertible Bond Math",
+  "q": "A $1,000 par convertible bond has a conversion price of $80. The stock now trades at $96. What is the bond's conversion value?",
+  "o": [
+   "$833.33",
+   "$1,000.00",
+   "$1,152.00",
+   "$1,200.00"
+  ],
+  "a": 3,
+  "e": "Conversion ratio = $1,000 &divide; $80 = 12.5 shares. Conversion value = 12.5 &times; $96 = $1,200.",
+  "lo": "LO 2.2.1",
+  "pg": 54,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Convertible Bond Math",
+  "q": "Using the facts shown, what is the bond's conversion premium as a percentage?",
+  "stem": "<b>Convertible bond (fictional):</b> $1,000 par, conversion price $25, stock price $22.50, bond's market price $1,080, straight-bond (investment) value $960.",
+  "o": [
+   "16.67%",
+   "12.50%",
+   "20.00%",
+   "11.11%"
+  ],
+  "a": 2,
+  "e": "Conversion ratio = $1,000 &divide; $25 = 40; conversion value = 40 &times; $22.50 = $900. Conversion premium = ($1,080 &minus; $900) &divide; $900 = $180 &divide; $900 = 20.00%.",
+  "lo": "LO 2.2.1",
+  "pg": 56,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Convertible Bond Math",
+  "q": "Using the facts shown, what is the bond's investment premium as a percentage?",
+  "stem": "<b>Convertible bond (fictional):</b> $1,000 par, conversion price $25, stock price $22.50, bond's market price $1,080, straight-bond (investment) value $960.",
+  "o": [
+   "11.11%",
+   "12.50%",
+   "20.00%",
+   "16.67%"
+  ],
+  "a": 1,
+  "e": "Investment premium = market price &minus; investment value = $1,080 &minus; $960 = $120. As a % of investment value: $120 &divide; $960 = 12.50%.",
+  "lo": "LO 2.2.1",
+  "pg": 56,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Convertible Bond Math",
+  "q": "Using the facts shown, what is the bond's percentage downside risk?",
+  "stem": "<b>Convertible bond (fictional):</b> $1,000 par, conversion price $25, stock price $22.50, bond's market price $1,080, straight-bond (investment) value $960.",
+  "o": [
+   "11.11%",
+   "12.50%",
+   "20.00%",
+   "16.67%"
+  ],
+  "a": 0,
+  "e": "Downside risk = (market price &minus; investment value) &divide; market price = ($1,080 &minus; $960) &divide; $1,080 = $120 &divide; $1,080 = 11.11%.",
+  "lo": "LO 2.2.1",
+  "pg": 56,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Convertible Bond Math",
+  "q": "Using the facts shown, what is the bond's investment (straight-bond) value?",
+  "stem": "<b>Convertible bond (fictional):</b> $1,000 par, 4% coupon paid semiannually, 10 years to maturity, comparable straight bonds yield 6%, conversion price $62.50, stock price $55.",
+  "o": [
+   "$852.80",
+   "$880.00",
+   "$1,000.00",
+   "$851.23"
+  ],
+  "a": 3,
+  "e": "Semiannual: N = 10 &times; 2 = 20, I/YR = 6 &divide; 2 = 3, PMT = $40 &divide; 2 = $20, FV = $1,000 &rarr; PV = $851.23.",
+  "lo": "LO 2.2.1",
+  "pg": 54,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Convertible Bond Math",
+  "q": "Using the facts shown, what is the lowest price at which this convertible should trade?",
+  "stem": "<b>Convertible bond (fictional):</b> $1,000 par, 4% coupon paid semiannually, 10 years to maturity, comparable straight bonds yield 6%, conversion price $62.50, stock price $55.",
+  "o": [
+   "$851.23",
+   "$1,000.00",
+   "$880.00",
+   "$1,731.23"
+  ],
+  "a": 2,
+  "e": "Ratio = $1,000 &divide; $62.50 = 16; conversion value = 16 &times; $55 = $880. Investment value = $851.23. Floor = greater of the two = $880.",
+  "lo": "LO 2.2.1",
+  "pg": 54,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Convertible Bond Math",
+  "q": "Using the facts shown, suppose the convertible's market price is $1,000. What is its percentage downside risk?",
+  "stem": "<b>Convertible bond (fictional):</b> $1,000 par, 4% coupon paid semiannually, 10 years to maturity, comparable straight bonds yield 6%, conversion price $62.50, stock price $55.",
+  "o": [
+   "17.48%",
+   "14.88%",
+   "13.64%",
+   "12.00%"
+  ],
+  "a": 1,
+  "e": "Downside risk = ($1,000 &minus; $851.23) &divide; $1,000 = $148.77 &divide; $1,000 = 14.88%. (Investment value from N 20, I 3, PMT 20, FV 1,000.)",
+  "lo": "LO 2.2.1",
+  "pg": 56,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Convertible Bond Math",
+  "q": "Lena's convertible bond has a conversion value of $1,150. The issuer announces it will call the bond at $1,040. What should she do?",
+  "o": [
+   "Convert into stock before the call date",
+   "Accept the $1,040 call price",
+   "Keep the bond and keep collecting coupons",
+   "Insist on repayment at the $1,000 par value"
+  ],
+  "a": 0,
+  "e": "This is a forced conversion: when conversion value exceeds the call price, the holder converts to receive the greater value ($1,150 vs $1,040). She can keep or sell the shares; interest payments end.",
+  "lo": "LO 2.2.1",
+  "pg": 56,
+  "k": "D.32",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Convertible Bond Math",
+  "q": "Which statement about convertible bonds is CORRECT?",
+  "o": [
+   "They usually pay higher coupons than comparable straight bonds",
+   "The issuer decides when they convert under normal terms",
+   "Their prices are more volatile than the issuer's common stock",
+   "They usually pay lower coupons than comparable straight bonds"
+  ],
+  "a": 3,
+  "e": "Convertibles trade a lower coupon for the right to convert. They are less volatile than the stock, usually issued by younger companies, and are good diversifiers (low correlation with straight bonds, moderate with stocks).",
+  "lo": "LO 2.2.1",
+  "pg": 53,
+  "k": "D.32",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Portfolio Immunization",
+  "q": "Grace will need a lump sum in exactly six years and wants it immunized against rate changes. Which single holding best does that?",
+  "o": [
+   "A 6-year Treasury with a 7% coupon",
+   "A 4-year zero-coupon Treasury",
+   "A 6-year zero-coupon Treasury",
+   "A bond fund with a six-year average maturity"
+  ],
+  "a": 2,
+  "e": "Immunization matches duration to the horizon. A zero's duration equals its maturity, so a six-year zero locks in the amount due in six years.",
+  "lo": "LO 2.3.1",
+  "pg": 58,
+  "k": "D.34",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Portfolio Immunization",
+  "q": "Why is an immunized bond portfolio not a 'set it and forget it' strategy?",
+  "o": [
+   "Immunization only works while rates stay unchanged",
+   "Its duration falls faster than the liability's, so it must be rebalanced",
+   "Coupons must be spent rather than reinvested",
+   "Duration must be kept double the time horizon"
+  ],
+  "a": 1,
+  "e": "Immunization offsets price risk against reinvestment risk when portfolio duration equals the horizon. Portfolio duration declines faster than the liability's, so periodic rebalancing is required.",
+  "lo": "LO 2.3.1",
+  "pg": 58,
+  "k": "D.34",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Ladders, Barbells, Bullets",
+  "q": "Hector wants to lock in today's attractive long-term rates while keeping a large slice in short bonds, so he can redeploy cash if bond prices drop. Which structure fits?",
+  "o": [
+   "A barbell",
+   "A bullet",
+   "A ladder",
+   "An immunized portfolio"
+  ],
+  "a": 0,
+  "e": "A barbell holds only short- and long-term bonds: the long end locks in rates, the short end provides cash to use elsewhere. It needs active management as the short end matures.",
+  "lo": "LO 2.3.1",
+  "pg": 58,
+  "k": "D.34",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Ladders, Barbells, Bullets",
+  "q": "Ivy needs a large sum in 10 years. She buys a 10-year bond now, an 8-year bond two years from now, and a 6-year bond four years from now. What strategy is this?",
+  "o": [
+   "A ladder strategy",
+   "A barbell strategy",
+   "A rate anticipation swap",
+   "A bullet strategy"
+  ],
+  "a": 3,
+  "e": "A bullet buys over time so everything matures together on the target date, matching duration to a single cash need and minimizing interest rate risk.",
+  "lo": "LO 2.3.1",
+  "pg": 59,
+  "k": "D.34",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Bond Swaps",
+  "q": "A bond manager expects interest rates to rise over the next year. Which swap is most consistent with that view?",
+  "o": [
+   "Sell short-term bonds and buy long-term bonds",
+   "Sell a low-yield bond and buy a lower-quality, higher-yield bond",
+   "Sell long-term bonds and buy short-term bonds",
+   "Sell a government bond and buy a corporate bond"
+  ],
+  "a": 2,
+  "e": "A rate anticipation swap shortens maturity when rates are expected to rise (less price sensitivity) and lengthens it when rates are expected to fall.",
+  "lo": "LO 2.3.1",
+  "pg": 59,
+  "k": "D.34",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Bond Swaps",
+  "q": "Jada sold bonds she bought for $10,000 for $8,600 after rates rose, and reinvested the proceeds in similar bonds. Using the textbook's simplified approach (loss &times; marginal rate) with a 24% rate, what tax saving does this tax swap create?",
+  "o": [
+   "$1,400",
+   "$336",
+   "$2,064",
+   "$1,064"
+  ],
+  "a": 1,
+  "e": "Loss = $10,000 &minus; $8,600 = $1,400. Tax saving = $1,400 &times; 0.24 = $336.",
+  "lo": "LO 2.3.1",
+  "pg": 59,
+  "k": "D.34",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Bond Swaps",
+  "q": "Without any interest rate forecast, a manager sells a 5-year A-rated bond yielding 4.6% and buys a 12-year BBB-rated bond yielding 5.4%. Which swap is this?",
+  "o": [
+   "Pure yield pickup swap",
+   "Substitution swap",
+   "Rate anticipation swap",
+   "Tax swap"
+  ],
+  "a": 0,
+  "e": "A pure yield pickup swap moves into a higher-YTM bond, typically by going longer and/or lower in quality, as here.",
+  "lo": "LO 2.3.1",
+  "pg": 59,
+  "k": "D.34",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Fixed-Income Selection",
+  "q": "All else equal, which bond will show the greatest relative price change when market rates move?",
+  "o": [
+   "5-year maturity, 2% coupon, 3% YTM",
+   "20-year maturity, 7% coupon, 3% YTM",
+   "20-year maturity, 2% coupon, 8% YTM",
+   "20-year maturity, 2% coupon, 3% YTM"
+  ],
+  "a": 3,
+  "e": "Relative price volatility rises with lower coupon, longer maturity and lower YTM. The 20-year, 2% coupon, 3% YTM bond has all three.",
+  "lo": "LO 2.3.2",
+  "pg": 60,
+  "k": "D.33",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Fixed-Income Selection",
+  "q": "Jordan is aggressive and strongly expects interest rates to fall. Which bond portfolio best positions him to profit?",
+  "o": [
+   "Short maturities with high coupons",
+   "Short maturities with low coupons",
+   "Long maturities with low coupons",
+   "Long maturities with high coupons"
+  ],
+  "a": 2,
+  "e": "Expecting falling rates, build maximum rate sensitivity: long maturities and low coupons (high duration), to capture the largest capital gains.",
+  "lo": "LO 2.3.2",
+  "pg": 60,
+  "k": "D.33",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Fixed-Income Selection",
+  "q": "Nadia lives in a state with a high income tax and wants taxable bonds with minimal default risk. Which is the best fit?",
+  "o": [
+   "Federal National Mortgage Association (FNMA) debt",
+   "U.S. Treasury notes",
+   "High-yield corporate bonds",
+   "Investment-grade corporate bonds"
+  ],
+  "a": 1,
+  "e": "Treasuries are default-risk free and their interest is excluded from state and local income tax, which matters most in high-tax states.",
+  "lo": "LO 2.3.2",
+  "pg": 61,
+  "k": "D.33",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Fixed-Income Selection",
+  "q": "Walt and June, both 66, want inflation-adjusted cash each year of retirement with minimal default and call risk. Which approach does the textbook suggest?",
+  "o": [
+   "A ladder of TIPS held in a traditional IRA",
+   "A barbell of T-bills and 30-year corporate bonds in a taxable account",
+   "A single 30-year zero-coupon corporate bond",
+   "High-yield bond funds held in a taxable account"
+  ],
+  "a": 0,
+  "e": "A TIPS ladder supplies inflation-adjusted maturities each year; held to maturity it has no default, call or interest rate risk. In a traditional IRA, yearly inflation step-ups are not taxed currently.",
+  "lo": "LO 2.3.2",
+  "pg": 62,
+  "k": "D.33",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Yield Curve Shapes",
+  "q": "An inverted yield curve most often appears when",
+  "o": [
+   "the economy is in a strong, early expansion",
+   "the economy is peaking and no rate change is expected",
+   "investors demand a liquidity premium for long maturities",
+   "the Fed has tightened credit in an inflationary economy"
+  ],
+  "a": 3,
+  "e": "An inverted curve appears when the Fed has tightened in an inflationary economy; it predicts falling rates and can signal a coming recession.",
+  "lo": "LO 2.4.1",
+  "pg": 64,
+  "k": "D.29",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Yield Curve Theories",
+  "q": "The 1-year Treasury rate is 3.0%, and 1-year rates are expected to be 3.4% next year and 3.9% the year after. Under the unbiased expectations theory, what should the 3-year rate be today?",
+  "o": [
+   "3.90%",
+   "10.66%",
+   "3.43%",
+   "3.00%"
+  ],
+  "a": 2,
+  "e": "1 + R<sub>3</sub> = [(1.030)(1.034)(1.039)]<sup>1/3</sup> = (1.10656)<sup>1/3</sup> = 1.0343 &rarr; R<sub>3</sub> = 3.43% (geometric mean).",
+  "lo": "LO 2.4.1",
+  "pg": 66,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Yield Curve Theories",
+  "q": "Which yield curve theory can explain ONLY a normal, upward-sloping yield curve?",
+  "o": [
+   "Unbiased expectations theory",
+   "Liquidity preference theory",
+   "Market segmentation theory",
+   "Efficient market hypothesis"
+  ],
+  "a": 1,
+  "e": "Liquidity preference says investors need a premium to lend long, so the curve should always slope up; any other shape is a temporary aberration. The other two theories explain any shape.",
+  "lo": "LO 2.4.1",
+  "pg": 66,
+  "k": "D.29",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Yield Curve Theories",
+  "q": "A life insurer buys only long-term bonds to match its long-dated policy liabilities and will not move into shorter maturities even when they yield more. Which theory does this behavior support?",
+  "o": [
+   "Market segmentation theory",
+   "Unbiased expectations theory",
+   "Liquidity preference theory",
+   "Rate anticipation theory"
+  ],
+  "a": 0,
+  "e": "Market segmentation: institutions match assets to liabilities and stay in their preferred maturity segment, so supply and demand within each segment sets the curve's shape.",
+  "lo": "LO 2.4.1",
+  "pg": 67,
+  "k": "D.29",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Yield Curve Strategy",
+  "q": "The yield curve is inverted: 1-year paper yields 5.2% and 20-year bonds yield 4.4%. Lucia, an income investor, expects the curve to return to normal. What does the textbook suggest?",
+  "o": [
+   "Buy 1-year paper for its higher yield",
+   "Avoid bonds entirely until the curve flattens",
+   "Buy long-term bonds that are callable soon",
+   "Buy call-protected long-term bonds"
+  ],
+  "a": 3,
+  "e": "When an inverted curve normalizes, short rates fall the most. Long bonds lock in high income and gain the most price; call protection keeps the issuer from redeeming them.",
+  "lo": "LO 2.4.1",
+  "pg": 68,
+  "k": "D.34",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Yield Curve Strategy",
+  "q": "The curve is flat: 5-year and 30-year Treasuries both yield about 4.1%. Ben, an income investor, is thinking of moving from 5-year to 30-year bonds. What is the best advice?",
+  "o": [
+   "Extend now, because the extra years add extra yield",
+   "Extend now, because long rates cannot rise when the curve is flat",
+   "Extend only if highly confident rates will fall soon",
+   "Extend now, because a flat curve predicts a rate decline"
+  ],
+  "a": 2,
+  "e": "A flat curve means no pay for extra maturity risk. Income investors should buy long only if highly confident rates will drop; long rates could rise to restore a risk premium or with an overall rate increase.",
+  "lo": "LO 2.4.1",
+  "pg": 67,
+  "k": "D.34",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Preferred Stock Features",
+  "q": "Cobalt Corp. skipped its cumulative preferred dividends for the past two years. The board now wants to pay a common dividend. What must happen first?",
+  "o": [
+   "Pay only the current year's preferred dividend",
+   "Pay all preferred arrears plus the current preferred dividend",
+   "Nothing; the skipped dividends are forfeited",
+   "File for bankruptcy over the missed dividends"
+  ],
+  "a": 1,
+  "e": "With cumulative preferred, unpaid prior dividends (arrears) and the current preferred dividend must be paid before any common dividend.",
+  "lo": "LO 2.5.1",
+  "pg": 69,
+  "k": "D.27",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Preferred Stock Features",
+  "q": "A $50 par preferred stock pays a 5% dividend. Market yields on similar preferreds rise to 6.25%. What is its new intrinsic value, assuming no growth?",
+  "o": [
+   "$40.00 (&minus;20%)",
+   "$62.50 (+25%)",
+   "$48.75 (&minus;2.5%)",
+   "$50.00 (unchanged)"
+  ],
+  "a": 0,
+  "e": "Dividend = 5% &times; $50 = $2.50. V = D &divide; r = $2.50 &divide; 0.0625 = $40.00, a 20% drop from $50.",
+  "lo": "LO 2.5.1",
+  "pg": 70,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Preferred Stock Features",
+  "q": "Which of the following are similarities between bonds and preferred stock?<br>I. Holders generally have no voting power<br>II. Holders rank ahead of common stockholders in bankruptcy<br>III. The issuer may deduct the payments<br>IV. A missed payment triggers bankruptcy",
+  "o": [
+   "I, II, and III only",
+   "III and IV only",
+   "I, II, III, and IV",
+   "I and II only"
+  ],
+  "a": 3,
+  "e": "Both carry no vote, have no share in profits, may be callable/convertible, may have sinking funds, and rank ahead of common. Preferred dividends are not deductible by the issuer, and missing one does not trigger bankruptcy.",
+  "lo": "LO 2.5.1",
+  "pg": 70,
+  "k": "D.27",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Preferred Stock Features",
+  "q": "Which statement about convertible preferred stock is CORRECT?",
+  "o": [
+   "Its dividend is usually lower than the common dividend",
+   "Its conversion option loses value as the common stock rises",
+   "It is often used to finance venture capital and private equity firms",
+   "It ranks below common stock in a liquidation"
+  ],
+  "a": 2,
+  "e": "Convertible preferred pays a higher dividend than common, ranks ahead of common, and lets holders share upside by converting. That upside makes it a common way to finance risky venture capital and private equity firms.",
+  "lo": "LO 2.5.1",
+  "pg": 71,
+  "k": "D.27",
+  "kind": "concept"
+ }
+]

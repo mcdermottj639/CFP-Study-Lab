@@ -1,0 +1,94 @@
+{
+ "objectives": [
+  "LO 4.1.1: Explain why bond prices move opposite to interest rates and price a bond from its cash flows",
+  "LO 4.1.2: Use duration and convexity to estimate how much a bond's price will change when rates move",
+  "LO 4.2.1: Compare fundamental and technical analysis and connect each to MPT and the EMH",
+  "LO 4.2.2: Judge how debt financing changes ROE, risk, dividend growth and stock value",
+  "LO 4.3.1: Value a stock with the no-growth, constant growth and multistage DDMs, FCFE and capitalized earnings",
+  "LO 4.3.2: Use P/E, PEG, P/FCF and P/S to decide whether a stock looks cheap or expensive"
+ ],
+ "synthesis": "Module 4 turns the risk ideas from earlier modules into prices. Duration quantifies the interest-rate risk in every bond allocation and drives horizon matching in client plans, while the DDMs plug a CAPM required return and a growth rate from financial-statement analysis into an intrinsic value. Relative ratios and financial-statement analysis are the everyday tools for deciding whether a recommendation is worth its price.",
+ "example": {
+  "title": "Is Kestrel worth $54 to Selma?",
+  "html": "<p>Kestrel just paid a $2.40 dividend, expected to grow 4% a year. Selma requires 9%.</p><ol><li>D<sub>1</sub> = 2.40 &times; 1.04 = $2.496</li><li>V = 2.496 &divide; (0.09 &minus; 0.04) = <b>$49.92</b></li><li>Price $54 &gt; value $49.92 &rarr; <b>overvalued</b> for Selma; don't buy at $54.</li></ol><p>Sensitivity: if her required return fell to 8%, V = 2.496 &divide; 0.04 = $62.40 &mdash; small changes in r &minus; g swing the answer a lot.</p>"
+ },
+ "cheat": {
+  "keyNumbers": [
+   [
+    "Duration price change",
+    "&Delta;P/P = &minus;D &times; [&Delta;y &divide; (1 + y)]; y = current YTM (semiannual: y &divide; 2)"
+   ],
+   [
+    "Rule of thumb",
+    "%&Delta;P &asymp; &minus;D &times; &Delta;y (duration 6, +1% &rarr; about &minus;6%)"
+   ],
+   [
+    "Bond price inputs",
+    "N = years &times; 2, PMT = coupon &divide; 2, I/YR = market yield, FV = par"
+   ],
+   [
+    "Sustainable growth",
+    "g = ROE &times; (1 &minus; payout)"
+   ],
+   [
+    "Gordon model",
+    "V = D<sub>0</sub>(1 + g) &divide; (r &minus; g); g must be &lt; r"
+   ],
+   [
+    "No-growth / preferred",
+    "V = D &divide; r"
+   ],
+   [
+    "PEG",
+    "P/E &divide; g (whole number); under 1.00 = value"
+   ],
+   [
+    "P/FCF",
+    "(1 + g) &divide; (r &minus; g)"
+   ]
+  ],
+  "mustKnow": [
+   "Duration falls as coupon or market yield rises and grows with maturity; a zero's duration equals its maturity",
+   "Match a bond's duration, not its maturity, to the client's time horizon",
+   "Positive convexity: duration understates gains and overstates losses; callable and mortgage-backed bonds show negative convexity",
+   "Premium bond: CY > YTM > YTC; discount bond: CY < YTM < YTC",
+   "Leverage raises ROE and EPS but adds fixed interest that hurts in a contraction; low ROA vs. ROE signals leverage",
+   "Constant growth fits mature firms; multistage fits growth-phase firms; FCFE fits non-dividend payers",
+   "Intrinsic value above price = undervalued; relative methods need a peer or industry benchmark"
+  ],
+  "traps": [
+   "Using the coupon rate as y in the duration formula",
+   "Plugging D<sub>0</sub> into the Gordon model without growing it to D<sub>1</sub>",
+   "Multiplying ROE by the payout ratio instead of the retention rate",
+   "Treating technical analysis as useful under any form of the EMH",
+   "Picking the lowest P/E without adjusting for growth (use PEG)"
+  ],
+  "tips": [
+   "Predict premium or discount before pricing a bond; it catches calculator entry errors",
+   "If a YTM is given in a duration question, use the (1 + y) version of the formula",
+   "In multistage problems, add the terminal value to the last high-growth year's cash flow before taking the NPV"
+  ]
+ },
+ "topics": [
+  "Analysis and MPT",
+  "Bond Pricing",
+  "Capitalized Earnings",
+  "Convexity",
+  "Dividend Discount Models",
+  "Dividend Growth Rate",
+  "Duration",
+  "Duration Price Change",
+  "Financial Leverage",
+  "Financial Ratios",
+  "Financial Statements",
+  "Free Cash Flow Valuation",
+  "Fundamental Analysis",
+  "Multistage DDM",
+  "P/E and PEG Ratios",
+  "P/FCF and P/S Ratios",
+  "Technical Analysis",
+  "Technical Indicators",
+  "Valuation Method Types",
+  "Yield Relationships"
+ ]
+}

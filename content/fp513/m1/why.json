@@ -1,0 +1,142 @@
+{
+ "Under which arrangement does the investment banker guarantee the issuer the full proceeds and absorb the loss on any shares it cannot sell?": {
+  "Best efforts underwriting": "Best efforts carries no guarantee; the issuer simply receives nothing for unsold shares.",
+  "Private placement": "A private placement is a sale to a small group of investors that skips SEC registration, not an underwriting guarantee.",
+  "Green shoe option": "A green shoe is only the right to increase the size of an offering."
+ },
+ "Which of these fictional clients qualifies as an accredited investor under Rule 501 of Regulation D?": {
+  "Ivan, net worth of $1.5 million, of which $700,000 is equity in his primary residence": "Excluding his home, Ivan's net worth is $800,000, below the $1 million test.",
+  "Leah, single, income of $185,000 in each of the last two years and expecting a raise": "An individual needs income above $200,000 in each of the two most recent years.",
+  "A local charity whose total assets are $4 million": "A charitable organization needs assets exceeding $5 million."
+ },
+ "A dealer quotes Harbor Corp. at $18.40 bid and $18.55 ask. A client sells 200 shares to the dealer. Which statement is correct?": {
+  "The client receives $18.55 a share, since a dealer buys at its ask": "The ask is the price at which the dealer sells, not buys.",
+  "The dealer is acting as the client's agent and earns a commission": "Acting as an agent for a commission describes a broker; a dealer trades as a principal for its own account.",
+  "The dealer is called a specialist because the trade is over the counter": "Over the counter the dealer is a market maker; a specialist is the dealer on a securities exchange."
+ },
+ "Which statements about venture capital are correct?<br>I. It typically finances privately held companies, often through convertible preferred stock.<br>II. It tends to have a low correlation with equities.<br>III. VC firms usually stay passive and avoid advising company management.<br>IV. Bridge financing is capital provided ahead of an expected IPO.": {
+  "I and III only": "Statement III is false: VC firms generally provide management consultation and help with key hires.",
+  "II and IV only": "Statement I is also true: venture capital funds private firms, typically via convertible preferred stock.",
+  "I, II, III, and IV": "Statement III is false, so all four cannot be correct."
+ },
+ "Marcus, 58, has moderate risk tolerance, wants diversification and professional management, and may need his money within a few years. A friend pitches an oil-and-gas limited partnership. What is the best advice?": {
+  "Buy the LP, since limited partners decide when distributions are paid": "The general partner, not the limited partners, controls distributions.",
+  "Buy the LP, since partnership income is passed through to him tax-free": "Partnership income is not tax-exempt; partners share in its income, gains, losses and deductions.",
+  "Join as the general partner, which limits his personal liability": "The general partner has unlimited liability; only limited partners have limited liability."
+ },
+ "Northgate Robotics sells new shares in its IPO at $20 each, paying underwriting costs of $1.40 a share. A week later, Kai buys 1,000 Northgate shares on the exchange at $26. How much of Kai's money goes to Northgate?": {
+  "$26,000": "Kai bought previously issued shares from another investor in the secondary market, so the seller, not Northgate, receives the money.",
+  "$20,000": "$20 was the IPO price; that money reached Northgate only in the primary-market sale.",
+  "$18,600": "$18.60 a share (IPO price less underwriting costs) is what Northgate netted in the primary market, not from Kai's trade."
+ },
+ "Bianca sells short 300 shares of Lumen Co. at $60 with a 50% initial margin. Lumen pays a $0.80 per-share dividend before she covers, and she buys the shares back at $52. What is her percentage return?": {
+  "26.67%": "This ignores the $240 dividend she owed the share lender ($2,400 &divide; $9,000).",
+  "12.00%": "This divides by the full $18,000 of sale proceeds instead of her $9,000 margin deposit.",
+  "29.33%": "This adds the dividend to her profit; a short seller pays the dividend, so it is subtracted."
+ },
+ "Elena buys 500 shares at $48 in her margin account with a 50% initial margin. Her broker's maintenance margin is 30%. At about what share price will she receive a margin call?": {
+  "$24.00": "$24 is just the loan per share; equity would already be zero there.",
+  "$36.92": "This uses a 35% maintenance margin ($24 &divide; 0.65) instead of her broker's 30%.",
+  "$33.60": "This multiplies the price by (1 &minus; maintenance) instead of dividing the loan by it."
+ },
+ "Elena bought 500 shares at $48 on 50% initial margin, so she owes the broker $24 a share. The stock drops to $30 and the maintenance margin is 30%. How much cash must she deposit to restore the required equity?": {
+  "$4,200": "This bases required equity on the $48 purchase price; the current $30 price must be used.",
+  "$4,500": "$9 a share is the total required equity, not the shortfall; her $6 of existing equity counts.",
+  "$3,000": "$3,000 is her actual equity ($6 &times; 500), not the amount she must add."
+ },
+ "Arjun buys 200 shares at $50 using 50% margin at 7% annual interest. During the year the stock pays a $1 per-share dividend, and he sells all shares at $58 at year-end. What is his holding period return?": {
+  "18%": "18% is the unleveraged HPR ($1,800 &divide; $10,000); on margin, divide by his own $5,000.",
+  "36%": "This leaves out the $350 of margin interest, a negative cash flow.",
+  "25%": "This leaves out the $200 of dividends received, a positive cash flow."
+ },
+ "Noor owns 800 shares trading at $70. She wants out if the stock falls to $62, but will not accept any sale below $62, even if that means she may not get out. Which order fits?": {
+  "Sell stop at $62": "Once triggered, a stop becomes a market order, which could fill well below $62 on a gap down.",
+  "Buy stop at $62": "A buy stop is placed above the market, typically to protect a short position.",
+  "Sell limit at $62": "With the stock at $70, a $62 sell limit would execute right away at $70 or better."
+ },
+ "Theo sold short 500 shares at $35 and wants to cap his loss if the stock rallies. Which order should he enter?": {
+  "Sell stop at $30": "A sell stop below the market protects a long position, not a short one.",
+  "Buy limit at $30": "A buy limit below the market would only cover after the stock falls; it gives no protection in a rally.",
+  "Sell stop at $40": "Covering a short requires a buy; a sell stop is also placed below the market price."
+ },
+ "A brokerage firm holding a client's securities in street name goes bankrupt. Which statement about SIPC is correct?": {
+  "It covers up to $250,000 per customer, all of which may be securities": "The limit is $500,000; $250,000 is the cap on the cash portion.",
+  "It covers market losses incurred while waiting for securities to be returned": "SIPC does not cover market losses suffered while waiting to recover securities from a failed firm.",
+  "It covers only certificates held by the client, not street-name holdings": "SIPC protects customer accounts held at the brokerage, which is exactly the street-name risk."
+ },
+ "Celia asks which of her holdings can be cashed in quickly at a known value but has no market where she could sell it to another investor. Which holding fits?": {
+  "Her 26-week Treasury bill": "A T-bill is both liquid and marketable; it trades actively in the secondary market.",
+  "Her negotiable CD": "Negotiable CDs are bought and sold in the secondary market, so they are marketable.",
+  "Shares of a privately held company": "Private company stock is not liquid: it can't be turned into cash quickly at a known price."
+ },
+ "Owen buys a 26-week Treasury bill with a $10,000 face value for $9,880 and holds it to maturity. What is his holding period return, and how is the $120 taxed?": {
+  "1.20%; ordinary income for federal tax only": "1.20% divides by the $10,000 face value; HPR divides by the $9,880 he paid.",
+  "1.21%; ordinary income for federal and state tax": "T-bill income is exempt from state and local income tax.",
+  "1.21%; long-term capital gain for federal tax": "Held to maturity, the discount is ordinary interest income, and the bill was held well under a year."
+ },
+ "Gwen is in a 24% federal and 6% state bracket (ignore any interaction between the two). She earns $500 of discount income on a T-bill and $500 of interest on a bank CD. How much more total income tax does the CD interest cost her than the T-bill income?": {
+  "$0": "The two are not taxed the same: CD interest is state-taxable while T-bill income is not.",
+  "$120": "$120 is the federal tax on each; it is not the difference between them.",
+  "$150": "$150 is the CD's total tax ($500 &times; 30%), not the extra over the T-bill."
+ },
+ "A government securities dealer sells Treasuries to a money market fund for $4,990,000 and agrees to buy them back in 7 days for $5,000,000. What does the fund earn?": {
+  "Nothing; the fund is the borrower and pays the dealer $10,000": "In a repo the dealer sells securities to raise cash, so the dealer is the borrower and the fund is the lender.",
+  "A $10,000 capital gain, because the deal is legally a sale": "Though legally a sale and repurchase, a repo is in substance a collateralized loan and the price gap is interest.",
+  "$10,000 of interest, about 0.20% per year": "The 0.20% is earned over just 7 days, not over a full year."
+ },
+ "Hal lives in a high-tax state and wants a money market fund whose income escapes both federal and his state's income tax. Which choice fits best?": {
+  "A national tax-exempt fund, since all of its income is free of his state's tax": "A national fund's income is state-tax-free only for the portion from his home state's issuers.",
+  "A Treasury-only taxable money market fund, since its income is free of federal tax": "Treasury income is state-tax-exempt but fully subject to federal income tax.",
+  "A bank money market deposit account, since FDIC-insured interest is tax-exempt": "MMDA interest is taxable; FDIC insurance has no bearing on tax treatment."
+ },
+ "Why does commercial paper usually yield slightly more than a Treasury bill of similar maturity?": {
+  "Its interest is exempt from state income tax": "Commercial paper interest is ordinary income; it is T-bill income that escapes state tax.",
+  "Its maturities commonly run up to two years": "Commercial paper matures in no more than 270 days.",
+  "It is secured by the issuer's receivables and inventory": "Commercial paper is unsecured; it is issued to finance receivables and inventory, not backed by them."
+ },
+ "A small U.S. importer can't get credit from its overseas supplier and is too small to issue commercial paper. Which money market instrument is built for this need?": {
+  "Eurodollar CD": "A Eurodollar CD is a dollar deposit at a non-U.S. bank, an investment rather than trade financing.",
+  "Repurchase agreement": "Repos are used by government securities dealers to meet short-term liquidity needs.",
+  "Negotiable CD": "A negotiable CD is a large bank deposit bought mostly by institutions; it doesn't finance a firm's imports."
+ },
+ "Priya bought 200 shares of Delta Grid for $11,000. This year she sells all 200 for $8,200, and 18 days later she buys 200 Delta Grid shares for $8,600. What is her basis in the new shares?": {
+  "$8,600": "This ignores the wash sale rule, which adds the $2,800 disallowed loss to the new basis.",
+  "$5,800": "The disallowed loss is added to, not subtracted from, the replacement cost.",
+  "$11,000": "The new basis starts from the replacement cost ($8,600), not the original cost."
+ },
+ "Rina bought 100 more shares of a stock on March 1. On March 21 she sells 100 older shares of the same stock at a $1,500 loss. What is the tax result?": {
+  "A $1,500 loss is allowed because the purchase came before the sale": "The rule reaches purchases made within 30 days before the loss sale, not just after.",
+  "No loss now, and the $1,500 is permanently lost": "A wash sale postpones the loss by adding it to the replacement shares' basis; it isn't forfeited.",
+  "No loss now; the $1,500 reduces the basis of the March 1 shares": "The disallowed loss increases, not reduces, the replacement shares' basis."
+ },
+ "Leon has a $9,000 long-term gain, a $4,000 long-term loss, a $2,500 short-term gain and an $11,500 short-term loss this year. What is the result?": {
+  "Deduct the full $4,000 net loss this year": "Net capital losses are deductible only up to $3,000 a year; the excess carries forward.",
+  "Deduct $3,000 this year and forfeit the other $1,000": "Unused capital losses carry forward indefinitely; they are not lost.",
+  "Deduct a $9,000 short-term loss and pay LT rates on $5,000": "After separate netting, the $5,000 net LT gain must be netted against the $9,000 net ST loss."
+ },
+ "Dmitri, a single filer, has MAGI of $230,000, including $45,000 of net investment income. Using the textbook's $200,000 threshold for single filers, what is his net investment income tax?": {
+  "$1,710": "This taxes all $45,000 of investment income; the tax applies to the lesser amount, the $30,000 excess.",
+  "$0": "$0 would result from wrongly applying the $250,000 joint-filer threshold to a single filer.",
+  "$8,740": "The 3.8% applies to the lesser of NII or MAGI over the threshold, never to total MAGI."
+ },
+ "Which cash dividend is most likely to qualify for the preferential 0%/15%/20% rates?": {
+  "From a REIT whose shares the client has held for three years": "REIT income isn't taxed at the entity level, so its dividends don't receive the preferential rates.",
+  "From an S corporation in which the client owns shares": "S corporation distributions aren't taxed at the corporate level first, so they don't get preferential rates.",
+  "From a C corporation stock bought 10 days before and sold 20 days after the ex-dividend date": "Held only about 30 days, the stock fails the more-than-60-days test within the 121-day window."
+ },
+ "Pia sells shares of a gold ETF she held for three years at a gain. What is the maximum federal rate on that long-term gain?": {
+  "20%": "20% is the top rate for ordinary long-term capital gains, but gold and silver ETFs are generally taxed as collectibles.",
+  "25%": "25% is the maximum rate on the gain created by depreciation on real estate.",
+  "15%": "15% is the middle preferential rate, which doesn't apply to collectibles."
+ },
+ "Jae owns 100 shares with a $30 per-share basis and receives a $2 per-share distribution identified as a return of capital. What is the tax effect?": {
+  "$200 taxed as a qualified dividend; basis stays $3,000": "A return of capital is not a taxable dividend; it gives back the investor's own money.",
+  "$200 taxed as ordinary income; basis falls to $2,800": "The distribution isn't taxed when received; it only lowers basis.",
+  "No current tax; his total basis rises to $3,200": "A return of capital reduces basis; it does not increase it."
+ },
+ "For a client who lives in State X, which statements are correct?<br>I. Interest on a U.S. Treasury note is federally taxable but exempt from state income tax.<br>II. Interest on a State X municipal bond is generally exempt from federal and State X income tax.<br>III. Interest on a State Y municipal bond is exempt from State X income tax.<br>IV. Interest on a corporate bond is taxable at both the federal and state level.": {
+  "I and III only": "III is false: out-of-state municipal interest is taxable on the resident's state return.",
+  "II and III only": "III is false and I is true: Treasury interest is federally taxable but state-exempt.",
+  "I, II, III, and IV": "III is false, so not all four are correct."
+ }
+}

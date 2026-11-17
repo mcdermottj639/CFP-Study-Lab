@@ -1,0 +1,103 @@
+{
+ "objectives": [
+  "LO 3.1.1: Describe common stock, its main types (blue-chip, growth, income, value, cyclical, defensive, technology), its risks, and rights vs. warrants",
+  "LO 3.2.1: Explain how cash dividends, DRIPs, stock dividends, splits and reverse splits affect shareholders, basis and the company",
+  "LO 3.3.1: Compare open-end funds (NAV, share classes, expenses, fund objectives, taxation), closed-end funds, UITs and separately managed accounts",
+  "LO 3.4.1: Describe ETFs, hedge funds, funds of funds and GICs and who each suits",
+  "LO 3.5.1: Calculate average cost per share under dollar cost averaging, value averaging and share averaging, and fund basis under each basis method",
+  "LO 3.6.1: Use objectives, holdings, manager flexibility, performance, fees, turnover, size, age and tax efficiency to select funds"
+ ],
+ "synthesis": "This module turns the risk and return tools from earlier modules into product choices: which stock type, which pooled vehicle, and which share class fits a client. Distribution and basis rules link directly to tax planning (qualified dividends, capital gain distributions, basis methods), while averaging techniques and fund-selection screens feed portfolio construction and asset allocation. In client work the same screens (expense ratio, turnover, tax efficiency and a fund's real, not labeled, allocation) decide which funds earn a place in a plan.",
+ "example": {
+  "title": "Dollar cost averaging: average cost vs. average price",
+  "html": "<p>Jun invests $3,000 a month for four months at prices of $20, $15, $24 and $16.</p><table><thead><tr><th>Month</th><th>Price</th><th>Shares</th></tr></thead><tbody><tr><td>1</td><td>$20</td><td>150.0</td></tr><tr><td>2</td><td>$15</td><td>200.0</td></tr><tr><td>3</td><td>$24</td><td>125.0</td></tr><tr><td>4</td><td>$16</td><td>187.5</td></tr><tr><td><b>Total</b></td><td></td><td><b>662.5</b></td></tr></tbody></table><p>Average cost = $12,000 &divide; 662.5 = <b>$18.11</b>. Average price = ($20 + $15 + $24 + $16) &divide; 4 = <b>$18.75</b>. The fixed dollar amount bought more shares when the price was low, so cost is $0.64 below the average price. At the final $16 price the account is worth $10,600 &mdash; a $1,400 loss, so DCA lowers cost but does not guarantee a profit.</p>"
+ },
+ "cheat": {
+  "keyNumbers": [
+   [
+    "Qualified dividend holding test",
+    "More than 60 days in the 121-day window starting 60 days before ex-date (2026 edition figure)"
+   ],
+   [
+    "Qualified dividend rates",
+    "0% / 15% / 20% (2026 edition figure)"
+   ],
+   [
+    "Market-cap bands",
+    "Small up to $2B; mid $2B&ndash;$10B; large over $10B"
+   ],
+   [
+    "Expense ratio range",
+    "Under 0.20% (some index funds) to 2.00%+"
+   ],
+   [
+    "Hedge fund of funds",
+    "Usually holds about 10&ndash;30 hedge funds"
+   ],
+   [
+    "Separately managed account",
+    "Minimums often $50,000+"
+   ],
+   [
+    "Loss recovery",
+    "&minus;50% needs +100%; &minus;40% needs +66.67%"
+   ],
+   [
+    "Class B CDSC",
+    "May be waived after about 5 years"
+   ]
+  ],
+  "mustKnow": [
+   "Buy before the ex-dividend date to get a declared dividend",
+   "Stock dividends and splits: no tax, same total value and basis, lower basis per share",
+   "NAV per share = (assets &minus; liabilities) &divide; shares; forward pricing at the next NAV",
+   "Closed-end funds trade at a premium or discount to NAV; open-end funds trade at NAV (+ load)",
+   "DCA average cost = total dollars &divide; total shares, which is below the simple average price",
+   "Basis = price + commissions + reinvested distributions; specific ID most favorable, FIFO the default",
+   "Expense ratio excludes loads and trading costs; turnover = lesser of buys or sells &divide; average assets"
+  ],
+  "traps": [
+   "Reinvested dividends and capital gain distributions are still taxable (constructive receipt)",
+   "Value averaging can require selling; DCA and share averaging never do",
+   "GICs are insurer-backed, not FDIC-insured",
+   "'No-load' funds may still charge 12b-1 fees (hidden loads)",
+   "A fund labeled 'stock' may hold cash or foreign stocks: check manager flexibility"
+  ],
+  "tips": [
+   "For split questions, total value never changes; only the share count and price per share do",
+   "On basis-method questions in a rising market: specific ID gives the lowest gain, FIFO the highest",
+   "Match the fund to the client's top-priority objective first, then risk tolerance, then cost and taxes"
+  ]
+ },
+ "topics": [
+  "Common Stock Basics",
+  "Common Stock Types",
+  "Equity Risks",
+  "Rights and Warrants",
+  "Cash Dividends",
+  "Dividend Taxation",
+  "Dividend Reinvestment Plans",
+  "Stock Dividends and Splits",
+  "Net Asset Value",
+  "Share Classes and Fees",
+  "Bond Fund Types",
+  "Equity Fund Types",
+  "Mutual Fund Taxation",
+  "Closed-End Funds",
+  "Unit Investment Trusts",
+  "Separately Managed Accounts",
+  "Exchange-Traded Funds",
+  "Hedge Funds",
+  "Guaranteed Investment Contracts",
+  "Dollar Cost Averaging",
+  "Value Averaging",
+  "Share Averaging",
+  "Cost Basis Methods",
+  "Fund Selection Factors",
+  "Expense Ratio and Turnover",
+  "Fund Performance Analysis",
+  "Fund Pitfalls",
+  "Hybrid and Target Funds",
+  "Fund Tax Efficiency"
+ ]
+}

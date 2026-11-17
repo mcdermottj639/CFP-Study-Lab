@@ -1,5 +1,5 @@
 /* FP Study Lab — service worker (offline support) */
-const VERSION = 'v2.113.0';
+const VERSION = 'v2.114.0';
 const CORE_CACHE = `fpsl-core-${VERSION}`;
 const RUNTIME_CACHE = `fpsl-runtime-${VERSION}`;
 /* Infographics live in an UNVERSIONED cache so large images aren't re-downloaded
@@ -36,12 +36,15 @@ const CORE_ASSETS = [
   './vendor/fonts/dancing-script-latin-400-normal.woff2',
   './flashcards.js',
   './coach-core.js',
+  './fp513-calc.js',
+  './fp513-course.js',
   './coach-cases.js',
   './coach.js',
   './coach.css',
   './study-activity.js',
   './module-content.js',
   './mcq-why.js',
+  './mcq-why-fp513.js',
   './card-tiers.js',
   './cfp-gist-sync.js',
   './reader-theme.css',
@@ -55,6 +58,7 @@ const CORE_ASSETS = [
   './vendor/mathjax/tex-mml-svg.js',
   './apps/fp511-reading.html',
   './apps/fp512-reading.html',
+  './apps/fp513-reading.html',
   './apps/fp512-m1-kaplan-slides.html',
   './apps/fp512-m2-kaplan-slides.html',
   './apps/fp512-m3-kaplan-slides.html',

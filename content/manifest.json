@@ -1,0 +1,8 @@
+{
+ "_README": "Minimum item counts per course after `node scripts/add_content.mjs add`. The importer exits non-zero (and writes nothing) if a rebuild would drop below these — so a clean rebuild can never silently lose a course. Raise the numbers when content is added; never lower them without a deliberate content removal.",
+ "minimums": {
+  "FP511": { "cards": 233, "mcqs": 197 },
+  "FP512": { "cards": 346, "mcqs": 224 },
+  "FP513": { "cards": 304, "mcqs": 358 }
+ }
+}

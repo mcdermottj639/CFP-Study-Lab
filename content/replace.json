@@ -1,1 +1,1 @@
-[{"from":"$640","to":"$660"}]
+[{"from":"$640","to":"$660","m":"FP512","note":"FSA carryover limit update; scoped so it never rewrites other courses"}]

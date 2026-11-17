@@ -1,0 +1,104 @@
+<div id="tab-formulas" class="section-panel">
+  <div class="section-card">
+    <div class="collapsible-header" data-toggle><h3>Formula sheet — returns, yields &amp; valuation</h3><span class="toggle-icon">&#8722;</span></div>
+    <div class="collapsible-content">
+      <p class="text-sm">Every formula below follows the textbook's conventions. Bond problems are <strong>semiannual</strong> unless a question says the coupon is annual. <span class="srcref">M2 · M4 · M7</span></p>
+      <table>
+        <thead><tr><th>Measure</th><th>Formula</th><th>Use / trap</th></tr></thead>
+        <tbody>
+          <tr><td>Bond value</td><td>N = yrs &times; 2, I/Y = YTM &divide; 2, PMT = coupon $ &divide; 2, FV = par &rarr; PV</td><td>Coupon below yield &rarr; discount; above &rarr; premium</td></tr>
+          <tr><td>Current yield</td><td>annual coupon $ &divide; market price</td><td>Ignores the gain/loss to maturity</td></tr>
+          <tr><td>YTM</td><td>solve I/Y with FV = par, N = periods to maturity; &times; 2</td><td>Assumes coupons reinvested at the YTM</td></tr>
+          <tr><td>YTC</td><td>same set-up, FV = call price, N = periods to first call</td><td>Quote the lower of YTM/YTC for a premium callable</td></tr>
+          <tr><td>Taxable-equivalent yield</td><td>tax-free yield &divide; (1 &minus; federal rate)</td><td>Reverse: taxable &times; (1 &minus; t). Fed + state, itemizer: &divide; [(1 &minus; state)(1 &minus; federal)]</td></tr>
+          <tr><td>Duration price change</td><td>%&Delta;P &asymp; &minus;D &times; [&Delta;y &divide; (1 + y)]</td><td>D = Macaulay; semiannual: use y &divide; 2 in the denominator only</td></tr>
+          <tr><td>Conversion value</td><td>(par &divide; conversion price) &times; stock price</td><td>Conversion premium = (bond price &minus; CV) &divide; CV</td></tr>
+          <tr><td>Downside risk (convertible)</td><td>(bond price &minus; investment value) &divide; bond price</td><td>Investment value = straight-bond floor</td></tr>
+          <tr><td>No-growth DDM</td><td>V = D &divide; r</td><td>Preferred stock uses the same idea</td></tr>
+          <tr><td>Constant-growth DDM</td><td>V = D<sub>1</sub> &divide; (r &minus; g), D<sub>1</sub> = D<sub>0</sub>(1 + g)</td><td>"Just paid" = D<sub>0</sub>; needs r &gt; g</td></tr>
+          <tr><td>Sustainable growth</td><td>g = ROE &times; (1 &minus; payout ratio)</td><td>Retention ratio = 1 &minus; payout</td></tr>
+          <tr><td>PEG</td><td>P/E &divide; growth (as a whole number)</td><td>Below 1 = cheaper per unit of growth</td></tr>
+          <tr><td>Holding-period return</td><td>(end &minus; begin &plusmn; cash flows) &divide; begin</td><td>Annualize geometrically, not by dividing</td></tr>
+          <tr><td>Geometric mean</td><td>[&Pi;(1 + r<sub>i</sub>)]<sup>1/n</sup> &minus; 1</td><td>&le; arithmetic mean; equal only if returns are equal</td></tr>
+          <tr><td>Real return</td><td>[(1 + nominal) &divide; (1 + inflation)] &minus; 1</td><td>Subtraction is only an approximation</td></tr>
+          <tr><td>Time- vs dollar-weighted</td><td>TWR = IRR following one share; DWR = IRR of all the investor's flows</td><td>TWR judges the manager; DWR reflects the client's timing</td></tr>
+          <tr><td>Currency-adjusted return</td><td>convert cost and proceeds at each date's rate; = (1 + R<sub>local</sub>)(1 + R<sub>FX</sub>) &minus; 1</td><td>Investor wants the home currency to weaken while holding</td></tr>
+          <tr><td>Real estate value</td><td>NOI &divide; cap rate</td><td>NOI excludes debt service and depreciation</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="collapsible-header" data-toggle><h3>Formula sheet — risk, statistics &amp; portfolio theory</h3><span class="toggle-icon">&#8722;</span></div>
+    <div class="collapsible-content">
+      <table>
+        <thead><tr><th>Measure</th><th>Formula</th><th>Use / trap</th></tr></thead>
+        <tbody>
+          <tr><td>Standard deviation (historical)</td><td>&radic;[&Sigma;(r &minus; r&#772;)&sup2; &divide; (n &minus; 1)]</td><td>Sample SD (calculator Sx); variance is SD squared</td></tr>
+          <tr><td>Ranges</td><td>&plusmn;1&sigma; &asymp; 68% · &plusmn;2&sigma; &asymp; 95% · &plusmn;3&sigma; &asymp; 99%</td><td>The textbook uses 99% for three SDs</td></tr>
+          <tr><td>Coefficient of variation</td><td>&sigma; &divide; mean return</td><td>Lower = less risk per unit of return</td></tr>
+          <tr><td>Covariance</td><td>&rho; &times; &sigma;<sub>A</sub> &times; &sigma;<sub>B</sub></td><td>Correlation = COV &divide; (&sigma;<sub>A</sub>&sigma;<sub>B</sub>), from &minus;1 to +1</td></tr>
+          <tr><td>Two-asset portfolio &sigma;</td><td>&radic;[w<sub>A</sub>&sup2;&sigma;<sub>A</sub>&sup2; + w<sub>B</sub>&sup2;&sigma;<sub>B</sub>&sup2; + 2w<sub>A</sub>w<sub>B</sub>COV]</td><td>Weighted average of the &sigma;s is right only when &rho; = +1</td></tr>
+          <tr><td>Beta</td><td>COV<sub>i,m</sub> &divide; &sigma;<sub>m</sub>&sup2; = &rho; &times; &sigma;<sub>i</sub> &divide; &sigma;<sub>m</sub></td><td>Portfolio beta = value-weighted average</td></tr>
+          <tr><td>R&sup2;</td><td>&rho;&sup2;</td><td>&ge; 0.70 before relying on beta (Treynor, alpha)</td></tr>
+          <tr><td>CAPM / SML</td><td>r = R<sub>f</sub> + &beta;(R<sub>m</sub> &minus; R<sub>f</sub>)</td><td>Systematic risk only</td></tr>
+          <tr><td>CML</td><td>R<sub>p</sub> = R<sub>f</sub> + &sigma;<sub>p</sub>[(R<sub>m</sub> &minus; R<sub>f</sub>) &divide; &sigma;<sub>m</sub>]</td><td>Efficient portfolios, total risk</td></tr>
+          <tr><td>Sharpe</td><td>(R<sub>p</sub> &minus; R<sub>f</sub>) &divide; &sigma;<sub>p</sub></td><td>Use when R&sup2; &lt; 0.70 or the portfolio is not diversified</td></tr>
+          <tr><td>Treynor</td><td>(R<sub>p</sub> &minus; R<sub>f</sub>) &divide; &beta;<sub>p</sub></td><td>Diversified portfolios; relative measure</td></tr>
+          <tr><td>Jensen's alpha</td><td>R<sub>p</sub> &minus; [R<sub>f</sub> + &beta;(R<sub>m</sub> &minus; R<sub>f</sub>)]</td><td>Absolute measure; + = beat the risk-adjusted benchmark</td></tr>
+          <tr><td>Information ratio</td><td>(R<sub>p</sub> &minus; R<sub>B</sub>) &divide; tracking error</td><td>0.50+ is often top quartile</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="collapsible-header" data-toggle><h3>Decision tree — which performance measure?</h3><span class="toggle-icon">&#8722;</span></div>
+    <div class="collapsible-content">
+      <ol class="key-list">
+        <li><strong>Is R&sup2; with the benchmark below 0.70</strong> (or is this the client's whole, undiversified portfolio)? &rarr; beta is unreliable &rarr; <strong>Sharpe</strong> (total risk).</li>
+        <li><strong>Diversified, R&sup2; &ge; 0.70, ranking several managers?</strong> &rarr; <strong>Treynor</strong> (return per unit of beta).</li>
+        <li><strong>Need "did it beat what its risk required, in % points?"</strong> &rarr; <strong>Jensen's alpha</strong> (absolute).</li>
+        <li><strong>Judging active management against a stated benchmark?</strong> &rarr; <strong>information ratio</strong>.</li>
+      </ol>
+      <div class="highlight-box amber"><strong>Exam trap:</strong> Sharpe and Treynor only rank portfolios against each other; alpha is the one that is meaningful by itself.</div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="collapsible-header" data-toggle><h3>Decision tree — which bond yield or strategy?</h3><span class="toggle-icon">&#8722;</span></div>
+    <div class="collapsible-content">
+      <div class="two-col">
+        <div><span class="pill">Quoting yield</span><ul class="key-list"><li>Callable and trading at a premium &rarr; compare YTM and YTC; quote the lower.</li><li>Comparing a muni with a taxable bond &rarr; convert to taxable-equivalent yield at the client's marginal rate.</li><li>Need cash income per dollar today &rarr; current yield.</li></ul></div>
+        <div><span class="pill green">Strategy</span><ul class="key-list"><li>A known future liability (tuition, a date) &rarr; <strong>immunize</strong>: match duration (not maturity) to the horizon; a zero maturing on the date does it alone.</li><li>Passive, steady cash rolling to the long end &rarr; <strong>ladder</strong>.</li><li>Active: short end for liquidity, long end to lock rates &rarr; <strong>barbell</strong>.</li><li>One cash need on one date, bought over time &rarr; <strong>bullet</strong>.</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="collapsible-header" data-toggle><h3>Visual — duration vs. convexity</h3><span class="toggle-icon">&#8722;</span></div>
+    <div class="collapsible-content">
+      <p class="text-sm">A 20-year, 6% annual-coupon bond. Duration treats the price&ndash;yield link as a straight line; the true curve bows above it, so duration <strong>overstates</strong> price drops and <strong>understates</strong> price gains. That bow is convexity — the exam tests the idea, not a convexity calculation.</p>
+      <!--SVG:convexity-->
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="collapsible-header" data-toggle><h3>Visual — option payoffs at expiration</h3><span class="toggle-icon">&#8722;</span></div>
+    <div class="collapsible-content">
+      <p class="text-sm">Per share, strike $50. Call premium $4, put premium $3. Multiply by 100 for one contract. Breakeven is strike + premium for calls and strike &minus; premium for puts — the same for buyer and writer.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center"><!--SVG:opt--></div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="collapsible-header" data-toggle><h3>Visual — efficient frontier, CML and SML</h3><span class="toggle-icon">&#8722;</span></div>
+    <div class="collapsible-content">
+      <p class="text-sm">Illustrative numbers. The CML runs from the risk-free rate to the market portfolio, where it just touches the efficient frontier; it plots <strong>total risk (&sigma;)</strong>. The SML plots <strong>beta</strong> and prices every security.</p>
+      <!--SVG:frontier-->
+      <!--SVG:sml-->
+      <div class="highlight-box green"><strong>Client conversation:</strong> "Every portfolio on this upper curve gives the most return we can get for its level of ups and downs. Our job is to pick the point on it that matches how much swing you can live with."</div>
+    </div>
+  </div>
+</div>

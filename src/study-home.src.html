@@ -208,6 +208,10 @@ body.study-focus .wrap{padding-top:6px}
               <option value="vmath">Math version — multi-step calc</option>
               <option value="vcase">Case-study version</option>
             </optgroup>
+            <optgroup label="FP513 practice forms (app-made, not Kaplan)">
+              <option value="fp513a">FP513 cumulative form A</option>
+              <option value="fp513b">FP513 cumulative form B</option>
+            </optgroup>
           </select>
           <select id="studySession" title="Which cards to study">
             <option value="all" selected>All cards</option>
@@ -313,8 +317,8 @@ const DOMAINS=[
 // ---- Modules (8 sections) ----
 const MODULES=[
  {id:"FP511",name:"General Financial Planning, Conduct & Psychology",status:"done"},
- {id:"FP512",name:"Risk Management, Insurance & Employee Benefits",status:"current"},
- {id:"FP513",name:"Investment Planning",status:"upcoming"},
+ {id:"FP512",name:"Risk Management, Insurance & Employee Benefits",status:"done"},
+ {id:"FP513",name:"Investment Planning",status:"current"},
  {id:"FP514",name:"Income Tax Planning",status:"upcoming"},
  {id:"FP515",name:"Retirement Savings & Income Planning",status:"upcoming"},
  {id:"FP516",name:"Estate Planning",status:"upcoming"},
@@ -328,7 +332,8 @@ const MODULES=[
 // Drives the per-module flashcard/quiz filter on the Study tab.
 const MODMETA={
  FP511:{1:"Personal Financial Planning",2:"Psychology of Financial Planning",3:"Financial Statements & Cash Flow",4:"Time Value of Money",5:"Professional Conduct & Fiduciary",6:"Economic Environment & Consumer Protection",7:"Education Planning",8:"Case Study"},
- FP512:{1:"Principles of Insurance",2:"Property & Casualty",3:"Life Insurance",4:"Annuities",5:"Health, Medicare & Medicaid",6:"Disability, LTC & Veterans Benefits",7:"Employee Group Benefits",8:"Business Risk Solutions"}
+ FP512:{1:"Principles of Insurance",2:"Property & Casualty",3:"Life Insurance",4:"Annuities",5:"Health, Medicare & Medicaid",6:"Disability, LTC & Veterans Benefits",7:"Employee Group Benefits",8:"Business Risk Solutions"},
+ FP513:{1:"Securities Markets & Money Market Instruments",2:"Debt Investments",3:"Equity Investments & Managed Assets",4:"Bond & Stock Valuation",5:"Alternative Investments & Derivatives",6:"Investment Risk & Quantitative Concepts",7:"Measures of Investment Returns",8:"Portfolio Theory & Asset Allocation",9:"Integrated Case Study"}
 };
 const TOPIC_MOD={
  FP511:{
@@ -352,10 +357,15 @@ const TOPIC_MOD={
   "Business Risk":8,"Buy-Sell Agreements":8,"Commercial Insurance":8,"Commercial Liability":8,"Cyber Insurance":8,"Key Person Insurance":8,"LIRP":8,"Professional Liability":8,
   // coarse module-level topics shipped by the original app cards/MCQs
   "Insurance in the Plan":1,"Principles of Insurance":1,"Property & Casualty Insurance":2,"Life Insurance":3,"Health Insurance & Medicare":5,"Disability & LTC Insurance":6,"Disability & LTC":6,"Employee Group Benefits":7,"Employee Benefits":7,"Group/Business Insurance":8
- }
+ },
+ // FP513 items carry their learning objective ("lo":"LO 4.1.2"), so moduleOf() derives the module
+ // from the LO; only the integrated case (Module 9) needs topic entries here.
+ FP513:{"Integrated Case":9,"Case Study Approach":9}
 };
 // Sub-module number for a card/MCQ (0 = unmapped). Exposed globally for flashcards.js.
-function moduleOf(x){const t=TOPIC_MOD[x&&x.m];return (t&&t[x.t])||0;}
+function moduleOf(x){const t=TOPIC_MOD[x&&x.m];return (t&&t[x.t])||loModule(x)||0;}
+// FP513+: module number from the learning-objective id ("LO 4.1.2" -> 4).
+function loModule(x){const m=x&&x.lo&&/^LO (\d+)\./.exec(x.lo);return m?+m[1]:0;}
 window.moduleOf=moduleOf;window.MODMETA=MODMETA;
 // Active sub-module filter ("ALL" or a number), set by the Study launcher.
 window.MODF="ALL";
@@ -490,9 +500,25 @@ function load(){
     if(!x.courseDue)x.courseDue={}; if(!x.coursePassed)x.coursePassed={};
     if(!Array.isArray(x.history))x.history=[];               // daily readiness snapshots for the trend sparkline
     if(typeof x.newPerDay!=='number'||x.newPerDay===20)x.newPerDay=0; // 0 = show ALL new cards (undo the earlier 20/day default)
+    fp513Activate(x);
     return x;
   }}catch(e){}
-  return {cards:{}, attempts:[], misses:[], sessions:{}, mastery:{}, seen:{}, mcqDue:{}, newSeen:{}, modReady:{}, objChecked:{}, history:[], newPerDay:0, examDate:"", goal:30, courseDue:{}, coursePassed:{}, lastStudy:null, streak:0};
+  return fp513Activate({cards:{}, attempts:[], misses:[], sessions:{}, mastery:{}, seen:{}, mcqDue:{}, newSeen:{}, modReady:{}, objChecked:{}, history:[], newPerDay:0, examDate:"", goal:30, courseDue:{}, coursePassed:{}, lastStudy:null, streak:0});
+}
+/* v2.114.0 — FP513 becomes the active course. Runs ONCE per save (S.fp513.init): marks FP512
+   passed (Jack passed it; he can untick it) and sets the FP513 deadline to the Kaplan access
+   expiry (2/15/2027, per Kaplan's Nov 17 2026 "Online Access" email) only if no date exists.
+   Never touches cards, attempts, mastery, history or any other course's data. */
+function fp513Activate(x){
+  if(!x.fp513||typeof x.fp513!=='object')x.fp513={};
+  if(!Array.isArray(x.fp513.official))x.fp513.official=[];
+  if(!x.fp513.init){
+    if(!x.coursePassed)x.coursePassed={}; if(!x.courseDue)x.courseDue={};
+    if(x.coursePassed.FP512==null)x.coursePassed.FP512=true;
+    if(!x.courseDue.FP513)x.courseDue.FP513='2027-02-15';
+    x.fp513.init=true;
+  }
+  return x;
 }
 function save(){localStorage.setItem(LS,JSON.stringify(S));}
 
@@ -556,6 +582,10 @@ function mergeState(a,b){
   // settings — keep this device's, fall back to incoming
   ['examDate','goal','newPerDay'].forEach(function(k){ if(out[k]==null) out[k]=b[k]; });
   if((a.coach||b.coach)&&window.CFPCoachCore) out.coach=window.CFPCoachCore.merge(a.coach,b.coach);
+  // FP513 course state: init flag OR-wins; official Kaplan score log = union by id
+  if(a.fp513||b.fp513){ var fa=O(a.fp513),fb=O(b.fp513),ids={},off=[];
+    (fa.official||[]).concat(fb.official||[]).forEach(function(r){ var k=r&&r.id?r.id:JSON.stringify(r); if(!ids[k]){ids[k]=1;off.push(r);} });
+    out.fp513=Object.assign({},fb,fa,{init:!!(fa.init||fb.init),official:off}); }
   return out;
 }
 window.cfpMergeState=mergeState;
@@ -1593,7 +1623,7 @@ document.getElementById('startBtn').onclick=()=>{
   const tEl=document.getElementById('studyTier');
   window.TIERF=tEl?tEl.value:"all";
   const mode=document.getElementById('studyMode').value;
-  ({flash:runFlash,hard:runHard,quiz:runQuiz,exam:runModuleExam,mcqreview:runMcqReview,mock:runMock,scenario:runScenario,calc:runCalc,ethics:runEthics,vtheory:runTheoryExam,vmath:runMathExam,vcase:runCaseExam})[mode](mod);
+  ({flash:runFlash,hard:runHard,quiz:runQuiz,exam:runModuleExam,mcqreview:runMcqReview,mock:runMock,scenario:runScenario,calc:runCalc,ethics:runEthics,vtheory:runTheoryExam,vmath:runMathExam,vcase:runCaseExam,fp513a:function(){if(window.FP513COURSE)FP513COURSE.runForm('A');},fp513b:function(){if(window.FP513COURSE)FP513COURSE.runForm('B');}})[mode](mod);
   studyFocus(true);
 };
 // Hard-cards mode reuses the flashcard runner over the struggling-cards pool
@@ -1911,7 +1941,7 @@ function runCaseExam(){
 function _r(a,b){return a+Math.random()*(b-a);}
 function _i(a,b){return Math.floor(_r(a,b+1));}
 function _money(n){return '$'+Math.round(n).toLocaleString();}
-const CALCGEN=[
+const CALCGEN=(window.FP513CALC?window.FP513CALC.drills:[]).concat([
  {m:'FP511',d:'B',name:'TVM — Future Value',mods:[4],gen:function(){var pv=_i(5,50)*1000,r=_i(4,10),n=_i(10,30);var fv=pv*Math.pow(1+r/100,n);return{prompt:'You invest '+_money(pv)+' today at '+r+'% compounded annually. Value in '+n+' years?',answer:fv,tol:Math.max(50,fv*0.01),steps:'N='+n+', I/Y='+r+', PV=-'+pv+', PMT=0 → FV ≈ '+_money(fv)+'.'};}},
  {m:'FP511',d:'B',name:'TVM — Required PMT',mods:[4],gen:function(){var fv=_i(250,1500)*1000,r=_i(5,9),n=_i(20,35);var pmt=fv*(r/100)/(Math.pow(1+r/100,n)-1);return{prompt:'How much must you deposit at END of each year for '+n+' years at '+r+'% to accumulate '+_money(fv)+'?',answer:pmt,tol:Math.max(25,pmt*0.01),steps:'N='+n+', I/Y='+r+', FV='+fv+', PV=0, END → PMT ≈ '+_money(pmt)+'.'};}},
  {m:'FP511',d:'B',name:'Inflation-adjusted (real) rate',mods:[4,7],gen:function(){var ret=_i(5,9),inf=_i(2,4);var real=((1+ret/100)/(1+inf/100)-1)*100;return{prompt:'Return '+ret+'%, inflation '+inf+'%. What real (inflation-adjusted) rate do you use?',answer:real,tol:0.05,steps:'[(1+'+ret/100+')/(1+'+inf/100+') − 1]×100 = '+real.toFixed(2)+'%.'};}},
@@ -1921,7 +1951,7 @@ const CALCGEN=[
  {m:'FP512',d:'C',name:'HO coinsurance recovery',mods:[2],gen:function(){var rc=_i(200,600)*1000,carried=Math.round(rc*_r(.6,.95)/1000)*1000,loss=_i(10,40)*1000,ded=_i(1,3)*500;var pay=Math.min(loss,(carried/(0.8*rc))*loss)-ded;return{prompt:'Replacement cost '+_money(rc)+', coverage carried '+_money(carried)+', loss '+_money(loss)+', deductible '+_money(ded)+'. Recovery using the 80% rule?',answer:pay,tol:Math.max(25,pay*0.01),steps:'Required = .80×'+_money(rc)+' = '+_money(0.8*rc)+'. Ratio = '+(carried/(0.8*rc)).toFixed(3)+'. ×'+_money(loss)+' − '+_money(ded)+' ded = '+_money(pay)+'.'};}},
  {m:'FP512',d:'C',name:'Section 79 imputed income',mods:[7],gen:function(){var ages=[[40,.10],[45,.15],[50,.23],[55,.43],[60,.66]];var pick=ages[_i(0,ages.length-1)];var face=_i(15,40)*10000;var imp=((face-50000)/1000)*pick[1]*12;return{prompt:'Employer provides '+_money(face)+' group term life to an employee age '+pick[0]+' (Table I rate $'+pick[1].toFixed(2)+'/$1,000/mo). Annual imputed income?',answer:imp,tol:1,steps:'('+_money(face)+'−$50,000)/1,000 × '+pick[1].toFixed(2)+' × 12 = '+_money(imp)+'.'};}},
  {m:'FP512',d:'C',name:'Annuity exclusion ratio',mods:[4],gen:function(){var basis=_i(80,200)*1000,exp=basis*_i(2,3);var ratio=basis/exp*100;return{prompt:'Annuity basis (investment) '+_money(basis)+', expected return '+_money(exp)+'. What % of each payment is tax-free (exclusion ratio)?',answer:ratio,tol:0.5,steps:'Exclusion ratio = '+_money(basis)+' ÷ '+_money(exp)+' = '+ratio.toFixed(1)+'% tax-free.'};}}
-];
+]);
 /* ===== DYNAMIC NUMBER MCQs (MCQGEN) — generator-backed bank questions get fresh
    numbers on every serve. A bank question opts in via a "g" field naming a generator
    below; mcqRunner freshens its pool each pass (mcqFresh), and mcqKey() returns the
@@ -2199,6 +2229,7 @@ const MCQGEN={
     months*prem,[0,face,2*face]);}
 };
 
+if(window.FP513CALC)Object.assign(MCQGEN,window.FP513CALC.mcqgen);   // FP513 math-version generators
 function mcqFresh(q){
   if(!q||!q.g||typeof MCQGEN==='undefined'||!MCQGEN[q.g])return q;
   for(var t=0;t<30;t++){
@@ -2221,6 +2252,18 @@ function mcqKeyMigrate(){
   if(ch)save();
 }
 /* MCQGEN-END */
+/* Calc-drill solution panel. FP513 drills supply formula/subst/steps[]/errors[] (fp513-calc.js);
+   older drills supply a single steps string. Error diagnosis: if the typed answer matches a
+   known mistake's computed value, name the mistake. */
+function calcFmt(n,unit){if(!isFinite(n))return String(n);if(unit==='$')return (n<0?'−$':'$')+Math.abs(n).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});var a=Math.abs(n);var t=a>=1000?Math.round(n).toLocaleString():n.toFixed(a>=100?1:a>=1?2:4);return unit==='%'?t+'%':t;}
+function calcSolutionHtml(cur,v,ok){
+  var head='<b>'+(ok?'✓ Within tolerance':'✗ Correct answer ≈ '+calcFmt(cur.answer,cur.unit))+'.</b>';
+  if(!cur.formula)return '<div class="expl">'+head+'<br>'+cur.steps+'</div>';
+  var diag='';
+  if(!ok&&!isNaN(v)&&cur.errors){var hit=cur.errors.filter(function(e){return isFinite(e.value)&&Math.abs(v-e.value)<=Math.max(cur.tol,Math.abs(e.value)*0.005);})[0];
+    diag=hit?'<div class="small" style="margin-top:6px;color:#b4572f">⚠ Your answer matches a common mistake: <b>'+hit.label+'</b>.</div>':'<div class="small muted" style="margin-top:6px">Common mistakes: '+cur.errors.map(function(e){return e.label+' ('+calcFmt(e.value,cur.unit)+')';}).join(' · ')+'</div>';}
+  return '<div class="expl">'+head+'<div style="margin-top:6px"><b>Formula:</b> '+cur.formula+'</div><div class="small" style="margin-top:4px"><b>Inputs:</b> '+cur.subst+'</div><ol class="small" style="margin:6px 0 0;padding-left:18px">'+cur.steps.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ol>'+diag+'</div>';
+}
 function runCalc(mod){
   var mf=window.MODF;
   var list=CALCGEN.filter(function(g){
@@ -2232,10 +2275,10 @@ function runCalc(mod){
   var count=0,correct=0,cur=null,curGen=null;var area=document.getElementById('studyArea');
   function draw(){
     var g=list[Math.floor(Math.random()*list.length)];curGen=g;cur=g.gen();
-    area.innerHTML='<div class="card"><div class="flex"><span class="small muted">Calc drill #'+(count+1)+' · '+correct+' correct</span><span class="tag">'+g.m+'</span></div><div class="small muted" style="margin:2px 0 6px">'+g.name+' — fresh numbers every time</div><h3>'+cur.prompt+'</h3><div class="row"><input id="calcin" type="number" step="any" placeholder="Your answer"><button class="btn" onclick="window._csub()">Check</button><button class="btn gray" onclick="window._cskip()">New problem</button></div><div id="calcrev"></div></div>';
+    var asum=cur.assumptions&&cur.assumptions.length?'<ul class="small muted" style="margin:4px 0 8px;padding-left:18px">'+cur.assumptions.map(function(a){return '<li>'+a+'</li>';}).join('')+'</ul>':'';var unitHint=cur.unit!=null?'<div class="small muted" style="margin:0 0 6px">Answer in '+(cur.unit==='$'?'dollars':cur.unit==='%'?'percent (e.g. 4.25 for 4.25%)':cur.unit||'a plain number')+' · accepted within ±'+cur.tol+'</div>':'';area.innerHTML='<div class="card"><div class="flex"><span class="small muted">Calc drill #'+(count+1)+' · '+correct+' correct</span><span class="tag">'+g.m+(g.lo?' · '+g.lo:'')+'</span></div><div class="small muted" style="margin:2px 0 6px">'+g.name+' — fresh numbers every time</div><h3>'+cur.prompt+'</h3>'+asum+unitHint+'<div class="row"><input id="calcin" type="number" step="any" inputmode="decimal" placeholder="Your answer"><button class="btn" onclick="window._csub()">Check</button><button class="btn gray" onclick="window._cskip()">New problem</button></div><div id="calcrev"></div></div>';
     var el=document.getElementById('calcin'); if(el){el.focus(); el.addEventListener('keydown',function(e){if(e.key==='Enter')window._csub();});}
   }
-  window._csub=function(){var v=parseFloat(document.getElementById('calcin').value);var ok=!isNaN(v)&&Math.abs(v-cur.answer)<=cur.tol;count++;if(ok)correct++;S.attempts.push({mod:curGen?curGen.m:'FP511',domain:curGen?curGen.d:'B',topic:(curGen?curGen.name:'Calculator'),correct:ok?1:0,conf:null,ts:Date.now()});if(curGen)bumpMastery(curGen.m,ok?1:0);logSession();if(window.CFPCoach)window.CFPCoach.freeCredit();save();document.getElementById('calcrev').innerHTML='<div class="expl"><b>'+(ok?'✓ Within tolerance':'✗ Answer ≈ '+Math.round(cur.answer).toLocaleString())+'.</b><br>'+cur.steps+'</div><div class="center" style="margin-top:10px"><button class="btn" onclick="window._cnext()">Next problem →</button></div>';};
+  window._csub=function(){var v=parseFloat(document.getElementById('calcin').value);var ok=!isNaN(v)&&Math.abs(v-cur.answer)<=cur.tol;count++;if(ok)correct++;var at={mod:curGen?curGen.m:'FP511',domain:curGen?curGen.d:'B',topic:(curGen?curGen.name:'Calculator'),correct:ok?1:0,conf:null,ts:Date.now()};if(curGen&&curGen.id){at.src='calc';at.questionKey='calc:'+curGen.id;if(curGen.lo)at.lo=curGen.lo;}S.attempts.push(at);if(curGen)bumpMastery(curGen.m,ok?1:0);logSession();if(window.CFPCoach)window.CFPCoach.freeCredit();save();document.getElementById('calcrev').innerHTML=calcSolutionHtml(cur,v,ok)+'<div class="center" style="margin-top:10px"><button class="btn" onclick="window._cnext()">Next problem →</button></div>';};
   window._cskip=function(){draw();};
   window._cnext=function(){draw();};
   draw();

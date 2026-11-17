@@ -1,0 +1,46 @@
+{
+ "overview": [
+  {
+   "at": "Course scope",
+   "say": "Alright, welcome to FP513, Investment Planning. This course is nine modules and forty-eight learning objectives, and on the CFP exam investment planning is about seventeen percent of the whole test. Notice that's seventeen percent of the exam overall, not of every practice set. Module one covers how securities are created and traded, cash equivalents, and how capital gains and wash sales are taxed. Module two is debt: bond features and risks, convertibles, ladders, barbells, bullets and yield curves. Module three is stocks and pooled vehicles like mutual funds, UITs and ETFs. Module four is valuation, so bond prices, duration, and stock models like the dividend discount model. Module five is alternatives and derivatives, real estate, options, futures and foreign investing. Module six is the statistics of risk, beta, standard deviation, correlation and R squared. Module seven measures returns and performance, and module eight ties it together with portfolio theory, the CAPM, the efficient market hypothesis, investment policy statements and asset allocation. Module nine is an original case that makes you use all of it at once. When you talk with a client, this whole course boils down to one sentence: we match what you own to what you need the money to do, and to how much ups and downs you can live with."
+  },
+  {
+   "at": "How to use this reader",
+   "say": "Quick tour of the tools. The Teach button, which is what you're hearing now, walks you through each objective in plain language while the page scrolls to it. The Podcast button reads the page itself, word for word. Both remember where you stopped, so you can pick up later. The magnifier searches every tab at once, which is handy when a term comes up in a question and you want the full explanation. Tap the star next to any objective to bookmark it, and your bookmarks collect right here on the overview. And the last tab, Formulas and Visuals, puts every formula on one sheet with decision trees and diagrams for duration, option payoffs and the efficient frontier."
+  },
+  {
+   "at": "Jump to a learning objective",
+   "say": "This list has all forty-eight learning objectives, grouped by module. Tap any one and the reader jumps straight to that section and opens it. A good habit is to read the objective first and ask yourself whether you could explain it to a client in two sentences. If you can't, that's the section to study next."
+  }
+ ],
+ "formulas": [
+  {
+   "at": "returns, yields",
+   "say": "This is the first half of the formula sheet, returns, yields and valuation. The big habit for bond problems: they're semiannual unless the question says otherwise, so double the periods, halve the yield and the coupon, and remember the answer you get for yield is already annualized when you multiply the periodic rate by two. Current yield is just annual coupon dollars over price. Yield to maturity assumes you reinvest coupons at that same yield, and yield to call swaps in the call price and the periods to the first call. For a premium callable bond, quote the lower of the two. Taxable equivalent yield divides the tax free yield by one minus the client's marginal rate. Duration estimates price change as negative duration times the change in yield over one plus the yield. For stocks, the constant growth model is next year's dividend over the required return minus growth, and the classic trap is using the dividend just paid. For returns, annualize geometrically, never by simple division, and convert nominal to real by dividing, not subtracting."
+  },
+  {
+   "at": "risk, statistics",
+   "say": "Second half of the sheet, risk and portfolio theory. Standard deviation of historical returns uses the sample formula, dividing by n minus one. Plus or minus one, two and three standard deviations cover about sixty-eight, ninety-five and ninety-nine percent of outcomes. The coefficient of variation is risk per unit of return, so lower is better. Covariance is correlation times both standard deviations, and the two asset portfolio formula only collapses to a simple weighted average when correlation is plus one. Beta is covariance over the market's variance, and portfolio beta is just the value weighted average. Before you trust beta, check R squared, which is correlation squared, and look for point seven or higher. Then the performance measures: Sharpe uses total risk, Treynor uses beta, and Jensen's alpha is actual return minus the CAPM required return."
+  },
+  {
+   "at": "which performance measure",
+   "say": "Here's the decision tree for performance measures, and it's a favorite exam move. First question: is R squared below point seven, or is this the client's whole portfolio that isn't diversified? Then beta isn't reliable, so use Sharpe. If it's diversified and R squared is high and you're ranking managers, Treynor works. If the question wants to know whether a manager beat what the risk required, in percentage points, that's Jensen's alpha, and it's the one that means something on its own. Sharpe and Treynor only rank portfolios against each other. With a client you might say: we don't just ask whether the fund went up, we ask whether it earned enough for the risk it took."
+  },
+  {
+   "at": "which bond yield or strategy",
+   "say": "Two quick decision guides for bonds. For quoting yield: a callable bond trading at a premium, compare yield to maturity and yield to call and quote the lower. Comparing a muni with a taxable bond, convert to the taxable equivalent yield at the client's marginal rate. For strategy: a known future bill on a known date calls for immunization, which means matching duration, not maturity, to the date. A zero coupon bond maturing on that date does it by itself. A ladder is the passive approach, with steady cash rolling out to the long end. A barbell is active, short bonds for liquidity and long bonds to lock in rates. And a bullet aims everything at one date, bought over time. To a client: we can line your bonds up so the money shows up exactly when the tuition bill does."
+  },
+  {
+   "at": "duration vs. convexity",
+   "say": "Look at this picture of a twenty year, six percent bond. The blue curve is the bond's actual price as yields move, and the dashed red line is what duration predicts. Duration is a straight line touching the curve at today's yield. Because the real curve bows above that line, duration overstates how much the price falls when yields rise and understates how much it rises when yields fall. That bow is convexity, and it's good for the bond holder. The exam tests the idea, not a convexity calculation. To a client: when rates move a lot, your bond's price moves a bit more kindly than the simple estimate suggests."
+  },
+  {
+   "at": "option payoffs at expiration",
+   "say": "These six small charts show option payoffs at expiration, per share, with a fifty dollar strike. The long call starts at a loss equal to the premium and gains without limit once the stock passes the strike plus the premium. The short call is the mirror image: the writer keeps the premium at best and faces unlimited loss. The long put gains as the stock falls below the strike minus the premium, with a maximum gain of the strike minus the premium. The short put is its mirror. The covered call caps the upside in exchange for the premium, and the protective put sets a floor while keeping the upside open. Breakeven is the strike plus the premium for calls and the strike minus the premium for puts, the same for buyer and writer. Multiply by one hundred for a contract."
+  },
+  {
+   "at": "efficient frontier, CML and SML",
+   "say": "Last visuals: the efficient frontier, the capital market line, and the security market line. The blue curve is the efficient frontier, the best expected return for each level of total risk. Anything below the bend is inefficient. The red capital market line runs from the risk free rate and just touches the frontier at the market portfolio. It plots total risk, standard deviation, and applies to efficient portfolios. The security market line on the next chart plots beta instead, and it prices every individual security using the CAPM. A stock plotting above the line has positive alpha and looks undervalued; below the line, it looks overvalued. To a client: every portfolio on that top curve gives the most return we can get for its level of swings, and our job is to pick your spot on it."
+  }
+ ]
+}

@@ -86,9 +86,10 @@ html[data-theme="dark"] #rdrChrome { background: rgba(23, 18, 14, .92); border-c
 html[data-theme="dark"] #rdrChrome .rdr-home { background: #244d3a; color: #dff0e6; }
 html[data-theme="dark"] #rdrChrome #rdrBack { color: #7fd3ac; border-color: #7fd3ac; }
 
-/* Narrow phones: drop the Back/Home/Theme word labels to icons so the whole row
+/* Narrow phones and the folded Duo (≤500px, v2.114.0 — was 430px, which clipped the search
+   button at 431–480px): drop the Back/Home/Theme word labels to icons so the whole row
    fits without scrolling. The two star features (Teach + Podcast) keep their labels. */
-@media (max-width: 430px) {
+@media (max-width: 500px) {
   #rdrChrome #rdrBack .rdr-lbl,
   #rdrChrome .rdr-home .rdr-lbl,
   #rdrChrome #rdrTheme .rdr-lbl { display: none; }

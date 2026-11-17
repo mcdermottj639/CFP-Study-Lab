@@ -12,13 +12,14 @@ import { readFileSync, writeFileSync } from 'node:fs';
 
 const SRC = process.argv[2] || 'src/study-home.src.html';
 const OUT = 'index.html';
-const APP_VERSION = 'v2.113.0';
+const APP_VERSION = 'v2.114.0';
 let html = readFileSync(SRC, 'utf8');
 
 const HEAD = `
 <!-- pwa:head -->
 <link rel="stylesheet" href="coach.css">
 <script src="coach-core.js"></script>
+<script src="fp513-calc.js"></script>
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#d0613a">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -114,10 +115,12 @@ const TOOLKIT = `
 </script>
 <script src="module-content.js"></script>
 <script src="mcq-why.js"></script>
+<script src="mcq-why-fp513.js"></script>
 <script src="card-tiers.js"></script>
 <script src="flashcards.js"></script>
 <script src="coach-cases.js"></script>
 <script src="coach.js"></script>
+<script src="fp513-course.js"></script>
 <script src="study-activity.js"></script>
 <script src="cfp-gist-sync.js"></script>
 <script>
@@ -139,7 +142,7 @@ const FIXES = [
   [
     /function moduleLinks\(id\)\{[\s\S]*?\}\n(?=async function loadDrive)/,
     `function moduleLinks(id){
-  var R={FP511:'apps/fp511-reading.html',FP512:'apps/fp512-reading.html'};
+  var R={FP511:'apps/fp511-reading.html',FP512:'apps/fp512-reading.html',FP513:'apps/fp513-reading.html'};
   var r=R[id];
   if(!r)return '<span class="muted">Interactive reader arrives with this course.</span>';
   // Opened course-wide (not from a module) -> clear any stale module-return context.

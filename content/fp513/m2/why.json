@@ -1,0 +1,222 @@
+{
+ "A bond's yield to maturity climbs from 4.10% to 5.35%. How large was the move in basis points?": {
+  "12.5 basis points": "This treats a basis point as 1/10 of 1%; it is 1/100 of 1%.",
+  "1.25 basis points": "This simply copies the percentage-point change without converting it to basis points.",
+  "1,250 basis points": "This treats a basis point as 1/1,000 of 1%, overstating the move tenfold."
+ },
+ "Which of these ratings is the LOWEST that still counts as investment grade?": {
+  "BB+ from Standard &amp; Poor's": "BB+ is the top of the noninvestment-grade (high-yield) range.",
+  "Ba from Moody's": "Ba is Moody's first speculative (high-yield) category.",
+  "A&minus; from Standard &amp; Poor's": "A&minus; is investment grade but sits above BBB&minus;, so it is not the lowest."
+ },
+ "Which risks does an investor holding U.S. Treasury notes face?<br>I. Interest rate risk<br>II. Reinvestment rate risk<br>III. Purchasing power risk<br>IV. Default risk": {
+  "I and II only": "Fixed Treasury coupons and principal also lose purchasing power to inflation, so III belongs.",
+  "IV only": "Treasuries are treated as free of default risk; IV is the one risk they lack.",
+  "I, II, III, and IV": "Default risk does not apply; Treasuries are considered default-risk free."
+ },
+ "Market rates drop two full percentage points, yet Dana's corporate bond, callable at $1,040, barely trades above $1,040. What best explains the muted price gain?": {
+  "Wider bid-ask spreads from liquidity risk are holding the price down": "Liquidity risk widens spreads on thinly traded issues; it does not create a ceiling at the call price.",
+  "Extension risk has lengthened the bond's expected life": "Extension risk arises when rates rise and mortgage prepayments slow, the opposite of this situation.",
+  "Lower rates raise purchasing power risk on the coupon": "Falling rates do not raise inflation risk, and inflation risk would not pin the price at $1,040."
+ },
+ "Marisol buys $50,000 par of a TIPS with a 2.0% coupon. The CPI rises 1.5% over the first six months. What is her first semiannual interest payment?": {
+  "$500.00": "This ignores the CPI adjustment; the coupon is paid on the inflation-adjusted principal.",
+  "$1,015.00": "This applies the full annual 2% coupon to six months; each payment uses half the rate.",
+  "$761.25": "This uses the 1.5% inflation rate as the payment rate instead of half the 2% coupon."
+ },
+ "Theo bought a TIPS at its $1,000 par. This year the inflation adjustment raises the principal to $1,025, and he sells right afterward for $1,031. Ignoring coupon interest, how is the $31 above his cost treated?": {
+  "$0 ordinary income; $31 capital gain": "The inflation step-up is taxed as ordinary income in the year it occurs, not as capital gain.",
+  "$25 ordinary income; $31 capital gain": "This double counts: the taxed $25 raises basis to $1,025, so the gain is only $6.",
+  "$31 ordinary income; $0 capital gain": "Only the $25 adjustment is ordinary income; the extra $6 is a sale gain."
+ },
+ "Which of the following securities carries the direct backing and guarantee of the U.S. government?": {
+  "Federal National Mortgage Association (FNMA) securities": "Fannie Mae has only indirect government backing, so its issues pay slightly more.",
+  "Federal Home Loan Mortgage Corporation (FHLMC) securities": "Freddie Mac is a privately owned corporation with indirect backing, not a direct guarantee.",
+  "Student Loan Marketing Association (SLMA) securities": "Sallie Mae's securities have only indirect government backing."
+ },
+ "Rates rise sharply and homeowners stop refinancing, so principal on Victor's mortgage pass-through comes back far more slowly than projected. Which risk is he experiencing?": {
+  "Prepayment risk": "Prepayment risk is the opposite case: falling rates speed up principal repayment.",
+  "Call risk": "Call risk involves an issuer redeeming a bond early, not cash flows arriving later.",
+  "Event risk": "Event risk is an unexpected shock such as fraud or a buyout, not a predictable slowdown in prepayments."
+ },
+ "Ruth, a cautious investor, wants the municipal bond with the least credit risk. Which should she choose?": {
+  "A toll-bridge revenue bond": "Revenue bonds rely only on project income, so they are riskier than GO bonds.",
+  "An airport revenue bond": "An airport bond is repaid from facility revenues alone and is riskier than a GO bond.",
+  "A private activity bond financing a sports stadium": "Private activity bonds depend on a private business use and carry more credit risk than GO bonds."
+ },
+ "Owen faces a 35% marginal tax rate. A municipal bond yields 3.6%. What taxable equivalent yield must a corporate bond offer to match it?": {
+  "2.34%": "This multiplies by (1 &minus; 0.35), which gives an after-tax yield, not a taxable equivalent.",
+  "4.86%": "This multiplies by 1.35 instead of dividing by (1 &minus; 0.35).",
+  "3.60%": "This ignores the tax advantage of the municipal bond entirely."
+ },
+ "Priya pays a 32% federal and a 6% state income tax (add them for simplicity). Which bond gives her the highest after-tax yield?": {
+  "A corporate bond yielding 6.5%": "After 38% combined tax it nets 6.5% &times; 0.62 = 4.03%.",
+  "Her own state's municipal bond yielding 3.9%": "It is tax free at both levels but nets only 3.90%.",
+  "A U.S. Treasury note yielding 5.2%": "Free of state tax but federally taxable: 5.2% &times; 0.68 = 3.54%."
+ },
+ "Ken bought a corporate bond, originally issued at par, for $900 in the secondary market. When he sells it for $960, accrued market discount is $40 and he never elected to include it annually. How is his $60 gain taxed?": {
+  "$60 capital gain": "Accrued market discount is taxed as interest income at disposition, not as capital gain.",
+  "$60 interest income": "Only the accrued market discount is interest; gain above it is capital gain.",
+  "$20 interest income and $40 capital gain": "This reverses the split; the $40 accrued discount is the interest portion."
+ },
+ "For which client would a taxable zero-coupon corporate bond held in a regular brokerage account be the POOREST fit?": {
+  "Parents who need a lump sum for tuition in six years": "A zero maturing in six years matches a known sum on a known date.",
+  "A pension fund matching a payout due in 12 years": "A zero's duration equals its maturity, ideal for matching a single liability.",
+  "A speculator expecting rates to fall who wants maximum price gain": "Zeros are the most rate-sensitive bonds, so they suit a falling-rate bet."
+ },
+ "A Canadian bank issues U.S.-dollar bonds that are sold and traded in the United States. What are these bonds called?": {
+  "Eurodollar bonds": "Eurodollar bonds are dollar bonds sold outside the U.S. and not SEC-registered.",
+  "Eurobonds": "A Eurobond is issued outside the home country of the currency it pays in.",
+  "Bulldog bonds": "Bulldog bonds are foreign bonds issued in the United Kingdom in pounds."
+ },
+ "A $1,000 par convertible bond has a conversion price of $80. The stock now trades at $96. What is the bond's conversion value?": {
+  "$833.33": "This inverts the ratio (dividing par by the stock price, then multiplying by the conversion price).",
+  "$1,000.00": "This multiplies the 12.5 shares by the $80 conversion price instead of the $96 market price.",
+  "$1,152.00": "This drops the half share; the conversion ratio is 12.5, not 12."
+ },
+ "Using the facts shown, what is the bond's conversion premium as a percentage?": {
+  "16.67%": "This divides the $180 premium by the bond's market price instead of its conversion value.",
+  "12.50%": "This is the investment premium ($120 &divide; $960), not the conversion premium.",
+  "11.11%": "This is the downside risk percentage ($120 &divide; $1,080)."
+ },
+ "Using the facts shown, what is the bond's investment premium as a percentage?": {
+  "11.11%": "This divides by the market price; the investment premium is divided by investment value.",
+  "20.00%": "This is the conversion premium, measured against conversion value.",
+  "16.67%": "This uses the $180 conversion-premium dollars divided by market price."
+ },
+ "Using the facts shown, what is the bond's percentage downside risk?": {
+  "12.50%": "This divides by investment value; downside risk is measured against today's market price.",
+  "20.00%": "This is the conversion premium, which has nothing to do with the bond floor.",
+  "16.67%": "This measures the fall to conversion value; the floor is investment value, not conversion value."
+ },
+ "Using the facts shown, what is the bond's investment (straight-bond) value?": {
+  "$852.80": "This discounts annually; the exam default is semiannual (N = 20, I = 3%, PMT = $20).",
+  "$880.00": "This is the conversion value (16 shares &times; $55), not the straight-bond value.",
+  "$1,000.00": "Par equals value only when the coupon rate equals the market rate; here 4% &lt; 6%."
+ },
+ "Using the facts shown, what is the lowest price at which this convertible should trade?": {
+  "$851.23": "Investment value is the floor only when it exceeds conversion value; here conversion value is higher.",
+  "$1,000.00": "Par is not a price floor for a convertible in the secondary market.",
+  "$1,731.23": "The floor is the greater of the two values, not their sum."
+ },
+ "Using the facts shown, suppose the convertible's market price is $1,000. What is its percentage downside risk?": {
+  "17.48%": "This divides by investment value; downside risk is divided by market price.",
+  "13.64%": "This is the conversion premium ($120 &divide; $880), not downside risk.",
+  "12.00%": "This measures the drop to conversion value; the cushion is investment value."
+ },
+ "Lena's convertible bond has a conversion value of $1,150. The issuer announces it will call the bond at $1,040. What should she do?": {
+  "Accept the $1,040 call price": "Accepting the call gives up $110 of value compared with converting.",
+  "Keep the bond and keep collecting coupons": "Once called, the bond stops paying interest; staying put is not an option.",
+  "Insist on repayment at the $1,000 par value": "The call price, not par, is what the issuer pays, and it is less than the stock value."
+ },
+ "Which statement about convertible bonds is CORRECT?": {
+  "They usually pay higher coupons than comparable straight bonds": "Investors accept a lower coupon in exchange for the conversion option.",
+  "The issuer decides when they convert under normal terms": "Conversion is normally at the bondholder's option; only a call can force it.",
+  "Their prices are more volatile than the issuer's common stock": "Fixed coupons and a maturity date make them less volatile than the stock."
+ },
+ "Grace will need a lump sum in exactly six years and wants it immunized against rate changes. Which single holding best does that?": {
+  "A 6-year Treasury with a 7% coupon": "A coupon bond's duration is shorter than six years, so it does not fully match the horizon.",
+  "A 4-year zero-coupon Treasury": "Its duration of four years falls short of the six-year horizon.",
+  "A bond fund with a six-year average maturity": "Average maturity is not duration, and a fund has no fixed maturity date."
+ },
+ "Why is an immunized bond portfolio not a 'set it and forget it' strategy?": {
+  "Immunization only works while rates stay unchanged": "Immunization is built to offset rate changes, not to require stable rates.",
+  "Coupons must be spent rather than reinvested": "The offset relies on reinvesting coupons; spending them breaks it.",
+  "Duration must be kept double the time horizon": "Full offset requires duration equal to the horizon, not double it."
+ },
+ "Hector wants to lock in today's attractive long-term rates while keeping a large slice in short bonds, so he can redeploy cash if bond prices drop. Which structure fits?": {
+  "A bullet": "A bullet concentrates maturities on a single target date.",
+  "A ladder": "A ladder spreads equal amounts evenly across all maturities, middle included.",
+  "An immunized portfolio": "Immunization matches duration to one horizon; it does not split holdings into short and long ends."
+ },
+ "Ivy needs a large sum in 10 years. She buys a 10-year bond now, an 8-year bond two years from now, and a 6-year bond four years from now. What strategy is this?": {
+  "A ladder strategy": "A ladder staggers maturities; all of Ivy's bonds mature on the same date.",
+  "A barbell strategy": "A barbell pairs very short and very long bonds with nothing in the middle.",
+  "A rate anticipation swap": "A swap exchanges existing bonds on a rate forecast; Ivy is building toward a date."
+ },
+ "A bond manager expects interest rates to rise over the next year. Which swap is most consistent with that view?": {
+  "Sell short-term bonds and buy long-term bonds": "That is the move for an expected rate decline; long bonds lose more when rates rise.",
+  "Sell a low-yield bond and buy a lower-quality, higher-yield bond": "That is a pure yield pickup swap, which is not based on a rate forecast.",
+  "Sell a government bond and buy a corporate bond": "That is an intermarket spread swap based on sector mispricing, not a rate outlook."
+ },
+ "Jada sold bonds she bought for $10,000 for $8,600 after rates rose, and reinvested the proceeds in similar bonds. Using the textbook's simplified approach (loss &times; marginal rate) with a 24% rate, what tax saving does this tax swap create?": {
+  "$1,400": "This is the capital loss itself, not the tax it saves.",
+  "$2,064": "This applies the 24% rate to the $8,600 sale proceeds instead of the $1,400 loss.",
+  "$1,064": "This multiplies the loss by (1 &minus; 0.24) instead of by the tax rate."
+ },
+ "Without any interest rate forecast, a manager sells a 5-year A-rated bond yielding 4.6% and buys a 12-year BBB-rated bond yielding 5.4%. Which swap is this?": {
+  "Substitution swap": "A substitution swap trades between bonds with identical features priced differently.",
+  "Rate anticipation swap": "A rate anticipation swap is driven by a rate forecast, which the manager does not have.",
+  "Tax swap": "A tax swap is motivated by realizing a loss for tax purposes."
+ },
+ "All else equal, which bond will show the greatest relative price change when market rates move?": {
+  "5-year maturity, 2% coupon, 3% YTM": "A shorter maturity means smaller relative price swings.",
+  "20-year maturity, 7% coupon, 3% YTM": "A higher coupon dampens relative price swings.",
+  "20-year maturity, 2% coupon, 8% YTM": "A higher YTM dampens relative price swings."
+ },
+ "Jordan is aggressive and strongly expects interest rates to fall. Which bond portfolio best positions him to profit?": {
+  "Short maturities with high coupons": "That is the defensive mix for expected rate increases.",
+  "Short maturities with low coupons": "Short maturities limit the price gain when rates fall.",
+  "Long maturities with high coupons": "High coupons reduce rate sensitivity and so the gain."
+ },
+ "Nadia lives in a state with a high income tax and wants taxable bonds with minimal default risk. Which is the best fit?": {
+  "Federal National Mortgage Association (FNMA) debt": "Agency interest is generally taxable at the state level, unlike Treasuries.",
+  "High-yield corporate bonds": "High-yield bonds carry the most default risk of these choices.",
+  "Investment-grade corporate bonds": "Corporate interest is fully taxed by her state and carries some default risk."
+ },
+ "Walt and June, both 66, want inflation-adjusted cash each year of retirement with minimal default and call risk. Which approach does the textbook suggest?": {
+  "A barbell of T-bills and 30-year corporate bonds in a taxable account": "Corporates add default and call risk, and neither end protects against inflation.",
+  "A single 30-year zero-coupon corporate bond": "One distant maturity gives no yearly cash and adds default risk.",
+  "High-yield bond funds held in a taxable account": "High-yield funds add default risk and offer no inflation adjustment."
+ },
+ "An inverted yield curve most often appears when": {
+  "the economy is in a strong, early expansion": "Expansions usually produce a normal, upward-sloping curve.",
+  "the economy is peaking and no rate change is expected": "That describes a flat curve.",
+  "investors demand a liquidity premium for long maturities": "A liquidity premium produces an upward slope, not an inversion."
+ },
+ "The 1-year Treasury rate is 3.0%, and 1-year rates are expected to be 3.4% next year and 3.9% the year after. Under the unbiased expectations theory, what should the 3-year rate be today?": {
+  "3.90%": "This uses only the last expected rate rather than averaging all three years.",
+  "10.66%": "This is the cumulative 3-year growth; it still needs the cube root.",
+  "3.00%": "This is just today's 1-year rate."
+ },
+ "Which yield curve theory can explain ONLY a normal, upward-sloping yield curve?": {
+  "Unbiased expectations theory": "Expectations of falling or flat short rates let this theory explain any shape.",
+  "Market segmentation theory": "Independent supply and demand by segment lets this theory explain any shape.",
+  "Efficient market hypothesis": "The EMH is about stock price efficiency, not the term structure of rates."
+ },
+ "A life insurer buys only long-term bonds to match its long-dated policy liabilities and will not move into shorter maturities even when they yield more. Which theory does this behavior support?": {
+  "Unbiased expectations theory": "That theory explains the curve through expected future short rates, not institutional maturity needs.",
+  "Liquidity preference theory": "That theory assumes investors prefer short maturities, the opposite of this insurer.",
+  "Rate anticipation theory": "Rate anticipation is a swap strategy, not a yield curve theory."
+ },
+ "The yield curve is inverted: 1-year paper yields 5.2% and 20-year bonds yield 4.4%. Lucia, an income investor, expects the curve to return to normal. What does the textbook suggest?": {
+  "Buy 1-year paper for its higher yield": "Short paper matures and must be reinvested at lower rates once rates fall.",
+  "Avoid bonds entirely until the curve flattens": "This forgoes the high locked-in income and price gains as rates fall.",
+  "Buy long-term bonds that are callable soon": "Callable bonds would likely be called as rates fall, cutting off the gain."
+ },
+ "The curve is flat: 5-year and 30-year Treasuries both yield about 4.1%. Ben, an income investor, is thinking of moving from 5-year to 30-year bonds. What is the best advice?": {
+  "Extend now, because the extra years add extra yield": "A flat curve pays no extra yield for the extra years of risk.",
+  "Extend now, because long rates cannot rise when the curve is flat": "Long rates can rise to restore a risk premium or as the whole curve shifts up.",
+  "Extend now, because a flat curve predicts a rate decline": "A flat curve signals little expected change in rates."
+ },
+ "Cobalt Corp. skipped its cumulative preferred dividends for the past two years. The board now wants to pay a common dividend. What must happen first?": {
+  "Pay only the current year's preferred dividend": "Cumulative status requires the skipped prior-year dividends to be paid too.",
+  "Nothing; the skipped dividends are forfeited": "Forfeiture applies to noncumulative preferred, not cumulative.",
+  "File for bankruptcy over the missed dividends": "A missed preferred dividend does not trigger bankruptcy."
+ },
+ "A $50 par preferred stock pays a 5% dividend. Market yields on similar preferreds rise to 6.25%. What is its new intrinsic value, assuming no growth?": {
+  "$62.50 (+25%)": "This divides by 4%, as if rates had fallen; rising rates lower the value.",
+  "$48.75 (&minus;2.5%)": "This simply cuts par by a small amount; value is dividend &divide; required return.",
+  "$50.00 (unchanged)": "A fixed dividend means price moves inversely with rates; it does not stay at par."
+ },
+ "Which of the following are similarities between bonds and preferred stock?<br>I. Holders generally have no voting power<br>II. Holders rank ahead of common stockholders in bankruptcy<br>III. The issuer may deduct the payments<br>IV. A missed payment triggers bankruptcy": {
+  "I, II, and III only": "Preferred dividends are not tax deductible to the issuer.",
+  "III and IV only": "Both are differences: preferred dividends aren't deductible and missing one doesn't force bankruptcy.",
+  "I, II, III, and IV": "III and IV describe bonds only, not preferred stock."
+ },
+ "Which statement about convertible preferred stock is CORRECT?": {
+  "Its dividend is usually lower than the common dividend": "The preferred dividend is generally higher than the common dividend.",
+  "Its conversion option loses value as the common stock rises": "The option gains value as the common stock price rises.",
+  "It ranks below common stock in a liquidation": "Preferred ranks ahead of common for dividends and in liquidation."
+ }
+}

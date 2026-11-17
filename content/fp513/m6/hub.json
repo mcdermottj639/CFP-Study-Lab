@@ -1,0 +1,85 @@
+{
+ "objectives": [
+  "LO 6.1.1: Recognize risk-and-return terms used in building and managing portfolios (diversification, asset allocation, expected return)",
+  "LO 6.1.2: Separate systematic (PRIME) from unsystematic risks and identify each source",
+  "LO 6.2.1: Calculate beta and weighted portfolio beta and explain how they guide portfolio construction",
+  "LO 6.2.2: Calculate mean and standard deviation for one asset and the 1-, 2- and 3-SD return ranges",
+  "LO 6.2.3: Calculate the coefficient of variation and use it to compare risk per unit of return",
+  "LO 6.2.4: Use covariance and correlation to compute a two-asset portfolio's standard deviation",
+  "LO 6.2.5: Calculate R-squared and use it to judge whether beta is a reliable risk measure"
+ ],
+ "synthesis": "This module supplies the risk math the rest of investment planning runs on. Standard deviation and beta feed the Sharpe, Treynor and Jensen performance measures and CAPM-style required returns; correlation and covariance drive asset allocation and modern portfolio theory; and R-squared tells you which of those risk measures you can trust. In client work, these numbers turn \"how risky is this?\" into ranges, comparisons and diversification choices a client can see.",
+ "example": {
+  "title": "Is the new fund a real diversifier?",
+  "html": "<p>Rosa holds an S&amp;P 500 index fund. A candidate fund has &sigma; = 20, the market &sigma; = 16, and their covariance is 224.</p><ol><li>&rho; = 224 &divide; (20 &times; 16) = 0.70</li><li>R<sup>2</sup> = 0.70<sup>2</sup> = 0.49 &rarr; under 0.70, so it is not just an index look-alike, and beta (224 &divide; 256 = 0.875) is not reliable</li><li>Judge it with standard deviation and Sharpe, and check portfolio SD: at 50/50 with this correlation, &radic;[0.25(400) + 0.25(256) + 2(0.25)(224)] = &radic;276 &asymp; 16.61, below the 18.00 weighted-average SD.</li></ol>"
+ },
+ "cheat": {
+  "keyNumbers": [
+   [
+    "68 / 95 / 99%",
+    "Share of returns within &plusmn;1, 2, 3 SD (textbook uses 99%, not 99.7%)"
+   ],
+   [
+    "R&sup2; &ge; 0.70",
+    "Beta reliable; Treynor/Jensen OK (Morningstar). &rho; &asymp; &plusmn;0.84"
+   ],
+   [
+    "10&ndash;15",
+    "Large-cap stocks in different industries to diversify (exam rule)"
+   ],
+   [
+    "25&ndash;30 / 4&ndash;7",
+    "Small/mid-cap stocks / mutual funds in different asset classes"
+   ],
+   [
+    "n &minus; 1",
+    "Sample SD divisor for historical returns (calculator S<sub>x</sub>)"
+   ],
+   [
+    "&beta; = 1.0",
+    "Market; &lt;1 defensive, &gt;1 aggressive, 0 = no correlation (T-bills)"
+   ],
+   [
+    "&rho; = +1",
+    "Only case where portfolio SD = weighted-average SD"
+   ]
+  ],
+  "mustKnow": [
+   "Total risk (SD) = systematic (beta) + unsystematic; PRIME = purchasing power, reinvestment rate, interest rate, market, exchange rate",
+   "&beta; = COV<sub>im</sub> &divide; &sigma;<sub>m</sub><sup>2</sup> = &rho;<sub>im</sub>&sigma;<sub>i</sub> &divide; &sigma;<sub>m</sub>; portfolio beta = dollar-weighted average",
+   "CV = &sigma; &divide; mean; lower is better",
+   "COV = &rho;&sigma;<sub>i</sub>&sigma;<sub>j</sub>; &rho; = COV &divide; (&sigma;<sub>i</sub>&sigma;<sub>j</sub>); R<sup>2</sup> = &rho;<sup>2</sup>; 1 &minus; R<sup>2</sup> = unsystematic share",
+   "&sigma;<sub>p</sub> = &radic;[W<sub>i</sub><sup>2</sup>&sigma;<sub>i</sub><sup>2</sup> + W<sub>j</sub><sup>2</sup>&sigma;<sub>j</sub><sup>2</sup> + 2W<sub>i</sub>W<sub>j</sub>COV<sub>ij</sub>]",
+   "Normal distribution for annual returns; lognormal for ending portfolio value"
+  ],
+  "traps": [
+   "Low beta &ne; low volatility &mdash; low correlation shrinks beta (gold funds)",
+   "Liquidity and marketability risk are unsystematic; common stock has no default risk",
+   "Don't weight-average SDs unless &rho; = +1; don't stop at the variance",
+   "Only one tail: 95% within &plusmn;2 SD leaves 2.5% above and 2.5% below",
+   "CV questions pad the facts &mdash; ignore beta and R<sup>2</sup>"
+  ],
+  "tips": [
+   "Check R<sup>2</sup> first: it tells you whether to trust beta (Treynor/Jensen) or use SD (Sharpe)",
+   "Correlation pyramid: covariance (unbounded) &rarr; correlation (&minus;1 to +1) &rarr; R<sup>2</sup> (square it)",
+   "Zero-coupon bonds eliminate reinvestment rate risk; Yankee bonds reduce exchange rate risk"
+  ]
+ },
+ "topics": [
+  "Beta",
+  "Coefficient of Determination",
+  "Coefficient of Variation",
+  "Covariance & Correlation",
+  "Distribution Shape",
+  "Diversification Basics",
+  "Normal Distribution Ranges",
+  "Risk-Return Tradeoff",
+  "Standard Deviation",
+  "Systematic Risk (PRIME)",
+  "Total Risk Components",
+  "Two-Asset Portfolio SD",
+  "Unsystematic Risk Types",
+  "Weighted Average Return",
+  "Weighted Beta"
+ ]
+}

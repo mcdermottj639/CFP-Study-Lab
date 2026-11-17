@@ -1,0 +1,333 @@
+<div id="tab-valuation" class="section-panel">
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 4.1.1 · Bond prices and interest rates</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <p class="text-sm">A bond is worth the present value of the cash it will pay you: every coupon plus par at maturity, discounted at today's market yield for bonds of similar quality and term. Because the coupon is fixed when the bond is issued, the <b>price</b> is the only thing that can move when market rates change &mdash; so price and yield always move in opposite directions.</p>
+    <ul class="key-list">
+      <li><strong>Intrinsic value (bond)</strong> &mdash; PV of future coupons and par at the market yield (YTM)</li>
+      <li><strong>Discount bond</strong> &mdash; market rate above coupon &rarr; price below par</li>
+      <li><strong>Premium bond</strong> &mdash; market rate below coupon &rarr; price above par</li>
+      <li><strong>Current yield (CY)</strong> &mdash; annual coupon &divide; price; ignores the move back to par</li>
+      <li><strong>YTM / YTC</strong> &mdash; yields that include the price drifting to par at maturity (YTM) or to the call price at the call date (YTC)</li>
+    </ul>
+    <div class="formula-block"><strong>Bond value:</strong> PV = CF<sub>1</sub> &divide; (1+y)<sup>1</sup> + CF<sub>2</sub> &divide; (1+y)<sup>2</sup> + &hellip; + CF<sub>t</sub> &divide; (1+y)<sup>t</sup><br>where CF = semiannual coupons and par, y = market yield per period, t = number of cash flows.<br><strong>Calculator (2 P/YR):</strong> N = years &times; 2 &middot; I/YR = annual market yield &middot; PMT = annual coupon &divide; 2 &middot; FV = 1,000 &rarr; solve PV.</div>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; pricing a discount bond</div>
+      <p class="text-sm mb-1">Corinne is weighing a 15-year, $1,000 bond with a 4% coupon paid semiannually. Comparable bonds yield 5.5%.</p>
+      <ol>
+        <li>Predict first: market 5.5% &gt; coupon 4% &rarr; expect a <b>discount</b>.</li>
+        <li>N = 15 &times; 2 = 30; I/YR = 5.5; PMT = 40 &divide; 2 = 20; FV = 1,000.</li>
+        <li>Solve PV = <b>$848.13</b>.</li>
+      </ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> annual compounding (N = 15, PMT = 40) gives $849.44; typing 2.75 into I/YR with 2 P/YR already set halves the rate twice and gives a premium of $1,152.79; using the coupon as the discount rate always returns $1,000.</div>
+      <div class="tryit"><strong>Try it:</strong> 8-year bond, 6.5% semiannual coupon, comparable yield 5%. <i>Answer: N 16, I/YR 5, PMT 32.50, FV 1,000 &rarr; $1,097.91 (premium).</i></div></div>
+    <div class="confuse"><div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; yield rankings at a premium vs. a discount</div>
+      <table><thead><tr><th>Bond trades at</th><th>Highest</th><th>Middle</th><th>Lowest</th></tr></thead>
+      <tbody><tr><td>Premium</td><td>CY</td><td>YTM</td><td>YTC</td></tr>
+      <tr><td>Discount</td><td>YTC</td><td>YTM</td><td>CY</td></tr>
+      <tr><td>Par (no call premium)</td><td colspan="3">CY = YTM = YTC</td></tr></tbody></table>
+      <div class="tell"><strong>How to tell:</strong> YTM and YTC count the trip back to par. A premium shrinks on that trip (bad, and faster if called); a discount grows on it (good, and faster if called). CY ignores the trip entirely.</div></div>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> for a bond you already own, price it on its <i>remaining</i> term at the yield for <i>that</i> term &mdash; not the original maturity or the original yield.</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> &ldquo;Your bond's coupon never changes. If new bonds start paying more, nobody will pay full price for yours &mdash; its price drops until a buyer earns the same as a new bond. If rates fall, the reverse happens and your bond is worth more than you paid.&rdquo;</div>
+    <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; why a call is the worst case for a premium bond<span class="toggle-icon">+</span></div>
+    <div class="collapsible-content deep-body collapsed"><div class="inner"><p class="text-sm">With a premium bond you paid more than you will get back. Spreading that loss over the full term (YTM) hurts less than absorbing it by an earlier call date (YTC), so YTC is the lowest yield and the one to plan around. For a discount bond the logic flips: an early call hands you the gain back to par sooner, so YTC is highest.</p></div></div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 127&ndash;130</span> <span class="srcref">LO 4.1.1</span></p>
+  </div>
+</div>
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 4.1.2 · Duration: what it measures and what drives it</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <p class="text-sm">Duration is the weighted-average time, in years, until you collect a bond's interest and principal measured in present-value dollars. Picture a seesaw holding each discounted cash flow: the balance point is the duration. Because it sums up timing <i>and</i> size of cash flows, it doubles as the standard gauge of interest-rate risk &mdash; the bond-market cousin of beta.</p>
+    <div class="flex-grid">
+      <div class="stat-box"><div class="number">&darr; D</div><div class="label">Higher coupon</div></div>
+      <div class="stat-box"><div class="number">&darr; D</div><div class="label">Higher market yield</div></div>
+      <div class="stat-box"><div class="number">&uarr; D</div><div class="label">Longer maturity</div></div>
+      <div class="stat-box"><div class="number">D = T</div><div class="label">Zero-coupon bond</div></div>
+    </div>
+    <ul class="key-list">
+      <li><strong>Macaulay duration</strong> &mdash; the original weighted-average-time measure; the formula CFP Board uses</li>
+      <li><strong>Modified duration</strong> &mdash; the textbook names it but says the Board is unlikely to distinguish the two; it never asks you to compute it separately</li>
+      <li><strong>Zero-coupon bond</strong> &mdash; duration equals maturity, so longer than any coupon bond of the same maturity</li>
+      <li><strong>Coupon bond</strong> &mdash; duration is always shorter than maturity</li>
+      <li><strong>Immunization</strong> &mdash; match duration (not maturity) to the client's time horizon</li>
+    </ul>
+    <div class="formula-block"><strong>Cash-flow method:</strong> Duration = &Sigma;(t &times; PV of cash flow at t) &divide; bond price<br><strong>Closed-form formula:</strong> Dur = (1 + y) &divide; y, minus [(1 + y) + t(c &minus; y)] &divide; [c((1 + y)<sup>t</sup> &minus; 1) + y]<br>Here y = YTM per period, c = coupon per period, t = number of periods. Semiannual: halve the rates, double the periods, then &divide; 2 to convert periods to years.</div>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; cash-flow method</div>
+      <p class="text-sm mb-1">Three-year $1,000 bond, 6% annual coupon, YTM 7%.</p>
+      <table><thead><tr><th>Year</th><th>Cash flow</th><th>PV at 7%</th><th>Year &times; PV</th></tr></thead>
+      <tbody><tr><td>1</td><td>$60</td><td>$56.07</td><td>$56.07</td></tr>
+      <tr><td>2</td><td>$60</td><td>$52.41</td><td>$104.81</td></tr>
+      <tr><td>3</td><td>$1,060</td><td>$865.28</td><td>$2,595.83</td></tr>
+      <tr><td colspan="2"><b>Total</b></td><td><b>$973.76</b> (price)</td><td><b>$2,756.71</b></td></tr></tbody></table>
+      <ol><li>Duration = 2,756.71 &divide; 973.76 = <b>2.83 years</b> &mdash; shorter than the 3-year maturity, as it must be.</li></ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> dividing by par ($1,000) instead of price gives 2.76; averaging the payment dates without PV weights gives 2.00; answering with the maturity (3.00).</div>
+      <div class="tryit"><strong>Try it:</strong> 10-year bond, 5% annual coupon, YTM 6%, closed-form formula (annual). <i>Answer: 1.06 &divide; 0.06 = 17.667; denominator 0.05 &times; (1.06<sup>10</sup> &minus; 1) + 0.06 = 0.0995; numerator 1.06 + 10(&minus;0.01) = 0.96; 17.667 &minus; 9.645 = 8.02 years.</i></div></div>
+    <div class="confuse"><div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; duration vs. maturity</div>
+      <table><thead><tr><th></th><th>Maturity</th><th>Duration</th></tr></thead>
+      <tbody><tr><td>Measures</td><td>Date of the final payment</td><td>PV-weighted average time of all payments</td></tr>
+      <tr><td>Coupon bond</td><td>Longer</td><td>Shorter</td></tr>
+      <tr><td>Zero-coupon</td><td colspan="2">Equal</td></tr>
+      <tr><td>Use for horizon matching</td><td>No</td><td>Yes</td></tr></tbody></table>
+      <div class="tell"><strong>How to tell:</strong> if the question gives a time horizon and a list of bonds, pick the duration closest to the horizon and ignore the maturities.</div></div>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> raising the coupon or the market yield <i>shortens</i> duration; only maturity moves in the same direction. A higher-yielding long fund is not &ldquo;better&rdquo; until you price the extra duration risk.</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> &ldquo;Duration tells us roughly how much this fund's value moves if rates shift one point. Your goal is about 9 years out, so we'll hold bonds whose duration is near 9 &mdash; that way price swings and reinvestment roughly offset by the time you need the money.&rdquo;</div>
+    <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; why bond funds can't &ldquo;wait it out&rdquo;<span class="toggle-icon">+</span></div>
+    <div class="collapsible-content deep-body collapsed"><div class="inner"><p class="text-sm">Someone who holds an individual bond to maturity gets par back regardless of interim price swings. A bond fund never matures, so its duration-driven price changes are real to the holder. That is why fund duration matters for risk tolerance: a very risk-averse client gets a lower target duration. Duration also works like beta: multiply duration by the rate change (bonds) the way you multiply beta by the market risk premium (stocks).</p></div></div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 131&ndash;137</span> <span class="srcref">LO 4.1.2</span></p>
+  </div>
+</div>
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 4.1.2 · Estimating price change with duration</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <p class="text-sm">The quick estimate is duration &times; rate change. The textbook's &ldquo;more precise&rdquo; version divides the rate change by (1 + current YTM). The minus sign builds in the inverse relationship.</p>
+    <div class="formula-block"><strong>Rule of thumb:</strong> %&Delta;P &asymp; &minus;D &times; &Delta;y<br><strong>Textbook formula:</strong> &Delta;P &divide; P = &minus;D &times; [&Delta;y &divide; (1 + y)]<br>D = (Macaulay) duration &middot; &Delta;y = rate change as a decimal (50 bp = 0.0050) &middot; y = current YTM, <b>not</b> the coupon.<br><strong>Semiannual convention:</strong> use y &divide; 2 in the denominator; keep D and &Delta;y unchanged.<br>Dollar change = %&Delta;P &times; current price.</div>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; rates rise 75 bp</div>
+      <p class="text-sm mb-1">Nadia's bond: price $980, duration 6.2 (annual), YTM 5%.</p>
+      <ol>
+        <li>&Delta;y &divide; (1 + y) = 0.0075 &divide; 1.05 = 0.00714</li>
+        <li>&minus;6.2 &times; 0.00714 = &minus;0.0443 &rarr; about &minus;4.43%</li>
+        <li>&minus;0.0443 &times; $980 = &minus;$43.40 &rarr; new price &asymp; <b>$936.60</b></li>
+        <li>Semiannual version of a different bond (D 5.0, YTM 7%, $1,000, +1%): &minus;5.0 &times; 0.01 &divide; 1.035 = &minus;4.83% &rarr; <b>$951.69</b> (annual would give $953.27).</li>
+      </ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> plugging in the coupon rate for y; forgetting the (1 + y) divisor ($934.43 here); adding instead of subtracting when rates rise; halving &Delta;y as well as y in the semiannual version.</div>
+      <div class="tryit"><strong>Try it:</strong> price $1,050, duration 8.4, YTM 6%, rates fall 50 bp. <i>Answer: &minus;8.4 &times; (&minus;0.005 &divide; 1.06) = +3.96% &rarr; +$41.60 &rarr; about $1,091.60.</i></div></div>
+    <div class="confuse"><div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; rule of thumb vs. formula</div>
+      <table><thead><tr><th></th><th>Rule of thumb</th><th>Textbook formula</th></tr></thead>
+      <tbody><tr><td>Math</td><td>&minus;D &times; &Delta;y</td><td>&minus;D &times; &Delta;y &divide; (1 + y)</td></tr>
+      <tr><td>D 6.2, +0.75%, y 5%</td><td>&minus;4.65%</td><td>&minus;4.43%</td></tr>
+      <tr><td>Use when</td><td>&ldquo;approximately how much&rdquo; with no YTM given</td><td>A YTM is given and an exact estimate is asked</td></tr></tbody></table>
+      <div class="tell"><strong>How to tell:</strong> if the question supplies the current YTM, it expects the (1 + y) version.</div></div>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> the coupon rate is already baked into duration &mdash; it never goes into the price-change formula. Also, semiannual compounding gives a slightly <i>larger</i> estimated change than annual.</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> &ldquo;This fund's duration is about 13. If rates climbed a full point, expect roughly a 13% drop in value. The short fund would drop about 2 to 3%. That extra 1.3% of yield comes with about 10 points more downside &mdash; is that a trade you're comfortable with?&rdquo;</div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 131, 137&ndash;139</span> <span class="srcref">LO 4.1.2</span></p>
+  </div>
+</div>
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 4.1.2 · Convexity</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <p class="text-sm">Duration draws a straight line through a curved price&ndash;yield relationship. For small rate moves (generally under 1%) the line is close enough; for bigger moves the curve matters. Convexity measures the gap between the curve and the line. Total price change = change from duration + change from convexity.</p>
+    <ul class="key-list">
+      <li><strong>Positive convexity</strong> &mdash; typical of straight (noncallable) bonds; gains beat the duration estimate when rates fall, losses are smaller when rates rise</li>
+      <li><strong>Negative convexity</strong> &mdash; callable and mortgage-backed bonds; gains lag and losses exceed the duration estimate</li>
+      <li><strong>Most convexity</strong> &mdash; low coupon, low YTM, long maturity (same pattern as duration)</li>
+    </ul>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; reading the curve</div>
+      <p class="text-sm mb-1">A noncallable bond has duration 6. Rates move 2.5 points.</p>
+      <ol>
+        <li>Duration alone: 6 &times; 2.5 = &plusmn;15%.</li>
+        <li>Rates fall: positive convexity &rarr; actual gain is <b>more</b> than 15%.</li>
+        <li>Rates rise: actual loss is <b>less</b> than 15%.</li>
+        <li>Swap in a callable bond with the same duration: gain <b>less</b> than 15%, loss <b>more</b> than 15%.</li>
+      </ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> scaling duration linearly for big moves (2 points &ne; exactly 2 &times; the 1-point change); assuming convexity helps callable bonds.</div>
+      <div class="tryit"><strong>Try it:</strong> rates are expected to fall sharply. Which gains less than duration predicts &mdash; a long zero or a callable corporate? <i>Answer: the callable corporate (negative convexity).</i></div></div>
+    <div class="confuse"><div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; positive vs. negative convexity</div>
+      <table><thead><tr><th></th><th>Rates fall</th><th>Rates rise</th><th>Typical bonds</th></tr></thead>
+      <tbody><tr><td>Positive</td><td>Gain &gt; duration estimate</td><td>Loss &lt; duration estimate</td><td>Straight bonds</td></tr>
+      <tr><td>Negative</td><td>Gain &lt; duration estimate</td><td>Loss &gt; duration estimate</td><td>Callable, mortgage-backed</td></tr></tbody></table>
+      <div class="tell"><strong>How to tell:</strong> positive convexity is &ldquo;heads I win more, tails I lose less.&rdquo; Anything the issuer can call or the borrower can prepay flips that.</div></div>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> the Board does not expect a convexity calculation &mdash; only its direction. Duration <i>understates</i> price increases and <i>overstates</i> price decreases for positively convex bonds.</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> &ldquo;This callable bond pays a bit more, but if rates fall the issuer can call it, so it won't rise much. If rates rise, it can fall harder than a regular bond. You're being paid extra yield for giving the issuer that option.&rdquo;</div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 139&ndash;142</span> <span class="srcref">LO 4.1.2</span></p>
+  </div>
+</div>
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 4.2.1 · Financial statements, ratios and fundamental analysis</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <p class="text-sm">Fundamental analysis estimates a security's intrinsic value from economic, industry and company data, then looks for a gap versus the market price. Its raw materials are the financial statements and the ratios built from them.</p>
+    <table><thead><tr><th>Statement</th><th>What it shows</th></tr></thead>
+    <tbody><tr><td>Balance sheet</td><td>Assets, liabilities and equity at one point in time</td></tr>
+    <tr><td>Income statement (P&amp;L)</td><td>Income and expenses over a period &rarr; profit or loss</td></tr>
+    <tr><td>Statement of cash flows</td><td>Cash from operations, investing and financing; ties the P&amp;L to the change between two balance sheets</td></tr>
+    <tr><td>Pro forma income statement</td><td>A projected income statement used for planning</td></tr></tbody></table>
+    <ul class="key-list">
+      <li><strong>Book value</strong> &mdash; assets &minus; liabilities (stockholders' equity); &divide; common shares = book value per share. Based on historical cost and affected by FIFO/LIFO, so rarely fair market value</li>
+      <li><strong>Market value</strong> &mdash; the price investors set in the secondary market</li>
+      <li><strong>Top-down</strong> &mdash; economy &rarr; industry &rarr; company</li>
+      <li><strong>Bottom-up</strong> (&ldquo;stock picker&rdquo;) &mdash; company &rarr; industry &rarr; economy (some skip the economy)</li>
+    </ul>
+    <table><thead><tr><th>Category</th><th>Ratio</th><th>Formula</th></tr></thead>
+    <tbody><tr><td rowspan="2">Liquidity</td><td>Current</td><td>Current assets &divide; current liabilities</td></tr>
+    <tr><td>Quick (acid test)</td><td>(Current assets &minus; inventory) &divide; current liabilities</td></tr>
+    <tr><td rowspan="2">Activity</td><td>Inventory turnover</td><td>COGS &divide; average inventory</td></tr>
+    <tr><td>Receivables turnover</td><td>Sales &divide; average receivables</td></tr>
+    <tr><td rowspan="3">Profitability</td><td>Net profit margin</td><td>Net income &divide; sales</td></tr>
+    <tr><td>ROA</td><td>Net income &divide; total assets</td></tr>
+    <tr><td>ROE</td><td>Net income &divide; equity</td></tr>
+    <tr><td rowspan="2">Leverage</td><td>Debt-to-equity</td><td>Total debt &divide; total equity</td></tr>
+    <tr><td>Debt-to-capital</td><td>Total debt &divide; total capital</td></tr>
+    <tr><td>Bond analysis</td><td>Times interest earned</td><td>EBIT &divide; annual interest</td></tr>
+    <tr><td>Stock analysis</td><td>Payout; P/E</td><td>Dividends &divide; earnings; price &divide; EPS</td></tr></tbody></table>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; liquidity and book value</div>
+      <p class="text-sm mb-1">Brightwater Co.: current assets $450,000 (inventory $150,000), current liabilities $300,000; total assets $2.4M, total liabilities $0.9M, 300,000 shares.</p>
+      <ol>
+        <li>Current ratio = 450,000 &divide; 300,000 = <b>1.5</b></li>
+        <li>Quick ratio = (450,000 &minus; 150,000) &divide; 300,000 = <b>1.0</b></li>
+        <li>Book value per share = (2.4M &minus; 0.9M) &divide; 300,000 = <b>$5.00</b></li>
+      </ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> leaving inventory in the quick ratio; dividing total assets (not equity) by shares for book value.</div>
+      <div class="tryit"><strong>Try it:</strong> EBIT $1.2M, annual interest $0.3M. Times interest earned? <i>Answer: 4.0&times;.</i></div></div>
+    <div class="confuse"><div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; top-down vs. bottom-up</div>
+      <table><thead><tr><th></th><th>Top-down</th><th>Bottom-up</th></tr></thead>
+      <tbody><tr><td>Starts with</td><td>Economic phase, policy, inflation</td><td>Company fundamentals (ratios)</td></tr>
+      <tr><td>Ends with</td><td>Best company in a favored industry</td><td>Industry, then (maybe) the economy</td></tr>
+      <tr><td>Fits MPT because</td><td>Macro &rarr; micro, like MPT</td><td>Builds a diversified, low-correlation portfolio stock by stock</td></tr></tbody></table>
+      <div class="tell"><strong>How to tell:</strong> &ldquo;stock picker&rdquo; or &ldquo;begins with ratio analysis&rdquo; = bottom-up; &ldquo;industry rotation&rdquo; or &ldquo;economic phase first&rdquo; = top-down.</div></div>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> notes payable and accounts payable are <i>liabilities</i>, not assets. And one ratio alone means little &mdash; compare over time and against peers; diversified firms and different accounting methods muddy comparisons.</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> &ldquo;Before recommending a company, I check whether it can pay its bills (liquidity), how efficiently it runs (activity), how much it earns on its capital (profitability) and how much debt it carries (leverage) &mdash; and I compare all of that with its competitors, not in a vacuum.&rdquo;</div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 143&ndash;151</span> <span class="srcref">LO 4.2.1</span></p>
+  </div>
+</div>
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 4.2.1 · Technical analysis and how both approaches fit MPT</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <p class="text-sm">Technical analysts (chartists) study only past price and volume to read the demand side of the market and forecast direction. They care about what trades happened, not why.</p>
+    <ul class="key-list">
+      <li><strong>Assumptions</strong> &mdash; supply and demand alone set prices; both rational and irrational behavior drive them; prices move in persistent trends; shifts in supply and demand appear in price action early</li>
+      <li><strong>Volume</strong> &mdash; price rise on heavy volume = bullish (excess demand); price drop on heavy volume = bearish (excess supply)</li>
+      <li><strong>Support / resistance</strong> &mdash; lower price where buyers step in / upper price where selling starts</li>
+      <li><strong>Moving averages</strong> (often 50- and 200-day) &mdash; price crossing up through the line is bullish; down through it is bearish</li>
+      <li><strong>Dow theory</strong> &mdash; industrial and transportation averages must confirm each other</li>
+      <li><strong>Relative strength</strong> &mdash; outperformers are expected to keep outperforming</li>
+    </ul>
+    <table><thead><tr><th>Indicator</th><th>Reading</th><th>Signal</th></tr></thead>
+    <tbody><tr><td colspan="3"><b>Contrarian (do the opposite of the crowd)</b></td></tr>
+    <tr><td>Mutual fund cash</td><td>High cash</td><td>Bullish</td></tr>
+    <tr><td>Put-call ratio</td><td>High (heavy puts)</td><td>Bullish</td></tr>
+    <tr><td>Advisory opinions</td><td>Mostly bearish</td><td>Bullish</td></tr>
+    <tr><td>Odd-lot trades</td><td>Small investors buying</td><td>Sell</td></tr>
+    <tr><td colspan="3"><b>Follow the smart money</b></td></tr>
+    <tr><td>Barron's confidence index</td><td>High- vs. low-grade yield gap narrows</td><td>Bullish (flight from quality)</td></tr>
+    <tr><td>Specialists' share of short sales</td><td>65%+ / 40% or less</td><td>Bearish / bullish</td></tr>
+    <tr><td colspan="3"><b>Other market indicators</b></td></tr>
+    <tr><td>Stocks above 200-day average</td><td>Over 80% / under 20%</td><td>Bearish / bullish</td></tr>
+    <tr><td>Short interest vs. daily volume</td><td>High</td><td>Bullish (future buying to cover)</td></tr>
+    <tr><td>Breadth (advance-decline line)</td><td>Diverges from the index</td><td>Warning of a weak move</td></tr></tbody></table>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; timing a fundamental pick</div>
+      <p class="text-sm mb-1">An advisor's analysis says Stock Q is cheap after a steep fall.</p>
+      <ol>
+        <li>Selection stays fundamental (intrinsic value vs. price).</li>
+        <li>Execution uses technicals: wait for on-balance volume to start rising, or buy near support.</li>
+        <li>Reason: enough technicians act on these signals that their buying can move the price.</li>
+      </ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> replacing the valuation with chart signals; assuming technicians cannot move prices.</div>
+      <div class="tryit"><strong>Try it:</strong> 85% of stocks trade above their 200-day average. Signal? <i>Answer: bearish &mdash; the market looks overvalued.</i></div></div>
+    <div class="confuse"><div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; which analysis helps under each EMH form</div>
+      <table><thead><tr><th>EMH form</th><th>Technical</th><th>Fundamental</th></tr></thead>
+      <tbody><tr><td>Weak</td><td>No help</td><td>Can help</td></tr>
+      <tr><td>Semistrong</td><td>No help</td><td>No help</td></tr>
+      <tr><td>Strong</td><td>No help</td><td>No help</td></tr></tbody></table>
+      <div class="tell"><strong>How to tell:</strong> technical analysis never wins under the EMH; fundamental analysis wins only in the weak form. (More on the EMH in Module 8.)</div></div>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> CAPM's required return uses only the market return, the risk-free rate and beta &mdash; nothing about the company. Fundamental analysis supplies a realistic growth rate (otherwise g is a guess) and can show that expected return falls short of required return.</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> &ldquo;I choose investments based on the business and on how they fit your overall mix. Charts don't drive the decision, but I may use them to pick a better moment to buy or sell, because many traders do watch them.&rdquo;</div>
+    <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; MPT links<span class="toggle-icon">+</span></div>
+    <div class="collapsible-content deep-body collapsed"><div class="inner"><ul class="key-list">
+      <li>Industry diversification removes unsystematic risk, but adds little return unless you also consider how the cycle affects each industry.</li>
+      <li>Owning at least a dozen stocks across industries offsets business and financial risk; careful selection can also yield low correlations.</li>
+      <li>Expected interest-rate direction shifts a security's required return up or down; industry outlook shifts g in the DDM and P/E model.</li>
+      <li>International (especially emerging-market) investors lean heavily on top-down analysis because company disclosure is thinner.</li>
+    </ul></div></div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 151&ndash;158</span> <span class="srcref">LO 4.2.1</span></p>
+  </div>
+</div>
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 4.2.2 · Financial leverage, ROE and dividend growth</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <p class="text-sm">Borrowing shrinks the equity base, so the same earnings look bigger per dollar of equity: ROE and EPS rise. The price is fixed interest that lowers net income and becomes a burden in a contraction. Leverage also feeds straight into the dividend growth rate used in valuation.</p>
+    <div class="formula-block"><strong>ROE</strong> = net income &divide; equity (equity = assets &minus; liabilities)<br><strong>ROA</strong> = net income &divide; total assets<br><strong>Sustainable growth:</strong> g = ROE &times; RR, where RR (retention rate) = 1 &minus; payout ratio</div>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; leverage and growth</div>
+      <p class="text-sm mb-1">Two firms raise $40M each. Firm X: all equity. Firm Y: $15M equity + $25M debt. Each earns $4M (ignore interest).</p>
+      <ol>
+        <li>ROE X = 4 &divide; 40 = <b>10.0%</b>; ROE Y = 4 &divide; 15 = <b>26.7%</b>.</li>
+        <li>Halcyon Corp.: assets $800M, liabilities $300M &rarr; equity $500M; net income $60M &rarr; ROE 12%; ROA 7.5%.</li>
+        <li>Dividends $24M &rarr; retention = 36 &divide; 60 = 0.60 &rarr; g = 0.12 &times; 0.60 = <b>7.2%</b>.</li>
+        <li>If payout rose so retention fell to 0.40: g = 0.12 &times; 0.40 = 4.8% &mdash; more payout, slower growth.</li>
+      </ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> multiplying ROE by the payout ratio instead of retention; using ROA in place of ROE; dividing earnings by total assets or by liabilities when ROE is asked.</div>
+      <div class="tryit"><strong>Try it:</strong> keep Halcyon's $800M of assets and $60M of earnings but raise liabilities to $600M. New ROE? <i>Answer: 60 &divide; 200 = 30% &mdash; leverage alone more than doubled it.</i></div></div>
+    <div class="confuse"><div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; ROE vs. ROA as a leverage signal</div>
+      <table><thead><tr><th></th><th>Low or no debt</th><th>Heavy debt</th></tr></thead>
+      <tbody><tr><td>ROA vs. ROE</td><td>Close together (equal with zero debt)</td><td>ROA a small fraction of ROE</td></tr>
+      <tr><td>In a contraction</td><td>No fixed interest to carry</td><td>Fixed interest strains earnings; debt hard to pay down</td></tr></tbody></table>
+      <div class="tell"><strong>How to tell:</strong> a dazzling ROE with a modest ROA means the shareholders' return is being borrowed, not earned on the assets.</div></div>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> high retention is right when the company can reinvest at a high ROE; a high payout is justified only when it cannot. And very high g values rarely last &mdash; growth tends to slow as companies mature.</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> &ldquo;This company's 40% return on equity looks great, but most of it comes from borrowing. In a recession those interest payments don't shrink. The debt-free competitor earns less on paper but is likely to hold up better when business slows.&rdquo;</div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 151, 158&ndash;161</span> <span class="srcref">LO 4.2.2</span></p>
+  </div>
+</div>
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 4.3.1 · Intrinsic value: dividend, cash-flow and earnings models</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <p class="text-sm">Intrinsic value is the present value of a stock's expected future cash flows. Pick the model that matches the cash-flow pattern, then compare the result with the market price: value above price = undervalued; value below price = overvalued.</p>
+    <table><thead><tr><th>Model</th><th>Formula</th><th>Best fit</th></tr></thead>
+    <tbody><tr><td>No-growth (perpetuity) DDM</td><td>V = D &divide; r</td><td>Fixed dividend, no maturity (preferred stock)</td></tr>
+    <tr><td>Constant growth (Gordon) DDM</td><td>V = D<sub>1</sub> &divide; (r &minus; g); D<sub>1</sub> = D<sub>0</sub>(1 + g)</td><td>Mature companies</td></tr>
+    <tr><td>Multistage DDM</td><td>Dividends until growth settles + Gordon value, discounted at r</td><td>Growth-phase companies</td></tr>
+    <tr><td>Discounted FCFE</td><td>V = FCFE<sub>1</sub> &divide; (r &minus; g) = FCFE<sub>0</sub>(1 + g) &divide; (r &minus; g)</td><td>No dividends (e.g., closely held)</td></tr>
+    <tr><td>Discounted (capitalized) earnings</td><td>V = E &divide; RD</td><td>Simple whole-company estimate</td></tr></tbody></table>
+    <ul class="key-list">
+      <li><strong>Gordon assumptions</strong> &mdash; g below r (as g nears r, value races toward infinity); r known and constant; higher r &rarr; lower value</li>
+      <li><strong>FCFE</strong> &mdash; operating cash flow minus capital investment and debt repayments (including preferred dividends owed); the cash potentially available for dividends</li>
+      <li><strong>Capitalization rate</strong> &mdash; the reciprocal of the earnings multiple (10% cap rate = 10&times; earnings; a higher rate means a lower multiple and more risk premium)</li>
+    </ul>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; multistage DDM</div>
+      <p class="text-sm mb-1">Wren Corp. just paid $1.40. Growth 8% for three years, then 3% forever. Required return 9%. Round each dividend to the cent.</p>
+      <ol>
+        <li>D<sub>1</sub> = 1.40 &times; 1.08 = $1.51; D<sub>2</sub> = $1.63; D<sub>3</sub> = $1.76</li>
+        <li>D<sub>4</sub> = 1.76 &times; 1.03 = $1.81; value at end of Year 3 = 1.81 &divide; (0.09 &minus; 0.03) = $30.17</li>
+        <li>Cash flows: CF<sub>0</sub> 0; CF<sub>1</sub> 1.51; CF<sub>2</sub> 1.63; CF<sub>3</sub> 1.76 + 30.17 = 31.93; I/YR 9 &rarr; NPV = <b>$27.41</b></li>
+      </ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> stopping at the undiscounted $30.17; adding everything without discounting ($35.07); using D<sub>3</sub> instead of D<sub>4</sub> in the Gordon step; dividing by r + g.</div>
+      <div class="tryit"><strong>Try it:</strong> D<sub>0</sub> $1.50, growth 10% for two years, then 4%; r = 10%. <i>Answer: D<sub>1</sub> 1.65, D<sub>2</sub> 1.82, D<sub>3</sub> 1.89; P<sub>2</sub> = 1.89 &divide; 0.06 = 31.50; NPV of 1.65 and 33.32 at 10% = $29.04.</i></div></div>
+    <div class="confuse"><div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; D<sub>0</sub> vs. D<sub>1</sub></div>
+      <table><thead><tr><th>Wording</th><th>Meaning</th><th>Do this</th></tr></thead>
+      <tbody><tr><td>&ldquo;just paid&rdquo;, &ldquo;currently paying&rdquo;, &ldquo;this year&rdquo;</td><td>D<sub>0</sub></td><td>Grow it: D<sub>0</sub> &times; (1 + g)</td></tr>
+      <tr><td>&ldquo;expected next year&rdquo;, &ldquo;end of Period 1&rdquo;</td><td>D<sub>1</sub></td><td>Use as is</td></tr></tbody></table>
+      <div class="tell"><strong>How to tell:</strong> Arbor Co. just paid $1.80, g 5%, r 11% &rarr; D<sub>1</sub> = $1.89 &rarr; V = 1.89 &divide; 0.06 = $31.50. Using $1.80 gives the wrong $30.00.</div></div>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> preferred stock feels safe but has heavy interest-rate risk because it never matures. A $4.25 preferred worth $50.00 at an 8.5% required return drops to $44.74 at 9.5% &mdash; about 10.5% for a one-point move. Quick check: if its yield (dividend &divide; price) is below your required return, it is overvalued.</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> &ldquo;Based on the dividends we expect and the return you need, this stock is worth about $49.92 to you&rdquo; <span class="text-sm">(it just paid $2.40, growing 4%, you need 9%: $2.496 &divide; 0.05)</span>&ldquo; It's trading at $54, so you'd be paying more than it's worth to you &mdash; I'd wait or look elsewhere.&rdquo;</div>
+    <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; capitalized earnings and its weaknesses<span class="toggle-icon">+</span></div>
+    <div class="collapsible-content deep-body collapsed"><div class="inner"><p class="text-sm">Example: a firm earns $6M before taxes; an investor applies a 10% capitalization rate &rarr; $60M, or $40 per share with 1.5M shares. Two problems: GAAP earnings are not cash flow and can be shaped (for example, for tax reasons), and the method ignores the residual value of the company's assets at liquidation. FCFE example: $2.50 this year, growth 4%, r 12% &rarr; $2.60 &divide; 0.08 = $32.50.</p></div></div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 162&ndash;166</span> <span class="srcref">LO 4.3.1</span></p>
+  </div>
+</div>
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 4.3.2 · Relative valuation ratios</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <p class="text-sm">Relative (market-based) methods compare a stock's price with its earnings, growth, cash flow or sales and then benchmark against peers, the industry or the market. All four exam ratios start with &ldquo;price.&rdquo; Lower than peers generally hints at value; higher hints at overpricing.</p>
+    <table><thead><tr><th>Ratio</th><th>Formula</th><th>Key point</th></tr></thead>
+    <tbody><tr><td>P/E</td><td>Price &divide; EPS; value V = EPS &times; benchmark P/E</td><td>Compare with industry and market P/E; usable when a firm has earnings but no dividends</td></tr>
+    <tr><td>PEG</td><td>P/E &divide; g (g as a whole number)</td><td>Compares firms with different growth; under 1.00 seen as good value</td></tr>
+    <tr><td>P/FCF</td><td>(1 + g) &divide; (r &minus; g)</td><td>FCF is harder to manipulate than accounting earnings</td></tr>
+    <tr><td>P/S</td><td>Price per share &divide; sales per share</td><td>Ignores net income, so a weak complement to P/E</td></tr></tbody></table>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; P/E and PEG</div>
+      <p class="text-sm mb-1">Larkspur: price $63, EPS $4.20, industry P/E 18.</p>
+      <ol>
+        <li>P/E = 63 &divide; 4.20 = 15 &mdash; below the industry's 18.</li>
+        <li>Value = 4.20 &times; 18 = <b>$75.60</b> &gt; $63 &rarr; looks undervalued.</li>
+        <li>PEG screen: Alder 24 &divide; 20 = 1.20; Birch 15 &divide; 10 = 1.50; Cedar 12 &divide; 15 = <b>0.80</b>; Dogwood 10 &divide; 5 = 2.00 &rarr; Cedar is cheapest for its growth.</li>
+      </ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> entering g as 0.15 in PEG (gives 80, not 0.80); judging only by the lowest P/E (Dogwood) and ignoring growth; inverting P/S (sales &divide; price).</div>
+      <div class="tryit"><strong>Try it:</strong> g = 6%, r = 11%: P/FCF? Thistle: price $42, sales per share $12, peers 4.8: P/S? <i>Answer: 1.06 &divide; 0.05 = 21.2; 42 &divide; 12 = 3.5, below peers &rarr; possible value.</i></div></div>
+    <div class="confuse"><div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; intrinsic vs. relative methods</div>
+      <table><thead><tr><th>Intrinsic (stand-alone)</th><th>Relative (comparison)</th></tr></thead>
+      <tbody><tr><td>Constant growth DDM</td><td>P/E</td></tr>
+      <tr><td>Multistage DDM</td><td>PEG</td></tr>
+      <tr><td>No-growth (perpetuity) DDM</td><td>P/FCF</td></tr>
+      <tr><td>Discounted free cash flow</td><td>P/S</td></tr></tbody></table>
+      <div class="tell"><strong>How to tell:</strong> if the method needs a peer or industry benchmark to reach a verdict, it is relative; if it produces a dollar value from the stock's own cash flows and a required return, it is intrinsic.</div></div>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> a lower P/E is not automatically a bargain &mdash; a faster grower deserves a higher P/E (that is what PEG adjusts for). And a strong P/S can hide losses because sales say nothing about profit.</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> &ldquo;Investors are paying 15 times earnings for this company while similar companies trade at 18. If it simply earned the industry's multiple, the shares would be around $75. That gap is the opportunity &mdash; as long as there isn't a business reason for the discount.&rdquo;</div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 167&ndash;170</span> <span class="srcref">LO 4.3.2</span></p>
+  </div>
+</div>
+
+</div>

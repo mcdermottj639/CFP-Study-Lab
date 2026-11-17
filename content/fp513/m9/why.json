@@ -1,0 +1,112 @@
+{
+ "In which section of the Calloways' investment policy statement (IPS) should these two needs be recorded?": {
+  "Return requirement": "This section states the target return (absolute or relative, before or after tax and inflation), not cash the clients must be able to reach.",
+  "Laws and regulations": "For individuals this section is usually minor; it matters mainly for retirement plans or endowments subject to rules such as ERISA.",
+  "Permitted and excluded investments": "This section lists holdings the clients want included or ruled out (for example, for social or religious reasons), not near-term cash needs."
+ },
+ "Which statement best describes the Calloways' risk tolerance for the IPS?": {
+  "Low ability and low willingness; the IPS should target capital preservation and leave the 6.5% goal as is": "Their wealth, income, insurance and 12-year horizon give them a high ability to take risk, and a goal needing 6.5% cannot simply stay unchanged under a capital-preservation mix.",
+  "High ability and high willingness; their net worth lets the IPS set above-average volatility": "Graham&rsquo;s panic selling and fear of a 15% drop show low willingness, which the IPS must address rather than ignore.",
+  "Low ability but high willingness; the planner should rely on the questionnaire score alone": "Ability is high, not low, and a questionnaire score alone ignores the behavior Graham has already shown."
+ },
+ "How large is the gap in the Calloways' emergency reserve, and what is the best way to close it?": {
+  "$19,000; arrange a 401(k) loan that can be drawn if an emergency occurs": "A retirement-plan loan is borrowing, not a reserve; a liquid money market holding is the preferred way to meet an unexpected crisis.",
+  "$81,000; open a home equity line of credit to serve as the whole reserve": "$81,000 is the full target, not the gap, and a credit line is borrowing, not a liquid reserve the clients own.",
+  "$39,000; leave the CD out of the reserve and draw the gap from the 401(k)s": "A bank CD is a cash equivalent that can be redeemed (at most with an interest penalty), so excluding it overstates the gap, and 401(k) money is not a reserve."
+ },
+ "Which response by the planner is most accurate?": {
+  "She is right; both accounts carry FDIC coverage up to $250,000 per ownership category": "Only the bank MMDA is FDIC insured; a money market mutual fund is an investment company product without federal insurance.",
+  "She is right only if the fund holds Treasury bills, which makes the fund itself FDIC insured": "Holding Treasury bills improves a fund&rsquo;s credit quality but does not give the fund FDIC coverage.",
+  "Neither account is insured, but only the bank account permits check-writing": "The MMDA is federally insured, and money market mutual funds also commonly allow withdrawals by check."
+ },
+ "What is the Calloways' after-tax, inflation-adjusted return on the T-bills?": {
+  "0.97%": "0.97% is the pre-tax real return (1.04 &divide; 1.03 &minus; 1); it ignores federal tax on the interest.",
+  "1.00%": "1.00% just subtracts inflation from the nominal yield and ignores both tax and the proper real-return formula.",
+  "&minus;0.47%": "This applies the 5% state rate as well, but T-bill interest is exempt from state income tax."
+ },
+ "What is the planner's best course of action with Graham?": {
+  "Move the 401(k) to stable value now and re-enter after the market regains half its loss": "Waiting for a partial recovery is market timing; it tends to miss the early part of a rebound and locks in the loss.",
+  "Shift half the 401(k) to stable value as a compromise to ease Graham&rsquo;s anxiety": "Cutting stocks by half still reacts to the market rather than to any change in the clients&rsquo; goals, horizon or resources.",
+  "Rewrite the IPS around capital preservation because a 25% decline changes their goals": "The decline does not change their goals, horizon, jobs or reserves; the IPS exists to keep them from reacting to this kind of turmoil."
+ },
+ "Which event(s) should prompt the planner to reassess the assumptions in the Calloways' IPS?": {
+  "I and III": "A 4% raise is incremental change: worth monitoring, but not a reason to redesign the IPS.",
+  "II and III": "A one-week 2% dip is market noise, which the IPS is designed to help clients ignore.",
+  "I, II, and III": "Only the layoff is a discontinuous change; the raise is incremental and the dip is noise."
+ },
+ "Which approach best reconciles the spouses' preferences for their retirement assets?": {
+  "Tactical asset allocation applied to the entire portfolio": "TAA shifts the whole mix on market views, with high turnover and costs, the opposite of Graham&rsquo;s low-cost, low-trading wish.",
+  "A single moderate model portfolio from a fund sponsor&rsquo;s questionnaire": "A sponsor model is a one-size-fits-all black box that ignores Nadia&rsquo;s specific wish for an active sleeve.",
+  "A strategic allocation held entirely in index funds with no active component": "An all-index portfolio satisfies Graham but gives Nadia no active satellite at all."
+ },
+ "Which strategy best meets Nadia's goals for her Kestrel shares?": {
+  "Transfer the shares to a charitable remainder trust": "A CRT can sell without tax and creates a deduction, but the remainder goes to charity, contrary to her wish to keep the value in the family.",
+  "Give the shares to Leah and Sam": "A gift removes the shares from her control and may raise gift-tax issues; it moves the concentration rather than diversifying it.",
+  "Sell the shares and buy a diversified index fund": "Selling diversifies but triggers capital gains tax right away on a $200,000 gain (4,000 &times; $50)."
+ },
+ "Ignoring commissions, what is the minimum net value of Nadia's hedged KDX position at expiration (the value the puts lock in, less the premium paid)?": {
+  "$300,000": "This subtracts the premium twice (as if the floor were $75 a share); the floor is $80 &times; 4,000 less the $10,000 premium once.",
+  "$320,000": "$320,000 is the strike value but ignores the $10,000 paid for the puts.",
+  "$350,000": "This subtracts the premium from today&rsquo;s value, not from the $80 strike floor."
+ },
+ "Which option position should Nadia add to her 4,000 KDX shares?": {
+  "Write 40 $105 covered calls and nothing else": "Covered calls earn income and cap the upside, but the premium gives only a small cushion if KDX falls sharply.",
+  "Write 40 $80 puts and buy 40 $105 calls": "Writing puts adds a duty to buy more KDX if it falls, and buying calls adds upside exposure: the reverse of a hedge.",
+  "Buy 40 $90 calls and 40 $90 puts (a long straddle)": "A long straddle bets on a big move either way and costs two premiums; it is not a no-cost floor."
+ },
+ "Using the CAPM, what is the required return on KDX, and what does it imply about adding to the position?": {
+  "18.0%; KDX is undervalued, so buy more": "18.0% multiplies the whole market return by beta (4% + 10% &times; 1.4) instead of only the market risk premium.",
+  "8.4%; the expected return exceeds it, so add to KDX": "8.4% is only the stock&rsquo;s risk premium (6% &times; 1.4); the risk-free rate must be added back.",
+  "14.0%; KDX plots on the security market line, so hold it unchanged": "14.0% is market return &times; beta with no risk-free intercept, and an asset on the SML would have expected return equal to required return, which is not the case."
+ },
+ "What is the weighted beta of the equity holdings in the joint brokerage account?": {
+  "1.15": "1.15 is the simple average of the three betas; it ignores that KDX is 75% of the dollars.",
+  "1.40": "1.40 is KDX&rsquo;s beta alone; the two funds pull the weighted figure down.",
+  "1.07": "1.07 weights only the two funds and leaves out the KDX shares."
+ },
+ "Using the R² threshold taught in the course, which fund is the effective diversifier for Graham's account?": {
+  "Large-Cap Value Index, R² = 0.88": "An R² of 0.88 means 88% of its movement tracks the S&amp;P 500; it largely duplicates the index fund.",
+  "Mid-Cap Blend, R² = 0.79": "0.79 is above the 70% threshold, so it moves too closely with the S&amp;P 500 to diversify well.",
+  "Dividend Growth, R² = 0.74": "0.74 is still above 70%; a correlation of 0.86 exceeds the roughly 0.84 cutoff."
+ },
+ "Which fund shows the better risk-adjusted performance, using the appropriate measure?": {
+  "Bexley, because its Treynor ratio (7.50) beats Alder&rsquo;s (7.24)": "Treynor relies on beta, and Bexley&rsquo;s R² of 0.58 makes its beta unreliable, so its Treynor edge cannot be trusted.",
+  "Bexley, because its return is 1.4 points higher than Alder&rsquo;s": "Raw return ignores risk; Bexley earned its extra return with far higher volatility.",
+  "Alder, because its higher R² shows it has the better manager": "A higher R² only means the fund tracks the market more closely; it is not a measure of risk-adjusted performance or skill."
+ },
+ "Which of these statements about Harborline are CORRECT? I. Its high turnover adds trading costs not included in the 1.25% expense ratio. II. Its high turnover can produce capital gains distributions taxable to the Calloways. III. The expense ratio already includes the fund's brokerage commissions. IV. The manager's departure is a reason to monitor the fund more closely.": {
+  "I and III": "Statement III is false (the expense ratio excludes brokerage commissions), and this choice leaves out true statements II and IV.",
+  "II and IV": "II and IV are true, but so is I: trading costs from turnover sit outside the expense ratio.",
+  "I, II, III, and IV": "III is false; the expense ratio covers operating expenses, management fees and 12b-1 fees, not the fund&rsquo;s brokerage commissions."
+ },
+ "What loss can the Calloways recognize on the December sale, and what is their basis in the repurchased shares?": {
+  "$15,000 loss; basis $82,000": "The loss cannot be recognized because the same fund was bought back within 30 days, and the new basis must absorb the disallowed loss.",
+  "$3,000 loss; basis $94,000": "$3,000 is the annual cap on deducting net capital losses (2026 edition figure); here the whole loss is postponed by the wash-sale rule.",
+  "$0 loss; basis $82,000": "The disallowed $15,000 is not forfeited; it is added to the new shares&rsquo; basis, making it $97,000."
+ },
+ "What is the municipal fund's taxable-equivalent yield for the Calloways, and which fund pays more after tax?": {
+  "5.29%; the municipal fund": "5.29% uses only the federal rate; for an in-state bond exempt from both taxes, the state rate must be included.",
+  "5.71%; the municipal fund": "Adding the two brackets (37%) is the shortcut for taxpayers who do not itemize; the Calloways itemize.",
+  "5.57%; the corporate fund": "The TEY is right but the conclusion is wrong: 5.57% beats the corporate fund&rsquo;s 5.2%, so the municipal fund wins after tax."
+ },
+ "Which change makes the Calloways' asset placement most tax-efficient while keeping their overall stock/bond mix?": {
+  "Buy municipal bonds inside Nadia&rsquo;s Roth IRA so the bond income is doubly tax-free": "Municipal interest is already tax-exempt, so holding munis in a Roth wastes the account&rsquo;s shelter on income that needed none.",
+  "Keep the bond fund in the joint account, since its interest is taxed the same in any account": "Interest in a taxable account is taxed every year; inside a 401(k) it is deferred, so location matters.",
+  "Swap the bond fund for taxable zero-coupon corporate bonds in the joint account to defer the interest": "Taxable zero-coupon bonds create phantom income (accrued interest taxed yearly), so they also belong in tax-deferred accounts."
+ },
+ "Using the duration formula, approximately what will the Calloways' Ridgeway position be worth after the rate increase?": {
+  "$56,280": "This uses the rule of thumb (6.2 &times; 1%) and skips dividing by 1 + YTM, which the formula requires.",
+  "$63,536": "The sign is backward; bond prices fall when rates rise.",
+  "$59,400": "This drops the value by only the 1% rate change and ignores the duration multiplier."
+ },
+ "Which fixed-income approach best protects the money for Leah's first tuition bill?": {
+  "A long-term bond fund with a duration of 14, for its higher yield": "A duration of 14 is far longer than the 3-year horizon, so a rise in rates before tuition is due could cut the value sharply.",
+  "A barbell of 1-year and 20-year bonds": "A barbell needs active management and its long end carries large price risk; it does not lock in a value on a set date.",
+  "Keep the stock index fund, since stocks beat bonds over long periods": "With only three years left, a bear market could shrink the fund just before it is needed; near-term goals belong outside stocks."
+ },
+ "What was the Calloways' holding period return on the Summit fund in U.S. dollars?": {
+  "9.00%": "9% is the return in euros; it ignores that each euro now converts into fewer dollars than at purchase.",
+  "15.41%": "15.41% inverts the exchange-rate change, treating the dollar&rsquo;s rise as a gain for a U.S. holder of euro assets.",
+  "3.44%": "3.44% subtracts the currency loss from the local return instead of compounding the two (1.09 &times; 0.9444 &minus; 1)."
+ }
+}

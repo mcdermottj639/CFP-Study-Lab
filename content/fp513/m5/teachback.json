@@ -1,0 +1,30 @@
+[
+ {
+  "id": "fp513-covered-call",
+  "title": "“Can I squeeze more income out of my bank stock without selling it?”",
+  "scenario": "Lorraine, 66, owns 800 shares of a bank stock with a large gain and expects it to drift sideways. She wants extra income but worries about a sharp drop.",
+  "prompt": "Explain how writing covered calls would work for her, what she gives up, and how a protective put or a zero-cost collar differs.",
+  "points": [
+   "Writing calls on owned shares earns a premium she keeps no matter what",
+   "If the stock rises above the strike, the shares are called away and gains above the strike are lost",
+   "The premium only cushions a small decline; a sharp drop still hurts",
+   "A protective put sets a floor but costs a premium and lasts only until expiration",
+   "A zero-cost collar pairs a bought put with a written call so the call premium pays for the protection"
+  ],
+  "anchor": "LO 5.2.2 · Using options: speculation, covered calls, protective puts"
+ },
+ {
+  "id": "fp513-currency",
+  "title": "“My European stocks went up, so why did my statement show almost no gain?”",
+  "scenario": "Marco, 45, bought a basket of eurozone shares that rose 8% in euros during a year in which the U.S. dollar strengthened against the euro.",
+  "prompt": "Explain how exchange rates changed his dollar return and when currency moves help or hurt a U.S. investor in foreign securities.",
+  "points": [
+   "His return in dollars depends on both the euro price change and the euro/dollar rate",
+   "A stronger dollar converts euro proceeds into fewer dollars, shrinking the return",
+   "A U.S. holder of foreign securities benefits when the dollar weakens during the holding period",
+   "Show the math: dollar cost at purchase vs. dollar proceeds at sale, then HPR",
+   "Currency exposure is part of why foreign holdings diversify; ADRs and funds do not remove it"
+  ],
+  "anchor": "LO 5.5.2 · Exchange rates and dollar returns on foreign securities"
+ }
+]

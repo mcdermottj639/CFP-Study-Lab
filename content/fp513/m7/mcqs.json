@@ -1,0 +1,624 @@
+[
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Simple & Compound Return",
+  "q": "Dana's investment produced a total return of 45% over six years. What is her simple (noncompounded) annual rate of return?",
+  "o": [
+   "6.39%",
+   "7.50%",
+   "9.00%",
+   "45.00%"
+  ],
+  "a": 1,
+  "e": "Simple rate of return = total return &divide; years held = 45% &divide; 6 = 7.5%. It is annualized but ignores compounding (time value of money).",
+  "lo": "LO 7.1.1",
+  "pg": 259,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Arithmetic & Geometric Mean",
+  "q": "A fund returned 10%, &minus;5%, 18% and 7% in four consecutive years. Which pair correctly states its arithmetic mean and geometric mean?",
+  "o": [
+   "Arithmetic 7.18%; geometric 7.50%",
+   "Arithmetic 10.00%; geometric 7.18%",
+   "Arithmetic 7.50%; geometric 7.18%",
+   "Arithmetic 7.50%; geometric 7.98%"
+  ],
+  "a": 2,
+  "e": "AM = (10 &minus; 5 + 18 + 7) &divide; 4 = 7.50%. GM: PV &minus;1, FV = 1.10 &times; 0.95 &times; 1.18 &times; 1.07 = 1.3194, N 4 &rarr; I/YR = 7.18%. The GM is lower because returns varied.",
+  "lo": "LO 7.1.1",
+  "pg": 259,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Arithmetic & Geometric Mean",
+  "q": "Which statement about the arithmetic and geometric mean of a return series is CORRECT?",
+  "o": [
+   "They are equal only when every period's return is the same.",
+   "The geometric mean exceeds the arithmetic mean when returns are volatile.",
+   "The arithmetic mean assumes each period's return is reinvested.",
+   "The geometric mean ignores the effect of compounding."
+  ],
+  "a": 0,
+  "e": "The geometric mean is always below the arithmetic mean except when all periodic returns are identical, because only the geometric mean reflects compounding.",
+  "lo": "LO 7.1.1",
+  "pg": 261,
+  "k": "D.30",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Time- vs Dollar-Weighted",
+  "q": "Based on these facts, what is the time-weighted return on the stock?",
+  "o": [
+   "15.37%",
+   "16.54%",
+   "14.02%",
+   "30.00%"
+  ],
+  "a": 1,
+  "e": "TWR ignores Omar's second purchase and follows one share: CF0 = &minus;40, CF1 = 2 (dividend), CF2 = 52. IRR = 16.54%.",
+  "lo": "LO 7.1.1",
+  "pg": 261,
+  "k": "D.30",
+  "kind": "calc",
+  "stem": "<p>Omar buys one share of a stock for $40. At the end of Year 1 the stock pays a $2 dividend and Omar buys a second share for $46. At the end of Year 2 he sells both shares for $52 each. No dividend is paid in Year 2.</p>"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Time- vs Dollar-Weighted",
+  "q": "Based on these facts, what is Omar's dollar-weighted return?",
+  "o": [
+   "16.54%",
+   "13.69%",
+   "63.76%",
+   "15.37%"
+  ],
+  "a": 3,
+  "e": "DWR includes the investor's flows: CF0 = &minus;40; CF1 = 2 &minus; 46 = &minus;44; CF2 = 2 &times; 52 = 104. IRR = 15.37%.",
+  "lo": "LO 7.1.1",
+  "pg": 262,
+  "k": "D.30",
+  "kind": "calc",
+  "stem": "<p>Omar buys one share of a stock for $40. At the end of Year 1 the stock pays a $2 dividend and Omar buys a second share for $46. At the end of Year 2 he sells both shares for $52 each. No dividend is paid in Year 2.</p>"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Time- vs Dollar-Weighted",
+  "q": "Ben's account statement shows a lower return than the mutual fund's published return for the same period, even though he owned only that fund. What is the best explanation?",
+  "o": [
+   "Published fund returns are dollar-weighted across all shareholders.",
+   "The fund reports a time-weighted return, which ignores the timing of Ben's deposits and withdrawals.",
+   "Time-weighted returns include investor contributions, so they always run higher.",
+   "The fund is quoting its SEC yield rather than any total return measure."
+  ],
+  "a": 1,
+  "e": "Managers cannot control shareholder flows, so funds report time-weighted returns. Ben's own result is dollar-weighted and reflects when he added or removed money, so the two usually differ.",
+  "lo": "LO 7.1.1",
+  "pg": 261,
+  "k": "D.30",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Time- vs Dollar-Weighted",
+  "q": "Using the textbook's convention for annualizing a periodic IRR, what is Rosa's dollar-weighted return?",
+  "o": [
+   "2.40%",
+   "9.75%",
+   "9.97%",
+   "9.62%"
+  ],
+  "a": 3,
+  "e": "CF0 = &minus;8,000; CF1&ndash;CF3 = 120; CF4 = 8,300 + 120 = 8,420. Quarterly IRR = 2.4044%; &times; 4 = 9.62%.",
+  "lo": "LO 7.1.1",
+  "pg": 262,
+  "k": "D.30",
+  "kind": "calc",
+  "stem": "<p>Rosa invests $8,000 in a fund. It pays her a $120 cash dividend at the end of each quarter. When the fourth dividend is paid, her shares are worth $8,300.</p>"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Real & After-Tax Return",
+  "q": "A corporate bond has a 7% nominal return and inflation is 2.5%. Using the formula expected on the CFP exam, what is the real rate of return?",
+  "o": [
+   "4.39%",
+   "4.50%",
+   "9.68%",
+   "6.83%"
+  ],
+  "a": 0,
+  "e": "Real = [(1.07 &divide; 1.025) &minus; 1] &times; 100 = 4.39%. Subtracting inflation (4.5%) is only an approximation.",
+  "lo": "LO 7.1.1",
+  "pg": 262,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Real & After-Tax Return",
+  "q": "Priya holds a 7% corporate bond, has a 30% combined federal and state marginal tax rate, and inflation is 2.5%. What is her after-tax, inflation-adjusted return?",
+  "o": [
+   "2.40%",
+   "2.34%",
+   "4.39%",
+   "3.07%"
+  ],
+  "a": 1,
+  "e": "After-tax = 7% &times; (1 &minus; 0.30) = 4.9%. Real = [(1.049 &divide; 1.025) &minus; 1] &times; 100 = 2.34%.",
+  "lo": "LO 7.1.1",
+  "pg": 263,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "APR and EAR",
+  "q": "A credit card charges 1.5% interest per month, compounded monthly. What are the card's APR and effective annual rate?",
+  "o": [
+   "APR 19.56%; EAR 18.00%",
+   "APR 1.50%; EAR 19.56%",
+   "APR 18.00%; EAR 19.56%",
+   "APR 18.00%; EAR 18.00%"
+  ],
+  "a": 2,
+  "e": "APR = 1.5% &times; 12 = 18%. EAR = (1 + 0.18 &divide; 12)<sup>12</sup> &minus; 1 = 19.56%.",
+  "lo": "LO 7.1.1",
+  "pg": 263,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Holding Period Return",
+  "q": "Luis bought a bond for $960, collected $140 of interest, and sold it for $1,010. What is his holding period return?",
+  "o": [
+   "5.21%",
+   "14.58%",
+   "18.81%",
+   "19.79%"
+  ],
+  "a": 3,
+  "e": "HPR = (1,010 &minus; 960 + 140) &divide; 960 = 190 &divide; 960 = 19.79%.",
+  "lo": "LO 7.1.1",
+  "pg": 265,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Holding Period Return",
+  "q": "Kendra earned an HPR of 20% on an investment she held for three years. Which statement is CORRECT?",
+  "o": [
+   "The HPR overstates the investment's true annual return.",
+   "The HPR understates the investment's true annual return.",
+   "The HPR equals the investment's compound annual return.",
+   "The HPR already reflects when each cash flow occurred."
+  ],
+  "a": 0,
+  "e": "HPR ignores time. For holding periods longer than one year it overstates the annual return; for periods shorter than a year it understates it.",
+  "lo": "LO 7.1.1",
+  "pg": 265,
+  "k": "D.30",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Jensen's Alpha",
+  "q": "Based on these facts, what is the portfolio's Jensen's alpha?",
+  "o": [
+   "+2.00%",
+   "+0.80%",
+   "&minus;0.80%",
+   "+8.00%"
+  ],
+  "a": 1,
+  "e": "Required (CAPM) return = 3% + 1.2(9% &minus; 3%) = 10.2%. Alpha = 11% &minus; 10.2% = +0.80%.",
+  "lo": "LO 7.2.1",
+  "pg": 268,
+  "k": "D.30",
+  "kind": "calc",
+  "stem": "<p>A portfolio earned 11% with a beta of 1.2 and a standard deviation of 16%. The market returned 9% and the risk-free rate was 3%. Beta is reliable (R&sup2; = 0.85).</p>"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Treynor Ratio",
+  "q": "Based on these facts, what is the portfolio's Treynor ratio (in percentage points)?",
+  "o": [
+   "9.17",
+   "1.67",
+   "6.67",
+   "0.50"
+  ],
+  "a": 2,
+  "e": "Treynor = (r<sub>p</sub> &minus; r<sub>f</sub>) &divide; &beta; = (11 &minus; 3) &divide; 1.2 = 6.67.",
+  "lo": "LO 7.2.1",
+  "pg": 269,
+  "k": "D.30",
+  "kind": "calc",
+  "stem": "<p>A portfolio earned 11% with a beta of 1.2 and a standard deviation of 16%. The market returned 9% and the risk-free rate was 3%. Beta is reliable (R&sup2; = 0.85).</p>"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Sharpe Ratio",
+  "q": "Based on these facts, what is the portfolio's Sharpe ratio?",
+  "o": [
+   "0.69",
+   "6.67",
+   "0.13",
+   "0.50"
+  ],
+  "a": 3,
+  "e": "Sharpe = (r<sub>p</sub> &minus; r<sub>f</sub>) &divide; &sigma; = (11 &minus; 3) &divide; 16 = 0.50.",
+  "lo": "LO 7.2.1",
+  "pg": 269,
+  "k": "D.30",
+  "kind": "calc",
+  "stem": "<p>A portfolio earned 11% with a beta of 1.2 and a standard deviation of 16%. The market returned 9% and the risk-free rate was 3%. Beta is reliable (R&sup2; = 0.85).</p>"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Choosing a Performance Measure",
+  "q": "Which fund showed better risk-adjusted performance, and why?",
+  "o": [
+   "Fund K, because it has the higher Sharpe ratio",
+   "Fund L, because it has the higher Treynor ratio",
+   "Fund L, because it has the higher Sharpe ratio",
+   "Fund K, because it has the higher Treynor ratio"
+  ],
+  "a": 0,
+  "e": "R&sup2; is below 0.70, so beta is unreliable and the Sharpe ratio governs. Sharpe K = (10 &minus; 3) &divide; 12 = 0.58; L = (13 &minus; 3) &divide; 20 = 0.50. (Treynor would favor L: 9.09 vs. 7.78.)",
+  "lo": "LO 7.2.1",
+  "pg": 267,
+  "k": "D.30",
+  "kind": "applied",
+  "stem": "<p>Risk-free rate 3%. Fund K: return 10%, standard deviation 12%, beta 0.9. Fund L: return 13%, standard deviation 20%, beta 1.1. Each fund's R&sup2; with the market is about 0.45.</p>"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Jensen's Alpha",
+  "q": "A portfolio's Jensen's alpha is negative. Which statement must be true?",
+  "o": [
+   "It earned less than the risk-free rate.",
+   "It has a beta below 1.0.",
+   "It plots below the security market line.",
+   "Its Sharpe ratio is below the market's."
+  ],
+  "a": 2,
+  "e": "Negative alpha means the actual return fell short of the CAPM required return for its beta, so it plots below the SML and the manager underperformed on a risk-adjusted basis.",
+  "lo": "LO 7.2.1",
+  "pg": 268,
+  "k": "D.30",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Information Ratio",
+  "q": "Fund Q returned 9.5% with a tracking error of 3%. Fund R returned 10% with a tracking error of 6%. Their benchmark returned 8%. Which fund has the better information ratio?",
+  "o": [
+   "Fund R, with an IR of 0.33",
+   "Fund R, with an IR of 1.67",
+   "Fund Q, with an IR of 3.17",
+   "Fund Q, with an IR of 0.50"
+  ],
+  "a": 3,
+  "e": "IR = (R<sub>P</sub> &minus; R<sub>B</sub>) &divide; tracking error. Q: (9.5 &minus; 8) &divide; 3 = 0.50. R: (10 &minus; 8) &divide; 6 = 0.33. Q's higher IR wins (0.50+ is often top quartile).",
+  "lo": "LO 7.2.1",
+  "pg": 271,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Information Ratio",
+  "q": "The information ratio becomes identical to the Sharpe ratio when",
+  "o": [
+   "the benchmark is a constant-return, risk-free asset",
+   "the portfolio's beta equals 1.0",
+   "the tracking error equals zero",
+   "the benchmark is the S&amp;P 500 Index"
+  ],
+  "a": 0,
+  "e": "With a risk-free benchmark, the numerator becomes return minus the risk-free rate and the excess return's volatility is the portfolio's own standard deviation, which is the Sharpe ratio.",
+  "lo": "LO 7.2.1",
+  "pg": 271,
+  "k": "D.30",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Choosing a Performance Measure",
+  "q": "Which performance measure is an ABSOLUTE measure rather than a relative one?",
+  "o": [
+   "Sharpe ratio",
+   "Treynor ratio",
+   "Jensen's alpha",
+   "Information ratio"
+  ],
+  "a": 2,
+  "e": "Jensen's alpha states directly how much the return beat or missed its CAPM required return. Sharpe and Treynor are relative: they mean something only compared with another portfolio or a benchmark.",
+  "lo": "LO 7.2.1",
+  "pg": 269,
+  "k": "D.30",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Index Weighting Methods",
+  "q": "In a price-weighted index such as the DJIA, how does a $90 stock's influence compare with a $30 stock's, regardless of company size?",
+  "o": [
+   "Three times as much",
+   "One-third as much",
+   "About the same",
+   "It depends on each firm's market capitalization"
+  ],
+  "a": 0,
+  "e": "In a price-weighted index, influence is proportional to share price: $90 &divide; $30 = 3 times.",
+  "lo": "LO 7.3.1",
+  "pg": 272,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Index Weighting Methods",
+  "q": "A company with a $45 billion market value belongs to a capitalization-weighted index whose members total $300 billion. What share of the index's price movement does it account for?",
+  "o": [
+   "0.20%",
+   "6.67%",
+   "15.00%",
+   "85.00%"
+  ],
+  "a": 2,
+  "e": "Cap weight = company value &divide; index value = $45B &divide; $300B = 15%.",
+  "lo": "LO 7.3.1",
+  "pg": 274,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Index Weighting Methods",
+  "q": "Which of the following is NOT a shortcoming of the Dow Jones Industrial Average?",
+  "o": [
+   "It ignores cash dividends.",
+   "It gives higher-priced stocks more influence.",
+   "It relies on a small sample of mostly blue-chip stocks.",
+   "It is poorly correlated with broader market indices."
+  ],
+  "a": 3,
+  "e": "Despite its flaws, the DJIA's correlation with the S&amp;P 500 exceeds 0.95, so it still represents the market adequately. The other three are recognized weaknesses.",
+  "lo": "LO 7.3.1",
+  "pg": 273,
+  "k": "D.30",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Asset Class Benchmarks",
+  "q": "Marta manages a fund of developed-market stocks from Europe, Australasia and the Far East, excluding the U.S. and Canada. Which benchmark fits best?",
+  "o": [
+   "Russell 2000 Index",
+   "MSCI EAFE Index",
+   "Wilshire 5000 Index",
+   "S&amp;P 500 Index"
+  ],
+  "a": 1,
+  "e": "MSCI EAFE is the most common benchmark for developed foreign markets in Europe, Australasia and the Far East, with no U.S. or Canadian stocks.",
+  "lo": "LO 7.3.1",
+  "pg": 273,
+  "k": "D.30",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Asset Class Benchmarks",
+  "q": "Which conclusion about the client's 7.9% return is most appropriate?",
+  "o": [
+   "It lagged the S&amp;P 500 by 2.1%, so the portfolio underperformed.",
+   "It beat a blended benchmark of 6.67%.",
+   "It beat a blended benchmark of 7.6%.",
+   "It beat the Russell 2000 by 1.9%, so the manager added value."
+  ],
+  "a": 2,
+  "e": "Blended benchmark = 0.50(10%) + 0.30(6%) + 0.20(4%) = 7.6%. At 7.9% the portfolio beat a benchmark that reflects how it is actually invested.",
+  "lo": "LO 7.3.1",
+  "pg": 276,
+  "k": "D.33",
+  "kind": "applied",
+  "stem": "<p>A client's portfolio is 50% U.S. large-cap stock, 30% U.S. small-cap stock and 20% international developed stock. It returned 7.9% this year. The S&amp;P 500 returned 10%, the Russell 2000 6%, and the MSCI EAFE 4%.</p>"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Current Yield",
+  "q": "A bond with a 4.5% coupon is trading at $920. What is its current yield?",
+  "o": [
+   "4.50%",
+   "4.14%",
+   "4.89%",
+   "2.45%"
+  ],
+  "a": 2,
+  "e": "CY = annual interest &divide; market price = $45 &divide; $920 = 4.89%. It exceeds the coupon because the bond trades at a discount.",
+  "lo": "LO 7.4.1",
+  "pg": 277,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "YTM and YTC",
+  "q": "An 8-year bond with a 5% coupon paid semiannually is priced at $940. What is its yield to maturity?",
+  "o": [
+   "5.95%",
+   "2.98%",
+   "5.32%",
+   "5.00%"
+  ],
+  "a": 0,
+  "e": "2 P/Yr, END: PV = &minus;940, FV = 1,000, PMT = 25, N = 16 &rarr; I/YR = 5.95%.",
+  "lo": "LO 7.4.1",
+  "pg": 278,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "YTM and YTC",
+  "q": "Based on these facts, what is the bond's yield to call?",
+  "o": [
+   "5.93%",
+   "5.21%",
+   "6.48%",
+   "4.78%"
+  ],
+  "a": 1,
+  "e": "2 P/Yr, END: PV = &minus;1,080, FV = 1,020 (call price), PMT = 35, N = 8 &rarr; I/YR = 5.21%.",
+  "lo": "LO 7.4.1",
+  "pg": 278,
+  "k": "D.32",
+  "kind": "calc",
+  "stem": "<p>A 10-year bond with a 7% semiannual coupon trades at $1,080. It is callable in 4 years at $1,020.</p>"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "YTM and YTC",
+  "q": "A 15-year bond with a 6% coupon trades at $930 and is callable at par in 5 years. Which ordering of its yields is expected?",
+  "o": [
+   "Coupon &gt; current yield &gt; YTM &gt; YTC",
+   "YTM &gt; YTC &gt; current yield &gt; coupon",
+   "Current yield &gt; YTC &gt; YTM &gt; coupon",
+   "YTC &gt; YTM &gt; current yield &gt; coupon"
+  ],
+  "a": 3,
+  "e": "For a discount bond, YTC is highest, then YTM, then current yield, with the coupon lowest. Here: YTC 7.71%, YTM 6.75%, CY 6.45%, coupon 6%.",
+  "lo": "LO 7.4.1",
+  "pg": 280,
+  "k": "D.32",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Bond Calculator Conventions",
+  "q": "A 10-year zero-coupon bond is priced at $600. Using the textbook's default conventions, what is its yield to maturity?",
+  "o": [
+   "5.24%",
+   "2.59%",
+   "5.17%",
+   "6.67%"
+  ],
+  "a": 2,
+  "e": "Zeros still use semiannual compounding: PV = &minus;600, FV = 1,000, PMT = 0, N = 20, 2 P/Yr &rarr; I/YR = 5.17%.",
+  "lo": "LO 7.4.1",
+  "pg": 276,
+  "k": "D.32",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "YTM and YTC",
+  "q": "Which assumption is built into a bond's yield to maturity?",
+  "o": [
+   "Coupons are spent as received rather than reinvested.",
+   "Every coupon is reinvested at the YTM itself.",
+   "Coupons are reinvested at the bond's coupon rate.",
+   "The bond is redeemed at its first call date."
+  ],
+  "a": 1,
+  "e": "YTM is an IRR, so it assumes all coupons are reinvested at the calculated YTM. If rates fall, reinvested coupons earn less and the realized return falls short.",
+  "lo": "LO 7.4.1",
+  "pg": 278,
+  "k": "D.32",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Taxable Equivalent Yield",
+  "q": "A municipal bond yields 3.6%. The investor's marginal federal rate is 35% and her state has no income tax. What is the bond's taxable equivalent yield?",
+  "o": [
+   "2.34%",
+   "4.86%",
+   "10.29%",
+   "5.54%"
+  ],
+  "a": 3,
+  "e": "TEY = tax-exempt yield &divide; (1 &minus; marginal rate) = 3.6% &divide; 0.65 = 5.54%.",
+  "lo": "LO 7.4.1",
+  "pg": 281,
+  "k": "D.27",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Taxable Equivalent Yield",
+  "q": "Using the textbook's method for a double tax-exempt bond, what is its taxable equivalent yield?",
+  "o": [
+   "4.86%",
+   "4.76%",
+   "4.47%",
+   "2.43%"
+  ],
+  "a": 1,
+  "e": "Itemizer: TEY = 3.4% &divide; [(1 &minus; 0.06)(1 &minus; 0.24)] = 3.4% &divide; 0.7144 = 4.76%.",
+  "lo": "LO 7.4.1",
+  "pg": 282,
+  "k": "D.27",
+  "kind": "calc",
+  "stem": "<p>Grace itemizes deductions. Her marginal rates are 24% federal and 6% state. She is considering a 3.4% municipal bond issued by her own state, exempt from both federal and state income tax.</p>"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Taxable Equivalent Yield",
+  "q": "Felix can buy a 6% corporate bond or a 4.3% municipal bond of similar quality and maturity. His marginal federal rate is 32% and his state has no income tax. Based on yield alone, which should he prefer?",
+  "o": [
+   "The corporate, because 6% beats the muni's stated 4.3%",
+   "The corporate, because the muni's TEY is only 2.92%",
+   "The municipal, because its TEY of 6.32% exceeds 6%",
+   "The municipal, because its TEY of 13.44% exceeds 6%"
+  ],
+  "a": 2,
+  "e": "TEY = 4.3% &divide; (1 &minus; 0.32) = 6.32% &gt; 6%. Equivalently, the corporate's after-tax yield is 6% &times; 0.68 = 4.08% &lt; 4.3%.",
+  "lo": "LO 7.4.1",
+  "pg": 281,
+  "k": "D.27",
+  "kind": "applied"
+ }
+]

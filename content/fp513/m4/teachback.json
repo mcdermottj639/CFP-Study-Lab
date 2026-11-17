@@ -1,0 +1,30 @@
+[
+ {
+  "id": "fp513-duration-swap",
+  "title": "Why would I give up yield to move into the short-term bond fund?",
+  "scenario": "Renata, 61, holds a long-term bond fund (duration about 13, yield 4.4%) and needs the money for a home renovation in about two to three years. You suggest a short-term fund (duration about 2.4, yield 3.1%).",
+  "prompt": "Explain duration and interest-rate risk in plain language and justify the switch.",
+  "points": [
+   "Duration estimates the % price change for a 1-point rate move (about 13% vs. about 2.4%)",
+   "The extra 1.3% of yield buys roughly 10.5 more points of downside if rates jump 1%",
+   "A bond fund never matures, so she cannot simply hold to maturity to escape price swings",
+   "Matching duration to her 2-3 year horizon protects the money she will need soon",
+   "Bigger rate moves are curved, not linear (convexity), but direction and scale still hold"
+  ],
+  "anchor": "LO 4.1.2 · Estimating price change with duration"
+ },
+ {
+  "id": "fp513-high-roe-trap",
+  "title": "This stock has a 40% ROE and a fat dividend. Isn't it a no-brainer?",
+  "scenario": "Theo wants to buy a company with a 40% ROE, a 6% ROA, heavy long-term debt and a 60% payout ratio instead of a debt-free rival with a 22% ROE and a 25% payout.",
+  "prompt": "Explain how leverage inflates ROE, what it means for risk and growth, and how you would judge value.",
+  "points": [
+   "Debt shrinks equity, so ROE rises even when asset returns are modest; low ROA vs. ROE flags it",
+   "Fixed interest cuts net income and is hard to carry in a contraction",
+   "g = ROE &times; retention: 40% &times; 0.40 = 16% vs. 22% &times; 0.75 = 16.5%, so the payout choice matters",
+   "If the firm can reinvest at a high ROE, retaining more would grow future dividends faster",
+   "Decide on price by comparing intrinsic value (DDM) or P/E and PEG with peers, not ROE alone"
+  ],
+  "anchor": "LO 4.2.2 · Financial leverage, ROE and dividend growth"
+ }
+]

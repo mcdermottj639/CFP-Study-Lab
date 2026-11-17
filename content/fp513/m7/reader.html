@@ -1,0 +1,218 @@
+<div id="tab-returns" class="section-panel">
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 7.1.1 · Return building blocks: simple, compound, HPR, total return, SEC yield</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <p class="text-sm">Every return measure answers &ldquo;how much did I make?&rdquo; with a different assumption about <b>time</b> and <b>reinvestment</b>. Know which assumption each one makes.</p>
+    <table><thead><tr><th>Measure</th><th>What it does</th><th>Blind spot</th></tr></thead><tbody>
+      <tr><td><b>Simple rate</b></td><td>Total return &divide; years held (annualized, no compounding)</td><td>Ignores the time value of money</td></tr>
+      <tr><td><b>Compound rate</b></td><td>Assumes interest and repaid principal are reinvested; solve with TVM or IRR keys</td><td>Reinvestment may not really happen at that rate</td></tr>
+      <tr><td><b>Holding period return (HPR)</b></td><td>Whole-period gain incl. income &divide; starting value</td><td>No time element: overstates the annual figure if held &gt; 1 year, understates if &lt; 1 year</td></tr>
+      <tr><td><b>Total return</b></td><td>Income + capital appreciation, usually for one year</td><td>Mixes two components clients value differently</td></tr>
+      <tr><td><b>SEC yield</b></td><td>Standardized fund yield: interest + dividends over the latest 30-day period (2026 edition figure), net of expenses; disclosed in the prospectus</td><td>Income only; no price change</td></tr>
+    </tbody></table>
+    <div class="formula-block"><strong>HPR:</strong> (ending value &minus; beginning value &plusmn; cash flows) &divide; beginning value<br><strong>HPR from periodic returns:</strong> [(1 + r<sub>1</sub>)(1 + r<sub>2</sub>)&hellip;(1 + r<sub>n</sub>)] &minus; 1<br><strong>Simple rate:</strong> total return &divide; number of years</div>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; three ways to describe one result</div>
+      <p class="text-sm mb-1">Dana's account earned 45% in total over 6 years. Luis bought a bond for $960, collected $140 of interest and sold for $1,010.</p>
+      <ol><li>Dana's simple rate: 45% &divide; 6 = <b>7.50%</b> per year.</li>
+      <li>Dana's compound rate: PV &minus;1, FV 1.45, N 6 &rarr; I/YR = <b>6.39%</b> (lower, because growth compounds).</li>
+      <li>Luis's HPR: (1,010 &minus; 960 + 140) &divide; 960 = 190 &divide; 960 = <b>19.79%</b> &mdash; but we don't know if he held it 1 year or 5.</li>
+      <li>Total return on a $40 stock that pays $1.60 and is sold a year later at $43: (1.60 + 3) &divide; 40 = <b>11.5%</b>.</li></ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> dividing the HPR by the ending value; leaving out interest/dividends; dividing by the wrong number of years.</div>
+      <div class="tryit"><strong>Try it:</strong> Buy at $50, receive $2 of dividends, sell at $47. HPR? <i>(47 &minus; 50 + 2) &divide; 50 = &minus;2.00%</i></div></div>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> an HPR can't be compared across investments until you know the holding period. A multi-year HPR always looks bigger than the true annual return.</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> &ldquo;Your statement shows 19.8% since you bought, but that covers several years. Per year it's much less &mdash; let's look at the annual figure before comparing it with anything.&rdquo; For income-focused retirees, point to the income piece of total return; for younger high-bracket earners, the growth piece usually matters more.</div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 259, 264&ndash;265</span> <span class="srcref">LO 7.1.1</span></p>
+  </div>
+</div>
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 7.1.1 · Averaging returns: arithmetic vs. geometric mean</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <ul class="key-list"><li><strong>Arithmetic mean (AM)</strong> &mdash; plain average of the periodic returns; no compounding, no reinvestment.</li>
+    <li><strong>Geometric mean (GM)</strong> &mdash; the constant compound rate that turns $1 into the actual ending value; the preferred way to state a security's historical return.</li></ul>
+    <div class="formula-block"><strong>AM</strong> = (r<sub>1</sub> + r<sub>2</sub> + &hellip; + r<sub>n</sub>) &divide; n<br><strong>GM</strong> = [(1 + r<sub>1</sub>)(1 + r<sub>2</sub>)&hellip;(1 + r<sub>n</sub>)]<sup>1/n</sup> &minus; 1<br>Calculator: PV = &minus;1, FV = product of (1 + r), PMT = 0, N = n, solve I/YR.</div>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; four years of fund returns</div>
+      <p class="text-sm mb-1">Returns: +10%, &minus;5%, +18%, +7%.</p>
+      <ol><li>AM = (10 &minus; 5 + 18 + 7) &divide; 4 = <b>7.50%</b>.</li>
+      <li>Product: 1.10 &times; 0.95 &times; 1.18 &times; 1.07 = 1.3194 (that is also the 4-year HPR of 31.94%).</li>
+      <li>GM: PV &minus;1, FV 1.3194, N 4 &rarr; <b>7.18%</b>.</li></ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> dropping the minus sign on a losing year; dividing the cumulative return by n and calling it the geometric mean (31.94 &divide; 4 = 7.98%).</div>
+      <div class="tryit"><strong>Try it:</strong> +20% then &minus;20%. AM? GM? <i>AM 0%; GM = (1.2 &times; 0.8)<sup>1/2</sup> &minus; 1 = &minus;2.02% &mdash; you actually lost money.</i></div></div>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> GM &lt; AM unless every period's return is identical (then they're equal). Any answer with GM above AM is wrong on sight.</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> &ldquo;An average of 7.5% sounds good, but what your money actually compounded at was about 7.2%. The ups and downs cost you a little, and the compound number is the one to plan with.&rdquo;</div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 259&ndash;261</span> <span class="srcref">LO 7.1.1</span></p>
+  </div>
+</div>
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 7.1.1 · Time-weighted vs. dollar-weighted return</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <div class="confuse"><div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; time-weighted vs. dollar-weighted</div>
+      <table><thead><tr><th></th><th>Time-weighted (TWR)</th><th>Dollar-weighted (DWR)</th></tr></thead><tbody>
+      <tr><td>Investor's later buys/sells</td><td>Ignored</td><td>Included</td></tr>
+      <tr><td>Measures</td><td>The investment / the manager</td><td>The investor's own experience</td></tr>
+      <tr><td>Cash flows</td><td>One unit: &minus;price, income, ending price</td><td>All dollars in and out; final CF = value of everything held</td></tr>
+      <tr><td>Used for</td><td>Most published mutual fund returns</td><td>The client's personal rate (an IRR)</td></tr></tbody></table>
+      <div class="tell"><strong>How to tell:</strong> if the question asks about the <i>stock/fund</i>, follow one share and ignore extra purchases. If it asks about the <i>investor</i>, net every purchase and withdrawal into the cash flows.</div></div>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; Omar adds a share</div>
+      <p class="text-sm mb-1">Omar buys 1 share at $40. End of Year 1: $2 dividend, buys a 2nd share at $46. End of Year 2: sells both at $52; no Year-2 dividend.</p>
+      <ol><li>TWR (one share): CF<sub>0</sub> &minus;40, CF<sub>1</sub> +2, CF<sub>2</sub> +52 &rarr; IRR = <b>16.54%</b>.</li>
+      <li>DWR (Omar's dollars): CF<sub>0</sub> &minus;40, CF<sub>1</sub> 2 &minus; 46 = &minus;44, CF<sub>2</sub> 2 &times; 52 = +104 &rarr; IRR = <b>15.37%</b>.</li>
+      <li>Omar earned less than the stock because he put more money in just before a weaker year.</li></ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> forgetting the dividend in CF<sub>1</sub>; valuing only one share at the end of a DWR; including the extra purchase in a TWR.</div>
+      <div class="tryit"><strong>Try it:</strong> Rosa invests $8,000; the fund pays her $120 cash at the end of each quarter; after the 4th dividend her shares are worth $8,300. DWR? <i>CF<sub>0</sub> &minus;8,000; CF<sub>1&ndash;3</sub> 120; CF<sub>4</sub> 8,420 &rarr; quarterly IRR 2.40% &times; 4 = 9.62%.</i></div></div>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> for sub-annual cash flows the textbook annualizes the periodic IRR by <b>multiplying</b> (quarterly &times; 4), not by compounding. Compounding gives 9.97% above &mdash; not the book's answer.</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> &ldquo;The fund's published number tells you how the manager did. Your number also reflects when you added or pulled money. If you invested more right before a dip, your return will trail the fund's even though you own the same thing.&rdquo;</div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 261&ndash;262</span> <span class="srcref">LO 7.1.1</span></p>
+  </div>
+</div>
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 7.1.1 · Inflation, taxes and compounding: real return, after-tax return, APR vs. EAR</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <ul class="key-list"><li><strong>Nominal rate</strong> &mdash; stated rate before inflation (for a bond, its coupon rate); before tax for taxable investments.</li>
+    <li><strong>Real rate</strong> &mdash; inflation-adjusted rate; use the exact formula, not subtraction.</li>
+    <li><strong>APR</strong> &mdash; periodic rate &times; periods per year; no compounding.</li>
+    <li><strong>EAR</strong> &mdash; the true annual rate once intra-year compounding is counted.</li></ul>
+    <div class="formula-block"><strong>Real return</strong> = [(1 + nominal) &divide; (1 + inflation) &minus; 1] &times; 100<br><strong>After-tax return</strong> = nominal &times; (1 &minus; marginal rate) &nbsp;(federal + state if the state taxes it)<br><strong>After-tax real</strong> = [(1 + after-tax) &divide; (1 + inflation) &minus; 1] &times; 100<br><strong>EAR</strong> = (1 + i &divide; n)<sup>n</sup> &minus; 1 &nbsp;where i = stated annual rate, n = compounding periods per year</div>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; Priya's 7% bond</div>
+      <p class="text-sm mb-1">7% nominal coupon; inflation 2.5%; combined marginal tax rate 30%.</p>
+      <ol><li>Real (pre-tax): 1.07 &divide; 1.025 &minus; 1 = <b>4.39%</b> (the shortcut 7 &minus; 2.5 = 4.5% is close but not exact).</li>
+      <li>After-tax: 7% &times; 0.70 = 4.90%.</li>
+      <li>After-tax real: 1.049 &divide; 1.025 &minus; 1 = <b>2.34%</b>.</li>
+      <li>Card at 1.5%/month: APR = 18%; EAR = (1 + 0.18 &divide; 12)<sup>12</sup> &minus; 1 = <b>19.56%</b>.</li></ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> multiplying (1 + nominal)(1 + inflation); taxing the real return instead of the nominal return; reporting the monthly rate as the APR.</div>
+      <div class="tryit"><strong>Try it:</strong> A CD pays a stated 5% compounded quarterly. EAR? <i>(1 + 0.05 &divide; 4)<sup>4</sup> &minus; 1 = 5.09%.</i></div></div>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> the exam wants the division formula for real return. Over long projections (e.g., retirement needs) the subtraction shortcut creates sizable dollar errors.</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> &ldquo;Your bond pays 7%, but after taxes and inflation you're really growing your buying power about 2.3% a year. That's the number that matters for your retirement plan.&rdquo;</div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 262&ndash;264</span> <span class="srcref">LO 7.1.1</span></p>
+  </div>
+</div>
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 7.2.1 · Risk-adjusted performance: Jensen's alpha, Treynor, Sharpe</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <table><thead><tr><th>Measure</th><th>Formula</th><th>Risk used</th><th>Type</th><th>Use when</th></tr></thead><tbody>
+      <tr><td><b>Jensen's alpha</b></td><td>r<sub>p</sub> &minus; [r<sub>f</sub> + (r<sub>m</sub> &minus; r<sub>f</sub>)&beta;<sub>p</sub>]</td><td>Beta</td><td>Absolute</td><td>Diversified portfolio, R&sup2; &ge; 0.70</td></tr>
+      <tr><td><b>Treynor</b></td><td>(r<sub>p</sub> &minus; r<sub>f</sub>) &divide; &beta;<sub>p</sub></td><td>Beta</td><td>Relative</td><td>Diversified portfolio, R&sup2; &ge; 0.70</td></tr>
+      <tr><td><b>Sharpe</b></td><td>(r<sub>p</sub> &minus; r<sub>f</sub>) &divide; &sigma;<sub>p</sub></td><td>Std. deviation (total)</td><td>Relative</td><td>Almost always; required when R&sup2; &lt; 0.70</td></tr>
+    </tbody></table>
+    <ul class="key-list"><li><strong>Positive alpha</strong> &mdash; beat the CAPM required return; plots <b>above</b> the SML. Negative &mdash; below the SML.</li>
+    <li><strong>Relative measure</strong> &mdash; a lone Treynor or Sharpe number means nothing; compare it with another fund or the benchmark. Higher is better.</li></ul>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; one portfolio, three measures</div>
+      <p class="text-sm mb-1">Return 11%, beta 1.2, standard deviation 16%, market 9%, risk-free 3%, R&sup2; 0.85.</p>
+      <ol><li>CAPM required: 3 + 1.2(9 &minus; 3) = 10.2%. Alpha = 11 &minus; 10.2 = <b>+0.80%</b>.</li>
+      <li>Treynor = (11 &minus; 3) &divide; 1.2 = <b>6.67</b>.</li>
+      <li>Sharpe = (11 &minus; 3) &divide; 16 = <b>0.50</b>.</li></ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> subtracting the market return instead of the risk-free rate; dividing by beta in Sharpe or by &sigma; in Treynor; forgetting to subtract r<sub>f</sub> at all. Whole numbers or decimals both work if you are consistent.</div>
+      <div class="tryit"><strong>Try it:</strong> Return 8%, beta 0.8, &sigma; 10%, market 9%, r<sub>f</sub> 3%. <i>Alpha = 8 &minus; (3 + 0.8 &times; 6) = +0.20%; Treynor = 5 &divide; 0.8 = 6.25; Sharpe = 5 &divide; 10 = 0.50.</i></div></div>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> an undiversified fund can look great on Treynor/Jensen (which see only beta) and poor on Sharpe (which sees total risk). If R&sup2; &lt; 0.70, ignore the beta-based answers and pick by Sharpe.</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> &ldquo;This manager beat the market by 2%, but took on more risk to do it. After adjusting for that risk, he added about 0.8% &mdash; still positive, which is what we want to see.&rdquo;</div>
+    <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; why Sharpe is the catch-all<span class="toggle-icon">+</span></div>
+    <div class="collapsible-content deep-body collapsed"><div class="inner"><p class="text-sm">Beta only describes market (systematic) risk and is meaningful only when the portfolio moves with the index (high R&sup2;). Standard deviation captures all variability, so Sharpe works for single stocks, sector funds and undiversified portfolios. A crude alternative the textbook mentions: return &divide; beta (e.g., 9% &divide; 1.2 = 7.5%) compared with the index's return &mdash; again only if beta is reliable.</p></div></div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 267&ndash;270</span> <span class="srcref">LO 7.2.1</span></p>
+  </div>
+</div>
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 7.2.1 · Information ratio and choosing the right measure</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <p class="text-sm">The information ratio grades an <b>active</b> manager: how much extra return was earned per unit of extra risk taken by straying from the benchmark.</p>
+    <div class="formula-block"><strong>IR</strong> = (R<sub>P</sub> &minus; R<sub>B</sub>) &divide; &sigma;<sub>A</sub><br>where R<sub>B</sub> = benchmark return (CAPM's required return may be used) and &sigma;<sub>A</sub> = standard deviation of the excess return (tracking error, &ldquo;active risk&rdquo;)</div>
+    <ul class="key-list"><li><strong>0.50 or higher</strong> &mdash; often a top-quartile manager in its asset class.</li>
+    <li><strong>Risk-free benchmark</strong> &mdash; IR reduces to the Sharpe ratio.</li>
+    <li><strong>Negative alpha</strong> &mdash; IR becomes very hard to interpret; use it only when alpha is positive and beta is meaningful.</li></ul>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; two active managers</div>
+      <p class="text-sm mb-1">Benchmark 8%. Fund Q: 9.5% return, tracking error 3%. Fund R: 10% return, tracking error 6%.</p>
+      <ol><li>Q: (9.5 &minus; 8) &divide; 3 = <b>0.50</b>.</li><li>R: (10 &minus; 8) &divide; 6 = <b>0.33</b>.</li><li>Pick Q: less return, but far more efficient per unit of active risk.</li></ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> using the fund's total standard deviation instead of tracking error; skipping the benchmark subtraction.</div>
+      <div class="tryit"><strong>Try it:</strong> Fund K: 10%, &sigma; 12%, &beta; 0.9. Fund L: 13%, &sigma; 20%, &beta; 1.1. r<sub>f</sub> 3%, R&sup2; about 0.45. Which is better? <i>R&sup2; &lt; 0.70 &rarr; Sharpe only: K = 0.58, L = 0.50 &rarr; K (even though Treynor would favor L).</i></div></div>
+    <div class="confuse"><div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; Sharpe vs. information ratio</div>
+      <table><thead><tr><th></th><th>Sharpe</th><th>Information ratio</th></tr></thead><tbody>
+      <tr><td>Numerator</td><td>Return over risk-free rate</td><td>Return over benchmark</td></tr>
+      <tr><td>Denominator</td><td>Total standard deviation</td><td>Std. deviation of excess return</td></tr></tbody></table>
+      <div class="tell"><strong>How to tell:</strong> &ldquo;tracking error&rdquo; or &ldquo;active risk&rdquo; in the question &rarr; information ratio.</div></div>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> compare Sharpe ratios only within one asset class. Recent winners cluster at the top, so ranking across classes would throw out an entire lagging class such as emerging markets.</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> &ldquo;Both managers beat the index, but one took twice the off-benchmark risk to get a bit more. I'd rather pay for the one who's more efficient with the risk he takes.&rdquo;</div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 267, 270&ndash;271</span> <span class="srcref">LO 7.2.1</span></p>
+  </div>
+</div>
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 7.3.1 · Market indices and benchmarks</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <div class="two-col">
+      <div><p class="text-sm"><b>Price-weighted</b> (DJIA, 30 stocks): sum of prices &divide; a divisor now below 1.00. A $90 stock moves it 3&times; as much as a $30 stock.</p></div>
+      <div><p class="text-sm"><b>Cap-weighted</b> (S&amp;P 500, Russell 2000, most indices): weight = firm value &divide; index value. Adjusts for splits and stock dividends automatically; preferred in modern portfolio theory.</p></div>
+    </div>
+    <ul class="key-list"><li><strong>DJIA flaws</strong> &mdash; ignores cash dividends and stock dividends under 10%, ignores shares outstanding, small blue-chip sample; still correlates above 0.95 with the S&amp;P 500.</li></ul>
+    <table><thead><tr><th>Asset class</th><th>Benchmark</th></tr></thead><tbody>
+      <tr><td>U.S. large cap</td><td>S&amp;P 500, S&amp;P 100</td></tr>
+      <tr><td>U.S. mid cap</td><td>S&amp;P MidCap 400</td></tr>
+      <tr><td>U.S. small cap</td><td>Russell 2000 (subset of the Russell 3000), S&amp;P SmallCap 600</td></tr>
+      <tr><td>Whole U.S. market</td><td>Wilshire 5000</td></tr>
+      <tr><td>International developed</td><td>MSCI EAFE (no U.S. or Canada)</td></tr>
+      <tr><td>Emerging markets</td><td>MSCI Emerging Markets, S&amp;P/IFC Investable</td></tr>
+      <tr><td>Intermediate U.S. bonds</td><td>Barclays Capital Aggregate Bond</td></tr>
+      <tr><td>High-yield / muni bonds</td><td>BofA Merrill Lynch U.S. High Yield / Municipal Master</td></tr>
+      <tr><td>Equity REITs</td><td>Wilshire Real Estate Securities</td></tr>
+      <tr><td>EM, government &amp; corporate debt</td><td>J.P. Morgan indices</td></tr>
+    </tbody></table>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; blended benchmark</div>
+      <p class="text-sm mb-1">Client: 50% U.S. large cap, 30% U.S. small cap, 20% international developed; portfolio return 7.9%. Index returns: S&amp;P 500 10%, Russell 2000 6%, EAFE 4%.</p>
+      <ol><li>Blend = 0.5(10) + 0.3(6) + 0.2(4) = <b>7.6%</b>.</li><li>Portfolio 7.9% &gt; 7.6% &rarr; it <b>beat</b> its true benchmark, even though it trailed the S&amp;P 500.</li><li>A $45B company in a $300B cap-weighted index drives 45 &divide; 300 = <b>15%</b> of the index's moves.</li></ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> judging the whole portfolio against the S&amp;P 500; averaging index returns without the client's weights (6.67%).</div>
+      <div class="tryit"><strong>Try it:</strong> 60% S&amp;P 500 (12%) and 40% Aggregate Bond (3%). Blended benchmark? <i>0.6 &times; 12 + 0.4 &times; 3 = 8.4%.</i></div></div>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> a small-cap fund is judged against a small-cap index (Russell 2000), not the S&amp;P 500. A fund can lead its class and still look weak next to a hot large-cap index.</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> &ldquo;The S&amp;P was up 10%, but only half your money is in big U.S. companies. Against a yardstick built the way you're actually invested, you came out ahead.&rdquo;</div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 272&ndash;276</span> <span class="srcref">LO 7.3.1</span></p>
+  </div>
+</div>
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 7.4.1 · Bond yields: current yield, YTM, YTC</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <div class="formula-block"><strong>Calculator defaults (unless told otherwise):</strong> FV = +$1,000 face; PMT = $1,000 &times; coupon &divide; 2; N = years &times; 2; 2 P/Yr; END mode; price = &minus;PV. Semiannual applies to zero-coupon bonds too. The I/YR shown with 2 P/Yr is already annual.<br><strong>Current yield</strong> = annual coupon interest &divide; current market price<br><strong>YTM</strong> = solve I/YR with FV = par and N = periods to maturity<br><strong>YTC</strong> = same, but FV = call price and N = periods to first call</div>
+    <ul class="key-list"><li><strong>YTM</strong> &mdash; the bond's IRR if held to maturity; assumes coupons are reinvested at the YTM itself.</li>
+    <li><strong>Reinvestment risk</strong> &mdash; if rates drop, coupons are reinvested for less and the realized return falls short of the YTM. Zeros have none.</li></ul>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; discount and premium bonds</div>
+      <p class="text-sm mb-1">Bond A: 8 years, 5% coupon, price $940. Bond B: 10 years, 7% coupon, price $1,080, callable in 4 years at $1,020.</p>
+      <ol><li>A: CY = 50 &divide; 940 = 5.32%. YTM: PV &minus;940, FV 1,000, PMT 25, N 16 &rarr; <b>5.95%</b>.</li>
+      <li>B: CY = 70 &divide; 1,080 = <b>6.48%</b>. YTM: PV &minus;1,080, FV 1,000, PMT 35, N 20 &rarr; <b>5.93%</b>.</li>
+      <li>B: YTC: PV &minus;1,080, FV 1,020, PMT 35, N 8 &rarr; <b>5.21%</b>.</li>
+      <li>Zero: 10 years, price $600: PV &minus;600, FV 1,000, PMT 0, N 20 &rarr; <b>5.17%</b>.</li></ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> using N = years with a semiannual PMT; reporting the semiannual rate without doubling; using par instead of the call price for YTC.</div>
+      <div class="tryit"><strong>Try it:</strong> 15-year, 6% coupon, price $930, callable at par in 5 years. <i>CY 6.45%; YTM 6.75%; YTC 7.71% &rarr; YTC &gt; YTM &gt; CY &gt; coupon.</i></div></div>
+    <div class="confuse"><div class="confuse-h">&#9878;&#65039; Commonly confused &mdash; discount vs. premium ordering</div>
+      <table><thead><tr><th>Bond</th><th>Typical ordering</th></tr></thead><tbody>
+      <tr><td>Discount (price &lt; par)</td><td>coupon &lt; CY &lt; YTM &lt; YTC</td></tr>
+      <tr><td>Premium (price &gt; par)</td><td>coupon &gt; CY &gt; YTM &gt; YTC</td></tr></tbody></table>
+      <div class="tell"><strong>How to tell:</strong> a discount bond's gain to par comes sooner if called, so YTC is highest; a premium bond's loss to par comes sooner, so YTC is lowest. Exception: a premium call price well above par can lift YTC above YTM.</div></div>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> if the problem says the coupon is paid <b>annually</b>, switch to 1 P/Yr, PMT = full annual coupon and N = years.</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> &ldquo;This bond shows a nice yield to maturity, but it's priced above face and can be called in four years. If that happens, you'd earn closer to 5.2%, so that's the number I'd count on.&rdquo;</div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 276&ndash;280</span> <span class="srcref">LO 7.4.1</span></p>
+  </div>
+</div>
+
+<div class="section-card">
+  <div class="collapsible-header" data-toggle><h3>LO 7.4.1 · Taxable equivalent yield (TEY)</h3><span class="toggle-icon">&#8722;</span></div>
+  <div class="collapsible-content">
+    <p class="text-sm">TEY converts a tax-free muni yield into the pre-tax yield a taxable bond would need to match it. Compare the TEY with the taxable bond's yield (same quality and maturity) &mdash; or, equivalently, compare after-tax yields.</p>
+    <div class="formula-block"><strong>Federal only (CFP Board formula):</strong> TEY = tax-exempt yield &divide; (1 &minus; marginal rate)<br><strong>Reverse:</strong> tax-free equivalent = taxable yield &times; (1 &minus; marginal rate)<br><strong>Double tax-exempt, itemizer:</strong> TEY = muni yield &divide; [(1 &minus; SMTB)(1 &minus; FMTB)] = muni yield &divide; (1 &minus; [FMTB + SMTB(1 &minus; FMTB)])<br><strong>Double tax-exempt, non-itemizer:</strong> TEY = muni yield &divide; (1 &minus; FMTB &minus; SMTB)</div>
+    <div class="worked"><div class="worked-h">&#129518; Worked example &mdash; three investors</div>
+      <ol><li>3.6% muni, 35% federal, no state tax: 3.6 &divide; 0.65 = <b>5.54%</b>.</li>
+      <li>Grace (itemizes), 3.4% in-state muni, 24% federal, 6% state: 3.4 &divide; (0.94 &times; 0.76) = 3.4 &divide; 0.7144 = <b>4.76%</b>.</li>
+      <li>Same facts but Grace doesn't itemize: 3.4 &divide; (1 &minus; 0.30) = <b>4.86%</b>.</li>
+      <li>Reverse: a 6% taxable bond at a 32% rate is worth 6 &times; 0.68 = <b>4.08%</b> tax-free.</li></ol>
+      <div class="wrong"><strong>&#9888;&#65039; Common wrong methods:</strong> multiplying the muni yield by (1 &minus; t); dividing by t instead of (1 &minus; t); comparing a pre-tax corporate yield directly with a tax-free yield.</div>
+      <div class="tryit"><strong>Try it:</strong> Felix (32%, no state tax): 6% corporate or 4.3% muni? <i>TEY 4.3 &divide; 0.68 = 6.32% &gt; 6% &rarr; muni.</i></div></div>
+    <div class="highlight-box amber"><strong>Exam trap:</strong> the Board's formula sheet uses federal tax only. Use the state version only when the question gives a state rate and says the bond is exempt from both.</div>
+    <div class="highlight-box green"><strong>Client conversation:</strong> &ldquo;The muni's 4.3% looks lower, but you keep all of it. A taxable bond would have to pay about 6.3% to leave you the same amount after tax.&rdquo;</div>
+    <div class="deep-toggle" data-toggle>&#128300; Go deeper &mdash; why the itemizer formula isn't a simple sum<span class="toggle-icon">+</span></div>
+    <div class="collapsible-content deep-body collapsed"><div class="inner"><p class="text-sm">For an itemizer, paying less state tax also means a smaller state-tax deduction on Schedule A, which nudges federal taxable income up. The term SMTB(1 &minus; FMTB) captures that offset, so the combined effective rate is a little lower than the simple sum and the TEY a little lower than the non-itemizer figure.</p></div></div>
+    <p class="text-sm"><span class="srcref">FP513 pp. 281&ndash;283</span> <span class="srcref">LO 7.4.1</span></p>
+  </div>
+</div>
+
+</div>

@@ -1,0 +1,90 @@
+[
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Case Study Approach",
+  "f": "What are the two general ways to work a CFP exam case study?",
+  "b": "<b>1. Case facts analysis</b> &mdash; read the whole case slowly first, taking notes, then answer.<br><b>2. Question review</b> &mdash; skim the questions first, then read the case hunting only for the facts each question needs.",
+  "lo": "LO 8.4.1",
+  "pg": 343,
+  "tier": 1,
+  "k": "D.33"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Case Study Approach",
+  "f": "What are &ldquo;contextual variables&rdquo; in a case, and why scan for them first?",
+  "b": "The client facts that frame every recommendation: <b>age, marital status, children and grandchildren, net worth, income level, and special circumstances</b>. They tell you what the case is about before you reach the questions.",
+  "lo": "LO 8.4.1",
+  "pg": 343,
+  "tier": 1,
+  "k": "D.33"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Case Study Approach",
+  "f": "In the case facts analysis approach, what does it signal when a topic is mentioned and then more detail on it appears later in the case?",
+  "b": "A question on that topic is probably coming, unless the later detail rules it out. Note each topic as it appears and anticipate the question.",
+  "lo": "LO 8.4.1",
+  "pg": 343,
+  "tier": 2,
+  "k": "D.33"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Case Study Approach",
+  "f": "In what order should you answer case questions, and which ones should you postpone?",
+  "b": "Do the easy questions first. Defer long <b>calculation</b> questions (e.g., capital needs, duration, TEY, CAPM chains) and come back to them, so time is not lost early.",
+  "lo": "LO 8.4.1",
+  "pg": 344,
+  "tier": 2,
+  "k": "D.33"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Case Study Approach",
+  "f": "List the steps of the question review approach to a case.",
+  "b": "<ol><li>Read the last line of each question (what is actually asked).</li><li>Make notes.</li><li>Answer anything that needs no case facts; eliminate impossible choices.</li><li>Read the case for the fact-specific questions.</li><li>Confirm every question is answered.</li><li>Review your answers.</li></ol>",
+  "lo": "LO 8.4.1",
+  "pg": 344,
+  "tier": 2,
+  "k": "D.33"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Case Study Approach",
+  "f": "Scenario: a case question asks which IPS section holds a tuition bill due in three years. Why can you answer it before reading the case?",
+  "b": "It tests a rule, not a fact: known outlays within about three to five years are <b>liquidity</b> constraints. Question review lets you bank rule-based answers first, then read the case only for fact-dependent items.",
+  "lo": "LO 8.4.1",
+  "pg": 344,
+  "tier": 3,
+  "k": "D.33"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Case Study Approach",
+  "f": "Before recommending investments for a case client, what should the planner review?",
+  "b": "Goals and time horizon, risk tolerance (ability and willingness), tax situation, liquidity and marketability needs, and the <b>personal financial statements</b> (statement of financial position and cash-flow statement). Investment planning matches vehicles to these needs.",
+  "lo": "LO 8.5.1",
+  "pg": 322,
+  "tier": 1,
+  "k": "D.33"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Case Study Approach",
+  "f": "What should a planner do if a case client's goals are unrealistic given their resources and earning capacity?",
+  "b": "Revise the goals to realistic objectives (or, in IPS terms, reconcile the return requirement with risk tolerance: accept more risk, lower the goal, or both). Fairly certain expected resources, such as a bonus or inheritance, may be counted.",
+  "lo": "LO 8.5.1",
+  "pg": 322,
+  "tier": 2,
+  "k": "D.33"
+ }
+]

@@ -1,0 +1,76 @@
+{
+ "objectives": [
+  "Case approach: use case facts analysis or question review to work a multi-question case efficiently",
+  "LO 8.4.1: Build the IPS: liquidity needs, return requirement, ability vs. willingness to take risk",
+  "LO 8.6.1 / LO 1.3.1: Size and house the emergency reserve; respond to crises and discontinuous change",
+  "LO 8.5.2 / LO 5.2.2: Choose an allocation approach and manage a concentrated stock (exchange fund, puts, collar)",
+  "LO 8.2.1 / LO 6.2.1 / LO 6.2.5 / LO 7.2.1: Required return, portfolio beta, diversifier choice and fund selection",
+  "LO 1.4.1 / LO 7.4.1 / LO 3.6.1 / LO 7.1.1: Wash sales, taxable-equivalent yield, asset placement, after-tax real return",
+  "LO 4.1.2 / LO 2.3.1 / LO 5.5.2: Duration risk, immunizing a near-term goal, and currency effects on returns"
+ ],
+ "synthesis": "Module 9 pulls Modules 1&ndash;8 into one client file. The Calloway case shows that each tool answers a different question: the IPS sets the rules, CAPM and beta judge risk and price, Sharpe and R&sup2; pick funds, TEY and placement cut taxes, duration and immunization protect dated goals, and the reserve keeps a crisis from forcing bad sales. On the exam, find the client facts that each question depends on, then apply the single right formula or rule.",
+ "example": {
+  "title": "Calloway case: three linked numbers",
+  "html": "<p><b>Reserve:</b> 6 &times; $13,500 = $81,000 target &minus; $62,000 liquid = <b>$19,000 gap</b>.</p><p><b>KDX required return:</b> 4.0% + (10.0% &minus; 4.0%) &times; 1.40 = <b>12.4%</b> &gt; 11.0% expected, so do not add to KDX.</p><p><b>Muni vs. corporate:</b> 3.6% &divide; (0.95 &times; 0.68) = <b>5.57%</b> TEY &gt; 5.2% corporate, so choose the municipal fund for the taxable account.</p>"
+ },
+ "cheat": {
+  "keyNumbers": [
+   [
+    "Emergency reserve gap",
+    "6 &times; $13,500 &minus; $62,000 = $19,000"
+   ],
+   [
+    "KDX CAPM required return",
+    "4% + 6% &times; 1.40 = 12.4% (expected 11.0%)"
+   ],
+   [
+    "Equity sleeve weighted beta",
+    "$635,104 &divide; $482,060 = 1.32"
+   ],
+   [
+    "R&sup2; diversifier cutoff",
+    "0.70 (R &asymp; 0.84)"
+   ],
+   [
+    "Muni TEY, itemizer",
+    "3.6% &divide; (0.95 &times; 0.68) = 5.57%"
+   ],
+   [
+    "Bond fund if rates +1%",
+    "&minus;6.2 &times; 0.01 &divide; 1.052 = &minus;5.89% &rarr; $56,464"
+   ],
+   [
+    "Protective put floor",
+    "$320,000 &minus; $10,000 premium = $310,000"
+   ],
+   [
+    "Euro fund in dollars",
+    "1.09 &times; (1.02 &divide; 1.08) &minus; 1 = 2.94%"
+   ]
+  ],
+  "mustKnow": [
+   "Money needed within about 3&ndash;5 years is a liquidity constraint and generally stays out of stocks.",
+   "Ability to take risk (resources) and willingness (emotions) are different; the risk objective must fit the return requirement.",
+   "Low R&sup2; (&lt; 0.70) makes beta unreliable: use Sharpe, not Treynor or Jensen.",
+   "Duration matched to the goal date immunizes; a zero-coupon bond&rsquo;s duration equals its maturity.",
+   "Tax-inefficient holdings belong in tax-deferred accounts; munis never belong in an IRA or Roth.",
+   "Exchange fund = diversify a concentrated position without immediate gains tax while keeping the value."
+  ],
+  "traps": [
+   "Leaving the risk-free rate out of CAPM (8.4% or 14.0% instead of 12.4%).",
+   "Applying state tax to T-bill interest, or adding brackets for an itemizer&rsquo;s TEY.",
+   "Using the duration rule of thumb when the question asks for the formula with 1 + YTM.",
+   "Forgetting that a wash-sale loss is added to the new shares&rsquo; basis.",
+   "Calling a market drop a discontinuous change when the client&rsquo;s own situation is unchanged."
+  ],
+  "tips": [
+   "Read the last line of each question first; it tells you which facts to hunt for.",
+   "Answer the rule-based questions first and save multi-step calculations for later.",
+   "Write the client&rsquo;s brackets, risk-free rate and market return in your scratch notes once and reuse them."
+  ]
+ },
+ "topics": [
+  "Case Study Approach",
+  "Integrated Case"
+ ]
+}

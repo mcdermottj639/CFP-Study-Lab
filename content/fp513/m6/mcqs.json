@@ -1,0 +1,669 @@
+[
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Diversification Basics",
+  "q": "Which statement best distinguishes asset allocation from diversification?",
+  "o": [
+   "A portfolio can span several asset classes yet still be concentrated in one or two holdings per class.",
+   "Asset allocation and diversification are two names for the same portfolio process.",
+   "Diversification is only achieved once a portfolio holds all four broad asset classes.",
+   "Holding a dozen stocks in varied industries is asset allocation rather than diversification."
+  ],
+  "a": 0,
+  "e": "Allocation spreads money among classes (cash, fixed income, equities, real assets); diversification means holding enough loosely correlated securities to remove unsystematic risk. Allocation alone does not guarantee diversification, though a sound allocation usually includes enough securities in each class.",
+  "lo": "LO 6.1.1",
+  "pg": 226,
+  "k": "D.31",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Diversification Basics",
+  "q": "For CFP exam purposes, how many large-cap stocks in different industries does the textbook treat as enough for a diversified portfolio?",
+  "o": [
+   "4 to 7 stocks",
+   "25 to 30 stocks",
+   "10 to 15 stocks",
+   "About 100 stocks"
+  ],
+  "a": 2,
+  "e": "Exam rule: 10&ndash;15 large-cap stocks across industries. Mid/small caps need more (25&ndash;30), and 4&ndash;7 mutual funds in different asset classes capture most of the benefit.",
+  "lo": "LO 6.1.1",
+  "pg": 227,
+  "k": "D.31",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Diversification Basics",
+  "q": "Dalia, 34, and her father Ramon, 67, are each considering the same aggressive growth fund whose annual returns swing widely. Why can Dalia hold it more safely?",
+  "o": [
+   "Younger investors are not exposed to systematic risk.",
+   "Her longer horizon allows more time for strong years to offset weak ones.",
+   "The fund's standard deviation is lower for a younger shareholder.",
+   "Her portfolio beta automatically falls because of her age."
+  ],
+  "a": 1,
+  "e": "A longer time horizon is one of the two diversification levers the textbook names (with low correlation). The younger investor has more years for large positive returns to offset several negative ones.",
+  "lo": "LO 6.1.1",
+  "pg": 225,
+  "k": "D.31",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Risk-Return Tradeoff",
+  "q": "A client is choosing between a Treasury bond fund expected to return 6% and a speculative overseas mining venture expected to return 8%. What is the best advice?",
+  "o": [
+   "Pick the mining venture because its expected return is higher.",
+   "Pick the Treasury fund because lower risk is always the better choice.",
+   "Pick the mining venture because more risk guarantees a higher realized return.",
+   "Weigh the extra 2% against the much larger risk before choosing."
+  ],
+  "a": 3,
+  "e": "Risk and return must be evaluated together. The question is whether the additional expected return compensates for the additional risk; often it does not.",
+  "lo": "LO 6.1.1",
+  "pg": 228,
+  "k": "D.28",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Systematic Risk (PRIME)",
+  "q": "Which of the following is a systematic (nondiversifiable) risk?",
+  "o": [
+   "Business risk",
+   "Financial risk",
+   "Marketability risk",
+   "Reinvestment rate risk"
+  ],
+  "a": 3,
+  "e": "PRIME = Purchasing power, Reinvestment rate, Interest rate, Market, Exchange rate. These cannot be diversified away.",
+  "lo": "LO 6.1.2",
+  "pg": 232,
+  "k": "D.28",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Unsystematic Risk Types",
+  "q": "Which of the following are unsystematic risks?<br>I. Default risk<br>II. Purchasing power risk<br>III. Investment manager risk<br>IV. Tax risk",
+  "o": [
+   "I and III only",
+   "I, III, and IV only",
+   "II and IV only",
+   "I, II, III, and IV"
+  ],
+  "a": 1,
+  "e": "Default, investment manager and tax risk are diversifiable (unsystematic). Purchasing power risk is systematic (PRIME).",
+  "lo": "LO 6.1.2",
+  "pg": 229,
+  "k": "D.28",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Unsystematic Risk Types",
+  "q": "Corwin owns common stock in a privately held regional bakery chain. Which risk does he NOT face as a shareholder?",
+  "o": [
+   "Liquidity risk",
+   "Business risk",
+   "Default risk",
+   "Market risk"
+  ],
+  "a": 2,
+  "e": "Default risk is a debt issuer failing to pay interest or principal. A corporation is not contractually bound to pay common dividends, so common stock has no default risk.",
+  "lo": "LO 6.1.2",
+  "pg": 229,
+  "k": "D.28",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Systematic Risk (PRIME)",
+  "q": "Priya, retired, wants a bond holding that eliminates reinvestment rate risk. Which should she consider?",
+  "o": [
+   "A zero-coupon bond",
+   "A GNMA mortgage-backed security",
+   "A long-term coupon Treasury bond",
+   "A bond fund holding 20-year coupon bonds"
+  ],
+  "a": 0,
+  "e": "Reinvestment rate risk arises when interim cash flows must be reinvested at lower rates. A zero-coupon bond makes no interim payments, so there is nothing to reinvest.",
+  "lo": "LO 6.1.2",
+  "pg": 231,
+  "k": "D.28",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Systematic Risk (PRIME)",
+  "q": "Theo, a U.S. investor, owns a Japanese bond that pays &yen;10,000 of interest. When he bought it, $1 bought &yen;100; today $1 buys &yen;125. What happened to the dollar value of each interest payment?",
+  "o": [
+   "The dollar strengthened; each payment is now worth $80, down $20.",
+   "The dollar weakened; each payment is now worth $125, up $25.",
+   "The dollar strengthened; each payment is now worth $125, up $25.",
+   "The dollar weakened; each payment is now worth $80, down $20."
+  ],
+  "a": 0,
+  "e": "Then: &yen;10,000 &divide; 100 = $100. Now: &yen;10,000 &divide; 125 = $80. A stronger dollar shrinks foreign-currency income for a U.S. investor (exchange rate risk); a weaker dollar helps.",
+  "lo": "LO 6.1.2",
+  "pg": 231,
+  "k": "D.28",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Systematic Risk (PRIME)",
+  "q": "Joanne keeps 80% of her long-term savings in CDs and money market funds \"to be safe.\" Which risk is she most exposed to?",
+  "o": [
+   "Business risk",
+   "Exchange rate risk",
+   "Purchasing power risk",
+   "Marketability risk"
+  ],
+  "a": 2,
+  "e": "Cash equivalents manage liquidity but offer little principal growth, so unexpected inflation erodes their real value. Purchasing power risk mostly affects fixed-income holdings, CDs and cash.",
+  "lo": "LO 6.1.2",
+  "pg": 230,
+  "k": "D.28",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Beta",
+  "q": "The Harbor Growth Fund has a standard deviation of 24, the market index has a standard deviation of 15, and their correlation coefficient is 0.70. What is the fund's beta?",
+  "o": [
+   "1.60",
+   "1.12",
+   "0.44",
+   "0.07"
+  ],
+  "a": 1,
+  "e": "&beta; = &rho; &times; &sigma;<sub>i</sub> &divide; &sigma;<sub>m</sub> = 0.70 &times; 24 &divide; 15 = 1.12. Check: COV = 0.70 &times; 24 &times; 15 = 252; 252 &divide; 15<sup>2</sup> (225) = 1.12.",
+  "lo": "LO 6.2.1",
+  "pg": 233,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Beta",
+  "q": "A stock's covariance with the market is 180, and the market's standard deviation is 15. What is the stock's beta?",
+  "o": [
+   "12.00",
+   "1.25",
+   "0.64",
+   "0.80"
+  ],
+  "a": 3,
+  "e": "&beta; = COV<sub>im</sub> &divide; &sigma;<sub>m</sub><sup>2</sup> = 180 &divide; (15 &times; 15 = 225) = 0.80.",
+  "lo": "LO 6.2.1",
+  "pg": 233,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Weighted Beta",
+  "q": "Ana's $100,000 portfolio holds $50,000 of a stock with a beta of 1.40, $30,000 of a stock with a beta of 0.90, and $20,000 of a stock with a beta of 0.50. What is the portfolio's weighted beta?",
+  "o": [
+   "0.93",
+   "1.40",
+   "2.80",
+   "1.07"
+  ],
+  "a": 3,
+  "e": "Weighted beta = &Sigma; (weight &times; beta) = 0.50(1.40) + 0.30(0.90) + 0.20(0.50) = 0.70 + 0.27 + 0.10 = 1.07.",
+  "lo": "LO 6.2.1",
+  "pg": 235,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Beta",
+  "q": "Beta is the most appropriate measure of risk for which of the following?",
+  "o": [
+   "A single, undiversified stock position",
+   "A well-diversified portfolio with little unsystematic risk",
+   "Any asset, whether or not it is diversified",
+   "An asset with a very low correlation to the market"
+  ],
+  "a": 1,
+  "e": "Beta measures only systematic risk, so it is best used where unsystematic risk has been diversified away. Standard deviation is appropriate for any asset or portfolio.",
+  "lo": "LO 6.2.1",
+  "pg": 232,
+  "k": "D.30",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Beta",
+  "q": "A gold-mining fund has a standard deviation of 30 versus 15 for the S&amp;P 500, yet its beta against the S&amp;P 500 is only 0.40. Which conclusion is best?",
+  "o": [
+   "The fund is 60% less volatile than the overall market.",
+   "The fund has less total risk than an S&amp;P 500 index fund.",
+   "The low beta reflects low correlation with the index, not low volatility.",
+   "The fund's standard deviation figure must be misreported."
+  ],
+  "a": 2,
+  "e": "&beta; = (&sigma;<sub>i</sub> &divide; &sigma;<sub>m</sub>) &times; &rho; = (30 &divide; 15) &times; &rho; = 0.40, so &rho; = 0.20. As correlation falls, beta understates volatility and becomes less reliable; gold funds are the textbook's example.",
+  "lo": "LO 6.2.1",
+  "pg": 233,
+  "k": "D.30",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Weighted Average Return",
+  "q": "Nadia has $60,000 in a large-cap fund that returned 11%, $25,000 in a bond fund that returned 6%, and $15,000 in a REIT that returned 4%. What was her portfolio's weighted average return?",
+  "o": [
+   "8.70%",
+   "7.00%",
+   "11.00%",
+   "21.00%"
+  ],
+  "a": 0,
+  "e": "Weights: 60/100 = 0.60, 25/100 = 0.25, 15/100 = 0.15. Return = 0.60(11%) + 0.25(6%) + 0.15(4%) = 6.60% + 1.50% + 0.60% = 8.70%.",
+  "lo": "LO 6.2.2",
+  "pg": 235,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Standard Deviation",
+  "q": "A fund earned 12%, &minus;4%, 9%, 15%, and 3% over the last five years. Using the textbook's convention for historical returns, what is its standard deviation?",
+  "o": [
+   "7.58%",
+   "6.78%",
+   "7.00%",
+   "57.50%"
+  ],
+  "a": 0,
+  "e": "Mean = 35 &divide; 5 = 7%. Squared deviations: 25, 121, 4, 64, 16 = 230. Sample variance = 230 &divide; (5 &minus; 1) = 57.5. S = &radic;57.5 = 7.58%. Calculator: enter each return with &Sigma;+, read S<sub>x</sub>.",
+  "lo": "LO 6.2.2",
+  "pg": 237,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Normal Distribution Ranges",
+  "q": "A portfolio has a mean annual return of 8% and a standard deviation of 6%. Assuming a normal distribution, within what range should returns fall about 95% of the time?",
+  "o": [
+   "2% to 14%",
+   "&minus;10% to 26%",
+   "&minus;4% to 20%",
+   "5% to 11%"
+  ],
+  "a": 2,
+  "e": "95% &asymp; mean &plusmn; 2 SD: 8% &minus; 2(6%) = &minus;4%; 8% + 2(6%) = 20%.",
+  "lo": "LO 6.2.2",
+  "pg": 239,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Normal Distribution Ranges",
+  "q": "A stock fund has a mean return of 9% and a standard deviation of 5%. Assuming a normal distribution, about what share of annual returns would exceed 19%?",
+  "o": [
+   "5%",
+   "2.5%",
+   "16%",
+   "0.5%"
+  ],
+  "a": 1,
+  "e": "19% = 9% + 2(5%), i.e., +2 SD. About 95% of returns fall within &plusmn;2 SD, leaving 5% outside, split evenly: 2.5% above 19% and 2.5% below &minus;1%.",
+  "lo": "LO 6.2.2",
+  "pg": 239,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Normal Distribution Ranges",
+  "q": "A fund's mean return is 10% with a standard deviation of 4%. Last year it returned 2%. What is that year's z-statistic?",
+  "o": [
+   "+2.0",
+   "&minus;0.5",
+   "&minus;8.0",
+   "&minus;2.0"
+  ],
+  "a": 3,
+  "e": "z = (value &minus; mean) &divide; SD = (2 &minus; 10) &divide; 4 = &minus;2.0, i.e., two standard deviations below the mean.",
+  "lo": "LO 6.2.2",
+  "pg": 239,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Distribution Shape",
+  "q": "When projecting the ending value of an unleveraged portfolio, which distribution does the textbook say to assume?",
+  "o": [
+   "Normal",
+   "Platykurtic",
+   "Negatively skewed",
+   "Lognormal"
+  ],
+  "a": 3,
+  "e": "An unleveraged portfolio's value can fall to zero but not below, while upside is unlimited, so terminal values follow a lognormal distribution with the mean above the median.",
+  "lo": "LO 6.2.2",
+  "pg": 240,
+  "k": "D.30",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Distribution Shape",
+  "q": "Which statement about return distributions is correct according to the textbook?",
+  "o": [
+   "Kurtosis measures how asymmetric a distribution is around its mean.",
+   "Investors seeking to minimize volatility prefer a leptokurtic distribution.",
+   "In a positively skewed distribution, the median lies above the mean.",
+   "Semivariance measures deviations both above and below the mean."
+  ],
+  "a": 1,
+  "e": "A leptokurtic distribution is more peaked, with returns clustered near the mean, so volatility-averse investors prefer it. Skewness = asymmetry; semivariance = downside-only deviation.",
+  "lo": "LO 6.2.2",
+  "pg": 242,
+  "k": "D.30",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Standard Deviation",
+  "q": "An analyst is measuring risk from five years of a fund's historical returns. Which method does the textbook expect on the CFP exam?",
+  "o": [
+   "Population standard deviation, dividing by n",
+   "Variance, dividing by n &minus; 1 with no square root",
+   "Sample standard deviation, dividing by n &minus; 1",
+   "Semivariance, using only below-mean returns"
+  ],
+  "a": 2,
+  "e": "Historical returns are a sample, so S = &radic;[&Sigma;(r &minus; mean)<sup>2</sup> &divide; (n &minus; 1)] (calculator S<sub>x</sub>). The textbook expects only S to be computed on the exam.",
+  "lo": "LO 6.2.2",
+  "pg": 238,
+  "k": "D.30",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Coefficient of Variation",
+  "q": "A fund has an average annual return of 12%, a beta of 1.10, and a standard deviation of 18%. What is its coefficient of variation?",
+  "o": [
+   "1.50",
+   "0.67",
+   "0.09",
+   "16.36"
+  ],
+  "a": 0,
+  "e": "CV = &sigma; &divide; mean return = 18 &divide; 12 = 1.50. Beta is extra data and is ignored.",
+  "lo": "LO 6.2.3",
+  "pg": 243,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Coefficient of Variation",
+  "q": "Based on the data above, which fund offers the least total risk per unit of return?",
+  "o": [
+   "Fund Q",
+   "Fund P",
+   "Fund R",
+   "Fund S"
+  ],
+  "a": 0,
+  "e": "CV = &sigma; &divide; mean. P: 12 &divide; 9 = 1.33; Q: 16 &divide; 14 = 1.14; R: 9 &divide; 6 = 1.50; S: 15 &divide; 11 = 1.36. Lowest CV wins, even though Q has the highest standard deviation.",
+  "lo": "LO 6.2.3",
+  "pg": 243,
+  "k": "D.30",
+  "kind": "calc",
+  "stem": "<table><thead><tr><th>Fund</th><th>Mean return</th><th>Std. dev.</th></tr></thead><tbody><tr><td>P</td><td>9%</td><td>12%</td></tr><tr><td>Q</td><td>14%</td><td>16%</td></tr><tr><td>R</td><td>6%</td><td>9%</td></tr><tr><td>S</td><td>11%</td><td>15%</td></tr></tbody></table>"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Coefficient of Variation",
+  "q": "A lower coefficient of variation indicates which of the following?",
+  "o": [
+   "Less systematic risk per unit of return",
+   "A lower correlation with the market",
+   "Less total risk per unit of return",
+   "A higher expected return"
+  ],
+  "a": 2,
+  "e": "CV = &sigma; &divide; mean return: total risk per unit of return. When choosing, pick the lower CV.",
+  "lo": "LO 6.2.3",
+  "pg": 243,
+  "k": "D.30",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Coefficient of Variation",
+  "q": "Lena is choosing between a fund with a 7% mean return and 9% standard deviation and one with a 12% mean return and 14% standard deviation. Which tool best compares their risk per unit of return?",
+  "o": [
+   "Covariance",
+   "Coefficient of variation",
+   "Beta",
+   "Coefficient of determination"
+  ],
+  "a": 1,
+  "e": "When both returns and standard deviations differ, CV (&sigma; &divide; mean) puts them on a common footing: 9 &divide; 7 = 1.29 vs. 14 &divide; 12 = 1.17, so the second fund carries less risk per unit of return.",
+  "lo": "LO 6.2.3",
+  "pg": 243,
+  "k": "D.30",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Covariance & Correlation",
+  "q": "Fund A has a standard deviation of 14, Fund B has a standard deviation of 20, and their correlation coefficient is 0.45. What is their covariance?",
+  "o": [
+   "15.30",
+   "280.00",
+   "622.22",
+   "126.00"
+  ],
+  "a": 3,
+  "e": "COV = &rho; &times; &sigma;<sub>A</sub> &times; &sigma;<sub>B</sub> = 0.45 &times; 14 &times; 20 = 126.",
+  "lo": "LO 6.2.4",
+  "pg": 245,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Covariance & Correlation",
+  "q": "Two funds have standard deviations of 12 and 16, and their covariance is 96. What is their correlation coefficient?",
+  "o": [
+   "0.25",
+   "8.00",
+   "0.67",
+   "0.50"
+  ],
+  "a": 3,
+  "e": "&rho; = COV &divide; (&sigma;<sub>i</sub> &times; &sigma;<sub>j</sub>) = 96 &divide; (12 &times; 16 = 192) = 0.50.",
+  "lo": "LO 6.2.4",
+  "pg": 245,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Two-Asset Portfolio SD",
+  "q": "A portfolio is 70% in a bond fund (standard deviation 12) and 30% in a stock fund (standard deviation 25). Their correlation is 0.20. What is the portfolio's standard deviation?",
+  "o": [
+   "15.90%",
+   "12.33%",
+   "11.26%",
+   "152.01%"
+  ],
+  "a": 1,
+  "e": "0.70<sup>2</sup>(12<sup>2</sup>) = 70.56; 0.30<sup>2</sup>(25<sup>2</sup>) = 56.25; 2(0.70)(0.30)(0.20 &times; 12 &times; 25 = 60) = 25.20. Sum = 152.01; &radic;152.01 = 12.33%.",
+  "lo": "LO 6.2.4",
+  "pg": 247,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Two-Asset Portfolio SD",
+  "q": "Under which condition does a two-asset portfolio's standard deviation equal the weighted average of the two assets' standard deviations?",
+  "o": [
+   "The correlation coefficient is zero",
+   "The correlation coefficient is &minus;1.0",
+   "The correlation coefficient is +1.0",
+   "The two assets are held in equal weights"
+  ],
+  "a": 2,
+  "e": "Only with perfect positive correlation does no risk reduction occur. At any correlation below +1, the portfolio SD is less than the weighted average SD, so the full formula is needed.",
+  "lo": "LO 6.2.4",
+  "pg": 248,
+  "k": "D.30",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Covariance & Correlation",
+  "q": "Marcus already owns an S&amp;P 500 index fund. Which additional fund would add the most diversification, based on each fund's correlation with the S&amp;P 500?",
+  "o": [
+   "Fund with a correlation of +0.36",
+   "Fund with a correlation of +0.93",
+   "Fund with a correlation of +0.85",
+   "Fund with a correlation of +0.70"
+  ],
+  "a": 0,
+  "e": "The farther a correlation is below +1, the more diversification it adds. Low positive correlations diversify well; negative correlations are not required.",
+  "lo": "LO 6.2.4",
+  "pg": 246,
+  "k": "D.30",
+  "kind": "applied"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Two-Asset Portfolio SD",
+  "q": "An investor puts 50% in each of two assets that both have a standard deviation of 15 and a correlation of &minus;1.0. What is the portfolio's standard deviation?",
+  "o": [
+   "0",
+   "15",
+   "7.5",
+   "10.6"
+  ],
+  "a": 0,
+  "e": "0.25(225) + 0.25(225) + 2(0.5)(0.5)(&minus;1 &times; 15 &times; 15) = 56.25 + 56.25 &minus; 112.5 = 0. With perfect negative correlation, equal SDs and a 50/50 split, risk is eliminated.",
+  "lo": "LO 6.2.4",
+  "pg": 248,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Coefficient of Determination",
+  "q": "A fund's correlation coefficient with its benchmark is 0.80. What percentage of the fund's movement comes from unsystematic (non-benchmark) factors?",
+  "o": [
+   "20%",
+   "64%",
+   "36%",
+   "80%"
+  ],
+  "a": 2,
+  "e": "R<sup>2</sup> = 0.80<sup>2</sup> = 0.64, the share explained by the benchmark (systematic). Unsystematic = 1 &minus; 0.64 = 0.36, or 36%.",
+  "lo": "LO 6.2.5",
+  "pg": 251,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Coefficient of Determination",
+  "q": "A fund has a standard deviation of 20 and a covariance of 224 with the market, whose standard deviation is 16. What is the fund's R-squared, and is beta a reliable risk measure for it?",
+  "o": [
+   "0.70; yes, it meets the 0.70 threshold",
+   "0.49; no, it is below the 0.70 threshold",
+   "0.875; yes, beta is high enough to rely on",
+   "0.49; yes, any positive R-squared validates beta"
+  ],
+  "a": 1,
+  "e": "&rho; = 224 &divide; (20 &times; 16 = 320) = 0.70. R<sup>2</sup> = 0.70<sup>2</sup> = 0.49, below 0.70, so beta is unreliable; use standard-deviation measures (e.g., Sharpe) or a better-fitting benchmark.",
+  "lo": "LO 6.2.5",
+  "pg": 252,
+  "k": "D.30",
+  "kind": "calc"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Coefficient of Determination",
+  "q": "A portfolio's R-squared with the S&amp;P 500 is 0.45. Which performance measure is appropriate?",
+  "o": [
+   "Treynor ratio",
+   "Jensen's alpha",
+   "Treynor and Jensen together",
+   "Sharpe ratio"
+  ],
+  "a": 3,
+  "e": "Sharpe uses standard deviation (total risk), so it works at any R-squared and is required below 0.70. Treynor and Jensen use beta and assume a diversified portfolio.",
+  "lo": "LO 6.2.5",
+  "pg": 252,
+  "k": "D.33",
+  "kind": "concept"
+ },
+ {
+  "m": "FP513",
+  "d": "D",
+  "t": "Coefficient of Determination",
+  "q": "An actively managed large-cap fund with materially higher expenses than an index fund shows an R-squared of 0.98 against the S&amp;P 500. What is the best interpretation?",
+  "o": [
+   "Its manager's stock picking explains 98% of its returns.",
+   "It is an excellent diversifier for an S&amp;P 500 index fund.",
+   "Its beta is unreliable because R-squared is too high.",
+   "It behaves almost like an index fund while charging active fees."
+  ],
+  "a": 3,
+  "e": "An R-squared near 100% is expected of an index fund. An active fund with higher costs should not look this much like its benchmark; the client is paying active fees for index-like results.",
+  "lo": "LO 6.2.5",
+  "pg": 251,
+  "k": "D.30",
+  "kind": "applied"
+ }
+]
