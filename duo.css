@@ -45,6 +45,10 @@ html[data-duo-pose="book"] body.duo-spread .tab { font-size: 13.5px; margin-righ
 html[data-duo-pose="book"] #duoL .fp5-card,
 html[data-duo-pose="book"] #duoL .card { margin-bottom: 12px; }
 html[data-duo-pose="book"] .wrap > section:not(.hidden) { animation: none; }
+/* v2.118.0 (issue #8) Today in book: left page = FP513 header, metrics, Continue + objective navigator;
+   right page = the selected objective's detail (#fp513Detail, static markup) above the coach. */
+html[data-duo-pose="book"] body:not(.duo-spread) #fp513Detail { display: block; }
+html[data-duo-pose="book"] #duoL #fp513Today .fp5-links { display: none; }
 
 /* Study / coach spread: everything sits on the left page except the split question card */
 html[data-duo-pose="book"] body.duo-spread .wrap {

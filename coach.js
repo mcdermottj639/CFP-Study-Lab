@@ -65,8 +65,8 @@
     var ranked = C.rankQuestions(scope, s, S.attempts), allRanked = C.rankQuestions(MCQ, s, S.attempts);
     // v2.117.0: a course session reviews ONLY that course; other courses' overdue items live in Mixed review.
     var duePool = (kind === 'mixed' ? allRanked : allRanked.filter(function (q) { return q.m === f.course; })).filter(function (q) { var r = s.reviews[C.key(q)]; return r && r.due <= C.day(); });
-    // FP513: due reviews → missed FP513 → untested objectives → new material (fp513-course.js)
-    if (f.course === 'FP513' && window.FP513COURSE) ranked = window.FP513COURSE.prioritize(ranked);
+    // FP513: objective picked on Today → due reviews → missed FP513 → untested objectives → new material (fp513-course.js)
+    if (f.course === 'FP513' && window.FP513COURSE) ranked = window.FP513COURSE.prioritize(ranked, f);
     var n = minutes === 3 ? 3 : minutes === 25 ? 13 : 6, reviewN = minutes === 25 ? 3 : (minutes === 3 ? 1 : 2);
     var used = {}, steps = [], chosen = chooseCase(f);
     function add(q, type) { var k = C.key(q); if (used[k]) return; used[k] = true; steps.push({ type: type, q: mcqFresh(q), originalKey: k, result: null }); }

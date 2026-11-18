@@ -109,6 +109,47 @@ Sports Hub's `duo.js` (v372–v378); detection rules and Safari scrolling rules 
     `tests/fp513-dom.test.cjs`.
   - Tests: 47/47 node (`NODE_PATH=<jsdom@26>`), `tests/duo-browser.cjs` 51/51. Physical iPhone Duo not verified.
 
+### FP513 Today — Learning Command Center (v2.118.0, issue #8)
+Jack approved ChatGPT's FP513 Today-dashboard spec (issue #8, Nov 17 2026). Layout + evidence only; no content, no
+new engine, no change to how answers are recorded. All in `fp513-course.js` (`todayCard`, `loStatus`, `caseStatus`,
+`recommend`, `focusNow`, `evidenceTable`), plus one line each in `coach.js` / `duo.js` / `duo.css`.
+- **Today (`#fp513Today`, top of the Today tab):** compact `FP513 · Investment Planning` header with the module + next
+  LO, **two separately labelled countdowns** (`days of Kaplan access` = `S.courseDue.FP513`, default 2027-02-15;
+  `days to CFP exam` = `S.examDate`, "not set" when empty) → three tappable metric cards for the shown module →
+  current-objective card (LO id, short title, module, book page, status, reason) → **Continue learning** (44px, full
+  width) + Read / Practice / Calc (only when the LO has calc drills or generator questions) / Module hub →
+  collapsible **M1–M9 navigator** (module chips with proficient counts, then the module's LOs with status dots;
+  "Back to recommended"). Suggested pace + "How progress is measured" stay as collapsed details.
+- **Evidence rules (`loStatus`, pinned by `tests/fp513-today.test.cjs`; `FP513COURSE.PROF = {minKeys:2, minAcc:0.7}`):**
+  *Attempted* = ≥1 LO-mapped answer with a `questionKey` (MCQ, coach, forms, calc `calc:<id>`; flashcard
+  `src:'card'` never counts). *Proficient* = correct on ≥2 **distinct keys** AND the latest answer is right on ≥70% of
+  the keys tried — generator variants share `q.g`, so redrawn numbers are one key. Can drop back to Needs practice;
+  history is never deleted. *Recalled later* = a correct answer on a later **local day** than the day it first became
+  proficient. *Review due* = a `S.coach.reviews` entry on one of its keys is due ≤ today. Status order: Not started →
+  Review due → Proficient → Needs practice; "not enough evidence" when fewer than 2 keys are right. Practice
+  heuristics only — **never a pass probability**; nothing is auto-passed or locked.
+- **Module 9** has no LOs of its own: shown as integrated-case items (`caseStatus`: the 22 `moduleOf(q)===9` items;
+  attempted / right on latest try / recalled later). Case items still also count toward the LO they carry.
+- **Recommendation vs selection:** `currentModule()` (first module with an unattempted LO) is only the *recommended*
+  module; `recommend()` picks review due → not started → weakest needs-practice, in that module then course-wide.
+  A module/LO picked in the navigator is kept per device in `localStorage['cfp:fp513-sel']` (not in `S`, not synced).
+- **Actions:** Continue learning → `CFPCoach.launch(min, null, {course:'FP513', mod, lo})`; v2.117.0 parking is
+  unchanged (an FP512 session is parked, an FP513 one resumed). `coach.js` passes the focus to
+  `FP513COURSE.prioritize(ranked, f)`, which puts the picked LO's questions first. Practice = `mcqRunner` on exactly
+  that LO's questions (Module 9 → its case items). Read = `apps/fp513-reading.html#lo-x.y.z` (`readUrl`).
+- **Metric tap → Analytics:** `showEvidence(mod, metric)` opens the Analytics tab at `#fp5Evidence` ("Objective
+  evidence · Module N", M1–M9 chips, the tapped metric's column highlighted) inside the existing `#fp513Analytics`.
+- **Duo:** book Today = left page `#fp513Today` (header, metrics, objective + Continue, navigator auto-open; its quick
+  links hidden) | right page `#fp513Detail` (selected LO detail: status, why, answers, distinct questions right,
+  latest-try count, links) above the coach — `#coachHome` no longer moves left. `#fp513Detail` is static markup
+  rendered from data (hidden outside book). Picking an LO re-renders both hosts in place (no navigation, no DOM
+  clone). Seated compass button now reads "Continue learning →". Spread/flat behavior unchanged.
+- **Tests:** `tests/fp513-today.test.cjs` (6 jsdom tests: fresh 0/4, one right/one wrong, same key ×5, generator
+  variants, day boundary, review due, M9 no 0/0, all modules selectable, LO pick updates detail in place, Practice
+  exact LO, Continue parks FP512 ×3 switches, merge idempotent, metric → Analytics, Read deep link).
+  `tests/duo-browser.cjs` gained Today checks (book left/right + LO pick, seated forward, phone/folded 44px targets,
+  pose changes keep the session) — **not run for v2.118.0** (no Chrome in that session).
+
 ### FP513 Investment Planning (v2.114.0–v2.114.1) — active course
 Jack passed FP512 and started FP513 (Nov 17 2026). Built from his directive "CLAUDE BUILD
 DIRECTIVE — CFP Study Lab FP513". FP513 is `status:"current"`; FP512 is `"done"`.
@@ -1449,7 +1490,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.117.0`) on every shippable change so installed apps auto-update
+  (current: `v2.118.0`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.

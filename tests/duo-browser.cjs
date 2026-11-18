@@ -184,6 +184,38 @@ const PROBE = `(() => {
       await ctx.close();
     });
   }
+  // v2.118.0 (issue #8): FP513 Learning Command Center across poses.
+  const pageAt = async (pose, q) => { const P = POSES[pose], ctx = await browser.newContext({ viewport: { width: P.width, height: P.height }, serviceWorkers: 'block' }), page = await ctx.newPage(), errs = [];
+    page.on('pageerror', e => errs.push(String(e))); await page.goto(base + 'index.html' + (q || '')); await page.waitForTimeout(1200); return { ctx, page, errs }; };
+  await check('book Today: metrics, Continue and navigator on the left page; selected objective on the right, updated in place', async () => {
+    const { ctx, page, errs } = await pageAt('manualBook', '?duo=book');
+    const a = await page.evaluate("(() => { const L = document.getElementById('duoL'), d = document.getElementById('fp513Detail'); return { left: !!(L && L.querySelector('#fp513Today .fp5-metrics') && L.querySelector('[data-fp5=\"continue\"]') && L.querySelector('.fp5-nav[open]')), coachRight: !L.contains(document.getElementById('coachHome')), detail: d && getComputedStyle(d).display, dl: d && d.getBoundingClientRect().left, fold: parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--fold-right')) }; })()");
+    assert.ok(a.left && a.coachRight && a.detail === 'block' && a.dl >= a.fold - 1, JSON.stringify(a));
+    await page.evaluate("document.querySelector('#duoL [data-fp5mod=\"4\"]').click()"); await page.evaluate("document.querySelector('#duoL [data-fp5lo=\"LO 4.1.2\"]').click()"); await page.waitForTimeout(200);
+    const b = await page.evaluate("({ t: document.getElementById('fp513Detail').textContent, inLeft: !!document.querySelector('#duoL #fp513Today') })");
+    assert.ok(/LO 4\.1\.2/.test(b.t) && b.inLeft, JSON.stringify(b));
+    const r = await page.evaluate(PROBE); clean(Object.assign(r, { errs })); await ctx.close();
+  });
+  await check('seated Today: compass on top forwards Continue learning to the FP513 session', async () => {
+    const { ctx, page, errs } = await pageAt('manualBook', '?duo=seated');
+    await page.evaluate("document.querySelector('#duoTop [data-duo-fwd=\"continue\"]').click()"); await page.waitForTimeout(500);
+    assert.equal(await page.evaluate("S.coach.active && S.coach.active.focus.course"), 'FP513'); assert.deepEqual(errs, []); await ctx.close();
+  });
+  for (const pose of ['phone', 'folded']) {
+    await check(pose + ' Today: one page, 44px touch targets, no sideways drift; Book→seated→flat→Book keeps the session', async () => {
+      const r = await open(pose, 'index.html', "document.querySelector('#fp513Today .fp5-nav').open = true"); clean(r); flat(r);
+      const { ctx, page } = await pageAt(pose);
+      const small = await page.evaluate("[...document.querySelectorAll('#fp513Today .fp5-metric, #fp513Today .fp5-go, #fp513Today .fp5-mchip, #fp513Today .fp5-nav > summary')].filter(e => e.offsetParent && e.getBoundingClientRect().height < 43.5).map(e => e.className)");
+      assert.deepEqual(small, []); await ctx.close();
+    });
+  }
+  await check('pose changes keep an active FP513 session and its place', async () => {
+    const { ctx, page, errs } = await pageAt('open');
+    await page.evaluate("document.querySelector('#fp513Today [data-fp5=\"continue\"]').click()"); await page.waitForTimeout(300);
+    const id = await page.evaluate('S.coach.active.id');
+    for (const m of ['book', 'seated', 'off', 'book', 'auto']) { await page.evaluate("localStorage.setItem('cfp:duo-mode','" + m + "'); dispatchEvent(new Event('resize'))"); await page.waitForTimeout(250); }
+    assert.equal(await page.evaluate('S.coach.active.id'), id); assert.deepEqual(errs, []); await ctx.close();
+  });
   await check('Kaplan access countdown is labelled apart from the CFP exam countdown', async () => {
     const r = await open('folded', 'index.html'); clean(r);
     const P = POSES.folded, ctx = await browser.newContext({ viewport: { width: P.width, height: P.height }, serviceWorkers: 'block' }), page = await ctx.newPage();
