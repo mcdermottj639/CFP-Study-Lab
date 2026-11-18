@@ -1,4 +1,4 @@
-/* fp513-course.js — FP513 Investment Planning course layer (v2.114.0).
+/* fp513-course.js — FP513 Investment Planning course layer (v2.114.0; Learning Command Center v2.118.0).
  *
  * Adds, without replacing any engine:
  *   - Today:      FP513 card — current module, next learning objective, Continue FP513,
@@ -120,11 +120,12 @@
   function pctTxt(a, b) { var p = pct(a, b); return p == null ? '—' : p + '%'; }
 
   // ---------- coach prioritization (used by coach.js for FP513 sessions) ----------
-  function prioritize(ranked) {
-    var ev = evidence(), today = localDay(), rv = (S.coach && S.coach.reviews) || {}, missedKeys = {};
+  function prioritize(ranked, focus) {
+    var wantLo = focus && focus.lo, ev = evidence(), today = localDay(), rv = (S.coach && S.coach.reviews) || {}, missedKeys = {};
     (S.misses || []).forEach(function (m) { if (m.mod === COURSE) missedKeys[m.g || m.q] = 1; });
     function tier(q) {
       var k = (typeof mcqKey === 'function') ? mcqKey(q) : (q.g || q.q), r = rv[k];
+      if (wantLo && q.lo === wantLo) return -1;                         // 0. the objective picked on Today (v2.118.0)
       if (r && r.due && r.due <= today) return 0;                    // 1. outstanding delayed review
       if (missedKeys[k] && !(r && r.retained)) return 1;               // 2. previously missed FP513 question
       if (q.lo && ev[q.lo] && !ev[q.lo].n) return 2;                   // 3. untested learning objective
@@ -152,52 +153,230 @@
     } catch (e) {}
   }
 
-  // ---------- Today card ----------
+  // ---------- Learning Command Center evidence (v2.118.0, issue #8) ----------
+  // Practice-evidence heuristics, NOT pass probabilities. Thresholds are pinned by tests/fp513-today.test.cjs.
+  //   Attempted     = at least one LO-mapped answer (MCQ, coach, exam form or calc drill; flashcards never count).
+  //   Proficient    = correct answers on >= PROF.minKeys DISTINCT question keys AND the latest answer on
+  //                   >= PROF.minAcc of the keys tried is correct. Every numeric variant of a generator shares
+  //                   one key (q.g / calc:<id>), so redrawing the same calculation never adds a second key.
+  //   Recalled later = a correct answer on a LATER local day than the day the objective first became proficient.
+  //   Review due    = a coach review on one of its keys is due today or earlier.
+  var PROF = { minKeys: 2, minAcc: 0.7 };
+  function loStatus() {
+    var today = localDay(), per = {}, rv = (S.coach && S.coach.reviews) || {};
+    LOS.forEach(function (l) { per[l.id] = { n: 0, keys: {}, nKeys: 0, okKeys: 0, latestOk: 0, attempted: false, proficient: false, profDay: null, recalled: false, recalledDay: null, reviewDue: false, last: 0 }; });
+    var atts = (S.attempts || []).filter(function (a) { return a.mod === COURSE && a.src !== 'card'; }).slice().sort(function (a, b) { return (a.ts || 0) - (b.ts || 0); });
+    atts.forEach(function (a) {
+      var lo = loOfAttempt(a), p = lo && per[lo]; if (!p || !a.questionKey) return;
+      var d = localDay(a.ts), k = p.keys[a.questionKey];
+      if (!k) { k = p.keys[a.questionKey] = { n: 0, everOk: false, lastOk: false }; p.nKeys++; }
+      k.n++; p.n++; p.last = Math.max(p.last, a.ts || 0); p.attempted = true;
+      if (a.correct && !k.everOk) { k.everOk = true; p.okKeys++; }
+      if (k.lastOk !== !!a.correct) { p.latestOk += a.correct ? 1 : -1; k.lastOk = !!a.correct; }
+      if (p.profDay && !p.recalled && a.correct && d > p.profDay) { p.recalled = true; p.recalledDay = d; }
+      var now = p.okKeys >= PROF.minKeys && p.latestOk / p.nKeys >= PROF.minAcc;
+      if (now && !p.profDay) p.profDay = d;
+      p.proficient = now;
+    });
+    Object.keys(rv).forEach(function (k) { var r = rv[k], lo = keyLo[k]; if (lo && per[lo] && r && r.due && r.due <= today) per[lo].reviewDue = true; });
+    LOS.forEach(function (l) {
+      var p = per[l.id];
+      p.status = !p.attempted ? 'new' : p.reviewDue ? 'due' : p.proficient ? 'prof' : 'practice';
+      p.thin = p.attempted && p.okKeys < PROF.minKeys;
+    });
+    return per;
+  }
+  var STATUS = { new: 'Not started', practice: 'Needs practice', prof: 'Proficient', due: 'Review due' };
+  // Module 9 has no objectives of its own: integrated-case items, counted per distinct item.
+  function caseStatus() {
+    var items = MCQ.filter(function (q) { return q.m === COURSE && moduleOf(q) === 9; }), keys = {};
+    items.forEach(function (q) { keys[(typeof mcqKey === 'function') ? mcqKey(q) : (q.g || q.q)] = { n: 0, ok: false, okDay: null, recalled: false }; });
+    (S.attempts || []).filter(function (a) { return a.mod === COURSE && a.questionKey && keys[a.questionKey]; }).sort(function (a, b) { return (a.ts || 0) - (b.ts || 0); }).forEach(function (a) {
+      var k = keys[a.questionKey], d = localDay(a.ts); k.n++;
+      if (a.correct) { if (k.okDay && d > k.okDay) k.recalled = true; if (!k.okDay) k.okDay = d; }
+      k.ok = !!a.correct;
+    });
+    var v = Object.keys(keys).map(function (x) { return keys[x]; });
+    return { total: v.length, attempted: v.filter(function (k) { return k.n; }).length, ok: v.filter(function (k) { return k.ok; }).length, recalled: v.filter(function (k) { return k.recalled; }).length };
+  }
+  function moduleCounts(ls, m) {
+    if (m === 9) { var c = caseStatus(); return { total: c.total, attempted: c.attempted, prof: c.ok, recalled: c.recalled, unit: 'case items' }; }
+    var los = LOS.filter(function (l) { return l.mod === m; });
+    return { total: los.length, attempted: los.filter(function (l) { return ls[l.id].attempted; }).length, prof: los.filter(function (l) { return ls[l.id].proficient; }).length,
+      recalled: los.filter(function (l) { return ls[l.id].recalled; }).length, unit: 'objectives' };
+  }
+  // Recommendation (never a lock): review due in the recommended module -> not started -> needs practice
+  // (lowest share of distinct keys correct) -> anywhere in the course -> Module 9 case.
+  function recommend(ls) {
+    var cur = currentModule(evidence());
+    function pick(list) {
+      var due = list.filter(function (l) { return ls[l.id].status === 'due'; })[0]; if (due) return { lo: due, why: 'a review on this objective is due today' };
+      var nw = list.filter(function (l) { return ls[l.id].status === 'new'; })[0]; if (nw) return { lo: nw, why: 'not started yet; next in the course order' };
+      var pr = list.filter(function (l) { return ls[l.id].status === 'practice'; }).sort(function (a, b) { return ls[a.id].latestOk / ls[a.id].nKeys - ls[b.id].latestOk / ls[b.id].nKeys; })[0];
+      if (pr) { var e = ls[pr.id]; return { lo: pr, why: e.thin ? 'only ' + e.okKeys + ' question' + (e.okKeys === 1 ? '' : 's') + ' answered correctly so far; proficiency needs ' + PROF.minKeys : e.latestOk + ' of ' + e.nKeys + ' questions right on the latest try' }; }
+      return null;
+    }
+    var r = pick(LOS.filter(function (l) { return l.mod === cur; })) || pick(LOS);
+    if (r) { r.mod = r.lo.mod; return r; }
+    return { lo: null, mod: 9, why: 'every objective is proficient; work the integrated case' };
+  }
+  var SEL_KEY = 'cfp:fp513-sel', sel = null, navOpen = false;
+  try { sel = JSON.parse(localStorage.getItem(SEL_KEY) || 'null'); } catch (e) {}
+  function setSel(v) { sel = v; try { if (v) localStorage.setItem(SEL_KEY, JSON.stringify(v)); else localStorage.removeItem(SEL_KEY); } catch (e) {} }
+  function loById(id) { return LOS.filter(function (l) { return l.id === id; })[0] || null; }
+  function calcLo(id) {
+    return (window.FP513CALC ? window.FP513CALC.drills.some(function (d) { return d.lo === id; }) : false) || (loQs[id] || []).some(function (q) { return q.g; });
+  }
+  // What the dashboard shows: the user's pick (module and/or objective) or the recommendation.
+  function focusNow(ls) {
+    var rec = recommend(ls), lo = null, mod = rec.mod, why = rec.why, picked = false;
+    if (sel && sel.lo && loById(sel.lo)) { lo = loById(sel.lo); mod = lo.mod; picked = true; why = 'you picked this objective'; }
+    else if (sel && sel.mod >= 1 && sel.mod <= 9) {
+      mod = +sel.mod; picked = true;
+      if (mod === rec.mod) lo = rec.lo;
+      else { var mr = LOS.filter(function (l) { return l.mod === mod; }); lo = mr.filter(function (l) { return ls[l.id].status === 'due'; })[0] || mr.filter(function (l) { return ls[l.id].status === 'new'; })[0] || mr.filter(function (l) { return ls[l.id].status === 'practice'; })[0] || mr[0] || null; why = 'first open objective in the module you picked'; }
+    } else lo = rec.lo;
+    return { mod: mod, lo: lo, why: why, picked: picked, rec: rec };
+  }
+  function shortTitle(t) { return t.length > 64 ? t.slice(0, 61).replace(/\s+\S*$/, '') + '…' : t; }
+
+  // ---------- Today: FP513 Learning Command Center ----------
+  function hostEl(id, before) {
+    var h = $(id); if (h) return h;
+    var anchor = $(before); if (!anchor) return null;
+    h = document.createElement('div'); h.id = id; anchor.insertAdjacentElement('beforebegin', h); return h;
+  }
   function todayCard() {
-    var host = $('fp513Today');
-    if (!host) { var anchor = $('coachHome'); if (!anchor) return; host = document.createElement('div'); host.id = 'fp513Today'; anchor.insertAdjacentElement('beforebegin', host); }
-    var ev = evidence(), cur = currentModule(ev), nx = nextObjective(ev, cur), mods = moduleSummary(ev), dr = dueReviews();
-    var tested = LOS.filter(function (l) { return ev[l.id].n; }).length, retained = LOS.filter(function (l) { return ev[l.id].retained; }).length;
+    var host = hostEl('fp513Today', 'coachHome'); if (!host) return;
+    var detail = hostEl('fp513Detail', 'coachHome');
+    var ev = evidence(), mods = moduleSummary(ev), ls = loStatus(), dr = dueReviews(), fx = focusNow(ls), cnt = moduleCounts(ls, fx.mod);
     cacheWeak(ev, mods);
     var passed = S.coursePassed && S.coursePassed[COURSE], due = (S.courseDue && S.courseDue[COURSE]) || DEADLINE, left = daysBetween(localDay(), due);
-    var verified = due === DEADLINE;
+    var exam = S.examDate ? daysBetween(localDay(), S.examDate) : null;
     var start = startDay(), week = Math.max(1, Math.floor(daysBetween(start, localDay()) / 7) + 1);
     var plan = PACE.map(function (p, i) {
       var w0 = i * 2 + 1, w1 = p.mods[0] === 9 ? 9 : w0 + 1, a = addDays(start, (w0 - 1) * 7), b = addDays(start, w1 * 7 - 1), on = week >= w0 && week <= w1;
       var done = p.mods.every(function (m) { return m === 9 ? mods[9].n > 0 : mods[m].tested === mods[m].los; });
       return '<div class="fp5-pace' + (on ? ' on' : '') + '"><b>Wk ' + p.weeks + '</b><span>' + p.mods.map(function (m) { return 'M' + m; }).join(' + ') + '</span><span class="small muted">' + a.slice(5) + ' → ' + b.slice(5) + '</span>' + (done ? '<span class="fp5-ok">✓</span>' : '') + '</div>';
     }).join('') + '<div class="fp5-pace' + (week > 9 ? ' on' : '') + '"><b>Wk 10+</b><span>Weak-topic repair · Kaplan quizzes/QBank · final prep</span><span class="small muted">to ' + due.slice(5) + '</span></div>';
-    var loLine = nx ? '<div class="fp5-next"><span class="tag">' + nx.lo.id + '</span> ' + esc(nx.lo.text) + ' <span class="small muted">· ' + nx.why + '</span></div>' : '';
+    var lo = fx.lo, e = lo ? ls[lo.id] : null, mUnit = fx.mod === 9 ? 'case items' : 'objectives';
+    function metric(key, label, val, tip) {
+      return '<button type="button" class="fp5-metric" data-fp5ev="' + key + '" title="' + esc(tip) + '"><b>' + val + '/' + cnt.total + '</b><span>' + label + '</span></button>';
+    }
+    var metrics = '<div class="fp5-metrics" aria-label="Module ' + fx.mod + ' evidence">' +
+      metric('attempted', 'Attempted', cnt.attempted, fx.mod === 9 ? 'Case items answered at least once' : 'Objectives with at least one answer (questions, coach or calc; flashcards do not count)') +
+      metric('prof', 'Proficient', cnt.prof, fx.mod === 9 ? 'Case items whose latest answer is correct' : 'Correct on ' + PROF.minKeys + '+ different questions and ' + Math.round(PROF.minAcc * 100) + '%+ of latest answers right. A practice heuristic, not a pass probability.') +
+      metric('recalled', 'Recalled later', cnt.recalled, fx.mod === 9 ? 'Case items answered correctly again on a later day' : 'Correct again on a later day than it first became proficient') + '</div>';
+    var obj;
+    if (lo) {
+      obj = '<div class="fp5-obj"><div class="fp5-obj-top"><span class="tag">' + lo.id + '</span><span class="fp5-st fp5-st-' + e.status + '">' + STATUS[e.status] + '</span></div>' +
+        '<div class="fp5-next fp5-obj-title">' + esc(shortTitle(lo.text)) + '</div>' +
+        '<div class="small muted fp5-obj-meta">Module ' + lo.mod + ' · book p. ' + lo.page + ' · ' + esc(fx.why) + '</div></div>';
+    } else {
+      var cs = caseStatus();
+      obj = '<div class="fp5-obj"><div class="fp5-obj-top"><span class="tag">M9</span><span class="fp5-st fp5-st-' + (cs.attempted ? 'practice' : 'new') + '">' + (cs.attempted ? cs.attempted + '/' + cs.total + ' case items' : 'Not started') + '</span></div>' +
+        '<div class="fp5-next fp5-obj-title">Integrated case (Calloway family)</div><div class="small muted fp5-obj-meta">' + esc(fx.why) + '</div></div>';
+    }
+    var hasCalc = lo ? calcLo(lo.id) : false, practiceLabel = lo ? '🎯 Practice ' + lo.id.replace('LO ', '') : '🎯 Practice M9';
+    var links = '<div class="fp5-actions"><button class="btn fp5-go" data-fp5="continue">Continue learning →</button>' +
+      '<div class="fp5-links"><button class="btn gray sm" data-fp5="read">📖 Read</button><button class="btn gray sm" data-fp5="practice">' + practiceLabel + '</button>' +
+      (hasCalc ? '<button class="btn gray sm" data-fp5="calc">🧮 Calc</button>' : '') + '<button class="btn gray sm" data-fp5="hub">Module hub</button></div></div>';
+    // Objective navigator: collapsed summary, one tap to a module, one more to an objective. Never locked.
+    var all = { a: 0, p: 0 }; LOS.forEach(function (l) { if (ls[l.id].attempted) all.a++; if (ls[l.id].proficient) all.p++; });
+    var chips = '';
+    for (var m = 1; m <= 9; m++) {
+      var mc = moduleCounts(ls, m);
+      chips += '<button type="button" class="fp5-mchip' + (m === fx.mod ? ' on' : '') + '" data-fp5mod="' + m + '" title="' + esc(modName(m)) + '"><b>M' + m + '</b><span>' + (m === 9 ? (mc.attempted ? mc.attempted + '/' + mc.total : 'case') : mc.prof + '/' + mc.total) + '</span></button>';
+    }
+    var loRows = fx.mod === 9 ? '<div class="small muted" style="padding:6px 2px">Module 9 is the integrated case: no objectives of its own. Progress = case items (' + caseStatus().attempted + '/' + caseStatus().total + ' answered).</div>' :
+      LOS.filter(function (l) { return l.mod === fx.mod; }).map(function (l) {
+        var x = ls[l.id];
+        return '<button type="button" class="fp5-lo' + (lo && lo.id === l.id ? ' on' : '') + '" data-fp5lo="' + l.id + '"><span class="fp5-dot fp5-st-' + x.status + '" aria-hidden="true"></span><span class="fp5-lo-id">' + l.id.replace('LO ', '') + '</span><span class="fp5-lo-t">' + esc(l.text) + '</span><span class="fp5-lo-s">' + STATUS[x.status] + '</span></button>';
+      }).join('');
+    var nav = '<details class="fp5-nav"' + (navOpen || document.documentElement.getAttribute('data-duo-pose') === 'book' ? ' open' : '') + '><summary><span>Objectives · M1–M9</span><span class="small muted">' + all.p + '/48 proficient · ' + all.a + '/48 attempted</span></summary>' +
+      '<div class="fp5-mchips">' + chips + '</div><div class="small fp5-modname"><b>Module ' + fx.mod + '</b> · ' + esc(modName(fx.mod)) + (fx.picked ? ' <button type="button" class="fp5-reset" data-fp5="reset">Back to recommended</button>' : '') + '</div>' +
+      '<div class="fp5-los">' + loRows + '</div></details>';
+    var kap = '<div class="fp5-days" title="Kaplan course access ends ' + due + '; separate from your CFP exam date"><b>' + (passed ? '✓' : (left >= 0 ? left : 0)) + '</b><span>' + (passed ? 'passed' : 'days of Kaplan access') + '</span></div>';
+    var cfp = '<div class="fp5-days fp5-exam" title="' + (S.examDate ? 'CFP exam date you set: ' + S.examDate : 'Set your CFP exam date in the schedule below') + '"><b>' + (exam == null ? '—' : Math.max(exam, 0)) + '</b><span>' + (exam == null ? 'CFP exam date not set' : 'days to CFP exam') + '</span></div>';
     host.innerHTML = '<div class="card fp5-card">' +
-      '<div class="fp5-head"><div style="min-width:0"><div class="small muted">Active course</div><h2 style="margin:2px 0">FP513 · Investment Planning</h2></div>' +
-      '<div class="fp5-days" title="Kaplan course access ends ' + due + ' — separate from your CFP exam date"><b>' + (passed ? '✓' : (left >= 0 ? left : 0)) + '</b><span>' + (passed ? 'passed' : 'days of Kaplan access') + '</span></div></div>' +
-      '<div class="fp5-mod"><b>Module ' + cur + '</b> — ' + esc(modName(cur)) + '</div>' + loLine +
-      '<div class="row" style="flex-wrap:wrap;gap:8px;margin:10px 0 4px">' +
-        '<button class="btn" data-fp5="continue">Continue FP513 →</button>' +
-        '<button class="btn gray sm" data-fp5="read">📖 Read</button>' +
-        '<button class="btn gray sm" data-fp5="calc">🧮 Calc lab</button>' +
-        '<button class="btn gray sm" data-fp5="hub">Module hub</button></div>' +
-      '<div class="fp5-stats">' +
-        '<div><b>' + tested + '/48</b><span>objectives tested</span></div>' +
-        '<div><b>' + retained + '/48</b><span>recalled on a later day</span></div>' +
-        '<div><b>' + dr.fp513 + '</b><span>FP513 reviews due' + (dr.all > dr.fp513 ? ' (+' + (dr.all - dr.fp513) + ' other)' : '') + '</span></div></div>' +
-      '<div class="bar" style="margin-top:8px" title="Objectives tested"><i style="width:' + Math.round(tested / 48 * 100) + '%"></i></div>' +
+      '<div class="fp5-head"><div style="min-width:0"><h2 class="fp5-title">FP513 · Investment Planning</h2>' +
+      '<div class="fp5-mod small"><b>Module ' + fx.mod + '</b> — ' + esc(modName(fx.mod)) + (lo ? ' · next <b>' + lo.id + '</b>' : '') + '</div></div>' +
+      '<div class="fp5-countdowns">' + kap + cfp + '</div></div>' +
+      metrics + obj + links + nav +
+      '<div class="fp5-foot small muted"><span>' + dr.fp513 + ' FP513 review' + (dr.fp513 === 1 ? '' : 's') + ' due' + (dr.all > dr.fp513 ? ' · ' + (dr.all - dr.fp513) + ' older-course reviews wait in Mixed review' : '') + '</span></div>' +
       '<details class="fp5-details"><summary>Suggested pace · week ' + Math.min(week, 10) + ' (adjustable, nothing is locked)</summary><div class="fp5-paces">' + plan + '</div>' +
         '<label class="small">Plan start <input type="date" id="fp5Start" value="' + start + '"></label> ' +
-        '<div class="small muted" style="margin-top:6px">Deadline ' + due + (verified ? ' — verified: ' + esc(DEADLINE_SRC) : ' — your own date.') + ' Edit it in the course schedule below.</div></details>' +
-      '<div class="small muted" style="margin-top:6px">Progress = questions you have actually answered. Reading or flipping cards is shown separately and never counts as mastery.</div>' +
+        '<div class="small muted" style="margin-top:6px">Deadline ' + due + (due === DEADLINE ? ' — verified: ' + esc(DEADLINE_SRC) : ' — your own date.') + ' Edit it in the course schedule below.</div></details>' +
+      '<details class="fp5-details"><summary>How progress is measured</summary><div class="small muted">Counts come only from questions you answered (coach, quizzes, forms, calc drills). Every number variant of the same calculation counts as one question. <b>Proficient</b> = right on ' + PROF.minKeys + '+ different questions and ' + Math.round(PROF.minAcc * 100) + '%+ of your latest answers right. <b>Recalled later</b> = right again on a later day. Reading and flashcards never count. These are practice evidence, not a pass probability.</div></details>' +
       '</div>';
+    // Book-view right page: selected objective detail (static markup from data; never a clone of live DOM).
+    if (detail) {
+      var dt = '';
+      if (lo) {
+        var qn = (loQs[lo.id] || []).length;
+        dt = '<div class="card fp5-detail-card"><div class="small muted">Selected objective · Module ' + lo.mod + ' · ' + esc(modName(lo.mod)) + '</div>' +
+          '<h2 style="margin:4px 0 6px"><span class="tag">' + lo.id + '</span> ' + esc(lo.text) + '</h2>' +
+          '<div class="fp5-obj-top"><span class="fp5-st fp5-st-' + e.status + '">' + STATUS[e.status] + '</span><span class="small muted">book p. ' + lo.page + '</span></div>' +
+          '<div class="small" style="margin:8px 0">Why this one: ' + esc(fx.why) + '.</div>' +
+          '<div class="fp5-ev"><div><b>' + e.n + '</b><span>answers</span></div><div><b>' + e.okKeys + '/' + e.nKeys + '</b><span>questions right at least once</span></div><div><b>' + (e.nKeys ? e.latestOk + '/' + e.nKeys : '—') + '</b><span>right on latest try</span></div><div><b>' + qn + '</b><span>questions in the bank</span></div></div>' +
+          (e.thin ? '<div class="small muted" style="margin-top:6px">Not enough evidence yet: proficiency needs ' + PROF.minKeys + ' different questions answered correctly.</div>' : '') +
+          (e.profDay ? '<div class="small muted" style="margin-top:6px">Proficient since ' + e.profDay + (e.recalled ? ' · recalled ' + e.recalledDay : ' · not yet recalled on a later day') + '</div>' : '') +
+          '<div class="fp5-links" style="margin-top:10px"><button class="btn gray sm" data-fp5="read">📖 Read ' + lo.id.replace('LO ', '') + '</button><button class="btn gray sm" data-fp5="practice">' + practiceLabel + '</button>' + (hasCalc ? '<button class="btn gray sm" data-fp5="calc">🧮 Calc</button>' : '') + '<button class="btn gray sm" data-fp5="hub">Module hub</button></div></div>';
+      } else {
+        var c9 = caseStatus();
+        dt = '<div class="card fp5-detail-card"><div class="small muted">Module 9 · ' + esc(modName(9)) + '</div><h2 style="margin:4px 0 6px">Integrated case</h2><div class="fp5-ev"><div><b>' + c9.attempted + '/' + c9.total + '</b><span>answered</span></div><div><b>' + c9.ok + '/' + c9.total + '</b><span>right on latest try</span></div><div><b>' + c9.recalled + '/' + c9.total + '</b><span>recalled later</span></div></div>' +
+          '<div class="fp5-links" style="margin-top:10px"><button class="btn gray sm" data-fp5="practice">' + practiceLabel + '</button><button class="btn gray sm" data-fp5="hub">Module hub</button></div></div>';
+      }
+      detail.innerHTML = dt;
+    }
     var s = $('fp5Start'); if (s) s.onchange = function () { if (s.value) { st().start = s.value; save(); todayCard(); } };
-    host.querySelectorAll('[data-fp5]').forEach(function (b) { b.onclick = function () { act(b.getAttribute('data-fp5'), cur, nx); }; });
+    [host, detail].forEach(function (h) {
+      if (!h) return;
+      h.querySelectorAll('[data-fp5]').forEach(function (b) { b.onclick = function () { act(b.getAttribute('data-fp5'), fx); }; });
+      h.querySelectorAll('[data-fp5mod]').forEach(function (b) { b.onclick = function () { navOpen = true; setSel({ mod: +b.getAttribute('data-fp5mod') }); todayCard(); }; });
+      h.querySelectorAll('[data-fp5lo]').forEach(function (b) { b.onclick = function () { navOpen = true; setSel({ lo: b.getAttribute('data-fp5lo') }); todayCard(); }; });
+      h.querySelectorAll('[data-fp5ev]').forEach(function (b) { b.onclick = function () { showEvidence(fx.mod, b.getAttribute('data-fp5ev')); }; });
+    });
+    var nd = host.querySelector('.fp5-nav'); if (nd) nd.addEventListener('toggle', function () { navOpen = nd.open; });
   }
-  function act(what, cur, nx) {
+  // Reader deep link: the objective's anchor (id="lo-x.y.z" in apps/fp513-reading.html), else the module tab.
+  function readUrl(fx) {
+    var tab = ((window.TAB_MAP || {})[COURSE] || {})[fx.mod];
+    return 'apps/fp513-reading.html' + (fx.lo ? '#lo-' + fx.lo.id.replace('LO ', '') : (tab ? '#' + tab : ''));
+  }
+  function act(what, fx) {
+    var lo = fx.lo, mod = fx.mod;
     if (what === 'continue') {
-      if (window.CFPCoach && window.CFPCoach.launch) window.CFPCoach.launch((S.coach && S.coach.settings && S.coach.settings.minutes) || 10, null, { course: COURSE, mod: cur, name: modName(cur) });
-      else if (typeof studyScoped === 'function') studyScoped(COURSE, cur, 'quiz');
+      if (window.CFPCoach && window.CFPCoach.launch) window.CFPCoach.launch((S.coach && S.coach.settings && S.coach.settings.minutes) || 10, null, { course: COURSE, mod: mod, name: modName(mod), lo: lo ? lo.id : null });
+      else if (typeof studyScoped === 'function') studyScoped(COURSE, mod, 'quiz');
     } else if (what === 'read') {
-      var tab = ((window.TAB_MAP || {})[COURSE] || {})[cur]; location.href = 'apps/fp513-reading.html' + (tab ? '#' + tab : '');
-    } else if (what === 'calc') { if (typeof studyScoped === 'function') studyScoped(COURSE, cur, 'calc'); }
-    else if (what === 'hub') { if (typeof openModule === 'function') openModule(COURSE, cur); }
+      location.href = readUrl(fx);
+    } else if (what === 'practice') {
+      var pool = lo ? (loQs[lo.id] || []) : MCQ.filter(function (q) { return q.m === COURSE && moduleOf(q) === 9; });
+      if (!pool.length || typeof mcqRunner !== 'function') { if (typeof studyScoped === 'function') studyScoped(COURSE, mod, 'quiz'); return; }
+      if (typeof go === 'function') go('study'); if (typeof studyFocus === 'function') studyFocus(true);
+      mcqRunner(pool, (lo ? lo.id : 'Module 9') + ' practice', { header: '<b>' + (lo ? esc(lo.id) + ' · ' + esc(lo.text) : 'Module 9 · Integrated case') + '</b> <span class="small muted">· ' + pool.length + ' questions, instant feedback</span>' });
+    } else if (what === 'calc') { if (typeof studyScoped === 'function') studyScoped(COURSE, mod, 'calc'); }
+    else if (what === 'hub') { if (typeof openModule === 'function') openModule(COURSE, mod); }
+    else if (what === 'reset') { setSel(null); todayCard(); }
+  }
+  // Tapping a metric opens the existing Analytics tab filtered to that module's objective evidence.
+  var evFilter = null;
+  function showEvidence(mod, metric) {
+    evFilter = { mod: mod, metric: metric };
+    if (typeof go === 'function') go('analytics');
+    setTimeout(function () { var t = $('fp5Evidence'); if (t && t.scrollIntoView) t.scrollIntoView({ block: 'start' }); }, 0);
+  }
+  function evidenceTable(ls) {
+    var mod = (evFilter && evFilter.mod) || focusNow(ls).mod, metric = evFilter && evFilter.metric;
+    var chips = ''; for (var m = 1; m <= 9; m++) chips += '<button type="button" class="fp5-mchip' + (m === mod ? ' on' : '') + '" data-fp5evmod="' + m + '"><b>M' + m + '</b></button>';
+    var col = function (k) { return metric === k ? ' class="fp5-hl"' : ''; };
+    var body;
+    if (mod === 9) { var c = caseStatus(); body = '<div class="small" style="margin-top:8px">Integrated case: <b>' + c.attempted + '/' + c.total + '</b> attempted · <b>' + c.ok + '/' + c.total + '</b> right on latest try · <b>' + c.recalled + '/' + c.total + '</b> recalled later.</div>'; }
+    else body = '<div class="fp5-tablewrap"><table class="fp5-table"><thead><tr><th>Objective</th><th' + col('attempted') + '>Attempted</th><th' + col('prof') + '>Proficient</th><th' + col('recalled') + '>Recalled later</th><th>Status</th></tr></thead><tbody>' +
+      LOS.filter(function (l) { return l.mod === mod; }).map(function (l) { var x = ls[l.id];
+        return '<tr><td><span class="tag">' + l.id + '</span> <span class="small">' + esc(l.text) + '</span></td><td data-l="Attempted"' + col('attempted') + '>' + (x.attempted ? x.n + ' ans · ' + x.nKeys + ' q' : '—') + '</td><td data-l="Proficient"' + col('prof') + '>' + (x.proficient ? '✓ ' + x.okKeys + ' q right' : (x.thin ? 'not enough evidence' : (x.attempted ? x.latestOk + '/' + x.nKeys + ' latest' : '—'))) + '</td><td data-l="Recalled later"' + col('recalled') + '>' + (x.recalled ? '✓ ' + x.recalledDay : '—') + '</td><td data-l="Status">' + STATUS[x.status] + '</td></tr>'; }).join('') + '</tbody></table></div>';
+    return '<div id="fp5Evidence" style="margin-top:12px"><h3>Objective evidence · Module ' + mod + '</h3><div class="fp5-mchips">' + chips + '</div>' + body + '</div>';
   }
 
   // ---------- Analytics panel ----------
@@ -222,13 +401,15 @@
     var off = st().official.slice().sort(function (a, b) { return (b.date || '').localeCompare(a.date || ''); }).map(function (r) { return '<div class="fp5-off"><b>' + esc(r.kind) + '</b> · ' + esc(r.date) + ' · <b>' + esc(r.score) + '%</b>' + (r.weak ? ' <span class="small muted">weak: ' + esc(r.weak) + '</span>' : '') + ' <button class="btn gray sm" data-fp5del="' + esc(r.id) + '">✕</button></div>'; }).join('') || '<div class="small muted">No official results entered.</div>';
     host.innerHTML = '<div class="card"><div class="flex"><h2>FP513 learning evidence</h2><span class="small muted">no pass probability</span></div>' +
       '<div class="fp5-tablewrap"><table class="fp5-table"><thead><tr><th>Module</th><th>Objectives tested</th><th>First-try accuracy</th><th>Recalled later</th><th>Calc proficiency</th><th>Checkpoint</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
-      '<details class="fp5-details"><summary>How these are measured</summary><div class="small muted">First-try accuracy = the first answer to each distinct question. Recalled later = an objective answered correctly on a later day than an earlier attempt (same-day corrections are tracked but not counted). Calc proficiency = calculator drills + generated math questions. Checkpoint = your latest Module Hub exam. Flashcard exposure is not counted as mastery.</div></details>' +
+      '<details class="fp5-details"><summary>How these are measured</summary><div class="small muted">First-try accuracy = the first answer to each distinct question. Recalled later = an objective answered correctly on a later day than an earlier attempt (same-day corrections are tracked but not counted). Calc proficiency = calculator drills + generated math questions. Checkpoint = your latest Module Hub exam. Flashcard exposure is not counted as mastery. Objective evidence: Proficient = right on ' + PROF.minKeys + '+ different questions with ' + Math.round(PROF.minAcc * 100) + '%+ of latest answers right; number variants of one calculation are one question; Recalled later = right again on a later day than it became proficient.</div></details>' +
+      evidenceTable(loStatus()) +
       '<h3 style="margin-top:12px">Weak objectives</h3>' + weakHtml +
       (forms ? '<h3 style="margin-top:12px">Cumulative practice forms</h3><div>' + forms + '</div>' : '') +
       '<h3 style="margin-top:12px">Full CFP® blueprint — course material loaded</h3><div>' + dom + '</div><div class="small muted" style="margin-top:4px">' + loaded + '% of the exam blueprint has course material in the app. Domain weights per CFP Board 2021 Principal Knowledge Topics (Investment Planning 17% of the exam, not of each session).</div>' +
       '<h3 style="margin-top:12px">Kaplan official results (manual entry)</h3><div class="small muted" style="margin-bottom:6px">Typed by you from Kaplan. The app has no Kaplan connection and keeps these separate from app-made practice.</div>' + off +
       '<div class="row" style="flex-wrap:wrap;gap:6px;margin-top:8px"><input type="date" id="fp5OffDate" value="' + localDay() + '"><select id="fp5OffKind"><option>Module 1 quiz</option><option>Module 2 quiz</option><option>Module 3 quiz</option><option>Module 4 quiz</option><option>Module 5 quiz</option><option>Module 6 quiz</option><option>Module 7 quiz</option><option>Module 8 quiz</option><option>Module 9 quiz</option><option>Final exam</option><option>QBank set</option><option>Practice exam</option></select>' +
       '<input type="number" id="fp5OffScore" min="0" max="100" placeholder="Score %" style="width:90px"><input type="text" id="fp5OffWeak" placeholder="Weak topics (optional)"><button class="btn sm" id="fp5OffAdd">Add</button></div></div>';
+    host.querySelectorAll('[data-fp5evmod]').forEach(function (b) { b.onclick = function () { evFilter = { mod: +b.getAttribute('data-fp5evmod'), metric: evFilter && evFilter.metric }; analyticsPanel(); }; });
     host.querySelectorAll('[data-fp5drill]').forEach(function (b) { b.onclick = function () { if (typeof studyScoped === 'function') studyScoped(COURSE, +b.getAttribute('data-fp5drill'), 'quiz'); }; });
     host.querySelectorAll('[data-fp5del]').forEach(function (b) { b.onclick = function () { var id = b.getAttribute('data-fp5del'); st().official = st().official.filter(function (r) { return r.id !== id; }); save(); analyticsPanel(); }; });
     var add = $('fp5OffAdd'); if (add) add.onclick = function () {
@@ -285,6 +466,16 @@
       '.fp5-weak,.fp5-off{padding:5px 0;border-bottom:1px solid var(--line);font-size:13px}' +
       '#fp513Analytics input,#fp513Analytics select{max-width:100%;min-width:0}' +
       '@media(max-width:560px){.fp5-pace{grid-template-columns:52px 1fr;}.fp5-pace .small{grid-column:2}.fp5-table thead{display:none}.fp5-table tr{display:block;padding:6px 0;border-bottom:1px solid var(--line)}.fp5-table td{display:inline-block;border:0;padding:2px 8px 2px 0}.fp5-table td:first-child{display:block}.fp5-table td[data-l]::before{content:attr(data-l) ": ";color:var(--muted);font-size:11px}}' +
+      '.fp5-title{margin:0;font-size:19px;line-height:1.2}.fp5-head .fp5-mod{margin-top:2px}.fp5-countdowns{display:flex;gap:6px}.fp5-exam{background:rgba(0,0,0,.05)}.fp5-exam b{color:var(--ink,inherit)}' +
+      '.fp5-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}.fp5-metric{all:unset;box-sizing:border-box;cursor:pointer;min-height:56px;min-width:0;background:rgba(138,92,214,.08);border-radius:10px;padding:8px;display:flex;flex-direction:column;justify-content:center}.fp5-metric b{font-size:19px;line-height:1.1}.fp5-metric span{font-size:11.5px;color:var(--muted)}.fp5-metric:focus-visible{outline:2px solid #8a5cd6}' +
+      '.fp5-obj{margin-top:10px;padding:10px;border-radius:10px;border:1px solid var(--line)}.fp5-obj-top{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.fp5-obj-title{font-weight:600;font-size:14px}.fp5-st{font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:99px;background:rgba(0,0,0,.06)}.fp5-st-prof{background:rgba(31,122,77,.14);color:var(--good)}.fp5-st-due{background:rgba(176,115,31,.16);color:#9a6316}.fp5-st-practice{background:rgba(138,92,214,.14);color:#7448c0}' +
+      '.fp5-actions{display:flex;flex-direction:column;gap:8px;margin-top:10px}.fp5-go{min-height:44px;width:100%;font-size:15px}.fp5-links{display:flex;flex-wrap:wrap;gap:6px}.fp5-links .btn{min-height:44px}' +
+      '.fp5-nav{margin-top:10px;border-top:1px solid var(--line);padding-top:6px}.fp5-nav>summary{cursor:pointer;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:center;min-height:44px;font-weight:700;font-size:13px}.fp5-mchips{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:4px;margin:6px 0}.fp5-mchip{all:unset;box-sizing:border-box;cursor:pointer;min-height:44px;min-width:0;border-radius:8px;background:rgba(0,0,0,.04);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:12px}.fp5-mchip span{font-size:10px;color:var(--muted)}.fp5-mchip.on{background:rgba(138,92,214,.18);outline:1px solid #8a5cd6}' +
+      '.fp5-modname{margin:4px 0}.fp5-reset{all:unset;cursor:pointer;color:#7448c0;text-decoration:underline;margin-left:6px;padding:8px 0}.fp5-los{display:grid;gap:4px}.fp5-lo{all:unset;box-sizing:border-box;cursor:pointer;min-height:44px;display:grid;grid-template-columns:10px 38px minmax(0,1fr) auto;gap:6px;align-items:center;padding:4px 6px;border-radius:8px;font-size:12.5px}.fp5-lo.on{background:rgba(138,92,214,.12)}.fp5-lo-t{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.fp5-lo-s{font-size:11px;color:var(--muted)}.fp5-dot{width:9px;height:9px;border-radius:50%;padding:0;background:#c9c3b8}.fp5-dot.fp5-st-prof{background:var(--good)}.fp5-dot.fp5-st-due{background:#c98a2b}.fp5-dot.fp5-st-practice{background:#8a5cd6}' +
+      '.fp5-foot{margin-top:8px}#fp513Detail{display:none}.fp5-ev{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.fp5-ev div{background:rgba(138,92,214,.08);border-radius:10px;padding:8px;min-width:0}.fp5-ev b{display:block;font-size:17px}.fp5-ev span{font-size:11px;color:var(--muted)}.fp5-hl{background:rgba(138,92,214,.12)}' +
+      '@media(max-width:520px){.fp5-head{grid-template-columns:1fr;gap:6px}.fp5-countdowns{justify-content:flex-start;flex-wrap:wrap}.fp5-countdowns .fp5-days{display:flex;align-items:baseline;gap:5px;max-width:none;min-width:0;padding:4px 10px;text-align:left}.fp5-countdowns .fp5-days b{font-size:16px}}' +
+      '@media(max-width:380px){.fp5-lo{grid-template-columns:10px 34px minmax(0,1fr)}.fp5-lo-s{display:none}.fp5-mchip span{display:none}}' +
+      'html[data-theme="dark"] .fp5-metric,html[data-theme="dark"] .fp5-ev div{background:rgba(160,120,230,.16)}html[data-theme="dark"] .fp5-mchip,html[data-theme="dark"] .fp5-exam,html[data-theme="dark"] .fp5-st{background:rgba(255,255,255,.07)}html[data-theme="dark"] .fp5-st-practice,html[data-theme="dark"] .fp5-reset{color:#c4a6f2}html[data-theme="dark"] .fp5-st-due{color:#e3b067}html[data-theme="dark"] .fp5-st-prof{color:#7fd1a3}html[data-theme="dark"] .fp5-dot{background:#5d574e}' +
       'html[data-theme="dark"] .fp5-pace{background:rgba(255,255,255,.05)}html[data-theme="dark"] .fp5-stats div{background:rgba(160,120,230,.16)}';
     document.head.appendChild(s);
   }
@@ -309,5 +500,6 @@
   try { var dash = $('dash'); if (dash && !dash.classList.contains('hidden') && typeof window.renderDash === 'function') window.renderDash(); } catch (e) { console.warn('fp513 rerender', e); }
 
   window.FP513COURSE = { LOS: LOS, DEADLINE: DEADLINE, DEADLINE_SRC: DEADLINE_SRC, evidence: evidence, moduleSummary: moduleSummary, currentModule: currentModule, nextObjective: nextObjective,
-    prioritize: prioritize, retentionPick: retentionPick, runForm: runForm, buildForm: buildForm, diagnostics: diagnostics, todayCard: todayCard, analyticsPanel: analyticsPanel, reindex: indexItems };
+    prioritize: prioritize, retentionPick: retentionPick, runForm: runForm, buildForm: buildForm, diagnostics: diagnostics, todayCard: todayCard, analyticsPanel: analyticsPanel, reindex: indexItems,
+    PROF: PROF, loStatus: loStatus, caseStatus: caseStatus, moduleCounts: moduleCounts, recommend: recommend, focusNow: focusNow, readUrl: function () { return readUrl(focusNow(loStatus())); }, select: function (v) { setSel(v); todayCard(); }, showEvidence: showEvidence };
 })();

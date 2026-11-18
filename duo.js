@@ -228,7 +228,9 @@
       moveTo(document.getElementById('appHeader'), left);
       moveTo(document.getElementById('tabs'), left);
       moveTo(document.getElementById('fp513Today'), left);
-      if (route === 'dash') moveTo(document.getElementById('coachHome'), left);
+      // v2.118.0 (issue #8): Today's left page = FP513 header, metrics, Continue + objective navigator; the right
+      // page keeps the selected objective's detail (#fp513Detail) above the coach. Re-render so the navigator opens.
+      if (window.FP513COURSE && window.FP513COURSE.todayCard) { try { window.FP513COURSE.todayCard(); } catch (e) {} }
       if (route === 'analytics') { moveTo(document.getElementById('coachAnalytics'), left); moveTo(document.getElementById('fp513Analytics'), left); }
       left.scrollTop = 0;
     } else if (pose === 'seated') {
@@ -263,7 +265,7 @@
       var mod = f && f.querySelector('.fp5-mod'), nx = f && f.querySelector('.fp5-next'), days = f && f.querySelector('.fp5-days');
       html = '<div class="duo-eyebrow">FP513 · Investment Planning' + (days ? ' · ' + esc(Array.prototype.map.call(days.children.length ? days.children : [days], function (n) { return n.textContent.trim(); }).join(' ')) : '') + '</div>' +
         (mod ? '<div class="duo-q">' + mod.innerHTML + '</div>' : '') + (nx ? '<div class="duo-next">' + nx.innerHTML + '</div>' : '') +
-        '<div class="duo-row"><button class="btn" data-duo-fwd="continue">Continue FP513 →</button><button class="btn gray sm" data-duo-fwd="read">📖 Read</button><button class="btn gray sm" data-duo-fwd="calc">🧮 Calc</button></div>';
+        '<div class="duo-row"><button class="btn" data-duo-fwd="continue">Continue learning →</button><button class="btn gray sm" data-duo-fwd="read">📖 Read</button><button class="btn gray sm" data-duo-fwd="calc">🧮 Calc</button></div>';
     }
     document.body.setAttribute('data-duo-top', mode || 'compass');
     if (top.__html !== html) { top.__html = html; top.innerHTML = html; top.scrollTop = 0; }
