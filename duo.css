@@ -48,6 +48,8 @@ html[data-duo-pose="book"] .wrap > section:not(.hidden) { animation: none; }
 /* v2.118.0 (issue #8) Today in book: left page = FP513 header, metrics, Continue + objective navigator;
    right page = the selected objective's detail (#fp513Detail, static markup) above the coach. */
 html[data-duo-pose="book"] body:not(.duo-spread) #fp513Detail { display: block; }
+/* v2.118.1: keep the right page's "Selected objective" line clear of the fixed Single page + ⋯ buttons */
+html[data-duo-pose="book"] #fp513Detail .fp5-detail-card > .small:first-child { padding-right: 140px; }
 html[data-duo-pose="book"] #duoL #fp513Today .fp5-links { display: none; }
 
 /* Study / coach spread: everything sits on the left page except the split question card */
