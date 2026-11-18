@@ -149,6 +149,9 @@ new engine, no change to how answers are recorded. All in `fp513-course.js` (`to
   exact LO, Continue parks FP512 ×3 switches, merge idempotent, metric → Analytics, Read deep link).
   `tests/duo-browser.cjs` gained Today checks (book left/right + LO pick, seated forward, phone/folded 44px targets,
   pose changes keep the session) — **not run for v2.118.0** (no Chrome in that session).
+- **v2.118.1 (layout fix):** in book pose the fixed `#duoBtn` ("✕ Single page") and ⋯ button covered the end of
+  `#fp513Detail`'s "Selected objective" line; `duo.css` pads that first line 140px on the right. Checked live via
+  same-origin iframes at 390, 466 and 960 `?duo=book` (no sideways overflow, no clipped buttons, M1–M9 all visible).
 
 ### FP513 Investment Planning (v2.114.0–v2.114.1) — active course
 Jack passed FP512 and started FP513 (Nov 17 2026). Built from his directive "CLAUDE BUILD
@@ -1490,7 +1493,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.118.0`) on every shippable change so installed apps auto-update
+  (current: `v2.118.1`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.
