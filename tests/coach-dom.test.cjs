@@ -113,3 +113,10 @@ test('all new assets are offline-cached and case source tabs exist',()=>{
   assert.equal(new Set(ctx.window.CFP_CLIENT_CASES.map(c=>c.id)).size,ctx.window.CFP_CLIENT_CASES.length,'unique case ids');
   for(const c of ctx.window.CFP_CLIENT_CASES){const [file,hash]=c.source.split('#'),html=fs.readFileSync(path.join(root,file),'utf8');assert.ok(html.includes('data-tab="'+hash+'"'),c.id+' source tab');}
 });
+test('starting a session never rewrites the saved session length (v2.118.2)',async()=>{
+  const a=await open();a.eval('S.coach.settings.minutes=10');
+  a.eval('CFPCoach.launch(3)');assert.equal(a.eval('S.coach.settings.minutes'),10,'a 3-minute comeback leaves the saved length alone');
+  a.eval('CFPCoach.launch(10,"case-only",null,true)');assert.equal(a.eval('S.coach.settings.minutes'),10);
+  a.eval('S.coach.active=null;S.coach.settings.minutes=25;CFPCoach.launch(S.coach.settings.minutes,null,{course:"FP513",mod:1})');
+  assert.equal(a.eval('S.coach.settings.minutes'),25);assert.ok(a.eval('S.coach.active.steps.length')>6,'25-minute session is the long one');
+});

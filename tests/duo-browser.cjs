@@ -14,6 +14,7 @@ const POSES = {
   seatedDesktop: { width: 1280, height: 900, feature: { orientation: 'horizontal', offset: 450, maskLength: 0 } },
   folded: { width: 466, height: 677 }, open: { width: 960, height: 676 }, phone: { width: 390, height: 844 },
   manualBook: { width: 960, height: 676, query: '?duo=book' },
+  manualSeated: { width: 676, height: 951 },   // v2.118.2: manual Top·bottom only applies on a tall screen
 };
 const PROBE = `(() => {
   const W = innerWidth, r = document.documentElement, over = [], fixedIn = [];
@@ -197,7 +198,7 @@ const PROBE = `(() => {
     const r = await page.evaluate(PROBE); clean(Object.assign(r, { errs })); await ctx.close();
   });
   await check('seated Today: compass on top forwards Continue learning to the FP513 session', async () => {
-    const { ctx, page, errs } = await pageAt('manualBook', '?duo=seated');
+    const { ctx, page, errs } = await pageAt('manualSeated', '?duo=seated');
     await page.evaluate("document.querySelector('#duoTop [data-duo-fwd=\"continue\"]').click()"); await page.waitForTimeout(500);
     assert.equal(await page.evaluate("S.coach.active && S.coach.active.focus.course"), 'FP513'); assert.deepEqual(errs, []); await ctx.close();
   });
@@ -207,6 +208,18 @@ const PROBE = `(() => {
       const { ctx, page } = await pageAt(pose);
       const small = await page.evaluate("[...document.querySelectorAll('#fp513Today .fp5-metric, #fp513Today .fp5-go, #fp513Today .fp5-mchip, #fp513Today .fp5-nav > summary')].filter(e => e.offsetParent && e.getBoundingClientRect().height < 43.5).map(e => e.className)");
       assert.deepEqual(small, []); await ctx.close();
+    });
+  }
+  // v2.118.2: the "Resuming your saved session" message used to sit on the bottom tab bar and swallow taps.
+  for (const pose of ['phone', 'folded']) {
+    await check(pose + ' Today: bottom tabs stay tappable while a message is showing', async () => {
+      const P = POSES[pose], ctx = await browser.newContext({ viewport: { width: P.width, height: P.height }, hasTouch: true, serviceWorkers: 'block' }), page = await ctx.newPage(), errs = [];
+      page.on('pageerror', e => errs.push(String(e))); await page.goto(base + 'index.html'); await page.waitForTimeout(1200);
+      await page.evaluate("CFPCoach.launch(3, null, { course: 'FP513', mod: 1 }); CFPCoach.launch(3, null, { course: 'FP513', mod: 1 }); go('dash')"); await page.waitForTimeout(150);
+      const t = await page.evaluate("(() => { const T = document.getElementById('toast'), a = T.getBoundingClientRect(), b = document.getElementById('tabs').getBoundingClientRect(), c = document.querySelector('.tab[data-t=\"modules\"]').getBoundingClientRect(); return { show: T.classList.contains('show'), toastBottom: a.bottom, tabsTop: b.top, x: c.x + c.width / 2, y: c.y + c.height / 2 }; })()");
+      assert.ok(t.show && t.toastBottom <= t.tabsTop, JSON.stringify(t));
+      await page.touchscreen.tap(t.x, t.y); await page.waitForTimeout(100);
+      assert.equal(await page.evaluate("document.getElementById('modules').classList.contains('hidden')"), false); assert.deepEqual(errs, []); await ctx.close();
     });
   }
   await check('pose changes keep an active FP513 session and its place', async () => {

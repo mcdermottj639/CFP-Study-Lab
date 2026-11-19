@@ -109,6 +109,20 @@ Sports Hub's `duo.js` (v372–v378); detection rules and Safari scrolling rules 
     `tests/fp513-dom.test.cjs`.
   - Tests: 47/47 node (`NODE_PATH=<jsdom@26>`), `tests/duo-browser.cjs` 51/51. Physical iPhone Duo not verified.
 
+### v2.118.2 — tab bar blocked by the toast; session length stuck at 3
+Jack, Nov 18 2026: after Continue learning then back to Today he could not tap the module tab for a few seconds,
+and Continue learning "just keeps giving me 3 question warm ups".
+- **Toast swallowed taps.** `.toast` is `position:fixed;bottom:18px;z-index:50` and had no `pointer-events:none`, so on
+  screens ≤780px it sat on the fixed bottom tab bar and took every tap on the middle tabs, shown or faded (opacity 0).
+  Seen after Continue learning resumed a saved session ("Resuming your saved FP513 session…") then back to Today.
+  Fix in `build_index.mjs` FRESH_UI: `pointer-events:none`, and ≤780px the toast sits above the tab bar.
+  Present since v2.113.0 (the resume toast); not introduced by v2.118.0.
+- **Session length.** `launch()` no longer writes `settings.minutes`. A 3-minute comeback start (or a client case, 10)
+  used to save itself as the length, so Continue learning kept building 3-question sessions. The length now changes
+  only from the 3/10/25 picker on Today or Study coach preferences. Devices already saved at 3 stay at 3 until changed.
+- **Tests:** `coach-dom` +1 (length not rewritten); `duo-browser` +2 (phone/folded: tabs tappable under a message) and
+  the seated-forward check now runs at 676×951 (manual Top·bottom never applied at 960×676, so it could not pass).
+
 ### FP513 Today — Learning Command Center (v2.118.0, issue #8)
 Jack approved ChatGPT's FP513 Today-dashboard spec (issue #8, Nov 17 2026). Layout + evidence only; no content, no
 new engine, no change to how answers are recorded. All in `fp513-course.js` (`todayCard`, `loStatus`, `caseStatus`,
@@ -1493,7 +1507,7 @@ Everything is local — repo scan for `https://` in served files must stay empty
 
 ## Service worker / versioning / deploy
 - `sw.js` `VERSION` and `build_index.mjs` `APP_VERSION` should be bumped together
-  (current: `v2.118.1`) on every shippable change so installed apps auto-update
+  (current: `v2.118.2`) on every shippable change so installed apps auto-update
   (install does a `cache: 'reload'` fetch; page reloads on `controllerchange`).
 - `sw.js` precaches `CORE_ASSETS` (index, manifest, apps/readers, vendor, icons,
   theme files). Add new shipped assets there.

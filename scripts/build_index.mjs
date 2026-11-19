@@ -12,7 +12,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 
 const SRC = process.argv[2] || 'src/study-home.src.html';
 const OUT = 'index.html';
-const APP_VERSION = 'v2.118.1';
+const APP_VERSION = 'v2.118.2';
 let html = readFileSync(SRC, 'utf8');
 
 const HEAD = `
@@ -496,7 +496,8 @@ html[data-theme="dark"] input,html[data-theme="dark"] select,html[data-theme="da
 
 #studyBar{border:2px solid var(--rule);border-radius:var(--rad)}
 .revnext{border-top:2px solid var(--rule);border-radius:0}
-.toast{border-radius:var(--rad)}
+.toast{border-radius:var(--rad);pointer-events:none}   /* v2.118.2: a message must never swallow taps */
+@media(max-width:780px){.toast{bottom:calc(96px + env(safe-area-inset-bottom))}}   /* v2.118.2: sit above the fixed bottom tab bar, not on it */
 
 /* --- Mobile: keep the icon bottom bar, squared off --------------------- */
 @media(max-width:780px){
