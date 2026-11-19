@@ -110,7 +110,9 @@
     if (want && !replace && unpark(want)) { toast('Resuming your saved ' + (want === 'mixed' ? 'mixed review' : want) + ' session.'); return; }
     var session = build(minutes, kind, override);
     if (!session) { toast('Add course questions before starting a session.'); return; }
-    s.active = session; s.settings.minutes = minutes; s.settings.updatedAt = Date.now(); touch();
+    // v2.118.2: starting a session no longer rewrites the saved session length. A 3-minute comeback (or a client
+    // case) used to save 3 (or 10) as the length, so every later Continue learning built 3-question sessions.
+    s.active = session; touch();
     location.hash = 'coach'; go('coach'); render();
   }
   function resume() { if (!state().active) return launch(state().settings.minutes); state().active.paused = false; touch(); location.hash = 'coach'; go('coach'); render(); }
